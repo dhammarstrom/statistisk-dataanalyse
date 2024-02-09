@@ -2,16 +2,26 @@ project:
   type: book
 
 book:
-  title: "."
-  author: "Norah Jones"
-  date: "2.1.2024"
+  title: "Statistisk dataanalyse med Jamovi"
+  author: "Daniel Hammarström"
+  date: "2024-01-02"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - 01-deskriptiv-dataanalyse.qmd
+    - 02-statistisk-samvariasjon.qmd
+    - 03-kausalsammenheng.qmd
+    - 04-induktiv-statistikk.qmd
+    - 05-formidling.qmd
     - references.qmd
 
 bibliography: references.bib
+
+crossref:
+  fig-title: Figur     # (default is "Figure")
+  fig-prefix: Figur
+  tbl-prefix: Tabell
+  tbl-title: Tabell     # (default is "Table")
+  title-delim: "."   # (default is ":")
 
 format:
   html:

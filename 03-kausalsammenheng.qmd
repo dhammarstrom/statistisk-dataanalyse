@@ -1,0 +1,15 @@
+# Kausalsammenheng
+
+Med statistiske verktøy 
+
+
+
+
+
+```{r}
+
+library(dagg)
+
+
+```
+

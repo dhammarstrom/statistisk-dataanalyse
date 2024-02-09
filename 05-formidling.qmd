@@ -1,0 +1,167 @@
+# Presentere og lese statistiske analyser
+
+
+## En arbeidsflyt for statistisk analyse i Jamovi
+Vi har allerede snakket om hvordan et analyseprosjekt kan organiseres i den første modulen så utgangspunktet for diskusjonen her blir en repetisjon. Et analyseprosjekt bør være **reproduserbart**, dette betyr at all informasjon som kreves for å gjenskape analyseresultatene bør finnes sammen med den rapport du lager. Prosjektet du arbeider på bør også være **transparent** noe som gjør at det bør følge med detaljerte beskrivninger av hvorfor og hvordan man valgt å lage analysen på en gitt måte. 
+
+Vi løser begge disse kravene ved å skape en struktur for dataanalysen. I notatene fra den første modulen leser vi at vi lager analysen som en isolert mappe. Denne mappen inneholder alle deler som kreves for å lese en reproduserbar og transparent analyse, rapporten er bare en del. I rapporten er det fullt mulig at du ikke har plass till å beskrive hele din analyse. Men i mappen så bør disse beskrivelser være med. I din analysemappe finner vi:
+
+- Rådata: Data som er urørt etter det at man matet inn eller innhentet den i forskjellige programmer osv.
+- Delvis bearbeidet data: Data som er organisert for data analyse
+- Analysefiler: Filer som er kan lese til eks. Jamovi og inneholder analyser av din data
+- Rapporter og figurer: Disse er sluttprodukter av deres arbeid, disse kan settes sammen til eks. en bachelor-oppgave.
+
+### Rådata og bearbeidet data
+Når bearbeiding av rådata skjer manuelt bør du ha rådata lagret. Dette gir muligheter for å finne frem mulige feil ved senere anledning. Bearbeidet data kan være data hvor rad og kolonne i et excelark har blitt bearbeidet for å passe import til jamovi eller hvor gjennomsnitt fra flere filer har blitt lagt inn et samlet ark.
+
+### Analysefiler
+I jamovi er det mulig å spare analysefiler som inneholder data og statistiske analyser. Hvis du bruker et datasett for flere analyser finnes det en risiko for at analysefilene krever mye av din PC. Det er da en god ide å bruke flere forskjellige analysefiler for bestemte underanalyser. 
+
+Et eksempel på en sånn oppdeling kan være at en første analysefil inneholder deskriptiv analyse av datasettet. Vi navngir denne filen med et beskrivende navn, eksempelvis **deskriptiv-data-analyse.omv**. Her begrenser vi oss til å skape en tabell som beskriver variabler i datasettet som i sin tur beskriver vårt utvalg. I en den neste filen bruker vi statistisk inferens får å besvare problemstillingen i studien, for eksempel, hvilken treningsmodell er best for å utvikle styrke. Denne analysen bygger på sammenligninger, vi navngir file **sammenligninger-grupper-analyse.omv**. I en siste fil lager vi noen figurer og 
+
+### Rapporter og figurer
+En rapport kan være i formen av en BA-oppgave eller en presentasjon. Når rapporten er et dokument som fremst skal leses bør den skrives deretter. Vi har tidligere snakket om dette, hvis du ønsker å lese dette igjen finner du teksten gjengitt her under.
+
+For å gi større muligheter til å forandre deler i rapporten bør figurer og tabeller holdes adskilte helt til rapporten skal settes sammen for innlevering eller publisering. Lag figurer som separate filer (se under for et forslag på arbeidsflyt). Lag tabeller i et eget dokument.
+
+#### Et arbeidsflyt for å lage figurer i Jamovi
+Jamovi har flere muligheter for å lage figurer. Men jamovi er begrenset når det kommer til å tilpasse figurer. Får å lage forandre elementer i en figur kan vi bruke f.eks. power-point og legge til tekst, forandre aksler eller farger osv. Her under følger en kort et eksempel:
+
+1. Lag figuren i Jamovi. Her har du flere alternativer: Under "exploration" kan vi lage figurer som beskriver data basert på grupperinger og gjennomsnitt. Vi kan og laste inn nye moduler så som Flexplot og jjStatsPlot. Disse modulene har en bedre muligheter for å lage figurer. Når vi vel har laget en figur kan vi ... 
+2. Eksportere figurelementer. Dette kan gjøres ved å høyreklikk på figuren og velge copy i menyen som heter Image. Når du så limer inn i for eksempel power-point limer du inn en PNG-fil. Denne filen har noe lavere kvalitet. Hvis du istedenfor velger å eksportere som .SVG får du høyere kvalitet. Dra figuren (som du lagrer på din PC) inn i et nytt lysbilde i power point.
+3. Du kan nå velge å lage egne akseltekster, legge til forklarende tekst osv. Hvis du ønsker å ta vekk eller forandre deler av bildet kan du velge ved høyreklikk Grupper og Del opp gruppe. Denne operasjonen gir deg full kontroll over alle delene i grafen. Dessverre forsvinner teksten, du må legge inn den på nytt.
+4. Du har nå mulighet å lage en figur med flere paneler, noe som vil imponere sensorer!
+5. Endre størrelse. Før du er helt klar er det lurt å eksportere figuren i den størrelsen som du ønsker i rapporten. En kolonne med text i word har 16.51 cm bredde og ca 22 cm høyde. Hvis du lager en figur som holder seg innenfor disse målene blir dokumentet lettere o formattere. Under Utforming, velg Lysbildestørrelse og endre til ønsket størrelse. 
+6. Eksporter figur. Fra power-point kan du eksportere figuren som  flere formater. Du har mulighet å eksportere bilder som tiff-filer, disse vil ha høy kvalitet. Under Fil > Eksporter, velg Endre filtype, trykk på Andre Filtyper og trykk på Lagre som. I neste meny, velg .tif under filtype.
+7. Lim inn i word ved å dra bildefilen til word-dokumentet. 
+
+Hvis man ønsker enda mer kontroll for å redigere figurer kan en .svg-fil redigeres i [Inkscape](https://inkscape.org/)
+
+### Les-meg!
+Vi finner også en README-fil. Denne bør skrives i et format som kan leses av flest mulig, dette betyr at et word-dokument er på grensen da alle ikke har installert programvare som kan lese word. Et bedre alternativ er en .txt-fil. I README.txt kan vi beskrive prosjektet:
+
+```
+
+## Tittel på prosjektet
+Her under følger et kort sammendrag av prosjektets bakgrunn, problemstilling, metode og konklusjoner. Det er ikke tanken at all informasjon finnes her men at leseren gis kontekst til hva som følger.
+
+## Innhold i analysen
+Her under beskriver vi de filer og datasett som blir brukt i analysene. Beskrivelsene kan struktureres under de undermapper som de finnes i.
+
+- /data
+	- datasett-01-deskriptiv-data.xlsx
+	- datasett-02-gruppesammenligninger.xlsx
+- /rådata
+	- fil1-testdag1.xlsx
+	- ...
+- /analyse
+	- deskriptiv-data-analyse.omv
+- rapport.docx
+- /figurer
+	- ...
+
+Hver fil eller datasett kan beskrives i detalj under.
+
+
+```
+
+## Presentere statistiske analyser
+En statistisk analyse bør presenteres til ditt publikum på en måte som gjør det klart hva din hensikt med presentasjonen er. Vi har i dette emnet forenklet snakket om presentasjoner som er deskriptive (beskrivende) og som har som hensikt å trekke slutninger om en populasjon basert på et utvalg (statistisk inferens). Vi kan legge til to kategorier her for en mer detaljert syn på statistisk inferens:
+
+- En analyse kan bygge på hypotesetesting. En problemstilling formuleres i forkant av analysearbeidet, den statistiske analysen gir støtte eller forkaster en nullhypotese. 
+- En analyse kan være eksplorativ. Vi ønsker fortsatt å si noe om en populasjon basert på et utvalg, problemstillinger kan formuleres i forkant av analysen, men dataene er ikke nødvendigvis innsamlet med denne hensikten i tankene.
+
+I begge er det meget viktig å beskrive hva som er **avhengig variabel**, hva er det du ønsker å beskrive eller trekke slutninger om? I tillegg til de variabler som kreves for å angripe din problemstilling finnes det muligens flere variabler som du bruker for å beskrive datasettet, utvalget eller populasjonen. Du bør gjøre det klart for ditt publikum hvordan disse henger sammen og hvorfor de presenteres.
+
+Det finnes flere guider for hvordan man presenterer statistiske resultater. En meget brukt guide er den som publiseres av American Psychological Association (APA), en forkortet versjon finner dere [her](https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf). Å følge en guide kan gi fordeler, men du bør også tenke på hva du ønsker å formidle. I eksemplet under beskriver vi forskjellen mellom grupper i utvalget og hva vi tror om forskjellen mellom grupper i populasjonen. 
+
+> SI oppviste en økning i VO<sub>2maks</sub> som var 281 ml $\times$ min<sup>-1</sup> større enn LI (95% KI: [53, 507], *t*<sub>(15)</sub> = 2.64, *p* = 0.019). 
+
+Vi presenterer altså beskrivende statistikk hva gjelder utvalget sammen med konfidensintervaller og resultatet fra en t-test som gir en indikasjon på hva vi tror om gjennomsnittet i populasjonen ( konfidensintervall) og hvor sannsynlig det observerte resultatet eller et enda mer ekstremt resultat er hvis nullhypotesen er sann (*t* og *p*-verdier). Vi kan tenke oss å presentere ytterligere statistikker fra testen så som effekt størrelse. 
+
+Hvorfor presentere *t* sammen med *p*? Vi ønsker å vise at vi er å stole på, en gitt *t*-verdi bør samsvare med en *p*-verdi. Se f.eks. [her for en kalkulator for *t* og *p*](http://courses.atlas.illinois.edu/spring2016/STAT/STAT200/pt.html). En annen hensikt er å vise effekten i testen i standardiserte enheter, *t*-verdien beregnes som gjennomsnittlig forskjell delt på standardfeilen for forskjellen ($t = \frac{x_1 - x_2}{SE(x_1 - x_2)}$). Vi får altså vite hvor mange standardfeil som skiller to gjennomsnitt. Vi ser også retningen på effekten (negativ eller positiv).
+
+Når vi presenterer resultater fra statistiske tester som er mer avanserte kan en tabell hjelpe. En regresjonstabell gir oss all informasjon som kreves for å presentere resultater. Legg merke til at Thrane presenterer en noe forenklet tabell. En regresjonstabell fra jamovi inneholder flere elementer som kan bidra til tolking av resultatene. En noe mer avansert modell for sammenligning av VO<sub>2maks</sub> etter en intervensjon som ble presentert som en t-test på differenser over kan være en ANCOVA modell. ANCOVA står for Analysis of Co-Variance. Her analyseres en kontinuerlig variabel som avhengig variabel sammen med en kategorisk variabel og kontinuerlig variabel som uavhengig variabel. Målet er å estimere forskjell i verdier post-intervensjon når vi kontrollerer for pre-intervensjons verdier. I tabellen under presentere resultater fra denne analysen.
+
+| Predictor                    | Estimate | SE     | 95% CI Lower   |95% CI Upper   | t    | p       |
+|------------------------------|----------|--------|---------|---------|------|---------|
+| Intercept ᵃ                  | 553.56   | 562.68 | -653.27 | 1760.39 | 0.98 | 0.3419  |
+| pre                          | 0.87     | 0.11   | 0.65    | 1.10    | 8.23 | 9.87e-7 |
+| group:                       |          |        |         |         |      |         |
+| SI – LI                      | 275.22   | 104.89 | 50.25   | 500.19  | 2.62 | 0.0200  |
+| ᵃ Represents reference level |          |        |         |         |      |         |
+
+I fall da vi bare ønsker å gi leseren estimatet vi er interesserte i, forskjell mellom grupper etter intervensjonen, kan vi skrive:
+
+> Etter intervensjonen var VO<sub>2maks</sub> 275 ml $\times$ min<sup>-1</sup> høyere i SI-gruppen sammenlignet med LI når vi kontrollerer for pre-intervensjonsverdier (95% KI: [50, 500], *t*<sub>(14)</sub> = 2.62, *p* = 0.02, se tabell 2 for en helhetlig regresjonstabell). 
+
+Vi henviser till tabell 2 for en komplett tabell med alle estimatene. 
+
+Når du har mulighet, komplettere gjerne dine analyser med en figur. I noen vitenskapelige tidsskrifter kreves det at individuelle datapunkter presenteres i figur når antallet observasjoner per gruppe er lavt. Dette er praksis som gjør rapporter mer transparente. Tenk på at figurer og tekst skal komplettere hverandre, presenter ikke de samme resultatene i en figure som i tekst. Hvis vi skaper en figur som viser forskjell mellom gruppene sammen med et konfidensintervall løfter vi vekk denne informasjonen fra teksten og henviser til figuren.
+
+> Etter intervensjonen var VO<sub>2maks</sub> høyere i SI-gruppen sammenlignet med LI når vi kontrollerer for pre-intervensjonsverdier (se Figur 1, *t*<sub>(14)</sub> = 2.62, *p* = 0.02, se Tabell 2 for en helhetlig regresjonstabell). 
+
+Et resultatkapittel inneholder som regel ikke noe tolkende utsagn annet en indikasjoner på størrelse og retning på effekter, beskrivende statistikk og resultater fra hypotesetester. Tolkningen legger man som regel inn i diskusjonen. Noen ganger kan det kreves at du hjelper leseren å forstå hva du presenterer, du bør då legge inn en ekstra setning som beskriver for eksempel hva du estimerer.  
+
+## Beskrive analyser i metode
+I et metodekapittel avslutter man ofte med å beskrive de metoder som blir brukt for å analysere dataene. Her bør vi beskrive hvert test som presenteres i resultatene. Vi kan gruppere noe ved å si at "differenser mellom pre- og post-intervensjon i VO2maks og sykkelprestasjon ble sammenlignet mellom grupper ved hjelp av uavhengige t-tester". I neste setning ønsker vi å si noe om hvordan vi presenterer dataene. "Deskriptiv data blir presentert som gjennomsnitt og standardavvik (SD). Gruppesammenligninger presenteres som gjennomsnittlig forskjell, 95% konfidensintervall sammen med *t* og *p*-verdier fra t-tester."
+
+I denne delen av rapporten er det lurt å være så eksplisitt som mulig, si hva du faktisk har gjort og hvordan du faktisk presenterer dataene. 
+
+Til sist kan du fint si at "alle resultater, rådata og analysefiler finnes samlet i...". Og henvise til deres mappe som inneholder deres analysearbeid.
+
+
+## Lese statistiske analyser
+Vi har nå diskutert hvordan vi kan presentere resultater fra et analyseprosjekt. Vi kan bruke de to ledestjernene for å lage analyseprosjekter når vi leser arbeider også. Vi kan prøve å besvare følgende spørsmål: er analysene presenterte på en transparent måte? Kan jeg reprodusere analysene? Hvis svarene er JA på disse to spørsmål kan vi muligens legge mer troverdighet i de resultater som presenteres.
+
+Vi har gjennom emnet diskutert hvordan vi kan lure oss selve med statistiske verktøy. Når resultatene fra en statistisk analyse tolkes og konklusjoner trekkes kreves at vi kan vedlikeholde en kritisk blikk på analysene. Vi kan prøve å besvare spørsmålet hvordan kan forfatterne lurt seg selve her? En analyse kan være både transparent og mulig å reprodusere, men konklusjonene bygger på at man tolket dataene og resultatene feil eller brukt statistiske modeller som ikke gir en riktig bilde av dataene (og verden). Det å tolke statistiske analyser fra denne synsvinkelen krever trening og en kritisk blikk. Thrane [-@thrane_2020] gir noen tips som omhandler for eksempel assosiasjon og kausalitet, absolutte og relative effekter og generalisering til forskjellige populasjoner.
+
+
+## Vitenskapelige skriving: En strukturert rapport
+En vitenskapelig rapport skiller seg på flere måter fra hvordan andre tekster skrives. En vitenskapelig rapport ønsker ofte å formidle kunnskap som baserer seg på data eller logikk på en måte som gir leseren den samme forståelsen av et fenomen som forfatteren av rapporten. Det finnes variasjoner av vitenskapelige tekster som for eksempel når forfatteren ønsker å formidle en mening i en vitenskapelig debatt.
+
+Forskere og andre lesere av vitenskapelige tekster (studenter, trenere, helsearbeidere, politiker osv.) har ikke alltid så mye tid, derfor har det utviklet seg måter å strukturere rapporter på som gjører det enkelt å finne hva man søker etter. Disse strukturer skiller seg mellom ulike felt (f.eks. medisin, psykologi, litteraturvitenskap, sosiologi) og mellom ulike publiseringskanaler (f.eks. mellom ulike tidsskrifter). Men man kan se et felles mønster og dette mønster kan beskrives som
+
+**IMR(o)D**
+
+Som står for: Introduksjon, Metode, Resultat og Diskusjon.
+
+Denne strukturen er mye brukt i forskningsrapporter som formidler et eksperiment eller observasjoner. Men vi kan og bruke modellen når vi formidler oversikter over et felt gjennom en litteraturoversikt. I noen situasjoner er noen deler ikke nødvendige, for eksempel, når vi rapporterer et enkelt eksperiment med lite plass for tolking kan diskusjonen bli en mindre del eller forsvinne helt. Når vi skriver en tekst til et seminarium kan vi ta vekk metodedelen og resultatene og derved introdusere leseren til et felt følget av en diskusjon om feltet.
+
+### Introduksjon
+
+Hensikten med introduksjonen er å introdusere leseren til den resterende teksten. Vi skal her presentere noen fakta som er viktige for å sette resten av rapporten i en kontekst. Disse fakta bakkes opp av referanser/kilder som presenterer tidligere kunnskap for leseren. Denne første delen av introduksjonen kan sies være deskriptiv, eller beskrivende.
+
+Neste del av introduksjonen kan brukes får å presentere problemet som man ønsker å undersøke eller rapportere kring. Denne delen kan sies være analytisk. I et større vitenskapelig arbeid (f.eks. en bacheloroppgave) bruker vi denne delen får å formulere forskningsspørsmål eller hypoteser basert på tidligere forskning og kunnskapshull.
+
+I en større rapport kan man under introduksjonskapitlet og rapportere en mer omfattende litteraturgjennomgang.
+
+Introduksjonen kan sies besvare spørsmålene: Hva er feltet? Hva er problemet? Hvorfor er det problemet?
+
+Prøv å unngå å motivere dine tekster med for eksempel «Hensikten med denne teksten er å besvare oppgaven i emnet…». Unngå også å bruk plass på «I introduksjonen vil jeg presentere en introduksjon til emnet…». Begge eksemplene over kan sies være deler i din tekst som beskriver teksten, fokusere istedenfor på å beskrive fenomenet du ønsker å fortelle leseren om.
+
+### Metode
+
+Under metode forventes man beskriv hvordan man gjennomfører sin studie. Denne kan beskrives som for eksempel et eksperiment, en observasjon, en litteraturgjennomgang. I en større rapport kan man fordele metodedelen over flere underkapittel som først gir en oversikt over studien følget av en detaljerte beskrivelser av hvordan forskjellige metoder har blitt gjennomført.
+
+Metoden skreves i fortid, når du rapporterer på et gjennomført eksperiment eller observasjon. Beskrivelsen skall være så pass detaljert at leseren selv kan gjennomføre eksperimentet. En detaljert beskrivelse av metoden gir leseren mulighet å bedømme hvor tilforlatelige resultatene er.
+
+### Resultat
+
+Her besvares spørsmålet om hva som ble funnet i eksperimentet, observasjonen eller litteraturgjennomgangen. Resultatene kan være meget enkle gjennom for eksempel presentasjon av et gjennomsnitt og spredningsmål av en måling, eller meget komplekse gjennom presentasjon av flere målinger fra flere eksperimenter og statistiske modeller. Resultater er ofte presenterte i tekst, tabeller og figurer. Tabeller og figurer hjelper forfatteren å presentere mye data på en strukturert måte. Figurer og tabeller forteller leseren mer på begrenset plass sammenlignet med tekst. Men i teksten må du henvise til figurer og tabeller, ingen figurer eller tabeller får være ukommenterte. Tenk på teksten i resultatdelen som et gelender som leder leseren gjennom rapporten i en logisk orden. Med hånden stadig plassert på gelenderet har leseren mulighet å skjønne hva figurer og tabeller formidler og setter disse i kontekst. Tar du vekk gelenderet faller leseren mot en sikker død i en avgrunn av enkeltstående figurer og tabeller.
+
+Hvis leseren selv hopper over gelenderet og prøver å skjønne tabeller og figurer uten din trygge ledsagelse så kan du fortsatt være en god forfatter gjennom å beskrive hva figurer og tabeller viser. En regel er at figurer og tabeller bør kunne leses for seg selv. En figurtekst bør inneholde tilstrekkelig informasjon for at leseren skal ha mulighet å skjønne hva den viser. Det samme gjelder tabeller.
+
+### Diskusjon
+
+I diskusjonen forteller du leseren hva resultatene betyr, du gjør en tolkning av resultatene som du tidligere har presentert. Tolkningen binder sammen introduksjonen, metoden og resultatene. Du bør i diskusjonen i tillegg til å fortelle om tolkningen og beskrive hvorfor du syns resultatene kan tolkes på den måte du presenterer. Du kan ytterligere balansere denne beskrivelsen gjennom å vise leseren hvordan din studie er begrenset. I diskusjonen bør du også bruke referanser og kilder får alle utsagn som ikke bygger på presentasjonen i resultatdelen. Du kan ved hjelp av tidligere forskning forklara dine resultater og sette disse i rett kontekst.
+
+Din tolkning kan være feilaktig, men du bør velge et konsekvent spår som beskriver din forståelse av den data du presenterer. Du kan også presentere steg for å komme videre med et forskningsspørsmål.
+
+Til sist presenterer du en konklusjon som summerer opp rapporten. I noen tekster er rapporten et eget avsnitt eller kapitel men i kortere rapporter er konklusjonen en måte å avslutte diskusjonen på.
+
+## Paragrafer
+
+En tekst kan deles opp i mindre stykker som kan sies være verktøy for å formidle dit budskap til leseren. En viktig bestanddel i en tekst er paragrafer. En paragraf starter med en setning som beskriver paragrafens tema, emne eller hensikt. Dette kan være et utsagn som for eksempel «laks er en fisk som er nyttig å spise». Temasetning følges av en eller flere setninger som gir støtte til påstanden eller temaet for paragrafen. En støttesetning kan være «Laksen inneholder mye nyttige fettsyrer samtidig som den er proteinrik». Til sist avsluttes paragrafen med en overgangssetning som ledere leseren videre til neste paragraf. En overgangssetning kan være «Laks kan derfor være del i et sundt kosthold som bidrar til god muskelhelse sammen med andre proteinrike livsmiddel». Den siste setningen, en overgangssetning kan konkludere noe samtidig som det ledere leseren in på neste tema (muskelhelse og proteinrike livsmiddel i dette eksemplet).
+
+En tekst kan gis struktur gjennom att du starter nye paragrafer når du introduserer nye temaer. Hver paragraf kan bearbeides får å gis en viss grad av selvstendighet. Dette gir deg mulighet å flytte rundt paragrafer får å gi din tekst en logisk rekkefølge. Du kan og bruke paragrafer får å begrense din tekst. Gi deg selv en begrenset plass for å formidle noe, la oss si tre paragrafer for å skrive en introduksjon. Lag en liste over hva hver paragraf skal formidle (tema), sett opp noen punkter som er til støtte for ditt tema og lag til sist et punkt som beskriver hvordan du konkluderer paragrafen og hvordan den ledere leseren videre. Du har nå strukturert dine paragrafer, og derved også din tekst.

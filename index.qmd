@@ -1,5 +1,14 @@
-# Preface {.unnumbered}
+# Forord {.unnumbered}
 
-This is a Quarto book.
+Målet med denne boken er at du skal bli kjent med verktøy og metoder for statistisk dataanalyse, hvordan man gjennomfører slike, og rapporterer resultater fra dem. I denne boken vil vi introdusere Jamovi, en gratis programvare for statistisk dataanalyse med tilstrekkelig kraft fleksibilitet for analyser av forskningsdata. I tillegg vil vi snakke om bruk av regnearkprogrammer så som Microsoft Excel eller Google Sheets og andre programvarer som du vil ha nytte av når du forfatter rapporter som er baserte på data. Målet med boken er å gi en introduksjon til de verktøy du trenger for å forfatte en bachelor eller masteroppgave.
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+Hva trenger jeg?
+Denne boken bygger videre på Statistisk Dataanalyse forfattet av Christer Thrane. Vi rekommanderer denne som en introduserende tekst.
+
+For å følge med i denne boken trenger du Jamovi, som du kan installere til din Mac eller PC ved å laste ned programvaren [her](www.jamovi.org). Det er også mulig å bruke [Jamovi i skyen](www.jamovi.org).
+
+Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram så som Microsofts Word eller lignende (Google docs, open office, libre office, etc). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer.
+I denne boken prøver vi å gå litt mer i dybden på noen konsepter som presenteres i Thranes Statistisk Dataanalyse. For å få mer dybde i pensum rekommanderes Innføring i statistikk og dataanalyse for studenter i Idretts- og helsefag.
+
+
+[Jamovi her](www.jamovi.org). 

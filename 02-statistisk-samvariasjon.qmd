@@ -1,0 +1,178 @@
+# Statistisk samvariasjon
+I denne modulen introduserer vi noen teknikker for å måle statistisk samvariasjon med mest vekt på regresjonsanalyse. Modulen introduserer teknikker og inneholder demonstrasjoner i Jamovi. Til modulen hører en quiz (arbeidskrav) hvor det kreves alle rette. Du har ubegrenset med forsøk på quizen men vi oppfordrer deg til å bruke den for å identifisere dine svake sider. Er det noe du ikke skjønner, bruk mer tid på å forberede deg for de spørsmålene ved gjentatte forsøk.
+
+I pensum [@thrane_2020] snakker man om samvariasjon i kapittel 3. Videre berører Thrane kausalitet i kapittel 4. Begge disse kapitelene vil berøres i arbeidskravet.
+
+## Statistisk samvariasjon i dataanalyse
+Det å måle statistisk samvariasjon er et sentralt mål i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
+
+- kjønn er av betydelse når man melder seg på til et turrenn (variabelen kjønn varierer med påmelding)
+- maksimal oksygenforbruk kan forutsi prestasjon i sykkel eller skiller seg mellom to grupper av syklister (variabelen maksimal oksygenforbruk varierer sammen med variablene prestasjon eller gruppe)
+- større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge (variablene muskelmasse varierer sammen med dødsfall).
+
+Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om Regresjonsanalyse, analyse av varians og krysstabulering.
+
+## Regresjon
+Regresjonsanalyse er en familie av teknikker for å måle samvariasjon mellom to eller flere variabler. I den enkleste formen kan vi faktisk bruke en variabel, når vi legger til en ytterligere variabel lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at en uavhengig variabel påvirker en avhengig variabel. Disse kan plottes i en to-dimensjonal figur. På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.
+
+I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.
+
+Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I tabellen under finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. En enkel og forholdsvis kort tabell som denne kan gi en overblikk over dataene, men en matematisk modell kan  forenkle sammenhengen mellom høyde og vekt ytterligere. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.   
+
+|Navn | Høyde (cm) | Vekt (kg) |
+|---| --- |---|
+|Bart Simpson|121.92|38.56|
+|Lisa Simpson|160.02|53.98|
+|Homer Simpson|180.34|108.4|
+|Marge Simpson|172.72|63.05|
+|Maggie Simpson|73.66|9.07|
+|Milhouse Van Houten|124.46|29.94|
+|Ned Flander|175.26|68.95|
+
+Når vi setter inn disse tallene i en figur og gir hver observasjon en symbol så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?
+
+En regresjonslinje kan beskrives med formelen 
+$$y=m + k\times x$$
+Vi kjenner denne formelen fra matematikken og vi kan lese den som at $y$ er lik skjæringspunktet ($m$) pluss $k$ (stigningstall) enheter per hver enhets endring i $x$. I statistikken bruker man ofte andre tegn for å beskrive skjæringspunkt og stigningstall. Den samme ekvasjonen kan se ut slik i statistikkboken
+$$y=\beta_0 + \beta_1 \times x$$
+Hvor $\beta_0$ og $\beta_1$ er skjæringspunkt og stigningstall. Disse er koeffisienter som estimeres fra dataene. Når vi setter $x=0$ faller $\beta_1$ ut fra ekvasjonen og vi står igjen med $y=\beta_0$, skjæringspunktet. For hver enhet forandring i $x$ forandres $y$ med $\beta_1$. 
+
+For å estimere $\beta_0$ og $\beta_1$ ønsker vi å plassere regresjonslinjen (modellen for gjennomsnittet) på gjennomsnittet for hver $x$. I figur A ser vi en modell som beskriver to punker meget godt, Figur B og C er ikke lette å skille, disse beskriver punktene med cirka like store feil. Hvilken modell er den korrekte?
+
+En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. Her kan vi illustrerer dette gjennom å plotte alle modellene med feilverdier til hver observasjon. Når ve legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til to observasjoner på bekostning av stor feil i de andre observasjonene.
+
+Et dataprogram gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er 0.7 kg. For hver cm økning i kroppshøyde øker vekt med 0.7 kg. Skjæringspunktet sier at vekten er -51 kg hvis kroppshøyde er 0. Dette er ikke en korrekt representasjon av verden så som vi kjenner den. Dette sier mer om regresjonsteknikken enn om forholdet mellom kroppshøyde og vekt. 
+
+En regresjonsmodell fungerer best hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om et ikke rett sammenheng og når modellen brukes for å predikere utenfor området hvor modellen ble lagd.
+
+
+## Regresjon med en nominal eller ordinal uavhengig variabel
+Vi kan enkelt omformulere modellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene *barn*/*voksen* og vekt. I tabellen under har vi identifisert voksne og barn, ett statistikkprogram vil omformulere denne informasjonen til en **dummyvariabel**. En **dummyvariabel** kan en enkel form ta to verdier (0 og 1), og her kan vi forstå den som voksen ja = 1/nei = 0).    
+
+
+|Navn | Høyde (cm) | Vekt (kg) |Alderskategori |Alderskategori (dummy)|
+|---| --- |---|---|---|
+|Bart Simpson|121.92|38.56|Barn|0|
+|Lisa Simpson|160.02|53.98|Barn|0|
+|Homer Simpson|180.34|108.4|Voksen|1|
+|Marge Simpson|172.72|63.05|Voksen|1|
+|Maggie Simpson|73.66|9.07|Barn|0|
+|Milhouse Van Houten|124.46|29.94|Barn|0|
+|Ned Flander|175.26|68.95|Voksen|1|
+
+Da tilpassingen av modellen vil bli gjort gjennom at regresjonslinjen beskriver gjennomsnittet for hvert tall på $x$ vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når $x=0$, altså for alderskategorien barn. Stigningstallet vil beskrive hvor mye $y$ (vekt) øker når vi går fra 0 til 1 på $x$-variabelen.
+
+Her ser vi også en viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av $x$-variabelen sammenligne to kategorier, eller gjennomsnitt på $y$ ved to forskjellige verdier på $x$. Teknisk sett så kan vi ikke si "hvis vi øker $x$ med 1 for et individ så vil dettet individet få $\beta_1$ enheter større $y$" da vi ikke har mulighet på gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er ikke heller enkle å forandre (alder, kjønn, hårfarge osv.).  
+
+## Flere uavhengige variabler
+En regresjonsmodell kan ha flere uavhengige variabler som sammen forklarer en avhengig variabel. I en ligning kan dette se ut som 
+
+$$y=\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n$$
+Nå vi setter noen av de uavhengige variablene til noe annet enn 0 så gir vi koeffisientene betydelse for resultatet ($y$). I teorien kan vi ha veldig mange uavhengige variabler, men i praksis er dette noe som er vanskelig å motivere av statistisk og vitenskapelig hensyn (noe vi ikke går dypere inn på i denne kurs). 
+
+I datasettet `student_trening_1_2_3.csv` finner vi variablene alder, kjønn og treningstimer. Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som 
+
+$$\text{treningstimer} = \beta_0 + \beta_1\times\text{kjønn} + \beta_2\times\text{alder}$$
+Når vi estimerer modellen får vi tall på $\beta_0$, $\beta_1$ og $\beta_2$. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder ($\beta_1$) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 ($\beta_2$) hos menn og kvinner. Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i fallet med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi "kontrollerer" for kjønn når vi ser på effekten av alder, eller at vi "kontrollerer" for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn gitt at variabelen alder er likt fordelt mellom menn og kvinner.
+
+Estimatet fra modellen over sier at menn trener 1.51 timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med 0.07 timer per år. Hvis vi gjør denne analyses med regresjonsmodeller som ikke inneholde begge variablene så ser vi at effekten av kjønn synker til 1.45 timer (differens mellom menn og kvinner) og  effekten av alder synker til -0.05. Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å "kontrollere" for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning.
+
+### Antagelser og diagnostikk
+Hver regresjonsmodell[^1] resulterer i et feilledd. Vi har snakket over om at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt  residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene (og verden). For at en modell skal anses representere de verden den prøver å beskrive så er det knuttet noen antagelser til modellen. Vi antar at feilleddet er symetrisk fordelt og ligner en normalfordeling[^2]. Vi antar også at variasjonen eller spredningen (fra modellen, til dataene) er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.
+
+Konsekvensen av å ikke oppfylle antagelsene over har konsekvenser for hvor godt vi kan bruke modellen for å si noe om populasjonen som dataene kommer i fra. Dette temaet kommer vi tilbake til senere i kurset.
+
+Når modellen er en rett linje følger ytterligere antagelser om forholdet mellom data og modell. Vi antar at vi faktisk beskriver et lineært forhold mellom avhengig og uavhengig variabel. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Men vi kan også prøve å se etter mønster i dataene i forkant av at vi skaper modellen. En regresjonsmodell kan påvirkes i stor grad av et enkelt datapunkt. En observasjon kan "trekke" regresjonslinjen i en retning som ikke overensstemmer med resten av dataene. Dessverre er det ikke lett å finne ut om datapunktet er en del av representasjon av populasjonen som observasjonene kommer fra eller om det er målefeil eller lignende. Her kan det være lurt å lage to modeller for å se hvor godt en konklusjon står i lyset av en influerende datapunkt.
+
+## Regresjon i Jamovi
+Vi starter med datasettet `egg_kolesterol_1_2_3.csv`. For å lage en regresjonsmodell i Jamovi går vi inn i modulen **Regression** og velger **Linear regression**. Her velger vi **dependent variable** (avhengig variabel). Slik vi formulerer hypotesen om forholdet mellom egg og kolesterol tror vi egg påvirker kolesterolet. Kolesterol er derfor vår avhengige variabel.
+
+Jamovi gjør et skille mellom *covariates* og *factors*. Disse er begge uavhengige variabler men covariates krever kontinuerlig data og factors håndterer data som ordinal/nominal data. Vi setter inn egg som en kontinuerlig *covariate*.
+
+Når variablene er lagt inn får vi to tabeller i resultatfeltet. **Model fit Measures** sier noe om styrken i sammenhengen mellom variablene. **R** tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel. 
+
+I tabellen **Model Coefficients - kolesterol** se vi skjæringspunkt (**Intercept**) og stigningstall **egg** under **Predictor**. Under **Estimate** ser vi de estimat som modellen lager. 3.94 er gjennomsnittlig kolesterolnivå når eggkonsumpsjon er 0, for hvert egg så stiger kolesterolet med 0.86 enheter. For hvert  estimat finner vi et **standardfeil** (SE), **t-verdi** (t) og **p-verdi**. Disse bruker vi får å trekke konklusjoner om populasjonen dataene kommer ifra. Tallene er forskjellige mål på usikkerhet, noe vi skal snakke mer om senere.
+
+I modulmenyen finner vi **Assumption checks**. Her finnes flere alternativer for å sjekke antagelser. Jeg foreslår at man først fokuserer på Q-Q plot of residuals. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte (symetriske). **Residual plots** gir oss en indikasjon på hvor likt spredning feilleddet har over datamaterialet. I figuren som viser **Fitted vs. Residuals** ønsker vi å se at vi har likt feil over hele dataene. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.
+
+Begge disse to grafiske metodene bør studeres ved regresjonsanalyse, men med små datasett kreves det store brudd mot antagelser for at vi skal finne dem. Figurene er vanskelige å tolke med lite data.
+
+Under modulmenyen **Estimated Marginal Means** finner vi en mulighet for å lage en grafisk representasjon av modellen når vi legger inn prediktoren under **Marginal Means**. Velger vi også **Marginal means table** får vi det estimerte kolesterolnivået ved gjennomsnittet i variabelen egg pluss og minus et standardavvik.
+
+### Multippel regresjon med Jamovi
+I datasettet `fotball_1_2_3.csv` kan vi stille spørsmål til hvordan årsinntekt påvirkes av *spillerbørs* karakter gitt at ser denne sammenhengen er betinget *opprinnelse* og *posisjon*. Med betinget for mener vi at vi kontrollerer for disse effektene når vi undersøker sammenhengen mellom variablene som interesserer oss. Modellen ser ut slik:
+
+$$\text{arsinntekt} = \beta_0 + \beta_1\times\text{spillerbors} + \beta_2\times\text{opprinnelse} +\beta_3\times\text{posisjon}$$
+Variabelen opprinnelse har to nivåer, Norsk og Utenlandsk. I modellen vil denne variabelen bli lagt til som en dummyvariabel hvor Norsk er referansenivået. Den estimerte koeffisienten $\beta_2$ vil "aktiveres" når dummyvariabelen settes til 1, det vil si, når vi observerer en Utenlands spiller. Koeffisienten gir oss altså gjennomsnittlig forskjell i årsinntekt mellom Norsk og Utenlandsk opprinnelse.
+
+Variablene posisjon har fire nivåer, angrep (referansenivå), forsvar, keeper og midtbane. I regresjonsmodellen vil disse bli representert med tre dummyvariabler. Vi vil ikke se disse annet en som sammenligninger med referansenivået (angrep). I tabellen under ser du hvor dummyvariablene konstrueres for observasjoner i de forskjellige posisjonene
+
+|Posisjon|Dummy forsvar|Dummy keeper|Dummy midtbane|
+|---|---|---|---|
+|Angrep|0|0|0|
+|Forsvar|1|0|0|
+|Keeper|0|1|0|
+|Midtbane|0|0|1|
+
+Når modellen beregner gjennomsnitt for angrep settes alle dummyvariablene til 0. Når modellen representerer en gjennomsnittlig forsvarsspiller settes dummyvariablene forsvar til 1 og koeffisienten for forsvar "aktiveres". Koeffisientene for de forskjellige posisjonene sammenlignes med referansenivået angrep.
+
+Vi kontrollerer først datatyper i datafanen, spillerbørs kan endres til en kontinuerlig variabel, opprinnelse er en nominal variabel, men Norsk er referansenivå, indikert ved at vi finner denne i toppen av *levels*. Likeså er angrep referansenivået i den nominale variabelen posisjon. Årsinntekt er en kontinuerlig variabel, vi beholder den slik for nå.
+
+I bakgrunnen har vi altså følgende modell
+
+$$\text{arsinntekt} = \beta_0 + \beta_1 x_\text{spillerbors} + \beta_2 x_\text{Utenlandsk} +\beta_3 x_\text{forsvar} + \beta_4 x_\text{keeper} +\beta_5 x_\text{Midtbane}$$
+
+Vi prøver oss på en modell, årsinntekt i avhengig variabel (**Dependent variable**), *spillerbørs* i **Covariates**, *posisjon* og *opprinnelse* i **Factors**. Før vi ser på estimatene ser vi på antagelser under **Assumption checks**. Den resulterende figuren **Q-Q Plot** ser ikke lovende ut, den indikerer at residualene ikke følger en normalfordeling. **Residuals vs. Fitted** indikerer at spredningen i feilleddet er større ved større predikerte tall. Modellen har mer feil når de predikerte inntektene er større.
+
+Det finnes noen grep man kan ta for å lage en modell som til større grad følger de antagelser vi setter opp. Et vanlig grep er å log-transformere den avhengige variabelen. Dette kan gi oss en data som passer bedre i en ordinær lineær regresjonsmodell. Log-transformering innebærer at vi tar logaritmen av den originale variabelen, dette betyr at istedenfor å se på dataene på lineær skala ser på dem på en multiplikativ skala. Resultatene fra modellen vil også fortelle oss om relativa forandringer istedenfor absolutt forandring. Hvorfor? 
+
+Vi kan starte med å se på noen regler for logaritmer. Først den multiplikasjon på naturlig skala gir addisjon på log-skala:
+
+$$log(xy)= log(x) + log(y)$$
+Subtraksjon på log-skala gir oss ratio på naturlig skala
+
+$$log(x/y) = log(x) - log(y)$$
+Et tall som vi finner på log-skala kan transformeres tilbake til naturlig skala ved å bruke eksponentialfunksjonen $e$ (vanligvis bruker vi naturlige logaritmer).
+
+$$e^{log(y)} = y$$
+I en enkel regresjonsmodell finner vi fra et stigningstall forandring i $y$ basert på en enhets forandring i $x$. På naturlig skala er forandring absolutt og en differens $y_{x=1} - y_{x=0}$  (differensen mellom $y$ når $x$ er lik 0 og $y$ når $x$ er 1). Når vi har den avhengige variabelen på log-skala gir modellen oss fortsatt differensen, men vid transformering til naturlig skala har vi et ratio
+
+$$log(y_{x=1}) - log(y_{x=0}) = log(\frac{y_{x=1}}{y_{x=0}})$$
+Når et stigningstall i en modell med en log-transformerte avhengig variabel er for eksempel 0.2 enheter gir dette at vi ser en økning med 22% for hvert økning i den uavhengige variabelen:
+
+$$(e^{0.2} -1) \times 100 = 22\%$$
+Vi kan lese dette resultatet som at hvor enn vi starter i vår avhengige variabel så estimerer modellen en 22% økning for hvert enhets økning i uavhengig variabel. Dette er en relativ økning som i absolutte tall er forskjellig hvis vi starter med 10 ($10\times 0.22=2.2$) eller 1000 ($1000 \times 0.22 = 220$). 
+
+For å transformere en variabel i Jamovi legger vi til en transformering. Gå til datafanen, marker årsinntekt og trykk på **transform**. Under **using transform** skaper vi en ny transformering (**Create new transform**), og legger inn **=LN(\$source)** i formelfeltet. I formelfeltet står \$source for variabelen som skal brukes i transformeringen, **LN** er funksjonen for den naturlige logaritmen. Vi kan navngi den nye transformering til **"LOG"**. En ny variabel skapes med en bestemt **Source variable** og vår definerte transform (**using transform**).
+
+Vi byter ut den tidligere variabelen med vår nye log-transformerte variabel og ser på **Assumption checks**. Dette ser bedre ut, residualene er nærmere normalfordelt og spredningen i residualfiguren spreder likt over hele datamaterialet. Vi kan nå tolke resultatene.
+
+For hvert poeng økning i spillerbørs stiger årsinntekt med 0.33 enheter på log-skala. Dette tilsvarer 39% økning. Vi kan bruke Jamovi som kalkulator å legge inn en ny transform:
+
+=100 * (EXP(\$SOURCE) - 1)
+
+En en ny variabel kan vi legge inn resultatet vi er interessert i å transformere og finner den prosentuelle økningen. 
+
+
+
+
+[^1]: Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel. 
+[^2]: Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling 
+
+
+## Variansanalyse
+Thrane [-@thrane_2020] tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stille vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk). Vi vil bruke denne modellen i kommende moduler i emnet.
+
+## Variansanalyse i Jamovi
+Vi kan reprodusere analysen som presenteres i Tabell 3.2 i [@thrane_2020] ved å velge **ANOVA**-modulen i Jamovi, videre velger vi **One-way ANOVA**. Denne analysen gjennomføres over en kategorisk variabel, derav navnet "en-veis variansanalyse". Vi setter *årsinntekt* som avnhengig variabel (**Dependent variable**) og *landslag* som uavhengig variabel (**Grouping variable**).
+
+I analysen finner vi flere mulige valg. Under **Variances** har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Her er Welch's one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette senere i emnet).
+
+Under Missing values velger vi hvordan vi håndterer observasjoner hvor vi savner data. Under **Assumption Checks** kan vi la Jamovi gjennomføre noen test for de antagelser som følger med analysen. **Homogeneity test** tester om variance er lik mellom grupper, hvis den ikke er det er Welch's test et test som tar høyde for dette. Som i regresjonsanalysen kan vi se på en **Q-Q plot** som viser hvor nærme feilleddet (residualene) ligger en normalfordeling. 
+
+Under **Additional Statistics** finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.2 [@thrane_2020]. Figuren 3.4 i [@thrane_2020] kan vi reprodusere under **Exploration**.
+
+## Krysstabulering
+ANOVA og ordinær regresjonsanalyse kan ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller). Her kan isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.
+
+Vi kan gjenskape Tabell 3.5 i [@thrane_2020] ved å åpne datasettet `student_trening_1_2_3.csv` i jamovi. Under modulen **Frequencies** finner vi **Independet samples, $\chi^2$ test of association**. Vi velger å sette *kjønn* i **Rows** og *idrettslag* i **Columns**. Under **Cells** kan vi velge å sette opp observerte antall under **Counts** og prosentandeler per rad, kolonne eller totalt under **Percentages**. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering.

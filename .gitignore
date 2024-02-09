@@ -1,3 +1,13 @@
+
+# Quarto project
+/.quarto/
+/_site/
+/_book/
+
+# Notes etc
+/notes/
+
+
 # History files
 .Rhistory
 .Rapp.history
