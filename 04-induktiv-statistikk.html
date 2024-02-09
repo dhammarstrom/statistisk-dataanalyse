@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi – induktiv-statistikk</title>
+<title>Statistisk dataanalyse med Jamovi - 4&nbsp; Statistisk inferens</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -62,10 +62,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating fullcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -74,7 +76,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-induktiv-statistikk.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">04-induktiv-statistikk.html</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-induktiv-statistikk.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -114,25 +116,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-statistisk-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">03-kausalsammenheng.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kausalsammenheng</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-induktiv-statistikk.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">04-induktiv-statistikk.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-formidling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-formidling.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Presentere og lese statistiske analyser</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -146,14 +148,141 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
-    
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#populasjon-og-utvalg-målet-med-statistisk-inferens" id="toc-populasjon-og-utvalg-målet-med-statistisk-inferens" class="nav-link active" data-scroll-target="#populasjon-og-utvalg-målet-med-statistisk-inferens"><span class="header-section-number">4.1</span> Populasjon og utvalg, målet med statistisk inferens</a>
+  <ul class="collapse">
+  <li><a href="#utvalg-og-generalisering" id="toc-utvalg-og-generalisering" class="nav-link" data-scroll-target="#utvalg-og-generalisering"><span class="header-section-number">4.1.1</span> Utvalg og generalisering</a></li>
+  </ul></li>
+  <li><a href="#utvalg-og-estimering" id="toc-utvalg-og-estimering" class="nav-link" data-scroll-target="#utvalg-og-estimering"><span class="header-section-number">4.2</span> Utvalg og estimering</a>
+  <ul class="collapse">
+  <li><a href="#konfidensintervaller" id="toc-konfidensintervaller" class="nav-link" data-scroll-target="#konfidensintervaller"><span class="header-section-number">4.2.1</span> Konfidensintervaller</a></li>
+  </ul></li>
+  <li><a href="#hypotesetesting-og-p-verdier" id="toc-hypotesetesting-og-p-verdier" class="nav-link" data-scroll-target="#hypotesetesting-og-p-verdier"><span class="header-section-number">4.3</span> Hypotesetesting og p-verdier</a></li>
+  <li><a href="#type-2-feil-statistisk-styrke-og-utvalgsstørrelser" id="toc-type-2-feil-statistisk-styrke-og-utvalgsstørrelser" class="nav-link" data-scroll-target="#type-2-feil-statistisk-styrke-og-utvalgsstørrelser"><span class="header-section-number">4.4</span> Type 2 feil, statistisk styrke og utvalgsstørrelser</a>
+  <ul class="collapse">
+  <li><a href="#mer-om-effektstørrelser" id="toc-mer-om-effektstørrelser" class="nav-link" data-scroll-target="#mer-om-effektstørrelser"><span class="header-section-number">4.4.1</span> Mer om effektstørrelser</a></li>
+  </ul></li>
+  <li><a href="#statistiske-tester-studiedesign-og-utvalg" id="toc-statistiske-tester-studiedesign-og-utvalg" class="nav-link" data-scroll-target="#statistiske-tester-studiedesign-og-utvalg"><span class="header-section-number">4.5</span> Statistiske tester, studiedesign og utvalg</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<p>Vi har tidligere snakket om deskriptiv dataanalyse, hvor vi brukte statistiske verktøy for å beskrive data. Videre brukte vi statistiske modeller for å beskrive hvordan variabler varierte sammen. Disse modellene, som for eksempel regresjonsmodellen, ga oss gjennomsnittet av en variabel når vi holdt en annen variabel konstant. Disse modellene er også deskriptive og forteller oss om sammenhenger i dataene som vi har tilgang til. Vi har så langt ikke prøvd oss på å forklare data som vi ikke har tilgang på med data som vi bruker får å lage modeller.</p>
+<p>Vi mennesker elsker å trekke slutninger om hvordan verden fungerer basert på et begrenset antall observasjoner. Denne evne til å lage mentale modeller av verden kan sies være et særtrekk i mennesket som gjort det mulig å skape avanserte sivilisasjoner. En mental modell, eller forståelse av hvordan verden henger sammen gir grunnlag for å samhandle med den, og forandre den. Noen ganger går det dessverre galt, vår mentale modell representerer ikke verden og utfall blir ikke hva vi forventer.</p>
+<p>Innen vitenskapen prøver vi å systematisere prosessen som leder frem til ny kunnskap. Flere forskjellige filosofier blir brukt for å unngå å trekke falske slutninger om verden basert på data. Den filosofiske/statistiske skole som trolig blir mest brukt innen vitenskapen i dag kalles for frekventisme. Denne modulen vil introdusere statistisk inferens med fokus på frekventisme. Statistisk inferens er å trekke konklusjoner om en populasjon basert på et utvalg. Vi ønsker å si noe om noe vi ikke observerer, basert på et begrenset datautvalg.</p>
+<section id="populasjon-og-utvalg-målet-med-statistisk-inferens" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="populasjon-og-utvalg-målet-med-statistisk-inferens"><span class="header-section-number">4.1</span> Populasjon og utvalg, målet med statistisk inferens</h2>
+<p>En populasjon i statistikken er som nevnes i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> en samling av alle mulige observasjoner med et sett med spesifikke karakteristikker. Denne definisjonen brukes på litt forskjellige måter, men for at den ska være av betydelse i vår videre diskusjon bør den si noe om hva vi ønsker å måle og i hvilken kontekst. Kanskje er vi interesserte i IQ (<em>hva</em>) hos menn og kvinner mellom 18 og 65 år i Norge (<em>kontekst</em>). Vi har ikke mulighet å undersøke hele populasjonen, men et lite utvalg. Målet med å undersøke et utvalg er å si noe om populasjonen. I utvalget kan vi beregne noen deskriptive statistikker som gjennomsnitt og spredning. Samtidig som dette sier noe om dataene som vi har er det også et <em>estimat</em> av parametere i populasjonen. I den enkleste forståelsen av begrepet modell, kan gjennomsnitt og spredning fungere som en modell av populasjonen. Basert på disse kan vi trekke slutninger om populasjonen.</p>
+<section id="utvalg-og-generalisering" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="utvalg-og-generalisering"><span class="header-section-number">4.1.1</span> Utvalg og generalisering</h3>
+<p>For å trekke korrekte slutninger om en populasjon kreves at utvalg et representativt for populasjonen. Når utvalget representerer den populasjon man ønsker å undersøke kan man gjøre den generalisering som det innebærer å trekke konklusjoner om populasjonen basert på utvalget. Ideelt sett trekkes et utvalg fra populasjonen helt tilfeldig. Dette gir en garanti mot at utvalget ikke skiller seg fra populasjonen i noen viktige karakteristikker. I forskningen er dette i praktikken veldig vanskelig.</p>
+<p>Tenkt deg at du ønsker å studere effekten av trening i den voksne norske befolkningen, vi ønsker å si generalisere resultater fra studien til hele befolkningen, menn, kvinner, unge, gamle, friske og individer som sliter med noen helseplager. Vi går ut i lokalavisen å sier at vi tenker gjennomføre en studie som bruker høyintensiv trening for å forbedre fysisk prestasjonsevne. Interesserte kan melde seg til studien ved å ringe eller sende en e-post. Denne rekrutteringsprosessen vil introdusere en karakteristikk i utvalget som ikke kan sies representere populasjonen, dette da individer som ønsker å gjennomføre høyintensiv trening melder seg til studien.</p>
+<p>Hvis vi prøver å gjøre noe åt dette kan vi sende ut et påmeldingsskjema til la oss si 1000 privatadresser i Lillehammer. Vi vil fortsatt sitte igjen med et utvalg som ikke representerer populasjonen, men vi har nå mulighet å undersøke de som ikke melder seg på. Vi kan spørre de som ikke er interesserte i å delta hvorfor det er slik, dette kan si noe om hva utvalget representerer og hvor langt vi kan generalisere resultater fra studien.</p>
+<p>I praktikken er ulike former av bekvemmelighetsutvalg trolig den mest forekommende formen for utvalg i mye av forskningen. Med bekvemmelighetsutvalg mener vi et utvalg som vi har tilgang til. En vel undersøkt populasjon innen fysiologisk idrettsforskning er mannlige studenter ved idrettsutdanninger.</p>
+</section>
+</section>
+<section id="utvalg-og-estimering" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="utvalg-og-estimering"><span class="header-section-number">4.2</span> Utvalg og estimering</h2>
+<p>Når vi har et utvalg så kan vi måle noe og derved estimere den <em>sanne verdien</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> i populasjonen. Da vi ønsker å si noe om <em>den sanne verdien</em> sier dette også noe om at vi kan være mer eller mindre sikre på et estimat, og vi kan ha feil. Vi må ha verktøy som tar hensyn til begge disse konseptene som er tett sammenkoblet nemlig, presisjon og feilrate. Vi kan starte med å konstatere at all estimering gjøres med usikkerhet, men hvordan kan vi si noe om usikkerheten. Vi vil gjennomføre et tankeeksperiment.</p>
+<p>I frekventisme er det mulig å tenke seg at vi i teorien kan trekke flere uavhengige utvalg fra en populasjon. La oss gjøre dette, vi trekker flere utvalg med størrelse 10 (10 observasjoner). Fra hvert utvalg kan vi beregne gjennomsnitt og standardavvik. Vi legger sammen gjennomsnittene fra de mange utvalgene i en ny fordeling, en fordeling av gjennomsnitt fra utvalg. Det viser seg at en fordeling av gjennomsnitt har det samme gjennomsnittet som populasjonen og at spredningen (standardavviket) i denne fordelingen bestemmes av størrelsen på utvalgene. Standardfeilen er spredningen i en fordeling av gjennomsnitt fra flere utvalg. Standardfeilen (SE, standard error på engelsk) beregnes som</p>
+<p><span class="math display">\[SE = \frac{\sigma}{\sqrt{n}}\]</span> hvor <span class="math inline">\(\sigma\)</span> er standardavviket i populasjonen og <span class="math inline">\(n\)</span> er størrelsen på utvalget. Problemet her er at vi ikke kjenner <span class="math inline">\(\sigma\)</span>, isteden vil vi bruke det estimerte standardavviket fra et utvalg for å gjennomføre beregning.</p>
+<p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span> Det viser seg at når vi trekker flere utvalg så vil vi det lange løp, i gjennomsnitt, få standardfeil i utvalgene som tilsvarer standardavviket i utvalgsfordelingen. Dette er fantastisk, og grunnen til at vi kan si noe om populasjonen basert på et utvalg.</p>
+<p>Som vi kan se i beregningen av standardfeilen så er den avhengig av utvalgsstørrelsen. Når utvalgsstørrelsen (<span class="math inline">\(n\)</span>) er større blir standardfeilen mindre. Det betyr at fordelingen av gjennomsnitt fra utvalgene vil være tettere samlet kring den <em>sanne verdien</em>, populasjonsgjennomsnittet, når utvalgsstørrelsen er større.</p>
+<p>En annen observasjon som kan gjøres av utvalgsfordelingen er at den vil ha en lignende form uansett underliggende populasjonsfordeling. Fordelingen vil ligne på det som kalles normalfordeling. Normalfordelingen bestemmes av et gjennomsnitt og et standardavvik. Dette betyr at vi i mange tilfeller kan bruke estimerte gjennomsnitt og standardavvik for å lage en modell av utvalgsfordelingen. For enda bedre presisjon i estimeringen av en utvalgsfordeling når utvalgsstørrelsen er liten brukes en <span class="math inline">\(t\)</span>-fordeling. Denne fordelingen tar også hensyn til utvalgsstørrelsen. Da utvalgsfordelingen har kjente egenskaper (normalfordelingen og <span class="math inline">\(t\)</span>-fordelingen) så kan vi bruke denne for å si noe om hvordan vi ser for oss at en teoretisk fordeling av flere gjennomsnitt ser ut. Dette er grunnen for konfidensintervaller.</p>
+<section id="konfidensintervaller" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="konfidensintervaller"><span class="header-section-number">4.2.1</span> Konfidensintervaller</h3>
+<p>Et konfidensintervall tar utgangspunkt i den estimerte utvalgsfordelingen. Vi lager et intervall som fanger in en gitt prosent av alle mulige gjennomsnitt fra en teoretisk samling av utvalg. Av tradisjon brukes et ofte et 95% intervall. Et 95% intervall gir oss et intervall av gjennomsnittsverdier som inneholder 95% av alle utvalg ved en repeterte utvalgsprosess. Dette sier også noe om definisjonen av konfidensintervallet. Ved repeterte utvalg inneholder konfidensintervallene populasjonsgjennomsnittet i 95% av tilfellene. Dessverre vet vi ikke om et spesifikt intervall gjør det eller ikke. Her finnes det fare for at definisjonen i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>, sid. 92)</span> gir en feilaktig bilde av konfidensintervallet. Det er altså ikke slik at et konfidensintervall i seg har en sikkerhet. Et enkelt intervall inneholder populasjonsgjennomsnittet, eller ikke. Prosenttallet som vi setter på intervallet sier noe om prosessen med repeterte utvalg. Det sier noe om hvor ofte vi tar feil ved repeterte utvalg fra den samme populasjonen.</p>
+<p>Hvis vi forandrer frekvensen med hvilken vi kan a feil fra 5% (95% konfidensintervall) til 10% (90% konfidensintervall) vil intervallet bli mindre. Altså ved en større risk at enkelte konfidensintervall ikke inneholder populasjonsgjennomsnittet får vi et intervall som bedre beskriver populasjonsgjennomsnittet (hvis vi har rett konfidensintervall). Vi kan gå andre veien også, et 99% konfidensintervall er et intervall som holder flere teoretiske gjennomsnitt som mulige populasjonsgjennomsnitt, dette intervallet kommer fra en samling intervaller hvor bare 1 av 10 ikke finner det sanne gjennomsnittet. Igjen, vi vet ikke hvis vi har et intervall som er rett eller galt.</p>
+<p>Utvalgsstørrelsen vil påvirke bredden på intervallene, men ved repeterte utvalg vil vi til tross av dette ha feil i en gitt andel av fallene.</p>
+</section>
+</section>
+<section id="hypotesetesting-og-p-verdier" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="hypotesetesting-og-p-verdier"><span class="header-section-number">4.3</span> Hypotesetesting og p-verdier</h2>
+<p>I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?</p>
+<p>Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket.</p>
+<p>Fra studien er det mulig å formulere to hypoteser, en nullhypotese sier at det ikke er noen forskjell mellom gruppene. Den alternative hypotesen sier derimot at det er en forskjell i blodtrykk mellom gruppene etter intervensjonsperioden. Filosofiske argumenter gir at det er vanskelig å bevise en hypotese men enklere å motbevise. I statistikken bruker vi vanligvis nullhypotesen, og vi <em>tester mot den</em>. Vi setter opp testet sånn at om testresultatet er tilstrekkelig ekstremt gitt at nullhypotesen er sann så avkrefter vi den, eller finner den mindre trolig enn den alternative hypotesen.</p>
+<p>Vi samler inn data og ser en XX forskjell mellom gruppene i systolisk blodtrykk etter intervensjonen. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling under nullhypotesen. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere og plasserer de i to grupper. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis tilfeldigheter og ikke intervensjonen bestemmer gruppene. Denne teknikken kalles for permutasjonstest.</p>
+<p>Det viser seg at bare XX% av gjennomsnittene er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen. Hvis vi setter grensen på XX% kan vi si at vi i det lange løp (flere repeterte studier med den samme statistiske tilnærmingen) vil forkaste nullhypotesen, til tross for at den er sann i XX% av tilfellene. Å gjøre denne feilen kalles for et Type-1 feil.</p>
+</section>
+<section id="type-2-feil-statistisk-styrke-og-utvalgsstørrelser" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="type-2-feil-statistisk-styrke-og-utvalgsstørrelser"><span class="header-section-number">4.4</span> Type 2 feil, statistisk styrke og utvalgsstørrelser</h2>
+<p>Så langt vet vi at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feil-rate i det lange løp (over flere lignende, uavhengige studier). I tillegg til type 1 feil kan vi også gjøre en annen feil ved å ikke forkaste nullhypotesen til tross for at en alternativ hypotese er sann. Denne feilen kalles for type-2 feil og den krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.</p>
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Nullhypotesen er…</th>
+<th>Sann</th>
+<th>Falsk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Forkasted</strong></td>
+<td><span style="color:red">Type-1 feil</span></td>
+<td>Riktig avgjørelse</td>
+</tr>
+<tr class="even">
+<td><strong>Ikke forkasted</strong></td>
+<td>Riktig avgjørelse</td>
+<td><span style="color:red">Type-2 feil</span></td>
+</tr>
+</tbody>
+</table>
+<p>I et scenario med to grupper som vi ønsker å sammenligne har vi formulert en nullhypotese som sier at det ikke finnes en forskjell mellom gruppene på populasjonsnivå. Husk at med statistisk inferens ønsker å si noe om data som vi ikke har observert (populasjonen) basert på data som vi har observert (utvalget). Før vi innhenter data formulerer vi også en alternativ hypotese. Vi lager denne alternative hypotesen basert på noen fakta vi allerede har om problemet. La oss ta fysisk aktivitet og blodtrykk som eksempel igjen.</p>
+<p>En forandring i systolisk blodtrykk etter en behandling så stor som 5-10 mmHg kan sies være den minste forskjellen som er klinisk betydningsfull. Her kan vi argumentere for at en senkning av blodtrykk med 5-10 mmHg kreves for at en individ skal oppleve helsefordeler med behandlingen. Vi bruker 10 mmHg for å etablere en alternativ hypotese til nullhypotesen. Vi ønsker nå en statistisk test som oppdager denne forskjellen mellom to grupper, om den faktisk finnes. Evnen til en statistisk test å forkaste nullhypotesen til fordel for den alternative hypotesen kalles for statistisk styrke. Den statistiske styrken defineres som en minus den forventede raten med hvilken vi gjør type 2 feil (<span class="math inline">\(1-\beta\)</span>).</p>
+<p>I populasjonen som vi ønsker å undersøke er den gjennomsnittlige systoliske blotrykken 135 mmHg med en standardavvik på 20 mmHg. Vår alternative hypotese er at fysisk aktivitet senker blodtrykket med 10 mmHg. Disse tallene kan vi bruke for å beregne hvilken utvalgsstørrelse som gir en gitt statistisk styrke. Som et første steg trenger vi en standardisert effektstørrelse (<span class="math inline">\(d\)</span>), denne er <span class="math display">\[d = \frac{H_a}{SD} = \frac{10}{20} = 0.5\]</span> En standardisert effektstørrelse er en måte å beskrive en effekt i termer av variasjonen. Hvor stor er effekten i forhold til den gjennomsnittlige variasjonen i populasjonen? Neste steg blir å bestemme hvilken statistisk styrke og hvor stor risiko for type 1 feil vi ønsker i testen. Her kan vi bruke en argumentasjon som går ut på at en type 1 feil er alvorligere enn type 2 feil. La oss si 4 ganger alvorligere, hvis vi ikke ønsker å gjøre en type 1 feil mer enn i 5% av repeterte studier kan vi leve med risikoen å gjøre en type 2 feil som er <span class="math inline">\(5\% \times 4 = 20\%\)</span>.</p>
+<p>For å til slutt beregne en utvalgsstørrelse har vi å følgende parameterer | | | |— | —| |Effektstørrelse | 0.5| |Risiko for type 1 feil (<span class="math inline">\(\alpha\)</span>)| 5%| |Risiko for type 2 feil (<span class="math inline">\(\beta\)</span>)| 20%| |Statistisk styrke (<span class="math inline">\(1-\beta\)</span>)| 0.8|</p>
+<p>Vi ønsker å gjøre en sammenligning mellom to uavhengige grupper og vi tillater at nullhypotesen kan forkastes i to retninger da trening i teorien kan gi lavere og høyere blodtrykk. Dette spesifiserer den statistiske testen som skal brukes (tosidig t-test med uavhengige grupper). Med denne informasjonen kan vi bruke Jamovi for å beregne utvalgsstørrelse.</p>
+<section id="mer-om-effektstørrelser" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="mer-om-effektstørrelser"><span class="header-section-number">4.4.1</span> Mer om effektstørrelser</h3>
+<p>Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en <em>sammenheng mellom gruppe og den avhengige variabelen</em>. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ till en utgangsverdi (eks. <span class="math inline">\(10/135 = 0.74 = 7.4\%\)</span>) eller som en forskjell standardisert till standardavviket i målevariabelen (<span class="math inline">\(10/20 = 0.5\)</span>). Den standardiserte effektstørrelsen kalles også for Cohen’s <span class="math inline">\(d\)</span> etter en kjent statistiker og psykolog.</p>
+<p>En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskrivning av Cohen<span class="citation" data-cites="cohenStatisticalPowerAnalysis2013">(<a href="references.html#ref-cohenStatisticalPowerAnalysis2013" role="doc-biblioref"><strong>cohenStatisticalPowerAnalysis2013?</strong></a>)</span>) beskriver man en effektstørrelse som liten hvis <span class="math inline">\(d = 0.2\)</span>, medium ved <span class="math inline">\(d=0.5\)</span> og stor ved <span class="math inline">\(d=0.8\)</span>. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen’s <span class="math inline">\(d\)</span> (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient <span class="math inline">\(r= 0.243\)</span>. Dette gjør at standardiserte effektstørrelser blir brukt i meta-analyser hvor flere studier settes sammen for å undersøke et gitt fenomen.</p>
+<p>I sammenligning av to gjennomsnitt har effektstørrelsen en sammenheng med p-verdien som er avhengig av utvalgsstørrelse. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større.</p>
+</section>
+</section>
+<section id="statistiske-tester-studiedesign-og-utvalg" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="statistiske-tester-studiedesign-og-utvalg"><span class="header-section-number">4.5</span> Statistiske tester, studiedesign og utvalg</h2>
+<p>I flere eksempler har vi brukt data fra observasjonsstudier. I disse studiene samler vi inn data fra et utvalg og undersøker sammenhenger mellom variabler. Fra disse studiene er det typisk vanskelig å trekke konklusjoner om hva som ligger bak en observert effekt. Resultater fra observasjonsstudier kan brukes til å bedre forstå kausale sammenhenger, men dette krever en teoretisk modell og at vi måler andre variabler som kan tenkes influere sammenhenger mellom to variabler som vi er interesserte i. Til sammen kan disse brukes for å fastslå årsakssammenhenger.</p>
+<p>I et eksperiment trenger vi ikke å lage de samme teoretiske og statistiske modellene for å forstå sammenhenger, eller for eksempel, forskjeller mellom to grupper. Det som kreves er at faktorer som kan influere resultatene, kjente og ukjente, blir tilfeldig fordelt mellom de eksperimentelle gruppene/behandlingene. På den måten kan vi si at effekten av intervensjonen er den effekt som skiller gruppene åt og ikke noen annen faktor som blir introdusert i eksperimentet. Da en tilfeldig prosess ligger til grunn for inndeling av deltakere i forskjellige grupper er også resultatene til større grad generaliserbare til nye individer fra den samme populasjonen. I et eksperiment ønsker vi derfor å kontrollere mulige faktorer ved å tilfeldig allokere forsøkspersoner til eksperimentelle grupper, også kalt randomisering.</p>
+<p>Det finnes flere ulike varianter av randomisering som kan tilpasses forskjellige studiedesigner. Målet er å gi for eksempel deltakere like stor sannsynlighet for å deles inn i forskjellige grupper. Til tross for at vi bruker randomisering kan tilfeldigheter ha stor betydelse for resultatene i eksperimentelle studier. Dette særlig i små studier hvor tilfeldig variasjon i utvalget kan påvirke resultatene. Vi kan forstå dette ved å tenke på en studie hvor seks deltakere randomiseres til to grupper. I populasjonen finnes en faktor som har stor betydelse for resultatene i studien hos en av seks personer. I vår studie trekker vi et utvalg som direkte avspeiler populasjonen, en deltaker er bærer av den betydningsfulle faktoren. Til tross for randomisering så finnes ingen annen måte å fordele individet som har denne faktoren, og de som ikke har den på en ubalansert måte. En gruppe vil få denne faktoren. Hvis vi rekrutterer et større utvalg vil randomiseringen balansere faktoren mellom gruppene.</p>
+<p>Effekten av små studier kan ha stor betydelse for hvordan vi toker resultater fra studier. Det viser seg at om vi simulerer studier med få antall deltakere fra populasjoner med kjente effektstørrelser vil små studier (gruppestørrelser 5-25 individer) som regel gi oss flere estimat på effekter som er utrolige. Her finnes en fare i å tolke en stor effektstørrelse som betydningsfull når p-verdien gir beskjed om at vi bør være skeptiske. P-verdien (og t-verdien) tar høyde for en liten utvalgsstørrelse. Når vi har få deltakere i en studie vil halene på en t-fordeling inneholde mer masse. Ved en lignende effektstørrelse vil vi derfor beregne en mer konservativ (skeptisk) p-verdi. Når vi ikke har en effekt i populasjonen og simulerer studier fra disse beskytter p-verdien fra å forkaste nullhypotesen, vi vil bare ha feil i 5% av repeterte studier når vi setter dette som grensen for testene. Med få deltakere vil vi ikke finne effekten som finnes i populasjonen. Dette betyr at p-verdien ikke er avhengig av antall forsøkspersoner i en studie, med den statistiske styrken er det.</p>
+
+
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p>I frekventisme ser vi på populasjonsparameteren som en (teoretisk) gitt verdi som ikke forandres.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -392,12 +521,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./03-kausalsammenheng.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">03-kausalsammenheng.html</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kausalsammenheng</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05-formidling.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-formidling.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Presentere og lese statistiske analyser</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

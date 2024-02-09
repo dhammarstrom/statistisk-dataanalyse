@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.3.361">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -114,25 +116,25 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-statistisk-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">03-kausalsammenheng.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kausalsammenheng</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-induktiv-statistikk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">04-induktiv-statistikk.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-formidling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">05-formidling.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Presentere og lese statistiske analyser</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -153,6 +155,12 @@ ul.task-list li input[type="checkbox"] {
   <ul>
   <li><a href="#data-i-regnearkprogrammer" id="toc-data-i-regnearkprogrammer" class="nav-link active" data-scroll-target="#data-i-regnearkprogrammer"><span class="header-section-number">1.1</span> Data i regnearkprogrammer</a></li>
   <li><a href="#dataanalyse-i-praksis" id="toc-dataanalyse-i-praksis" class="nav-link" data-scroll-target="#dataanalyse-i-praksis"><span class="header-section-number">1.2</span> Dataanalyse i praksis</a></li>
+  <li><a href="#beskrive-data" id="toc-beskrive-data" class="nav-link" data-scroll-target="#beskrive-data"><span class="header-section-number">1.3</span> Beskrive data</a>
+  <ul class="collapse">
+  <li><a href="#variasjon" id="toc-variasjon" class="nav-link" data-scroll-target="#variasjon"><span class="header-section-number">1.3.1</span> Variasjon</a></li>
+  </ul></li>
+  <li><a href="#introduksjon-til-jamovi" id="toc-introduksjon-til-jamovi" class="nav-link" data-scroll-target="#introduksjon-til-jamovi"><span class="header-section-number">1.4</span> Introduksjon til Jamovi</a></li>
+  <li><a href="#deskriptiv-dataanalyse-i-jamovi" id="toc-deskriptiv-dataanalyse-i-jamovi" class="nav-link" data-scroll-target="#deskriptiv-dataanalyse-i-jamovi"><span class="header-section-number">1.5</span> Deskriptiv dataanalyse i Jamovi</a></li>
   </ul>
 </nav>
     </div>
@@ -211,8 +219,86 @@ ul.task-list li input[type="checkbox"] {
 <p>For å beskrive alle disse delene bør du også ha en fil som beskriver de forskjellige filene i analysen og den overordnede hensikten med hele prosjektet. Denne informasjonen kan beskrives i en fil som vi navngir <strong>README</strong>.</p>
 <p>En <strong>README</strong>-fil bør skrives i et format som ikke krever spesielle programvarer for å lese (eks. <code>.txt</code>). I presentasjonen finner dere et eksempel på en <strong>README</strong>-fil for et prosjekt <em>in progress</em>. <strong>README</strong>-filen er et levende dokument og bør gjenspeile forandringer i prosjektet, en overskrift med <strong>oppdateringer</strong> kan hjelpe å holde styr på fremgangen i prosjektet.</p>
 <p>Til sist bør vi vurdere hvordan vi navngir prosjekter. Da disse bør være isolerte (self-contained), og inneholde all informasjon så bør også mappen/prosjektet ha et navn som beskriver innehold. Unngå eks. <code>Prosjekt1</code>, <code>Prosjekt2</code> osv. Prøv istedenfor å lage beskrivende navn, noe som gir en hint om hva prosjektet ønsker å gjøre eller besvare.</p>
+</section>
+<section id="beskrive-data" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="beskrive-data"><span class="header-section-number">1.3</span> Beskrive data</h2>
+<p>Først kan vi sette beskrivende statistikk i konteksten av målet med mye av de statistiske analysene i vitenskapelig arbeid. Her ønsker vi ofte å si noe om en “populasjon”, dette gjør vi basert på et “utvalg” som blir brukt for å skape noen form av “modell” av populasjonen. Målet med statistikken er å si noe om noe som vi ikke observerer basert på noe som vi observerer! Vi vill komme tilbake til detaljene i dette senere i denne boken.</p>
+<p>Målet med den <em>beskrivende statistikken</em> er som Thrane sier, “å forenkle en stor uoverskuelig mengde informasjon”, som kan være vår data. Dataene består av variabler, innen forskningens verden beskriver en variabel et fenomen vi er interessert i å studere. En variabel bygges gjennom <em>operasjonalisering</em>, et teoretisk konsept kobles til en målbar enhet som i sin tur blir til en variabel i våres datasett.</p>
+<p>Vi beskriver de data og dermed variablene vi har på en måte som gir økt forståelse for dess karakteristikk. En slik karakteristikk er dataenes sentraltendens (<a href="#fig-sentraltendens">Figur&nbsp;<span>1.1</span></a>). Et mål på sentraltendens er gjennomsnittet som er den verdi som balanserer verdiene i dataen. Dette betyr at like mye vekt finnes på begge sider av gjennomsnittet i formen av tallverdier. Median er et annet mål på sentraltendens, her balanseres isteden <em>antall</em> verdier. Vi rangerer verdiene i dataen fra store til små og setter median til den verdi som er mitten av datasettet. Modus er et annet mål på sentraltendens, her finner vi det tall som finnes flest ganger i datasettet.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-sentraltendens" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="01-deskriptiv-dataanalyse_files/figure-html/fig-sentraltendens-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figur&nbsp;1.1. Tre forskjellige mål på sentraltendens.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Thrane introduserer noen matematisk notasjon i en fotnote. Jeg ønsker å formidle at dere ikke trenger å være redde for disse formlene. Statistikken er full av matematisk notasjon og med en grunnleggende forståelse kan vi lese mye av den. En noe mer komplisert formel for gjennomsnittet kan gis som</p>
+<p><span class="math display">\[\bar{x} = \frac{\sum_{i=1}^{n}{x_i}}{n}\]</span></p>
+<p>hvor <span class="math inline">\(\bar x\)</span> står får gjennomsnittet av variabelen <span class="math inline">\(x\)</span>. Summen av <span class="math inline">\(n\)</span> antall observasjoner over et indeks <span class="math inline">\(i\)</span> som starter med tallet 1 for variabelen <span class="math inline">\(x\)</span> skrives som <span class="math inline">\(\sum_{i=1}^{n}{x_i}\)</span>. Summen delt på antall observasjoner <span class="math inline">\(n\)</span> gir oss gjennomsnittet.</p>
+<p>Forskjellen mellom gjennomsnitt, median og modus sier noe om hvilken informasjon vi trekker ut fra dataene. Gjennomsnittet måler tallverdier, medianen måler rangering og modus måler forekomst av spesifikke tallverdier. Mest informasjon finner vi i data som kan beskrives på en skala hvor avstand mellom verdier er lik over hele skalaen og det finnes et absolutt nullpunkt. Denne typen av data kan beskrives som forholdstallsnivå (ratio scale). Når dataene savner et absolutt nullpunkt sier vi at vi har data på intervallnivå. Informasjonen som vi har på forholdstallsnivå og intervallnivå kan reduseres til kategorier hvor informasjon om avstand mellom tallverdier forsvinner. For eksemple kan vi klassifisere gjennomsnittlig dagstemperatur til varm (&gt; 18°C), lunken (&lt; 18°C) og kald (&lt; 0°C). Rangering er fortsatt mulig, varm temperatur rangeres over kald, men avstand mellom kategoriene gir ikke mening. Vi har nå skapt en variabel på ordinalnivå hvor verdier er ordnet men savner sammenligningsbare avstander mellom verdiene. Til sist kan vi snakke om en nominalnivå, her finner vi kategorier som savner rangering (mann/kvinne, kjønn osv.). Denne oppdelingen er en grunn til klassifisering av forskjellige datatyper. Numerisk data kan kategoriseres som intervalldata og forholdstall, kategorisk data kan beskrives som mulig eller ikke mulig å rangere (ordinal og nominalnivå). Datatyper bestemmer hvilke analyser vi kan bruke for å forstå dataene.</p>
+<p>Kategorier er vanskelige å gi et gjennomsnitt da tallverdien i seg ikke er av betydelse, isteden finnes informasjonen i rangering eller forekomst. Andeler kan hjelpe oss å bedre redusere kategorisk data til overskuelig informasjon. Data som finnes i kategorier kan beskrives ved hjelp av andeler av en total. Dette er den mulighet vi har for å sammenstille forekomst av kategorier.</p>
+<section id="variasjon" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="variasjon"><span class="header-section-number">1.3.1</span> Variasjon</h3>
+<p>En variabels variasjon kan også beskrives, med begrensinger i hvilken type data vi har. I numerisk data på kvote eller intervallskala kan vi beskrive <strong>gjennomsnittlig avvik fra gjennomsnittet</strong>. Denne kvantiteten er utrolig viktig innen statistikken da den blir brukt i mange forskjellige situasjoner. For å beregne avstanden fra gjennomsnittet bruker vi avstanden i kvadrat</p>
+<p><span class="math display">\[(x_i-\bar{x})^2\]</span> hvor <span class="math inline">\(\bar{x}\)</span> er gjennomsnittet og <span class="math inline">\(x_i\)</span> er en enkelt observasjon. Et gjennomsnitt av summen av alle avvik (<span class="math inline">\(s^2\)</span>) fra gjennomsnitt i kvadrat kan skrives som</p>
+<p><span class="math display">\[s^2 = \frac{\sum{(x_i-\bar{x})^2}}{n-1}\]</span></p>
+<p>Her bruker vi <span class="math inline">\(n-1\)</span> for å få et tall på variasjonen i utvalget som ikke skiller seg betydelig fra populasjonen<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>. Det vi har beregnet her er variansen, for å sette variansen på den samme skalaen som gjennomsnittet bruker vi</p>
+<p><span class="math display">\[s = \sqrt{\frac{\sum{(x_i-\bar{x})^2}}{n-1}}\]</span></p>
+<p>Dette tall (<span class="math inline">\(s\)</span>) kalles standardavvik, dette er det gjennomsnittlige avviket fra gjennomsnittet på den samme skalaen som gjennomsnittet. Standardavviket er også et tall som vi vil høre mye om når vi oppdager statistikken videre. Ved hjelp av gjennomsnittet og standardavviket har vi tilstrekkelig informasjon for å lage mer eller mindre kompliserte modeller av verden omkring oss.</p>
+<p>Percentiler (data oppdelt i 100 deler) eller kvartiler (data oppdelt i 4 deler) er tallverdier som tilsvarer forskjellige andeler av dataen. Medianen er mitten av en variabel, dette er også den 50:e percentilen, eller den andre kvartilen. Interkvartilavstanden er avstanden mellom den første og den tredje kvartilen, innen dette intervallet finner vi 50% av alle tall i en variabel.</p>
+<p>Når vi beveger oss til datatyper hvor avstand mellom tall på skalaen ikke har lik mening (for eksempel mellom kategorier) trenger vi andre mål på variasjon. Her kan vi istedenfor bruke minimum og maksimum eller variasjonsvidde (gitt at kategorier er rangerte).</p>
+<p>Forskjellige statistikker (for eksempel gjennomsnitt, standardavvik osv.) kan gi mye informasjon og er noe vi trenger for å forstå vår data. Noen ganger er det bedre med visuell informasjon. Her kan vi oppdage mønster og karakteristikker som ikke er så lette å se i spesifikke tall.</p>
+</section>
+</section>
+<section id="introduksjon-til-jamovi" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="introduksjon-til-jamovi"><span class="header-section-number">1.4</span> Introduksjon til Jamovi</h2>
+<p><a href="www.jamovi.org">Jamovi</a> er et statistikkprogram som muliggjør enklere til svært avanserte statistiske analyser. Jamovi inneholder trolig alt du trenger for å levere en bachelor-oppgave. Jamovi er gratis, skrevet med åpen kildekode og brukere av programmet kan lage egne <strong>moduler</strong> som gir programmet flere analysemuligheter. Jamovi er skrevet ved hjelp av programmeringsspråket <a href="https://www.r-project.org/">R</a>, om du ønsker å lage for eksempel mer avanserte analyser eller figurer så har du mulighet å ta analysene du allerede gjort i Jamovi til R.</p>
+<p>Det finnes flere andre alternativer til Jamovi som gir nesten de samme fordelene (åpen kildekode, gratis, modulbasert) som <a href="https://jasp-stats.org/">JASP</a>, <a href="https://www.gnu.org/software/pspp/">PSPP</a> og <a href="https://www.deducer.org/pmwiki.php?n=Main.DeducerManual?from=Main.HomePage">Deducer</a>. Valget mellom disse kan gjøres basert på tilgjengelige læringsressurser. Jamovi stiller her sterkt:</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Ressurs</th>
+<th>lenke</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Introduksjonskurs i Jamovi med videoinstruksjoner for flere statistiske analyser</td>
+<td><a href="https://datalab.cc/jamovi/">datalab.cc/jamovi</a></td>
+</tr>
+<tr class="even">
+<td>Gratis e-bok som dekker statistiske metoder og bruk av Jamovi</td>
+<td><a href="https://www.learnstatswithjamovi.com/">Learnings statistics with Jamovi</a></td>
+</tr>
+<tr class="odd">
+<td>Jamovi user guide, dekker alle de grunnleggende funksjonene</td>
+<td><a href="https://www.jamovi.org/user-manual.html">Jamovi user guide</a></td>
+</tr>
+<tr class="even">
+<td>Jamovieguiden, på Norsk, guider med bilder på prosedyrer i Jamovi</td>
+<td><a href="https://wiki.app.uib.no/jamovi/index.php?title=Jamovi">Jamovieguiden</a></td>
+</tr>
+<tr class="odd">
+<td>Se også en oppdatert liste med ressurser her</td>
+<td><a href="https://www.jamovi.org/community.html">Community resources</a></td>
+</tr>
+</tbody>
+</table>
+<p>Før du går videre, laste ned og installer Jamovi på din PC/Mac.</p>
+</section>
+<section id="deskriptiv-dataanalyse-i-jamovi" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="deskriptiv-dataanalyse-i-jamovi"><span class="header-section-number">1.5</span> Deskriptiv dataanalyse i Jamovi</h2>
 
 
+</section>
+<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
+<hr>
+<ol>
+<li id="fn1"><p><a href="https://en.wikipedia.org/wiki/Bessel's_correction">Se her for en delvis forklaring</a><a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
 </section>
 
 </main> <!-- /main -->
@@ -457,7 +543,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./02-statistisk-samvariasjon.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
