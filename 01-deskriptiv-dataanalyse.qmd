@@ -5,7 +5,7 @@ editor_options:
 ---
 # Deskriptiv dataanalyse
 
-I denne modul vil vi introdusere de programmer som vi vil bruke i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte.
+I denne modulen  vil vi introdusere de programmer som vi vil bruke i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte.
 
 I pensum snakker man om deskriptiv dataanalyse og det typiske i data. Vi prøver å sette dette inn i en kontekst for vitenskapelig dataanalyse.
 
@@ -170,6 +170,7 @@ Det finnes flere andre alternativer til Jamovi som gir nesten de samme fordelene
 Før du går videre, laste ned og installer Jamovi på din PC/Mac.
 
 ## Deskriptiv dataanalyse i Jamovi
+
 
 
 
