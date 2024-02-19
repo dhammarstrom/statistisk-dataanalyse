@@ -1,0 +1,5 @@
+# Deskriptiv dataanalyse 
+
+I denne modulen introduseres de programmer som vil bli brukt i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte. I pensum snakker man om deskriptiv dataanalyse og det typiske i data. Vi prøver å sette dette inn i en kontekst for vitenskapelig dataanalyse. Modulen avsluttes med et arbeidskrav hvor du forventes å gi korrekt svar på alle spørsmål. Arbeidskravet kan besvares så mange ganger som kreves for å få alle besvarelser korrekt. Her anbefaler vi en strategi hvor du noterer spørsmål i et dokument som et utgangspunkt for å identifisere spørsmål som du finner vanskelige.   
+
+ 

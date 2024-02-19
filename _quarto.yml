@@ -7,8 +7,14 @@ book:
   date: "2024-01-02"
   chapters:
     - index.qmd
-    - 01-deskriptiv-dataanalyse.qmd
-    - 02-statistisk-samvariasjon.qmd
+    - part: 01-a-intro.qmd
+      chapters: 
+      - 01-deskriptiv-dataanalyse.qmd
+      - 01-jamovi.qmd
+    - part: 02-a-intro.qmd
+      chapters: 
+      - 02-statistisk-samvariasjon.qmd
+      - 02-jamovi.qmd
     - 03-kausalsammenheng.qmd
     - 04-induktiv-statistikk.qmd
     - 05-formidling.qmd

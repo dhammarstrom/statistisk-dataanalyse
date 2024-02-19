@@ -1,9 +1,5 @@
-# Statistisk samvariasjon
-I denne modulen introduserer vi noen teknikker for å måle statistisk samvariasjon med mest vekt på regresjonsanalyse. Modulen introduserer teknikker og inneholder demonstrasjoner i Jamovi. Til modulen hører en quiz (arbeidskrav) hvor det kreves alle rette. Du har ubegrenset med forsøk på quizen men vi oppfordrer deg til å bruke den for å identifisere dine svake sider. Er det noe du ikke skjønner, bruk mer tid på å forberede deg for de spørsmålene ved gjentatte forsøk.
 
-I pensum [@thrane_2020] snakker man om samvariasjon i kapittel 3. Videre berører Thrane kausalitet i kapittel 4. Begge disse kapitelene vil berøres i arbeidskravet.
-
-## Statistisk samvariasjon i dataanalyse
+# Statistisk samvariasjon i dataanalyse
 Det å måle statistisk samvariasjon er et sentralt mål i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
 
 - kjønn er av betydelse når man melder seg på til et turrenn (variabelen kjønn varierer med påmelding)
