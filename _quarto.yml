@@ -15,13 +15,23 @@ book:
       chapters: 
       - 02-statistisk-samvariasjon.qmd
       - 02-jamovi.qmd
-    - 03-kausalsammenheng.qmd
-    - 04-induktiv-statistikk.qmd
-    - 05-formidling.qmd
+    - part: 03-a-intro.qmd
+      chapters: 
+        - 03-kausalsammenheng.qmd
+        - 03-jamovi.qmd
+    - part: 04-a-intro.qmd
+      chapters:
+        - 04-induktiv-statistikk.qmd
+        - 04-jamovi.qmd
+    - part: 05-a-intro.qmd
+      chapters: 
+        - 05-formidling.qmd
+        - 05-jamovi.qmd
     - references.qmd
 
 bibliography: references.bib
-
+reference-location: margin
+citation-location: margin
 crossref:
   fig-title: Figur     # (default is "Figure")
   fig-prefix: Figur
