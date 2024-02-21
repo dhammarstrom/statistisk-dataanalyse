@@ -3,12 +3,113 @@ title: "Arbeidsfysiologisk metode og Statistikk"
 subtitle: "Introduksjon til Statistikk og Dataanalyse"
 format:
   revealjs:
+    theme: dark
     embed-resources: true
 standalone: true
 ---
 
-## Hvorfor Statistikk?
+## Hvorfor Statistikk og Dataanalyse?
 
+::: columns
+::: {.column width="50%"}
+
+::: {.incremental}
+Hva er etterspurte data-ferdigheter?
+
+-   Evne å stille de rette spørsmålene
+-   Forstå hvilke data som er relevante
+-   Tolke data for å nå meningsfulle resultater
+-   Sette opp eksperimenter
+-   Visualisering av data
+:::
+:::
+
+
+::: {.column width="50%"}
 ![](trying_to_learn.webp){fig-align="center"}
 
-## Slide 2
+::: {style="font-size: 40%;"}
+
+Bersin & Zao-Sanders (2020) Boost Your Teams Data Literacy. *Harvard Business Review*. Feb 12, 2020.
+
+:::
+
+:::
+
+:::
+
+
+## Idrettsvitenskap og idrettspraksis
+
+::: columns
+::: {.column width="60%"}
+
+::: {.incremental}
+- Stille interessante spørsmål til treningsdata, helsedata, prestasjonsdata
+- Evne til å vurdere hvilke datakilder som er meningsfulle
+- Tolke data for å nå verdifulle resultater
+- Sette opp eksperimenter for å finne ny kunnskap
+- Sammenstille og kommunisere data
+:::
+:::
+
+
+::: {.column width="40%"}
+![](data-sci-sport.webp){fig-align="center"}
+
+::: {style="font-size: 40%;"}
+
+
+
+:::
+
+:::
+
+:::
+
+
+## Data i forskningsvirksomhet
+
+
+## Forskningsprosessen
+
+
+## Anbefallte verktøy
+
+
+## Moduler i emnet
+
+## Deskriptiv dataanalyse
+
+## Samvariasjon
+
+## Kausal inferens
+
+## Statistisk inferens
+
+## Lese og formiddle
+
+## Arbeidskrav
+
+## Jamovi
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
