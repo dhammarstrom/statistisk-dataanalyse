@@ -1,0 +1,14 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Introduksjon til Statistikk og Dataanalyse"
+format:
+  revealjs:
+    embed-resources: true
+standalone: true
+---
+
+## Hvorfor Statistikk?
+
+![](trying_to_learn.webp){fig-align="center"}
+
+## Slide 2

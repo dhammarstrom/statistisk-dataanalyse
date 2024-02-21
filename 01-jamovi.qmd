@@ -1,2 +1,11 @@
 # Deskriptiv dataanalyse i Jamovi
 
+## Deskriptiv dataanalyse i Jamovi 
+
+I eksemplene under vil vi bruke et data sett fra @thrane_2020 som du finner [her](data/fotball_1_2_3.csv){target="_blank"}. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. `deskriptiv-dataanalyse` og lagre filen i en undermappe som heter `data`. I denne mappen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.    
+
+For å importere data i Jamovi som er lagret i en `csv`-fil bruker vi `Open` i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk `Browse` for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (se bilde under). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram! 
+
+Datasettet kan beskrives ytterligere i Jamovi under fanen `Variables`. Hvert variable er her listet med navn og du kan legge til en beskrivelse (`Description`). Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen  
+
+I denne første modulen er vi opptatt av deskriptiv eller beskrivende datanalyse. Funksjoner for dette finner vi under analyses  

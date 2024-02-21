@@ -1,7 +1,6 @@
-# Presentere og lese statistiske analyser
 
 
-## En arbeidsflyt for statistisk analyse i Jamovi
+# En arbeidsflyt for statistisk analyse i Jamovi
 Vi har allerede snakket om hvordan et analyseprosjekt kan organiseres i den første modulen så utgangspunktet for diskusjonen her blir en repetisjon. Et analyseprosjekt bør være **reproduserbart**, dette betyr at all informasjon som kreves for å gjenskape analyseresultatene bør finnes sammen med den rapport du lager. Prosjektet du arbeider på bør også være **transparent** noe som gjør at det bør følge med detaljerte beskrivninger av hvorfor og hvordan man valgt å lage analysen på en gitt måte. 
 
 Vi løser begge disse kravene ved å skape en struktur for dataanalysen. I notatene fra den første modulen leser vi at vi lager analysen som en isolert mappe. Denne mappen inneholder alle deler som kreves for å lese en reproduserbar og transparent analyse, rapporten er bare en del. I rapporten er det fullt mulig at du ikke har plass till å beskrive hele din analyse. Men i mappen så bør disse beskrivelser være med. I din analysemappe finner vi:

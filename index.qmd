@@ -1,6 +1,8 @@
 # Forord {.unnumbered}
 
-Målet med denne boken er at du skal bli kjent med verktøy og metoder for statistisk dataanalyse, hvordan man gjennomfører slike, og rapporterer resultater fra dem. For å oppnå disse målene introduserer vi Jamovi, en gratis programvare for statistisk dataanalyse med tilstrekkelig kraft og fleksibilitet for analyser av forskningsdata. I tillegg vil vi snakke om andre programvarer som du vil ha nytte av når du forfatter rapporter som er baserte på data. Målet med boken er å gi en introduksjon til de verktøy du trenger for å forfatte en bachelor eller masteroppgave. 
+Målet med denne boken er at du skal bli kjent med verktøy og metoder for statistisk dataanalyse, hvordan man gjennomfører slike, og rapporterer resultater fra dem. For å oppnå disse målene introduserer vi Jamovi, en gratis programvare for statistisk dataanalyse med tilstrekkelig kraft og fleksibilitet for analyser av forskningsdata. I tillegg vil vi snakke om andre programvarer som du vil ha nytte av når du forfatter rapporter som er baserte på data. Målet med boken er å gi en introduksjon til de verktøy du trenger for å forfatte en bachelor eller masteroppgave[^1].
+
+[^1]: [Her finner du forelesningsslides fra introduksjonsforelesningen](present/01-intro.html) 
 
   
 

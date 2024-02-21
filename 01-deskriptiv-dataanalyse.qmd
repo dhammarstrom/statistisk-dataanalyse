@@ -62,46 +62,26 @@ Vi beskriver de data og dermed variablene vi har på en måte som gir økt forst
  
 
 ```{r} 
-
 #| echo: false 
-
 #| message: false 
-
 #| warning: false 
-
 #| fig-cap: "Tre forskjellige mål på sentraltendens." 
-
 #| label: fig-sentraltendens 
-
 #| fig-height: 4 
 
  
-
 set.seed(10) 
 
 library(tidyverse) 
 
- 
-
 source("R/fig-options.R") 
 
  
-
- 
-
- 
-
- 
-
 dat <- c(rpois(30, 10), rpois(18, 35)) 
-
- 
 
 Mean <- mean(dat) 
 
 Median <- median(dat) 
-
- 
 
 getmode <- function(v) { 
 
@@ -111,20 +91,14 @@ getmode <- function(v) {
 
 } 
 
- 
-
 Mode <- getmode(dat) 
 
  
-
- 
-
 ggplot(data = data.frame(dat = dat),  
 
        aes(x = dat)) + geom_dotplot(binwidth = 0.5) + theme_classic() +  
 
    
-
   geom_text(aes(x = Mean, y = 0.75, label = paste0("Gjennomsnitt: ", round(Mean, 2))), color = cols[1], hjust = -0.10) + 
 
   geom_text(aes(x = Median, y = 0.85, label = paste0("Median: ", round(Median, 2))), color = cols[2], hjust = -0.1) + 
@@ -132,34 +106,16 @@ ggplot(data = data.frame(dat = dat),
   geom_text(aes(x = Mode, y = 0.95, label = paste0("Modus: ", round(Mode, 2))), color = cols[3], hjust = 1.1) +  
 
    
-
-   
-
   geom_vline(xintercept = c(Mean, Median, Mode), color = cols[1:3]) +  
 
-   
-
   labs(x = "Verdier") + 
-
-   
-
   theme(axis.title.y = element_blank(),  
 
         axis.text.y = element_blank(),  
 
         axis.ticks.y = element_blank()) 
 
-   
 
-   
-
- 
-
- 
-
- 
-
- 
 
 ``` 
 
@@ -211,7 +167,7 @@ Forskjellige statistikker (for eksempel gjennomsnitt, standardavvik osv.) kan gi
 
 ## Introduksjon til Jamovi 
 
-[Jamovi](www.jamovi.org) er et statistikkprogram som muliggjør enklere til svært avanserte statistiske analyser. Jamovi inneholder trolig alt du trenger for å levere en bachelor-oppgave.  Jamovi er gratis, skrevet med åpen kildekode og brukere av programmet kan lage egne **moduler** som gir programmet flere analysemuligheter. Jamovi er skrevet ved hjelp av programmeringsspråket [R](https://www.r-project.org/), om du ønsker å lage for eksempel mer avanserte analyser eller figurer så har du mulighet å ta analysene du allerede gjort i Jamovi til R. 
+[Jamovi](www.jamovi.org) er et statistikkprogram som muliggjør enklere til svært avanserte statistiske analyser. Jamovi inneholder trolig alt du trenger for å levere en bachelor-oppgave. Jamovi er gratis, skrevet med åpen kildekode og brukere av programmet kan lage egne **moduler** som gir programmet flere analysemuligheter. Jamovi er skrevet ved hjelp av programmeringsspråket [R](https://www.r-project.org/), om du ønsker å lage mer avanserte analyser eller figurer så har du mulighet å ta analysene du allerede gjort i Jamovi til R. 
 
 Det finnes flere andre alternativer til Jamovi som gir nesten de samme fordelene (åpen kildekode, gratis, modulbasert) som [JASP](https://jasp-stats.org/), [PSPP](https://www.gnu.org/software/pspp/) og [Deducer](https://www.deducer.org/pmwiki.php?n=Main.DeducerManual?from=Main.HomePage). Valget mellom disse kan gjøres basert på tilgjengelige læringsressurser. Jamovi stiller her sterkt: 
 
@@ -225,7 +181,7 @@ Det finnes flere andre alternativer til Jamovi som gir nesten de samme fordelene
 | Jamovieguiden, på Norsk, guider med bilder på prosedyrer i Jamovi |[Jamovieguiden](https://wiki.app.uib.no/jamovi/index.php?title=Jamovi)| 
 |Se også en oppdatert liste med ressurser her | [Community resources](https://www.jamovi.org/community.html)| 
 
- 
+I tillegg finnes det i disse notatene flere beskrivelser av hvordan man gjennomfører analyser i Jamovi. 
 
 Før du går videre, last ned og installer Jamovi på din PC/Mac. 
 
