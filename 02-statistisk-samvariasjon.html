@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 2&nbsp; Statistisk samvariasjon</title>
+<title>Statistisk dataanalyse med Jamovi - 3&nbsp; Statistisk samvariasjon i dataanalyse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-kausalsammenheng.html" rel="next">
-<link href="./01-deskriptiv-dataanalyse.html" rel="prev">
+<link href="./02-jamovi.html" rel="next">
+<link href="./02-a-intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -67,7 +86,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -76,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-statistisk-samvariasjon.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-a-intro.html">Statistisk samvariasjon</a></li><li class="breadcrumb-item"><a href="./02-statistisk-samvariasjon.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -107,36 +126,121 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Forord</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Deskriptiv dataanalyse</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01-deskriptiv-dataanalyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datahåndtering og Data i regnearkprogrammer</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./02-a-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Statistisk samvariasjon</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02-statistisk-samvariasjon.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistiske metoder for samvariasjon i Jamovi</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Kausalsammenheng</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./03-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kausalsammenheng</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">03-jamovi.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+ <span class="menu-text">04-a-intro.qmd</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-induktiv-statistikk.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span></a>
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">04-jamovi.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a href="./05-a-intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Presentere og lese statistiske analyser</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-formidling.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Presentere og lese statistiske analyser</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">En arbeidsflyt for statistisk analyse i Jamovi</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-jamovi.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">05-jamovi.html</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
@@ -153,29 +257,28 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#statistisk-samvariasjon-i-dataanalyse" id="toc-statistisk-samvariasjon-i-dataanalyse" class="nav-link active" data-scroll-target="#statistisk-samvariasjon-i-dataanalyse"><span class="header-section-number">2.1</span> Statistisk samvariasjon i dataanalyse</a></li>
-  <li><a href="#regresjon" id="toc-regresjon" class="nav-link" data-scroll-target="#regresjon"><span class="header-section-number">2.2</span> Regresjon</a></li>
-  <li><a href="#regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" id="toc-regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="nav-link" data-scroll-target="#regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">2.3</span> Regresjon med en nominal eller ordinal uavhengig variabel</a></li>
-  <li><a href="#flere-uavhengige-variabler" id="toc-flere-uavhengige-variabler" class="nav-link" data-scroll-target="#flere-uavhengige-variabler"><span class="header-section-number">2.4</span> Flere uavhengige variabler</a>
+  <li><a href="#regresjon" id="toc-regresjon" class="nav-link active" data-scroll-target="#regresjon"><span class="header-section-number">3.1</span> Regresjon</a></li>
+  <li><a href="#regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" id="toc-regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="nav-link" data-scroll-target="#regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">3.2</span> Regresjon med en nominal eller ordinal uavhengig variabel</a></li>
+  <li><a href="#flere-uavhengige-variabler" id="toc-flere-uavhengige-variabler" class="nav-link" data-scroll-target="#flere-uavhengige-variabler"><span class="header-section-number">3.3</span> Flere uavhengige variabler</a>
   <ul class="collapse">
-  <li><a href="#antagelser-og-diagnostikk" id="toc-antagelser-og-diagnostikk" class="nav-link" data-scroll-target="#antagelser-og-diagnostikk"><span class="header-section-number">2.4.1</span> Antagelser og diagnostikk</a></li>
+  <li><a href="#antagelser-og-diagnostikk" id="toc-antagelser-og-diagnostikk" class="nav-link" data-scroll-target="#antagelser-og-diagnostikk"><span class="header-section-number">3.3.1</span> Antagelser og diagnostikk</a></li>
   </ul></li>
-  <li><a href="#regresjon-i-jamovi" id="toc-regresjon-i-jamovi" class="nav-link" data-scroll-target="#regresjon-i-jamovi"><span class="header-section-number">2.5</span> Regresjon i Jamovi</a>
+  <li><a href="#regresjon-i-jamovi" id="toc-regresjon-i-jamovi" class="nav-link" data-scroll-target="#regresjon-i-jamovi"><span class="header-section-number">3.4</span> Regresjon i Jamovi</a>
   <ul class="collapse">
-  <li><a href="#multippel-regresjon-med-jamovi" id="toc-multippel-regresjon-med-jamovi" class="nav-link" data-scroll-target="#multippel-regresjon-med-jamovi"><span class="header-section-number">2.5.1</span> Multippel regresjon med Jamovi</a></li>
+  <li><a href="#multippel-regresjon-med-jamovi" id="toc-multippel-regresjon-med-jamovi" class="nav-link" data-scroll-target="#multippel-regresjon-med-jamovi"><span class="header-section-number">3.4.1</span> Multippel regresjon med Jamovi</a></li>
   </ul></li>
-  <li><a href="#variansanalyse" id="toc-variansanalyse" class="nav-link" data-scroll-target="#variansanalyse"><span class="header-section-number">2.6</span> Variansanalyse</a></li>
-  <li><a href="#variansanalyse-i-jamovi" id="toc-variansanalyse-i-jamovi" class="nav-link" data-scroll-target="#variansanalyse-i-jamovi"><span class="header-section-number">2.7</span> Variansanalyse i Jamovi</a></li>
-  <li><a href="#krysstabulering" id="toc-krysstabulering" class="nav-link" data-scroll-target="#krysstabulering"><span class="header-section-number">2.8</span> Krysstabulering</a></li>
+  <li><a href="#variansanalyse" id="toc-variansanalyse" class="nav-link" data-scroll-target="#variansanalyse"><span class="header-section-number">3.5</span> Variansanalyse</a></li>
+  <li><a href="#variansanalyse-i-jamovi" id="toc-variansanalyse-i-jamovi" class="nav-link" data-scroll-target="#variansanalyse-i-jamovi"><span class="header-section-number">3.6</span> Variansanalyse i Jamovi</a></li>
+  <li><a href="#krysstabulering" id="toc-krysstabulering" class="nav-link" data-scroll-target="#krysstabulering"><span class="header-section-number">3.7</span> Krysstabulering</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></h1>
 </div>
 
 
@@ -190,10 +293,6 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>I denne modulen introduserer vi noen teknikker for å måle statistisk samvariasjon med mest vekt på regresjonsanalyse. Modulen introduserer teknikker og inneholder demonstrasjoner i Jamovi. Til modulen hører en quiz (arbeidskrav) hvor det kreves alle rette. Du har ubegrenset med forsøk på quizen men vi oppfordrer deg til å bruke den for å identifisere dine svake sider. Er det noe du ikke skjønner, bruk mer tid på å forberede deg for de spørsmålene ved gjentatte forsøk.</p>
-<p>I pensum <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> snakker man om samvariasjon i kapittel 3. Videre berører Thrane kausalitet i kapittel 4. Begge disse kapitelene vil berøres i arbeidskravet.</p>
-<section id="statistisk-samvariasjon-i-dataanalyse" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="statistisk-samvariasjon-i-dataanalyse"><span class="header-section-number">2.1</span> Statistisk samvariasjon i dataanalyse</h2>
 <p>Det å måle statistisk samvariasjon er et sentralt mål i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:</p>
 <ul>
 <li>kjønn er av betydelse når man melder seg på til et turrenn (variabelen kjønn varierer med påmelding)</li>
@@ -201,9 +300,8 @@ ul.task-list li input[type="checkbox"] {
 <li>større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge (variablene muskelmasse varierer sammen med dødsfall).</li>
 </ul>
 <p>Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om Regresjonsanalyse, analyse av varians og krysstabulering.</p>
-</section>
-<section id="regresjon" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="regresjon"><span class="header-section-number">2.2</span> Regresjon</h2>
+<section id="regresjon" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="regresjon"><span class="header-section-number">3.1</span> Regresjon</h2>
 <p>Regresjonsanalyse er en familie av teknikker for å måle samvariasjon mellom to eller flere variabler. I den enkleste formen kan vi faktisk bruke en variabel, når vi legger til en ytterligere variabel lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at en uavhengig variabel påvirker en avhengig variabel. Disse kan plottes i en to-dimensjonal figur. På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.</p>
 <p>I dette “systemet”, og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.</p>
 <p>Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I tabellen under finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. En enkel og forholdsvis kort tabell som denne kan gi en overblikk over dataene, men en matematisk modell kan forenkle sammenhengen mellom høyde og vekt ytterligere. Vi velger å sette høyde som <strong>uavhengig variabel</strong> og vekt som <strong>avhengig variabel</strong>. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.</p>
@@ -260,8 +358,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Et dataprogram gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er 0.7 kg. For hver cm økning i kroppshøyde øker vekt med 0.7 kg. Skjæringspunktet sier at vekten er -51 kg hvis kroppshøyde er 0. Dette er ikke en korrekt representasjon av verden så som vi kjenner den. Dette sier mer om regresjonsteknikken enn om forholdet mellom kroppshøyde og vekt.</p>
 <p>En regresjonsmodell fungerer best hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om et ikke rett sammenheng og når modellen brukes for å predikere utenfor området hvor modellen ble lagd.</p>
 </section>
-<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">2.3</span> Regresjon med en nominal eller ordinal uavhengig variabel</h2>
+<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">3.2</span> Regresjon med en nominal eller ordinal uavhengig variabel</h2>
 <p>Vi kan enkelt omformulere modellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under har vi identifisert voksne og barn, ett statistikkprogram vil omformulere denne informasjonen til en <strong>dummyvariabel</strong>. En <strong>dummyvariabel</strong> kan en enkel form ta to verdier (0 og 1), og her kan vi forstå den som voksen ja = 1/nei = 0).</p>
 <table class="table">
 <thead>
@@ -328,22 +426,22 @@ ul.task-list li input[type="checkbox"] {
 <p>Da tilpassingen av modellen vil bli gjort gjennom at regresjonslinjen beskriver gjennomsnittet for hvert tall på <span class="math inline">\(x\)</span> vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når <span class="math inline">\(x=0\)</span>, altså for alderskategorien barn. Stigningstallet vil beskrive hvor mye <span class="math inline">\(y\)</span> (vekt) øker når vi går fra 0 til 1 på <span class="math inline">\(x\)</span>-variabelen.</p>
 <p>Her ser vi også en viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av <span class="math inline">\(x\)</span>-variabelen sammenligne to kategorier, eller gjennomsnitt på <span class="math inline">\(y\)</span> ved to forskjellige verdier på <span class="math inline">\(x\)</span>. Teknisk sett så kan vi ikke si “hvis vi øker <span class="math inline">\(x\)</span> med 1 for et individ så vil dettet individet få <span class="math inline">\(\beta_1\)</span> enheter større <span class="math inline">\(y\)</span>” da vi ikke har mulighet på gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er ikke heller enkle å forandre (alder, kjønn, hårfarge osv.).</p>
 </section>
-<section id="flere-uavhengige-variabler" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="flere-uavhengige-variabler"><span class="header-section-number">2.4</span> Flere uavhengige variabler</h2>
+<section id="flere-uavhengige-variabler" class="level2 page-columns page-full" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="flere-uavhengige-variabler"><span class="header-section-number">3.3</span> Flere uavhengige variabler</h2>
 <p>En regresjonsmodell kan ha flere uavhengige variabler som sammen forklarer en avhengig variabel. I en ligning kan dette se ut som</p>
 <p><span class="math display">\[y=\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n\]</span> Nå vi setter noen av de uavhengige variablene til noe annet enn 0 så gir vi koeffisientene betydelse for resultatet (<span class="math inline">\(y\)</span>). I teorien kan vi ha veldig mange uavhengige variabler, men i praksis er dette noe som er vanskelig å motivere av statistisk og vitenskapelig hensyn (noe vi ikke går dypere inn på i denne kurs).</p>
 <p>I datasettet <code>student_trening_1_2_3.csv</code> finner vi variablene alder, kjønn og treningstimer. Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som</p>
 <p><span class="math display">\[\text{treningstimer} = \beta_0 + \beta_1\times\text{kjønn} + \beta_2\times\text{alder}\]</span> Når vi estimerer modellen får vi tall på <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> og <span class="math inline">\(\beta_2\)</span>. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder (<span class="math inline">\(\beta_1\)</span>) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 (<span class="math inline">\(\beta_2\)</span>) hos menn og kvinner. Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i fallet med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi “kontrollerer” for kjønn når vi ser på effekten av alder, eller at vi “kontrollerer” for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn gitt at variabelen alder er likt fordelt mellom menn og kvinner.</p>
 <p>Estimatet fra modellen over sier at menn trener 1.51 timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med 0.07 timer per år. Hvis vi gjør denne analyses med regresjonsmodeller som ikke inneholde begge variablene så ser vi at effekten av kjønn synker til 1.45 timer (differens mellom menn og kvinner) og effekten av alder synker til -0.05. Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å “kontrollere” for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning.</p>
-<section id="antagelser-og-diagnostikk" class="level3" data-number="2.4.1">
-<h3 data-number="2.4.1" class="anchored" data-anchor-id="antagelser-og-diagnostikk"><span class="header-section-number">2.4.1</span> Antagelser og diagnostikk</h3>
-<p>Hver regresjonsmodell<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> resulterer i et feilledd. Vi har snakket over om at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene (og verden). For at en modell skal anses representere de verden den prøver å beskrive så er det knuttet noen antagelser til modellen. Vi antar at feilleddet er symetrisk fordelt og ligner en normalfordeling<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Vi antar også at variasjonen eller spredningen (fra modellen, til dataene) er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.</p>
+<section id="antagelser-og-diagnostikk" class="level3 page-columns page-full" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="antagelser-og-diagnostikk"><span class="header-section-number">3.3.1</span> Antagelser og diagnostikk</h3>
+<div class="page-columns page-full"><p>Hver regresjonsmodell<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> resulterer i et feilledd. Vi har snakket over om at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene (og verden). For at en modell skal anses representere de verden den prøver å beskrive så er det knuttet noen antagelser til modellen. Vi antar at feilleddet er symetrisk fordelt og ligner en normalfordeling<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Vi antar også at variasjonen eller spredningen (fra modellen, til dataene) er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling</p></li></div></div>
 <p>Konsekvensen av å ikke oppfylle antagelsene over har konsekvenser for hvor godt vi kan bruke modellen for å si noe om populasjonen som dataene kommer i fra. Dette temaet kommer vi tilbake til senere i kurset.</p>
 <p>Når modellen er en rett linje følger ytterligere antagelser om forholdet mellom data og modell. Vi antar at vi faktisk beskriver et lineært forhold mellom avhengig og uavhengig variabel. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Men vi kan også prøve å se etter mønster i dataene i forkant av at vi skaper modellen. En regresjonsmodell kan påvirkes i stor grad av et enkelt datapunkt. En observasjon kan “trekke” regresjonslinjen i en retning som ikke overensstemmer med resten av dataene. Dessverre er det ikke lett å finne ut om datapunktet er en del av representasjon av populasjonen som observasjonene kommer fra eller om det er målefeil eller lignende. Her kan det være lurt å lage to modeller for å se hvor godt en konklusjon står i lyset av en influerende datapunkt.</p>
 </section>
 </section>
-<section id="regresjon-i-jamovi" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="regresjon-i-jamovi"><span class="header-section-number">2.5</span> Regresjon i Jamovi</h2>
+<section id="regresjon-i-jamovi" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="regresjon-i-jamovi"><span class="header-section-number">3.4</span> Regresjon i Jamovi</h2>
 <p>Vi starter med datasettet <code>egg_kolesterol_1_2_3.csv</code>. For å lage en regresjonsmodell i Jamovi går vi inn i modulen <strong>Regression</strong> og velger <strong>Linear regression</strong>. Her velger vi <strong>dependent variable</strong> (avhengig variabel). Slik vi formulerer hypotesen om forholdet mellom egg og kolesterol tror vi egg påvirker kolesterolet. Kolesterol er derfor vår avhengige variabel.</p>
 <p>Jamovi gjør et skille mellom <em>covariates</em> og <em>factors</em>. Disse er begge uavhengige variabler men covariates krever kontinuerlig data og factors håndterer data som ordinal/nominal data. Vi setter inn egg som en kontinuerlig <em>covariate</em>.</p>
 <p>Når variablene er lagt inn får vi to tabeller i resultatfeltet. <strong>Model fit Measures</strong> sier noe om styrken i sammenhengen mellom variablene. <strong>R</strong> tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel.</p>
@@ -351,8 +449,8 @@ ul.task-list li input[type="checkbox"] {
 <p>I modulmenyen finner vi <strong>Assumption checks</strong>. Her finnes flere alternativer for å sjekke antagelser. Jeg foreslår at man først fokuserer på Q-Q plot of residuals. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte (symetriske). <strong>Residual plots</strong> gir oss en indikasjon på hvor likt spredning feilleddet har over datamaterialet. I figuren som viser <strong>Fitted vs.&nbsp;Residuals</strong> ønsker vi å se at vi har likt feil over hele dataene. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.</p>
 <p>Begge disse to grafiske metodene bør studeres ved regresjonsanalyse, men med små datasett kreves det store brudd mot antagelser for at vi skal finne dem. Figurene er vanskelige å tolke med lite data.</p>
 <p>Under modulmenyen <strong>Estimated Marginal Means</strong> finner vi en mulighet for å lage en grafisk representasjon av modellen når vi legger inn prediktoren under <strong>Marginal Means</strong>. Velger vi også <strong>Marginal means table</strong> får vi det estimerte kolesterolnivået ved gjennomsnittet i variabelen egg pluss og minus et standardavvik.</p>
-<section id="multippel-regresjon-med-jamovi" class="level3" data-number="2.5.1">
-<h3 data-number="2.5.1" class="anchored" data-anchor-id="multippel-regresjon-med-jamovi"><span class="header-section-number">2.5.1</span> Multippel regresjon med Jamovi</h3>
+<section id="multippel-regresjon-med-jamovi" class="level3" data-number="3.4.1">
+<h3 data-number="3.4.1" class="anchored" data-anchor-id="multippel-regresjon-med-jamovi"><span class="header-section-number">3.4.1</span> Multippel regresjon med Jamovi</h3>
 <p>I datasettet <code>fotball_1_2_3.csv</code> kan vi stille spørsmål til hvordan årsinntekt påvirkes av <em>spillerbørs</em> karakter gitt at ser denne sammenhengen er betinget <em>opprinnelse</em> og <em>posisjon</em>. Med betinget for mener vi at vi kontrollerer for disse effektene når vi undersøker sammenhengen mellom variablene som interesserer oss. Modellen ser ut slik:</p>
 <p><span class="math display">\[\text{arsinntekt} = \beta_0 + \beta_1\times\text{spillerbors} + \beta_2\times\text{opprinnelse} +\beta_3\times\text{posisjon}\]</span> Variabelen opprinnelse har to nivåer, Norsk og Utenlandsk. I modellen vil denne variabelen bli lagt til som en dummyvariabel hvor Norsk er referansenivået. Den estimerte koeffisienten <span class="math inline">\(\beta_2\)</span> vil “aktiveres” når dummyvariabelen settes til 1, det vil si, når vi observerer en Utenlands spiller. Koeffisienten gir oss altså gjennomsnittlig forskjell i årsinntekt mellom Norsk og Utenlandsk opprinnelse.</p>
 <p>Variablene posisjon har fire nivåer, angrep (referansenivå), forsvar, keeper og midtbane. I regresjonsmodellen vil disse bli representert med tre dummyvariabler. Vi vil ikke se disse annet en som sammenligninger med referansenivået (angrep). I tabellen under ser du hvor dummyvariablene konstrueres for observasjoner i de forskjellige posisjonene</p>
@@ -411,31 +509,28 @@ ul.task-list li input[type="checkbox"] {
 <p>En en ny variabel kan vi legge inn resultatet vi er interessert i å transformere og finner den prosentuelle økningen.</p>
 </section>
 </section>
-<section id="variansanalyse" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="variansanalyse"><span class="header-section-number">2.6</span> Variansanalyse</h2>
-<p>Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stille vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk). Vi vil bruke denne modellen i kommende moduler i emnet.</p>
-</section>
-<section id="variansanalyse-i-jamovi" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="variansanalyse-i-jamovi"><span class="header-section-number">2.7</span> Variansanalyse i Jamovi</h2>
-<p>Vi kan reprodusere analysen som presenteres i Tabell 3.2 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> ved å velge <strong>ANOVA</strong>-modulen i Jamovi, videre velger vi <strong>One-way ANOVA</strong>. Denne analysen gjennomføres over en kategorisk variabel, derav navnet “en-veis variansanalyse”. Vi setter <em>årsinntekt</em> som avnhengig variabel (<strong>Dependent variable</strong>) og <em>landslag</em> som uavhengig variabel (<strong>Grouping variable</strong>).</p>
-<p>I analysen finner vi flere mulige valg. Under <strong>Variances</strong> har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Her er Welch’s one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette senere i emnet).</p>
+<section id="variansanalyse" class="level2 page-columns page-full" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="variansanalyse"><span class="header-section-number">3.5</span> Variansanalyse</h2>
+<p>Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stille vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk). Vi vil bruke denne modellen i kommende moduler i emnet.</p>
+<div class="no-row-height column-margin column-container"></div></section>
+<section id="variansanalyse-i-jamovi" class="level2 page-columns page-full" data-number="3.6">
+<h2 data-number="3.6" class="anchored" data-anchor-id="variansanalyse-i-jamovi"><span class="header-section-number">3.6</span> Variansanalyse i Jamovi</h2>
+<p>Vi kan reprodusere analysen som presenteres i Tabell 3.2 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> ved å velge <strong>ANOVA</strong>-modulen i Jamovi, videre velger vi <strong>One-way ANOVA</strong>. Denne analysen gjennomføres over en kategorisk variabel, derav navnet “en-veis variansanalyse”. Vi setter <em>årsinntekt</em> som avnhengig variabel (<strong>Dependent variable</strong>) og <em>landslag</em> som uavhengig variabel (<strong>Grouping variable</strong>).</p>
+<div class="no-row-height column-margin column-container"></div><p>I analysen finner vi flere mulige valg. Under <strong>Variances</strong> har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Her er Welch’s one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette senere i emnet).</p>
 <p>Under Missing values velger vi hvordan vi håndterer observasjoner hvor vi savner data. Under <strong>Assumption Checks</strong> kan vi la Jamovi gjennomføre noen test for de antagelser som følger med analysen. <strong>Homogeneity test</strong> tester om variance er lik mellom grupper, hvis den ikke er det er Welch’s test et test som tar høyde for dette. Som i regresjonsanalysen kan vi se på en <strong>Q-Q plot</strong> som viser hvor nærme feilleddet (residualene) ligger en normalfordeling.</p>
-<p>Under <strong>Additional Statistics</strong> finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.2 <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span>. Figuren 3.4 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> kan vi reprodusere under <strong>Exploration</strong>.</p>
-</section>
-<section id="krysstabulering" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="krysstabulering"><span class="header-section-number">2.8</span> Krysstabulering</h2>
+<p>Under <strong>Additional Statistics</strong> finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.2 <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span>. Figuren 3.4 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> kan vi reprodusere under <strong>Exploration</strong>.</p>
+<div class="no-row-height column-margin column-container"></div></section>
+<section id="krysstabulering" class="level2 page-columns page-full" data-number="3.7">
+<h2 data-number="3.7" class="anchored" data-anchor-id="krysstabulering"><span class="header-section-number">3.7</span> Krysstabulering</h2>
 <p>ANOVA og ordinær regresjonsanalyse kan ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller). Her kan isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.</p>
-<p>Vi kan gjenskape Tabell 3.5 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref"><strong>thrane_2020?</strong></a>)</span> ved å åpne datasettet <code>student_trening_1_2_3.csv</code> i jamovi. Under modulen <strong>Frequencies</strong> finner vi <strong>Independet samples, <span class="math inline">\(\chi^2\)</span> test of association</strong>. Vi velger å sette <em>kjønn</em> i <strong>Rows</strong> og <em>idrettslag</em> i <strong>Columns</strong>. Under <strong>Cells</strong> kan vi velge å sette opp observerte antall under <strong>Counts</strong> og prosentandeler per rad, kolonne eller totalt under <strong>Percentages</strong>. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering.</p>
+<p>Vi kan gjenskape Tabell 3.5 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> ved å åpne datasettet <code>student_trening_1_2_3.csv</code> i jamovi. Under modulen <strong>Frequencies</strong> finner vi <strong>Independet samples, <span class="math inline">\(\chi^2\)</span> test of association</strong>. Vi velger å sette <em>kjønn</em> i <strong>Rows</strong> og <em>idrettslag</em> i <strong>Columns</strong>. Under <strong>Cells</strong> kan vi velge å sette opp observerte antall under <strong>Counts</strong> og prosentandeler per rad, kolonne eller totalt under <strong>Percentages</strong>. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering.</p>
 
 
+<div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
+Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
+</div></div>
 </section>
-<section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes">
-<hr>
-<ol>
-<li id="fn1"><p>Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn2"><p>Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-</ol>
-</section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -673,13 +768,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-deskriptiv-dataanalyse.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse</span></span>
+      <a href="./02-a-intro.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Statistisk samvariasjon</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-kausalsammenheng.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Kausalsammenheng</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./02-jamovi.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistiske metoder for samvariasjon i Jamovi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
