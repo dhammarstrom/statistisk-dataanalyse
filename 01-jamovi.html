@@ -81,6 +81,8 @@ div.csl-indent {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -255,7 +257,9 @@ div.csl-indent {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#deskriptiv-dataanalyse-i-jamovi" id="toc-deskriptiv-dataanalyse-i-jamovi" class="nav-link active" data-scroll-target="#deskriptiv-dataanalyse-i-jamovi"><span class="header-section-number">2.1</span> Deskriptiv dataanalyse i Jamovi</a></li>
+  <li><a href="#bli-kjent-med-jamovi" id="toc-bli-kjent-med-jamovi" class="nav-link active" data-scroll-target="#bli-kjent-med-jamovi"><span class="header-section-number">2.1</span> Bli kjent med Jamovi</a></li>
+  <li><a href="#datavariabler" id="toc-datavariabler" class="nav-link" data-scroll-target="#datavariabler"><span class="header-section-number">2.2</span> Datavariabler</a></li>
+  <li><a href="#eksplorativ-eller-beskrivende-analyse" id="toc-eksplorativ-eller-beskrivende-analyse" class="nav-link" data-scroll-target="#eksplorativ-eller-beskrivende-analyse"><span class="header-section-number">2.3</span> Eksplorativ eller beskrivende analyse</a></li>
   </ul>
 </nav>
     </div>
@@ -279,18 +283,76 @@ div.csl-indent {
 
 </header>
 
-<section id="deskriptiv-dataanalyse-i-jamovi" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="deskriptiv-dataanalyse-i-jamovi"><span class="header-section-number">2.1</span> Deskriptiv dataanalyse i Jamovi</h2>
-<p>I eksemplene under vil vi bruke et data sett fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> som du finner <a href="data/fotball_1_2_3.csv" target="_blank">her</a>. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. <code>deskriptiv-dataanalyse</code> og lagre filen i en undermappe som heter <code>data</code>. I denne mappen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.</p>
+<section id="bli-kjent-med-jamovi" class="level2 page-columns page-full" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="bli-kjent-med-jamovi"><span class="header-section-number">2.1</span> Bli kjent med Jamovi</h2>
+<p>I eksemplene under vil vi bruke et data sett fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> som du finner <a href="data/fotball_1_2_3.csv" target="_blank">her</a>. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. <code>deskriptiv-dataanalyse</code> og lagre filen i en undermappe som heter <code>data</code>. I denne mappestrukturen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
 Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
-</div></div><p>For å importere data i Jamovi som er lagret i en <code>csv</code>-fil bruker vi <code>Open</code> i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk <code>Browse</code> for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (se bilde under). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram!</p>
-<p>Datasettet kan beskrives ytterligere i Jamovi under fanen <code>Variables</code>. Hvert variable er her listet med navn og du kan legge til en beskrivelse (<code>Description</code>). Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen</p>
-<p>I denne første modulen er vi opptatt av deskriptiv eller beskrivende datanalyse. Funksjoner for dette finner vi under analyses</p>
+</div></div><p>Når du har installert Jamovi og starter det for første gang vil du se følgende (<a href="#fig-firstopen">Figur&nbsp;<span>2.1</span></a>):</p>
+<p><span style="color:blue;"><strong>Spreadsheet</strong></span>: Her kan du editere data, eller se et datasett som du har importert.</p>
+<p><span style="color:pink;"><strong>Analysis output</strong></span>: Her vil resultater fra statistiske analyser vises. Det er også mulig å gjøre notater her koblet til hver analyse.</p>
+<p><span style="color:darkgreen;"><strong>Modules</strong></span>: Her finnes muligheter å installere flere analysemoduler.</p>
+<p><span style="color:lightgreen;"><strong>Menu</strong></span>: Menyen inneholder snarveier til filhåndtering, variabler, data, analyser og editering av analysefanen (Analysis output).</p>
+<p><span style="color:orange;"><strong>Analysis ribbon</strong></span>: De moduler for statistiske analyser som du allerede har installert finner du her.</p>
+<p><span style="color:red;"><strong>Settings</strong></span>: Under innstillinger kan du forandre for eksempel fargetema på figurer og antall desimaler som skal vises i outputs.</p>
+<div id="fig-firstopen" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/01-jamovi/first-open.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;2.1. Åpne Jamovi for første gang</figcaption>
+</figure>
+</div>
+<p>For å importere data i Jamovi som er lagret i en <code>csv</code>-fil bruker vi <code>Open</code> i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk <code>Browse</code> for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (<a href="#fig-openfile">Figur&nbsp;<span>2.2</span></a>). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram!</p>
+<div id="fig-openfile" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/01-jamovi/open-file.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;2.2. Åpne et datasett i Jamovi</figcaption>
+</figure>
+</div>
+<p>Datasettet kan beskrives ytterligere i Jamovi under fanen <code>Variables</code>. Hvert variable er her listet med navn og du kan legge til en beskrivelse (<code>Description</code>) av hvert variabel. Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen.</p>
+</section>
+<section id="datavariabler" class="level2 page-columns page-full" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="datavariabler"><span class="header-section-number">2.2</span> Datavariabler</h2>
+<p>Når vi importerer et datasett prøver Jamovi å identifisere variabeltyper. I Jamovi kodes variabler som <code>Integer</code> (heltall), <code>Decimal</code> (desimaltall) eller <code>Text</code> (tekst, eller kombinasjon av tekst og tall).</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Les mer i <a href="https://www.jamovi.org/user-manual.html#getting-started">Jamovi User Guide</a></p>
+</div></div><p>Datavariablene kodes videre som <code>Nominal</code>, <code>Ordinal</code>, <code>Continuous</code> eller <code>ID</code>. En variable på nominalnivå er en variabel som kan være en av flere mulige kategorier. Kategoriene er ikke rangerte, som for eksempel kjønn hvor en observasjon kan være mann eller kvinne. En variabel på målenivå ordinal er også kategorisk, men verdiene er rangerte. For eksempel er kategorien “høy temperatur” større enn “lav temperatur”. En variabel som beskrives som <code>Continuous</code> i Jamovi kan beskrives som enten intervallnivå eller forholdstallsnivå. Jamovi ønsker å vite at en variabel finnes på en skala som er kontinuerlig men skiller ikke på om variablene har et bestemt forhold mellom verdiene (forholdstallsnivå) eller hvis de bare kan beskrives med faste avstander (intervallnivå). Variabeltypen <code>ID</code> er lagd for å indikere grupperinger i dataene. Vi er vanligvis intressert i å analysere denne variabelen, men ønsker å gruppere datasett og analyser basert på den.</p>
+<p>Variabler som er kodet feil kan endres til den typen som du finner er mer korrekte. Dette gjøres under fanen <code>Data</code> og <code>Setup</code> i menyen. Når du importerer filen <code>fotball_1_2_3.csv</code> er alder kodet som <code>Nominal</code>. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se <a href="#fig-changevariable">Figur&nbsp;<span>2.3</span></a>).</p>
+<div id="fig-changevariable" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/01-jamovi/change-variable.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;2.3. Forandre variabeltype fra nominal til kontinuerlig</figcaption>
+</figure>
+</div>
+<p>I tillegg til “rådata” kan et Jamovi-spreadsheet inneholde <code>computed</code>, <code>transformed</code> og <code>recoded</code> variabler. En beregnet (<code>computed</code>) variabel beregnes fra andre variabler og legges til datasettet ved bruk av <code>Add</code> funksjonen under <code>Variables</code> eller <code>Data</code> fanen. For eksempel kan vi være interesserte i å beregne spilletid per kamp. Denne ny variabelen kan beregnes som <span class="math inline">\(\frac{\text{Spilte min}}{\text{Antall kamper}}\)</span>, noe som i kode kan oversettes til <code>=spilte_min/kamper_tot</code> hvor <code>spilte_min</code> og <code>kamper_tot</code> er variabler i datasettet. Formelen som beregner spilletid per kamp settes inn ved å markere den nye variabelen og gå inn under <code>Data</code> og <code>Setup</code> hvor vi kan bruke formelfeltet. Her kan vi og velge fra en rekke funksjoner (under <span class="math inline">\(f_x\)</span>) som kan brukes for å lage beregnede variabler.</p>
+<div class="page-columns page-full"><p>Transformerte og re-kodet variabler ligner på beregnede variabler da de bruker “rådata” fra spreadsheet for å lage en ny variabel. For detaljer om transformerte og re-kodet variabler se her<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Les om transformerte og re-kodet variabler i <a href="https://blog.jamovi.org/2018/10/23/transforming-variables.html">denne blog-posten</a>.</p></li></div></div>
+</section>
+<section id="eksplorativ-eller-beskrivende-analyse" class="level2 page-columns page-full" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="eksplorativ-eller-beskrivende-analyse"><span class="header-section-number">2.3</span> Eksplorativ eller beskrivende analyse</h2>
+<p>Nå vi modulfanen velger <code>Exploration</code> åpnes en meny hvor vi kan velge <code>Descriptives</code>, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under <code>Variables</code>. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under <code>Statistics</code> velger vi hvilke statistikker vi ønsker å beregne og under <code>Plots</code> finnes muligheter å velge fra en rekke forskjellige typer av figurer (<a href="#fig-deskriptiv">Figur&nbsp;<span>2.4</span></a>).</p>
+<div id="fig-deskriptiv" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/01-jamovi/descriptives.gif" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;2.4. Modulen for beskrivende statistikk</figcaption>
+</figure>
+</div>
+<p>Under <code>Statistics</code> finner vi flere valgmuligheter for å beskrive data. Sentraltendens (det typiske i dataene) kan beskrives ved hjelp av gjennomsnitt <code>Mean</code>, median (<code>Median</code>) og modus (<code>Mode</code>). I tillegg finner vi en funksjon for å beregne summen (<code>Sum</code>) for en variabel. Variasjonen (<code>Dispersion</code>) i dataene kan beskrives ved hjelp av standardavvik (<code>Std. deviation</code>), varians (<code>Variace</code>), variasjonsvidde (<code>Range</code>), minimum og maksimum (<code>Minimum</code>, <code>Maximum</code>) samt interkvartilavstand (<code>IQR</code>).</p>
+<p>Beregning av variasjon som også tar hensyn til utvalgsstørrelsen finner vi under <code>Mean Dispersion</code>. <code>Std. error of the mean</code> eller standardfeilen, beregnes fra standardavvik og antall observasjoner. Når vi har flere observasjoner i utvalget er vi sikrere på estimatet av gjennomsnittet i populasjonen, noe som gjør at standardfeilen blir mindre. Denne delen grenser til det å trekke slutninger om en populasjon fra et utvalg, noe vi vil fortsette med i modul 4.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>Normalitet, skweness og kurtosis er alle mål som beskriver en fordeling karakteristikk i forhold til antagelser om normalfordelte data. Noen ønsker å si noe om en variabel er normalfordelt eller ikke i forkant av analyse, det finnes noe støtte for det når vi ønsker å beskrive data ved hjelp av en sentraltendens og variasjon da en variabel som er fordelt med stor skewness vil ha et gjennomsnitt som skiller seg fra medianen. I praksis har det dog lite å si for hvordan vi analyserer en variabel. Les mer om Normality, Kurtosis og Skewness <a href="https://davidfoxcroft.github.io/lsj-book/04-Descriptive-statistics.html#skew-and-kurtosis">her</a> i <span class="citation" data-cites="navarro_learning_2018">(<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">Navarro and Foxcroft 2018</a>)</span>.</p>
+<div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
+Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
+</div></div></div><p>Under <code>Distribution</code> finner vi mål som beskriver fordelingen av en kontinuerlig variabel. Ved å sammenligne variablene årsinntekt og alder i datasettet <code>fotball_1_2_3.csv</code> ved hjelp av <code>Skewness</code> og <code>Kurtosis</code> samt <code>Density</code> under <code>Plots</code> kan vi få et bilde av hva disse betyr. <code>Skewness</code> indikerer hvorvidt “halen” på en fordeling tenderer å strekke seg i noen retning. <code>Kurtosis</code> indikerer hvor “spiss” fordelingen er.</p>
+<p>En fordeling, slik den du ser ved å velge <code>Density</code> eller <code>Histogram</code> under <code>Plots</code>, kan beskrives som normal hvis den er symmetrisk og ligner på en klokke (engelsk <em>bell-shaped</em>). Under <code>Normality</code> finnes et test for normalitet i fordelingen. Hvis <code>Shapiro-Wilk p</code> er lavt indikerer det at variabelen bryter med antagelse om at den er normalfordelt. Dette sammenfaller med at punktene vi ser i en <code>Q-Q Plots</code> ikke ligger på linjen.</p>
+<p>Til sist kan vi bruke funksjonen for <code>Outliers</code> for å få en tabell over de mest ekstreme observasjonene per variabel.</p>
+<p>Vi har allerede beskrevet noen av de figurer som er mulige å produsere under <code>Descriptives</code>-modulen. I tillegg til Histogram, density og Q-Q-plots kan vi lage Box-plots og Bar Plots. Hvis vi sammenligner en kontinuerlig variabel med en kategorisk (nominal eller ordinal) ser vi at en <code>Bar Plot</code> gir forskjellige enheter på. Under <code>Box Plots</code> finnes det flere muligheter for å vise data, inkludert individuelle data punkter.</p>
+<p>De verktøy vi har snakket om så langt gir oss gode muligheter til å raskt få en overblikk over den data vi har. Figurer hjelper ofte mye mer enn numeriske sammenstillinger for å oppdage rare observasjoner, noe som kan indikere feil i dataregistrering eller koding.</p>
 
 
 
 </section>
+
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
