@@ -1,174 +1,1003 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 
 # Statistisk samvariasjon i dataanalyse
-Det å måle statistisk samvariasjon er et sentralt mål i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
 
-- kjønn er av betydelse når man melder seg på til et turrenn (variabelen kjønn varierer med påmelding)
-- maksimal oksygenforbruk kan forutsi prestasjon i sykkel eller skiller seg mellom to grupper av syklister (variabelen maksimal oksygenforbruk varierer sammen med variablene prestasjon eller gruppe)
-- større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge (variablene muskelmasse varierer sammen med dødsfall).
+Det å måle statistisk samvariasjon er sentralt i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
 
-Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om Regresjonsanalyse, analyse av varians og krysstabulering.
+- kjønn er av betydelse når man melder seg på til et turrenn
+- maksimalt oksygenforbruk kan forutsi prestasjon i sykkel eller skiller seg mellom to grupper av syklister
+- større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge.
+
+Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, så som regresjonsanalyse, analyse av varians og krysstabulering.
+
 
 ## Regresjon
-Regresjonsanalyse er en familie av teknikker for å måle samvariasjon mellom to eller flere variabler. I den enkleste formen kan vi faktisk bruke en variabel, når vi legger til en ytterligere variabel lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at en uavhengig variabel påvirker en avhengig variabel. Disse kan plottes i en to-dimensjonal figur. På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.
+Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også utøkes til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se @fig-simpsons). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.
 
-I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.
+I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.
 
-Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I tabellen under finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. En enkel og forholdsvis kort tabell som denne kan gi en overblikk over dataene, men en matematisk modell kan  forenkle sammenhengen mellom høyde og vekt ytterligere. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.   
+Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner [her](data/simpsons.csv) finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene. 
 
-|Navn | Høyde (cm) | Vekt (kg) |
-|---| --- |---|
-|Bart Simpson|121.92|38.56|
-|Lisa Simpson|160.02|53.98|
-|Homer Simpson|180.34|108.4|
-|Marge Simpson|172.72|63.05|
-|Maggie Simpson|73.66|9.07|
-|Milhouse Van Houten|124.46|29.94|
-|Ned Flander|175.26|68.95|
+Den visuelle sammenfatningen av dataene finner du under i  @fig-simpsons, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?
+  
 
-Når vi setter inn disse tallene i en figur og gir hver observasjon en symbol så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?
 
-En regresjonslinje kan beskrives med formelen 
-$$y=m + k\times x$$
-Vi kjenner denne formelen fra matematikken og vi kan lese den som at $y$ er lik skjæringspunktet ($m$) pluss $k$ (stigningstall) enheter per hver enhets endring i $x$. I statistikken bruker man ofte andre tegn for å beskrive skjæringspunkt og stigningstall. Den samme ekvasjonen kan se ut slik i statistikkboken
-$$y=\beta_0 + \beta_1 \times x$$
-Hvor $\beta_0$ og $\beta_1$ er skjæringspunkt og stigningstall. Disse er koeffisienter som estimeres fra dataene. Når vi setter $x=0$ faller $\beta_1$ ut fra ekvasjonen og vi står igjen med $y=\beta_0$, skjæringspunktet. For hver enhet forandring i $x$ forandres $y$ med $\beta_1$. 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-simpsons
+#| fig-cap: "Sammenhengen mellom høyde (uavhengig variable) og vekt (avhengig variabler) blandt en gruppe bekjente i Springfield"
 
-For å estimere $\beta_0$ og $\beta_1$ ønsker vi å plassere regresjonslinjen (modellen for gjennomsnittet) på gjennomsnittet for hver $x$. I figur A ser vi en modell som beskriver to punker meget godt, Figur B og C er ikke lette å skille, disse beskriver punktene med cirka like store feil. Hvilken modell er den korrekte?
 
-En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. Her kan vi illustrerer dette gjennom å plotte alle modellene med feilverdier til hver observasjon. Når ve legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til to observasjoner på bekostning av stor feil i de andre observasjonene.
+library(tidyverse); library(ggrepel); library(ggtext)
 
-Et dataprogram gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er 0.7 kg. For hver cm økning i kroppshøyde øker vekt med 0.7 kg. Skjæringspunktet sier at vekten er -51 kg hvis kroppshøyde er 0. Dette er ikke en korrekt representasjon av verden så som vi kjenner den. Dette sier mer om regresjonsteknikken enn om forholdet mellom kroppshøyde og vekt. 
+simpsons <- data.frame(height = c(121.92,160.02,180.34,172.72,73.66 ,124.46,175.26), 
+                       weight = c(38.56,53.98,108.4,63.05,9.07,29.94,68.95), 
+                       name = c("Bart Simpson", "Lisa Simpson", "Homer Simpson", "Marge Simpson", 
+                                "Maggie Simpson", "Milhouse Van Houten", "Ned Flander"), 
+                       child = c(1, 1, 0, 0, 1, 1, 0), 
+                       adult = c(0, 0, 1, 1, 0, 0, 1))        
 
-En regresjonsmodell fungerer best hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om et ikke rett sammenheng og når modellen brukes for å predikere utenfor området hvor modellen ble lagd.
+write.csv2(simpsons, "data/simpsons.csv")
+
+simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+  geom_point() +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+  theme_minimal() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+
+```
+
+
+
+
+
+
+
+En regresjonslinje kan beskrives med formelen $y=m + k\times x$. Vi kjenner denne formelen fra matematikken og vi kan lese den som at $y$ er lik skjæringspunktet ($m$) pluss $k$ (stigningstall) enheter per hver enhets endring i $x$. I statistikken bruker man ofte andre symboler for å beskrive skjæringspunkt og stigningstall. Den samme ekvasjonen kan se ut slik i statistikkboken:
+$y=\beta_0 + \beta_1 \times x$. Hvor $\beta_0$ skjæringspunktet og $\beta_1$ er stigningstallet. Disse er *koeffisienter* som estimeres fra dataene. Når vi setter $x=0$ faller $\beta_1$ ut fra ekvasjonen og vi står igjen med $y=\beta_0$, skjæringspunktet. For hver enhet forandring i $x$ forandres $y$ med $\beta_1$. 
+
+For å bestemme hvilke verdier på $\beta_0$ og $\beta_1$ som best beskriver dataene kan vi starte med å plassere noen alternativer i vår figur. I @fig-simpsons2 finner vi fire mulige modeller (streker) som beskriver dataene. Den modell som beskriver dataene best er den som minimerer avstand fra modellen til de observerte verdiene (@fig-simpsons2 B). Avstanden fra observerte verdier til modellen estimeres ved å beregne den vertikale avstanden mellom modellens prediksjoner og de observerte verdiene (@fig-simpsons2 C).  
+
+```{r}
+#| fig-cap: "Fire mulige modeller for å beskrive sammenhengen mellom variablene høyde og vekt (A). Absolutte avstand mellom observerte og estimerte verdier for vekt hvor farge i hvert stolpediagram representerer individer i datasettet og farge over diagrammene representerer modellene (B). Avstanden for en modell visualisert som streker fra observerte verdier til den estimerte modellen (C)."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-simpsons2
+#| fig-height: 8
+
+
+
+## Correct model
+mod <- lm(weight ~ height, data = simpsons)
+
+
+p1 <- simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5) + 
+  
+  geom_abline(slope = coef(mod)[2] + 0.05, 
+              intercept = coef(mod)[1] -1, 
+              color = "orchid4", 
+              linewidth = 1.5) + 
+  
+    geom_abline(slope = coef(mod)[2] - 0.09, 
+              intercept = coef(mod)[1] -1, 
+              color = "green", 
+              linewidth = 1.5) + 
+   geom_abline(slope = 0.4, 
+              intercept = coef(mod)[1] + 90, 
+              color = "steelblue", 
+              linewidth = 1.5) + 
+  
+  
+  
+  
+   geom_point(size = 3) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+
+
+p3 <- simpsons %>%
+  
+    mutate(darkorange = weight - (coef(mod)[1] + coef(mod)[2]*height)) %>%
+  
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5) + 
+  
+  geom_segment(aes(x = height, 
+                   xend = height,
+                   y = weight, 
+                   yend = coef(mod)[1] + coef(mod)[2]*height, 
+                   color = name), 
+               linewidth = 1.5) +
+  
+
+   geom_point(size = 3) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+
+
+
+
+
+
+
+orange <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "darkorange") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "darkorange", color = "darkorange"), 
+        strip.text = element_text(color = "darkorange"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+steelblue <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 90 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "steelblue") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "steelblue", color = "steelblue"), 
+        strip.text = element_text(color = "steelblue")) 
+
+
+green <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "green") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "green", color = "green"), 
+        strip.text = element_text(color = "green"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+orchid4 <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "orchid4") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+  
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  
+  facet_wrap(~ color) +
+  
+  labs(y = "Absolutt feil") +
+  
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "orchid4", color = "orchid4"), 
+        strip.text = element_text(color = "orchid4"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+  
+  
+  library(patchwork)
+
+p2 <- ( steelblue | green | orchid4 | orange)
+
+
+library(cowplot)
+
+plot_grid(plot_grid(NULL, p1,NULL, rel_widths = c(1, 2, 1), ncol = 3), 
+          p2, 
+          plot_grid(NULL, p3,NULL, rel_widths = c(1, 2, 1), ncol = 3),
+          ncol = 1)
+
+
+
+```
+
+
+
+En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med "feilverdier" til hver observasjon. Når ve legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.
+
+Et dataprogram som for eksempel Jamovi gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er `r round(coef(mod)[2], 2)` kg. For hver cm økning i kroppshøyde øker vekt med `r round(coef(mod)[2], 2)` kg. Skjæringspunktet sier at vekten er `r round(coef(mod)[1], 0)` kg når kroppshøyde er 0. Dette er ikke en korrekt representasjon av virkeligheten så som vi kjenner den. Dette sier mer om hvordan vi sier at variablene varierer sammen enn om forholdet mellom kroppshøyde og vekt. 
+
+En regresjonsmodell fungerer best der hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om en ikke rett sammenheng og når modellen brukes for å predikere utenfor variasjonsvidden til dataene som  bruktes til å lage modellen.
+
+## Fra regresjon til korrelasjon
+
+I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på `r round(coef(mod)[2], 2)` kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles. 
+
+Sammenhengen mellom to kontinuerlige variabler kan beskrives som en korrelasjonskoeffisient. Denne korrelasjonskoeffisienten beskriver sammenhengen mellom to variabler som et tall mellom -1 og +1 hvor estimat som nærmer seg -1 eller +1 indikerer en sterk korrelasjon og estimat som nærmer seg 0 indikerer en svak eller ingen korrelasjon (eller sammenheng).
+
+Den kanskje vanligste måten å beskrive en korrelasjon på er ved hjelp av Pearson’s korrelasjonskoeffisient. Denne gis vanligvis symbolet *R* og noen eksempler finnes å se i @fig-korr.
+
+
+
+
+```{r}
+#| fig-cap: "Tre forskjellige korrelasjoner, en negativ, en positiv og en svak."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-korr
+#| fig-height: 2
+#| fig-width: 6
+#| fig-align: "center"
+
+
+library(ggpubr)
+
+set.seed(2)
+
+p1 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, -x, 0.2)) %>%
+  ggplot(aes(x, y)) + geom_point() + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.y = -2)
+
+
+p2 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, x, 0.2)) %>%
+  ggplot(aes(x, y)) + geom_point() + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)))
+
+
+
+p3 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, x, 7)) %>%
+  ggplot(aes(x, y)) + geom_point() + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)))
+
+
+
+p1 | p2 | p3
+
+
+```
+
+
+Korrelasjonskoeffisienten påvirkes ikke av rekkefølgen som vi gir variablene til dataprogrammet noe som er viktig for å tolke en regresjonsanalyse på en korrekt måte. Korrelasjonsanalysen og regresjonsanalysen påvirkes begge av ekstreme verdier og ikke linjere forhold mellom variabler, noe som kan gi oss feil inntrykk av dataene hvis vi bare tolker korrelasjonskoeffisienten (eller regresjonsmodellen). Når vi gjennomfører en korrelasjonsanalyse antar vi at dataene kan beskrives med en rett linje og at ingen sterkt influerende datapunkter finnes i datasettet. I figuren under (@fig-korr-ant) ser vi eksempel på når disse antagelsene ikke stemmer. Et enkelt datapunkt bidrar til å gi et bilde av en svak sammenheng mellom x og y, og i det andre eksemplet fanger en antatt rett sammenheng ikke opp en sterk, ikke-lineær  samvariasjon mellom x og y.  
+
+
+```{r}
+#| fig-cap: "Avvik fra antagelser om dataene kan gi feilaktige tolkninger av en regresjonskoeffisient"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-korr-ant
+#| fig-height: 2
+#| fig-width: 4
+#| fig-align: "center"
+
+
+set.seed(1)
+
+d1 <- data.frame(x = rnorm(25)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, -x, 0.2), 
+         incl = "include") %>%
+  ungroup()  %>%
+  add_row(x = 5, y = 5, incl = "exclude")
+
+
+  
+
+p1 <- d1 %>%  
+  ggplot(aes(x, y)) + geom_point(aes(color = incl)) + 
+  scale_color_manual(values = c("red", "blue")) +
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank(), 
+        legend.position = "none") + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+    
+           color = "red") +
+    stat_cor(data = filter(d1, incl == "include"), 
+             method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.y = 3, 
+           color = "blue") 
+
+
+set.seed(1)
+
+p2 <- data.frame(x = runif(100, -3, 3)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, 1*x + 10*x^2, 0.1)) %>%
+   ggplot(aes(x, y)) + geom_point() + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.x = 0)
+
+p1|p2
+
+```
+
 
 
 ## Regresjon med en nominal eller ordinal uavhengig variabel
-Vi kan enkelt omformulere modellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene *barn*/*voksen* og vekt. I tabellen under har vi identifisert voksne og barn, ett statistikkprogram vil omformulere denne informasjonen til en **dummyvariabel**. En **dummyvariabel** kan en enkel form ta to verdier (0 og 1), og her kan vi forstå den som voksen ja = 1/nei = 0).    
+
+Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene *barn*/*voksen* og vekt. I tabellen under (@tbl-simpsons) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige *indikatorvariabler*, også kallet *dummyvariabler*. En *dummyvariabel* kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.    
+
+```{r}
+#| label: tbl-simpsons
+#| tbl-cap: "Et dataset med to inkluderte indikatorvariabler."
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gt)
+
+simpsons %>%
+  gt() %>%
+  cols_label(height = md("H&#248;yde"), 
+             weight = "Vekt", 
+             name = "Navn", 
+             child = "Barn", 
+             adult = "Voksen")
 
 
-|Navn | Høyde (cm) | Vekt (kg) |Alderskategori |Alderskategori (dummy)|
-|---| --- |---|---|---|
-|Bart Simpson|121.92|38.56|Barn|0|
-|Lisa Simpson|160.02|53.98|Barn|0|
-|Homer Simpson|180.34|108.4|Voksen|1|
-|Marge Simpson|172.72|63.05|Voksen|1|
-|Maggie Simpson|73.66|9.07|Barn|0|
-|Milhouse Van Houten|124.46|29.94|Barn|0|
-|Ned Flander|175.26|68.95|Voksen|1|
 
-Da tilpassingen av modellen vil bli gjort gjennom at regresjonslinjen beskriver gjennomsnittet for hvert tall på $x$ vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når $x=0$, altså for alderskategorien barn. Stigningstallet vil beskrive hvor mye $y$ (vekt) øker når vi går fra 0 til 1 på $x$-variabelen.
+```
 
-Her ser vi også en viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av $x$-variabelen sammenligne to kategorier, eller gjennomsnitt på $y$ ved to forskjellige verdier på $x$. Teknisk sett så kan vi ikke si "hvis vi øker $x$ med 1 for et individ så vil dettet individet få $\beta_1$ enheter større $y$" da vi ikke har mulighet på gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er ikke heller enkle å forandre (alder, kjønn, hårfarge osv.).  
+Da tilpassingen av modellen vil bli gjort ved at regresjonslinjen beskriver gjennomsnittet for hvert tall på $x$ vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når $x=0$, altså for alderskategorien barn, når vi bruker indikatorvariabelen `Voksen`. Stigningstallet vil beskrive hvor mye $y$ (vekt) øker når vi går fra 0 til 1 på $x$-variabelen. Bruker vi indikatorvariabelen `Barn` vil vi estimere gjennomsnittet hos voksne (når $x=0$) og forskjellen mellom vokse og barn som stigningstallet i modellen.
 
-## Flere uavhengige variabler
+Her ser vi også en viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av $x$-variabelen sammenligne to kategorier, eller gjennomsnitt på $y$ ved to forskjellige verdier på $x$. Teknisk sett så kan vi ikke si "hvis vi øker $x$ med 1 for et individ så vil dette individet få $\beta_1$ enheter større $y$" da vi ikke har mulighet på gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er ikke heller enkle å forandre (alder, kjønn, hårfarge osv.).
+
+
+## Flere uavhengige variabler, multippel regresjon
 En regresjonsmodell kan ha flere uavhengige variabler som sammen forklarer en avhengig variabel. I en ligning kan dette se ut som 
 
 $$y=\beta_0 + \beta_1x_1 + \beta_2x_2 + ... + \beta_nx_n$$
-Nå vi setter noen av de uavhengige variablene til noe annet enn 0 så gir vi koeffisientene betydelse for resultatet ($y$). I teorien kan vi ha veldig mange uavhengige variabler, men i praksis er dette noe som er vanskelig å motivere av statistisk og vitenskapelig hensyn (noe vi ikke går dypere inn på i denne kurs). 
 
-I datasettet `student_trening_1_2_3.csv` finner vi variablene alder, kjønn og treningstimer. Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som 
+Nå vi setter noen av de uavhengige variablene til noe annet enn 0 så gir vi koeffisientene betydelse for resultatet ($y$). I teorien kan vi ha veldig mange uavhengige variabler, men i praksis er dette noe som er vanskelig å motivere av statistisk og vitenskapelig hensyn (noe vi ikke går dypere inn på i dette emnet). 
+
+```{r}
+#| fig-cap: "Visuell beskrivelse av variablene kjønn, alder og timer trening fra datasettet `student_trening_1_2_3.csv`"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-trening-data
+#| fig-height: 3
+#| fig-width: 6
+#| fig-align: "center"
+
+
+p1 <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  ggplot(aes(V7)) + geom_bar() + theme_classic() + 
+  labs(x = "Kj&#248;nn", 
+       y = "Antall") +
+  theme(axis.title.x = element_markdown())
+
+
+p2 <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  ggplot(aes("Alder", V6)) + geom_point(position = position_jitter(width = 0.1), 
+                                        alpha = 0.4, 
+                                        color = "orchid4") + theme_classic() + 
+  labs(
+       y = "Alder") +
+  theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x =  element_blank() )
+
+
+p3 <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  ggplot(aes("Alder", V2)) + geom_point(position = position_jitter(width = 0.1), 
+                                        alpha = 0.4, color = "steelblue") + theme_classic() + 
+  labs(
+       y = "Timer trening") +
+  theme(axis.title.x = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x =  element_blank() )
+
+
+
+p1 | p2 | p3
+
+```
+
+
+
+
+I datasettet [`student_trening_1_2_3.csv`](data/student_trening_1_2_3.csv) finner vi variablene alder, kjønn og treningstimer (@fig-trening-data). Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som 
 
 $$\text{treningstimer} = \beta_0 + \beta_1\times\text{kjønn} + \beta_2\times\text{alder}$$
-Når vi estimerer modellen får vi tall på $\beta_0$, $\beta_1$ og $\beta_2$. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder ($\beta_1$) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 ($\beta_2$) hos menn og kvinner. Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i fallet med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi "kontrollerer" for kjønn når vi ser på effekten av alder, eller at vi "kontrollerer" for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn gitt at variabelen alder er likt fordelt mellom menn og kvinner.
-
-Estimatet fra modellen over sier at menn trener 1.51 timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med 0.07 timer per år. Hvis vi gjør denne analyses med regresjonsmodeller som ikke inneholde begge variablene så ser vi at effekten av kjønn synker til 1.45 timer (differens mellom menn og kvinner) og  effekten av alder synker til -0.05. Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å "kontrollere" for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning.
-
-### Antagelser og diagnostikk
-Hver regresjonsmodell[^1] resulterer i et feilledd. Vi har snakket over om at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt  residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene (og verden). For at en modell skal anses representere de verden den prøver å beskrive så er det knuttet noen antagelser til modellen. Vi antar at feilleddet er symetrisk fordelt og ligner en normalfordeling[^2]. Vi antar også at variasjonen eller spredningen (fra modellen, til dataene) er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.
-
-Konsekvensen av å ikke oppfylle antagelsene over har konsekvenser for hvor godt vi kan bruke modellen for å si noe om populasjonen som dataene kommer i fra. Dette temaet kommer vi tilbake til senere i kurset.
-
-Når modellen er en rett linje følger ytterligere antagelser om forholdet mellom data og modell. Vi antar at vi faktisk beskriver et lineært forhold mellom avhengig og uavhengig variabel. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Men vi kan også prøve å se etter mønster i dataene i forkant av at vi skaper modellen. En regresjonsmodell kan påvirkes i stor grad av et enkelt datapunkt. En observasjon kan "trekke" regresjonslinjen i en retning som ikke overensstemmer med resten av dataene. Dessverre er det ikke lett å finne ut om datapunktet er en del av representasjon av populasjonen som observasjonene kommer fra eller om det er målefeil eller lignende. Her kan det være lurt å lage to modeller for å se hvor godt en konklusjon står i lyset av en influerende datapunkt.
-
-## Regresjon i Jamovi
-Vi starter med datasettet `egg_kolesterol_1_2_3.csv`. For å lage en regresjonsmodell i Jamovi går vi inn i modulen **Regression** og velger **Linear regression**. Her velger vi **dependent variable** (avhengig variabel). Slik vi formulerer hypotesen om forholdet mellom egg og kolesterol tror vi egg påvirker kolesterolet. Kolesterol er derfor vår avhengige variabel.
-
-Jamovi gjør et skille mellom *covariates* og *factors*. Disse er begge uavhengige variabler men covariates krever kontinuerlig data og factors håndterer data som ordinal/nominal data. Vi setter inn egg som en kontinuerlig *covariate*.
-
-Når variablene er lagt inn får vi to tabeller i resultatfeltet. **Model fit Measures** sier noe om styrken i sammenhengen mellom variablene. **R** tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel. 
-
-I tabellen **Model Coefficients - kolesterol** se vi skjæringspunkt (**Intercept**) og stigningstall **egg** under **Predictor**. Under **Estimate** ser vi de estimat som modellen lager. 3.94 er gjennomsnittlig kolesterolnivå når eggkonsumpsjon er 0, for hvert egg så stiger kolesterolet med 0.86 enheter. For hvert  estimat finner vi et **standardfeil** (SE), **t-verdi** (t) og **p-verdi**. Disse bruker vi får å trekke konklusjoner om populasjonen dataene kommer ifra. Tallene er forskjellige mål på usikkerhet, noe vi skal snakke mer om senere.
-
-I modulmenyen finner vi **Assumption checks**. Her finnes flere alternativer for å sjekke antagelser. Jeg foreslår at man først fokuserer på Q-Q plot of residuals. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte (symetriske). **Residual plots** gir oss en indikasjon på hvor likt spredning feilleddet har over datamaterialet. I figuren som viser **Fitted vs. Residuals** ønsker vi å se at vi har likt feil over hele dataene. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.
-
-Begge disse to grafiske metodene bør studeres ved regresjonsanalyse, men med små datasett kreves det store brudd mot antagelser for at vi skal finne dem. Figurene er vanskelige å tolke med lite data.
-
-Under modulmenyen **Estimated Marginal Means** finner vi en mulighet for å lage en grafisk representasjon av modellen når vi legger inn prediktoren under **Marginal Means**. Velger vi også **Marginal means table** får vi det estimerte kolesterolnivået ved gjennomsnittet i variabelen egg pluss og minus et standardavvik.
-
-### Multippel regresjon med Jamovi
-I datasettet `fotball_1_2_3.csv` kan vi stille spørsmål til hvordan årsinntekt påvirkes av *spillerbørs* karakter gitt at ser denne sammenhengen er betinget *opprinnelse* og *posisjon*. Med betinget for mener vi at vi kontrollerer for disse effektene når vi undersøker sammenhengen mellom variablene som interesserer oss. Modellen ser ut slik:
-
-$$\text{arsinntekt} = \beta_0 + \beta_1\times\text{spillerbors} + \beta_2\times\text{opprinnelse} +\beta_3\times\text{posisjon}$$
-Variabelen opprinnelse har to nivåer, Norsk og Utenlandsk. I modellen vil denne variabelen bli lagt til som en dummyvariabel hvor Norsk er referansenivået. Den estimerte koeffisienten $\beta_2$ vil "aktiveres" når dummyvariabelen settes til 1, det vil si, når vi observerer en Utenlands spiller. Koeffisienten gir oss altså gjennomsnittlig forskjell i årsinntekt mellom Norsk og Utenlandsk opprinnelse.
-
-Variablene posisjon har fire nivåer, angrep (referansenivå), forsvar, keeper og midtbane. I regresjonsmodellen vil disse bli representert med tre dummyvariabler. Vi vil ikke se disse annet en som sammenligninger med referansenivået (angrep). I tabellen under ser du hvor dummyvariablene konstrueres for observasjoner i de forskjellige posisjonene
-
-|Posisjon|Dummy forsvar|Dummy keeper|Dummy midtbane|
-|---|---|---|---|
-|Angrep|0|0|0|
-|Forsvar|1|0|0|
-|Keeper|0|1|0|
-|Midtbane|0|0|1|
-
-Når modellen beregner gjennomsnitt for angrep settes alle dummyvariablene til 0. Når modellen representerer en gjennomsnittlig forsvarsspiller settes dummyvariablene forsvar til 1 og koeffisienten for forsvar "aktiveres". Koeffisientene for de forskjellige posisjonene sammenlignes med referansenivået angrep.
-
-Vi kontrollerer først datatyper i datafanen, spillerbørs kan endres til en kontinuerlig variabel, opprinnelse er en nominal variabel, men Norsk er referansenivå, indikert ved at vi finner denne i toppen av *levels*. Likeså er angrep referansenivået i den nominale variabelen posisjon. Årsinntekt er en kontinuerlig variabel, vi beholder den slik for nå.
-
-I bakgrunnen har vi altså følgende modell
-
-$$\text{arsinntekt} = \beta_0 + \beta_1 x_\text{spillerbors} + \beta_2 x_\text{Utenlandsk} +\beta_3 x_\text{forsvar} + \beta_4 x_\text{keeper} +\beta_5 x_\text{Midtbane}$$
-
-Vi prøver oss på en modell, årsinntekt i avhengig variabel (**Dependent variable**), *spillerbørs* i **Covariates**, *posisjon* og *opprinnelse* i **Factors**. Før vi ser på estimatene ser vi på antagelser under **Assumption checks**. Den resulterende figuren **Q-Q Plot** ser ikke lovende ut, den indikerer at residualene ikke følger en normalfordeling. **Residuals vs. Fitted** indikerer at spredningen i feilleddet er større ved større predikerte tall. Modellen har mer feil når de predikerte inntektene er større.
-
-Det finnes noen grep man kan ta for å lage en modell som til større grad følger de antagelser vi setter opp. Et vanlig grep er å log-transformere den avhengige variabelen. Dette kan gi oss en data som passer bedre i en ordinær lineær regresjonsmodell. Log-transformering innebærer at vi tar logaritmen av den originale variabelen, dette betyr at istedenfor å se på dataene på lineær skala ser på dem på en multiplikativ skala. Resultatene fra modellen vil også fortelle oss om relativa forandringer istedenfor absolutt forandring. Hvorfor? 
-
-Vi kan starte med å se på noen regler for logaritmer. Først den multiplikasjon på naturlig skala gir addisjon på log-skala:
-
-$$log(xy)= log(x) + log(y)$$
-Subtraksjon på log-skala gir oss ratio på naturlig skala
-
-$$log(x/y) = log(x) - log(y)$$
-Et tall som vi finner på log-skala kan transformeres tilbake til naturlig skala ved å bruke eksponentialfunksjonen $e$ (vanligvis bruker vi naturlige logaritmer).
-
-$$e^{log(y)} = y$$
-I en enkel regresjonsmodell finner vi fra et stigningstall forandring i $y$ basert på en enhets forandring i $x$. På naturlig skala er forandring absolutt og en differens $y_{x=1} - y_{x=0}$  (differensen mellom $y$ når $x$ er lik 0 og $y$ når $x$ er 1). Når vi har den avhengige variabelen på log-skala gir modellen oss fortsatt differensen, men vid transformering til naturlig skala har vi et ratio
-
-$$log(y_{x=1}) - log(y_{x=0}) = log(\frac{y_{x=1}}{y_{x=0}})$$
-Når et stigningstall i en modell med en log-transformerte avhengig variabel er for eksempel 0.2 enheter gir dette at vi ser en økning med 22% for hvert økning i den uavhengige variabelen:
-
-$$(e^{0.2} -1) \times 100 = 22\%$$
-Vi kan lese dette resultatet som at hvor enn vi starter i vår avhengige variabel så estimerer modellen en 22% økning for hvert enhets økning i uavhengig variabel. Dette er en relativ økning som i absolutte tall er forskjellig hvis vi starter med 10 ($10\times 0.22=2.2$) eller 1000 ($1000 \times 0.22 = 220$). 
-
-For å transformere en variabel i Jamovi legger vi til en transformering. Gå til datafanen, marker årsinntekt og trykk på **transform**. Under **using transform** skaper vi en ny transformering (**Create new transform**), og legger inn **=LN(\$source)** i formelfeltet. I formelfeltet står \$source for variabelen som skal brukes i transformeringen, **LN** er funksjonen for den naturlige logaritmen. Vi kan navngi den nye transformering til **"LOG"**. En ny variabel skapes med en bestemt **Source variable** og vår definerte transform (**using transform**).
-
-Vi byter ut den tidligere variabelen med vår nye log-transformerte variabel og ser på **Assumption checks**. Dette ser bedre ut, residualene er nærmere normalfordelt og spredningen i residualfiguren spreder likt over hele datamaterialet. Vi kan nå tolke resultatene.
-
-For hvert poeng økning i spillerbørs stiger årsinntekt med 0.33 enheter på log-skala. Dette tilsvarer 39% økning. Vi kan bruke Jamovi som kalkulator å legge inn en ny transform:
-
-=100 * (EXP(\$SOURCE) - 1)
-
-En en ny variabel kan vi legge inn resultatet vi er interessert i å transformere og finner den prosentuelle økningen. 
 
 
+```{r}
+#| fig-cap: "Forhold mellom variablene kjønn, alder og timer trening fra datasettet `student_trening_1_2_3.csv`"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-trening-plot
+#| fig-height: 4
+#| fig-width: 5
+#| fig-align: "center"
+
+
+p <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         age = V6, 
+         train = V2) %>%
+  ggplot(aes(age, train, color = sex)) + 
+  geom_point(position = position_jitter(width = 0.2, height = 0.2), 
+             alpha = 0.4) +
+  
+  labs(color = "Kj&#248;nn", 
+       x = "Alder", 
+       y = "Timer trening") +
+  
+  theme_classic() +
+  theme(legend.title = element_markdown())
+  
+p
+
+```
+
+En figur som beskriver samvariasjonen mellom variablene finner du i @fig-trening-plot. Variablene alder og timer trening er av typen `integer` (heltall), jeg har derfor lagt til "jitter" som gjør det letter å se hvor vi finner flere observasjoner. 
+
+```{r}
+#| label: tbl-trening1
+#| tbl-cap: "Resultat fra en regresjonsmodell med to uavhengige variabler (kjønn og alder)."
+#| echo: false
+#| message: false
+#| warning: false
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         age = V6, 
+         train = V2)
+
+mod <- lm(train ~  sex + age, data = dat)
+
+
+coef(summary(mod)) %>%
+  data.frame() %>%
+  rownames_to_column("coef") %>%
+  mutate(Koef = c(md("&#x3B2;<sub>0</sub> (Skj&#230;ringspunkt)"), 
+                  md("&#x3B2;<sub>1</sub> (Kj&#248;nn, kvinne = 0, mann = 1)"), 
+                  md("&#x3B2;<sub>2</sub> (Alder)"))) %>%
+  select(Koeffisient = Koef, Estimat = Estimate, Standardfeil = Std..Error) %>%
+  gt() %>%
+  fmt_markdown(columns = Koeffisient) %>%
+  fmt_number(columns = c(Estimat, Standardfeil), decimals = 2)
+
+
+
+```
+
+
+
+Når vi estimerer modellen får vi tall på $\beta_0$, $\beta_1$ og $\beta_2$. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder ($\beta_1$) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 ($\beta_2$) hos menn og kvinner (se @tbl-trening1). Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i eksemplene over med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi "kontrollerer" for kjønn når vi ser på effekten av alder, eller at vi "kontrollerer" for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn når vi holder variabelen alder likt mellom menn og kvinner. For menn og kvinner med samme alder er forskjellen i treningstimer $\beta_1$.
+
+Legg merke til at modellen inneholder en dummy-variabel for kjønn, vi trenger vanligvis ikke å lage denne, dette gjør statistikkprogrammet for oss. Dummy-variabelen tar verdien 0 når kjønn er kvinne og 1 når kjønn er mann.
+
+Estimatet fra modellen over sier at menn trener `r round(coef(mod)[2], 2)` timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med `r round(coef(mod)[3], 2)` timer per år. Hvis vi gjør denne analyses med en  regresjonsmodell som ikke inneholde alder så ser vi at effekten av kjønn synker (@tbl-trening2). Gjør vi analysen uten variabelen kjønn påvirkes estimatet for sammenhengen mellom alder og treningstid (@tbl-trening3). Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å "kontrollere" for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning. I den multipple regresjonsmodellen sier vi at effekten av alder er betinget effekten av kjønn (og omvendt).
+
+
+```{r}
+#| label: tbl-trening2
+#| tbl-cap: "Resultat fra en regresjonsmodell med en uavhengige variabler (kjønn)."
+#| echo: false
+#| message: false
+#| warning: false
+
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         age = V6, 
+         train = V2)
+
+mod2 <- lm(train ~  sex, data = dat)
+
+
+coef(summary(mod2)) %>%
+  data.frame() %>%
+  rownames_to_column("coef") %>%
+  mutate(Koef = c(md("&#x3B2;<sub>0</sub> (Skj&#230;ringspunkt)"), 
+                  md("&#x3B2;<sub>1</sub> (Kj&#248;nn, kvinne = 0, mann = 1)"))) %>%
+  select(Koeffisient = Koef, Estimat = Estimate, Standardfeil = Std..Error) %>%
+  gt() %>%
+  fmt_markdown(columns = Koeffisient) %>%
+  fmt_number(columns = c(Estimat, Standardfeil), decimals = 2)
+
+
+```
+
+
+
+
+```{r}
+#| label: tbl-trening3
+#| tbl-cap: "Resultat fra en regresjonsmodell med en uavhengige variabler (alder)."
+#| echo: false
+#| message: false
+#| warning: false
+
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         age = V6, 
+         train = V2)
+
+mod3 <- lm(train ~  age, data = dat)
+
+
+coef(summary(mod3)) %>%
+  data.frame() %>%
+  rownames_to_column("coef") %>%
+  mutate(Koef = c(md("&#x3B2;<sub>0</sub> (Skj&#230;ringspunkt)"), 
+                  md("&#x3B2;<sub>2</sub> (Alder)"))) %>%
+  select(Koeffisient = Koef, Estimat = Estimate, Standardfeil = Std..Error) %>%
+  gt() %>%
+  fmt_markdown(columns = Koeffisient) %>%
+  fmt_number(columns = c(Estimat, Standardfeil), decimals = 2)
+
+
+```
+
+
+## Antagelser og diagnostikk
+Hver regresjonsmodell[^1] resulterer i et feilledd. Vi har tidligere konstatert at at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene. For at en modell skal anses representere de data den prøver å beskrive så må noen antagelser om modellen og dataene være oppfylt. Vi antar at feilleddet er symmetrisk fordelt og ligner en normalfordeling[^2]. Vi antar også at variasjonen eller spredningen på feilledet er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Vi antar også at, som tidligere blitt nevnt, at samvariasjon mellom variabler kan beskrives som lineært. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.
+
+
+::: {.column-margin}
+
+```{r}
+#| fig-cap: "En normalfordeling"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-normal
+
+
+data.frame(x = seq(from = -3, to = 3, by =.1)) %>%
+  ggplot(aes(x)) +
+  stat_function(fun = dnorm, n = 101, args = list(mean = 0, sd = 1)) + 
+  ylab("") +
+  
+  theme_classic() +
+  scale_y_continuous(breaks = NULL)  + 
+  scale_x_continuous(breaks = NULL) + 
+  theme(axis.title.x = element_blank())
+  
+
+```
+
+
+:::
 
 
 [^1]: Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel. 
-[^2]: Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling 
+[^2]: Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling, Se også avsnitt om antagelser i @navarro_learning_2018 [her](https://davidfoxcroft.github.io/lsj-book/12-Correlation-and-linear-regression.html#assumptions-of-regression).
 
 
 ## Variansanalyse
-Thrane [-@thrane_2020] tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stille vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk). Vi vil bruke denne modellen i kommende moduler i emnet.
+Thrane [-@thrane_2020] tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stiller vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk).
 
-## Variansanalyse i Jamovi
-Vi kan reprodusere analysen som presenteres i Tabell 3.2 i [@thrane_2020] ved å velge **ANOVA**-modulen i Jamovi, videre velger vi **One-way ANOVA**. Denne analysen gjennomføres over en kategorisk variabel, derav navnet "en-veis variansanalyse". Vi setter *årsinntekt* som avnhengig variabel (**Dependent variable**) og *landslag* som uavhengig variabel (**Grouping variable**).
-
-I analysen finner vi flere mulige valg. Under **Variances** har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Her er Welch's one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette senere i emnet).
-
-Under Missing values velger vi hvordan vi håndterer observasjoner hvor vi savner data. Under **Assumption Checks** kan vi la Jamovi gjennomføre noen test for de antagelser som følger med analysen. **Homogeneity test** tester om variance er lik mellom grupper, hvis den ikke er det er Welch's test et test som tar høyde for dette. Som i regresjonsanalysen kan vi se på en **Q-Q plot** som viser hvor nærme feilleddet (residualene) ligger en normalfordeling. 
-
-Under **Additional Statistics** finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.2 [@thrane_2020]. Figuren 3.4 i [@thrane_2020] kan vi reprodusere under **Exploration**.
 
 ## Krysstabulering
-ANOVA og ordinær regresjonsanalyse kan ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller). Her kan isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.
+I ANOVA og ordinær regresjonsanalyse kan vi ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller, se under). Her kan isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.
 
-Vi kan gjenskape Tabell 3.5 i [@thrane_2020] ved å åpne datasettet `student_trening_1_2_3.csv` i jamovi. Under modulen **Frequencies** finner vi **Independet samples, $\chi^2$ test of association**. Vi velger å sette *kjønn* i **Rows** og *idrettslag* i **Columns**. Under **Cells** kan vi velge å sette opp observerte antall under **Counts** og prosentandeler per rad, kolonne eller totalt under **Percentages**. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering.
+En krysstabulering innebærer at vi deler opp dataene på to kategorier, vi kan reprodusere tabell 3.5 fra @thrane_2020 hvor vi undersøker samvariasjon mellom kjønn og medlemskap i et idrettslag. I @fig-kryss er størrelsen på feltene i proporsjon til antallet observasjoner i hver kombinasjon av kategoriene kjønn og medlemskap i idrettslag. Prosenttall i hvert felt indikerer prosentfordeling innad kjønn mellom kategoriene medlem/ikke medlem.
+
+Krysstabuleringen er en effektiv teknikk for å få overblikk over mulig samvariasjon mellom to kategorier. Når vi har en kategorisk variabel som avhengig variabel og flere uavhengige variabler som vi ønsker å bruke som kontrollvariabler kreves det mer avanserte metoder. Vi må vende tillbake til regresjonsmodellen.
+
+```{r}
+#| fig-cap: "Grafisk fremstilling av en krysstabulering, samvariasjon mellom kjønn og idrettslag."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-kryss
+
+
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         idrettslag = V5, 
+         tren_senter = V4,
+         age = V6, 
+         train = V2)
+
+
+
+
+d <- dat %>%
+  select(sex, idrettslag) %>%
+  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0), 
+         sex = if_else(sex == "kvinne", 0, 1)) 
+
+
+
+dat %>%
+  select(sex, idrettslag) %>%
+  group_by(sex, idrettslag) %>%
+  summarise(n = n()) %>%
+  group_by(sex) %>%
+  mutate(prop = n / sum(n), 
+         sign_row = if_else(sex == "kvinne", -1, 1), 
+         sign_col = if_else(idrettslag == "nei", -1, 1)) %>%
+  
+  ggplot() + 
+  geom_rect(aes(xmin = 0, 
+                           xmax = sign_row * n, 
+                           ymin = 0, 
+                           ymax = sign_col * n, 
+                           fill = paste(sex, idrettslag))) +
+    geom_text(
+    aes(label = paste(round(100 * prop,0),"%"),
+        x = 0.5 * sign_row * n,
+        y = 0.5 * sign_col * n)) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  coord_equal() +
+  
+  scale_y_continuous(breaks = c(-50, 50), labels = c("Nei", "Ja")) +
+  
+  scale_x_continuous(breaks = c(-100, 50), labels = c("Kvinne", "Mann")) +
+  
+  labs(y = "Idrettslag", 
+       x = "Kj&#248;nn") + 
+  
+  theme_minimal() + 
+  theme(axis.title.x = element_markdown(angle = 0),
+        axis.title.y = element_markdown(angle = 0),
+        panel.grid = element_blank(), 
+        legend.position = "none")
+  
+
+
+```
+
+## Generaliserte lineære modeller
+
+I regresjonsmodellene som ble presentert i tidligere avsnitt antok vi for eksempel at feilleddet var symmetrisk fordelt kring 0. Dette er en gyldig antagelse når vi prøver å forklare en nærmest kontinuerlig avhengig variabel som alder eller treningstid. Når den avhengige variabelen kan ta enten verdien 0 (f.eks. ikke medlem i et idrettslag) eller 1 (medlem i et idrettslag) kan vi ikke si att antakelsen om et normalfordelt feilledd stemmer. En binær variabel (0/1) kan for eksempel beskrive hvis en person har en sykdom eller er død, hvis et fotball-lag vinner en kamp eller bruk av narkotiske stoffer, osv. Når vi ønsker å forstå disse variablene ved hjelp av en regresjonsmodell må vi forandre modellen for å unngå å bli lurt av dataene.
+
+Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forekomst av hjertesykdom[^hosmer]. Når vi skal prøve oss på å beskrive sammenhengen mellom disse to variablene kan vi starte med å gjøre en figur hvor alder settes på x-aksel og sykdomsstatus (forekomst av hjertesykdom = 1, ikke hjertesykdom = 0) settes på y-aksel. For å estimere sammenhengen legger vi også inn en regresjonslinje (@fig-chd1). Modellen er ikke en god nok beskrivelse av dataene da den mener at færre en null individer under 25 har hjertesykdom. Vi kan gjøre bedre. 
+
+[^hosmer]: Eksemplet kommer fra @hosmer_2013.
+
+```{r}
+#| fig-cap: "Bruk av linjær regresjon for å beskrive binære data."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd1
+
+
+
+chdage <- lsm::chdage 
+
+
+chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point() + 
+  theme_classic() + 
+  
+  geom_smooth(method = "lm", se = FALSE, 
+              lty = 2, color = "orchid4") +
+  
+  
+  labs(x = "Alder", 
+       y = "Hjertesykdom")
+
+```
+
+Som et neste forsøk å beskrive dataene kan vi beregne andelen med hjertesykdom i hver av noen aldersgrupper. Aldersgruppene som går fra 19-29, 29-39 osv. brukes for å regne ut andelen med hjertesykdom per gruppe. Andelen med hjertesykdom øker med økende alder, men forholdet er ikke en rett linje. Når prosentandelen nærmer seg 0 eller 1 flater kurven ut (@fig-chd2). Vi kan gjøre det enda bedre.
+
+```{r}
+#| fig-cap: "Bruk av alderskategorier for å beskrive forekomst av hjertesykdom. Hver punkt representerer prosentandeler av aldersgruppen med hjertesykdom."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd2
+
+
+
+chdage %>%
+  
+  mutate(agecat = cut(AGE, breaks = c(19, 29, 39, 49, 59, 69), 
+                      labels = c("19-29", 
+                                 "29-39",
+                                 "39-49",
+                                 "49-59",
+                                 "59-69"))) %>%
+  
+  summarise(.by = agecat, 
+            chd = 100 * (sum(CHD)/n())) %>%
+  
+  ggplot(aes(agecat, chd, group = 1)) + 
+  
+  geom_line() +
+  geom_point(shape = 21, color = "white", size = 5, fill = "white") +
+  geom_point(shape = 21, color = "steelblue", stroke = 1.5) + 
+  
+
+  
+  theme_classic() + 
+  
+  labs(x = "Alder", 
+       y = "Forekomst hjertesykdom (%)")
+
+```
+
+Den vanligste modellen for å beskrive sammenhenger mellom uavhengige variabler og en binær avhengig variabel er den logistiske regresjonsmodellen [@hosmer_2013]. Denne modellen er en av flere modeller i kategorien *Generaliserte lineære modeller*. Disse modellene kombinerer regresjonsmodellens bruk av uavhengige variabler for å beskrive en avhengig variabel og en «linkfunksjon» som transformere dataene til en skala hvor den avhengige variabelen kan beskrives som (en lineær) kombinasjon av uavhengige variabler. Linkfunksjonen for en logistisk regresjonsmodell er logit-linken (se i marginen). Denne funksjonen gjør at vi kan lage en modell som forteller oss om sannsynligheten for, i vårt eksempel, hjertesykdom.
+
+```{r}
+#| fig-cap: "Bruk av en logistisk regresjonsmodell for å beskrive forekomst av hjertesykdom. Kurven representere modellen og hver punkt representerer proporsjoner aldersgruppene fra @fig-chd2 med hjertesykdom."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd3
+
+
+
+## Model the relationship using logistic regression
+mod <- glm(CHD ~ AGE, data = chdage, family = binomial())
+# Predict probabilities
+predicted_probs <- predict(mod, newdata = data.frame(AGE = seq(from = 20, to = 70, by = 1)), 
+                           type = "response")
+
+## Calculate age-cat probabilities
+age_cat <- chdage %>%
+  
+  mutate(agecat = cut(AGE, breaks = c(19, 29, 39, 49, 59, 69), 
+                      labels = c("19-29", 
+                                 "29-39",
+                                 "39-49",
+                                 "49-59",
+                                 "59-69"))) %>%
+  
+
+  summarise(.by = agecat, 
+            CHD = (sum(CHD)/n())) %>%
+  separate(agecat, into = c("lwr", "upr"), convert = TRUE) %>%
+  rowwise() %>%
+  mutate(AGE = mean(c(lwr, upr)))
+
+
+
+
+
+chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point() + 
+  theme_classic() + 
+  
+  
+  geom_line(data = data.frame(AGE = seq(from = 20, to = 70, by = 1), 
+                              CHD = predicted_probs), 
+            color = "orchid4", linewidth = 1.4) +
+  
+  geom_point(data = age_cat, shape = 21, color = "steelblue", size = 2, stroke = 1.5) +
+  
+  
+  labs(x = "Alder", 
+       y = "Sannsynlighet for hjertesykdom")
+
+
+
+z <- coef(mod)[1] + coef(mod)[2] * 48
+
+exp((coef(mod)[1] + coef(mod)[2] * 48) - (coef(mod)[1] + coef(mod)[2] * 47))
+
+exp(1)^coef(mod)[2]
+
+piz <- exp(z) / (1 + exp(z))
+
+log(piz / (1-piz))
+
+
+
+
+
+```
+
+
+
+
+::: {.column-margin}
+
+En logistisk regresjonsmodell modellerer en binær (0/1) avhengig variabel, $y$ som gjennomsnittlig sannsynlighet. Man kan også si at den modellerer hvor stor andel av populasjonen som har utfallet 1 i variabelen. Den gjennomsnittlige sannsynligheten, $p$, estimeres ved bruk av en lineær modell og en *logit-linkfunksjon*. Linkfunksjonen har til oppgave å transformere kombinasjonen av uavhengige variabler slik at utfallet ikke kan bli større enn 1 og ikke mindre enn 0.
+
+Logit-linkfunksjonen (eller transformasjonen) er:
+
+$$\operatorname{logit}(p) = \operatorname{log}\left(\frac{p}{1-p}\right)$$
+Hvor $\operatorname{log}$ er den naturlige logaritmen og $\frac{p}{1-p}$ benevnes som odds (sannsynligheten for $y=1$ delt på sannsynligheten for $y=0$). 
+
+
+En logistisk regresjonsmodell estimerer $\operatorname{logit}(p)$ med en lineær modell, for eksempel:
+
+$$\operatorname{logit}(p) = \beta_0 + \beta_1 x$$
+Stigningstallet ($\beta_1$) kan som i ordinær lineær regresjon beskriver forskjellige uavhengige variabler. Da $\beta_1$ beskriver en forandring i $\operatorname{logit}(p)$ ved én enhets forandring i $x$ og logit-transformasjonen gir oss estimat på log-skalaen kan vi benevne $\beta_1$ som et log-odds ratio. En variabel på log-skalaen kan transformeres til naturlig skala ved hjelp av eksponential-funksjonen $\operatorname{exp}(\beta_1)$, noe som gir oss en odds-ratio.
+
+La $\operatorname{logit}(p_1) = \beta_0 + \beta_1 x$ og $\operatorname{logit}(p_2) = \beta_0$. Forskjellen mellom $\operatorname{logit}(p_1)$ og $\operatorname{logit}(p_2)$ er forskjellen i $\operatorname{logit}(p)$ ved én enhet forandring i $x$. Noe som også kan skrives som:
+
+\begin{align}
+\operatorname{logit}(p_1) - \operatorname{logit}(p_2) &= \operatorname{log}\left(\frac{p_1}{1- p_1}\right) - \operatorname{log}\left(\frac{p_2}{1- p_2}\right) \\
+&= \operatorname{log}\left(\frac{\frac{p_1}{1- p_1}}{\frac{p_2}{1- p_2}}\right)
+\end{align}
+
+Log-Odds-ratio, eller log-odds-forholdet for utfallet mellom $x = 0$ og $x = 1$ er altså et forhold av forhold! Når vi setter dette tallet på den naturlige skalaen ved hjelp av $\operatorname{exp}(\operatorname{log}(OR)) = OR$ kan vi for eksempel si oddsen for hjertesykdom er $\operatorname{exp}(0.11) = 1.1$ ganger høyere for hvert år. 
+
+For å beregne odds ($p$) for en gitt verdi på $x$, la oss si 50 år, trenger vi en annen funksjon, inversen av logit-funksjonen, den logistiske funksjonen:
+
+$$p=\frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}$$
+I vår modell for hjertesykdom er $\beta_0 = -5.309$, $\beta_1 = 0.11$, noe som gir $-5.309 + 0.11 \times 50 = 0.236$. Dette gir et odds for hjertesykdom for femtiåringer på 
+
+$$p = \frac{e^{0.236}}{1+e^{0.236}} = 0.56$$
+
+Hvor $e \sim 2.718$. 
+:::
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         idrettslag = V5, 
+         tren_senter = V4,
+         age = V6, 
+         train = V2)
+
+
+d <- dat %>%
+  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0)) %>%
+  print()
+
+
+m <- glm(idrettslag ~ sex + age + tren_senter, data = d, family = binomial())
+
+summary(m)
+
+
+exp(1)^0.81
+
+exp(0.81)
+
+
+```
+
+
+::: {.column-margin}
+Les mer om Logistisk regresjon, på norsk i @thoresen_2017
+:::
+

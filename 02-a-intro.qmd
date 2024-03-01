@@ -1,4 +1,4 @@
 # Statistisk samvariasjon
 
-I denne modulen introduserer vi noen teknikker for å måle statistisk samvariasjon med fokus på regresjonsanalyse. Modulen introduserer teknikker og inneholder demonstrasjoner i Jamovi. Til modulen hører en quiz (arbeidskrav) hvor det kreves alle rette. Du har ubegrenset med forsøk på quizen men vi oppfordrer deg til å bruke den for å identifisere dine svake sider. Er det noe du ikke skjønner, bruk mer tid på å forberede deg for de spørsmålene ved gjentatte forsøk.
+I denne modulen introduserer vi noen teknikker for å måle statistisk samvariasjon, fokus vil være på regresjonsanalyse, men andre modeller og teknikker blir også presentert. Modulen introduserer teknikker og inneholder demonstrasjoner i Jamovi. 
 

@@ -9,11 +9,17 @@ editor_options:
 
 Excel er et av flere programmer som du kan bruke for lagre data, lage figurer, gjennomføre analyse og beregninger ved hjelp av data. Det finnes flere alternative til excel, de fleste har lignende funksjonalitet hvor data i form av tall eller tekst kan mates inn i celler. Celler kan ha funksjoner som beregner eksempelvis tall basert på andre celler. Excel er per i dag, hva vi vet, det program med flest celler! Over 17 milliarder celler. I tillegg har excel over 400 funksjoner som kan brukes for å beregne eller manipulere data.  Alt dette gjør excel til en versting når det gjelder å skape trøbbel! 
 
-Et kjent problem i bruk av excel er konvertering av tekst til datoer. Dette problemet er av betydelse bland annet når man studerer gener hvor noen navn på gener ligner på datoer (eks. SEPT1). Å bruke et excel-dokument for datalagring, bearbeiding av data og beregninger kan gi uoversiktlige konsekvenser da små tastefeil kan gi store konsekvenser, noe som oljefondet og oljedirektoratet har fått erfare ([se her]( https://www.tu.no/artikler/oljemyndighetenes-excel-feil-ble-ikke-oppdaget-stortinget-apnet-barentshavet-sorost-med-regnefeil-pa-over-100-milliarder/405367), [og her]( https://www.ft.com/content/db864323-5b68-402b-8aa5-5c53a309acf1)). 
+::: {.column-margin}
+
+ [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5c6702d0-b056-4c53-99c6-b11e00cedc5f) finner du en kort forelesning om data i excel.
+
+:::
+
+Et kjent problem i bruk av excel er konvertering av tekst til datoer. Dette problemet er av betydelse bland annet når man studerer gener hvor noen navn på gener ligner på datoer (eks. SEPT1). Å bruke et excel-dokument for datalagring, bearbeiding av data og beregninger kan gi uoversiktlige konsekvenser da små tastefeil kan gi store konsekvenser, noe som oljefondet og oljedirektoratet har fått erfare ([se her](https://www.tu.no/artikler/oljemyndighetenes-excel-feil-ble-ikke-oppdaget-stortinget-apnet-barentshavet-sorost-med-regnefeil-pa-over-100-milliarder/405367), [og her]( https://www.ft.com/content/db864323-5b68-402b-8aa5-5c53a309acf1)). 
 
 Det finnes måter å bruke excel (og lignende programmer) som sikkerstiller at dette, og andre problemer ikke påvirker analyser og resultater. Den enkleste måten er å være konservativ: Excel (og lignede programmer) fungerer utmerket til å registrere og lagre data. Ønsker du å leve livet mer risikofylt bruker du excel for å lage figurer, gjennomføre beregninger, beregne statistikk eller innhente data fra brukere. Et prinsipp i databearbeiding er å holde rådata adskilt fra bearbeiding og beregning. For å hedre dette prinsippet bør vi i det minste ha data for lagring i en adskilt datafil. 
 
-Når vi lagrer data i excel ønsker vi å skape lykkelige datasett. Her finnes en analogi til en kjent roman, Anna Karenina, hvor forfatteren, Leo Tolstoy åpner med å si at **"Alle lykkelige familier er like; hver ulykkelig familie er ulykkelig på sin egen måte."**. Dette kan sies å være sant også for data[@wickham_tidy_2014]. Lykkelig data er konsekvent, "tidy" hvilket betyr en rad per observasjon og en kolonne per variabel. Enkle, men beskrivende navn på variabler på første raden, ingen tomme celler, og ingen beregninger. Ulykkelig data kan være ulykkelig på så mange forskjellige måter. For eksempel, vi kan ha flere variabler per kolonne, spesialtegn i variabelnavn eller celler, miks av datatyper, flere datasett per fil, osv. 
+Når vi lagrer data i excel ønsker vi å skape lykkelige datasett. Her finnes en analogi til en kjent roman, Anna Karenina, hvor forfatteren, Leo Tolstoy åpner med å si at **"Alle lykkelige familier er like; hver ulykkelig familie er ulykkelig på sin egen måte."**. Dette kan sies å være sant også for data [@wickham_tidy_2014]. Lykkelig data er konsekvent, "tidy" hvilket betyr en rad per observasjon og en kolonne per variabel. Enkle, men beskrivende navn på variabler på første raden, ingen tomme celler, og ingen beregninger. Ulykkelig data kan være ulykkelig på så mange forskjellige måter. For eksempel, vi kan ha flere variabler per kolonne, spesialtegn i variabelnavn eller celler, miks av datatyper, flere datasett per fil, osv. 
 
 Når vi bruker excel (eller lignende programmer) for å mate inn data kan vi bruke datavalidering for å sikkerstille at den data vi fører inn er hva vi forventer. Datavalidering innebærer att hver kolonnen, eller rad får et sett med regler som inndata må ha. F.eks. når vi taster inn data fra et VO<sub>2maks</sub> test vet vi att data ikke kan være negative, og de overstiger mest sannsynlig ikke 97 ml kg<sup>-1</sup> min<sup>-1</sup>. Vi kan med denne kunnskapen skape en regel som sier at vi tillater desimaltall mellom, la oss si, 25 og 100. 
 
@@ -21,11 +27,19 @@ Hvert datasett bør ha en kodebok. En kodebok inneholder en beskrivelse av varia
 
 Excel ønsker å lagre dine filer i formatet `.xlsx`, dette er ikke alltid hva du ønsker. `xlsx` formatet inneholder formatteringer som ikke er mulige å føre over til ander programmer. Et bedre alternativ er lagre data som `csv`-filer. Dette formatet er åpent og kan leses av flere programvarer, også i fremtiden. Det å lagre data i `csv`-filer gjør det også vanskeligere å lagre annen data i de samme cellene som du har tall eller tekst, for eksempel ved å bruke farge eller tekstformatering. Slike «data» vil ikke bli behandlet i andre programmer hvor du ønsker å arbeide videre.  
 
- 
+::: {.column-margin}
+Les mer om *Best practice* i bruk av spreadsheets [@broman_data_2018]. 
+:::
+
 
 ## Dataanalyse i praksis 
 
 I dette emnet så foreslår vi at dere bruker excel (eller lignende programmer) for å mate inn og lagre data, og Jamovi for å gjennomføre dataanalyse og lage enkle figurer. Denne kombinasjonen er mer enn nok for å på en god måte klare å ferdigstille et vitenskapelig arbeid hvor du forventes å presentere og tolke data fra et eksperiment eller observasjoner. Vi foreslår dette fordi kombinasjonen er fritt tilgjengelig for deg i et fremtidig arbeidsliv hvor du ikke vil ha tilgang til mer kostbare programvarer, og det finnes muligheter for å gå videre til mer avanserte programvarer (f.eks. R) med utgangspunkt i Jamovi. 
+
+::: {.column-margin}
+ [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=849041eb-2f47-42a5-897b-b11e00cf30b8) finner du en forelesning om Dataanalyse i praksis.
+:::
+
 
 En dataanalyse i praksis er ikke begrenset til hvilke programvarer du bruker. Det å lære å være systematisk og strukturert kommer å spare deg og dine medarbeidere mye hodebry og tid. En systematisk og organisert dataanalyse er også reproduserbar. Når vi snakker om reproduserbar dataanalyse i denne sammenhengen mener vi at du kan gi din data og analysene til en tredje person som i sin tur kan spore de valg du gjort i dataanalysen. 
 
@@ -51,6 +65,11 @@ Til sist bør vi vurdere hvordan vi navngir prosjekter. Da disse bør være isol
 
 ## Beskrive data 
 
+::: {.column-margin}
+ [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2abb1a7-d4c0-4f57-a8c8-b11e00cf6efb) finner du en forelesning om beskrivende statistikk.
+:::
+
+
 Vi kan begynne med å sette beskrivende statistikk i konteksten av målet med mye av de statistiske analysene i vitenskapelig arbeid. Her ønsker vi ofte å si noe om en "populasjon", dette gjør vi basert på et "utvalg" som blir brukt for å skape noen form av "modell" av populasjonen. Målet med statistikken er å si noe om noe som vi ikke observerer basert på noe som vi observerer! Vi vill komme tilbake til detaljene i dette senere i denne boken. 
 
 Målet med den *beskrivende statistikken* er som Thrane sier, "å forenkle en stor uoverskuelig mengde informasjon", som kan være vår data. Dataene består av variabler, innen forskningens verden beskriver en variabel et fenomen vi er interessert i å studere. En variabel bygges gjennom *operasjonalisering*, et teoretisk konsept kobles til en målbar enhet som i sin tur blir til en variabel i våres datasett. 
@@ -58,9 +77,6 @@ Målet med den *beskrivende statistikken* er som Thrane sier, "å forenkle en st
 Vi beskriver de data og dermed variablene vi har på en måte som gir økt forståelse for dess karakteristikk. En slik karakteristikk er dataenes sentraltendens (@fig-sentraltendens). Et mål på sentraltendens er gjennomsnittet som er den verdi som balanserer verdiene i dataen. Dette betyr at like mye vekt finnes på begge sider av gjennomsnittet i formen av tallverdier. Median er et annet mål på sentraltendens, her balanseres isteden *antall* verdier. Vi rangerer verdiene i dataen fra store til små og setter median til den verdi som er midten av datasettet. Modus er et annet mål på sentraltendens, her finner vi det tall som finnes flest ganger i datasettet. 
 
  
-
- 
-
 ```{r} 
 #| echo: false 
 #| message: false 
@@ -123,12 +139,9 @@ ggplot(data = data.frame(dat = dat),
 
 Thrane introduserer noen matematisk notasjon i en fotnote. Jeg ønsker å formidle at dere ikke trenger å være redde for disse formlene. Statistikken er full av matematisk notasjon og med en grunnleggende forståelse kan vi lese mye av den. En noe mer komplisert formel for gjennomsnittet kan gis som 
 
- 
-
 $$\bar{x} = \frac{\sum_{i=1}^{n}{x_i}}{n}$$ 
 
  
-
 hvor $\bar x$ står får gjennomsnittet av variabelen $x$. Summen av $n$ antall observasjoner over et indeks $i$ som starter med tallet 1 for variabelen $x$ skrives som $\sum_{i=1}^{n}{x_i}$. Summen delt på antall observasjoner $n$ gir oss gjennomsnittet.  
 
 Forskjellen mellom gjennomsnitt, median og modus sier noe om hvilken informasjon vi trekker ut fra dataene. Gjennomsnittet måler tallverdier, medianen måler rangering og modus måler forekomst av spesifikke tallverdier. Mest informasjon finner vi i data som kan beskrives på en skala hvor avstand mellom verdier er lik over hele skalaen og det finnes et absolutt nullpunkt. Denne typen av data kan beskrives som forholdstallsnivå (ratio scale). Når dataene savner et absolutt nullpunkt sier vi at vi har data på intervallnivå. Informasjonen som vi har på forholdstallsnivå og intervallnivå kan reduseres til kategorier hvor informasjon om avstand mellom tallverdier forsvinner. For eksempel kan vi klassifisere gjennomsnittlig dagtemperatur til varm (> 18&deg;C), lunken (< 18&deg;C) og kald (< 0&deg;C). Rangering er fortsatt mulig, varm temperatur rangeres over kald, men avstand mellom kategoriene gir ikke mening. Vi har nå skapt en variabel på ordinalnivå hvor verdier er ordnet, men savner sammenligningsbare avstander mellom verdiene. Til sist kan vi snakke om et nominalnivå, her finner vi kategorier som savner rangering (mann/kvinne, kjønn osv.). Denne oppdelingen er en grunn til klassifisering av forskjellige datatyper. Numerisk data kan kategoriseres som intervalldata og forholdstall, kategorisk data kan beskrives som mulig eller ikke mulig å rangere (ordinal og nominalnivå). Datatyper bestemmer hvilke analyser vi kan bruke for å forstå dataene.  
@@ -166,6 +179,11 @@ Når vi beveger oss til datatyper hvor avstand mellom tall på skalaen ikke har 
 Forskjellige statistikker (for eksempel gjennomsnitt, standardavvik osv.) kan gi mye informasjon og er noe vi trenger for å forstå vår data. Noen ganger er det bedre med visuell informasjon. Her kan vi oppdage mønster og karakteristikker som ikke er så lette å se i spesifikke tall. 
 
 ## Introduksjon til Jamovi 
+
+::: {.column-margin}
+ [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0c395866-d215-450e-b817-b11e00cff874) finner du en forelesning om Jamovi.
+:::
+
 
 [Jamovi](www.jamovi.org) er et statistikkprogram som muliggjør enklere til svært avanserte statistiske analyser. Jamovi inneholder trolig alt du trenger for å levere en bachelor-oppgave. Jamovi er gratis, skrevet med åpen kildekode og brukere av programmet kan lage egne **moduler** som gir programmet flere analysemuligheter. Jamovi er skrevet ved hjelp av programmeringsspråket [R](https://www.r-project.org/), om du ønsker å lage mer avanserte analyser eller figurer så har du mulighet å ta analysene du allerede gjort i Jamovi til R. 
 

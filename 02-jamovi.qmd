@@ -1,1 +1,84 @@
 # Statistiske metoder for samvariasjon i Jamovi
+
+## Regresjon i Jamovi
+Vi starter med datasettet `egg_kolesterol_1_2_3.csv`. For å lage en regresjonsmodell i Jamovi går vi inn i modulen **Regression** og velger **Linear regression**. Her velger vi **dependent variable** (avhengig variabel). Slik vi formulerer hypotesen om forholdet mellom egg og kolesterol tror vi egg påvirker kolesterolet. Kolesterol er derfor vår avhengige variabel.
+
+Jamovi gjør et skille mellom *covariates* og *factors*. Disse er begge uavhengige variabler men covariates krever kontinuerlig data og factors håndterer data som ordinal/nominal data. Vi setter inn egg som en kontinuerlig *covariate*.
+
+Når variablene er lagt inn får vi to tabeller i resultatfeltet. **Model fit Measures** sier noe om styrken i sammenhengen mellom variablene. **R** tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel. 
+
+I tabellen **Model Coefficients - kolesterol** se vi skjæringspunkt (**Intercept**) og stigningstall **egg** under **Predictor**. Under **Estimate** ser vi de estimat som modellen lager. 3.94 er gjennomsnittlig kolesterolnivå når eggkonsumpsjon er 0, for hvert egg så stiger kolesterolet med 0.86 enheter. For hvert  estimat finner vi et **standardfeil** (SE), **t-verdi** (t) og **p-verdi**. Disse bruker vi får å trekke konklusjoner om populasjonen dataene kommer ifra. Tallene er forskjellige mål på usikkerhet, noe vi skal snakke mer om senere.
+
+I modulmenyen finner vi **Assumption checks**. Her finnes flere alternativer for å sjekke antagelser. Jeg foreslår at man først fokuserer på Q-Q plot of residuals. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte (symetriske). **Residual plots** gir oss en indikasjon på hvor likt spredning feilleddet har over datamaterialet. I figuren som viser **Fitted vs. Residuals** ønsker vi å se at vi har likt feil over hele dataene. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.
+
+Begge disse to grafiske metodene bør studeres ved regresjonsanalyse, men med små datasett kreves det store brudd mot antagelser for at vi skal finne dem. Figurene er vanskelige å tolke med lite data.
+
+Under modulmenyen **Estimated Marginal Means** finner vi en mulighet for å lage en grafisk representasjon av modellen når vi legger inn prediktoren under **Marginal Means**. Velger vi også **Marginal means table** får vi det estimerte kolesterolnivået ved gjennomsnittet i variabelen egg pluss og minus et standardavvik.
+
+### Multippel regresjon med Jamovi
+I datasettet `fotball_1_2_3.csv` kan vi stille spørsmål til hvordan årsinntekt påvirkes av *spillerbørs* karakter gitt at ser denne sammenhengen er betinget *opprinnelse* og *posisjon*. Med betinget for mener vi at vi kontrollerer for disse effektene når vi undersøker sammenhengen mellom variablene som interesserer oss. Modellen ser ut slik:
+
+$$\text{arsinntekt} = \beta_0 + \beta_1\times\text{spillerbors} + \beta_2\times\text{opprinnelse} +\beta_3\times\text{posisjon}$$
+Variabelen opprinnelse har to nivåer, Norsk og Utenlandsk. I modellen vil denne variabelen bli lagt til som en dummy-variabel hvor Norsk er referansenivået. Den estimerte koeffisienten $\beta_2$ vil "aktiveres" når dummy-variabelen settes til 1, det vil si, når vi observerer en Utenlands spiller. Koeffisienten gir oss altså gjennomsnittlig forskjell i årsinntekt mellom Norsk og Utenlandsk opprinnelse.
+
+Variablene posisjon har fire nivåer, angrep (referansenivå), forsvar, keeper og midtbane. I regresjonsmodellen vil disse bli representert med tre dummyvariabler. Vi vil ikke se disse annet en som sammenligninger med referansenivået (angrep). I tabellen under ser du hvor dummyvariablene konstrueres for observasjoner i de forskjellige posisjonene
+
+|Posisjon|Dummy forsvar|Dummy keeper|Dummy midtbane|
+|---|---|---|---|
+|Angrep|0|0|0|
+|Forsvar|1|0|0|
+|Keeper|0|1|0|
+|Midtbane|0|0|1|
+
+Når modellen beregner gjennomsnitt for angrep settes alle dummyvariablene til 0. Når modellen representerer en gjennomsnittlig forsvarsspiller settes dummyvariablene forsvar til 1 og koeffisienten for forsvar "aktiveres". Koeffisientene for de forskjellige posisjonene sammenlignes med referansenivået angrep.
+
+Vi kontrollerer først datatyper i datafanen, spillerbørs kan endres til en kontinuerlig variabel, opprinnelse er en nominal variabel, men Norsk er referansenivå, indikert ved at vi finner denne i toppen av *levels*. Likeså er angrep referansenivået i den nominale variabelen posisjon. Årsinntekt er en kontinuerlig variabel, vi beholder den slik for nå.
+
+I bakgrunnen har vi altså følgende modell
+
+$$\text{arsinntekt} = \beta_0 + \beta_1 x_\text{spillerbors} + \beta_2 x_\text{Utenlandsk} +\beta_3 x_\text{forsvar} + \beta_4 x_\text{keeper} +\beta_5 x_\text{Midtbane}$$
+
+Vi prøver oss på en modell, årsinntekt i avhengig variabel (**Dependent variable**), *spillerbørs* i **Covariates**, *posisjon* og *opprinnelse* i **Factors**. Før vi ser på estimatene ser vi på antagelser under **Assumption checks**. Den resulterende figuren **Q-Q Plot** ser ikke lovende ut, den indikerer at residualene ikke følger en normalfordeling. **Residuals vs. Fitted** indikerer at spredningen i feilleddet er større ved større predikerte tall. Modellen har mer feil når de predikerte inntektene er større.
+
+Det finnes noen grep man kan ta for å lage en modell som til større grad følger de antagelser vi setter opp. Et vanlig grep er å log-transformere den avhengige variabelen. Dette kan gi oss en data som passer bedre i en ordinær lineær regresjonsmodell. Log-transformering innebærer at vi tar logaritmen av den originale variabelen, dette betyr at istedenfor å se på dataene på lineær skala ser på dem på en multiplikativ skala. Resultatene fra modellen vil også fortelle oss om relativa forandringer istedenfor absolutt forandring. Hvorfor? 
+
+Vi kan starte med å se på noen regler for logaritmer. Først den multiplikasjon på naturlig skala gir addisjon på log-skala:
+
+$$log(xy)= log(x) + log(y)$$
+Subtraksjon på log-skala gir oss ratio på naturlig skala
+
+$$log(x/y) = log(x) - log(y)$$
+Et tall som vi finner på log-skala kan transformeres tilbake til naturlig skala ved å bruke eksponentialfunksjonen $e$ (vanligvis bruker vi naturlige logaritmer).
+
+$$e^{log(y)} = y$$
+I en enkel regresjonsmodell finner vi fra et stigningstall forandring i $y$ basert på en enhets forandring i $x$. På naturlig skala er forandring absolutt og en differens $y_{x=1} - y_{x=0}$  (differensen mellom $y$ når $x$ er lik 0 og $y$ når $x$ er 1). Når vi har den avhengige variabelen på log-skala gir modellen oss fortsatt differensen, men vid transformering til naturlig skala har vi et ratio
+
+$$log(y_{x=1}) - log(y_{x=0}) = log(\frac{y_{x=1}}{y_{x=0}})$$
+Når et stigningstall i en modell med en log-transformerte avhengig variabel er for eksempel 0.2 enheter gir dette at vi ser en økning med 22% for hvert økning i den uavhengige variabelen:
+
+$$(e^{0.2} -1) \times 100 = 22\%$$
+Vi kan lese dette resultatet som at hvor enn vi starter i vår avhengige variabel så estimerer modellen en 22% økning for hvert enhets økning i uavhengig variabel. Dette er en relativ økning som i absolutte tall er forskjellig hvis vi starter med 10 ($10\times 0.22=2.2$) eller 1000 ($1000 \times 0.22 = 220$). 
+
+For å transformere en variabel i Jamovi legger vi til en transformering. Gå til datafanen, marker årsinntekt og trykk på **transform**. Under **using transform** skaper vi en ny transformering (**Create new transform**), og legger inn **=LN(\$source)** i formelfeltet. I formelfeltet står \$source for variabelen som skal brukes i transformeringen, **LN** er funksjonen for den naturlige logaritmen. Vi kan navngi den nye transformering til **"LOG"**. En ny variabel skapes med en bestemt **Source variable** og vår definerte transform (**using transform**).
+
+Vi byter ut den tidligere variabelen med vår nye log-transformerte variabel og ser på **Assumption checks**. Dette ser bedre ut, residualene er nærmere normalfordelt og spredningen i residualfiguren spreder likt over hele datamaterialet. Vi kan nå tolke resultatene.
+
+For hvert poeng økning i spillerbørs stiger årsinntekt med 0.33 enheter på log-skala. Dette tilsvarer 39% økning. Vi kan bruke Jamovi som kalkulator å legge inn en ny transform:
+
+=100 * (EXP(\$SOURCE) - 1)
+
+En en ny variabel kan vi legge inn resultatet vi er interessert i å transformere og finner den prosentuelle økningen. 
+
+## Variansanalyse i Jamovi
+Vi kan reprodusere analysen som presenteres i Tabell 3.2 i [@thrane_2020] ved å velge **ANOVA**-modulen i Jamovi, videre velger vi **One-way ANOVA**. Denne analysen gjennomføres over en kategorisk variabel, derav navnet "en-veis variansanalyse". Vi setter *årsinntekt* som avnhengig variabel (**Dependent variable**) og *landslag* som uavhengig variabel (**Grouping variable**).
+
+I analysen finner vi flere mulige valg. Under **Variances** har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Her er Welch's one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette senere i emnet).
+
+Under Missing values velger vi hvordan vi håndterer observasjoner hvor vi savner data. Under **Assumption Checks** kan vi la Jamovi gjennomføre noen test for de antagelser som følger med analysen. **Homogeneity test** tester om variance er lik mellom grupper, hvis den ikke er det er Welch's test et test som tar høyde for dette. Som i regresjonsanalysen kan vi se på en **Q-Q plot** som viser hvor nærme feilleddet (residualene) ligger en normalfordeling. 
+
+Under **Additional Statistics** finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.2 [@thrane_2020]. Figuren 3.4 i [@thrane_2020] kan vi reprodusere under **Exploration**.
+
+
+## Krysstabulering i Jamovi
+Vi kan gjenskape Tabell 3.5 i [@thrane_2020] ved å åpne datasettet `student_trening_1_2_3.csv` i jamovi. Under modulen **Frequencies** finner vi **Independet samples, $\chi^2$ test of association**. Vi velger å sette *kjønn* i **Rows** og *idrettslag* i **Columns**. Under **Cells** kan vi velge å sette opp observerte antall under **Counts** og prosentandeler per rad, kolonne eller totalt under **Percentages**. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering.
+

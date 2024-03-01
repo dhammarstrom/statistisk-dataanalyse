@@ -1,0 +1,295 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Deskriptiv dataanalyse: Quiz"
+format:
+  revealjs:
+    theme: dark
+    embed-resources: true
+standalone: true
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+## Datasettet `fotball_1_2_3.csv`
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse); library(gt)
+
+dat <- read_csv2("fotball_1_2_3.csv")
+
+dat %>%
+  head() %>%
+  gt() %>%
+  tab_options(table.font.size = "30%")
+
+```
+
+## Spørsmål 1
+
+- *Hva er gjennomsnittsalderen for spillerne i datasettet? Angi svaret med to desimaler.*
+
+![](01-img/01-quiz-sp1.gif){fig-align="center"}
+
+## Spørsmål 2
+
+- *Hvordan kan vi klassifisere variablene `alder`, `posisjon` og `spilte_min`?*
+
+![](01-img/01-quiz-sp2.gif){fig-align="center"}
+
+## Spørsmål 3
+- *Hva er median og gjennomsnitt for årsinntekt i datasettet? Angi ditt svar uten desimaler.*
+
+![](01-img/01-quiz-sp3.gif){fig-align="center"}
+
+## Spørsmål 4
+
+- *Gjennomsnitt og median skiller seg for variabelen `årsinntekt`, hvorfor?*  
+
+```{r}
+
+dat <- read.csv2("fotball_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(arsinntekt = V1)
+
+
+MEAN <- mean(dat$arsinntekt)
+MEDIAN <- median(dat$arsinntekt)
+
+dat %>%
+  ggplot(aes(arsinntekt)) + geom_histogram() +
+  
+  geom_vline(xintercept = MEAN, lty = 1, color = "red", size = 1.5) +
+  
+  annotate("text", label = "Gjennomsnitt", color = "red", 
+           x = MEAN + 300000, y = 35) +
+  
+  
+  geom_vline(xintercept = MEDIAN, lty = 1, color = "blue", size = 1.5) +
+    annotate("text", label = "Median", color = "blue", 
+           x = MEDIAN - 300000, y = 35) 
+
+
+```
+
+
+## Spørsmål 5
+
+- *Bruk datasettet fotball_1_2_3.csv, hva er standardavvik i årsinntekt for keeperer? Bruk to desimaler*
+
+![](01-img/01-quiz-sp5.gif){fig-align="center"}
+
+## Spørsmål 6
+
+- *Hvordan kan du tolke standardavviket for årsinntekt for keeperer?*
+
+```{r}
+
+dat <- read.csv2("fotball_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(arsinntekt = V1, 
+         posisjon = V3) %>%
+  filter(posisjon == "keeper") %>%
+  mutate(index = 1:nrow(.), 
+         m = mean(arsinntekt), 
+         deviation = (arsinntekt-m)^2) 
+  
+
+MEAN <- mean(dat$arsinntekt)
+
+
+p1 <- dat %>%
+  ggplot(aes(index, arsinntekt)) + 
+  scale_y_continuous(labels = scales::comma) +
+  geom_point() +
+  
+  labs(x = "Keeper nr.", 
+       y = "Arsinntekt") +
+  theme(axis.title.y = element_text(angle = 0))
+  
+  
+p2 <- p1 +
+  geom_hline(yintercept = MEAN) +
+  geom_segment(aes(x = index, xend = index, y = arsinntekt, yend = m)) +
+  theme(axis.title.y = element_text(angle = 0))
+
+
+mdev <- mean(abs(dat$deviation))
+
+SD <- sd(dat$arsinntekt)
+
+library(ggtext); library(latex2exp)
+
+p3 <- dat %>%
+  ggplot(aes(index, deviation)) + geom_point() +
+   scale_y_continuous(labels = scales::comma) +
+    labs(x = "Keeper nr.", 
+       y = "(Arsinntekt - Gjennomsnitt) ^2^") + 
+  
+  geom_segment(aes(x = index, xend = index, y = 0, yend = abs(deviation))) +
+  theme(axis.title.y = element_markdown(angle = 0))
+
+
+p4 <- dat %>%
+  ggplot(aes(index, sqrt(deviation))) + geom_point() +
+   scale_y_continuous(labels = scales::comma) +
+    labs(x = "Keeper nr.", 
+       y = TeX("$\\sqrt{(x_i - \\bar{x})^2}$")) + 
+  
+  annotate("text", label = TeX("$\\frac{\\sqrt{(x_i - \\bar{x})^2}}{n-1}$"), 
+           x = 18, y = 1350000, 
+           color = "red") +
+  
+  
+  geom_hline(yintercept = SD, color = "red", lty = 2) +
+  
+  geom_segment(aes(x = index, xend = index, y = 0, yend = sqrt(deviation))) +
+  theme(axis.title.y = element_text(angle = 0))
+
+
+
+
+library(patchwork)
+(p1 | p2) / (p3 | p4)
+
+
+```
+
+
+## Spørsmål 7
+
+- *Hva representerer de runde symbolene over box og whiskers?*
+
+```{r}
+#| fig-width: 9
+#| fig-align: "center"
+
+q50 <- quantile(dat$arsinntekt, 0.5)
+q25 <- quantile(dat$arsinntekt, 0.25)
+q75 <- quantile(dat$arsinntekt, 0.75)
+
+
+
+dat %>%
+  ggplot(aes(1, arsinntekt)) + geom_boxplot() + 
+  scale_y_continuous(labels = scales::comma) +
+  
+  annotate("segment", x = 0.45, 
+           y = c(q25, q75), 
+           xend = 0.6, 
+           yend = c(q25, q75),
+           color = c("red", "blue"),
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  
+  annotate("text", x = c(0.5, 0.5, 0.28), 
+           y = c(q25 + 80000, q75 + 80000, q75 - ((q75-q25)/2)) , 
+           label = c("Kvartil 1", "Kvartil 3", "Inter-\nkvartilavstand\n(IKA)"), 
+           color = c("red", "blue", "black")) +
+  
+  
+  
+  
+  annotate("segment", 
+           x = c(0.42, 0.42, 0.4), 
+           xend = c(0.40, 0.4, 0.4), 
+           y = c(q25, q75, q75),
+           yend = c(q25, q75, q25)) +
+  
+  annotate("segment", 
+           x = c(1.41, 1.39, 1.39), 
+           xend = c(1.41, 1.41, 1.41), 
+           y = c(q75, q75, q75 + ((q75-q25) * 1.5)) ,
+           yend = c(q75 + ((q75-q25) * 1.5),  q75, q75 + ((q75-q25) * 1.5))) +
+  
+    annotate("text", x = 1.42,
+             hjust = 0,
+           y = q75 + ((q75-q25) * 0.75) , 
+           label = c("1.5 \U00D7 IKA")) +
+  
+  
+  
+scale_x_continuous(limits = c(0.2,2)) + 
+  theme(axis.title.x =  element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        panel.grid = element_blank())
+
+
+
+
+
+
+```
+
+
+## Spørsmål 8
+
+- *Finn kvartil 1 og 3 for variabelen alder. Hva forteller dette oss om aldersfordelingen?*
+
+![](01-img/01-quiz-sp8.gif){fig-align="center"}
+
+## Spørsmål 8
+
+- *Finn kvartil 1 og 3 for variabelen alder. Hva forteller dette oss om aldersfordelingen?*
+
+```{r}
+
+dat <- read.csv2("fotball_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(alder = V2)
+  
+
+q25 <- quantile(dat$alder, 0.25)
+q75 <- quantile(dat$alder, 0.75)
+
+
+dat %>%
+  mutate(inside = if_else(between(dat$alder, q25, q75), "in", "out")) %>%
+ 
+  ggplot(aes(alder, fill = inside)) + geom_dotplot(binwidth = 1, method="histodot", 
+                                    dotsize = 0.5) + 
+  
+  labs(x = "&#197;lder") +
+  
+  theme(axis.text.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        panel.grid = element_blank(), 
+        axis.title.x = element_markdown(), 
+        legend.position = "none")
+
+
+```
+
+## Spørsmål 9
+
+- *Hva er maksimal spilletid per kamp i datasettet `fotball_1_2_3.csv`?*
+
+![](01-img/01-quiz-sp9.gif){fig-align="center"}
+
+## Spørsmål 10
+
+*Hvor stor er den totale lønnsutgiften for laget med tabellplassering 1?*
+
+```{r}
+
+read.csv2("fotball_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(arsinntekt = V1, 
+         tabell = V11) %>%
+  summarise(.by = tabell, 
+            sum = sum(arsinntekt)) %>%
+  ggplot(aes(tabell, sum)) + 
+  scale_y_continuous(labels = scales::comma) +
+  geom_bar(stat = "identity") + 
+  labs(x = "Tabellplassering", y = "Sum l&#248;nnsutgifter") +
+  theme(axis.title.y = element_markdown())
+
+```
+
+
+## Spørsmål 10
+
+*Hvor stor er den totale lønnsutgiften for laget med tabellplassering 1?*
+
+![](01-img/01-quiz-sp10.gif){fig-align="center"}

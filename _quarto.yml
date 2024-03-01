@@ -1,6 +1,6 @@
 project:
   type: book
-
+from: markdown+emoji
 book:
   title: "Statistisk dataanalyse med Jamovi"
   author: "Daniel Hammarström"
@@ -42,8 +42,6 @@ crossref:
 format:
   html:
     theme: cosmo
-  pdf:
-    documentclass: scrreprt
 
 
 

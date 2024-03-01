@@ -6,6 +6,7 @@ format:
     theme: dark
     embed-resources: true
 standalone: true
+bibliography: present-references.bib
 ---
 
 ## Hvorfor Statistikk og Dataanalyse?
@@ -42,59 +43,194 @@ Bersin & Zao-Sanders (2020) Boost Your Teams Data Literacy. *Harvard Business Re
 ## Idrettsvitenskap og idrettspraksis
 
 ::: columns
-::: {.column width="60%"}
+::: {.column width="70%"}
 
 ::: {.incremental}
+
+
 - Stille interessante spørsmål til treningsdata, helsedata, prestasjonsdata
 - Evne til å vurdere hvilke datakilder som er meningsfulle
 - Tolke data for å nå verdifulle resultater
 - Sette opp eksperimenter for å finne ny kunnskap
 - Sammenstille og kommunisere data
+
+
+
 :::
 :::
 
 
-::: {.column width="40%"}
+::: {.column width="30%"}
 ![](data-sci-sport.webp){fig-align="center"}
 
-::: {style="font-size: 40%;"}
-
-
-
 :::
 
 :::
 
+## Eksempel: Treningsdagbok
+
+Treningsdagboken kan være et godt verktøy for treningsoppfølging
+
+
+::: {.incremental}
+
+- Hvilke data er viktige?
+- Hvilke datatyper skal samles inn og sammenstilles?
+- Hvordan sammenstilles og presenteres data på best måte?
+- Hva kan resultater av analyse brukes til?
 :::
 
+## *Athlete monitoring*
 
-## Data i forskningsvirksomhet
+- Utvikkling av sensorer ("wearables") vil øke mengden data i treningsoppfølging 
+- Dette stiller krav til **validitet**, **reliabilitet**, **tolking av data** og **bearbeidning av data**
 
+(For diskusjon, se [@bourdon2017])
 
-## Forskningsprosessen
+## Data i forskningsvirksomhet {background-color="lightblue"}
 
-
-## Anbefallte verktøy
-
-
-## Moduler i emnet
-
-## Deskriptiv dataanalyse
-
-## Samvariasjon
-
-## Kausal inferens
-
-## Statistisk inferens
-
-## Lese og formiddle
-
-## Arbeidskrav
-
-## Jamovi
+```{r, setup, include=FALSE}
+library(nomnoml)
+```
 
 
+```{nomnoml, svg=TRUE}
+#stroke: black
+#.box: fill=#8f8 dashed visual=ellipse
+#direction: down
 
+[<frame>Tidligere forskning|
+   [Spørsmål]->[Operasjonalisering av begreper]->[Studiedesign og målemetoder]
+]
+
+```
+
+
+## Data i forskningsvirksomhet {background-color="aquamarine"}
+
+```{nomnoml, svg=TRUE}
+#stroke: black
+#.box: fill=#8f8 dashed visual=ellipse
+#direction: down
+
+
+
+[<frame>Datainnsamling|
+   [Planlegging]->[Innhenting av data]->[Organisering av data og analyse]
+]
+
+
+
+
+
+```
+
+## Data i forskningsvirksomhet {background-color="purple"}
+
+```{nomnoml, svg=TRUE}
+#stroke: black
+#.box: fill=#8f8 dashed visual=ellipse
+#direction: down
+
+[<frame>Rapportering|
+   [Spørsmål]->[Eksplorativ dataanalyse]->[Statistiske modeller]->[Konklusjoner] 
+]
+```
+
+
+
+
+## {background-color="beige"}
+
+Valg av verktøy: 
+
+- Open-source, non-profit, free, user-contribution ...
+
+
+![](https://www.zotero.org/static/images/bs4theme/zotero-logo.1707326075.svg){fig-align="center" width=70%}
+<br>
+![](https://www.jamovi.org/assets/header-logo.svg){fig-align="center" width=70%}
+
+
+
+## Moduler i emnet {background-color="lightblue"}
+
+Emnet bygger på fem moduler:
+
+- Beskrivende statistikk
+- Samvariasjon
+- Kausal inferens
+- Statistisk inferens eller induktiv statistikk
+- Lese og formiddle statistikk
+
+
+## Deskriptiv dataanalyse {background-color="purple"}
+
+- Hvordan organisere en analyse?
+- Hvordan beskrive data?
+- Bruk av Jamovi
+
+## Samvariasjon {background-color="lightgreen"}
+
+- Metoder for å måle sammenhenger mellom variabler
+- Bruk av Jamovi
+
+## Kausal inferens {background-color="lightpurple"}
+- Hvordan kan vi identifisere årsakssammenheng?
+- Hvordan kan vi unngå å tolke spuriøse sammenhenger som årsakssammenhenger? 
+
+## Statistisk inferens {background-color="lightblue"}
+- Hva er en p-verdi, konfidensintervall, hypotesetest...?
+- Hva er signifikans?
+
+## Lese og formiddle {background-color="lightyellow"}
+- Hvordan kan vi bli bedre på å lese statistiske analyser?
+- Hvordan formiddle analyser
+
+
+## Arbeidskrav {background-color="darkorchid"}
+
+Arbeidskrav koblet til hvert arbeidskrav krever alle rette. Hvordan nå dette mål?
+
+1.	Noter alle spørsmål/oppgaver ved første besvarelse
+2.	Identifiser korrekt svar etter beste evne
+3.	Identifiser svakheter i dine svar
+4.	Gjennomfør quiz på nytt
+
+
+## Jamovi {background-color="lavender"}
+
+::: columns
+::: {.column width="50%"}
+1. Last ned (www.jamovi.org)
+2. Bruk til enklere og vanskeligere problemer
+:::
+
+::: {.column width="50%"}
+![](https://www.jamovi.org/assets/header-logo.svg){fig-align="center" width=60%}
+:::
+:::
+
+## Læringsressurser {.smaller}
+
+
+| Ressurs |  | 
+| --- | --- |
+|Emnemoduler | [dhammarstrom.github.io/statistisk-dataanalyse/](https://dhammarstrom.github.io/statistisk-dataanalyse/)|
+|Introduksjonskurs i Jamovi med videoinstruksjoner for flere statistiske analyser |[datalab.cc/jamovi](https://datalab.cc/jamovi/) | 
+|Gratis e-bok som dekker statistiske metoder og bruk av Jamovi|[Learnings statistics with Jamovi](https://www.learnstatswithjamovi.com/)| 
+|Jamovi user guide, dekker alle de grunnleggende funksjonene |[Jamovi user guide](https://www.jamovi.org/user-manual.html)| 
+| Jamovieguiden, på Norsk, guider med bilder på prosedyrer i Jamovi |[Jamovieguiden](https://wiki.app.uib.no/jamovi/index.php?title=Jamovi)| 
+|Se også en oppdatert liste med ressurser her | [Community resources](https://www.jamovi.org/community.html)| 
+
+
+## Referanser
+
+
+::: {style="font-size: 60%;"}
+::: {#refs}
+:::
+:::
 
 
 
