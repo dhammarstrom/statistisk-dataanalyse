@@ -1,4 +1,4 @@
-# Statistisk inferens
+# Statistisk inferens {#sec-statistiskinferens}
 
 Vi har tidligere snakket om deskriptiv dataanalyse, hvor vi brukte statistiske verktøy for å beskrive data. Videre brukte vi statistiske modeller for å beskrive hvordan variabler varierte sammen. Disse modellene, som for eksempel regresjonsmodellen, ga oss gjennomsnittet av en variabel når vi holdt en annen variabel konstant. Disse modellene er også deskriptive og forteller oss om sammenhenger i dataene som vi har tilgang til. Vi har så langt ikke prøvd oss på å forklare data som vi ikke har tilgang på med data som vi bruker får å lage modeller.
 

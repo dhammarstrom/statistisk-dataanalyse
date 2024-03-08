@@ -16,7 +16,7 @@ Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistis
 
 
 ## Regresjon
-Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også utøkes til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se @fig-simpsons). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.
+Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også bli utvidet til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se @fig-simpsons). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.
 
 I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.
 
@@ -302,7 +302,7 @@ plot_grid(plot_grid(NULL, p1,NULL, rel_widths = c(1, 2, 1), ncol = 3),
 
 
 
-En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med "feilverdier" til hver observasjon. Når ve legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.
+En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med "feilverdier" til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.
 
 Et dataprogram som for eksempel Jamovi gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er `r round(coef(mod)[2], 2)` kg. For hver cm økning i kroppshøyde øker vekt med `r round(coef(mod)[2], 2)` kg. Skjæringspunktet sier at vekten er `r round(coef(mod)[1], 0)` kg når kroppshøyde er 0. Dette er ikke en korrekt representasjon av virkeligheten så som vi kjenner den. Dette sier mer om hvordan vi sier at variablene varierer sammen enn om forholdet mellom kroppshøyde og vekt. 
 
@@ -700,12 +700,12 @@ data.frame(x = seq(from = -3, to = 3, by =.1)) %>%
 Thrane [-@thrane_2020] tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stiller vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk).
 
 
-## Krysstabulering
-I ANOVA og ordinær regresjonsanalyse kan vi ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller, se under). Her kan isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.
+## Krysstabulering {#sec-kryss}
+I ANOVA og ordinær regresjonsanalyse kan vi ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller, se under). Nå vi ønsker å se på sammenhengen mellom to kategoriske variabler kan vi isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.
 
 En krysstabulering innebærer at vi deler opp dataene på to kategorier, vi kan reprodusere tabell 3.5 fra @thrane_2020 hvor vi undersøker samvariasjon mellom kjønn og medlemskap i et idrettslag. I @fig-kryss er størrelsen på feltene i proporsjon til antallet observasjoner i hver kombinasjon av kategoriene kjønn og medlemskap i idrettslag. Prosenttall i hvert felt indikerer prosentfordeling innad kjønn mellom kategoriene medlem/ikke medlem.
 
-Krysstabuleringen er en effektiv teknikk for å få overblikk over mulig samvariasjon mellom to kategorier. Når vi har en kategorisk variabel som avhengig variabel og flere uavhengige variabler som vi ønsker å bruke som kontrollvariabler kreves det mer avanserte metoder. Vi må vende tillbake til regresjonsmodellen.
+Krysstabuleringen er en effektiv teknikk for å få overblikk over mulig samvariasjon mellom to kategorier. Når vi har en kategorisk variabel som avhengig variabel og flere uavhengige variabler som vi ønsker å bruke som kontrollvariabler kreves det mer avanserte metoder. Vi må vende tilbake til regresjonsmodellen.
 
 ```{r}
 #| fig-cap: "Grafisk fremstilling av en krysstabulering, samvariasjon mellom kjønn og idrettslag."
@@ -775,9 +775,9 @@ dat %>%
 
 ## Generaliserte lineære modeller
 
-I regresjonsmodellene som ble presentert i tidligere avsnitt antok vi for eksempel at feilleddet var symmetrisk fordelt kring 0. Dette er en gyldig antagelse når vi prøver å forklare en nærmest kontinuerlig avhengig variabel som alder eller treningstid. Når den avhengige variabelen kan ta enten verdien 0 (f.eks. ikke medlem i et idrettslag) eller 1 (medlem i et idrettslag) kan vi ikke si att antakelsen om et normalfordelt feilledd stemmer. En binær variabel (0/1) kan for eksempel beskrive hvis en person har en sykdom eller er død, hvis et fotball-lag vinner en kamp eller bruk av narkotiske stoffer, osv. Når vi ønsker å forstå disse variablene ved hjelp av en regresjonsmodell må vi forandre modellen for å unngå å bli lurt av dataene.
+I regresjonsmodellene som ble presentert i tidligere avsnitt antok vi for eksempel at feilleddet var symmetrisk fordelt kring 0. Dette er en gyldig antagelse når vi prøver å forklare en kontinuerlig avhengig variabel som alder eller treningstid. Når den avhengige variabelen kan ta enten verdien 0 eller 1 kan vi ikke si att antakelsen om et normalfordelt feilledd stemmer. En binær variabel (0/1) kan for eksempel beskrive hvis en person har en sykdom eller er død, hvis et fotball-lag vinner en kamp eller noen bruker narkotiske stoffer, osv. Når vi ønsker å forstå disse variablene ved hjelp av en regresjonsmodell må vi forandre modellen for å unngå å bli lurt av dataene.
 
-Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forekomst av hjertesykdom[^hosmer]. Når vi skal prøve oss på å beskrive sammenhengen mellom disse to variablene kan vi starte med å gjøre en figur hvor alder settes på x-aksel og sykdomsstatus (forekomst av hjertesykdom = 1, ikke hjertesykdom = 0) settes på y-aksel. For å estimere sammenhengen legger vi også inn en regresjonslinje (@fig-chd1). Modellen er ikke en god nok beskrivelse av dataene da den mener at færre en null individer under 25 har hjertesykdom. Vi kan gjøre bedre. 
+Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forekomst av hjertesykdom[^hosmer]. Når vi skal prøve oss på å beskrive sammenhengen mellom disse to variablene kan vi starte med å gjøre en figur hvor alder settes på x-aksel og sykdomsstatus (forekomst av hjertesykdom = 1, ikke hjertesykdom = 0) settes på y-aksel. For å estimere sammenhengen legger vi også inn en regresjonslinje (@fig-chd1). Modellen som representeres av regresjonslinjen er ikke en god nok beskrivelse av dataene da den mener at færre en null individer under 25 har hjertesykdom. Vi kan gjøre bedre. 
 
 [^hosmer]: Eksemplet kommer fra @hosmer_2013.
 
@@ -807,7 +807,7 @@ chdage %>%
 
 ```
 
-Som et neste forsøk å beskrive dataene kan vi beregne andelen med hjertesykdom i hver av noen aldersgrupper. Aldersgruppene som går fra 19-29, 29-39 osv. brukes for å regne ut andelen med hjertesykdom per gruppe. Andelen med hjertesykdom øker med økende alder, men forholdet er ikke en rett linje. Når prosentandelen nærmer seg 0 eller 1 flater kurven ut (@fig-chd2). Vi kan gjøre det enda bedre.
+Som et neste forsøk å beskrive dataene kan vi beregne andelen med hjertesykdom i hver av noen aldersgrupper. Aldersgruppene som går fra 19-29, 29-39 osv. brukes for å regne ut andelen med hjertesykdom per aldersgruppe. Andelen med hjertesykdom øker med økende alder, men forholdet er ikke en rett linje. Når prosentandelen nærmer seg 0 eller 1 flater kurven ut (@fig-chd2). Vi kan gjøre det enda bedre.
 
 ```{r}
 #| fig-cap: "Bruk av alderskategorier for å beskrive forekomst av hjertesykdom. Hver punkt representerer prosentandeler av aldersgruppen med hjertesykdom."
@@ -845,7 +845,105 @@ chdage %>%
 
 ```
 
-Den vanligste modellen for å beskrive sammenhenger mellom uavhengige variabler og en binær avhengig variabel er den logistiske regresjonsmodellen [@hosmer_2013]. Denne modellen er en av flere modeller i kategorien *Generaliserte lineære modeller*. Disse modellene kombinerer regresjonsmodellens bruk av uavhengige variabler for å beskrive en avhengig variabel og en «linkfunksjon» som transformere dataene til en skala hvor den avhengige variabelen kan beskrives som (en lineær) kombinasjon av uavhengige variabler. Linkfunksjonen for en logistisk regresjonsmodell er logit-linken (se i marginen). Denne funksjonen gjør at vi kan lage en modell som forteller oss om sannsynligheten for, i vårt eksempel, hjertesykdom.
+Den vanligste modellen for å beskrive sammenhenger mellom uavhengige variabler og en binær avhengig variabel er den logistiske regresjonsmodellen [@hosmer_2013]. Denne modellen er en av flere modeller i kategorien *Generaliserte lineære modeller*. Disse modellene kombinerer regresjonsmodellens bruk av uavhengige variabler for å beskrive en avhengig variabel med en «linkfunksjon» som transformere dataene til en skala hvor den avhengige variabelen kan beskrives som (en lineær) kombinasjon av uavhengige variabler. Linkfunksjonen for en logistisk regresjonsmodell er logit-linken (se under for detaljer). Denne funksjonen gjør at vi kan lage en modell som forteller oss om oddsen for, i vårt eksempel, hjertesykdom.
+
+I motsetning til den vanlige regresjonsmodellen lager vi ikke en modell over gjennomsnittet men isteden oddsen for et utfall hvor et observert utfall (for eksempel forekomst av sykdom) vanligvis er kodet som 1 i dataene. Oddsen for utfallet er forholdet mellom å se utfallet (1) og ikke se utfallet (0). I resultatene fra en slik modell gis oddsen på log-skalaen, noe som benevnes som log-odds. Når vi transformerer disse til den naturlige skalaen får vi utfallet som oddsen for et utfall. Videre kan oddsen transformeres til en sannsynlighet, sannsynligheten for å se utfallet.
+
+Alt dette betyr at resultatene fra en logistisk regresjonsmodell ikke alltid er lette å tolke da de gis på log-odds skalen. Vi kan bruke den den eksponentielle funksjonen av et estimate gitt på log-odds skala for å få odds. Log-odds kan også transforeres til sannsynligheten for et utfall. I figuren under illustreres hvordan sannsynligheten for et utfall (beregnet antall y = 1 delt på antall observasjoner) er lik den logistiske transformasjonen av log-odds (@fig-logisticreg). 
+
+
+```{r}
+#| fig-cap: "Et enkelt data sett med en binær variabel kan sammenstilles i figurform og som et forhold mellom antall positive utfall (y=1) og det totale antallet observasjoner. Hvis vi lager en enkel logistisk regresjonsmodell over dataene finner vi at log-odds (0.4055) tilsvarer en odds på 1.5 og en sannsynlighet for utfallet på 0.6."
+#| label: fig-logisticreg
+#| message: false
+#| echo: false
+#| warning: false
+
+
+
+
+library(tidyverse); library(cowplot); library(latex2exp)
+set.seed(1)
+
+y <- rbinom(10, 1, 0.5)
+
+
+
+px <- data.frame(x = c(0, 1), 
+                 y = c(0, 1))  %>%
+  ggplot(aes(x, y)) + theme_void()
+
+
+
+
+
+p1 <- data.frame(y) %>%
+  summarise(.by = y, 
+            n = n()) %>%
+  ggplot(aes(as.factor(y), n)) + geom_bar(stat = "identity", fill = "steelblue") + 
+  theme_classic() + labs(x = "Utfall", 
+                         y = "Antall")
+
+
+
+
+
+
+ggdraw(px) + draw_plot(p1, .45, .45, .2, .5) + 
+  
+  annotate("label", x = 0.2, y = 0.7, 
+           label = "Data: y\n1\n0\n1\n1\n1\n0\n0\n1\n1\n0") +
+  
+  
+  annotate("curve", 
+           x = c(0.25, 0.65, 0.65), 
+           y = c(0.75, 0.75, 0.75), 
+           xend = c(0.42, 0.75, 0.75),
+           yend = c(0.75, 0.75, 0.65),
+           curvature = c(-0.1),
+           
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  
+    annotate("label", x = 0.8, y = 0.75, 
+           label = TeX(r'(0.6 = \frac{6}{10})'), 
+           color = "darkorange", 
+           parse = TRUE) +
+  
+    annotate("label", x = 0.8, y = 0.62, 
+           label = TeX(r'(1.5 = \frac{6}{4})'), 
+           color = "darkgreen", 
+           parse = TRUE) +
+  
+  
+  
+  
+  annotate("curve", 
+           x = c(0.25, 0.38, 0.38), 
+           y = c(0.55, 0.28, 0.28), 
+           xend = c(0.32, 0.42, 0.55),
+           yend = c(0.35, 0.24, 0.28),
+           curvature = c(-0.2),
+  
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  
+  annotate("label", x = 0.3, y = 0.3, 
+           label = "Log-odds p(y=1):\n logit(p(y)) = 0.4055", 
+           color = "orchid4") +
+  
+  annotate("label", x = 0.48, y = 0.18, 
+           label = "Odds p(y=1):\nexp(0.4055) = 1.50", 
+           color = "darkgreen") +
+  
+   annotate("label", x = 0.75, y = 0.25, 
+           label = TeX(r"($p(y=1)=\frac{1}{1+exp(-0.4055)}=0.6$)"), 
+           color = "darkorange",
+           parse = TRUE) 
+
+
+```
+
+I figuren under (@fig-chd3) har estimatene fra en logistisk regresjonsmodell blitt transformert fra log-odds skalaen til den estimerte sannsynligheten for forekomst av hjertesykdom som en funksjon av alder. Modellen gir lignende estimater for samvariasjonen mellom alder og sykdom som beregning av andel med sykdom per aldersgruppe. Hvorfor alt dette styret med en logistisk regresjonsmodell? Regresjonsmodellen kan inkludere flere uavhengige variabler, noe som gjør at vi kan beskrive samvariasjon mellom alder og sykdom samtidig som vi tar med i beregningen at individer kan forskjellige verdier på andre variabler så som kjønn, sosioøkonomisk status og andre sykdommer. 
+
 
 ```{r}
 #| fig-cap: "Bruk av en logistisk regresjonsmodell for å beskrive forekomst av hjertesykdom. Kurven representere modellen og hver punkt representerer proporsjoner aldersgruppene fra @fig-chd2 med hjertesykdom."
@@ -901,28 +999,15 @@ chdage %>%
 
 
 
-z <- coef(mod)[1] + coef(mod)[2] * 48
-
-exp((coef(mod)[1] + coef(mod)[2] * 48) - (coef(mod)[1] + coef(mod)[2] * 47))
-
-exp(1)^coef(mod)[2]
-
-piz <- exp(z) / (1 + exp(z))
-
-log(piz / (1-piz))
-
-
-
-
-
 ```
 
+### Hvordan estimeres en logistisk regresjonsmodell
 
-
+En logistisk regresjonsmodell modellerer en binær (0/1) avhengig variabel, $y$ som log-odds, noe som altså kan transformeres til gjennomsnittlig sannsynlighet ($p$). Man kan også si at den modellerer hvor stor andel av populasjonen som har utfallet 1 i variabelen git en eller flere uavhengige variabler. Den gjennomsnittlige sannsynligheten, $p$, estimeres ved bruk av en lineær modell og en *logit-linkfunksjon*. Linkfunksjonen har til oppgave å transformere kombinasjonen av uavhengige variabler slik at utfallet ikke kan bli større enn 1 og ikke mindre enn 0.
 
 ::: {.column-margin}
-
-En logistisk regresjonsmodell modellerer en binær (0/1) avhengig variabel, $y$ som gjennomsnittlig sannsynlighet. Man kan også si at den modellerer hvor stor andel av populasjonen som har utfallet 1 i variabelen. Den gjennomsnittlige sannsynligheten, $p$, estimeres ved bruk av en lineær modell og en *logit-linkfunksjon*. Linkfunksjonen har til oppgave å transformere kombinasjonen av uavhengige variabler slik at utfallet ikke kan bli større enn 1 og ikke mindre enn 0.
+Les mer om Logistisk regresjon, på norsk i @thoresen_2017
+:::
 
 Logit-linkfunksjonen (eller transformasjonen) er:
 
@@ -942,62 +1027,143 @@ La $\operatorname{logit}(p_1) = \beta_0 + \beta_1 x$ og $\operatorname{logit}(p_
 &= \operatorname{log}\left(\frac{\frac{p_1}{1- p_1}}{\frac{p_2}{1- p_2}}\right)
 \end{align}
 
-Log-Odds-ratio, eller log-odds-forholdet for utfallet mellom $x = 0$ og $x = 1$ er altså et forhold av forhold! Når vi setter dette tallet på den naturlige skalaen ved hjelp av $\operatorname{exp}(\operatorname{log}(OR)) = OR$ kan vi for eksempel si oddsen for hjertesykdom er $\operatorname{exp}(0.11) = 1.1$ ganger høyere for hvert år. 
+Log-Odds-ratio, eller log-odds-forholdet for utfallet mellom $x = 0$ og $x = 1$ er altså et forhold av forhold! Når vi setter dette tallet på den naturlige skalaen ved hjelp av $\operatorname{exp}(\operatorname{log}(OR)) = OR$ kan vi for eksempel si oddsen for hjertesykdom er $\operatorname{exp}(0.11) = 1.1$ ganger høyere for hvert leveår. 
 
 For å beregne odds ($p$) for en gitt verdi på $x$, la oss si 50 år, trenger vi en annen funksjon, inversen av logit-funksjonen, den logistiske funksjonen:
 
 $$p=\frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}$$
-I vår modell for hjertesykdom er $\beta_0 = -5.309$, $\beta_1 = 0.11$, noe som gir $-5.309 + 0.11 \times 50 = 0.236$. Dette gir et odds for hjertesykdom for femtiåringer på 
+I vår modell for hjertesykdom er $\beta_0 = -5.309$ og $\beta_1 = 0.11$, noe som gir $-5.309 + 0.11 \times 50 = 0.236$. Dette gir et odds for hjertesykdom for femtiåringer på 
 
 $$p = \frac{e^{0.236}}{1+e^{0.236}} = 0.56$$
 
-Hvor $e \sim 2.718$. 
-:::
- 
+Hvor $e \sim 2.718$, noe som også kan benevnes som "eksponetial-funksjonen av 0.236" eller skrives som "exp(0.236)".   
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+### Et eksempel: Analyse av samvariasjon mellom medlemskap i idrettslag og kjønn 
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
 
 dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
   select(sex = V7, 
-         idrettslag = V5, 
-         tren_senter = V4,
-         age = V6, 
-         train = V2)
+         idrettslag = V5) %>%
+  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0))
 
 
-d <- dat %>%
-  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0)) %>%
-  print()
+diff <- dat %>%
+  
+  summarise(.by = c(sex, idrettslag),
+            n = n()) %>%
+  mutate(idrettslag = if_else(idrettslag == 0, "Ikke medlem", "Medlem")) %>%
+  pivot_wider(names_from = idrettslag, values_from = n) %>%
+  rowwise() %>%
+  mutate("Medlem" = (`Medlem`/sum(c(`Ikke medlem`, Medlem)))) 
 
 
-m <- glm(idrettslag ~ sex + age + tren_senter, data = d, family = binomial())
-
-summary(m)
-
-
-exp(1)^0.81
-
-exp(0.81)
+diff_percent <- round(100 * (as.numeric(diff[diff$sex == "mann",3]) - as.numeric(diff[diff$sex == "kvinne",3])), 1)
 
 
 ```
 
 
-::: {.column-margin}
-Les mer om Logistisk regresjon, på norsk i @thoresen_2017
-:::
+
+I eksemplet med krysstabulering (@sec-kryss) undersøkte vi hvor stor andel av menn og kvinner i datasettet som rapporterte at de var medlemmer i et idrettslag. Forskjellen i prosentpoeng var `r diff_percent`. Vi kan også beregne dette som et odds-forhold. Tallene finner vi i @tbl-trening hvor vi bruker antallet observasjoner fra hvert kategori når vi først beregner odds for medlemskap som 
+
+$$\operatorname{odds} = \frac{\text{Medlem}}{\text{Ikke medlem}}$$. 
+
+Hos kvinner får vi 
+
+$$\operatorname{odds}_{\text{medlem, kvinner}} = \frac{60}{356} = 0.168$$
+
+og hos menn 
+
+$$\operatorname{odds}_{\text{medlem, menn}} = \frac{80}{148} = 0.540$$. 
+
+Odds-forholdet mellom disse blir $\frac{0.540}{0.168}=3.21$, noe som vi kan lese som at menn har 3.21 ganger høyere sannsynlighet for å være medlem i et idrettslag sammenlignet med kvinner.
+
+
+```{r}
+#| tbl-cap: "Krysstabulering av andel medlem i idrettslag per kjønn fra [`data/student_trening_1_2_3.csv`](data/student_trening_1_2_3.csv)."
+#| label: tbl-trening
+#| echo: false
+#| message: false
+#| warning: false
+
+library(gt)
+
+d <- dat %>%
+  
+  select(sex, idrettslag) 
+
+
+m <- glm(idrettslag ~ sex, data = d, family = binomial())
+
+logodds_menn <- round(as.numeric(coef(m)[1] + coef(m)[2]), 3)
+
+
+
+d %>%
+  summarise(.by = c(sex, idrettslag),
+            n = n()) %>%
+  mutate(idrettslag = if_else(idrettslag == 0, "Ikke medlem", "Medlem")) %>%
+  pivot_wider(names_from = idrettslag, values_from = n) %>%
+  rowwise() %>%
+  mutate("Ikke medlem (%)" = (`Ikke medlem`/sum(c(`Ikke medlem`, Medlem))), 
+         "Medlem (%)" = (`Medlem`/sum(c(`Ikke medlem`, Medlem)))) %>%
+
+  gt() %>%
+  cols_label(sex = md("Kj&#248;nn")) %>%
+  fmt_percent(columns = c("Ikke medlem (%)", "Medlem (%)"), decimals = 1)
+```
+
+Den samme analysen kan vi gjøre ved hjelp av en logistisk regresjonsmodell. Her lar vi modellen beregne effekten av kjønn på medlemskap i idrettslag og vi får følgende estimater (@tbl-treningreg). Husk at disse er på log-odds skalaen når vi beregner odds per kjønn. Hos kvinner finner vi log-oddsen for medlemskap i `(Intercept)` (skjæringspunktet) og for mennene legger vi sammen skjærinsgpunktet og stigningstallet og får en log-odds på `r logodds_menn`. Disse estimatene tilsvarer estimatene vi beregnet for hånd over når vi bruker eksponential-funksjonen:
+
+
+$$\operatorname{odds}_{\text{medlem, kvinner}} = e^{-1.781} = 0.168$$
+$$\operatorname{odds}_{\text{medlem, menn}} = e^{-0.615} = 0.540$$
+
+Differensen mellom menn og kvinner i log-odds tilsvarer stigningstallet. Stigningstallet er log-odds-ratioen, når vi bruker eksponential-funksjonen får vi odds-forholdet (eller odds-ratioen (OR)):
+
+$$OR = e^{1.165} = 3.2$$
+Konklusjonen blir den samme, menn har 3.2 ganger større sannsynlighet for være medlem i ett idrettslag sammenlignet med kvinner.
+
+
+```{r}
+#| tbl-cap: "Resultatet fra en logistisk regresjonsanalyse på effekten av kjønn på medlemskap i idrettslag ved bruk av dataene [`data/student_trening_1_2_3.csv`](data/student_trening_1_2_3.csv)."
+#| label: tbl-treningreg
+#| echo: false
+#| message: false
+#| warning: false
+
+
+
+d <- dat %>%
+  select(sex, idrettslag) 
+
+
+m <- glm(idrettslag ~ sex, data = d, family = binomial())
+
+logodds_menn <- round(as.numeric(coef(m)[1] + coef(m)[2]), 3)
+
+
+coef(summary(m)) %>%
+  data.frame() %>%
+  rownames_to_column(var = "Koeffisient") %>%
+  
+  select(Koeffisient, Estimat = Estimate, Standardfeil = Std..Error) %>%
+  
+  mutate(Koeffisient = if_else(Koeffisient == "sexmann", "Kj&#248;nn = mann", Koeffisient)) %>%
+  
+  gt() %>%
+  fmt_number(columns = c(Estimat, Standardfeil), decimals = 3) %>%
+  fmt_markdown(columns = Koeffisient)
+  
+
+```
+
+
+
 

@@ -1,0 +1,645 @@
+﻿ganger_tren;timer_tren;trener_mest;tren_senter;idrettslag;alder;kjønn;km_unna;sivil_stat;helse;økonomi;ungdom_tren;gang_tren_grupp;tim_tren_grupp
+1;1;kondisjon;nei;nei;21;kvinne;2;kjæreste;mindre bra;brukbar;4;0-1 p/u;0 til 1 t/u
+5;5;begge like mye;ja;nei;22;kvinne;0;singel;bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+4;6;begge like mye;ja;nei;21;kvinne;3;singel;bra;brukbar;9;>= 4 p/u;> 5 t/u
+5;5;begge like mye;ja;nei;22;kvinne;0;kjæreste;bra;brukbar;2;>= 4 p/u;>3 til 5 t/u
+2;2;kondisjon;nei;nei;21;kvinne;25;singel;mindre bra;bra;5;2-3 p/u;>1 til 3 t/u
+1;2;styrke;nei;nei;22;mann;4;kjæreste;mindre bra;brukbar;7;0-1 p/u;>1 til 3 t/u
+3;4;begge like mye;nei;nei;21;kvinne;0;kjæreste;bra;bra;3;2-3 p/u;>3 til 5 t/u
+4;4;styrke;nei;nei;24;kvinne;0;kjæreste;mindre bra;brukbar;9;>= 4 p/u;>3 til 5 t/u
+2;4;styrke;nei;nei;21;mann;5;kjæreste;bra;mindre bra;7;2-3 p/u;>3 til 5 t/u
+3;4;kondisjon;nei;nei;22;kvinne;2;kjæreste;mindre bra;bra;9;2-3 p/u;>3 til 5 t/u
+3;5;kondisjon;nei;ja;23;kvinne;1;kjæreste;svært bra;bra;7;2-3 p/u;>3 til 5 t/u
+4;6;begge like mye;ja;nei;24;kvinne;1;kjæreste;svært bra;brukbar;5;>= 4 p/u;> 5 t/u
+4;7;styrke;ja;nei;24;mann;2;sambo/gift;bra;bra;5;>= 4 p/u;> 5 t/u
+3;4;styrke;nei;nei;32;mann;1;singel;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+2;2;begge like mye;nei;nei;27;kvinne;2;singel;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+2;4;kondisjon;nei;nei;21;kvinne;0;singel;mindre bra;bra;1;2-3 p/u;>3 til 5 t/u
+3;3;styrke;ja;nei;41;mann;7;singel;bra;bra;2;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;ja;nei;21;kvinne;3;kjæreste;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+2;4;styrke;nei;nei;21;kvinne;0;singel;bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+3;3;styrke;ja;nei;27;kvinne;0;kjæreste;svært bra;mindre bra;4;2-3 p/u;>1 til 3 t/u
+2;2;begge like mye;nei;nei;21;kvinne;0;kjæreste;bra;bra;7;2-3 p/u;>1 til 3 t/u
+4;8;begge like mye;ja;nei;23;kvinne;3;sambo/gift;bra;brukbar;6;>= 4 p/u;> 5 t/u
+1;1;styrke;nei;nei;23;mann;2;singel;bra;brukbar;7;0-1 p/u;0 til 1 t/u
+3;4;begge like mye;ja;nei;23;kvinne;0;singel;bra;bra;1;2-3 p/u;>3 til 5 t/u
+4;3;kondisjon;ja;nei;21;kvinne;3;kjæreste;bra;brukbar;3;>= 4 p/u;>1 til 3 t/u
+3;5;styrke;ja;nei;22;kvinne;2;singel;mindre bra;mindre bra;9;2-3 p/u;>3 til 5 t/u
+4;5;styrke;ja;nei;21;kvinne;1;kjæreste;bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+5;7;styrke;ja;nei;23;mann;3;sambo/gift;bra;bra;4;>= 4 p/u;> 5 t/u
+6;10;begge like mye;ja;ja;27;mann;0;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+3;5;styrke;ja;nei;27;kvinne;2;kjæreste;bra;bra;3;2-3 p/u;>3 til 5 t/u
+2;2;begge like mye;ja;nei;21;kvinne;5;kjæreste;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+3;4;kondisjon;nei;nei;22;kvinne;40;sambo/gift;mindre bra;bra;9;2-3 p/u;>3 til 5 t/u
+2;2;styrke;ja;ja;21;mann;0;kjæreste;bra;mindre bra;8;2-3 p/u;>1 til 3 t/u
+2;2;styrke;nei;nei;29;kvinne;2;singel;mindre bra;brukbar;2;2-3 p/u;>1 til 3 t/u
+1;1;styrke;nei;nei;24;kvinne;1;kjæreste;mindre bra;bra;5;0-1 p/u;0 til 1 t/u
+4;10;styrke;ja;nei;23;kvinne;15;singel;bra;bra;7;>= 4 p/u;> 5 t/u
+2;4;kondisjon;ja;nei;21;kvinne;0;sambo/gift;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+5;10;begge like mye;ja;ja;29;kvinne;16;sambo/gift;bra;mindre bra;7;>= 4 p/u;> 5 t/u
+3;5;begge like mye;ja;nei;25;kvinne;3;sambo/gift;bra;brukbar;9;2-3 p/u;>3 til 5 t/u
+2;3;begge like mye;ja;nei;22;kvinne;2;singel;bra;bra;8;2-3 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;25;kvinne;61;sambo/gift;mindre bra;bra;3;0-1 p/u;0 til 1 t/u
+4;8;styrke;ja;nei;22;kvinne;1;singel;bra;bra;1;>= 4 p/u;> 5 t/u
+4;6;begge like mye;ja;ja;21;mann;1;singel;bra;bra;10;>= 4 p/u;> 5 t/u
+2;3;kondisjon;ja;nei;27;kvinne;2;kjæreste;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+2;4;kondisjon;ja;nei;24;kvinne;2;singel;bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+5;7;kondisjon;ja;ja;22;kvinne;2;kjæreste;svært bra;bra;3;>= 4 p/u;> 5 t/u
+3;5;kondisjon;ja;nei;26;kvinne;2;singel;bra;bra;4;2-3 p/u;>3 til 5 t/u
+4;2;begge like mye;nei;nei;23;kvinne;7;singel;svært bra;bra;4;>= 4 p/u;>1 til 3 t/u
+3;4;begge like mye;ja;ja;23;mann;2;sambo/gift;bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+4;4;kondisjon;nei;ja;24;mann;1;singel;svært bra;brukbar;10;>= 4 p/u;>3 til 5 t/u
+2;3;styrke;nei;nei;25;kvinne;2;singel;bra;bra;1;2-3 p/u;>1 til 3 t/u
+6;12;styrke;ja;nei;25;mann;4;kjæreste;bra;brukbar;8;>= 4 p/u;> 5 t/u
+4;5;styrke;ja;nei;24;kvinne;3;singel;bra;brukbar;1;>= 4 p/u;>3 til 5 t/u
+4;5;begge like mye;ja;nei;22;kvinne;3;sambo/gift;bra;brukbar;9;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;21;kvinne;3;sambo/gift;mindre bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+2;3;begge like mye;ja;nei;21;mann;2;singel;mindre bra;bra;2;2-3 p/u;>1 til 3 t/u
+3;6;begge like mye;ja;nei;23;mann;1;singel;bra;brukbar;8;2-3 p/u;> 5 t/u
+3;2;begge like mye;nei;nei;25;kvinne;0;singel;mindre bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+4;6;kondisjon;nei;nei;27;mann;2;sambo/gift;mindre bra;brukbar;9;>= 4 p/u;> 5 t/u
+4;7;styrke;ja;nei;19;kvinne;5;singel;mindre bra;brukbar;4;>= 4 p/u;> 5 t/u
+4;6;begge like mye;nei;ja;20;kvinne;3;singel;bra;brukbar;7;>= 4 p/u;> 5 t/u
+2;2;begge like mye;ja;nei;21;kvinne;0;kjæreste;svært bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;ja;nei;23;mann;0;kjæreste;svært bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+4;7;begge like mye;ja;nei;23;kvinne;1;kjæreste;bra;mindre bra;2;>= 4 p/u;> 5 t/u
+2;3;kondisjon;ja;nei;23;kvinne;1;singel;bra;mindre bra;5;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;nei;ja;24;mann;2;singel;mindre bra;mindre bra;8;2-3 p/u;>1 til 3 t/u
+3;5;begge like mye;nei;ja;23;kvinne;2;singel;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+6;12;begge like mye;ja;ja;23;kvinne;2;sambo/gift;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+2;2;styrke;ja;nei;24;kvinne;1;singel;mindre bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+3;3;begge like mye;nei;nei;23;kvinne;2;kjæreste;mindre bra;bra;8;2-3 p/u;>1 til 3 t/u
+1;2;kondisjon;ja;nei;27;kvinne;7;kjæreste;bra;bra;7;0-1 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;23;kvinne;2;sambo/gift;bra;bra;7;0-1 p/u;0 til 1 t/u
+1;2;begge like mye;nei;nei;23;kvinne;2;singel;bra;bra;5;0-1 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;20;mann;1;singel;mindre bra;bra;7;0-1 p/u;0 til 1 t/u
+3;2;kondisjon;nei;nei;20;mann;1;singel;mindre bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+3;4;styrke;ja;nei;23;mann;0;singel;mindre bra;brukbar;2;2-3 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;24;mann;1;kjæreste;bra;bra;5;2-3 p/u;>3 til 5 t/u
+0;0;styrke;nei;nei;26;kvinne;3;sambo/gift;bra;mindre bra;8;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;27;mann;1;singel;mindre bra;bra;6;0-1 p/u;0 til 1 t/u
+3;6;begge like mye;ja;nei;26;kvinne;2;singel;svært bra;brukbar;8;2-3 p/u;> 5 t/u
+3;3;kondisjon;ja;nei;24;kvinne;7;singel;bra;bra;6;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;ja;nei;21;kvinne;5;singel;mindre bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;nei;nei;22;kvinne;60;singel;bra;bra;7;2-3 p/u;>3 til 5 t/u
+2;4;styrke;ja;ja;21;kvinne;5;singel;mindre bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;21;kvinne;5;kjæreste;bra;bra;7;2-3 p/u;>3 til 5 t/u
+6;12;styrke;ja;nei;21;kvinne;3;singel;bra;brukbar;4;>= 4 p/u;> 5 t/u
+0;0;begge like mye;nei;ja;22;mann;3;kjæreste;mindre bra;brukbar;10;0-1 p/u;0 til 1 t/u
+3;8;styrke;ja;ja;23;mann;3;kjæreste;svært bra;brukbar;10;2-3 p/u;> 5 t/u
+3;5;begge like mye;ja;nei;23;mann;1;singel;svært bra;bra;5;2-3 p/u;>3 til 5 t/u
+0;0;styrke;nei;nei;26;mann;2;singel;mindre bra;brukbar;10;0-1 p/u;0 til 1 t/u
+1;2;begge like mye;nei;ja;24;kvinne;3;singel;mindre bra;bra;6;0-1 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;21;kvinne;1;singel;bra;bra;10;0-1 p/u;0 til 1 t/u
+5;9;styrke;nei;ja;20;kvinne;1;kjæreste;bra;mindre bra;9;>= 4 p/u;> 5 t/u
+3;5;styrke;nei;nei;22;kvinne;1;singel;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+0;0;kondisjon;nei;nei;22;kvinne;1;kjæreste;mindre bra;mindre bra;8;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;28;mann;25;sambo/gift;mindre bra;mindre bra;4;0-1 p/u;0 til 1 t/u
+2;4;styrke;nei;nei;24;kvinne;3;sambo/gift;mindre bra;brukbar;1;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;ja;nei;22;mann;1;singel;mindre bra;mindre bra;6;2-3 p/u;>3 til 5 t/u
+2;2;begge like mye;ja;nei;26;mann;0;kjæreste;mindre bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+5;2;styrke;ja;nei;21;mann;4;singel;mindre bra;brukbar;10;>= 4 p/u;>1 til 3 t/u
+4;10;styrke;ja;nei;22;mann;1;sambo/gift;bra;bra;8;>= 4 p/u;> 5 t/u
+1;3;begge like mye;nei;nei;26;mann;0;singel;bra;brukbar;10;0-1 p/u;>1 til 3 t/u
+7;12;begge like mye;ja;nei;23;mann;3;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+5;10;kondisjon;ja;nei;23;kvinne;0;singel;svært bra;mindre bra;7;>= 4 p/u;> 5 t/u
+2;2;begge like mye;ja;nei;25;kvinne;3;singel;bra;mindre bra;5;2-3 p/u;>1 til 3 t/u
+4;5;begge like mye;ja;nei;23;kvinne;2;kjæreste;bra;brukbar;10;>= 4 p/u;>3 til 5 t/u
+4;6;begge like mye;ja;nei;22;kvinne;2;kjæreste;mindre bra;bra;1;>= 4 p/u;> 5 t/u
+4;6;kondisjon;nei;ja;22;kvinne;8;singel;bra;brukbar;7;>= 4 p/u;> 5 t/u
+1;2;begge like mye;ja;nei;22;kvinne;2;kjæreste;bra;brukbar;2;0-1 p/u;>1 til 3 t/u
+3;2;begge like mye;nei;ja;23;mann;5;singel;bra;mindre bra;1;2-3 p/u;>1 til 3 t/u
+4;9;styrke;ja;nei;21;kvinne;0;singel;mindre bra;bra;10;>= 4 p/u;> 5 t/u
+4;7;begge like mye;nei;nei;20;mann;7;kjæreste;bra;bra;7;>= 4 p/u;> 5 t/u
+3;3;styrke;nei;nei;21;kvinne;2;singel;bra;bra;6;2-3 p/u;>1 til 3 t/u
+4;5;styrke;nei;nei;22;kvinne;2;sambo/gift;bra;bra;2;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;nei;nei;21;kvinne;1;kjæreste;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;ja;25;mann;20;singel;bra;bra;2;2-3 p/u;>3 til 5 t/u
+3;5;kondisjon;nei;nei;22;mann;6;sambo/gift;bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;ja;22;mann;1;kjæreste;bra;bra;10;2-3 p/u;>3 til 5 t/u
+4;8;styrke;ja;nei;27;mann;5;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+4;5;begge like mye;nei;nei;23;kvinne;3;sambo/gift;bra;brukbar;9;>= 4 p/u;>3 til 5 t/u
+4;7;styrke;ja;ja;32;mann;2;singel;bra;bra;7;>= 4 p/u;> 5 t/u
+2;3;styrke;ja;nei;27;mann;2;sambo/gift;mindre bra;mindre bra;10;2-3 p/u;>1 til 3 t/u
+5;9;styrke;ja;nei;24;mann;1;kjæreste;mindre bra;brukbar;5;>= 4 p/u;> 5 t/u
+3;4;begge like mye;nei;nei;26;kvinne;75;sambo/gift;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+3;5;kondisjon;nei;nei;26;kvinne;3;kjæreste;svært bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+1;2;kondisjon;nei;ja;22;mann;0;kjæreste;mindre bra;mindre bra;9;0-1 p/u;>1 til 3 t/u
+3;5;styrke;ja;nei;24;mann;0;singel;bra;mindre bra;7;2-3 p/u;>3 til 5 t/u
+1;1;styrke;ja;nei;23;mann;0;singel;mindre bra;brukbar;8;0-1 p/u;0 til 1 t/u
+4;6;begge like mye;ja;nei;22;kvinne;0;singel;bra;brukbar;10;>= 4 p/u;> 5 t/u
+4;4;kondisjon;nei;nei;20;kvinne;3;kjæreste;mindre bra;bra;6;>= 4 p/u;>3 til 5 t/u
+4;4;begge like mye;ja;nei;20;kvinne;3;kjæreste;bra;brukbar;5;>= 4 p/u;>3 til 5 t/u
+4;8;styrke;ja;nei;23;mann;3;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+7;10;kondisjon;ja;nei;25;mann;182;kjæreste;bra;brukbar;10;>= 4 p/u;> 5 t/u
+7;14;kondisjon;ja;ja;21;mann;1;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+5;2;styrke;ja;nei;22;mann;3;kjæreste;bra;brukbar;4;>= 4 p/u;>1 til 3 t/u
+4;6;styrke;ja;ja;23;mann;0;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+1;1;kondisjon;nei;nei;24;mann;3;singel;mindre bra;brukbar;10;0-1 p/u;0 til 1 t/u
+2;4;styrke;ja;nei;20;kvinne;0;singel;mindre bra;bra;10;2-3 p/u;>3 til 5 t/u
+2;3;begge like mye;nei;nei;20;kvinne;10;sambo/gift;bra;bra;5;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;ja;nei;23;kvinne;3;singel;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+2;3;styrke;nei;nei;23;kvinne;4;singel;bra;bra;7;2-3 p/u;>1 til 3 t/u
+3;3;begge like mye;ja;ja;22;kvinne;0;singel;mindre bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;nei;nei;21;mann;1;singel;svært bra;bra;7;2-3 p/u;>3 til 5 t/u
+3;1;styrke;nei;nei;22;mann;2;sambo/gift;bra;brukbar;10;2-3 p/u;0 til 1 t/u
+3;3;styrke;nei;ja;21;mann;2;sambo/gift;svært bra;bra;7;2-3 p/u;>1 til 3 t/u
+2;3;kondisjon;nei;ja;22;kvinne;2;kjæreste;mindre bra;bra;8;2-3 p/u;>1 til 3 t/u
+4;4;begge like mye;ja;nei;20;kvinne;0;kjæreste;mindre bra;brukbar;4;>= 4 p/u;>3 til 5 t/u
+3;6;kondisjon;ja;nei;23;kvinne;4;kjæreste;bra;brukbar;7;2-3 p/u;> 5 t/u
+3;5;styrke;ja;nei;20;mann;1;singel;mindre bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+5;10;styrke;ja;nei;26;mann;2;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+4;5;styrke;ja;nei;21;kvinne;0;singel;svært bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+2;4;begge like mye;ja;nei;21;kvinne;2;singel;mindre bra;brukbar;1;2-3 p/u;>3 til 5 t/u
+1;1;kondisjon;nei;nei;20;kvinne;3;singel;svært bra;brukbar;10;0-1 p/u;0 til 1 t/u
+1;2;kondisjon;nei;nei;21;kvinne;0;kjæreste;mindre bra;bra;9;0-1 p/u;>1 til 3 t/u
+6;7;begge like mye;ja;nei;20;kvinne;1;kjæreste;svært bra;brukbar;7;>= 4 p/u;> 5 t/u
+3;3;styrke;nei;nei;22;kvinne;2;kjæreste;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+4;6;styrke;nei;nei;22;kvinne;2;sambo/gift;bra;bra;6;>= 4 p/u;> 5 t/u
+1;2;styrke;nei;nei;19;kvinne;5;sambo/gift;bra;bra;2;0-1 p/u;>1 til 3 t/u
+3;5;begge like mye;ja;ja;30;mann;1;singel;bra;bra;10;2-3 p/u;>3 til 5 t/u
+2;5;begge like mye;ja;nei;20;kvinne;3;kjæreste;mindre bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+2;2;begge like mye;ja;nei;23;kvinne;3;kjæreste;bra;brukbar;2;2-3 p/u;>1 til 3 t/u
+2;2;begge like mye;nei;nei;23;kvinne;3;kjæreste;bra;mindre bra;10;2-3 p/u;>1 til 3 t/u
+3;6;begge like mye;ja;nei;19;kvinne;4;kjæreste;svært bra;brukbar;10;2-3 p/u;> 5 t/u
+1;2;begge like mye;nei;nei;22;kvinne;45;singel;mindre bra;brukbar;6;0-1 p/u;>1 til 3 t/u
+3;5;begge like mye;ja;nei;20;mann;0;singel;mindre bra;bra;6;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;ja;20;kvinne;0;kjæreste;svært bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+5;5;begge like mye;ja;nei;19;kvinne;7;kjæreste;svært bra;bra;10;>= 4 p/u;>3 til 5 t/u
+3;7;begge like mye;ja;nei;20;kvinne;0;singel;bra;brukbar;8;2-3 p/u;> 5 t/u
+2;4;kondisjon;nei;nei;19;kvinne;2;singel;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+5;3;begge like mye;ja;nei;20;kvinne;0;kjæreste;bra;bra;9;>= 4 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;21;kvinne;2;kjæreste;bra;brukbar;6;0-1 p/u;0 til 1 t/u
+4;6;begge like mye;ja;nei;22;kvinne;0;kjæreste;bra;brukbar;1;>= 4 p/u;> 5 t/u
+1;1;begge like mye;ja;ja;19;kvinne;0;kjæreste;mindre bra;bra;10;0-1 p/u;0 til 1 t/u
+3;6;begge like mye;nei;ja;20;kvinne;45;sambo/gift;bra;bra;8;2-3 p/u;> 5 t/u
+3;3;kondisjon;nei;nei;21;kvinne;3;singel;mindre bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+2;2;styrke;ja;nei;20;kvinne;3;kjæreste;mindre bra;mindre bra;10;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;ja;nei;29;kvinne;3;sambo/gift;mindre bra;mindre bra;10;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;24;kvinne;3;singel;mindre bra;mindre bra;1;0-1 p/u;0 til 1 t/u
+3;3;begge like mye;nei;ja;23;kvinne;2;singel;bra;mindre bra;6;2-3 p/u;>1 til 3 t/u
+5;11;kondisjon;ja;nei;20;mann;2;kjæreste;svært bra;bra;7;>= 4 p/u;> 5 t/u
+8;13;kondisjon;ja;ja;25;mann;1;singel;svært bra;brukbar;7;>= 4 p/u;> 5 t/u
+1;1;begge like mye;nei;nei;22;kvinne;5;sambo/gift;mindre bra;brukbar;1;0-1 p/u;0 til 1 t/u
+1;2;begge like mye;nei;nei;19;kvinne;30;kjæreste;bra;brukbar;8;0-1 p/u;>1 til 3 t/u
+4;6;styrke;ja;nei;20;kvinne;3;kjæreste;mindre bra;bra;1;>= 4 p/u;> 5 t/u
+4;5;styrke;ja;nei;28;mann;2;kjæreste;bra;brukbar;9;>= 4 p/u;>3 til 5 t/u
+0;0;styrke;nei;nei;37;kvinne;100;sambo/gift;mindre bra;brukbar;3;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;21;kvinne;5;kjæreste;bra;bra;9;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;ja;20;kvinne;5;singel;bra;bra;6;0-1 p/u;0 til 1 t/u
+2;3;styrke;nei;nei;40;kvinne;144;sambo/gift;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+3;5;begge like mye;nei;nei;21;mann;10;singel;mindre bra;mindre bra;8;2-3 p/u;>3 til 5 t/u
+5;6;begge like mye;ja;nei;24;kvinne;8;sambo/gift;bra;brukbar;10;>= 4 p/u;> 5 t/u
+4;6;styrke;ja;nei;20;mann;3;singel;mindre bra;mindre bra;10;>= 4 p/u;> 5 t/u
+5;9;styrke;nei;nei;21;mann;45;kjæreste;bra;bra;10;>= 4 p/u;> 5 t/u
+3;3;begge like mye;ja;nei;29;mann;2;sambo/gift;bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+0;0;styrke;nei;ja;22;mann;2;singel;mindre bra;brukbar;4;0-1 p/u;0 til 1 t/u
+4;10;styrke;ja;nei;22;mann;3;singel;bra;brukbar;2;>= 4 p/u;> 5 t/u
+4;6;styrke;ja;nei;20;kvinne;3;singel;bra;brukbar;3;>= 4 p/u;> 5 t/u
+3;6;begge like mye;nei;nei;21;kvinne;6;singel;bra;brukbar;10;2-3 p/u;> 5 t/u
+1;2;styrke;nei;ja;22;kvinne;18;sambo/gift;bra;bra;2;0-1 p/u;>1 til 3 t/u
+4;7;begge like mye;nei;ja;24;kvinne;2;kjæreste;bra;bra;10;>= 4 p/u;> 5 t/u
+3;4;kondisjon;nei;nei;21;kvinne;2;singel;bra;bra;6;2-3 p/u;>3 til 5 t/u
+2;3;kondisjon;nei;nei;22;kvinne;60;singel;bra;brukbar;4;2-3 p/u;>1 til 3 t/u
+3;2;kondisjon;nei;nei;20;mann;2;singel;mindre bra;brukbar;6;2-3 p/u;>1 til 3 t/u
+3;7;styrke;ja;nei;23;kvinne;22;sambo/gift;mindre bra;brukbar;4;2-3 p/u;> 5 t/u
+6;10;kondisjon;ja;nei;26;kvinne;2;sambo/gift;svært bra;bra;9;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;21;kvinne;0;kjæreste;mindre bra;brukbar;9;0-1 p/u;0 til 1 t/u
+1;2;kondisjon;nei;nei;21;kvinne;0;kjæreste;bra;brukbar;9;0-1 p/u;>1 til 3 t/u
+6;10;kondisjon;nei;ja;27;mann;65;sambo/gift;bra;bra;10;>= 4 p/u;> 5 t/u
+2;3;styrke;ja;nei;23;kvinne;3;kjæreste;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+2;2;styrke;nei;nei;21;kvinne;104;sambo/gift;mindre bra;bra;9;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;nei;ja;19;kvinne;3;kjæreste;bra;bra;10;2-3 p/u;>1 til 3 t/u
+0;0;kondisjon;nei;nei;19;kvinne;4;singel;mindre bra;brukbar;5;0-1 p/u;0 til 1 t/u
+5;8;kondisjon;ja;nei;19;mann;2;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;20;mann;0;singel;bra;bra;10;0-1 p/u;0 til 1 t/u
+0;5;begge like mye;nei;nei;20;mann;1;singel;mindre bra;bra;7;0-1 p/u;>3 til 5 t/u
+5;10;begge like mye;ja;nei;23;mann;0;kjæreste;bra;bra;5;>= 4 p/u;> 5 t/u
+4;4;styrke;nei;nei;22;mann;9;singel;bra;bra;2;>= 4 p/u;>3 til 5 t/u
+2;4;begge like mye;nei;ja;19;mann;1;kjæreste;bra;bra;10;2-3 p/u;>3 til 5 t/u
+4;5;kondisjon;nei;ja;19;mann;3;singel;bra;bra;9;>= 4 p/u;>3 til 5 t/u
+2;2;begge like mye;nei;nei;20;kvinne;1;kjæreste;bra;bra;8;2-3 p/u;>1 til 3 t/u
+4;7;styrke;ja;nei;24;mann;4;singel;bra;brukbar;5;>= 4 p/u;> 5 t/u
+7;12;begge like mye;nei;ja;36;mann;0;sambo/gift;mindre bra;bra;10;>= 4 p/u;> 5 t/u
+5;1;styrke;nei;nei;25;kvinne;5;kjæreste;bra;brukbar;5;>= 4 p/u;0 til 1 t/u
+4;8;begge like mye;ja;nei;21;mann;2;singel;mindre bra;mindre bra;8;>= 4 p/u;> 5 t/u
+4;6;kondisjon;ja;ja;22;kvinne;4;kjæreste;bra;bra;10;>= 4 p/u;> 5 t/u
+3;5;begge like mye;nei;ja;20;kvinne;3;singel;mindre bra;bra;5;2-3 p/u;>3 til 5 t/u
+0;0;begge like mye;nei;nei;19;kvinne;2;singel;bra;bra;10;0-1 p/u;0 til 1 t/u
+3;6;begge like mye;ja;nei;20;kvinne;4;kjæreste;bra;mindre bra;8;2-3 p/u;> 5 t/u
+6;10;styrke;ja;nei;20;mann;2;singel;bra;bra;9;>= 4 p/u;> 5 t/u
+6;16;begge like mye;ja;ja;19;mann;3;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+4;4;begge like mye;ja;nei;22;kvinne;0;kjæreste;svært bra;bra;10;>= 4 p/u;>3 til 5 t/u
+4;4;styrke;ja;nei;23;kvinne;3;kjæreste;svært bra;brukbar;1;>= 4 p/u;>3 til 5 t/u
+5;8;begge like mye;nei;ja;19;kvinne;40;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+4;6;begge like mye;nei;nei;24;kvinne;2;singel;bra;brukbar;10;>= 4 p/u;> 5 t/u
+5;15;begge like mye;ja;nei;20;kvinne;5;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+4;7;kondisjon;ja;nei;20;kvinne;10;kjæreste;mindre bra;brukbar;9;>= 4 p/u;> 5 t/u
+8;15;begge like mye;ja;nei;19;kvinne;2;singel;bra;bra;8;>= 4 p/u;> 5 t/u
+3;3;kondisjon;ja;nei;20;kvinne;0;kjæreste;bra;bra;3;2-3 p/u;>1 til 3 t/u
+2;4;styrke;nei;nei;25;kvinne;17;sambo/gift;bra;bra;7;2-3 p/u;>3 til 5 t/u
+4;7;begge like mye;nei;ja;21;mann;4;singel;mindre bra;bra;8;>= 4 p/u;> 5 t/u
+8;16;kondisjon;ja;ja;20;kvinne;7;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+3;6;kondisjon;ja;nei;20;kvinne;2;singel;mindre bra;brukbar;10;2-3 p/u;> 5 t/u
+3;6;begge like mye;nei;nei;21;kvinne;3;sambo/gift;mindre bra;mindre bra;10;2-3 p/u;> 5 t/u
+6;8;styrke;nei;nei;20;mann;3;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+5;14;begge like mye;ja;ja;23;mann;0;kjæreste;bra;brukbar;10;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;20;kvinne;1;singel;mindre bra;brukbar;4;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;20;kvinne;3;singel;mindre bra;bra;1;0-1 p/u;0 til 1 t/u
+4;4;styrke;ja;nei;20;mann;1;singel;bra;bra;10;>= 4 p/u;>3 til 5 t/u
+4;10;begge like mye;ja;nei;20;mann;1;kjæreste;bra;brukbar;8;>= 4 p/u;> 5 t/u
+3;5;begge like mye;ja;nei;19;mann;1;singel;bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+3;4;kondisjon;nei;nei;20;kvinne;15;singel;bra;brukbar;1;2-3 p/u;>3 til 5 t/u
+0;0;kondisjon;nei;nei;24;kvinne;5;kjæreste;mindre bra;brukbar;2;0-1 p/u;0 til 1 t/u
+0;0;styrke;nei;nei;23;kvinne;3;singel;mindre bra;bra;1;0-1 p/u;0 til 1 t/u
+5;6;styrke;ja;nei;23;mann;3;kjæreste;mindre bra;mindre bra;9;>= 4 p/u;> 5 t/u
+7;9;begge like mye;ja;nei;22;mann;1;singel;svært bra;bra;9;>= 4 p/u;> 5 t/u
+5;9;styrke;ja;nei;21;mann;2;singel;svært bra;brukbar;7;>= 4 p/u;> 5 t/u
+5;10;styrke;ja;nei;24;mann;1;singel;bra;mindre bra;9;>= 4 p/u;> 5 t/u
+1;2;kondisjon;nei;nei;24;mann;0;singel;mindre bra;bra;9;0-1 p/u;>1 til 3 t/u
+3;5;styrke;nei;nei;22;kvinne;4;kjæreste;mindre bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+2;4;begge like mye;nei;nei;20;kvinne;67;sambo/gift;mindre bra;bra;10;2-3 p/u;>3 til 5 t/u
+3;3;styrke;nei;ja;24;mann;4;singel;svært bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+3;6;styrke;nei;ja;20;kvinne;2;kjæreste;bra;brukbar;10;2-3 p/u;> 5 t/u
+2;3;begge like mye;nei;nei;30;kvinne;45;singel;mindre bra;brukbar;6;2-3 p/u;>1 til 3 t/u
+2;3;styrke;nei;ja;20;kvinne;1;singel;bra;bra;5;2-3 p/u;>1 til 3 t/u
+7;15;kondisjon;ja;ja;21;mann;1;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+8;12;begge like mye;ja;ja;21;mann;1;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+2;3;styrke;nei;ja;33;kvinne;80;sambo/gift;svært bra;bra;9;2-3 p/u;>1 til 3 t/u
+2;4;begge like mye;nei;ja;24;mann;6;singel;bra;mindre bra;4;2-3 p/u;>3 til 5 t/u
+3;10;begge like mye;nei;ja;19;mann;1;kjæreste;bra;bra;10;2-3 p/u;> 5 t/u
+2;3;begge like mye;nei;ja;29;mann;2;kjæreste;svært bra;bra;10;2-3 p/u;>1 til 3 t/u
+3;6;begge like mye;ja;nei;21;mann;4;kjæreste;bra;bra;10;2-3 p/u;> 5 t/u
+2;2;styrke;nei;nei;21;kvinne;15;singel;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;nei;nei;23;mann;2;singel;mindre bra;mindre bra;1;2-3 p/u;>1 til 3 t/u
+4;8;begge like mye;nei;nei;22;mann;1;kjæreste;bra;brukbar;7;>= 4 p/u;> 5 t/u
+4;6;begge like mye;nei;nei;20;kvinne;7;kjæreste;bra;mindre bra;8;>= 4 p/u;> 5 t/u
+2;3;kondisjon;nei;nei;20;kvinne;3;kjæreste;bra;bra;8;2-3 p/u;>1 til 3 t/u
+2;2;kondisjon;ja;nei;38;kvinne;3;sambo/gift;bra;mindre bra;8;2-3 p/u;>1 til 3 t/u
+2;2;begge like mye;ja;nei;24;kvinne;1;kjæreste;bra;mindre bra;9;2-3 p/u;>1 til 3 t/u
+4;5;styrke;nei;nei;22;kvinne;1;sambo/gift;bra;bra;1;>= 4 p/u;>3 til 5 t/u
+5;9;kondisjon;nei;ja;19;kvinne;1;sambo/gift;svært bra;mindre bra;10;>= 4 p/u;> 5 t/u
+5;7;begge like mye;ja;nei;21;kvinne;2;singel;svært bra;bra;6;>= 4 p/u;> 5 t/u
+4;5;begge like mye;nei;nei;20;mann;5;kjæreste;bra;bra;8;>= 4 p/u;>3 til 5 t/u
+7;7;begge like mye;nei;nei;20;kvinne;3;singel;mindre bra;brukbar;10;>= 4 p/u;> 5 t/u
+1;3;begge like mye;ja;nei;22;mann;1;kjæreste;mindre bra;bra;5;0-1 p/u;>1 til 3 t/u
+2;4;begge like mye;nei;ja;21;mann;2;singel;bra;brukbar;9;2-3 p/u;>3 til 5 t/u
+1;1;begge like mye;nei;ja;20;mann;0;kjæreste;svært bra;bra;7;0-1 p/u;0 til 1 t/u
+5;10;styrke;ja;nei;23;kvinne;2;kjæreste;bra;brukbar;10;>= 4 p/u;> 5 t/u
+5;5;styrke;nei;nei;21;mann;1;singel;bra;bra;8;>= 4 p/u;>3 til 5 t/u
+8;14;kondisjon;ja;ja;21;mann;3;singel;svært bra;mindre bra;10;>= 4 p/u;> 5 t/u
+8;16;styrke;nei;ja;20;mann;5;kjæreste;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+5;6;kondisjon;nei;nei;23;kvinne;0;kjæreste;svært bra;bra;2;>= 4 p/u;> 5 t/u
+3;4;styrke;ja;nei;24;kvinne;0;singel;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+4;5;begge like mye;ja;nei;22;kvinne;2;kjæreste;svært bra;bra;8;>= 4 p/u;>3 til 5 t/u
+2;3;styrke;ja;nei;21;kvinne;3;kjæreste;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+3;4;styrke;ja;nei;22;mann;3;singel;mindre bra;bra;7;2-3 p/u;>3 til 5 t/u
+0;0;kondisjon;nei;nei;22;kvinne;2;kjæreste;bra;brukbar;8;0-1 p/u;0 til 1 t/u
+7;10;kondisjon;ja;ja;24;mann;1;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+3;3;styrke;ja;nei;34;mann;6;singel;bra;bra;2;2-3 p/u;>1 til 3 t/u
+2;4;begge like mye;nei;nei;30;kvinne;13;sambo/gift;bra;mindre bra;7;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;nei;20;kvinne;5;kjæreste;mindre bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+3;4;kondisjon;nei;nei;22;kvinne;60;singel;mindre bra;bra;10;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;ja;nei;21;kvinne;5;singel;mindre bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;21;kvinne;3;kjæreste;mindre bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+2;3;kondisjon;nei;ja;25;mann;3;singel;bra;bra;10;2-3 p/u;>1 til 3 t/u
+4;7;begge like mye;nei;ja;22;kvinne;1;singel;svært bra;brukbar;8;>= 4 p/u;> 5 t/u
+4;3;begge like mye;nei;nei;24;kvinne;0;singel;bra;brukbar;8;>= 4 p/u;>1 til 3 t/u
+4;3;begge like mye;ja;nei;22;kvinne;1;singel;svært bra;bra;8;>= 4 p/u;>1 til 3 t/u
+5;10;begge like mye;ja;nei;20;kvinne;2;kjæreste;svært bra;bra;3;>= 4 p/u;> 5 t/u
+5;5;kondisjon;nei;nei;22;kvinne;1;singel;bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+2;3;begge like mye;ja;nei;21;kvinne;1;kjæreste;bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+5;8;styrke;ja;nei;20;kvinne;3;singel;svært bra;brukbar;3;>= 4 p/u;> 5 t/u
+4;5;begge like mye;nei;ja;24;mann;0;singel;bra;bra;9;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;22;kvinne;8;singel;bra;brukbar;4;2-3 p/u;>3 til 5 t/u
+3;5;styrke;nei;nei;23;kvinne;4;kjæreste;bra;brukbar;9;2-3 p/u;>3 til 5 t/u
+4;4;begge like mye;ja;nei;22;kvinne;6;kjæreste;bra;brukbar;4;>= 4 p/u;>3 til 5 t/u
+2;2;kondisjon;ja;nei;23;kvinne;6;singel;bra;brukbar;4;2-3 p/u;>1 til 3 t/u
+4;6;begge like mye;nei;ja;21;kvinne;2;kjæreste;bra;brukbar;8;>= 4 p/u;> 5 t/u
+3;5;styrke;nei;nei;30;mann;3;singel;bra;mindre bra;8;2-3 p/u;>3 til 5 t/u
+7;10;styrke;ja;ja;21;mann;0;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+0;0;begge like mye;nei;nei;23;kvinne;2;singel;svært bra;brukbar;5;0-1 p/u;0 til 1 t/u
+1;1;begge like mye;nei;nei;22;kvinne;15;sambo/gift;bra;bra;10;0-1 p/u;0 til 1 t/u
+1;2;styrke;ja;nei;31;kvinne;3;sambo/gift;svært bra;bra;1;0-1 p/u;>1 til 3 t/u
+6;8;styrke;nei;nei;21;mann;0;singel;bra;bra;7;>= 4 p/u;> 5 t/u
+3;3;begge like mye;nei;nei;23;kvinne;2;singel;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+2;2;styrke;ja;nei;22;mann;2;kjæreste;bra;brukbar;6;2-3 p/u;>1 til 3 t/u
+3;6;begge like mye;nei;nei;35;mann;30;kjæreste;svært bra;bra;7;2-3 p/u;> 5 t/u
+1;1;kondisjon;nei;nei;22;kvinne;10;singel;mindre bra;mindre bra;6;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;26;mann;1;singel;mindre bra;brukbar;4;0-1 p/u;0 til 1 t/u
+3;3;styrke;ja;nei;22;kvinne;1;sambo/gift;svært bra;brukbar;4;2-3 p/u;>1 til 3 t/u
+6;10;begge like mye;nei;nei;21;kvinne;30;kjæreste;bra;brukbar;3;>= 4 p/u;> 5 t/u
+3;5;begge like mye;ja;nei;20;kvinne;0;singel;bra;mindre bra;10;2-3 p/u;>3 til 5 t/u
+4;5;kondisjon;ja;nei;22;kvinne;2;singel;bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+3;3;kondisjon;ja;nei;23;kvinne;1;singel;bra;mindre bra;9;2-3 p/u;>1 til 3 t/u
+4;8;begge like mye;ja;nei;21;mann;1;kjæreste;bra;bra;3;>= 4 p/u;> 5 t/u
+3;2;styrke;ja;nei;22;mann;1;sambo/gift;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+4;5;begge like mye;ja;nei;21;kvinne;3;singel;bra;bra;6;>= 4 p/u;>3 til 5 t/u
+4;7;kondisjon;ja;nei;19;kvinne;3;singel;bra;brukbar;7;>= 4 p/u;> 5 t/u
+5;7;begge like mye;ja;nei;19;kvinne;1;singel;svært bra;bra;8;>= 4 p/u;> 5 t/u
+4;6;begge like mye;ja;nei;22;kvinne;5;singel;bra;brukbar;6;>= 4 p/u;> 5 t/u
+3;6;begge like mye;ja;nei;19;kvinne;6;singel;bra;brukbar;4;2-3 p/u;> 5 t/u
+3;5;begge like mye;ja;ja;19;kvinne;3;singel;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+2;5;begge like mye;ja;nei;19;kvinne;4;kjæreste;mindre bra;bra;8;2-3 p/u;>3 til 5 t/u
+1;1;begge like mye;nei;nei;19;kvinne;3;singel;mindre bra;brukbar;3;0-1 p/u;0 til 1 t/u
+3;3;styrke;nei;nei;20;kvinne;3;singel;mindre bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;ja;nei;23;kvinne;2;kjæreste;bra;bra;8;2-3 p/u;>3 til 5 t/u
+5;7;begge like mye;ja;nei;21;kvinne;3;singel;svært bra;brukbar;6;>= 4 p/u;> 5 t/u
+5;7;begge like mye;ja;nei;20;kvinne;3;singel;svært bra;brukbar;8;>= 4 p/u;> 5 t/u
+3;5;begge like mye;ja;nei;20;kvinne;2;singel;mindre bra;brukbar;1;2-3 p/u;>3 til 5 t/u
+4;6;styrke;nei;nei;29;kvinne;2;singel;bra;brukbar;8;>= 4 p/u;> 5 t/u
+3;3;begge like mye;nei;nei;21;kvinne;2;singel;mindre bra;bra;8;2-3 p/u;>1 til 3 t/u
+4;6;begge like mye;ja;nei;22;kvinne;5;singel;bra;brukbar;5;>= 4 p/u;> 5 t/u
+4;7;styrke;ja;nei;23;kvinne;3;singel;bra;brukbar;6;>= 4 p/u;> 5 t/u
+5;7;begge like mye;ja;nei;19;kvinne;2;kjæreste;bra;brukbar;9;>= 4 p/u;> 5 t/u
+1;1;kondisjon;ja;nei;22;kvinne;3;sambo/gift;mindre bra;bra;8;0-1 p/u;0 til 1 t/u
+1;1;kondisjon;ja;nei;20;kvinne;5;singel;mindre bra;mindre bra;9;0-1 p/u;0 til 1 t/u
+2;3;kondisjon;nei;nei;26;kvinne;3;singel;mindre bra;mindre bra;1;2-3 p/u;>1 til 3 t/u
+4;5;begge like mye;nei;nei;25;mann;2;singel;mindre bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+4;7;styrke;nei;nei;22;kvinne;190;singel;bra;brukbar;1;>= 4 p/u;> 5 t/u
+3;5;styrke;nei;nei;20;kvinne;0;sambo/gift;svært bra;bra;10;2-3 p/u;>3 til 5 t/u
+4;5;kondisjon;ja;ja;20;kvinne;0;singel;bra;brukbar;7;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;nei;nei;21;mann;1;singel;mindre bra;bra;4;2-3 p/u;>3 til 5 t/u
+4;5;styrke;ja;nei;21;mann;0;singel;bra;bra;7;>= 4 p/u;>3 til 5 t/u
+2;2;begge like mye;nei;ja;22;mann;1;kjæreste;mindre bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+1;2;kondisjon;nei;ja;22;mann;2;sambo/gift;mindre bra;brukbar;9;0-1 p/u;>1 til 3 t/u
+2;3;kondisjon;ja;nei;20;kvinne;2;sambo/gift;bra;bra;10;2-3 p/u;>1 til 3 t/u
+3;3;styrke;nei;nei;21;kvinne;3;kjæreste;bra;bra;3;2-3 p/u;>1 til 3 t/u
+2;4;kondisjon;nei;ja;20;mann;8;singel;mindre bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+4;7;styrke;ja;nei;19;mann;0;singel;mindre bra;mindre bra;6;>= 4 p/u;> 5 t/u
+2;3;kondisjon;nei;nei;24;mann;3;kjæreste;svært bra;bra;10;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;nei;ja;20;kvinne;0;singel;bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+4;6;begge like mye;ja;nei;21;kvinne;0;singel;bra;mindre bra;10;>= 4 p/u;> 5 t/u
+4;6;styrke;ja;nei;20;kvinne;3;singel;mindre bra;mindre bra;9;>= 4 p/u;> 5 t/u
+0;0;kondisjon;nei;nei;20;kvinne;2;singel;bra;bra;10;0-1 p/u;0 til 1 t/u
+2;3;styrke;ja;nei;20;kvinne;1;singel;bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+3;5;styrke;ja;nei;27;kvinne;2;kjæreste;bra;bra;3;2-3 p/u;>3 til 5 t/u
+2;3;kondisjon;nei;ja;23;kvinne;0;singel;mindre bra;bra;8;2-3 p/u;>1 til 3 t/u
+2;5;styrke;ja;nei;23;mann;2;kjæreste;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;ja;21;kvinne;3;kjæreste;svært bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+5;8;begge like mye;ja;ja;20;mann;2;singel;svært bra;bra;9;>= 4 p/u;> 5 t/u
+2;3;begge like mye;nei;nei;21;kvinne;4;sambo/gift;bra;bra;7;2-3 p/u;>1 til 3 t/u
+4;10;kondisjon;nei;ja;26;kvinne;2;singel;bra;bra;8;>= 4 p/u;> 5 t/u
+3;5;styrke;ja;nei;24;mann;5;kjæreste;mindre bra;bra;1;2-3 p/u;>3 til 5 t/u
+4;6;styrke;ja;nei;23;kvinne;3;singel;svært bra;brukbar;8;>= 4 p/u;> 5 t/u
+3;4;begge like mye;ja;nei;21;kvinne;0;singel;bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+3;3;styrke;ja;nei;22;kvinne;2;kjæreste;bra;bra;5;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;ja;nei;22;kvinne;5;singel;mindre bra;bra;10;0-1 p/u;0 til 1 t/u
+3;6;begge like mye;ja;nei;21;mann;1;kjæreste;bra;bra;10;2-3 p/u;> 5 t/u
+4;10;styrke;ja;nei;22;kvinne;1;sambo/gift;bra;brukbar;2;>= 4 p/u;> 5 t/u
+2;3;kondisjon;ja;nei;20;mann;0;singel;mindre bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+1;1;begge like mye;nei;nei;20;kvinne;1;sambo/gift;bra;bra;4;0-1 p/u;0 til 1 t/u
+3;3;kondisjon;ja;nei;21;mann;2;singel;mindre bra;bra;1;2-3 p/u;>1 til 3 t/u
+3;4;styrke;ja;nei;25;kvinne;2;singel;bra;bra;3;2-3 p/u;>3 til 5 t/u
+3;3;styrke;ja;nei;21;kvinne;3;kjæreste;bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+3;4;styrke;ja;nei;20;kvinne;0;kjæreste;mindre bra;mindre bra;10;2-3 p/u;>3 til 5 t/u
+3;5;kondisjon;ja;nei;25;kvinne;0;kjæreste;mindre bra;bra;2;2-3 p/u;>3 til 5 t/u
+4;6;styrke;ja;nei;24;kvinne;0;kjæreste;svært bra;bra;4;>= 4 p/u;> 5 t/u
+2;4;begge like mye;ja;nei;24;mann;1;singel;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+2;2;begge like mye;ja;nei;22;kvinne;1;sambo/gift;mindre bra;mindre bra;7;2-3 p/u;>1 til 3 t/u
+3;5;kondisjon;nei;nei;21;kvinne;1;kjæreste;mindre bra;brukbar;4;2-3 p/u;>3 til 5 t/u
+4;5;begge like mye;ja;nei;22;kvinne;2;sambo/gift;svært bra;bra;8;>= 4 p/u;>3 til 5 t/u
+4;6;styrke;ja;nei;22;kvinne;0;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+5;7;begge like mye;nei;ja;26;mann;2;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+3;4;begge like mye;nei;nei;23;kvinne;3;sambo/gift;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+2;2;kondisjon;nei;nei;21;kvinne;3;singel;mindre bra;brukbar;6;2-3 p/u;>1 til 3 t/u
+4;4;begge like mye;ja;nei;21;kvinne;0;singel;mindre bra;bra;7;>= 4 p/u;>3 til 5 t/u
+2;3;kondisjon;nei;ja;22;mann;0;kjæreste;bra;bra;1;2-3 p/u;>1 til 3 t/u
+2;2;begge like mye;nei;nei;21;mann;0;singel;bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+4;6;styrke;ja;nei;20;kvinne;0;kjæreste;bra;brukbar;6;>= 4 p/u;> 5 t/u
+3;4;styrke;nei;ja;22;kvinne;3;singel;svært bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+2;2;kondisjon;nei;ja;22;kvinne;3;singel;bra;bra;5;2-3 p/u;>1 til 3 t/u
+4;8;styrke;ja;ja;21;mann;0;singel;bra;brukbar;6;>= 4 p/u;> 5 t/u
+4;12;begge like mye;ja;nei;20;kvinne;0;kjæreste;svært bra;mindre bra;8;>= 4 p/u;> 5 t/u
+3;4;styrke;ja;nei;33;mann;2;kjæreste;bra;bra;8;2-3 p/u;>3 til 5 t/u
+3;4;kondisjon;nei;ja;43;kvinne;65;singel;bra;bra;6;2-3 p/u;>3 til 5 t/u
+6;10;kondisjon;nei;nei;22;mann;6;kjæreste;bra;brukbar;6;>= 4 p/u;> 5 t/u
+4;6;begge like mye;ja;nei;23;mann;1;singel;mindre bra;bra;6;>= 4 p/u;> 5 t/u
+5;10;begge like mye;ja;nei;26;mann;1;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+3;3;kondisjon;nei;nei;34;kvinne;2;sambo/gift;bra;brukbar;3;2-3 p/u;>1 til 3 t/u
+2;3;kondisjon;nei;ja;23;mann;0;singel;bra;brukbar;8;2-3 p/u;>1 til 3 t/u
+3;6;begge like mye;nei;nei;22;mann;1;singel;bra;brukbar;10;2-3 p/u;> 5 t/u
+2;3;styrke;ja;nei;24;mann;5;singel;mindre bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+1;3;kondisjon;nei;nei;23;mann;3;kjæreste;mindre bra;bra;5;0-1 p/u;>1 til 3 t/u
+2;4;begge like mye;nei;ja;28;mann;3;singel;mindre bra;brukbar;4;2-3 p/u;>3 til 5 t/u
+5;9;begge like mye;nei;nei;21;mann;1;singel;bra;mindre bra;9;>= 4 p/u;> 5 t/u
+6;10;styrke;nei;ja;22;kvinne;0;sambo/gift;mindre bra;bra;5;>= 4 p/u;> 5 t/u
+4;8;kondisjon;nei;ja;19;kvinne;3;kjæreste;bra;brukbar;10;>= 4 p/u;> 5 t/u
+7;9;begge like mye;nei;ja;20;kvinne;3;singel;svært bra;bra;9;>= 4 p/u;> 5 t/u
+4;5;begge like mye;nei;nei;23;kvinne;20;sambo/gift;mindre bra;brukbar;5;>= 4 p/u;>3 til 5 t/u
+3;5;styrke;nei;ja;29;mann;1;singel;mindre bra;mindre bra;9;2-3 p/u;>3 til 5 t/u
+3;4;styrke;nei;nei;22;kvinne;0;kjæreste;mindre bra;mindre bra;8;2-3 p/u;>3 til 5 t/u
+4;4;begge like mye;ja;nei;27;kvinne;3;sambo/gift;bra;bra;8;>= 4 p/u;>3 til 5 t/u
+4;2;styrke;nei;nei;22;kvinne;1;singel;bra;bra;1;>= 4 p/u;>1 til 3 t/u
+4;8;begge like mye;ja;nei;21;kvinne;6;kjæreste;bra;brukbar;3;>= 4 p/u;> 5 t/u
+3;2;kondisjon;nei;nei;30;kvinne;60;sambo/gift;bra;bra;5;2-3 p/u;>1 til 3 t/u
+1;2;kondisjon;nei;nei;19;kvinne;2;kjæreste;mindre bra;bra;2;0-1 p/u;>1 til 3 t/u
+0;0;kondisjon;nei;nei;21;kvinne;2;singel;bra;brukbar;8;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;24;kvinne;2;kjæreste;bra;mindre bra;8;0-1 p/u;0 til 1 t/u
+2;3;begge like mye;nei;nei;24;kvinne;56;sambo/gift;mindre bra;mindre bra;1;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;29;kvinne;40;sambo/gift;mindre bra;mindre bra;9;0-1 p/u;0 til 1 t/u
+2;4;styrke;ja;ja;25;mann;0;kjæreste;bra;mindre bra;10;2-3 p/u;>3 til 5 t/u
+5;7;styrke;ja;ja;23;mann;0;singel;svært bra;mindre bra;10;>= 4 p/u;> 5 t/u
+1;2;kondisjon;nei;nei;23;mann;5;singel;mindre bra;bra;5;0-1 p/u;>1 til 3 t/u
+3;5;styrke;ja;nei;20;kvinne;3;singel;bra;bra;8;2-3 p/u;>3 til 5 t/u
+2;4;begge like mye;ja;nei;21;kvinne;3;sambo/gift;bra;bra;1;2-3 p/u;>3 til 5 t/u
+5;10;begge like mye;nei;ja;23;mann;5;kjæreste;svært bra;brukbar;6;>= 4 p/u;> 5 t/u
+3;3;begge like mye;nei;nei;19;kvinne;2;kjæreste;bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+4;6;kondisjon;nei;nei;42;kvinne;16;singel;bra;brukbar;1;>= 4 p/u;> 5 t/u
+2;3;begge like mye;nei;nei;24;mann;3;singel;bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+2;3;kondisjon;nei;nei;36;kvinne;55;sambo/gift;mindre bra;bra;3;2-3 p/u;>1 til 3 t/u
+3;4;begge like mye;nei;nei;19;kvinne;2;kjæreste;bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+3;3;kondisjon;nei;nei;19;kvinne;6;kjæreste;bra;brukbar;5;2-3 p/u;>1 til 3 t/u
+3;6;styrke;nei;ja;22;kvinne;140;sambo/gift;bra;bra;9;2-3 p/u;> 5 t/u
+0;0;kondisjon;nei;nei;19;kvinne;6;kjæreste;mindre bra;brukbar;8;0-1 p/u;0 til 1 t/u
+4;6;styrke;nei;nei;19;kvinne;45;kjæreste;mindre bra;bra;9;>= 4 p/u;> 5 t/u
+4;7;styrke;nei;nei;19;kvinne;30;kjæreste;mindre bra;brukbar;9;>= 4 p/u;> 5 t/u
+3;4;begge like mye;ja;nei;22;kvinne;5;singel;mindre bra;brukbar;1;2-3 p/u;>3 til 5 t/u
+1;2;styrke;nei;nei;26;mann;35;sambo/gift;mindre bra;bra;7;0-1 p/u;>1 til 3 t/u
+2;3;kondisjon;nei;nei;21;kvinne;5;kjæreste;mindre bra;brukbar;5;2-3 p/u;>1 til 3 t/u
+2;3;begge like mye;ja;nei;21;kvinne;3;singel;mindre bra;bra;8;2-3 p/u;>1 til 3 t/u
+2;4;begge like mye;nei;nei;30;kvinne;12;singel;mindre bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+2;5;styrke;ja;nei;20;kvinne;5;singel;mindre bra;bra;3;2-3 p/u;>3 til 5 t/u
+2;3;begge like mye;ja;nei;30;kvinne;3;sambo/gift;bra;bra;2;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;22;mann;0;singel;svært bra;bra;10;0-1 p/u;0 til 1 t/u
+2;4;begge like mye;nei;nei;27;kvinne;2;kjæreste;mindre bra;mindre bra;1;2-3 p/u;>3 til 5 t/u
+1;2;kondisjon;nei;nei;27;kvinne;0;singel;mindre bra;brukbar;1;0-1 p/u;>1 til 3 t/u
+4;4;kondisjon;nei;nei;19;kvinne;10;singel;bra;brukbar;8;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;nei;ja;21;mann;2;singel;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+4;7;begge like mye;ja;nei;20;mann;2;singel;bra;bra;10;>= 4 p/u;> 5 t/u
+3;5;styrke;ja;nei;21;mann;3;singel;mindre bra;bra;8;2-3 p/u;>3 til 5 t/u
+5;10;styrke;ja;nei;19;mann;2;kjæreste;bra;bra;8;>= 4 p/u;> 5 t/u
+5;10;styrke;ja;nei;21;mann;2;kjæreste;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+6;10;styrke;nei;ja;22;kvinne;0;sambo/gift;mindre bra;bra;5;>= 4 p/u;> 5 t/u
+4;6;begge like mye;nei;nei;23;kvinne;15;sambo/gift;mindre bra;brukbar;7;>= 4 p/u;> 5 t/u
+0;0;begge like mye;nei;nei;22;kvinne;3;singel;bra;bra;1;0-1 p/u;0 til 1 t/u
+3;5;styrke;nei;ja;29;mann;2;singel;bra;brukbar;9;2-3 p/u;>3 til 5 t/u
+4;6;begge like mye;nei;ja;20;kvinne;1;kjæreste;svært bra;bra;10;>= 4 p/u;> 5 t/u
+6;12;styrke;ja;ja;22;mann;3;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+7;12;styrke;ja;ja;20;mann;1;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+2;3;kondisjon;nei;nei;31;mann;1;kjæreste;bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+1;2;begge like mye;nei;nei;21;mann;2;singel;mindre bra;mindre bra;6;0-1 p/u;>1 til 3 t/u
+1;2;styrke;nei;nei;21;mann;3;singel;mindre bra;bra;7;0-1 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;19;mann;7;singel;bra;bra;8;0-1 p/u;0 til 1 t/u
+5;7;styrke;ja;nei;21;mann;7;singel;bra;brukbar;7;>= 4 p/u;> 5 t/u
+5;8;styrke;ja;nei;19;mann;7;singel;svært bra;bra;8;>= 4 p/u;> 5 t/u
+3;3;begge like mye;nei;nei;19;mann;4;singel;svært bra;bra;10;2-3 p/u;>1 til 3 t/u
+5;6;begge like mye;nei;nei;23;mann;2;singel;svært bra;brukbar;7;>= 4 p/u;> 5 t/u
+4;5;styrke;ja;nei;20;mann;2;kjæreste;svært bra;bra;8;>= 4 p/u;>3 til 5 t/u
+3;6;styrke;ja;nei;23;mann;2;kjæreste;mindre bra;brukbar;8;2-3 p/u;> 5 t/u
+4;6;begge like mye;nei;ja;20;kvinne;4;kjæreste;bra;brukbar;8;>= 4 p/u;> 5 t/u
+2;3;styrke;ja;nei;24;mann;15;sambo/gift;mindre bra;mindre bra;10;2-3 p/u;>1 til 3 t/u
+5;7;kondisjon;nei;nei;24;kvinne;4;singel;bra;bra;6;>= 4 p/u;> 5 t/u
+7;12;begge like mye;ja;ja;23;mann;10;kjæreste;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+3;6;styrke;nei;nei;28;mann;50;singel;mindre bra;brukbar;2;2-3 p/u;> 5 t/u
+2;3;styrke;nei;nei;21;mann;1;singel;mindre bra;brukbar;5;2-3 p/u;>1 til 3 t/u
+6;6;styrke;ja;nei;20;mann;20;singel;bra;brukbar;4;>= 4 p/u;> 5 t/u
+4;10;begge like mye;nei;nei;22;kvinne;20;kjæreste;svært bra;bra;6;>= 4 p/u;> 5 t/u
+2;5;kondisjon;ja;nei;23;kvinne;7;singel;bra;brukbar;4;2-3 p/u;>3 til 5 t/u
+7;9;begge like mye;ja;nei;20;mann;2;singel;mindre bra;mindre bra;1;>= 4 p/u;> 5 t/u
+3;3;begge like mye;ja;nei;22;kvinne;3;singel;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+3;3;begge like mye;ja;nei;24;kvinne;50;singel;bra;bra;5;2-3 p/u;>1 til 3 t/u
+2;3;kondisjon;nei;nei;20;kvinne;2;sambo/gift;mindre bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+2;2;begge like mye;nei;ja;23;mann;2;singel;mindre bra;bra;5;2-3 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;21;kvinne;9;kjæreste;mindre bra;brukbar;8;0-1 p/u;0 til 1 t/u
+4;8;begge like mye;nei;nei;22;kvinne;1;singel;bra;brukbar;7;>= 4 p/u;> 5 t/u
+3;6;begge like mye;nei;ja;22;mann;2;singel;bra;bra;9;2-3 p/u;> 5 t/u
+2;2;begge like mye;nei;nei;20;kvinne;3;sambo/gift;svært bra;bra;5;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;19;kvinne;10;singel;mindre bra;brukbar;6;0-1 p/u;0 til 1 t/u
+3;3;styrke;nei;nei;21;kvinne;3;kjæreste;mindre bra;brukbar;9;2-3 p/u;>1 til 3 t/u
+2;4;kondisjon;nei;nei;22;kvinne;2;kjæreste;mindre bra;bra;8;2-3 p/u;>3 til 5 t/u
+2;6;begge like mye;nei;nei;26;kvinne;0;sambo/gift;mindre bra;bra;10;2-3 p/u;> 5 t/u
+3;6;begge like mye;nei;nei;21;mann;45;singel;mindre bra;mindre bra;3;2-3 p/u;> 5 t/u
+4;5;begge like mye;ja;ja;25;mann;0;sambo/gift;mindre bra;mindre bra;8;>= 4 p/u;>3 til 5 t/u
+5;8;begge like mye;ja;nei;21;mann;7;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+3;3;styrke;ja;nei;26;kvinne;30;sambo/gift;bra;brukbar;4;2-3 p/u;>1 til 3 t/u
+4;6;kondisjon;nei;nei;45;kvinne;0;sambo/gift;bra;bra;7;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;26;kvinne;60;sambo/gift;bra;brukbar;1;0-1 p/u;0 til 1 t/u
+5;7;styrke;nei;nei;19;mann;65;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+5;10;styrke;ja;nei;20;kvinne;2;singel;bra;brukbar;5;>= 4 p/u;> 5 t/u
+4;6;begge like mye;ja;nei;21;kvinne;2;singel;bra;mindre bra;5;>= 4 p/u;> 5 t/u
+3;5;styrke;nei;nei;19;kvinne;5;singel;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+4;10;begge like mye;nei;ja;22;mann;2;singel;bra;brukbar;9;>= 4 p/u;> 5 t/u
+5;5;begge like mye;nei;nei;19;kvinne;40;kjæreste;svært bra;bra;6;>= 4 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;nei;24;kvinne;1;singel;mindre bra;bra;4;2-3 p/u;>3 til 5 t/u
+0;0;kondisjon;nei;nei;23;kvinne;2;kjæreste;svært bra;brukbar;2;0-1 p/u;0 til 1 t/u
+0;0;styrke;nei;nei;20;kvinne;3;kjæreste;mindre bra;brukbar;3;0-1 p/u;0 til 1 t/u
+3;4;kondisjon;nei;nei;22;kvinne;80;sambo/gift;mindre bra;bra;7;2-3 p/u;>3 til 5 t/u
+4;8;begge like mye;ja;nei;20;kvinne;0;singel;mindre bra;bra;10;>= 4 p/u;> 5 t/u
+3;3;kondisjon;nei;nei;20;kvinne;5;sambo/gift;bra;bra;2;2-3 p/u;>1 til 3 t/u
+3;3;begge like mye;nei;nei;20;kvinne;1;singel;mindre bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+0;0;styrke;nei;nei;22;kvinne;4;sambo/gift;bra;brukbar;5;0-1 p/u;0 til 1 t/u
+5;7;begge like mye;ja;nei;21;kvinne;2;sambo/gift;bra;bra;8;>= 4 p/u;> 5 t/u
+5;6;kondisjon;ja;ja;20;kvinne;2;singel;bra;brukbar;5;>= 4 p/u;> 5 t/u
+4;4;styrke;ja;nei;22;kvinne;1;singel;bra;mindre bra;4;>= 4 p/u;>3 til 5 t/u
+6;10;styrke;ja;nei;22;mann;1;singel;svært bra;brukbar;9;>= 4 p/u;> 5 t/u
+5;12;begge like mye;ja;nei;22;kvinne;1;singel;svært bra;bra;1;>= 4 p/u;> 5 t/u
+2;4;styrke;ja;nei;20;kvinne;2;singel;bra;bra;2;2-3 p/u;>3 til 5 t/u
+3;3;kondisjon;ja;nei;21;kvinne;1;singel;bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+3;4;styrke;nei;ja;22;mann;0;singel;mindre bra;mindre bra;8;2-3 p/u;>3 til 5 t/u
+3;7;begge like mye;ja;nei;20;kvinne;2;sambo/gift;mindre bra;bra;3;2-3 p/u;> 5 t/u
+6;10;styrke;ja;ja;21;mann;0;singel;bra;mindre bra;9;>= 4 p/u;> 5 t/u
+3;5;styrke;ja;nei;23;kvinne;1;singel;mindre bra;mindre bra;1;2-3 p/u;>3 til 5 t/u
+4;6;begge like mye;nei;nei;22;kvinne;5;kjæreste;mindre bra;brukbar;5;>= 4 p/u;> 5 t/u
+3;3;begge like mye;ja;nei;20;kvinne;5;kjæreste;bra;brukbar;1;2-3 p/u;>1 til 3 t/u
+2;6;styrke;nei;nei;20;mann;3;singel;bra;mindre bra;7;2-3 p/u;> 5 t/u
+3;4;begge like mye;nei;nei;20;kvinne;45;kjæreste;mindre bra;brukbar;3;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;ja;ja;19;kvinne;5;singel;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+5;10;styrke;ja;nei;22;mann;1;kjæreste;bra;brukbar;7;>= 4 p/u;> 5 t/u
+4;8;styrke;ja;ja;23;mann;2;singel;mindre bra;bra;9;>= 4 p/u;> 5 t/u
+4;6;kondisjon;nei;ja;25;mann;0;singel;mindre bra;mindre bra;7;>= 4 p/u;> 5 t/u
+2;3;kondisjon;nei;ja;21;kvinne;2;singel;mindre bra;bra;9;2-3 p/u;>1 til 3 t/u
+2;4;begge like mye;ja;ja;21;kvinne;2;kjæreste;bra;bra;10;2-3 p/u;>3 til 5 t/u
+1;2;styrke;nei;ja;23;mann;22;kjæreste;mindre bra;mindre bra;1;0-1 p/u;>1 til 3 t/u
+4;10;begge like mye;nei;ja;22;mann;0;singel;bra;mindre bra;8;>= 4 p/u;> 5 t/u
+5;6;styrke;ja;nei;19;kvinne;0;singel;mindre bra;brukbar;8;>= 4 p/u;> 5 t/u
+6;11;styrke;ja;nei;20;kvinne;1;kjæreste;bra;brukbar;1;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;23;kvinne;3;singel;mindre bra;bra;1;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;23;kvinne;31;kjæreste;mindre bra;bra;5;0-1 p/u;0 til 1 t/u
+5;10;begge like mye;ja;nei;21;mann;1;singel;bra;mindre bra;8;>= 4 p/u;> 5 t/u
+4;7;styrke;nei;ja;21;mann;3;singel;mindre bra;brukbar;10;>= 4 p/u;> 5 t/u
+0;0;begge like mye;nei;nei;21;mann;3;singel;mindre bra;brukbar;9;0-1 p/u;0 til 1 t/u
+0;0;styrke;nei;nei;23;mann;1;singel;bra;brukbar;7;0-1 p/u;0 til 1 t/u
+4;8;styrke;ja;nei;20;mann;4;sambo/gift;mindre bra;brukbar;5;>= 4 p/u;> 5 t/u
+2;4;styrke;nei;nei;19;mann;1;singel;mindre bra;mindre bra;5;2-3 p/u;>3 til 5 t/u
+4;6;styrke;ja;nei;21;kvinne;0;singel;mindre bra;mindre bra;7;>= 4 p/u;> 5 t/u
+0;0;styrke;nei;nei;25;kvinne;0;sambo/gift;bra;brukbar;6;0-1 p/u;0 til 1 t/u
+2;3;begge like mye;ja;nei;22;kvinne;0;sambo/gift;mindre bra;brukbar;4;2-3 p/u;>1 til 3 t/u
+4;7;begge like mye;ja;nei;25;mann;2;singel;bra;bra;4;>= 4 p/u;> 5 t/u
+4;8;kondisjon;nei;nei;22;kvinne;2;singel;bra;bra;5;>= 4 p/u;> 5 t/u
+1;1;kondisjon;ja;nei;43;kvinne;4;sambo/gift;mindre bra;brukbar;1;0-1 p/u;0 til 1 t/u
+3;3;begge like mye;ja;nei;28;mann;2;kjæreste;svært bra;brukbar;10;2-3 p/u;>1 til 3 t/u
+3;5;kondisjon;nei;nei;32;mann;3;sambo/gift;bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+4;6;styrke;ja;ja;22;mann;3;kjæreste;svært bra;bra;9;>= 4 p/u;> 5 t/u
+4;6;begge like mye;nei;nei;24;mann;3;singel;bra;bra;8;>= 4 p/u;> 5 t/u
+6;8;begge like mye;ja;ja;21;mann;3;singel;bra;bra;10;>= 4 p/u;> 5 t/u
+5;7;styrke;ja;nei;24;mann;3;kjæreste;svært bra;mindre bra;4;>= 4 p/u;> 5 t/u
+5;10;begge like mye;ja;ja;23;mann;3;singel;svært bra;bra;9;>= 4 p/u;> 5 t/u
+5;8;kondisjon;ja;ja;22;mann;0;kjæreste;svært bra;bra;7;>= 4 p/u;> 5 t/u
+3;5;kondisjon;nei;nei;20;kvinne;40;sambo/gift;bra;brukbar;10;2-3 p/u;>3 til 5 t/u
+4;6;styrke;ja;nei;20;kvinne;1;singel;bra;bra;9;>= 4 p/u;> 5 t/u
+2;3;styrke;ja;nei;20;kvinne;3;sambo/gift;svært bra;bra;9;2-3 p/u;>1 til 3 t/u
+1;2;styrke;nei;nei;22;kvinne;40;sambo/gift;mindre bra;mindre bra;5;0-1 p/u;>1 til 3 t/u
+4;7;styrke;ja;nei;21;kvinne;0;kjæreste;bra;mindre bra;1;>= 4 p/u;> 5 t/u
+3;6;styrke;ja;nei;22;kvinne;5;singel;bra;brukbar;1;2-3 p/u;> 5 t/u
+3;5;styrke;ja;nei;26;kvinne;1;kjæreste;svært bra;mindre bra;4;2-3 p/u;>3 til 5 t/u
+4;7;begge like mye;ja;nei;21;kvinne;3;kjæreste;svært bra;bra;5;>= 4 p/u;> 5 t/u
+3;5;begge like mye;nei;nei;23;kvinne;2;kjæreste;bra;bra;8;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;nei;ja;22;kvinne;3;sambo/gift;mindre bra;brukbar;8;2-3 p/u;>3 til 5 t/u
+2;2;kondisjon;nei;nei;20;kvinne;40;kjæreste;mindre bra;brukbar;7;2-3 p/u;>1 til 3 t/u
+3;3;begge like mye;ja;nei;25;kvinne;0;kjæreste;bra;brukbar;5;2-3 p/u;>1 til 3 t/u
+3;4;kondisjon;ja;nei;23;kvinne;1;sambo/gift;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+2;2;styrke;ja;ja;21;kvinne;0;singel;mindre bra;bra;5;2-3 p/u;>1 til 3 t/u
+3;5;styrke;ja;nei;20;kvinne;3;singel;mindre bra;brukbar;4;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;nei;21;kvinne;3;singel;bra;brukbar;6;2-3 p/u;>3 til 5 t/u
+0;0;styrke;nei;nei;21;kvinne;2;kjæreste;bra;brukbar;7;0-1 p/u;0 til 1 t/u
+3;4;styrke;ja;nei;20;kvinne;0;sambo/gift;bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+2;6;begge like mye;nei;nei;32;kvinne;35;sambo/gift;mindre bra;brukbar;1;2-3 p/u;> 5 t/u
+4;4;begge like mye;ja;ja;25;kvinne;0;sambo/gift;bra;bra;9;>= 4 p/u;>3 til 5 t/u
+1;3;begge like mye;ja;nei;21;kvinne;2;kjæreste;bra;brukbar;1;0-1 p/u;>1 til 3 t/u
+3;4;begge like mye;nei;nei;29;mann;3;kjæreste;bra;brukbar;9;2-3 p/u;>3 til 5 t/u
+2;1;styrke;nei;nei;20;kvinne;2;singel;bra;bra;5;2-3 p/u;0 til 1 t/u
+5;10;begge like mye;ja;nei;22;kvinne;3;kjæreste;bra;brukbar;1;>= 4 p/u;> 5 t/u
+3;6;begge like mye;ja;nei;23;kvinne;2;singel;mindre bra;brukbar;5;2-3 p/u;> 5 t/u
+6;6;begge like mye;ja;nei;21;kvinne;60;singel;svært bra;bra;1;>= 4 p/u;> 5 t/u
+4;6;styrke;ja;nei;22;kvinne;0;kjæreste;mindre bra;brukbar;5;>= 4 p/u;> 5 t/u
+5;5;kondisjon;ja;nei;21;kvinne;1;singel;bra;bra;5;>= 4 p/u;>3 til 5 t/u
+3;4;kondisjon;nei;nei;22;kvinne;3;singel;mindre bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+3;6;begge like mye;ja;nei;21;kvinne;2;kjæreste;bra;bra;10;2-3 p/u;> 5 t/u
+3;6;begge like mye;nei;nei;23;kvinne;2;singel;bra;brukbar;9;2-3 p/u;> 5 t/u
+3;6;kondisjon;nei;nei;23;kvinne;2;singel;bra;brukbar;8;2-3 p/u;> 5 t/u
+2;3;begge like mye;ja;nei;22;kvinne;3;singel;bra;bra;4;2-3 p/u;>1 til 3 t/u
+0;0;begge like mye;nei;nei;20;kvinne;0;singel;bra;bra;1;0-1 p/u;0 til 1 t/u
+0;0;kondisjon;nei;nei;20;kvinne;1;singel;mindre bra;brukbar;1;0-1 p/u;0 til 1 t/u
+5;9;begge like mye;ja;nei;23;kvinne;33;singel;bra;bra;6;>= 4 p/u;> 5 t/u
+5;8;kondisjon;nei;nei;20;kvinne;2;singel;mindre bra;brukbar;7;>= 4 p/u;> 5 t/u
+4;10;kondisjon;ja;ja;20;mann;1;singel;bra;bra;8;>= 4 p/u;> 5 t/u
+8;16;kondisjon;ja;ja;23;kvinne;2;sambo/gift;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+2;2;styrke;nei;ja;35;mann;2;sambo/gift;mindre bra;bra;9;2-3 p/u;>1 til 3 t/u
+1;1;kondisjon;nei;nei;23;mann;30;singel;mindre bra;brukbar;6;0-1 p/u;0 til 1 t/u
+3;6;styrke;ja;nei;21;mann;15;kjæreste;mindre bra;bra;1;2-3 p/u;> 5 t/u
+3;3;kondisjon;nei;nei;28;kvinne;20;sambo/gift;bra;bra;3;2-3 p/u;>1 til 3 t/u
+3;4;styrke;ja;nei;20;kvinne;0;kjæreste;bra;bra;1;2-3 p/u;>3 til 5 t/u
+3;4;begge like mye;ja;ja;22;kvinne;0;singel;bra;bra;9;2-3 p/u;>3 til 5 t/u
+3;4;styrke;ja;nei;21;kvinne;3;singel;mindre bra;bra;5;2-3 p/u;>3 til 5 t/u
+4;10;kondisjon;nei;ja;22;kvinne;5;singel;svært bra;brukbar;10;>= 4 p/u;> 5 t/u
+2;3;begge like mye;nei;ja;25;kvinne;10;singel;svært bra;bra;10;2-3 p/u;>1 til 3 t/u
+3;5;styrke;nei;nei;19;kvinne;4;kjæreste;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+5;8;begge like mye;nei;ja;21;mann;1;singel;bra;bra;9;>= 4 p/u;> 5 t/u
+2;4;styrke;nei;nei;23;kvinne;2;sambo/gift;mindre bra;brukbar;5;2-3 p/u;>3 til 5 t/u
+5;8;begge like mye;ja;ja;21;kvinne;0;sambo/gift;bra;bra;8;>= 4 p/u;> 5 t/u
+2;3;begge like mye;nei;ja;25;kvinne;50;singel;svært bra;bra;6;2-3 p/u;>1 til 3 t/u
+1;1;styrke;nei;nei;20;kvinne;0;kjæreste;svært bra;bra;3;0-1 p/u;0 til 1 t/u
+8;16;kondisjon;ja;ja;20;mann;1;singel;svært bra;bra;10;>= 4 p/u;> 5 t/u
+2;4;begge like mye;nei;nei;23;mann;6;singel;mindre bra;brukbar;7;2-3 p/u;>3 til 5 t/u
+3;6;begge like mye;ja;nei;23;kvinne;2;singel;mindre bra;brukbar;4;2-3 p/u;> 5 t/u
+5;8;kondisjon;ja;nei;22;kvinne;2;singel;bra;brukbar;9;>= 4 p/u;> 5 t/u
+5;10;styrke;ja;nei;22;mann;0;singel;bra;brukbar;9;>= 4 p/u;> 5 t/u
+3;5;kondisjon;nei;ja;24;mann;1;singel;bra;bra;8;2-3 p/u;>3 til 5 t/u
+2;4;kondisjon;nei;ja;21;mann;0;singel;bra;bra;5;2-3 p/u;>3 til 5 t/u
+5;7;begge like mye;ja;nei;19;kvinne;3;kjæreste;svært bra;bra;9;>= 4 p/u;> 5 t/u
+3;5;begge like mye;nei;nei;19;kvinne;0;singel;bra;bra;7;2-3 p/u;>3 til 5 t/u
+3;5;begge like mye;ja;ja;20;kvinne;1;kjæreste;mindre bra;mindre bra;3;2-3 p/u;>3 til 5 t/u
+5;8;begge like mye;ja;nei;25;mann;3;kjæreste;bra;brukbar;8;>= 4 p/u;> 5 t/u
+8;16;begge like mye;ja;nei;44;mann;70;sambo/gift;svært bra;bra;9;>= 4 p/u;> 5 t/u
+2;3;kondisjon;nei;ja;23;mann;3;singel;bra;brukbar;5;2-3 p/u;>1 til 3 t/u

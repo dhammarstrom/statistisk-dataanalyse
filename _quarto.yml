@@ -29,6 +29,7 @@ book:
         - 05-jamovi.qmd
     - references.qmd
 
+toc-title: Innhold
 bibliography: references.bib
 reference-location: margin
 citation-location: margin
@@ -38,7 +39,7 @@ crossref:
   tbl-prefix: Tabell
   tbl-title: Tabell     # (default is "Table")
   title-delim: "."   # (default is ":")
-
+  sec-prefix: Avsnitt
 format:
   html:
     theme: cosmo
