@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,10 +81,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -232,10 +253,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#regresjon-i-jamovi" id="toc-regresjon-i-jamovi" class="nav-link active" data-scroll-target="#regresjon-i-jamovi"><span class="header-section-number">4.1</span> Regresjon i Jamovi</a>
+  <ul class="collapse">
+  <li><a href="#regresjon-og-korrelasjon" id="toc-regresjon-og-korrelasjon" class="nav-link" data-scroll-target="#regresjon-og-korrelasjon"><span class="header-section-number">4.1.1</span> Regresjon og korrelasjon</a></li>
+  <li><a href="#multippel-regresjon-med-jamovi" id="toc-multippel-regresjon-med-jamovi" class="nav-link" data-scroll-target="#multippel-regresjon-med-jamovi"><span class="header-section-number">4.1.2</span> Multippel regresjon med Jamovi</a></li>
+  </ul></li>
+  <li><a href="#gruppesammenligninger-og-regresjonsanalyse" id="toc-gruppesammenligninger-og-regresjonsanalyse" class="nav-link" data-scroll-target="#gruppesammenligninger-og-regresjonsanalyse"><span class="header-section-number">4.2</span> Gruppesammenligninger og regresjonsanalyse</a>
+  <ul class="collapse">
+  <li><a href="#en-avhengig-t-test" id="toc-en-avhengig-t-test" class="nav-link" data-scroll-target="#en-avhengig-t-test"><span class="header-section-number">4.2.1</span> En avhengig <em>t</em>-test</a></li>
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test"><span class="header-section-number">4.2.2</span> One-sample <em>t</em>-test</a></li>
+  </ul></li>
+  <li><a href="#variansanalyse-i-jamovi" id="toc-variansanalyse-i-jamovi" class="nav-link" data-scroll-target="#variansanalyse-i-jamovi"><span class="header-section-number">4.3</span> Variansanalyse i Jamovi</a></li>
+  <li><a href="#krysstabulering-i-jamovi" id="toc-krysstabulering-i-jamovi" class="nav-link" data-scroll-target="#krysstabulering-i-jamovi"><span class="header-section-number">4.4</span> Krysstabulering i Jamovi</a></li>
+  <li><a href="#fra-krysstabulering-til-logistisk-regresjon" id="toc-fra-krysstabulering-til-logistisk-regresjon" class="nav-link" data-scroll-target="#fra-krysstabulering-til-logistisk-regresjon"><span class="header-section-number">4.5</span> Fra krysstabulering til Logistisk regresjon</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -254,7 +293,367 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<section id="regresjon-i-jamovi" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="regresjon-i-jamovi"><span class="header-section-number">4.1</span> Regresjon i Jamovi</h2>
+<p>Vi starter med datasettet <a href="data/egg_kolesterol_1_2_3.csv"><code>egg_kolesterol_1_2_3.csv</code></a>. Når du laster inn datasettet i Jamovi bør du kontrollere at variablene, <code>egg</code> og <code>kolesterol</code> er formatert som forventet. Bruk <em>Edit</em> under <em>Variables</em> for å forandre <em>Measure type</em> hvis du trenger det. For å lage en regresjonsmodell i Jamovi går vi inn i modulen <em>Regression</em> og velger <em>Linear regression</em>. Her velger vi <em>dependent variable</em> (avhengig variabel). Slik vi formulerer hypotesen om forholdet mellom egg og kolesterol tror vi at antall egg påvirker kolesterolet. Kolesterol er derfor vår avhengige variabel.</p>
+<p>Jamovi gjør et skille mellom <em>covariates</em> og <em>factors</em>. Disse er begge uavhengige variabler men covariates krever kontinuerlig data og factors håndterer data som ordinal/nominal data. Vi setter inn egg som en kontinuerlig <em>covariate</em>.</p>
+<p><img src="img/02-jamovi/01-egg-regress.gif" class="img-fluid">’</p>
+<p>Når variablene er lagt inn får vi to tabeller i resultatfeltet. <em>Model fit Measures</em> sier noe om styrken i sammenhengen mellom variablene. <em>R</em> tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel.</p>
+<p>I tabellen <em>Model Coefficients - kolesterol</em> se vi skjæringspunkt (<em>Intercept</em>) og stigningstall <em>egg</em> under <em>Predictor</em>. Under <em>Estimate</em> ser vi de estimat som modellen lager. 3.94 er gjennomsnittlig kolesterolnivå når eggkonsumpsjon er 0, for hvert egg så stiger kolesterolet med 0.86 enheter. For hvert estimat finner vi et standardfeil (<em>SE</em>), t-verdi (<em>t</em>) og p-verdi. Disse bruker vi får å trekke konklusjoner om populasjonen dataene kommer ifra. Tallene er koblet til forskjellige mål på usikkerhet, noe vi skal snakke mer om senere.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Tolking av regresjonskoeffisienter
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: I eksemplet over finner vi at skjæringspunktet er 3.94 enheter og stigningstallet er 0.86 enheter. Beregne det forventede kolesterolnivået for pasienter som spiser 1, 6 og 12 egg per uke.</p>
+<p>B: Lag en ny variabel i Jamovi som beregner kolesterolnivået ved hjelp av antallet rapporterte egg for hver observasjon i datasettet.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Tolking av regresjonskoeffisienter
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Vi kan bruke ligningen for regresjonsmodellen for å beregne kolesterol for et gitt antall egg: <span class="math inline">\(= 3.94 + 0.86\times\text{egg}\)</span>. Stigningstallet gir oss forandringen i kolesterol for hver forandring i ukentlige egg.</p>
+<p>B: Under <em>Variables</em> legger vi til en variabel (<em>Add</em>/<em>Computed variable</em>) og i formelfeltet kan vi bruke ligningen direkte <code>3.94 + 0.86 * egg</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>I modulmenyen finner vi <em>Assumption checks</em>. Her finnes flere alternativer for å sjekke antagelser om modellen. Her foreslår vi at man først fokuserer på <em>Q-Q plot of residuals</em>. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte. <em>Residual plots</em> gir oss en indikasjon på hvor spredning av feilleddet er fordelt over datamaterialet og prediksjoner fra modellen . I figuren som viser <em>Fitted vs.&nbsp;Residuals</em> ønsker vi å se at vi har like mye feil over alle predikerte tall. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Hvordan lage en residualplot?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Du beregnet tidligere en ny variabel med predikerte tall for hvert observasjon. Denne kan vi bruke for å beregne en ny variabel som vi kan kalle for <em>feilledd</em>. Feilleddet bergenes som differensen mellom predikerte og observerte verdier.</p>
+<p>Bruk variablene i en scatter-plot (<em>Analyses/Exploration/Scatterplot</em>) og sammenlign resultatet med <em>Residual plots</em> under <em>Assumptions Checks</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Hvordan lage en residualplot?
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Vi bruker ligningen for regresjonsmodellen for å beregne kolesterol for et gitt antall egg: <span class="math inline">\(= 3.94 + 0.86\times\text{egg}\)</span>, denne informasjonen kan gå inn i en variabelen som vi navngir “pred”. Vi lager så en ytterligere variabel (“feilledd”) som <code>kolesterol-pred</code>. Du bør nå ha den samme visuelle informasjonen din scatter-plot og i den første av figurene <em>Residual plots</em>.</p>
+<p>Et alternativ i <em>Regression</em> modulen er å bruke <em>Save</em> fanen for å spare <em>Predicted values</em> og <em>Residuals</em>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p>Begge disse to grafiske metodene (<em>Q-Q plot</em> og <em>Residual plots</em>) bør brukes ved regresjonsanalyse da de sier noe om hvor godt modellen representerer dataene. Med små datasett kreves det store brudd mot antagelser for at vi skal finne dem. Den figur du skapte selv i oppgaven over et godt utgangspunkt for å bedre forstå også mer komplekse modeller med flere uavhengige variabler.</p>
+<p>Under modulmenyen <em>Estimated Marginal Means</em> finner vi en mulighet for å lage en grafisk representasjon av modellen når vi legger inn prediktoren under <em>Marginal Means</em>. Velger vi også <em>Marginal means table</em> får vi det estimerte kolesterolnivået ved gjennomsnittet (<span class="math inline">\(\mu\)</span>) i variabelen egg pluss og minus et standardavvik.</p>
+<section id="regresjon-og-korrelasjon" class="level3" data-number="4.1.1">
+<h3 data-number="4.1.1" class="anchored" data-anchor-id="regresjon-og-korrelasjon"><span class="header-section-number">4.1.1</span> Regresjon og korrelasjon</h3>
+<p>Som vi allerede notert gir regresjonsmodellen oss en måte å beskrive forholdet mellom en avhengig variabel og en (eller flere) uavhengige variabler. En forenkling av sammenhengen mellom to variabler er en korrelasjonsanalyse. I motsetning til regresjonsmodellen så gjør ikke korrelasjonen forskjell mellom avhengig og uavhengig variabel.</p>
+<p>En regresjonsanalyse kan gjøres i Jamovi i modulen <em>Regression</em> hvor vi velger <em>Correlation matrix</em>.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Regresjon og korrelasjon
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Bruk <em>Correlation Matrix</em> for å beregne <em>Pearson Correlation Coefficient</em> på dataene i <a href="data/egg_kolesterol_1_2_3.csv"><code>egg_kolesterol_1_2_3.csv</code></a>. Lag også en regresjonsmodell av det samme forholdet. Hva er er korrelasjonskoeffisienten i <em>Correlation Matrix</em> resultatene respektive under <em>Model Fit Measures</em> i resultatene fra regresjonsmodellen?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Regresjon og korrelasjon
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-5" class="callout-5-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Disse tallene resulterer fra den samme analysen, de gir oss korrelasjonskoeffisienten. Vi kan lese korrelasjonskoeffisienten som spredningen kring regresjonsmodellens rette linje. Vi kan også lese den som stigningen i y når vi øker x med 1 enhet når begge variabler har blitt sentrerte (trekker fra gjennomsnittet fra hvert tall) og delt med standardavviket. Du kan undersøke dette ved å skape to nye variabler ved hjelp av funksjonen <em>SCALE</em>. Regresjonen <code>SCALE(kolesterol) = SCALE(egg)</code> gir oss korrelasjonskoeffisienten som et stigningstall.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="fig-korranalyse" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/02-jamovi/korrelasjonsmatrise.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;4.1. Eksempel på en scatter-plot fra modulen <em>Correlation matrix</em> i jamovi.</figcaption>
+</figure>
+</div>
+<p>Under <em>Correlation Matrix</em> har vi også mulighet å lage en graf over sammenhengen mellom variablene. Denne grafen kalles vanligvis for <em>scatter-plot</em>. I denne versjonen er finner vi en <em>scatter-plot</em> i den nedre venstre kvadraten i en figur som “krysstabulerer” variablene. På diagonalen finner vi fordelingen av hvert variabel og over diagonalen finner vi korrelasjonskoeffisienten (<a href="#fig-korranalyse">Figur&nbsp;<span>4.1</span></a>).</p>
+<p>En korrelasjonsanalyse kan lett påvirkes av datapunkter som avviker fra en normalfordelt variabel. I figuren under ser vi et eksempel på hvor et ekstremt datapunkt driver en korrelasjon (<a href="#fig-corr-extreme">Figur&nbsp;<span>4.2</span></a>). Du finner datasettet her (<a href="data/korr_ekstrem.csv"><code>korr_ekstrem.csv</code></a>). I en slik situasjon kan vi med hjelp av en enkel figur (<em>scatter-plot</em>) se at en observasjon skiller seg fra de andre og sannsynligvis påvirker utfallet av en analyse av samvariasjon. Her finnes noen grep vi kan ta, hvis vi ønsker å rapportere korrelasjonen mellom variablene når de uttrykkes på den naturlige skalaen kan vi lage en versjon av analysen som inkluderer punktet og en som ikke gjør det og rapportere begge. Konklusjonen vi får er at en observasjon gir oss samvariasjonen og vi har dermed ikke sterke beviser for at de faktisk er en samvarisjon mellom variablene.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-corr-extreme" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-jamovi_files/figure-html/fig-corr-extreme-1.png" class="img-fluid figure-img" width="384"></p>
+<figcaption class="figure-caption">Figur&nbsp;4.2. Eksempel på hvor en ekstrem observasjon kan påvirke sammenhengen mellom to variabler</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>En annen strategi er å uttrykke variablene som rangerte. De laveste tallet i hver variabel får verdien 1, neste tall får verdien 2, osv. Hvis vi lager en korrelasjon på disse transformerte variablene tar vi vekk effekten av at noen er ekstreme og derfor påvirker analysene. Denne strategien er et eksempel på en ikke-parametrisk analyse da vi ikke har noen antagelser om hvordan variablene fordeles. En ikke-parametrisk korrelasjonskoeffisient kalles ofte for Spearman’s korrelasjonskoeffisient. Denne bruker vi når ser at antagelse om normalfordelt data og lineært forhold mellom variablene holder. I oppgaven under undersøker vi hvordan denne koeffisienten beregnes.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Regresjon og rank
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Bruk <em>Correlation Matrix</em> for og datasettet (<a href="data/korr_ekstrem.csv"><code>korr_ekstrem.csv</code></a>) for å beregn korrelasjonskoeffisienten (Pearsons) for variablene <code>x</code> og <code>y1</code>. Lag så to ny variabler ved hjelp av funksjunen <code>RANK</code> (<code>=RANK(x)</code> og <code>=RANK(Y)</code>), undersøk variablene for å forstå hva transformasjonen gjør med de. Beregn så korrelasjonen mellom <code>=RANK(x)</code> og <code>=RANK(Y)</code> ved hjelp av Pearsons korrlasjonskoeffisient og korrlasjonen mellom <code>x</code> og <code>y1</code> ved hjelp av Spearmans korrelasjonskoeffisient</p>
+<p>B: I datasettet finner vi ytterligere en variabel. Hva er forskjellen mellom Pearson og Spearmans korrelasjonskoeffisient når du bruker variablene <code>x</code> og <code>y2</code>. Lag en scatter-plot av forholdet mellom disse variablene og forklar hvorfor du får de resultat du får.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Regresjon og rank
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: En korrelasjon beskrevet med Pearsons koeffisient gir oss 0.46 på dataene som ikke er transformert. Når vi bruker funksjonen rank får vi 0.03, dette er det samme tallet vi får når vi bruker Spearmans korrelasjonskoeffisient på ikke-transformert data. Spearmans korrelasjon gir oss alltså koeffisienten for korrelasjonen på rangerte data.</p>
+<p>B: Her får vi 0.97, respektive 0.95 ved bruk av Pearsons og Spearmans korrelasjonskoeffisient. Variablene følger et lineært forhold gjennom hele datamengden og det avvikende datapunktet påvirker derfor ikke forholdet. Den rangerte variabelen skiller seg ikke heller fra variabelen uttrykt på orginalskala.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="multippel-regresjon-med-jamovi" class="level3" data-number="4.1.2">
+<h3 data-number="4.1.2" class="anchored" data-anchor-id="multippel-regresjon-med-jamovi"><span class="header-section-number">4.1.2</span> Multippel regresjon med Jamovi</h3>
+<p>I datasettet <a href="data/fotball_1_2_3.csv"><code>fotball_1_2_3.csv</code></a> kan vi stille spørsmål til hvordan årsinntekt påvirkes av <code>spillerbors</code> karakter gitt at ser denne sammenhengen er betinget <code>opprinnelse</code> og <code>posisjon</code>. Med betinget for mener vi at vi kontrollerer for disse effektene når vi undersøker sammenhengen mellom variablene som interesserer oss.</p>
+<p>Modellen kan representeres som:</p>
+<p><span class="math display">\[\text{årsinntekt} = \beta_0 + \beta_1\times\text{spillerbørs} + \beta_2\times\text{opprinnelse} +\beta_3\times\text{posisjon}\]</span> Variabelen <code>opprinnelse</code> har to nivåer, Norsk og Utenlandsk. I modellen vil denne variabelen bli lagt til som en dummy-variabel hvor Norsk er referansenivået. Den estimerte koeffisienten <span class="math inline">\(\beta_2\)</span> vil “aktiveres” når dummy-variabelen settes til 1, det vil si, når vi observerer en utenlandsk spiller. Koeffisienten gir oss altså gjennomsnittlig forskjell i årsinntekt mellom Norsk og Utenlandsk opprinnelse.</p>
+<p>Variablene posisjon har fire nivåer, angrep (referansenivå), forsvar, keeper og midtbane. I regresjonsmodellen vil disse bli representert med tre dummyvariabler. Vi vil ikke se disse annet en som sammenligninger med referansenivået (angrep). I tabellen under ser du hvor dummyvariablene konstrueres for observasjoner i de forskjellige posisjonene</p>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Posisjon</th>
+<th>Dummy forsvar</th>
+<th>Dummy keeper</th>
+<th>Dummy midtbane</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Angrep</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Forsvar</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr class="odd">
+<td>Keeper</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr class="even">
+<td>Midtbane</td>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p>Når modellen beregner gjennomsnitt for angrep settes alle dummyvariablene til 0. Når modellen representerer en gjennomsnittlig forsvarsspiller settes dummyvariablene forsvar til 1 og koeffisienten for forsvar “aktiveres”. Koeffisientene for de forskjellige posisjonene sammenlignes med referansenivået angrep.</p>
+<p>Før vi lager modellen i Jamovi kontrollerer vi datatyper i datafanen, <code>spillerbørs</code> kan endres til en kontinuerlig variabel, <code>opprinnelse</code> er en nominal variabel, men Norsk er referansenivå, indikert ved at vi finner denne i toppen av <em>levels</em>. Likeså er angrep referansenivået i den nominale variabelen <code>posisjon</code>. <code>årsinntekt</code> er en kontinuerlig variabel, vi beholder den slik for nå.</p>
+<p>I bakgrunnen har vi altså følgende modell:</p>
+<p><span class="math display">\[\text{årsinntekt} = \beta_0 + \beta_1 x_\text{spillerbørs} + \beta_2 x_\text{Utenlandsk} +\beta_3 x_\text{forsvar} + \beta_4 x_\text{keeper} +\beta_5 x_\text{midtbane}\]</span></p>
+<p>Vi lager modellen ved å sette <code>årsinntekt</code> som avhengig variabel (<em>Dependent variable</em>), <code>spillerbørs</code> i <em>Covariates</em>, <code>posisjon</code> og <code>opprinnelse</code> i <em>Factors</em>. Før vi ser på estimatene ser vi på antagelser under <em>Assumption checks</em>. Den resulterende figuren <em>Q-Q Plot</em> ser ikke lovende ut, den indikerer at residualene ikke følger en normalfordeling, noe vi antar at de gjør. <em>Residuals vs.&nbsp;Fitted</em> indikerer at spredningen i feilleddet er større ved større predikerte tall. Modellen har mer feil når de predikerte inntektene er større.</p>
+<p>Det finnes noen grep man kan ta for å lage en modell som til større grad følger de antagelser vi setter opp. Et vanlig grep er å log-transformere den avhengige variabelen. Dette kan gi oss data som passer bedre i en ordinær lineær regresjonsmodell. Log-transformering innebærer at vi tar logaritmen av den originale variabelen, dette betyr at istedenfor å se på dataene på lineær skala ser på dem på en multiplikativ skala. Resultatene fra modellen vil da fortelle oss om en relativ forandring i den avhengige variabelen istedenfor absolutt forandring. Hvorfor?</p>
+<p>Vi kan starte med å se på noen regler for logaritmer. Multiplikasjon på naturlig skala gir addisjon på log-skala:</p>
+<p><span class="math display">\[log(xy)= log(x) + log(y)\]</span> Subtraksjon på log-skala gir oss ratio på naturlig skala</p>
+<p><span class="math display">\[log(x/y) = log(x) - log(y)\]</span> Et tall som vi finner på log-skala kan transformeres tilbake til naturlig skala ved å bruke eksponentialfunksjonen <span class="math inline">\(e\)</span> (vanligvis bruker vi naturlige logaritmer).</p>
+<p><span class="math display">\[e^{log(y)} = y\]</span> I en enkel regresjonsmodell finner vi fra et stigningstall forandring i <span class="math inline">\(y\)</span> basert på en enhets forandring i <span class="math inline">\(x\)</span>. På naturlig skala er forandring absolutt og en differens <span class="math inline">\(y_{x=1} - y_{x=0}\)</span> (differensen mellom <span class="math inline">\(y\)</span> når <span class="math inline">\(x\)</span> er lik 0 og <span class="math inline">\(y\)</span> når <span class="math inline">\(x\)</span> er 1). Når vi har den avhengige variabelen på log-skala gir modellen oss fortsatt differensen, men vid transformering til naturlig skala har vi et ratio</p>
+<p><span class="math display">\[log(y_{x=1}) - log(y_{x=0}) = log(\frac{y_{x=1}}{y_{x=0}})\]</span> Når et stigningstall i en modell med en log-transformerte avhengig variabel er for eksempel 0.2 enheter gir dette at vi ser en økning med 1.22 ganger for hvert økning i den uavhengige variabelen:</p>
+<p><span class="math display">\[e^{0.2} = 1.22\]</span> Vi kan beregne denne som en prosentdel økning ved <span class="math inline">\(100 \times (e^{0.2} - 1) = 22\%\)</span>. Vi kan lese dette resultatet som at hvor enn vi starter i vår avhengige variabel så estimerer modellen 22% økning i den avhengige variabelen for hvert enhets økning i uavhengig variabel. Dette er en relativ økning som i absolutte tall er forskjellig hvis vi starter med 10 (<span class="math inline">\(10\times 0.22=2.2\)</span>) eller 1000 (<span class="math inline">\(1000 \times 0.22 = 220\)</span>).</p>
+<p>For å transformere en variabel i Jamovi legger vi til en transformering. Gå til datafanen, marker årsinntekt og trykk på <em>transform</em>. Under <em>using transform</em> skaper vi en ny transformering (<em>Create new transform</em>), og legger inn <code>=LN(\$source)</code> i formelfeltet. I formelfeltet står $source for variabelen som skal brukes i transformeringen, <code>LN</code> er funksjonen for den naturlige logaritmen. Vi kan navngi den nye transformering til <em>“LOG”</em>. En ny variabel skapes med en bestemt <em>Source variable</em> og vår definerte transform (<em>using transform</em>).</p>
+<p>Vi bytter den tidligere variabelen med vår nye log-transformerte variabel og ser igjen på <em>Assumption checks</em>. Dette ser bedre ut, residualene er nærmere normalfordelt (<em>Q-Q Plot</em>) og spredningen i residual-figuren spreder likt over hele datamaterialet. Vi kan nå tolke resultatene.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Tolkning av en multippel regresjonsanalyse.
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Med hvor mye stiger årsinntekt for hvert enhet økning i spillerbørs?</p>
+<p>B: Beregn årsinntekt for en angrepsspiller med norsk opprinnelse og verdien 3 på spillerbørs.</p>
+<p>C: Beregn årsinntekt for en forsvarsspiller med utenlandsk opprinnelse og verdien 4.78 på spillerbørs.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Tolkning av en multippel regresjonsanalyse
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p><strong>A</strong>: For hvert enhet økning i spillerbørs stiger årsinntekt med 0.33 enheter på log-skala. Dette tilsvarer 39% økning. Vi kan bruke Jamovi som kalkulator å legge inn en ny transform: <code>=100 * (EXP(\$SOURCE) - 1)</code>. Ved å skape en ny variabel kan vi legge inn resultatet vi er interessert i å transformere og finner økningen i prosent.</p>
+<p>Alternativt finnes funksjonen for eksponentialfunksjonen i excel. Her bruker vi <code>=EKSP(0,33)</code> for å beregne <span class="math inline">\(e\)</span> opphøyd i 0.33 som gir stigningstallet fra modellen på naturlig skala.</p>
+<p><strong>B</strong>: Vi bruker ligningen for regresjonsmodellen for å beregne årsinntekt for en angreps-spiller med norsk opprinnelse og verdien 3 på spillerbørs. Modellen sier:</p>
+<p><span class="math display">\[\operatorname{log}(\text{årsinntekt}) = \beta_0 + \beta_{\text{spillerbørs}}\times3\]</span> Da vi er interesserte i referansenivået for <code>opprinnelse</code> og <code>posisjon</code> faller begge ut fra ligningen. Dette gir</p>
+<p><code>11.78 + 0.33 * 3 = 12.77</code></p>
+<p>Tallet er på log-skalaen, noe som gir oss <code>EXP(12.77) = 351512</code> på den naturlige skalaen.</p>
+<p><strong>C</strong>: Vi bruker ligningen for regresjonsmodellen for å beregne årsinntekt en forsvarsspiller med utenlandsk opprinnelse og verdien 4.78 på spillerbørs. Modellen sier:</p>
+<p><span class="math display">\[\operatorname{log}(\text{årsinntekt}) = \beta_0 + \beta_{\text{spillerbørs}}\times4.78 + \beta_{\text{forsvar}}\times1 + \beta_{\text{utenlandsk}}\times1\]</span></p>
+<p>Her kan vi sette sammen verdiene fra modellen</p>
+<p><code>11.78 + 0.33 * 4.78 + 0.04 + 0.3 = 13.7</code></p>
+<p>Noe som gir 888597 NOK i estimert årslønn. Merk at den estimerte årsinntekten også kan beregnes i fanen <em>Estimated Marginal Means</em> ved å sette inn alle uavhengige variabler under <em>Marginal Means</em>. Dette vil gi en tabell over alle kombinasjoner av variablene sammen med et gjennomsnitt (Marginal Mean). Det å beregne <em>Marginal Means</em> i Jamovi gir oss også en figur som illustrerer effektene. Utenlandske spillere har noe høyere årsinntekt sammenlignet med norske spillere, forsvar og angrep gir også høyere lønn samtidig som en økt verdi på spillerbørs gir høyere lønn.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="gruppesammenligninger-og-regresjonsanalyse" class="level2 page-columns page-full" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="gruppesammenligninger-og-regresjonsanalyse"><span class="header-section-number">4.2</span> Gruppesammenligninger og regresjonsanalyse</h2>
+<div class="page-columns page-full"><p>En familie med statistiske teknikker som vi ikke snakket om enda er <em>t</em>-tester. Dette er litt rart med tanke på at disse teknikkene er blant de mest brukte og rapporterte statistiske “testene” innad flere vitenskapelige felt. Vi velger denne måten å presentere teknikker for samvariasjon da vi kan gjenskape resultatene fra for eksempel en <em>t</em>-test i en regresjonsanalyse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;I stort sett alle de mest vanlige statistiske teknikkene kan uttrykkes som variasjoner av en regresjonsmodell. Kjenner vi regresjonsmodellen og kan bruke den står vi friere til å formulere statistiske analyser etter behov. Se <a href="https://lindeloev.github.io/tests-as-linear/">lindeloev.github.io/tests-as-linear/</a> for en oversikt.</p></li></div></div>
+<p><em>t</em>-testen finnes i tre forskjellige varianter: Den uavhengige t-testen, den avhengige t-testen og “one-sample” t-testen. Den uavhengige t-testen <em>måler samvariasjon</em> mellom en kategorisk variabel (uavhengig variabel) og en kontinuerlig variabel (avhengig variabel) når dataene i de to kategoriene <em>uavhengige</em> av hverandre. En avhengig t-test <em>måler samvariasjon</em> mellom en kategorisk variabel (uavhengig variabel) og en kontinuerlig variabel (avhengig variabel) når dataene i de to kategoriene <em>avhengige</em> av hverandre. Her er det altså to konsepter som beskrives som avhengig/uavhengig noe som kan lage forvirring. Når data i de to kategoriene er avhengige (dependent) sier det noe om at det finnes “slektskap” mellom datapunktene. For eksempel kan vi måle den samme variabelen i en gruppe individer etter to forskjellige intervensjoner. I en uavhengig analyse har vi isteden antagelsen at dataene ikke kommer fra den samme “statistiske enheten” (som f.eks. forsøkspersoner).</p>
+<p>For å illustrerer slektskapen mellom t-testen og regresjonsmodellen starter vi med datasettet <a href="data/fotball_1_2_3.csv"><code>fotball_1_2_3.csv</code></a>. Her finner vi variablene <code>årsinntekt</code> og <code>opprinnelse</code>. <code>årsinntekt</code> er en kontinuerlig variabel og <code>opprinnelse</code> er en kategorisk variabel med to nivåer. Disse dataene passer modellen</p>
+<p><span class="math display">\[\text{årsinntekt} = \beta_0 + \beta_1 x_{\text{opprinnelse = utenlandsk}}\]</span> Vi starter med å lage analysen som en regresjonsanalyse i Jamovi ved å sette <code>årsinntekt</code> som avhengig variabel og <code>opprinnelse</code> som uavhengig variabel under <em>Factors</em>. Estimatet for forskjellen mellom gruppene er 112 447 NOK, denne forskjellen henger sammen med en standardfeil (<em>SE</em>) på 99 942 NOK, en t-verdi på 1.13 og p-verdi på 0.262.</p>
+<p>Under modulen <em>T-Tests</em> kan vi velge <em>Independent Samples T-Test</em> og sette in <code>årsinntekt</code> som avhengig variabel og òpprinnelse som <em>Grouping Variable</em>. Du vill finne de samme resultatene i resultatfanen hvor <em>Statistic</em> tilsvarer t-verdien for <span class="math inline">\(\beta_1\)</span> koeffisienten i vår regresjonsmodell over. Legg merke til at du kan velge at resultatene skal inneholde beskrivende statistikk for gjennomsnittlig forskjell og <em>Assumption Checks</em> noe som gir mye av den samme informasjonen som du kan få fra en regresjonsanalyse.</p>
+<p>Vi vet allerede mye analysen over, for eksempel at årsinntekt også varierer sammen med spillerposisjon. <em>t</em>-testen er ikke mulig å utvide for å inkludere flere variabler, noe som kan gi svar på hvordan effekten av opprinnelse ser ut når vi tar hensyn til at spillerposisjon kan være skjevt fordelt mellom norske og utenlandske spillere.</p>
+<section id="en-avhengig-t-test" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="en-avhengig-t-test"><span class="header-section-number">4.2.1</span> En avhengig <em>t</em>-test</h3>
+<p>Som nevnt over er antagelsen om dataene i en avhengig <em>t</em>-test at de er avhengige eller korrelerte mellom for eksempel repeterte målinger. Slike data kan vi få fra et forsøk hvor vi måler VO<sub>2maks</sub> på deltakere for og etter en intervensjon. Simulerte data fra en slik intervensjon finnes i datasettet <a href="data/vo2maks.csv"><code>vo2maks.csv</code></a>.</p>
+<p>I en enkel regresjonsmodell kanskje vi ønsker å estimere</p>
+<p><span class="math display">\[\text{VO}_{2\text{maks}} = \beta_0 + \beta1 x_{test = 2}\]</span> For å lage en rettferdig bilde av denne modellformuleringen kreves en mer avansert statistisk modell av typen <em>Mixed Linear Model</em>, noe som vi ikke går videre inn på her. Isteden har vi flere andre alternativer og vi starter med å gjennomføre den avhengige <em>t</em>-testen.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div id="fig-vo2maks" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="02-jamovi_files/figure-html/fig-vo2maks-1.png" class="img-fluid figure-img" width="384"></p>
+<figcaption class="figure-caption">Figur&nbsp;4.3. VO<sub>2maks</sub> i en gruppe forsøkspersoner som gjennomfører en treningsintervensjon.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Last ned dataene (<a href="data/vo2maks.csv"><code>vo2maks.csv</code></a>) og legg merke til at testdataene er strukturert som to variabler <code>y1</code> og <code>y2</code>. Hvert rad i datasettet tilsvarer to observasjoner fra hvert individ. For å gjennomføre <em>t</em>-testen velger vi <em>Paired Samples T-test</em> under modulen <em>T-Tests</em>. Variablene <code>y1</code> og <code>y2</code> setter vi så inn under <em>Paired variables</em>. Akkurat som med den uavhengige <em>t</em>-testen kan vi for eksempel velge å se på gjennomsnittlig differens (<em>Mean difference</em>) og <em>Assumption checks</em>. Vi noterer at forskjellen mellom <code>y1</code>og <code>y2</code> tilsvarer en <em>t</em>-verdi på 3.75, gjennomsnittlig forskjell er 1.61 enheter og standardfeilen for denne er 0.43.</p>
+<p>I en enkel regresjonsmodell kan vi gjennomføre en analyse av differensen mellom <code>y1</code> og <code>y2</code> ved å først beregne differensen for hvert individ. Vi lager en ny variabel (<em>Data</em>/<em>Add</em>/<em>Computed variable</em>) hvor vi beregner <code>=y2 - y1</code>. La oss navngi denne variabelen til <code>diff</code>. Vi har nå muligheten å lage en modell som beskriver</p>
+<p><span class="math display">\[\text{VO}_{2\text{maks y2-y1}} = \beta_0\]</span> Altså, en koeffisient som beskriver gjennomsnittet i differensen mellom tidspunktene. For å lage denne modellen med regresjonsmodulen kreves en ny variabel med bare en verdi i. Vi lager en variabel og fyller den med 1 på hver rad (<em>Data</em>/<em>Add</em>/<em>Data variable</em>), gi den nye variabelen navnet <code>x</code>. Nå kan vi sette opp en modell som gir oss en koeffisient for skjæringspunktet ved å sette <code>diff</code> somavhengig variabel og <code>x</code> som uavhengig variabel. Da <code>x</code> bare inneholder 1 så vil modellen ikke gi estimater for denne variabelen, men vi vil få estimater for <code>Intercept</code> (skjæringspunktet). Vi kan nå se at vi får de samme resultatene her som for <em>Paired Samples T-Test</em>.</p>
+<p>En annen måte å lage den samme modellen er ved å bruke en tilleggs-modul som heter <em>Linear Models</em> når den er installert. Her kreves at vi installerer denne nye modulen. Under <em>Modules</em> velger vi <em>jamovi library</em>, finner frem <em>gamlj - General Analyses for Linear Models in jamovi</em> og velger <em>INSTALL</em>. I modulen <em>Linear Models</em> velger vi så <em>General Linear Model</em> og legger til variabelen <code>diff</code> som avhengig variabel. Vi får igjen de samme estimatene som ved bruk av <em>t</em>-testen, men denne gangen uten å “lure” programmet til å bare lage en enkel modell for skjæringspunktet.</p>
+</section>
+<section id="one-sample-t-test" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">4.2.2</span> One-sample <em>t</em>-test</h3>
+<p>Den analysen som vi gjennomført her over er den samme analysen som kan gøres med en one-sample <em>t</em>-test. Her bruker vi en variabel og “tester” mot en hypotese, som for eksempel sier at variabelen er 0. Den samme hypotesen er den alternative hypotesen vi stiller opp når vi ønsker å analysere differensene innad en gruppe.</p>
+</section>
+</section>
+<section id="variansanalyse-i-jamovi" class="level2 page-columns page-full" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="variansanalyse-i-jamovi"><span class="header-section-number">4.3</span> Variansanalyse i Jamovi</h2>
+<p>Vi kan reprodusere analysen som presenteres i Tabell 3.3 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> ved hjelp av datasettet <a href="data/fotball_1_2_3.csv"><code>fotball_1_2_3.csv</code></a> ved å velge <em>ANOVA</em>-modulen i Jamovi, videre velger vi <em>One-way ANOVA</em>. Denne analysen gjennomføres over en kategorisk variabel, derav navnet “en-veis variansanalyse”. Vi setter <em>årsinntekt</em> som avhengig variabel (<em>Dependent variable</em>) og <em>posisjon</em> som uavhengig variabel (<em>Grouping variable</em>). Legg merke til at sorteringen av variabelen skiller seg i din tabell fra boken. For å få den samme sorteringen kan vi endre <em>Levels</em> under <em>Data</em> eller <em>Variables</em> (<em>Edit</em>).</p>
+<div class="no-row-height column-margin column-container"></div><p>En variansanalyse undersøker om variasjonen i en kontinuerlig variabel mellom grupper (kategorisk variabel) er større enn variasjonen innad gruppene. Denne analysen er tett koblet til et hypotesetest som har en null-hypotese som sier at ingen gruppe skiller seg fra gjennomsnittet. Vi velger derfor å vente med detaljene kring dette til modulen som omhandler <a href="04-induktiv-statistikk.html"><span>Chapter&nbsp;7</span></a>.</p>
+<p>I analysemodulen for en en-veis variansanalyse finner vi flere mulige valg. Under <em>Variances</em> har vi mulighet å velge om vi skal gjøre antagelse om lik eller ulik varians mellom grupper. Dette er en antagelse om modellen, i den enkleste formen har vi en antagelse om a variansen er lik mellom gruppene. Her er dog en slik antagelse vanskelig å forsvare i mange fall og Welch’s one-way ANOVA å foretrekke. Denne metode for å beregne teststatistikken som blir brukt for å teste hypotesen (gjennomsnitt i gruppen skiller seg i fra hverandre), er mer robust. Vi risikerer til mindre grad å bli lurt av hypotesetesten (mer om dette i <a href="04-induktiv-statistikk.html"><span>Chapter&nbsp;7</span></a>).</p>
+<p>Under Missing values velger vi hvordan vi håndterer observasjoner hvor vi savner data. Under <em>Assumption Checks</em> kan vi la Jamovi gjennomføre noen test for de antagelser som følger med analysen. <em>Homogeneity test</em> tester om variansen er lik mellom grupper, hvis den ikke er det, er som nevnt Welch’s test et test som tar høyde for dette. Som i regresjonsanalysen kan vi se på en <em>Q-Q plot</em> som viser hvor nærme feilleddet (residualene) ligger en normalfordeling.</p>
+<p>Under <em>Additional Statistics</em> finner vi muligheten å faktisk finne gjennomsnitt per gruppe. Her kan vi reprodusere Tabell 3.3 <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span>.</p>
+<div class="no-row-height column-margin column-container"></div></section>
+<section id="krysstabulering-i-jamovi" class="level2 page-columns page-full" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="krysstabulering-i-jamovi"><span class="header-section-number">4.4</span> Krysstabulering i Jamovi</h2>
+<p>Vi kan gjenskape Tabell 3.5 i <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> ved å åpne datasettet <a href="data/student_trening_1_2_3.csv"><code>student_trening_1_2_3.csv</code></a> i jamovi. Under modulen <em>Frequencies</em> finner vi <em>Independet samples, <span class="math inline">\(\chi^2\)</span> test of association</em>. Vi velger å sette <code>kjønn</code> i *Rows** og <code>idrettslag</code> i <em>Columns</em>. Under <em>Cells</em> kan vi velge å sette opp observerte antall under <em>Observed counts</em> og prosentandeler per rad, kolonne eller totalt under <em>Percentages</em>. Jamovi kan også gi deg informative figurer fra analysene som baserer seg på krysstabulering under <em>Plots</em>.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
+Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
+</div></div><p>Under <em>Statistics</em> finner vi flere alternativer for hypotesetesting under <em>Testes</em> og <em>Hypothesis</em>. Mer relevant for denne modulen er <em>Comparative Measures</em>, disse forteller om samvariasjonen mellom, i dette fallet, <code>kjønn</code> og medlemskap i <code>idrettslag</code>. Vi har tidligere beregnet <em>Odds ratio</em> og <em>Log odds ratio</em>, her finner vi også <em>Relative Risk</em> og <em>Difference in proportions</em>. Forskjellen mellom gruppene i prosentpoeng (<em>Difference in proportions</em>) er hva <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> rapporterer som mål på samvariasjon mellom variablene (s. 55). <em>Relative Risk</em> kan beregnes som forhold mellom “risk” for å medlemskap i et idrettslag (<span class="math inline">\(\text{IL}\)</span>) hos kvinner og hos menn hvor risk er <span class="math inline">\(\text{IL}_{\text{ja}} / \text{IL}_{\text{ja}} + \text{IL}_{\text{nei}}\)</span>. Vi kan lese den relative risken som at kvinner har en risk for å være med i et idrettslag som er 0.41 ganger risken for menn. Vi snakker vanligvis ikke om “risk” i slike sammenhenger.</p>
+</section>
+<section id="fra-krysstabulering-til-logistisk-regresjon" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="fra-krysstabulering-til-logistisk-regresjon"><span class="header-section-number">4.5</span> Fra krysstabulering til Logistisk regresjon</h2>
+<p>En logistisk regresjonsmodell forteller oss om sammenhengen mellom en avhengig variabel og en eller flere uavhengige variabler uttrykket som en log-oddsforhold (log-odds ratio, OR). Vi kan bruke modulen <em>Regression</em> til å tilpasse en logistisk regresjonsmodell som beskriver sammenhengen mellom <code>kjønn</code> og medlemskap i <code>idrettslag</code>, her velger vi <em>2 Outcomes, Binomial</em> og setter inn variablene under <em>Dependent Variable</em> og <em>Factors</em>. Likt som under <em>Linear Regression</em> har vi mulighet å bygge opp en modell med hjelp av flere variabler, kategoriske og kontinuerlige.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Logistisk regresjon
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Vi misstenker at variablene <code>timer_tren</code> og <code>trener_mest</code> også er av betydning for sannsynligheten for å være medlem i et idrettslag (data i <a href="data/student_trening_1_2_3.csv"><code>student_trening_1_2_3.csv</code></a>). Det kan også være sånn at vi sammenligner to delvis forskjellige grupper når vi sammenligner menn og kvinner. For å gjøre sammenligningen mellom menn og kvinner mer korrekt ønsker vi å kontrollere for <code>timer_tren</code> og <code>trener_mest</code>. Lag en modell som beskriver sammenhengen mellom <code>kjønn</code> og <code>idrettslag</code>, og samtidig kontrollerer for variablene <code>timer_tren</code> og <code>trener_mest</code>.</p>
+<p>Når du gjør sammenligninger ønsker vi å vite sannsynligheter for medlemskap i et idrettslag. Lag derfor en ny variabel ved bruk av funksjonen <code>=IF</code>. Denne funksjonen tar som argumenter en logisk test, verdien når SANN og verdi når IKKE SANN. Når vi skriver “testen” som <code>idrettslag == "ja"</code> vill det gi oss SANN når vi har en rad i datasettet hvor variabelen <code>idrettslag</code> er lik “ja”. Vi setter verdien på vår nye variabel til 1 i disse fallene og 0 når så ikke er tilfelle. Hele uttrykke blir <code>=IF(idrettslag == "ja", 1, 0)</code>. Vi har nå kontrollert at variabelen faktisk beskriver hva vi tror den beskriver.</p>
+<p>Hvordan tolker du sammenhengen mellom kjønn og medlemskap i et idrettslag?</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: Logistisk regresjon
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>I en modell hvor vi bare har kjønn som uavhengig variabel sier resultatene at forholdet mellom menn og kvinner i oddsen for å være medlem i et idrettslag er 3.21. Dette kan også sies bety at menn er 3.21 ganger mer sannsynligt medlemmer i et idrettslag sammenlignet med kvinner. Når vi tar sammenligner menn og kvinner samtidig som vi tar høyde for antall treningstimer og hva man trener mest er det samme forholdet 2.98. Det vill si at effekten er noe svakere når vi praksis sammenligner menn med kvinner som trener det samme og like mye.</p>
+<p>I denne analysen er vi ikke direkte interesserte i de samvariasjon mellom andre variablene og medlemskap. Vi bruker de for å “balansere” gruppene menn og kvinner sånn at vi sammenligner menn og kvinner med samme verdier på de andre variablene.</p>
+<p>Odds-ratioen får vi frem ved å bruke eksponentialfunksjonen (<code>=EXP()</code> i Jamovi, <code>=EKSP()</code> i Excel, eller <span class="math inline">\(2.718282^\beta\)</span> på en kalkulator hvor <span class="math inline">\(\beta\)</span> er koeffisienten fra modellen). Odds-ratioen er altså forholdet mellom odds for medlemskap hos menn og odds for medlemskap hos kvinner.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
+
+
+</section>
 
 
 </main> <!-- /main -->
