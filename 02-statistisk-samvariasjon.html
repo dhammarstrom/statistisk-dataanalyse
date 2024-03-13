@@ -299,13 +299,16 @@ div.csl-indent {
 <li>større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge.</li>
 </ul>
 <p>Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, så som regresjonsanalyse, analyse av varians og krysstabulering.</p>
-<section id="regresjon" class="level2" data-number="3.1">
+<section id="regresjon" class="level2 page-columns page-full" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="regresjon"><span class="header-section-number">3.1</span> Regresjon</h2>
 <p>Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også bli utvidet til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se <a href="#fig-simpsons">Figur&nbsp;<span>3.1</span></a>). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.</p>
 <p>I dette “systemet”, og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.</p>
 <p>Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner <a href="data/simpsons.csv">her</a> finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som <strong>uavhengig variabel</strong> og vekt som <strong>avhengig variabel</strong>. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.</p>
 <p>Den visuelle sammenfatningen av dataene finner du under i <a href="#fig-simpsons">Figur&nbsp;<span>3.1</span></a>, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?</p>
-<div class="cell">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=39488111-10f8-4b0a-8b8a-b1310079acab" target="_blank">Intro til samvariasjon og regresjon</a>.</p>
+</div></div><div class="cell">
 <div class="cell-output-display">
 <div id="fig-simpsons" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -327,13 +330,19 @@ div.csl-indent {
 </div>
 </div>
 </div>
-<p>En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med “feilverdier” til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f20b1473-0003-4aec-8ac5-b131007d7227" target="_blank">Tilpassning av en regresjonsmodell</a>.</p>
+</div></div><p>En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med “feilverdier” til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.</p>
 <p>Et dataprogram som for eksempel Jamovi gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er 0.73 kg. For hver cm økning i kroppshøyde øker vekt med 0.73 kg. Skjæringspunktet sier at vekten er -51 kg når kroppshøyde er 0. Dette er ikke en korrekt representasjon av virkeligheten så som vi kjenner den. Dette sier mer om hvordan vi sier at variablene varierer sammen enn om forholdet mellom kroppshøyde og vekt.</p>
 <p>En regresjonsmodell fungerer best der hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om en ikke rett sammenheng og når modellen brukes for å predikere utenfor variasjonsvidden til dataene som bruktes til å lage modellen.</p>
 </section>
-<section id="fra-regresjon-til-korrelasjon" class="level2" data-number="3.2">
+<section id="fra-regresjon-til-korrelasjon" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="fra-regresjon-til-korrelasjon"><span class="header-section-number">3.2</span> Fra regresjon til korrelasjon</h2>
-<p>I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på 0.73 kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=56396ccf-80b2-4217-a086-b131007f8df8" target="_blank">Fra regresjon til korrelasjon</a>.</p>
+</div></div><p>I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på 0.73 kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles.</p>
 <p>Sammenhengen mellom to kontinuerlige variabler kan beskrives som en korrelasjonskoeffisient. Denne korrelasjonskoeffisienten beskriver sammenhengen mellom to variabler som et tall mellom -1 og +1 hvor estimat som nærmer seg -1 eller +1 indikerer en sterk korrelasjon og estimat som nærmer seg 0 indikerer en svak eller ingen korrelasjon (eller sammenheng).</p>
 <p>Den kanskje vanligste måten å beskrive en korrelasjon på er ved hjelp av Pearson’s korrelasjonskoeffisient. Denne gis vanligvis symbolet <em>R</em> og noen eksempler finnes å se i <a href="#fig-korr">Figur&nbsp;<span>3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
@@ -358,9 +367,12 @@ div.csl-indent {
 </div>
 </div>
 </section>
-<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2" data-number="3.3">
+<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">3.3</span> Regresjon med en nominal eller ordinal uavhengig variabel</h2>
-<p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=99060c90-3a49-46a0-b24e-b1310081df16" target="_blank">Regresjonsmodellen og alternative statistiske metoder</a>.</p>
+</div></div><p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="tbl-simpsons" class="anchored">
@@ -2363,7 +2375,7 @@ Hosmer, David W., Stanley Lemeshow, and Rodney X. Sturdivant. 2013. <em>Applied 
 <div id="fig-chd1" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="02-statistisk-samvariasjon_files/figure-html/fig-chd1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.9. Bruk av linjær regresjon for å beskrive binære data.</figcaption>
+<figcaption class="figure-caption">Figur&nbsp;3.9. Bruk av lineær regresjon for å beskrive binære data.</figcaption>
 </figure>
 </div>
 </div>
