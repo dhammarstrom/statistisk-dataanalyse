@@ -2436,8 +2436,11 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 <p>For å beregne odds (<span class="math inline">\(p\)</span>) for en gitt verdi på <span class="math inline">\(x\)</span>, la oss si 50 år, trenger vi en annen funksjon, inversen av logit-funksjonen, den logistiske funksjonen:</p>
 <p><span class="math display">\[p=\frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}\]</span> I vår modell for hjertesykdom er <span class="math inline">\(\beta_0 = -5.309\)</span> og <span class="math inline">\(\beta_1 = 0.11\)</span>, noe som gir <span class="math inline">\(-5.309 + 0.11 \times 50 = 0.236\)</span>. Dette gir et odds for hjertesykdom for femtiåringer på</p>
 <p><span class="math display">\[p = \frac{e^{0.236}}{1+e^{0.236}} = 0.56\]</span></p>
-<p>Hvor <span class="math inline">\(e \sim 2.718\)</span>, noe som også kan benevnes som “eksponetial-funksjonen av 0.236” eller skrives som “exp(0.236)”.</p>
-</section>
+<p>Hvor <span class="math inline">\(e \sim 2.718\)</span>, noe som også kan benevnes som “eksponential-funksjonen av 0.236” eller skrives som “exp(0.236)”.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bd2549d5-0ddd-49f4-a1b0-b137007ec457" target="_blank">Kort forelesning om logistisk regresjon</a>.</p>
+</div></div></section>
 <section id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn" class="level3" data-number="3.8.2">
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn"><span class="header-section-number">3.8.2</span> Et eksempel: Analyse av samvariasjon mellom medlemskap i idrettslag og kjønn</h3>
 <p>I eksemplet med krysstabulering (<a href="#sec-kryss"><span>Section&nbsp;3.7</span></a>) undersøkte vi hvor stor andel av menn og kvinner i datasettet som rapporterte at de var medlemmer i et idrettslag. Forskjellen i prosentpoeng var 20.7. Vi kan også beregne dette som et odds-forhold. Tallene finner vi i <a href="#tbl-trening">Tabell&nbsp;<span>3.5</span></a> hvor vi bruker antallet observasjoner fra hvert kategori når vi først beregner odds for medlemskap som</p>
