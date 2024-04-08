@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 6&nbsp; Kausal analyse i Jamovi</title>
+<title>Statistisk dataanalyse med Jamovi - Induktiv statistikk</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,26 +20,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -49,8 +30,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./04-a-intro.html" rel="next">
-<link href="./03-kausalsammenheng.html" rel="prev">
+<link href="./04-induktiv-statistikk.html" rel="next">
+<link href="./03-jamovi.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,12 +62,10 @@ div.csl-indent {
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -95,7 +74,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li><li class="breadcrumb-item"><a href="./03-jamovi.html"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-a-intro.html">Induktiv statistikk</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -189,7 +168,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-jamovi.html" class="sidebar-item-text sidebar-link active">
+  <a href="./03-jamovi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></span></a>
   </div>
 </li>
@@ -197,7 +176,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link">
+            <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">Induktiv statistikk</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -253,22 +232,14 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Innhold</h2>
-   
-  <ul>
-  <li><a href="#gjennomsnittlig-behandlingseffekt" id="toc-gjennomsnittlig-behandlingseffekt" class="nav-link active" data-scroll-target="#gjennomsnittlig-behandlingseffekt"><span class="header-section-number">6.1</span> Gjennomsnittlig behandlingseffekt</a></li>
-  <li><a href="#dårlige-kontrollvariabler" id="toc-dårlige-kontrollvariabler" class="nav-link" data-scroll-target="#dårlige-kontrollvariabler"><span class="header-section-number">6.2</span> Dårlige kontrollvariabler</a></li>
-  <li><a href="#en-kurvilineær-kontrollvariabel" id="toc-en-kurvilineær-kontrollvariabel" class="nav-link" data-scroll-target="#en-kurvilineær-kontrollvariabel"><span class="header-section-number">6.3</span> En kurvilineær kontrollvariabel</a></li>
-  </ul>
-</nav>
+        
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></h1>
+<h1 class="title">Induktiv statistikk</h1>
 </div>
 
 
@@ -283,157 +254,9 @@ div.csl-indent {
 
 </header>
 
-<section id="gjennomsnittlig-behandlingseffekt" class="level2 page-columns page-full" data-number="6.1">
-<h2 data-number="6.1" class="anchored" data-anchor-id="gjennomsnittlig-behandlingseffekt"><span class="header-section-number">6.1</span> Gjennomsnittlig behandlingseffekt</h2>
-<p>I et eksperiment ønsker vi å undersøke effekten av en behandling (B) på en avhengig variabel (Y). Vi har mulighet til å rekruttere 100 deltakere til eksperimentet, og vi tilordner deltakerne tilfeldig til en av to grupper: en behandlingsgruppe (B=1) og en kontrollgruppe (B=0). Vi måler utfallet Y for hver deltaker i forkant (<span class="math inline">\(Y_1\)</span>) og etterkant (<span class="math inline">\(Y_2\)</span>) av intervensjonen. Med forsøket ønsker vi å bestemme den gjennomsnittlige behandlingseffekten (i engelsk litteratur også kalt ATE, average treatment effect). Vi kan definere behandlingseffekten som forskjellen i gjennomsnittlig utfall mellom behandling- og kontrollgruppen.</p>
-<p>Vi kan formulerer effekten som vi ønsker å estimere som</p>
-<p><span class="math display">\[(Y_{1, B=1} - Y_{0, B=1}) - (Y_{1,B=0}-Y_{0,B=0})\]</span> Og vi leser det som, differensen i utfall mellom tid 1 og 0 i behandlingsgruppen (<span class="math inline">\(B=1\)</span>) minus differensen i utfall mellom tid 1 og 0 i kontrollgruppen (<span class="math inline">\(B=0\)</span>). Vi har nå definert den kvantitet vi ønsker å estimere. Dette kalles i den engelske litteraturen for <em>estimand</em>, et begrep som brukes for å beskrive resultatet av en analyse av antagelser og sprørsmålet som vi ønsker å besvare <span class="citation" data-cites="pearl_seven_2019">(<a href="references.html#ref-pearl_seven_2019" role="doc-biblioref">Pearl 2019</a>)</span>. Hvilke er antagelsene? Vi har veldig få antagelser, ettersom forsøket er et randomisert forsøk har vi ingen veier inn i behandlingsvariabelen (B) og den er bare direkte sammenkoblet med utfallet (Y).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-pearl_seven_2019" class="csl-entry" role="listitem">
-Pearl, Judea. 2019. <span>“The Seven Tools of Causal Inference, with Reflections on Machine Learning.”</span> <em>Communications of the <span>ACM</span></em> 62 (3): 54–60. <a href="https://doi.org/10.1145/3241036">https://doi.org/10.1145/3241036</a>.
-</div></div><div class="cell">
-<div class="cell-output-display">
-<div id="fig-jamovieksperiment" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-jamovi_files/figure-html/fig-jamovieksperiment-1.png" class="img-fluid figure-img" width="288"></p>
-<figcaption class="figure-caption">Figur&nbsp;6.1. Behandling (B) påvirker potensiellt utfallet (Y).</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>Neste steg er å gjøre estimeringen. Vi kan gjøre dette ved å lage en variabel som beskriver forandring <code>y_diff = Y1 - Y0</code> og så lage en gruppesammenligning på den nye variabelen.</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Oppgave: Beregne gjennomsnittlig behandlingseffekt?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Du finner datasettet <a href="data/eksperiment1.csv">her</a>. Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av behandling (B)</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Svar: Beregne gjennomsnittlig behandlingseffekt?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Vi starter med å lage den nye variabelen. Vi har allerede definert den over som <code>y_diff = Y1 - Y0</code>. Vi kan gjøre dette i Jamovi ved å velge <em>Add</em> og <em>Computed variable</em>. Vi kan så lage en regresjonsmodell med <code>y_diff</code> som avhengig variabel og <code>B</code> som uavhengig variabel. Vi kan så se på koeffisienten for <code>B</code> for å se effekten av behandling, dette er den gjennomsnittlige behandlingseffekten.</p>
-<p><img src="img/03-kausal/jamovi1.gif" class="img-fluid"></p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="dårlige-kontrollvariabler" class="level2" data-number="6.2">
-<h2 data-number="6.2" class="anchored" data-anchor-id="dårlige-kontrollvariabler"><span class="header-section-number">6.2</span> Dårlige kontrollvariabler</h2>
-<p>I et eksperiment undersøker vi effekten av varmetrening på sykkelprestasjon. Spesifikt er vi er interesserte i å finne ut om varmetrening påvirker prestasjon på en sykkeltest hvor watt er utfallsvariabelen. Vi har rekruttert 26 deltakere til eksperimentet og tilordnet dem tilfeldig til en varmetreningsgruppe (G=1) og en kontrollgruppe (G=0). Vi har målt prestasjonen på sykkeltesten før og etter intervensjonen. Vi har også målt hemoglobinmasse (hb) og VO<sub>2maks</sub> til deltakerne før og etter intervensjonen.</p>
-<p>Datasettet <a href=""><code>sykkeltest.csv</code></a> inneholder variablene <code>group</code> (0=kontroll, 1=varmetrening), <code>time</code> (pre, post), <code>hb</code> (hemoglobinmasse), <code>VO2max</code> (maksimalt oksygenopptak) og <code>Watt</code> (sykkelprestasjon).</p>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Oppgave: Beregne gjennomsnittlig behandlingseffekt?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-4" class="callout-4-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Du finner datasettet <a href="data/sykkeltest.csv">her</a>. Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av varmetrening på sykkelprestasjon (Watt). Da vi har målt VO<sub>2maks</sub> og hemoglobinmasse før og etter intervensjonen kan vi inkludere disse variablene som kontrollvariabler i modellen. Men hva skjer med estimatet for varmetrening når vi inkluderer disse variablene i modellen?</p>
-<div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Svar: Beregne gjennomsnittlig behandlingseffekt?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-3" class="callout-3-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Det finnes flere måter å estimere forskjell mellom gruppene i forandring i sykkelprestasjon. En måte er å lage en ny variabel som beskriver forandring <code>watt_diff = watt_post - watt_pre</code> og så lage en gruppesammenligning på den nye variabelen. I Jamovi må vi strukturere dataene slik at vi har en rad per deltaker og en kolonne per variabel. Jamovi har ikke funksjoner som lett lar deg transponere datasett. Her må vi gjøre arbeidet manuellt. Vi kan så lage en regresjonsmodell med <code>watt_diff</code> som avhengig variabel og <code>group</code> som uavhengig variabel. Vi kan så se på koeffisienten for <code>group</code> for å se effekten av varmetrening.</p>
-<p><img src="img/03-kausal/jamovi3.gif" class="img-fluid"></p>
-<p>Effekten er estimert til 12.52 watt, med et standardfeil på 6.45. Effekten tilsvarer altså nesten 2 standardfeil.</p>
-<p>La oss se på en DAG som beskriver våre data (<a href="#fig-sykkeldag">Figur&nbsp;<span>6.2</span></a>).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-sykkeldag" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-jamovi_files/figure-html/fig-sykkeldag-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;6.2. DAG som beskriver sammenhengen mellom variablene i sykkeltesten.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<p>DAGen viser at varmetrening (V) påvirker sykkelprestasjon (W) gjennom hemoglobinmasse (Hb), VO<sub>2maks</sub> (VO2) og en (eller flere) ikke målte variabler (U).</p>
-<p>Når vi er interesserte i den totale effekten av varmetrening på sykkelprestasjon, er det viktig å <em>ikke</em> inkludere variabler som påvirkes av behandlingen (varmetrening, treatment). Hvis vi gjør det oppstår “post-treatment bias” hvor vi tar vekk effekten av behandlingen. For å illustrerer dette, lag en to nye modeller som inkluderer inkludere forandring i hemoglobinmasse og VO<sub>2maks</sub> (eks. <code>hb_diff = hb_post - hb_pre</code>) i modellen.</p>
-<p>Når vi inkluderer hemoglobinmasse i modellen, reduseres effekten av varmetrening til 6.05 watt, med et tilhørende standardfeil på 16.19. Effekten av varmetrening har tilsynelatende forsvunnit helt, den tilsvarer mindre en helften av et standardfeil. Det å inkluderer en post-treatment variabel i modellen reduserer effekten og gjør den mer usikker, noe vi ser gjennom et større standardfeil.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="en-kurvilineær-kontrollvariabel" class="level2 page-columns page-full" data-number="6.3">
-<h2 data-number="6.3" class="anchored" data-anchor-id="en-kurvilineær-kontrollvariabel"><span class="header-section-number">6.3</span> En kurvilineær kontrollvariabel</h2>
-<p>I <span class="citation" data-cites="thrane_performance_2019">Thrane (<a href="references.html#ref-thrane_performance_2019" role="doc-biblioref">2019</a>)</span> analyseres dataene fra datasettet <code>fotball_1_2_3.csv</code>, her konstateres at alder bør inkluderes i en modell som brukes for å estimere effekten av prestasjon på inntekt. I figuren under (<a href="#fig-alderinntekt">Figur&nbsp;<span>6.3</span></a>) illustreres to former for sammenheng mellom alder og inntekt. Den blå linjen viser en lineær sammenheng, mens den røde linjen viser en kurvlineær sammenheng. Den kurvlineære sammenhengen er estimert ved hjelp av en polynomisk regresjonsmodell.</p>
-<div class="no-row-height column-margin column-container"><div id="ref-thrane_performance_2019" class="csl-entry" role="listitem">
-Thrane, Christer. 2019. <span>“Performance and Actual Pay in Norwegian Soccer.”</span> <em>Journal of Sports Economics</em> 20 (8): 1051–65. <a href="https://doi.org/10.1177/1527002519851146">https://doi.org/10.1177/1527002519851146</a>.
-</div></div><p>I Jamovi kan vi estimere en polynomisk regresjonsmodell ved å lage en ny variabel, <code>alder^2</code>. Vi kan så inkludere denne variabelen i en regresjonsmodell sammen med <code>alder</code>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="fig-alderinntekt" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-jamovi_files/figure-html/fig-alderinntekt-1.png" class="img-fluid figure-img" width="288"></p>
-<figcaption class="figure-caption">Figur&nbsp;6.3. Et lineært og et kurvlineært forhold mellom Alder og Inntekt.</figcaption>
-</figure>
-</div>
-</div>
-</div>
-<div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Oppgave: Lag en polynomisk regresjonsmodell?
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-5" class="callout-5-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p>Bruk datasettet <code>fotball_1_2_3.csv</code> og lag en polynomisk regresjonsmodell for å estimere effekten av alder på inntekt.</p>
-<ol type="1">
-<li>Legg til en ny variabel, <code>alder2</code> i datasettet beregnet som <code>alder^2</code>. Lag också en transformert variabel <code>loginntekt</code> som er logaritmen til inntekt. Transformeringen <code>LN($source)</code> vil gjøre dette for deg.</li>
-<li>Lag en polynomisk regresjonsmodell med <code>loginntekt</code> som avhengig variabel og <code>alder</code> og <code>alder2</code> som uavhengige variabler.</li>
-<li>Les av estimaten, disse bør være <code>alder = 0.38</code> og <code>alder2 = -0.01</code>.</li>
-</ol>
-<section id="et-alternativ" class="level3" data-number="6.3.1">
-<h3 data-number="6.3.1" class="anchored" data-anchor-id="et-alternativ"><span class="header-section-number">6.3.1</span> Et alternativ</h3>
-<p>I Jamovi kan vi bruke modulen GAMLj for å lage en polynomisk regresjonsmodell. Dette gjør vi ved å først velge <em>Analyses</em> og <em>GAMLj</em>. Vi kan så legge til variablene <code>loginntekt</code> som avhengig variabel og <code>alder</code> som uavhengig variabel (covariates). Under <em>Model</em> kan vi så legge inn variabelen alder i kvadrat. Under Plot kan vi legge alder på horisontal aksel for å se hvordan sammenhengen mellom variablene ser ut.</p>
-<p><img src="img/03-kausal/jamovi2.gif" class="img-fluid"></p>
-</section>
-</div>
-</div>
-</div>
+<p>Vi har tidligere snakket om deskriptiv dataanalyse, hvor vi brukte statistiske verktøy for å beskrive data. Videre brukte vi statistiske modeller for å beskrive hvordan variabler varierte sammen. Disse modellene, som for eksempel regresjonsmodellen, ga oss gjennomsnittet av en variabel når vi holdt en annen variabel konstant. Disse modellene er også deskriptive og forteller oss om sammenhenger i dataene som vi har tilgang til. Vi satte så inn samvariasjon i konteksten av årsakssammenhenger hvor vi ved hjelp av kunnskap utenfor dataene tolket samvariasjon som vi observerte. Vi har så langt ikke prøvd oss på å forklare data som vi ikke har, dette er målet med den induktive statistikken, også kalt statistisk inferens.</p>
 
 
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -671,13 +494,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-kausalsammenheng.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></span>
+      <a href="./03-jamovi.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-a-intro.html" class="pagination-link">
-        <span class="nav-page-text">Induktiv statistikk</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-induktiv-statistikk.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
