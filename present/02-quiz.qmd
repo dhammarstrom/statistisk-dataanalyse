@@ -1,0 +1,455 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Samvariasjon: Quiz"
+format:
+  revealjs:
+    theme: dark
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+## Spørsmål 1: Beregne et gjennomsnitt
+
+En regresjonsmodell gir deg følgende ligning: $y=23.41 + 1.12 \times x$. *Hva er gjennomsnitt i y når x er 10?*
+
+::: {.fragment}
+
+```{r}
+
+library(tidyverse); library(ggtext); library(ggthemes); library(ggdark)
+
+data.frame(x = c(0, 40), 
+           y = c(0, 50)) %>%
+  
+  ggplot(aes(x, y)) +  
+
+  
+  scale_y_continuous(limits = c(-20, 40)) + 
+  scale_x_continuous(limits = c(-20, 40)) +
+  
+  geom_hline(yintercept = 0, lty = 2) +
+  geom_vline(xintercept = 0, lty = 2) +
+  
+  
+  annotate("segment", x = c(0,  10), xend = c(10,10), y = c(23.41, 23.41), yend = c(23.41, 23.41 + 1.12 * 10)) +
+  
+  
+   annotate(
+    'curve',
+    x = -10, 
+    y = 28,
+    yend = 25,
+    xend = -1,
+    linewidth = 0.75,
+    curvature = -0.5,
+    arrow = arrow(length = unit(0.3, 'cm')), 
+    color = "yellow") +
+  
+  
+     annotate(
+    'curve',
+    x = 20, 
+    y = 26,
+    yend = 28,
+    xend = 11,
+    linewidth = 0.75,
+    curvature = -0.2,
+    arrow = arrow(length = unit(0.3, 'cm')), 
+    color = "yellow") +
+  
+  
+  
+  annotate("richtext", x = -15, y = 24, label = "Skj&#230;ringspunkt: 23.41") +
+  
+  annotate("richtext", x = 29, y = 26, label = "Stignigstall &#215; 10: 11.2") +
+  
+  
+  geom_abline(intercept = 23.41, slope = 1.12, color = "orchid4", linewidth = 2) +
+  theme_economist() + dark_mode()
+
+
+```
+
+:::
+
+
+## Spørsmål 2: Beregne et gjennomsnitt
+
+En regresjonsmodell gir oss ligningen $y = \beta_0 + \beta_1 \times x$ hvor skjæringspunktet er 5145 og stigningstallet er 2781. Hva er forskjellen mellom $x_a = 14$ og $x_b = 28$
+
+::: {.fragment}
+$x_a: 5145 + 2781 \times 14 = 44079$ 
+:::
+::: {.fragment}
+$x_b: 5145 + 2781 \times 28 = 83013$ 
+:::
+::: {.fragment}
+$2781 \times (28-14) = 38934$
+:::
+
+::: {.fragment}
+$\Delta y = \beta_1 \times \Delta x$
+:::
+
+
+## Spørsmål 3: Årsinntekt og mål
+
+Hva er forskjell i `log(årsinntekt)` for hvert antall mål (`ant_mål`) når vi kontrollerer for `posisjon` og `kamper_tot` i datasettet `fotball_1_2_3.csv`. Bruk et filter som tar vekk keeperer.
+
+::: {.fragment}
+
+```{r}
+
+library(gt)
+
+dat <- read.csv2("data/fotball_1_2_3.csv", skip = 1, header = FALSE) %>%
+  select(arsinntekt = V1, 
+         posisjon = V3, 
+         kamper_tot = V5, 
+         ant_mal = V7)  %>%
+  filter(posisjon != "keeper")
+  
+
+mod <- lm(log(arsinntekt) ~ ant_mal + posisjon + kamper_tot, data = dat)
+
+coef(summary(mod)) %>%
+  data.frame() %>%
+  rownames_to_column(var = "coef") %>%
+  select(coef, Estimate, se = Std..Error) %>%
+  
+  mutate(`Uavhengig variabel` = c("Intercept (Skj&#230;ringspunkt)", 
+                       "Antall m&#229;l",
+                       "Posisjon: forsvar - angrep", 
+                       "Posisjon: midtbane - angrep", 
+                       "Kamper totalt")) %>%
+  select(`Uavhengig variabel`, Estimat = Estimate, Standardfeil = se) %>%
+  gt() %>%
+  fmt_markdown(`Uavhengig variabel`) %>%
+  fmt_number(columns = Estimat:Standardfeil, decimals = 2) 
+  
+
+
+
+
+
+
+```
+
+:::
+
+## Spørsmål 3: Årsinntekt og mål (Jamovi)
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+1. Lag en transformert variabel
+2. Filtrer datasett (`posisjon != "keeper"`)
+3. Bygg opp regresjonsmodellen
+:::
+
+::: {.column width="60%"}
+![](02-img/log-filter-regress.gif)
+:::
+
+::::
+
+## Spørsmål 4: Fra log- til naturlig skala. {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Hva er økningen i årsinntekt for hvert antall mål i prosentdeler fra modellen: `log(årsinntekt) ~ ant_mål + posisjon + kamper_tot`
+:::
+
+::: {.column width="40%"}
+::: {.fragment}
+$$\operatorname{log}(a) - \operatorname{log}(b) = \operatorname{log}\left(\frac{a}{b}\right)$$
+:::
+
+::: {.fragment}
+$$\operatorname{exp}(\operatorname{log}(a) - \operatorname{log}(b)) = \frac{a}{b}$$
+:::
+
+::: {.fragment}
+$$\%\text{økning} = 100 \times \left(\frac{a}{b}-1\right)$$
+:::
+::: {.fragment}
+$$\%\text{økning} = 100 \times (\operatorname{exp}(0.06)-1) = 6.2\%$$
+:::
+:::
+
+::::
+
+
+## Spørsmål 5: Timer trening, kjønn og idrettslag {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+I en regresjonsmodell med `timer_tren` som avhengig variabel og `idrettslag` og `kjønn` som uavhengige variabler fra datasettet student_trening_1_2_3.csv, hva er differensen mellom de som oppgir `ja` sammenlignet på `nei` i variabelen idrettslag? Oppgi svaret med to desimaler. 
+:::
+
+::: {.column width="60%"}
+
+```{r}
+
+dat <- read.csv("data/student_trening_1_2_3.csv", skip = 1, header = FALSE, sep = ";") %>%
+  select(timer_tren = V2, 
+         idrettslag = V5, 
+         kjonn = V7) 
+
+mod <- lm(timer_tren ~ idrettslag + kjonn, data = dat)
+
+dat %>%
+  slice(c(1, 3, 6, 9, 11, 29)) %>%
+  mutate(dummy_idrettslag = if_else(idrettslag == "nei", 1, 0), 
+         dummy_kjonn = if_else(kjonn == "mann", 1, 0)) %>%
+  print()
+
+
+```
+
+::: {.fragment}
+
+$$y=\beta_0 + \beta_1x_{\text{dummy_idrettslag}} + \beta_2x_{\text{dummy_kjønn}}$$
+:::
+
+::: {.fragment}
+$$\text{idrettslag}=\text{"nei"}, x_{\text{dummy_idrettslag}} = 1:\\ y=\beta_0 + \beta_1 \times 1$$
+:::
+
+::: {.fragment}
+$$\Delta y = \beta_1 \times \Delta x$$
+:::
+
+::: {.fragment}
+
+```{r}
+
+result <- round(as.numeric(coef(mod)[2]), 2)
+
+```
+
+$\beta_1=$ `r result`
+
+
+:::
+
+
+:::
+
+::::
+
+## Spørsmål 6: Timer trening, kjønn og idrettslag. Estimer et gjennomsnitt {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+I en regresjonsmodell med `timer_tren` som avhengig variabel og `idrettslag` og `kjønn` som uavhengige variabler fra datasettet student_trening_1_2_3.csv, hva er gjennomsnittet i treningstid for kvinner som oppgir nei i variabelen idrettslag? Oppgi med to desimaler. 
+
+:::
+
+::: {.column width="40%"}
+
+::: {.fragment}
+
+![](02-img/jamovi-model.png)
+:::
+
+::: {.fragment}
+$$y=\beta_0 + \beta_1x_{\text{dummy_idrettslag}} + \beta_2x_{\text{dummy_kjønn}}$$
+:::
+
+::: {.fragment}
+
+```{r}
+
+result <- round(coef(mod)[1] + coef(mod)[2], 2)
+
+# summary(mod)
+```
+
+$\beta_0 + \beta_1 =$ `r result`
+
+:::
+
+:::
+
+::::
+
+
+## Spørsmål 6: Timer trening, kjønn og idrettslag. Estimer et gjennomsnitt 
+
+
+![](02-img/sex-estimated-means.gif)
+
+
+## Spørsmål 7: Krysstabulering
+
+:::: {.columns}
+
+
+::: {.column width="40%"}
+
+Angi odds-ratio for medlemskap i et idrettslag når menn sammenlignes med kvinner. 
+
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment}
+```{r}
+
+table(dat[, c(2,3)]) %>%
+  data.frame() %>%
+  gt() %>%
+  cols_label(idrettslag = "Idrettslag", 
+             kjonn = md("Kj&#248;nn"), 
+             Freq = "Antall") 
+
+```
+
+:::
+
+
+::: {.fragment}
+$\operatorname{OR} = \frac{80}{148} / \frac{60}{365} = 3.21$
+:::
+
+
+:::
+
+::::
+
+## Spørsmål 7: Krysstabulering
+
+![](02-img/crosstable.gif){align="center"}
+
+## Spørsmål 8: Korrelasjoner
+
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Hvilken korrelasjonskoeffisient beskriver best lineær samvariasjon mellom variablene A og B?
+
+::: {.fragment}
+
+```{r}
+
+set.seed(2)
+
+dat <- data.frame(A = runif(37, min = 30, max = 96)) %>%
+  rowwise() %>%
+  mutate(B = rnorm(1, A + 19, 10)) %>%
+  
+  ungroup() %>%
+  
+  mutate(B = if_else(B > 115, B - 110, B), 
+         A = if_else(B < 30, A + 80, A))
+
+
+
+pr <- with(dat, cor(A, B, method = "pearson"))
+
+sr <- with(dat, cor(A, B, method = "spearman"))
+
+
+```
+
+Pearsons *r* = `r round(pr, 3)`
+:::
+
+::: {.fragment}
+
+Spearmans *r*<sub>s</sub> = `r round(sr, 3)`
+
+:::
+
+
+
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment}
+![](02-img/correlation.gif)
+:::
+:::
+
+
+::::
+
+
+
+
+
+
+## Spørsmål 9: Logistisk regresjon {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+Lag en ny variabel basert på variabelen `helse` hvor "mindre bra" helse gis tallet 0 og "bra" og "svært bra" begge gis tallet 1. Hva er betinget samvariasjon mellom den nye helsevariabelen (avhengig variabel) og `timer_tren` når vi samtidig bruker `sivil_stat`, `kjønn`, `økonomi`, `idrettslag` og `tren_senter` som "kontrollvariabler". Angi svaret som et odds-ratio (to desimaler).
+
+:::
+
+::: {.column width="60%"}
+
+::: {.fragment}
+![](02-img/logistic-reg.png)
+:::
+:::
+
+::::
+
+
+## Spørsmål 9: Logistisk regresjon
+
+::: {.fragment}
+$OR = 1.25$
+:::
+
+::: {.fragment}
+For hvert times økning i `timer_tren` stiger odds for god helse (`helse2 = 1`) 1.25 ganger.
+:::
+
+
+
+## Spørsmål 10: T-test og regresjon
+
+Du sammenligner grupper, hvilken regresjonsmodell tilsvarer en uavhengig *t*-test som sammenligner log(årsinntekt) mellom landslagsspiller og ikke-landslagsspiller?
+
+
+::: {.fragment}
+$y_1 - y_2 = \beta_0$
+:::
+
+::: {.fragment}
+$y = \beta_0 + \beta_1 \times x_{\text{landslag}} + \beta_2 \times x_{\text{posisjon}}$
+:::
+
+
+::: {.fragment}
+$y = \beta_0 + \beta_1 \times x_{\text{landslag}}$
+:::
+
+::: {.fragment}
+$y_{\text{landslag}} = \beta_0 + \beta_1 \times x_{\text{årsinntekt}}$
+:::
+
+
+
+

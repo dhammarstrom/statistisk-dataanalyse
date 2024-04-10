@@ -1,0 +1,1846 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Kausal inferens"
+format:
+  revealjs:
+    theme: dark
+    embed-resources: true
+standalone: true
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Hva er kausal inferens? {.smaller}
+
+![Via GIPHY](03-img/chain-reaction-domino.webp){width=70% align="center"}
+
+
+
+## Hva er kausal inferens?
+
+![Via GIPHY](03-img/domino.gif){width=100% align="center"}
+
+## Hva er kausal inferens? {.smaller}
+
+::: {.incremental}
+
+- Vi ønsker å forstå årsakssammenhenger, dette skiller seg fra å beskrive samvariasjon
+- Når det finnes en årsakssammenheng mellom to variabler vil det å forandre en variabel påvirke en annen variabel
+
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"),) + 
+  theme_dag(base_size = 8) 
+
+dagfig
+
+```
+
+::: 
+
+
+## Hvordan kan vi vite om det er en årsakssammenheng mellom to variabler?
+
+
+::: {.r-stack}
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 6
+
+
+library(tidyverse); library(ggtext); library(magick); library(cowplot)
+
+
+
+
+
+p1 <- data.frame() %>%
+  ggplot(aes(x = 1, y = 1)) +
+
+  theme_void() +
+  scale_y_continuous(limits = c(-1, 3)) +
+  scale_x_continuous(limits = c(0, 3)) +
+  
+  
+  annotate("segment", x = 1.1, xend = 1.5, y = 1.2, yend = 2, 
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+    annotate("text", x = 1.6, y = 2, label = "T", size = 8, fontface = "bold") +
+  
+  
+    annotate("segment", x = 1.7, xend = 2, y = 2, yend = 2, 
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+    annotate("richtext", x = 2.1, y = 1.95, label = "S = S<sub>T</sub> = 1", size = 8, fontface = "bold",
+           
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    ) +
+  draw_image("03-img/aman.png", x = -0.15, y = 0, width = 2, height = 2)
+  
+
+  ### 
+
+p1
+
+
+```
+
+::: 
+
+::: {.fragment}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 6
+
+
+p2 <- p1 +
+  
+    annotate("segment", x = 1.1, xend = 1.5, y = 0.8, yend = 0, 
+            alpha = 0.5,
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+      annotate("segment", x = 1.7, xend = 2, y = 0, yend = 0, 
+            alpha = 0.5,
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+  
+  
+
+  annotate("text", x = 1.6, y = 0, label = "C", size = 8, fontface = "bold") +
+  
+  annotate("richtext", x = 2.1, y = -0.05, label = "S = S<sub>C</sub> = ?", size = 8, fontface = "bold", 
+           hjust = 0,
+               fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    )
+
+p2 
+```
+
+:::
+
+::: {.fragment}
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 6
+
+p2 + annotate("richtext", x = 0, y = 2.5, 
+           label = " T: Treatment<br> C: Control<br> S: Outcome (S=1 if survived, S=0 if died)         <br> S<sub>T</sub>: Outcome under treatment<br> S<sub>C</sub>: Outcome under control", size = 5,
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    ) +
+  
+  
+  annotate("richtext", x = 1, y = -0.8, label = "Kausal effekt: S<sub>T</sub> - S<sub>C</sub>", size = 8, fontface = "bold", 
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    )
+
+
+
+
+```
+
+
+
+:::
+
+:::
+
+## Gjennomsnittlig kausal effekt {.smaller}
+
+::: {.incremental}
+- Vi kan ikke observere kausal effekten direkte for et individ, men...
+- den gjennomsnittlige kausal effekt er forskjellen i utfall mellom to grupper
+:::
+
+:::{.r-stack}
+
+
+:::{.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 6
+
+
+p1 <- data.frame() %>%
+  ggplot(aes(x = 1, y = 1)) +
+
+  theme_void() +
+  scale_y_continuous(limits = c(-1, 3)) +
+  scale_x_continuous(limits = c(0, 3)) +
+  
+  
+  annotate("segment", x = 1.1, xend = 1.3, y = 1.1, yend = 2, 
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+    annotate("text", x = 1.6, y = 2, label = "T (n = 15)", size = 7, fontface = "bold") +
+  
+  
+    annotate("segment", x = 1.85, xend = 2, y = 2, yend = 2, 
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+    annotate("richtext", x = 2.1, y = 1.95, label = "S = S<sub>T</sub> = 0.87", size = 7, fontface = "bold",
+           
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    ) +
+  
+   annotate("segment", x = 1.1, xend = 1.3, y = 0.9, yend = 0, 
+   
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+      annotate("segment", x = 1.85, xend = 2, y = 0, yend = 0, 
+  
+           color = "black", size = 1, arrow = arrow(type = "open", length = unit(0.5, "cm"))) +
+  
+  
+  
+
+  annotate("text", x = 1.6, y = 0, label = "C (n = 15)", size = 7, fontface = "bold") +
+  
+  annotate("richtext", x = 2.1, y = -0.05, label = "S = S<sub>C</sub> = 0.47", size = 7, fontface = "bold", 
+           hjust = 0,
+               fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    ) +
+  
+  
+  
+  draw_image("03-img/manyman.png", x = -0.4, y = 0, width = 2, height = 2)
+
+p1
+
+```
+
+
+:::
+
+:::{.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 12
+#| fig-height: 6
+
+
+
+p1 + 
+    annotate("richtext", x = 0, y = -0.8, label = "Gjennomsnittlig kausal effekt: S<sub>T</sub> - S<sub>C</sub> = 0.87 - 0.47 = 0.40", size = 8, fontface = "bold", 
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    )
+
+
+
+```
+
+
+:::
+
+:::
+
+
+## Gjennomsnittlig kausal effekt
+
+
+::: {.r-stack}
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+
+
+set.seed(1)
+
+dat <- data.frame(vo2maks = runif(100, 45, 70)) %>%
+  rowwise() %>%
+  
+  mutate(runtime = rnorm(1, 900 - vo2maks * 5.5, 15)) %>%
+  ungroup() %>%
+  mutate(kmh = 3 / (runtime/3600))
+
+
+p1 <- dat %>%
+ 
+  ggplot(aes(vo2maks, runtime)) + 
+  geom_point(shape = 21, color = "steelblue", size = 3) +
+
+  labs(x = "VO<sub>2max</sub> (ml kg<sup>-1</sup> min<sup>-1</sup>)", 
+       y = "3000m tid (sek)") +
+  
+  theme_classic() +
+  
+  theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown())
+
+
+p1 
+
+
+
+```
+
+::: 
+
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+
+
+mod <- lm(runtime ~ vo2maks, data = dat)
+
+
+
+p2 <- p1 + 
+  annotate("segment", 
+           x = 45, 
+           xend = 70, 
+           y = predict(mod, newdata = data.frame(vo2maks = 45)), 
+           yend = predict(mod, newdata = data.frame(vo2maks = 70)), color = "steelblue", size = 1) 
+
+
+p2 
+
+```
+
+
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+
+p2 + 
+  annotate("richtext", 
+           x = 45, 
+           y = 510, 
+           label = "Gjennomsnittlig kausal effekt: &Delta;y = &#946; &times; &Delta;x", size = 6, 
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    )
+
+
+```
+
+
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 8
+#| fig-height: 6
+
+
+minx <- 55
+maxx <- 65
+
+p2 + 
+  
+  annotate("segment", 
+           x = c(maxx, maxx), 
+           xend = c(minx, maxx), 
+           y = c(predict(mod, newdata = data.frame(vo2maks = minx)),
+                 predict(mod, newdata = data.frame(vo2maks = maxx))),
+           yend = c(predict(mod, newdata = data.frame(vo2maks = minx)), 
+                    predict(mod, newdata = data.frame(vo2maks = minx))), 
+           color = c("orange", "red"), size = 1) +
+  
+  
+  annotate("richtext", 
+           x = 45, 
+           y = 510, 
+           label = "Gjennomsnittlig kausal effekt: <span style = 'color:red;'>&Delta;y</span> = <span style = 'color:steelblue;'>&#946;</span> &times; <span style = 'color:orange;'>&Delta;x<span>", size = 6, 
+           hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt") # remove padding
+    )
+
+
+```
+
+
+:::
+
+
+
+
+:::
+
+## Estimering av kausale effekter
+
+
+::: {.incremental}
+- Vi kan estimere kausale effekter ved hjelp av eksperimentelle studier 
+- Vi kan også estimere kausale effekter ved hjelp av observasjonsstudier
+- I begge tilfeller er det viktig å unngå å bli lurt av spuriøse sammenhenger 
+
+:::
+
+
+# Spuriøse sammenhenger
+
+## Spuriøse sammenhenger
+
+
+::: {.r-stack}
+
+
+::: {.fragment .fade-out}
+
+![](https://www.tylervigen.com/spurious/correlation/image/5236_number-of-websites-on-the-internet_correlates-with_total-wind-power-generated-globally.svg){align="center"}
+:::
+
+::: {.fragment .fade-in-then-out}
+![](https://www.tylervigen.com/spurious/correlation/scatterplot/5236_number-of-websites-on-the-internet_correlates-with_total-wind-power-generated-globally_scatterplot.png){align="center"}
+
+:::
+
+
+
+::: {.fragment}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+![](https://www.tylervigen.com/spurious/correlation/ai-image/5236_number-of-websites-on-the-internet_correlates-with_total-wind-power-generated-globally_ai-image_1705286001.jpg){width=100% align="center"}
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 70%;"}
+As the internet expanded, it created a surge in cat video consumption. This led to an increase in laughter around the world, which in turn resulted in stronger and more frequent gusts of wind, ultimately boosting the total wind power generated globally. Remember, laughter is truly the best renewable energy source!
+
+<br>
+<br>
+https://www.tylervigen.com/spurious-correlations
+
+:::
+
+:::
+
+::::
+
+:::
+
+:::
+
+
+## Spuriøse sammenhenger
+
+::: {.incremental}
+- Vi finner spuriøse sammenhenger når vi har data, sammenhengen mellom vindkraft og antall nettsider er en av mange sammenhenger i en database med over 25 000 variabler ([www.tylervigen.com/spurious-correlations](https://www.tylervigen.com/spurious-correlations))
+- Variablene er innhentet per år, en sammenheng kan være tilfeldig, men kan også være forårsaket av en tredje variabel
+:::
+
+
+# Kausale og spuriøse sammenhenger
+
+## Hvordan kan vi unnå å tolke spuriøse sammenhenger som kausale?
+
+::: {.incremental}
+- Eksperimentell kontroll: Ved å tilfeldig tildele deltakere til en behandling eller en kontrollgruppe kan vi isolere effekten av behandlingen
+- Statistisk kontroll: Ved å kontrollere for andre variabler som kan påvirke både behandlingen og utfallet kan vi isolere effekten av behandlingen
+- I begge tilfeller må vi tenke nøye gjennom hvilke variabler som kan påvirke utfallet
+:::
+
+## En kausal modell {.smaller}
+
+::: {.incremental}
+- En (grafisk) kausal modell kan brukes for å beskrive årsakssammenhenger
+- Modellen består av noder (nodes) og kanter (edges). Noder representerer variabler og kanter representerer retninger på årsakssammenhenger
+
+:::
+
+
+::: {.r-stack}
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"),) + 
+  theme_dag(base_size = 8) 
+
+dagfig
+
+```
+
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 3
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+         Y ~ Z, 
+         X ~ Z,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"),) + 
+  theme_dag(base_size = 8) 
+
+dagfig
+
+```
+
+:::
+
+:::
+
+
+
+## Directed acyclic graphs (DAGs)
+
+::: {.incremental}
+- En  “rettet asyklisk graf” (DAG) er en grafisk representasjon av en kausal modell
+- Modellen beskriver årsakssammenhenger mellom variabler
+- Modellen beskriver ikke formen for sammenhengen, ikke heller styrken på sammenhengen
+- Eksempel kjøpe lodd (L) er kausalt sammenkoplet med å vinne en million (V), men effekten er ikke sterk
+:::
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 2
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("L", "Z", "V"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(V ~ L,
+       
+       
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"),) + 
+  theme_dag(base_size = 8) 
+
+dagfig
+
+```
+
+:::
+
+
+## Directed acyclic graphs (DAGs)
+
+::: {.incremental}
+
+- Modellen kalles for directed (rettede) fordi pilene viser retningen på årsakssammenhengen
+- Modellen kalles for acyclic (ikke-syklisk) fordi det variabler kan ikke påvirke seg selv direkte eller indirekte
+:::
+
+
+## Forskjellige typer av sammenhenger i en DAG
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 5
+#| fig-height: 5
+
+
+
+library(ggtext)
+
+## FORK
+fork_coords <-
+  tibble(name = c("X", "Y", "Z"),
+         x    = c(1, 3, 2),
+         y    = c(1, 1, 2))
+
+# save our DAG
+fork_dag <-
+  dagify(Y ~ Z,
+         X ~ Z,
+         coords = fork_coords)
+
+## Pipe
+pipe_coords <-
+  tibble(name = c("X", "Y", "Z"),
+         x    = c(1, 3, 2),
+         y    = c(2, 1, 1.5))
+
+# save our DAG
+pipe_dag <-
+  dagify(Y ~ Z,
+         Z ~ X,
+         coords = pipe_coords)
+
+
+## Collider
+collider_coords <-
+  tibble(name = c("X", "Y", "Z"),
+         x    = c(1, 3, 2),
+         y    = c(1, 1, 2))
+
+# save our DAG
+collider_dag <-
+  dagify(Z ~ Y,
+         Z ~ X,
+         coords = collider_coords)
+
+## Descendant
+des_coords <-
+  tibble(name = c("X", "Y", "Z", "D"),
+         x    = c(1, 3, 2, 2),
+         y    = c(1, 1, 2, 1.2))
+
+# save our DAG
+des_dag <-
+  dagify(Z ~ Y,
+         Z ~ X,
+         D ~ Z,
+         coords = des_coords)
+
+
+
+# plot 
+fork <- fork_dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+    scale_y_continuous(limits = c(0.9, 2.2)) +
+  theme() + 
+  labs(title = "Gaffel")
+
+pipe <- pipe_dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+    scale_y_continuous(limits = c(0.9, 2.2)) +
+
+  labs(title = "R&#248;r") +
+    theme(plot.title = element_markdown()) 
+
+
+collider <- collider_dag %>%
+tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+    scale_y_continuous(limits = c(0.9, 2.2)) +
+
+  labs(title = "Collider") +
+    theme(plot.title = element_markdown()) 
+
+
+des <- des_dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+    scale_y_continuous(limits = c(0.9, 2.2)) +
+
+  labs(title = "Etterkommer") +
+    theme(plot.title = element_markdown()) 
+
+
+
+plot_grid(fork, pipe, collider, des, ncol = 2)
+
+
+```
+
+
+## En gaffel inneholder en konfunderende variabel
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 3
+#| fig-height: 3
+
+fork + labs(title="")
+
+```
+:::
+
+::: {.column width="50%"}
+
+::: {style="font-size: 70%;"}
+
+::: {.incremental}
+- En konfunderende variabel lager en sammenheng mellom to variabler som ikke er kausalt sammenkoplet. X og Y påvirkes av den konfunderende variabelen (Z&rightarrow;X og Z&rightarrow;Y)
+
+:::
+
+::: 
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 3
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("K", "R", "L"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(L ~ K,
+       
+       
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"),) + 
+  theme_dag(base_size = 6) +
+  annotate("richtext", x = 1.5, y = 1.1, label = "Kaffeinntak: K<br>Lungekreft: L", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6)
+
+dagfig
+
+
+```
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 3
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("K", "R", "L"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(L ~ R,
+         K ~ R,
+       
+       
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) + 
+  
+    annotate("richtext", x = 0.9, y = 1.9, label = "Kaffeinntak: K<br>Lungekreft: L<br>R&oslash;yking: R", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  
+  theme_dag(base_size = 6) 
+
+dagfig
+
+
+```
+
+
+:::
+  
+:::
+
+:::
+
+
+::::
+
+## Hvordan kan vi bruke en konfunderende variabel til å bedre forstå en kausal sammenheng?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {style="font-size: 70%;"}
+
+::: {.incremental}
+- Når vi "kontrollerer" for en mulig konfunderende variabel isolerer vi effekten av den uavhengige variabelen på den avhengige variabelen
+- Finnes sammenhengen (X&rightarrow;Y) innad hvert nivå av den konfunderende variabelen (Z)?
+
+:::
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-fade-out}
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| fig-align: "center"
+
+set.seed(1)
+
+N <- 1000
+
+R <- rbinom(N, 1, 0.4)
+
+K <- vector("numeric", N)
+
+for (i in 1:N) {
+  if (R[i] == 1) {
+    K[i] <- rnorm(1, 1100, 180)
+  } else {
+    K[i] <- rnorm(1, 700, 180)
+  }
+}
+
+L <- vector("numeric", N)
+
+for (i in 1:N) {
+  if (R[i] == 1) {
+    L[i] <- rbinom(1, 1, 0.14)
+  } else {
+    L[i] <- rbinom(1, 1, 0.015)
+  }
+}
+
+
+dat <- data.frame(K = K, R = R, L = L)
+
+m1 <- glm(L ~ K, data = dat, family = "binomial") 
+m2 <- glm(L ~ K + R, data = dat, family = "binomial")
+
+
+
+
+predicted_probs <- predict(m1, newdata = data.frame(K = seq(from = min(K), to = max(K), by = 1)), 
+                           type = "response")
+
+predicted_probs2 <- predict(m2, newdata = data.frame(K = seq(from = min(K), to = max(K), by = 1), 
+                                                     R = 1), 
+                            type = "response")
+predicted_probs3 <- predict(m2, newdata = data.frame(K = seq(from = min(K), to = max(K), by = 1), 
+                                                     R = 0), 
+                            type = "response")
+
+p1 <- dat %>%
+  ggplot(aes(K, L)) + 
+  
+  geom_line(data=data.frame(K = seq(from = min(K), to = max(K), by = 1), 
+                            L = predicted_probs), color = "orchid", linewidth = 1.5) +
+  
+  geom_point(shape = 21, size = 2, color = "steelblue") + 
+  theme_classic() + 
+  labs(x = "Kaffeinntak", y = "Lungekreft") +
+  
+  annotate("richtext", x = 350, y = 0.4, 
+           label = "K &rightarrow; L:<br>L = &beta;<sub>0</sub> + &beta;<sub>1</sub> &times; K ", size = 5,
+           color = "orchid",
+           fontface = "bold") 
+  
+  p1
+
+
+```
+
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| fig-align: "center"
+
+
+p1 +   
+    geom_line(data=data.frame(K = seq(from = min(K), to = max(K), by = 1), 
+                            L = predicted_probs2), color = "darkblue", linewidth = 1.5) +
+  
+  geom_line(data=data.frame(K = seq(from = min(K), to = max(K), by = 1), 
+                           
+                            L = predicted_probs3), lty = 2, color = "darkblue", linewidth = 1.5) +
+  
+  
+  annotate("richtext", x = 450, y = 0.75, 
+           label = "K &leftarrow; R &rightarrow; L:<br>L = &beta;<sub>0</sub> + &beta;<sub>1</sub> &times; K + &beta;<sub>2</sub> &times; R", size = 5,
+           color = "darkblue",
+           fontface = "bold") 
+
+```
+
+
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| fig-align: "center"
+
+
+b1 <- dat %>%
+  
+  ggplot(aes(as.factor(L), K)) + 
+  
+  geom_boxplot(width = 0.4) +
+  
+  geom_point(alpha = 0.2, 
+             color = "steelblue",
+             position = position_jitter(h = 0, w = 0.06)) + 
+  theme_classic() + 
+  labs(x = "Lungekreft", y = "Kaffeinntak") 
+
+b1
+
+
+
+
+```
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 6
+#| fig-height: 4
+#| fig-align: "center"
+
+
+b2 <- dat %>%
+  mutate(R = if_else(R == 1, "R&oslash;yker", "Ikke r&oslash;yker")) %>%
+  ggplot(aes(as.factor(L), K)) + 
+  
+  geom_boxplot(width = 0.4) +
+  
+  geom_point(alpha = 0.2, 
+             color = "steelblue",
+             position = position_jitter(h = 0, w = 0.06)) + 
+  theme_classic() + 
+  labs(x = "Lungekreft", y = "Kaffeinntak")  + 
+  facet_wrap(~R)  +
+  theme(strip.text = element_markdown(size = 12))
+
+b2
+
+
+
+
+```
+
+:::
+
+
+:::
+
+:::
+
+
+::::
+
+
+## Konfunderende variabler i eksperimentelle studier
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style="font-size: 70%;"}
+
+::: {.incremental}
+- I en eksperimentell har vi mulighet å kontrollere en uavhengig variabel for å så undersøke effekten på en avhengig variabel
+- I gjennomsnitt balanseres konfunderende variabler i eksperimentelle studier når vi bruker randomisert inndeling i forsøkgrupper
+- Når vi tillater f.eks. selvvalgt inndeling i forsøkgrupper kan vi få uobserverte konfunderende variabler
+
+
+:::
+:::
+
+
+:::
+
+
+::: {.column width="50%"}
+
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-fade-out}
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("P", "R", "M"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(M ~ P,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) + 
+  
+    annotate("richtext", x = 0.9, y = 1.7, label = "Kosttilskudd (protein): P<br>Muskelvekst: M", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  
+  theme_dag(base_size = 6) 
+
+dagfig
+
+
+```
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("P", "R", "M"),
+         x    = c(1, 1, 3),
+         y    = c(1, 1.5, 1))
+
+# save our DAG
+dag <-
+  dagify(M ~ P,
+         P ~ R,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) + 
+  
+    annotate("richtext", x = 0.9, y = 1.8, label = "Kosttilskudd (protein): P<br>Muskelvekst: M<br>Randomisering: R", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  scale_y_continuous(limits = c(0.9, 1.9)) +
+  
+  theme_dag(base_size = 6) 
+
+dagfig
+
+
+
+```
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("P", "R", "M", "K"),
+         x    = c(1, 1, 3, 2),
+         y    = c(1, 1.5, 1, 1.5))
+
+# save our DAG
+dag <-
+  dagify(M ~ P,
+         P ~ R,
+         P ~ K,
+         M ~ K,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  
+  
+  tidy_dagitty() %>%
+  mutate(circ = if_else(name == "K", "c", "nc"), 
+         fade = if_else(name == "R", "f", "nf")) %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 20, aes(color = circ), shape = 21) +
+  geom_dag_text(color = "black", size = 14, aes(alpha = fade)) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"), 
+                 aes(alpha = fade)) +
+  
+  scale_alpha_manual(values = c(0.2, 1)) +
+  scale_color_manual(values = c("black", "white")) +
+  
+    annotate("richtext", x = 0.9, y = 1.8, label = "Kosttilskudd (protein): P<br>Muskelvekst: M<br>Konfunder: K", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  scale_y_continuous(limits = c(0.9, 1.9)) +
+  
+  theme_dag(base_size = 6) + theme(legend.position = "none")
+
+dagfig
+
+
+
+```
+
+:::
+
+
+
+:::
+
+
+:::
+
+
+::::
+
+
+## Collider og seleksjonsbias
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 2.5
+#| fig-height: 2
+#| fig-align: "center"
+
+collider + labs(title = "")
+
+```
+
+
+::: {style="font-size: 70%;"}
+
+::: {.incremental}
+- En collider er en variabel som er påvirket av to variabler som ikke er kausalt sammenkoplet
+- Når vi kontrollerer for en collider kan vi få en falsk sammenheng mellom de to variablene som påvirker collideren
+- Det å velge ut en gruppe basert på en variabel som er en collider gir oss ikke-kausale sammenhenger
+
+:::
+
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 4
+#| fig-height: 5
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("V", "P", "U"),
+         x    = c(1, 2, 3),
+         y    = c(1, 1.5, 1))
+
+# save our DAG
+dag <-
+  dagify(P ~ V,
+         P ~ U,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  
+  
+  tidy_dagitty() %>%
+  mutate(circ = if_else(name == "K", "c", "nc"), 
+         fade = if_else(name == "R", "f", "nf")) %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 20, shape = 21, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) +
+  
+  scale_alpha_manual(values = c(0.2, 1)) +
+  scale_color_manual(values = c("white")) +
+  
+    annotate("richtext", x = 0.9, y = 1.8, label = "VO<sub>2maks</sub>: V<br>Utnyttelsesgrad: U<br>Prestasjon: P", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  scale_y_continuous(limits = c(0.9, 1.9)) +
+  
+  theme_dag(base_size = 6) + theme(legend.position = "none")
+
+dagfig
+
+
+```
+
+
+:::
+
+:::
+
+::::
+
+
+## Sammenhenger i spesielle populasjoner
+
+::: {.incremental}
+- Spuriøse sammenhenger opptrer i spesille populasjoner på grunn av collider-effekter
+- Spesielle populasjon kan være eliteutøvere, pasienter på sykehus, deltakere som har valgt å delta i en studie
+- I slike populasjoner kan vi få falske sammenhenger mellom variabler som ikke er kausalt sammenkoplet
+
+:::
+
+
+## Sammenhenger i spesielle populasjoner
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 7
+#| fig-height: 6
+#| fig-align: "center"
+
+
+
+set.seed(1)
+N <- 1000
+
+
+
+
+
+VO2 <- rnorm(N, 55, 10)
+lac <- stats::rbeta(N, 8, 5)
+
+
+
+df <- data.frame(VO2, lac) %>%
+
+  mutate(vo2s = VO2/max(VO2),
+         lacs = lac/max(lac)) %>%
+  rowwise() %>%
+  mutate(crit = vo2s + lacs) %>%
+  ungroup() %>%
+  ## Filter the top 5% of crit variable
+  mutate(select = if_else(crit > quantile(crit, 0.95), "select", "notselect")) 
+
+
+df %>%
+
+  ggplot(aes(VO2, lac)) + geom_point(shape = 21, 
+                                     alpha = 0.6, 
+                                     aes(fill = select),
+                                     color = "gray30",
+                                     size = 3) +  
+  geom_smooth(data = filter(df, select == "select"), 
+              method = "lm", se = FALSE, 
+              alpha = 0.4, color = "steelblue") +
+  
+    geom_smooth(data = df, 
+              method = "lm", se = FALSE, 
+              alpha = 0.4, color = "pink") +
+  
+  theme_classic() + 
+  scale_fill_manual(values = c("pink", "steelblue")) +
+  scale_color_manual(values = c("pink", "steelblue")) +
+  labs(x = "VO<sub>2maks</sub> (ml<sup>-1</sup> kg<sup>-1</sup> min<sup>-1</sup>)",
+       y = "Laktatterskel (% av VO<sub>2maks</sub>)") + 
+  theme(axis.title.y = element_markdown(), 
+        axis.title.x = element_markdown(), 
+        plot.title = element_markdown(), 
+        legend.position = "none")
+
+
+```
+
+
+
+## Rør og eskeriment
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 2.5
+#| fig-height: 1
+#| fig-align: "center"
+
+pipe + labs(title = "")
+
+```
+
+::: {style="font-size: 70%;"}
+
+::: {.incremental}
+- I et rør finner vi at en effekt overføres mellom to variabler gjennom en tredje variabel.
+- I et eksperiment er dette et vanlig scenario, hvor for eksempel en behandling påvirker utfallet gjennom en tredje variabel
+- Her finnes en fare for å "overkontrollere" eksperimentet, noe som fører til at vi ikke ser effekten av behandlingen på utfallet.
+
+:::
+
+:::
+
+:::
+
+
+::: {.column width="50%"}
+
+::: {.r-stack}
+
+::: {.fragment .fade-in-fade-out}
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("T", "V", "P"),
+         x    = c(1, 2, 3),
+         y    = c(1, 1.5, 1))
+
+# save our DAG
+dag <-
+  dagify(P ~ V,
+         V ~ T,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  
+  
+  tidy_dagitty() %>%
+  mutate(circ = if_else(name == "K", "c", "nc"), 
+         fade = if_else(name == "R", "f", "nf")) %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 20, shape = 21, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) +
+  
+  scale_alpha_manual(values = c(0.2, 1)) +
+  scale_color_manual(values = c("white")) +
+  
+    annotate("richtext", x = 0.9, y = 1.8, label = "Trening: T<br>VO<sub>2maks</sub>: V<br>Prestasjon: P", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  scale_y_continuous(limits = c(0.9, 1.9)) +
+  
+  theme_dag(base_size = 6) + theme(legend.position = "none")
+
+dagfig
+
+
+
+```
+
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: "center"
+
+
+
+set.seed(689)
+N <- 50
+Tr <- rbinom(N, 1, 0.5)
+
+
+V <- vector("numeric", N)
+
+
+for (i in 1:N) {
+  if (Tr[i] == 1) {
+    V[i] <- rnorm(1, 5, 2)
+  } else {
+    V[i] <- rnorm(1, 1, 2)
+  }
+}
+
+
+P <- rnorm(N, 10 + V * 0.8, 5)
+
+
+m1 <- lm(P ~ Tr, data = data.frame(Tr = Tr, V = V, P = P))
+
+
+eff <- round(coef(m1)[2], 1)
+
+
+p1 <- data.frame(Tr = Tr, V = V, P = P) %>%
+  ggplot(aes(as.factor(Tr), P)) + 
+  geom_boxplot(width = 0.4) + 
+  geom_point(shape = 21, alpha = 0.6,
+                              size = 3, color = "steelblue",
+                              position = position_jitter(h = 0, w = 0.1)) + 
+  
+  annotate("text", x = 1, y = 20, label = paste("Effekt av trening: ", eff), size = 5) +
+  theme_classic() +
+  labs(x = "Treningsprogram", y = "Prestasjon (endring)") 
+
+p1
+
+```
+:::
+
+::: {.fragment .fade-in-fade-out}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: "center"
+
+
+m2 <- lm(P ~ V + Tr, data = data.frame(Tr = Tr, V = V, P = P))
+
+eff2 <- round(coef(m2)[3], 1)
+
+p2 <- data.frame(Tr = Tr, V = V, P = P) %>%
+  ggplot(aes(V, P, color = factor(Tr))) +
+  geom_point() +
+  
+  geom_segment(x = min(V[Tr==0]), xend = max(V[Tr==0]), 
+               y = predict(m2, newdata = data.frame(V = min(V[Tr==0]), Tr = 0)), 
+               yend = predict(m2, newdata = data.frame(V = max(V[Tr==0]), Tr = 0)), color = "orange") +
+  
+    geom_segment(x = min(V[Tr==1]), xend = max(V[Tr==1]), 
+               y = predict(m2, newdata = data.frame(V = min(V[Tr==1]), Tr = 1)), 
+               yend = predict(m2, newdata = data.frame(V = max(V[Tr==1]), Tr = 1)), color = "steelblue") +
+  
+  
+  annotate("segment", x = 3, xend = 3, y = 0, yend = 20, color = "black", linetype = "dashed") +
+  
+  annotate("text", x = 0, y = 20, label = paste("Effekt av trening: ", eff2), size = 5) +
+  
+  scale_color_manual(values = c("orange", "steelblue")) +
+  
+  
+  theme_classic() +
+  labs(x = "VO2maks (endring)", y = "Prestasjon (endring)") +
+  theme(legend.position = "none")
+
+
+
+p2
+
+
+
+```
+
+::: 
+
+:::
+
+:::
+
+
+::::
+
+
+## Mediatoreffekt
+
+:::: {.columns}
+
+::: {.column width="50%"}
+::: {style="font-size: 70%;"}
+::: {.incremental}
+
+- En mediatoreffekt er en effekt som overføres fra en uavhengig variabel til en avhengig variabel gjennom en tredje variabel
+- Når vi er interesserte i å forstå mekanismene bak en sammenheng kan vi undersøke mediatoreffekter, men i eksperimenter er vanlig å undersøke den *totale* effekten av en behandling på et utfall
+- Når vi ønsker å se den *totale* effekten skal vi ikke kontrollere for mediatoreffekter
+
+:::
+:::
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-width: 5
+#| fig-height: 4
+#| fig-align: "center"
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("T", "V", "P"),
+         x    = c(1, 2, 3),
+         y    = c(1, 1.5, 1))
+
+# save our DAG
+dag <-
+  dagify(P ~ V,
+         V ~ T,
+         P ~ T,
+
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  
+  
+  tidy_dagitty() %>%
+  mutate(circ = if_else(name == "K", "c", "nc"), 
+         fade = if_else(name == "R", "f", "nf")) %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 20, shape = 21, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed")) +
+  
+  scale_alpha_manual(values = c(0.2, 1)) +
+  scale_color_manual(values = c("white")) +
+  
+    annotate("richtext", x = 0.9, y = 1.8, label = "Trening: T<br>VO<sub>2maks</sub>: V<br>Prestasjon: P", 
+                      hjust = 0,
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           size = 6) +
+  scale_y_continuous(limits = c(0.9, 1.9)) +
+  
+  theme_dag(base_size = 6) + theme(legend.position = "none")
+
+dagfig
+
+
+
+```
+
+
+:::
+
+
+::::
+
+
+## Oppsummering: Kausalitet og samvariasjon
+
+- Vitenskapen er interessert i å forstå kausale sammenhenger, men vi måler samvariasjon
+- For å forstå kausale sammenhenger må vi bruke kausale modeller sammen med data og mål på samvariasjon
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

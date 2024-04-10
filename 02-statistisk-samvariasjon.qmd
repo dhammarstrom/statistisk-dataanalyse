@@ -23,6 +23,12 @@ I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi n
 Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner [her](data/simpsons.csv) finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene. 
 
 Den visuelle sammenfatningen av dataene finner du under i  @fig-simpsons, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Intro til samvariasjon og regresjon](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=39488111-10f8-4b0a-8b8a-b1310079acab){target="_blank"}.
+
+:::
   
 
 
@@ -63,10 +69,6 @@ simpsons %>%
 
 
 ```
-
-
-
-
 
 
 
@@ -300,7 +302,11 @@ plot_grid(plot_grid(NULL, p1,NULL, rel_widths = c(1, 2, 1), ncol = 3),
 
 ```
 
+::: {.column-margin}
 
+ &#x1F4F9; Forelesning: [Tilpassning av en regresjonsmodell](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f20b1473-0003-4aec-8ac5-b131007d7227){target="_blank"}.
+
+:::
 
 En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med "feilverdier" til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.
 
@@ -309,6 +315,13 @@ Et dataprogram som for eksempel Jamovi gjennomfører beregninger for oss og gir 
 En regresjonsmodell fungerer best der hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om en ikke rett sammenheng og når modellen brukes for å predikere utenfor variasjonsvidden til dataene som  bruktes til å lage modellen.
 
 ## Fra regresjon til korrelasjon
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Fra regresjon til korrelasjon](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=56396ccf-80b2-4217-a086-b131007f8df8){target="_blank"}.
+
+:::
+
 
 I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på `r round(coef(mod)[2], 2)` kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles. 
 
@@ -440,6 +453,14 @@ p1|p2
 
 
 ## Regresjon med en nominal eller ordinal uavhengig variabel
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Regresjonsmodellen og alternative statistiske metoder](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=99060c90-3a49-46a0-b24e-b1310081df16){target="_blank"}.
+
+:::
+
+
 
 Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene *barn*/*voksen* og vekt. I tabellen under (@tbl-simpsons) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige *indikatorvariabler*, også kallet *dummyvariabler*. En *dummyvariabel* kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.    
 
@@ -782,7 +803,7 @@ Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forek
 [^hosmer]: Eksemplet kommer fra @hosmer_2013.
 
 ```{r}
-#| fig-cap: "Bruk av linjær regresjon for å beskrive binære data."
+#| fig-cap: "Bruk av lineær regresjon for å beskrive binære data."
 #| echo: false
 #| message: false
 #| warning: false
@@ -1036,7 +1057,15 @@ I vår modell for hjertesykdom er $\beta_0 = -5.309$ og $\beta_1 = 0.11$, noe so
 
 $$p = \frac{e^{0.236}}{1+e^{0.236}} = 0.56$$
 
-Hvor $e \sim 2.718$, noe som også kan benevnes som "eksponetial-funksjonen av 0.236" eller skrives som "exp(0.236)".   
+Hvor $e \sim 2.718$, noe som også kan benevnes som "eksponential-funksjonen av 0.236" eller skrives som "exp(0.236)".   
+
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Kort forelesning om logistisk regresjon](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bd2549d5-0ddd-49f4-a1b0-b137007ec457){target="_blank"}.
+
+:::
+  
 
 
 ### Et eksempel: Analyse av samvariasjon mellom medlemskap i idrettslag og kjønn 

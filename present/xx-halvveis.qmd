@@ -1,0 +1,775 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: ""
+format:
+  revealjs:
+    theme: serif
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+## Halvveis
+
+::: {.incremental}
+
+- Hvordan strukturere et dataanalyseprosjekt
+- Deskriptiv statistikk i Jamovi
+- Statistisk samvariasjon
+  - Regresjon...
+  
+:::
+
+## {.smaller}
+
+![](https://www.jamovi.org/assets/header-logo.svg){fig-align="center" width=70%}
+
+
+::: {.fragment}
+**Hva bør jeg kunne?**
+:::
+
+::: {.incremental}
+- Importere data til Jamovi
+- Lage enkle deskriptive tabeller og figurer
+- Filtrere datasett, lage nye variabler
+- Utføre enkle regresjonsanalyser
+- Kjenne til kobling mellom regresjonsmodeller og andre "tester" i Jamovi
+
+:::
+
+## {.smaller}
+
+
+## Samvariasjon
+
+
+```{r}
+#| fig-align: "center"
+#| fig-width: 7
+#| fig-height: 6
+
+
+library(tidyverse); library(ggthemes); library(cowplot); library(ggtext)
+
+
+p1 <- data.frame(A = 10, B = 5) %>%
+  pivot_longer(names_to = "Kategori", values_to = "Antall", cols = A:B) %>%
+  
+  ggplot(aes(Kategori, Antall)) + 
+  geom_bar(stat = "identity", aes(fill = Kategori)) + 
+  
+  scale_y_continuous(limits = c(0, 12), expand = c(0, 0)) +
+  scale_fill_manual(values = c("steelblue", "darkblue")) +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none")
+  
+  
+p2 <- data.frame(vo2maks = runif(100, 45, 70)) %>%
+  rowwise() %>%
+  
+  mutate(runtime = rnorm(1, 900 - vo2maks * 5.5, 15)) %>%
+  ungroup() %>%
+  mutate(kmh = 3 / (runtime/3600)) %>%
+ 
+  ggplot(aes(vo2maks, runtime)) + 
+  geom_point(shape = 21, color = "steelblue") +
+
+  labs(x = "VO<sub>2max</sub> (ml kg<sup>-1</sup> min<sup>-1</sup>)", 
+       y = "3000m tid (sek)") +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown())
+
+
+ p3 <- read.csv("data/temperature.csv") %>%
+   
+   separate(date, into = c("year", "month", "day"), sep = "-") %>%
+   mutate(year = as.numeric(year), 
+          month = as.numeric(month)) %>%
+   group_by(year) %>%
+   summarise(temp = mean(temp)) %>%
+ 
+   ggplot(aes(year, temp)) + 
+   
+   geom_line() +
+     geom_point(shape = 21, color = "darkred", size = 2) +
+ 
+   labs(x = "&Aring;r", 
+        y = "Global gjennomsnittstemperatur (&deg;C)") +
+   
+   theme_few(base_size = 12) + theme(legend.position = "none", 
+                                     axis.title.x = element_markdown(), 
+                                     axis.title.y = element_markdown())
+ 
+ 
+
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         idrettslag = V5, 
+         tren_senter = V4,
+         age = V6, 
+         train = V2)
+
+
+
+
+d <- dat %>%
+  select(sex, idrettslag) %>%
+  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0), 
+         sex = if_else(sex == "kvinne", 0, 1)) 
+
+
+
+p4 <- dat %>%
+  select(sex, idrettslag) %>%
+  group_by(sex, idrettslag) %>%
+  summarise(n = n()) %>%
+  group_by(sex) %>%
+  mutate(prop = n / sum(n), 
+         sign_row = if_else(sex == "kvinne", -1, 1), 
+         sign_col = if_else(idrettslag == "nei", -1, 1)) %>%
+  
+  ggplot() + 
+  geom_rect(aes(xmin = 0, 
+                           xmax = sign_row * n, 
+                           ymin = 0, 
+                           ymax = sign_col * n, 
+                           fill = paste(sex, idrettslag))) +
+    geom_text(
+    aes(label = paste(round(100 * prop,0),"%"),
+        x = 0.5 * sign_row * n,
+        y = 0.5 * sign_col * n), size = 3) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  coord_equal() +
+  
+  scale_y_continuous(breaks = c(-50, 50), labels = c("Nei", "Ja")) +
+  
+  scale_x_continuous(breaks = c(-100, 50), labels = c("Kvinne", "Mann")) +
+  
+  labs(y = "Idrettslag", 
+       x = "Kj&#248;nn") + 
+  
+  theme_minimal() + 
+  theme(axis.title.x = element_markdown(angle = 0),
+        axis.title.y = element_markdown(angle = 0),
+        panel.grid = element_blank(), 
+        legend.position = "none")
+  
+
+
+
+plot_grid(p1, p2, p3, p4)
+
+
+
+
+```
+
+
+## Samvariasjon
+
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+p2 <- data.frame(x = runif(10, 0, 100)) %>%
+ 
+  
+  mutate(y = x) %>%
+
+ 
+  ggplot(aes(x, y)) + 
+
+  labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  
+  
+  
+  theme_classic(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown()) +
+  theme(axis.text = element_blank())
+
+p2 
+```
+
+
+## Tilpasse en regresjonsmodell
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+library(tidyverse); library(ggrepel); library(ggtext)
+
+simpsons <- data.frame(height = c(121.92,160.02,180.34,172.72,73.66 ,124.46,175.26), 
+                       weight = c(38.56,53.98,108.4,63.05,9.07,29.94,68.95), 
+                       name = c("Bart Simpson", "Lisa Simpson", "Homer Simpson", "Marge Simpson", 
+                                "Maggie Simpson", "Milhouse Van Houten", "Ned Flander"), 
+                       child = c(1, 1, 0, 0, 1, 1, 0), 
+                       adult = c(0, 0, 1, 1, 0, 0, 1))        
+
+
+simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+  geom_point(size = 3, alpha = 0.5) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+
+```
+
+
+
+## Flere mulige modeller
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+
+## Correct model
+mod <- lm(weight ~ height, data = simpsons)
+
+
+p1 <- simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  geom_abline(slope = coef(mod)[2] + 0.05, 
+              intercept = coef(mod)[1] -1, 
+              color = "orchid4", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+    geom_abline(slope = coef(mod)[2] - 0.09, 
+              intercept = coef(mod)[1] -1, 
+              color = "green", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+   geom_abline(slope = 0.4, 
+              intercept = coef(mod)[1] + 90, 
+              color = "steelblue", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  
+  
+  
+    geom_point(size = 3, alpha = 0.5) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+p1
+
+```
+
+
+## 
+
+```{r}
+#| fig-width: 10
+#| fig-align: "center"
+
+
+orange <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "darkorange") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "darkorange", color = "darkorange"), 
+        strip.text = element_text(color = "darkorange"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+steelblue <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 90 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "steelblue") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "steelblue", color = "steelblue"), 
+        strip.text = element_text(color = "steelblue")) 
+
+
+green <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "green") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "green", color = "green"), 
+        strip.text = element_text(color = "green"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+orchid4 <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "orchid4") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+  
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  
+  facet_wrap(~ color) +
+  
+  labs(y = "Absolutt feil") +
+  
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "orchid4", color = "orchid4"), 
+        strip.text = element_text(color = "orchid4"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+  
+  
+  library(patchwork)
+
+p2 <- ( steelblue | green | orchid4 | orange)
+
+p1 | p2
+
+```
+
+
+## 
+
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+ simpsons %>%
+  
+    mutate(darkorange = weight - (coef(mod)[1] + coef(mod)[2]*height)) %>%
+  
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  geom_segment(aes(x = height, 
+                   xend = height,
+                   y = weight, 
+                   yend = coef(mod)[1] + coef(mod)[2]*height, 
+                   color = name), 
+               linewidth = 1.5, 
+               alpha = 0.5) +
+  
+
+   geom_point(size = 3) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+```
+
+## Valg av statistiske metoder for samvariasjon {.smaller}
+
+![](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2996580/bin/IJAR-1-187-g002.jpg)
+
+<br>
+Parab S, Bhalerao S. Choosing statistical test. Int J Ayurveda Res. 2010 Jul;1(3):187-91. doi: 10.4103/0974-7788.72494. PMID: 21170214; PMCID: PMC2996580.
+
+##
+
+
+
+```{r}
+#| out-width: '100%'
+#| out-height: '100%'
+
+
+
+
+set.seed(4)
+
+
+dat <- data.frame(x = c(runif(25, 20, 40), 
+                  runif(25, 55-20, 85-20), 
+                  runif(25, 75-20, 100-20)), 
+           grp = rep(c("A", "B", "C"), each = 25)) %>%
+  
+  rowwise() %>%
+  
+  mutate(y = if_else(grp == "A", rnorm(1, 500 + (-5 * x), 45), 
+                     if_else(grp == "B", rnorm(1, 750 + -5 * x, 45),
+                     rnorm(1, 1000 + -5 * x, 45)))) %>%
+  ungroup() %>%
+  data.frame()
+
+
+
+meana <- mean(dat[dat$grp == "A",3])
+
+
+### P1 ###
+p1 <- dat %>%
+  filter(grp == "A") %>%
+  
+  ggplot(aes(x = 1, y)) + 
+  
+  scale_x_continuous(limits = c(0, 2)) +
+  annotate("segment", x = 0.8, 
+           xend = 1.2, 
+           linewidth = 2,
+           y = meana, 
+           yend = meana, 
+           color = "steelblue") + 
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             fill = "orange",
+             color = "black") + 
+  theme_void() +
+
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+dat2 <- dat %>%
+  filter(grp == "A") %>%
+  rowwise() %>%
+  mutate(y2 = rnorm(1, y + 25, 50)) %>%
+  ungroup() %>%
+  mutate(change = y2 - y, id = seq(1:25)) %>%
+  select(y, y2, change, id) %>%
+  pivot_longer(cols= y:y2) 
+
+p2a <- dat2 %>%
+  ggplot(aes(name, value, group = id)) + 
+    
+  geom_line(alpha = 0.5) +
+  
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "purple",
+             color = "black") + 
+  theme_void() 
+
+p2b <- dat2 %>%
+   ggplot(aes(x = 1, change)) + 
+  
+  scale_x_continuous(limits = c(0, 2)) +
+  annotate("segment", x = 0.5, 
+           xend = 1.5, 
+           linewidth = 2,
+           y = 0, 
+           yend = 0, 
+           color = "steelblue") + 
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+    theme_void()
+
+library(cowplot)
+p2 <- plot_grid(p2a, p2b, rel_widths = c(1, 0.4)) +
+
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+### P3 ###
+
+
+mod <- lm(y ~ x, dat)
+
+p3 <- dat %>%
+  mutate(y = y - 300) %>%
+  ggplot(aes(x, y)) +   
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") +
+  
+    annotate("segment", x = max(dat$x), 
+           xend = min(dat$x), 
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1], 
+           color = "steelblue") + 
+  
+  geom_smooth(method = "lm", se = FALSE, 
+              color = "orchid1", alpha = 0.4, linewidth = 1.5) +
+  
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+
+
+
+### P4 ####
+
+
+mod <- lm(y ~ grp, data = filter(dat, grp != "C"))
+
+p4 <-  dat %>%
+  filter(grp != "C") %>%
+  ggplot(aes(grp, y)) +   
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+  
+  annotate("segment", x = 0.8,
+           xend = 2.2,
+           linewidth = 1.5,
+           y = meana, 
+           yend = meana, 
+           color = "steelblue")   +
+  
+    annotate("segment", x = 1,
+           xend = 2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[2], 
+           color = "orchid1")  +
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+## P5 #####
+
+dat3 <- dat %>%
+  mutate(y = if_else(grp == "C", y - 500, y))
+
+mod <- lm(y ~ grp, data = dat3)
+
+
+p5 <-  dat3 %>%
+
+  ggplot(aes(grp, y)) +   
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+  
+  annotate("segment", x = 0.8,
+           xend = 3.2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1], 
+           color = "steelblue")   +
+  
+    annotate("segment", x = 1,
+           xend = 2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[2], 
+           color = "orchid1")  +
+  
+   annotate("segment", x = 1,
+           xend = 3,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[3], 
+           color = "orchid1")  +
+  
+  
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+### P6 #####
+
+chdage <- lsm::chdage 
+
+## Model the relationship using logistic regression
+mod <- glm(CHD ~ AGE, data = chdage, family = binomial())
+# Predict probabilities
+predicted_probs <- predict(mod, newdata = data.frame(AGE = seq(from = 20, to = 70, by = 1)), 
+                           type = "response")
+
+
+
+p6 <- chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") +  
+  
+  geom_line(data = data.frame(AGE = seq(from = 20, to = 70, by = 1), 
+                              CHD = predicted_probs), 
+            color = "orchid1", linewidth = 1.4) +
+  
+  theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+  
+
+
+
+
+
+plot_grid(p1, p2, p3, 
+          p4, p5, p6, ncol = 3) + 
+  
+  annotate("text", 
+           x = c(0.01, 0.34, 0.67, 0.01, 0.34, 0.67), 
+           y = c(0.98, 0.98, 0.98, 0.48, 0.48, 0.48), 
+           vjust = 1,
+           hjust = 0,
+           label = c("One-sample\nt-test", 
+                     "Paired-samples\nt-test", 
+                     "Correlation", 
+                     "Independent samples\nt-test", 
+                     "One-way ANOVA", 
+                     "Chi-quare test"))
+  
+
+
+
+
+
+
+
+
+
+
+```
+
+
+# Oppgaver
+
+## Velg et problem {.smaller}
+
+::: {.fragment}
+- Velg ut et tema eller problem i emnet så langt som ikke er helt klart for deg
+- Skriv ned problemstillingen sammen med en kort beskrivelse av hva du kjenner til fra før (3 min)
+- Beskriv problemstillingen med din gruppe, sammenligne deres problemstillinger (3 min)
+- Samarbeid i gruppen for å beskrive problemstillingen enda tydeligere (*Hva?* *Hvorfor?* *Hvordan?* ...) (10 min)
+- Velg en problemstilling som dere presenterer for resten av klassen (*Hva skjønner vi?* *Hva er det vi ikke skjønner?*) (5 min)
+
+:::
+
+
+
+
+
+
+
+
+

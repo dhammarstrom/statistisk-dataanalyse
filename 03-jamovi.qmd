@@ -1,0 +1,380 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Kausal analyse i Jamovi
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Simulert kausal inferens 1 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=18a3b20a-d605-4c6a-b48c-b14d006fd9eb){target="_blank"}.
+
+:::
+
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Simulert kausal inferens 2 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4dddaa39-14e4-4cff-92ec-b14d007324e8){target="_blank"}.
+
+:::
+
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Simulert kausal inferens 3 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1bacb913-4506-4e9b-84c0-b14d007ea336){target="_blank"}.
+
+:::
+
+```{r}
+#| echo: false
+
+set.seed(1)
+z1 <- rnorm(n = 100, mean = 0, sd = 1)
+x <- rnorm(n = 100, mean = z1, sd = 0.2)
+y <- rnorm(n = 100, mean = z1, sd = 0.2)
+z2 <- rnorm(n = 100, mean = x + y, sd = 0.2)
+x2 <- rnorm(n = 100, mean = x, sd = 0.2)
+z3 <- rnorm(n = 100, mean = x2, sd = 0.2)
+y2 <- rnorm(n = 100, mean = z3, sd = 0.2)
+
+
+simdata <- data.frame(z1, x, y, z2, x2, z3, y2)
+
+write.csv(simdata, "data/simdata.csv", row.names = FALSE)
+
+
+```
+
+
+::: {.column-margin}
+
+Du finner datasettet fra simuleringene [her](data/simdata.csv). Last inn datasettet i Jamovi og utforsk sammenhengen mellom variablene.
+
+:::
+
+
+
+## Gjennomsnittlig behandlingseffekt
+
+I et eksperiment ønsker vi å undersøke effekten av en behandling (B) på en avhengig variabel (Y). Vi har mulighet til å rekruttere 100 deltakere til eksperimentet, og vi tilordner deltakerne tilfeldig til en av to grupper: en behandlingsgruppe (B=1) og en kontrollgruppe (B=0). Vi måler utfallet Y for hver deltaker i forkant ($Y_1$) og etterkant ($Y_2$) av intervensjonen. Med forsøket ønsker vi å bestemme den gjennomsnittlige behandlingseffekten (i engelsk litteratur også kalt ATE, average treatment effect). Vi kan definere behandlingseffekten som forskjellen i gjennomsnittlig utfall mellom behandling- og kontrollgruppen.
+
+Vi kan formulerer effekten som vi ønsker å estimere som
+
+$$(Y_{1, B=1} - Y_{0, B=1}) - (Y_{1,B=0}-Y_{0,B=0})$$
+Og vi leser det som, differensen i utfall mellom tid 1 og 0 i behandlingsgruppen ($B=1$) minus differensen i utfall mellom tid 1 og 0 i kontrollgruppen ($B=0$). Vi har nå definert den kvantitet vi ønsker å estimere. Dette kalles i den engelske litteraturen for *estimand*, et begrep som brukes for å beskrive resultatet av en analyse av antagelser og sprørsmålet som vi ønsker å besvare [@pearl_seven_2019]. Hvilke er antagelsene? Vi har veldig få antagelser, ettersom forsøket er et randomisert forsøk har vi ingen veier inn i behandlingsvariabelen (B) og den er bare direkte sammenkoblet med utfallet (Y).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-jamovieksperiment
+#| fig-cap: "Behandling (B) påvirker potensiellt utfallet (Y)."
+#| fig-width: 3
+#| fig-height: 2
+
+library(tidyverse); library(ggdag); library(ggtext)
+
+## FORK
+eks1 <-
+  tibble(name = c("Y", "B"),
+         x    = c(3, 1),
+         y    = c(1.5, 1.5))
+
+# save our DAG
+eks_dag <-
+  dagify(Y ~ B,
+         coords = eks1)
+
+
+eks_dag %>%
+tidy_dagitty() %>%
+
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, shape = 21, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+
+
+    theme(plot.title = element_markdown(), 
+          legend.position = "none") 
+
+
+
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+set.seed(1)
+N <- 100
+
+B <- rep(c(0, 1), each = N/2)
+
+Y0 <- rnorm(N, mean = 100, sd = 15)
+Y1 <- Y0 + ifelse(B == 1, rnorm(N, mean = 10, sd = 5), rnorm(N, mean = 2, sd = 5))
+
+eksperiment1 <- data.frame(B = B, 
+           Y0 = Y0, 
+           Y1 = Y1) 
+
+write.csv(eksperiment1, "data/eksperiment1.csv", row.names = FALSE, sep = ",")
+
+```
+
+Neste steg er å gjøre estimeringen. Vi kan gjøre dette ved å lage en variabel som beskriver forandring `y_diff = Y1 - Y0` og så lage en gruppesammenligning på den nye variabelen. 
+
+::: {.callout-caution collapse="true"}
+## Oppgave: Beregne gjennomsnittlig behandlingseffekt?
+
+Du finner datasettet [her](data/eksperiment1.csv). Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av behandling (B)
+
+::: {.callout-tip collapse="true"}
+## Svar:  Beregne gjennomsnittlig behandlingseffekt?
+
+Vi starter med å lage den nye variabelen. Vi har allerede definert den over som `y_diff = Y1 - Y0`. Vi kan gjøre dette i Jamovi ved å velge *Add* og *Computed variable*. Vi kan så lage en regresjonsmodell med `y_diff` som avhengig variabel og `B` som uavhengig variabel. Vi kan så se på koeffisienten for `B` for å se effekten av behandling, dette er den gjennomsnittlige behandlingseffekten. 
+
+![](img/03-kausal/jamovi1.gif)
+
+:::
+
+:::
+
+## Dårlige kontrollvariabler
+
+I et eksperiment undersøker vi effekten av varmetrening på sykkelprestasjon. Spesifikt er vi er interesserte i å finne ut om varmetrening påvirker prestasjon på en sykkeltest hvor watt er utfallsvariabelen. Vi har rekruttert 26 deltakere til eksperimentet og tilordnet dem tilfeldig til en varmetreningsgruppe (G=1) og en kontrollgruppe (G=0). Vi har målt prestasjonen på sykkeltesten før og etter intervensjonen. Vi har også målt hemoglobinmasse (hb) og VO<sub>2maks</sub> til deltakerne før og etter intervensjonen.
+
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse) 
+
+
+set.seed(2)
+N <- 26
+
+
+group <- rep(c(0, 1), each = N/2)
+hb1 <- rnorm(N, 996, 71) 
+hb2 <- hb1 + ifelse(group == 1, rnorm(N, 28, 5), rnorm(N, 0, 5))
+
+
+
+dat <- data.frame(group = group, 
+                  time = rep(c("pre", "post"), each = N),
+                  hb = c(hb1, hb2), 
+           id = rep(1:N)) %>%
+  rowwise() %>%
+  mutate(vo2max = 630 + 3.64*hb + rnorm(1, 0, 30), 
+         watt = - 100 + vo2max * 0.125 + rnorm(1, 0, 10))
+
+
+write.csv(dat, "data/sykkeltest.csv", row.names = FALSE)
+
+```
+
+
+
+Datasettet [`sykkeltest.csv`]() inneholder variablene `group` (0=kontroll, 1=varmetrening), `time` (pre, post), `hb` (hemoglobinmasse), `VO2max` (maksimalt oksygenopptak) og `Watt` (sykkelprestasjon). 
+
+
+
+::: {.callout-caution collapse="true"}
+## Oppgave: Beregne gjennomsnittlig behandlingseffekt?
+
+Du finner datasettet [her](data/sykkeltest.csv). Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av varmetrening på sykkelprestasjon (Watt). Da vi har målt VO<sub>2maks</sub> og hemoglobinmasse før og etter intervensjonen kan vi inkludere disse variablene som kontrollvariabler i modellen. Men hva skjer med estimatet for varmetrening når vi inkluderer disse variablene i modellen?
+
+
+::: {.callout-tip collapse="true"}
+## Svar:  Beregne gjennomsnittlig behandlingseffekt?
+
+Det finnes flere måter å estimere forskjell mellom gruppene i forandring i sykkelprestasjon. En måte er å lage en ny variabel som beskriver forandring `watt_diff = watt_post - watt_pre` og så lage en gruppesammenligning på den nye variabelen. I Jamovi må vi strukturere dataene slik at vi har en rad per deltaker og en kolonne per variabel. Jamovi har ikke funksjoner som lett lar deg transponere datasett. Her må vi gjøre arbeidet manuellt. Vi kan så lage en regresjonsmodell med `watt_diff` som avhengig variabel og `group` som uavhengig variabel. Vi kan så se på koeffisienten for `group` for å se effekten av varmetrening.
+
+![](img/03-kausal/jamovi3.gif)
+
+ 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+dat2 <- dat %>%
+  pivot_wider(names_from = time, values_from = c(hb, vo2max, watt))%>%
+  
+  mutate(watt_diff = watt_post - watt_pre, 
+         hb_diff = hb_post - hb_pre,
+         vo2max_diff = vo2max_post - vo2max_pre) 
+
+
+m <- lm(watt_diff ~ group, data = dat2)
+
+
+```
+
+Effekten er estimert til `r round(coef(m)[2], 2)` watt, med et standardfeil på `r round(coef(summary(m))[2,2],2)`. Effekten tilsvarer altså nesten 2 standardfeil.  
+
+La oss se på en DAG som beskriver våre data (@fig-sykkeldag).
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-sykkeldag
+#| fig-cap: "DAG som beskriver sammenhengen mellom variablene i sykkeltesten."
+#| fig-width: 4
+#| fig-height: 3
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("V", "Hb", "U", "VO2", "W"),
+         x    = c(1, 2, 2, 3, 4),
+         y    = c(1, 1, 2, 1, 1))
+
+# save our DAG
+dag <-
+  dagify(Hb  ~ V,
+         U ~ V,
+         VO2 ~ Hb ,
+         VO2 ~ U,
+         W ~ VO2,
+         coords = dag_coords)
+
+# plot 
+sykkeldag <- dag %>%
+  tidy_dagitty() %>%
+  mutate(circ = if_else(name == "U", "c", "n")) %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+
+  geom_dag_point(alpha = 1, size = 12, shape = 21, aes(color = circ)) +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag() + 
+  scale_color_manual(values = c("black", "white")) +
+  theme(legend.position = "none")  
+
+sykkeldag
+
+```
+
+DAGen viser at varmetrening (V) påvirker sykkelprestasjon (W) gjennom hemoglobinmasse (Hb),  VO<sub>2maks</sub> (VO2) og en (eller flere) ikke målte variabler (U). 
+
+Når vi er interesserte i den totale effekten av varmetrening på sykkelprestasjon, er det viktig å *ikke* inkludere variabler som påvirkes av behandlingen (varmetrening, treatment). Hvis vi gjør det oppstår "post-treatment bias" hvor vi tar vekk effekten av behandlingen. For å illustrerer dette, lag en to nye modeller som inkluderer inkludere forandring i hemoglobinmasse og VO<sub>2maks</sub> (eks. `hb_diff = hb_post - hb_pre`) i modellen.
+
+```{r}
+#| echo: false
+m2 <- lm(watt_diff ~ group + hb_diff, data = dat2)
+
+
+```
+
+Når vi inkluderer hemoglobinmasse i modellen, reduseres effekten av varmetrening til `r round(coef(m2)[2], 2)` watt, med et tilhørende standardfeil på `r round(coef(summary(m2))[2,2], 2)`. Effekten av varmetrening har tilsynelatende forsvunnit helt, den tilsvarer mindre en helften av et standardfeil. Det å inkluderer en post-treatment variabel i modellen reduserer effekten og gjør den mer usikker, noe vi ser gjennom et større standardfeil. 
+
+
+:::
+
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+## En kurvilineær kontrollvariabel
+
+I @thrane_performance_2019 analyseres dataene fra datasettet `fotball_1_2_3.csv`, her konstateres at alder bør inkluderes i en modell som brukes for å estimere effekten av prestasjon på inntekt. I figuren under (@fig-alderinntekt) illustreres to former for sammenheng mellom alder og inntekt. Den blå linjen viser en lineær sammenheng, mens den røde linjen viser en kurvlineær sammenheng. Den kurvlineære sammenhengen er estimert ved hjelp av en polynomisk regresjonsmodell. 
+
+I Jamovi kan vi estimere en polynomisk regresjonsmodell ved å lage en ny variabel, `alder^2`. Vi kan så inkludere denne variabelen i en regresjonsmodell sammen med `alder`.
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| label: fig-alderinntekt
+#| fig-cap: "Et lineært og et kurvlineært forhold mellom Alder og Inntekt."
+#| fig-width: 3
+#| fig-height: 2
+
+
+dat <- read.csv2("data/fotball_1_2_3.csv", skip = 1, header = FALSE) %>%
+  select(inntekt = V1,
+         alder = V2, 
+         posisjon = V3, 
+         spilte_min = V4, 
+         kamper_tot = V5, 
+         kamper_ses = V6, 
+         ant_mal = V7, 
+         ant_assist = V8, 
+         ant_landskamp = V9, 
+         ant_år_klubb = V10,
+         lag_tabellplass = V11, 
+         rundens_lag = V12,
+         spillerbors = V13,
+         opprinnelse = V14,
+         landslag = V15) 
+
+## Model the univariate relationship between age and income
+m <- lm(log(inntekt) ~ poly(alder, 2), data = dat)
+
+# Calculate predictions
+pred <- data.frame(inntekt = predict(m, newdata = data.frame(alder = seq(from = 18, to = 40, by = 1))),
+                   alder = seq(from = 18, to = 40, by = 1))
+
+
+# Plot predictions
+dat %>%
+  ggplot(aes(x = alder, y = log(inntekt))) + 
+  
+  geom_line(data = pred, aes(x = alder, y = inntekt), color = "red", linewidth = 0.5) +
+  
+  geom_smooth(method = "lm", se = FALSE, linewidth = 0.5) +
+  
+  
+  geom_point() + 
+  theme_classic() + labs(x = "Alder", y = "Inntekt (log-skala)") 
+
+
+
+```
+
+
+::: {.callout-caution collapse="true"}
+## Oppgave: Lag en polynomisk regresjonsmodell?
+
+Bruk datasettet `fotball_1_2_3.csv` og lag en polynomisk regresjonsmodell for å estimere effekten av alder på inntekt. 
+
+1. Legg til en ny variabel, `alder2` i datasettet beregnet som `alder^2`. Lag också en transformert variabel `loginntekt` som er logaritmen til inntekt. Transformeringen `LN($source)` vil gjøre dette for deg.
+2. Lag en polynomisk regresjonsmodell med `loginntekt` som avhengig variabel og `alder` og `alder2` som uavhengige variabler.
+3. Les av estimaten, disse bør være `alder = 0.38` og `alder2 = -0.01`.
+
+### Et alternativ
+
+I Jamovi kan vi bruke modulen GAMLj for å lage en polynomisk regresjonsmodell. Dette gjør vi ved å først velge *Analyses* og *GAMLj*. Vi kan så legge til variablene `loginntekt` som avhengig variabel og `alder` som uavhengig variabel (covariates). Under *Model* kan vi så legge inn variabelen alder i kvadrat.  Under Plot kan vi legge alder på horisontal aksel for å se hvordan sammenhengen mellom variablene ser ut. 
+
+![](img/03-kausal/jamovi2.gif)
+
+::: 
+
+
+
+
+
+

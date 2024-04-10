@@ -1,0 +1,481 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Kausal inferens: Quiz"
+format:
+  revealjs:
+    theme: dark
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+
+## Spørsmål 1: Indentifisere en modell som beskriver en kausal effekt. 
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+
+*Hvilken modell gir den kausale effekten av X på Y gitt figuren?*
+
+
+A: $Y = \beta_0 + \beta_1 X$ <br>
+B: $Y = \beta_0 + \beta_1 X + \beta_2 Z$<br>
+C: $Y = \beta_0 + \beta_2 Z$<br>
+D: $X = \beta_0 + \beta_1 Y$<br>
+
+::: 
+
+::: {.column width="50%"}
+
+```{r}
+#| label: fig-q1
+#| fig-cap: "Hvordan estimere Y fra X?"
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y"),
+         x    = c(1, 2, 3),
+         y    = c(1, 2, 1))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+         Y ~ Z,
+         X ~ Z,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black", size = 14) +
+  geom_dag_edges() + 
+  theme_dag(base_size = 8) + 
+    scale_y_continuous(limits = c(0.9, 2.2)) 
+
+dagfig
+
+
+ggsave("dagfig1.pdf", dagfig, width = 10, height = 5)
+
+```
+
+:::
+
+::::
+
+
+## Spørsmål 2: Indentifisere en modell som beskriver en kausal effekt.
+
+:::: {.columns}
+
+::: {.column width="60%"}
+
+*Hvilken modell gir den kausale effekten av X på Y gitt figuren?*
+
+
+A: $Y = \beta_0 + \beta_1 X + \beta_2 Z + \beta_3 M$<br>
+B: $Y = \beta_0 + \beta_1 X + \beta_2 M + \beta_3 G$<br>
+C: $Y = \beta_0 + \beta_2 Z$<br>
+D: $Y = \beta_0 + \beta_1 X$<br>
+
+:::
+
+::: {.column width="40%"}
+
+
+```{r}
+#| label: fig-q2
+#| fig-cap: "Hvordan estimere Y fra X?"
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y", "M", "G"),
+         x    = c(1, 2, 3, 2, 2.5),
+         y    = c(1, 2, 1, 1.5, 2))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+         M ~ X,
+         M ~ Y,
+         Y ~ Z,
+         X ~ Z,
+         Y ~ G,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag(base_size = 8) + 
+    scale_y_continuous(limits = c(0.9, 2.2)) 
+
+dagfig
+
+
+ggsave("dagfig2.png", dagfig, width = 10, height = 5)
+
+
+
+```
+
+:::
+
+::::
+
+
+## Spørsmål 3: Hva er effekten av X på Y gitt figuren og dataen?
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+*Hva er den kausale effekten av X på Y gitt figuren og dataen?* Angi svaret som gjennomsnittlig økning i Y for hver enhet økning i X, med to desimaler.
+
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| label: fig-q3
+#| fig-cap: "Hvordan estimere Y fra X?"
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Z", "Y", "M", "G"),
+         x    = c(1, 2, 3, 2, 2.5),
+         y    = c(1, 2, 1, 1.5, 2))
+
+# save our DAG
+dag <-
+  dagify(Y ~ X,
+         M ~ X,
+         M ~ Y,
+         Y ~ Z,
+         X ~ Z,
+         G ~ Y,
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag(base_size = 18) + 
+    scale_y_continuous(limits = c(0.9, 2.2)) 
+
+dagfig
+
+
+ggsave("dagfig3.png", dagfig, width = 10, height = 5)
+
+
+
+
+
+```
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+set.seed(123)
+
+N <- 100
+
+z <- rnorm(N)
+x <- rnorm(N, mean = z)
+y <- rnorm(N, mean = x + z, sd = 2)
+m <- rnorm(N, mean = x + y)
+g <- rnorm(N, mean = y)
+
+
+dat <- data.frame(x, y, z, m, g)
+
+write.csv(dat, "xyzdata.csv", row.names = FALSE)
+
+
+m1 <- lm(y ~ x + z, data = dat)
+m2 <- lm(y ~ x + z + m, data = dat)
+m3 <- lm(y ~ x, data = dat)
+m4 <- lm(y ~ x + m, data = dat)
+
+
+
+
+```
+
+:::
+
+::::
+
+## Spørsmål 3: Hva er effekten av X på Y gitt figuren og dataen?
+
+:::: {.columns}
+::: {.column width="50%"}
+
+```{r}
+dagfig
+```
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+::: {.smaller}
+::: {.incremental}
+- `Y = X + Z:` `r round(coef(m1)["x"], 2)`
+- `Y = X + Z + M:` `r round(coef(m2)["x"], 2)`
+- `Y = X:` `r round(coef(m3)["x"], 2)`
+- `Y = X + M:` `r round(coef(m4)["x"], 2)`
+:::
+:::
+:::
+
+:::
+
+::::
+
+
+
+
+## Spørsmål 4: Hva er effekten av X på Y gitt figuren og dataen?
+
+*Hva er den kausale effekten av X på Y gitt figuren og dataen?* Angi svaret som gjennomsnittlig differens mellom gruppene X i Y, med to desimaler.
+
+```{r}
+#| label: fig-q4
+#| fig-cap: "Hvordan estimere Y fra X?"
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Y", "M", "N"),
+         x    = c(1, 3, 1.5, 2.5),
+         y    = c(1, 1, 1, 1))
+
+# save our DAG
+dag <-
+  dagify(Y ~ N,
+         N ~ M,
+         M ~ X,
+         
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag(base_size = 18) 
+
+dagfig
+
+
+ggsave("dagfig4.png", dagfig, width = 10, height = 5)
+
+
+
+
+
+```
+
+
+
+
+```{r}
+
+set.seed(123)
+
+X <- rep(c("I", "C"), each = 10)
+
+M <- ifelse(X == "I", rnorm(10, 10, 2), rnorm(10, 20, 2))
+
+N <- rnorm(20, M, 2)
+
+Y <- rnorm(20, N, 2)
+
+
+dat <- data.frame(X, M, N, Y)
+
+write.csv(dat, "xyzdata2.csv", row.names = FALSE)
+
+m1 <- lm(Y ~ X, data = dat)
+m2 <- lm(Y ~ X + M, data = dat)
+m3 <- lm(Y ~ X + N, data = dat)
+
+
+
+
+```
+
+
+
+## Spørsmål 5: Estimer en sammenheng mellom X og Y
+
+*Beregn sammenhengen mellom X og Y når `zcat == "high"`.* Angi svaret som gjennomsnittlig økning i Y for hver enhet økning i X, med to desimaler. Bruk et filter i Jamovi for å beregne svaret.
+
+## Spørsmål 6: Estimer en sammenheng mellom X og Y
+
+*Beregn sammenhengen mellom X og Y i hele datasettet.* Angi svaret som gjennomsnittlig økning i Y for hver enhet økning i X, med to desimaler.
+
+## Spørsmål 7: Forklare en sammenheng.
+
+*I datasettet med variablene x, y, z og zcat har du nå konstatert at det er en sammenheng mellom x og y når vi ser på dataene i en av kategoriene i zcat. Hvilken av følgende forklaringer er mest sannsynlig? Se også figuren under.*
+
+- z (og dermed zcat) er en collider, når vi velger en kategori i zcat, åpner vi en ikke-kausal vei mellom x og y som ikke er tilstede i hele datasettet. 
+- z (og dermed zcat) er en konfunder, når vi velger en kategori i zcat, åpner vi en ikke-kausal vei mellom x og y som ikke er tilstede i hele datasettet. 
+- z (og dermed zcat) er en mediator, når vi velger en kategori i zcat analyserer vi effekten mellom x og y som ger gjennom z.
+
+
+```{r}
+#| label: fig-q5
+#| fig-cap: "Hvordan estimere Y fra X?"
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse); library(ggdag)
+
+## Experiment
+dag_coords <-
+  tibble(name = c("X", "Y", "Z", "Zcat"),
+         x    = c(1, 3, 2, 2),
+         y    = c(2, 2, 1, 1.5))
+
+# save our DAG
+dag <-
+  dagify(Z ~ Y,
+         Z ~ X,
+         Zcat ~ Z,
+         
+         coords = dag_coords)
+
+# plot 
+dagfig <- dag %>%
+  tidy_dagitty() %>%
+
+  ggplot(aes(x = x, y = y, xend = xend, yend = yend)) +
+  geom_dag_point(alpha = 1, size = 12, color = "white") +
+  geom_dag_text(color = "black") +
+  geom_dag_edges() + 
+  theme_dag(base_size = 18) 
+
+dagfig
+
+
+ggsave("dagfig5.png", dagfig, width = 10, height = 5)
+
+
+
+
+
+```
+
+
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+set.seed(13)
+
+
+N <- 500
+
+x <- rnorm(N)
+y <- rnorm(N)
+
+z <- rnorm(N, x + y, 1)
+
+
+
+dat <- data.frame(x, y, y) %>%
+  mutate(zcat = cut(z, breaks = 5, labels = c("min", "low", "medium", "high", "max")))
+
+
+write.csv(dat, "xyzdata3.csv", row.names = FALSE)
+
+
+m1 <- lm(y ~ x, data = dat[dat$zcat == "high", ])
+m2 <- lm(y ~ x, data = dat)
+
+round(coef(m2)[2], 2)
+summary(m2)
+
+```
+
+
+
+## Spørsmål 8: Forklare en sammenheng.
+
+Du leser en studie hvor det er funnet en sammenheng mellom fysisk aktivitet og hjertesykdom, forfatterne finner ferre tilfeller av hjertesykdom hos deltakere i studien som har en høyere nivå av fysisk aktivitet. Forskerne konkluderer med at fysisk aktivitet forhindrer hjertesykdom. Hvilken av følgende forklaringer er mest sannsynlig? Studien er en tverrsnittstudie i et brett utvalg av befolkningen.
+
+- Fysisk aktivitet forhindrer hjertesykdom, ingen kontrollvariabler er nødvendige.
+- Alder er en mulig konfunder som kan forsterke sammenhengen mellom fysisk aktivitet og hjertesykdom
+- Fysisk aktivitet er en konfunder som kan forklare sammenhengen
+- Fysisk aktivitet er en collider om kan forklare sammenhengen
+
+
+
+
+
+
+
+

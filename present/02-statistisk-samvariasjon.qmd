@@ -3,13 +3,14 @@ title: "Arbeidsfysiologisk metode og Statistikk"
 subtitle: "Statistisk samvariasjon"
 format:
   revealjs:
+    theme: sky
     include-in-header: 
       text: |
         <style>
         .center-xy {
           margin: 0;
           position: absolute;
-          top: 25%;
+          top: 35%;
           left: 0%;
           -ms-transform: translateY(-50%), translateX(-0%);
           transform: translateY(-50%), translateX(-0%);
@@ -151,6 +152,7 @@ plot_grid(p1, p2, p3, p4)
 ```
 
 
+
 ## Samvariasjon
 
 ```{r}
@@ -169,15 +171,227 @@ p2 <- data.frame(x = runif(10, 0, 100)) %>%
   labs(x = "Uavhengig variabel: x", 
        y = "Avhengig variabel: y") +
   
-  theme_few(base_size = 12) + theme(legend.position = "none", 
+  
+  
+  
+  theme_classic(base_size = 12) + theme(legend.position = "none", 
                                     axis.title.x = element_markdown(), 
-                                    axis.title.y = element_markdown())
+                                    axis.title.y = element_markdown()) +
+  theme(axis.text = element_blank())
 
 p2 
 ```
 
-## Modeller for samvariasjon 
 
+## En modell for gjennomsnittet
+
+::: {.incremental}
+- En enkel regresjonsmodell er en modell for gjennomsnittet, hvor gjennomsnittet bestemmes av uavhengige variabler.
+- Den enkleste regresjonsmodellen kan beskrives som $y = \beta_0$, en slik modell beskriver gjennomsnittet ved *skjæringspunktet*
+:::
+
+
+::: {.fragment}
+```{r}
+#| fig-width: 3.5
+#| fig-height: 3
+#| fig-align: "center"
+p1 <- data.frame(x = runif(10, 0, 100)) %>%
+ 
+  
+  mutate(y = x) %>%
+
+ 
+  ggplot(aes(x = 1, y)) + 
+  geom_point(size = 3, color = "steelblue", alpha = 0.5) +
+  
+  scale_y_continuous(limits = c(0, 100)) +
+
+  scale_x_continuous(limits = c(0, 2), breaks = 1) +
+  
+  stat_summary(fun=mean, geom="point",  size=14, color="red", shape = 4, stroke = 2) +
+  
+  labs(x = "Skj&#230;ringspunkt", 
+       y = "Avhengig variabel: y") +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown()) + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_markdown())
+
+
+p1
+
+```
+
+
+:::
+
+
+## En modell for gjennomsnittet
+
+::: {.incremental}
+- Når vi har en uavhengig variabel i modellen for gjennomsnittet beskriver vi $y$ som en funksjon av $x$: $y_i=\beta_0 + \beta_1 x_i$
+- Modellen gir oss $y_i$ når vi setter den uavhengige variabelen til $x_i$. 
+:::
+
+```{r}
+#| fig-width: 3.5
+#| fig-height: 3
+#| fig-align: "center"
+
+
+set.seed(1)
+
+dat <- data.frame(x = runif(25, 5, 95)) %>%
+ 
+  rowwise() %>%
+  mutate(y = rnorm(1, x * 1.05, 10)) %>%
+
+ ungroup()
+  
+
+mod <- lm(y ~ x, data = dat)
+
+X <- 58
+
+Y <- coef(mod)[1] + coef(mod)[2] * X
+
+
+
+dat %>%
+  ggplot(aes(x, y)) + 
+  geom_point(size = 3, color = "steelblue", alpha = 0.5) +
+  
+  scale_y_continuous(limits = c(0, 100), expand = c(0, 0)) +
+
+  scale_x_continuous(limits = c(0, 100), expand = c(0, 0)) +
+  
+  geom_smooth(se = FALSE, color = "steelblue", method = "lm") +
+
+  
+  annotate("segment", 
+           y = c(0,  Y), 
+                   yend = c(Y, Y), 
+                   x = c(X, 0), 
+                   xend = c(X, X), 
+           color = "orange", linewidth = 2, alpha = 0.5) +
+  
+  annotate("richtext", x = X + 10, y = 5, label = paste0("x<sub>i</sub> = ", X),
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt")) + # remove padding
+  
+  
+    annotate("richtext", x = 10, y = Y + 4, label = paste0("y<sub>i</sub> = ", round(Y, 0)),
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt")) + # remove padding
+  
+  
+  
+  labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown()) + 
+  theme(axis.title.x = element_markdown())
+
+
+p1
+
+
+```
+
+
+## En modell for samvariasjon
+
+::: {.incremental}
+
+- Stigningstallet i en regresjonsmodell gir oss et mål på samvariasjon, hvor mye endres $y$ ($\Delta y$) når vi endrer $x$?  
+- $y=\beta_0 + \color{red}{\beta_1 \times x}$, når vi ønsker å vite $\Delta x = 10$, $y=\beta_0 + \color{red}{\beta_1 \times 10}$ 
+:::
+
+::: {.fragment}
+```{r}
+#| fig-width: 3.5
+#| fig-height: 3
+#| fig-align: "center"
+
+
+set.seed(1)
+
+dat <- data.frame(x = runif(25, 5, 95)) %>%
+ 
+  rowwise() %>%
+  mutate(y = rnorm(1, x * 1.05, 10)) %>%
+
+ ungroup()
+  
+
+mod <- lm(y ~ x, data = dat)
+
+X <- 58
+
+X2 <- 68
+
+
+Y <- coef(mod)[1] + coef(mod)[2] * X
+Y2 <- coef(mod)[1] + coef(mod)[2] * X2
+
+
+dat %>%
+  ggplot(aes(x, y)) + 
+  geom_point(size = 3, color = "steelblue", alpha = 0.5) +
+  
+  scale_y_continuous(limits = c(0, 100), expand = c(0, 0)) +
+
+  scale_x_continuous(limits = c(0, 100), expand = c(0, 0)) +
+  
+  geom_smooth(se = FALSE, color = "steelblue", method = "lm") +
+
+  
+  annotate("segment", 
+           y = c(Y,  Y), 
+                   yend = c(Y, Y2), 
+                   x = c(X, X2), 
+                   xend = c(X2, X2), 
+           color = "orange", linewidth = 2, alpha = 0.5) +
+  
+  annotate("richtext", x = X2 , y = Y-5, label = paste0("&Delta;x = ", X2 - X),
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt")) + # remove padding
+  
+  
+    annotate("richtext", x = X2 + 15, y = Y + 4, label = paste0("&Delta;y = ", round(Y2-Y, 1)),
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt")) + # remove padding
+  
+  
+  annotate("richtext", x = 30, y = 80, 
+           label = paste0("y = ", round(coef(mod)[1], 2), " + ", round(coef(mod)[2], 2), " &#215; x<sub>i</sub>"),
+           fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 4), "pt")) + # remove padding  
+  
+  
+  
+  labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown()) + 
+  theme(axis.title.x = element_markdown())
+
+
+```
+:::
+
+
+
+
+
+## Modeller for gjennomsnittet og samvariasjon 
 
 
 ```{r}
@@ -347,7 +561,153 @@ p3
 :::
 
 
-## En modell for gjennomsnittet
+## En kategorisk uavhengig variabel
+
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {.incremental}
+- I en modell hvor $x$ er en kategorisk variabel er $x = 0$ referansenivå, og vi beskriver gjennomsnitt i f.eks. "gruppe A"
+- Når vi setter $x = 1$ beskriver vi gjennomsnitt i "gruppe B". Stigningstallet tilsvarer forskjell mellom gruppene.
+:::
+:::
+
+
+::: {.column width="40%"}
+
+::: {.fragment}
+
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+
+set.seed(4)
+
+dat <- data.frame(x = c(runif(25, 40, 60), 
+                  runif(25, 55, 85), 
+                  runif(25, 75, 100)), 
+           grp = rep(c("A", "B", "C"), each = 25)) %>%
+  
+  rowwise() %>%
+  
+  mutate(y = if_else(grp == "A", rnorm(1, 500 + (-5 * x), 45), 
+                     if_else(grp == "B", rnorm(1, 750 + -5 * x, 45),
+                     rnorm(1, 1000 + -5 * x, 45)))) %>%
+  ungroup()
+  
+  
+mod <- lm(y ~ grp, data = dat)
+
+  
+p1 <- dat %>% 
+  filter(grp != "C") %>%
+  ggplot(aes(grp, y)) + 
+  
+  geom_point(aes(color = grp), size = 3, alpha = 0.5) +
+  
+  scale_color_manual(values = c("steelblue", "orchid4")) +
+  
+  
+  
+    labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  
+  annotate("segment", x = 1, 
+           xend = 2, 
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[2], 
+           color = "orange", alpha = 0.5, linewidth = 2) +
+  
+  theme_classic(base_size = 12) + theme(legend.position = "none", 
+                                     
+                                    axis.ticks = element_blank()) 
+
+  
+p1
+
+```
+
+:::
+
+:::
+
+::::
+
+
+## Flere uavhengige variabler
+
+- Flere uavhengige variabler kan brukes for å gi en betinget samvariasjon
+
+
+
+```{r}
+
+set.seed(4)
+
+
+dat <- data.frame(x = c(runif(25, 40, 60), 
+                  runif(25, 55, 85), 
+                  runif(25, 75, 100)), 
+           grp = rep(c("A", "B", "C"), each = 25)) %>%
+  
+  rowwise() %>%
+  
+  mutate(y = if_else(grp == "A", rnorm(1, 500 + (-5 * x), 45), 
+                     if_else(grp == "B", rnorm(1, 750 + -5 * x, 45),
+                     rnorm(1, 1000 + -5 * x, 45)))) %>%
+  ungroup()
+  
+  
+  
+p1 <- dat %>% 
+  ggplot(aes(x, y)) + 
+  
+  geom_point(color = "steelblue", size = 3, alpha = 0.5) +
+    labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  theme_classic(base_size = 12) + theme(legend.position = "none", 
+                                    axis.text = element_blank(), 
+                                    axis.ticks = element_blank()) + 
+  geom_smooth(method = "lm", se = FALSE, color = "steelblue")
+
+  
+
+mod <- lm(y ~ x + grp, data = dat)
+
+
+
+
+p2 <- dat %>% 
+  ggplot(aes(x, y)) + 
+  
+  geom_point(aes(color = grp), size = 3, alpha = 0.5) +
+    labs(x = "Uavhengig variabel: x", 
+       y = "Avhengig variabel: y") +
+  
+  scale_color_manual(values = c("steelblue", "orange", "pink")) +
+  
+  theme_classic(base_size = 12) + theme(legend.position = "none", 
+                                    axis.text = element_blank(), 
+                                    axis.ticks = element_blank()) + 
+  
+   
+   geom_segment(aes(x = 40, xend = 60, y = coef(mod)[1] + 40 * coef(mod)[2], 
+                    yend = coef(mod)[1] + 60 * coef(mod)[2]), 
+                color = "steelblue") +
+   
+    geom_segment(aes(x = 55, xend = 85, y = coef(mod)[1] + coef(mod)[3] + 55 * coef(mod)[2], 
+                    yend = coef(mod)[1] + coef(mod)[3] + 85 * coef(mod)[2]), 
+                 color = "orange") +
+   
+       geom_segment(aes(x = 75, xend = 100, y = coef(mod)[1] + coef(mod)[4] + 75 * coef(mod)[2], 
+                    yend = coef(mod)[1] + coef(mod)[4] + 100 * coef(mod)[2]), 
+                    color = "pink")
+   
 
 
 
@@ -357,4 +717,1192 @@ p3
 
 
 
+```
+
+
+::: {.center-xy}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.fragment}
+
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+p1
+
+
+```
+
+:::
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r}
+#| fig-width: 4
+#| fig-height: 4
+#| fig-align: "center"
+
+p2
+
+
+```
+:::
+
+:::
+
+
+
+::::
+
+
+:::
+
+## Regresjonsmodellen {.smaller}
+
+:::: {.columns}
+
+::: {.column width="60%"}
+::: {.incremental}
+- En regresjonsmodell kan gi oss en beskrivelse av gjennomsnittet som en funksjon av en eller flere variabler.
+- Regresjonsmodellen gir oss en beskrivelse av samvariasjon mellom en avhengig variable og flere uavhengige variabler.
+- Uavhengige variabler kan være kontinuerlige eller kategoriske...
+:::
+
+
+:::
+
+::: {.column width="40%"}
+
+
+
+```{r}
+#| fig-align: "center"
+#| fig-width: 7
+#| fig-height: 6
+
+
+library(tidyverse); library(ggthemes); library(cowplot); library(ggtext)
+
+
+p1 <- data.frame(A = 10, B = 5) %>%
+  pivot_longer(names_to = "Kategori", values_to = "Antall", cols = A:B) %>%
+  
+  ggplot(aes(Kategori, Antall)) + 
+  geom_bar(stat = "identity", aes(fill = Kategori)) + 
+  
+  scale_y_continuous(limits = c(0, 12), expand = c(0, 0)) +
+  scale_fill_manual(values = c("steelblue", "darkblue")) +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none")
+  
+  
+p2 <- data.frame(vo2maks = runif(100, 45, 70)) %>%
+  rowwise() %>%
+  
+  mutate(runtime = rnorm(1, 900 - vo2maks * 5.5, 15)) %>%
+  ungroup() %>%
+  mutate(kmh = 3 / (runtime/3600)) %>%
+ 
+  ggplot(aes(vo2maks, runtime)) + 
+  geom_point(shape = 21, color = "steelblue") +
+
+  labs(x = "VO<sub>2max</sub> (ml kg<sup>-1</sup> min<sup>-1</sup>)", 
+       y = "3000m tid (sek)") +
+  
+  theme_few(base_size = 12) + theme(legend.position = "none", 
+                                    axis.title.x = element_markdown(), 
+                                    axis.title.y = element_markdown())
+
+
+ p3 <- read.csv("data/temperature.csv") %>%
+   
+   separate(date, into = c("year", "month", "day"), sep = "-") %>%
+   mutate(year = as.numeric(year), 
+          month = as.numeric(month)) %>%
+   group_by(year) %>%
+   summarise(temp = mean(temp)) %>%
+ 
+   ggplot(aes(year, temp)) + 
+   
+   geom_line() +
+     geom_point(shape = 21, color = "darkred", size = 2) +
+ 
+   labs(x = "&Aring;r", 
+        y = "Global gjennomsnittstemperatur (&deg;C)") +
+   
+   theme_few(base_size = 12) + theme(legend.position = "none", 
+                                     axis.title.x = element_markdown(), 
+                                     axis.title.y = element_markdown())
+ 
+ 
+
+
+dat <- read.csv2("data/student_trening_1_2_3.csv", header = FALSE, skip = 1) %>%
+  select(sex = V7, 
+         idrettslag = V5, 
+         tren_senter = V4,
+         age = V6, 
+         train = V2)
+
+
+
+
+d <- dat %>%
+  select(sex, idrettslag) %>%
+  mutate(idrettslag = if_else(idrettslag == "ja", 1, 0), 
+         sex = if_else(sex == "kvinne", 0, 1)) 
+
+
+
+p4 <- dat %>%
+  select(sex, idrettslag) %>%
+  group_by(sex, idrettslag) %>%
+  summarise(n = n()) %>%
+  group_by(sex) %>%
+  mutate(prop = n / sum(n), 
+         sign_row = if_else(sex == "kvinne", -1, 1), 
+         sign_col = if_else(idrettslag == "nei", -1, 1)) %>%
+  
+  ggplot() + 
+  geom_rect(aes(xmin = 0, 
+                           xmax = sign_row * n, 
+                           ymin = 0, 
+                           ymax = sign_col * n, 
+                           fill = paste(sex, idrettslag))) +
+    geom_text(
+    aes(label = paste(round(100 * prop,0),"%"),
+        x = 0.5 * sign_row * n,
+        y = 0.5 * sign_col * n), size = 3) +
+  geom_hline(yintercept = 0) +
+  geom_vline(xintercept = 0) +
+  coord_equal() +
+  
+  scale_y_continuous(breaks = c(-50, 50), labels = c("Nei", "Ja")) +
+  
+  scale_x_continuous(breaks = c(-100, 50), labels = c("Kvinne", "Mann")) +
+  
+  labs(y = "Idrettslag", 
+       x = "Kj&#248;nn") + 
+  
+  theme_minimal() + 
+  theme(axis.title.x = element_markdown(angle = 0),
+        axis.title.y = element_markdown(angle = 0),
+        panel.grid = element_blank(), 
+        legend.position = "none")
+  
+
+
+
+plot_grid(p1, p2, p3, p4)
+
+
+
+
+```
+
+
+:::
+
+::::
+
+
+# Hvordan tilpasses en regresjonsmodell?
+
+## Tilpasse en regresjonsmodell
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+library(tidyverse); library(ggrepel); library(ggtext)
+
+simpsons <- data.frame(height = c(121.92,160.02,180.34,172.72,73.66 ,124.46,175.26), 
+                       weight = c(38.56,53.98,108.4,63.05,9.07,29.94,68.95), 
+                       name = c("Bart Simpson", "Lisa Simpson", "Homer Simpson", "Marge Simpson", 
+                                "Maggie Simpson", "Milhouse Van Houten", "Ned Flander"), 
+                       child = c(1, 1, 0, 0, 1, 1, 0), 
+                       adult = c(0, 0, 1, 1, 0, 0, 1))        
+
+
+simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+  geom_point(size = 3, alpha = 0.5) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+
+```
+
+
+
+## Flere mulige modeller
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+
+## Correct model
+mod <- lm(weight ~ height, data = simpsons)
+
+
+p1 <- simpsons %>%
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  geom_abline(slope = coef(mod)[2] + 0.05, 
+              intercept = coef(mod)[1] -1, 
+              color = "orchid4", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+    geom_abline(slope = coef(mod)[2] - 0.09, 
+              intercept = coef(mod)[1] -1, 
+              color = "green", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+   geom_abline(slope = 0.4, 
+              intercept = coef(mod)[1] + 90, 
+              color = "steelblue", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  
+  
+  
+    geom_point(size = 3, alpha = 0.5) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+
+p1
+
+```
+
+
+## 
+
+```{r}
+#| fig-width: 10
+#| fig-align: "center"
+
+
+orange <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "darkorange") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "darkorange", color = "darkorange"), 
+        strip.text = element_text(color = "darkorange"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+steelblue <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 90 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "steelblue") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "steelblue", color = "steelblue"), 
+        strip.text = element_text(color = "steelblue")) 
+
+
+green <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "green") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+    labs(y = "Absolutt feil") +
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  facet_wrap(~ color) +
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "green", color = "green"), 
+        strip.text = element_text(color = "green"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+
+orchid4 <- simpsons %>%
+  mutate(steelblue = abs(weight - (coef(mod)[1] + 70 + 0.4*height)), 
+         darkorange = abs(weight - (coef(mod)[1] + coef(mod)[2]*height)), 
+         orchid4 = abs(weight - (coef(mod)[1] -1  + (coef(mod)[2] + 0.05)*height)), 
+         green = abs(weight - (coef(mod)[1] -1 + (coef(mod)[2] - 0.09)*height))) %>%
+  select(name, steelblue:green) %>%
+  pivot_longer(names_to = "color", values_to = "error", cols = steelblue:green) %>%
+  
+  filter(color == "orchid4") %>%
+  
+  ggplot(aes(color, error, fill = name)) + 
+  geom_bar(position = "stack", stat = "identity") +
+  
+   scale_y_continuous(limits = c(0, 320), expand = c(0, 0)) +
+  
+  facet_wrap(~ color) +
+  
+  labs(y = "Absolutt feil") +
+  
+  theme_classic() + 
+  theme(axis.text.x = element_blank(), 
+        axis.title.x = element_blank(), 
+        axis.ticks.x = element_blank(), 
+        legend.position = "none", 
+        strip.background = element_rect(fill = "orchid4", color = "orchid4"), 
+        strip.text = element_text(color = "orchid4"), 
+        axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank()) 
+  
+  
+  
+  library(patchwork)
+
+p2 <- ( steelblue | green | orchid4 | orange)
+
+p1 | p2
+
+```
+
+
+## 
+
+
+```{r}
+#| fig-width: 6
+#| fig-align: "center"
+
+ simpsons %>%
+  
+    mutate(darkorange = weight - (coef(mod)[1] + coef(mod)[2]*height)) %>%
+  
+  ggplot(aes(height, weight, label = name, color = name)) + 
+ 
+    geom_abline(slope = coef(mod)[2], 
+              intercept = coef(mod)[1], 
+              color = "darkorange", 
+              linewidth = 1.5, 
+              alpha = 0.5) + 
+  
+  geom_segment(aes(x = height, 
+                   xend = height,
+                   y = weight, 
+                   yend = coef(mod)[1] + coef(mod)[2]*height, 
+                   color = name), 
+               linewidth = 1.5, 
+               alpha = 0.5) +
+  
+
+   geom_point(size = 3) +
+  geom_text_repel() +
+  
+  scale_y_continuous(limits = c(0, 120)) +
+  scale_x_continuous(limits = c(0, 200)) +
+  
+  labs(x = "H&#248;yde (cm)", 
+       y = "Vekt (kg)") +
+  
+  theme_classic() + 
+  theme(legend.position = "none", 
+        axis.title.x = element_markdown(), 
+        axis.title.y = element_markdown())
+```
+
+## Tilpassning av en regresjonsmodell
+::: {.incremental}
+
+- En vanlig metode for å tilpasse en regresjonsmodell er **minste kvadraters metode**
+- Metoden finner sammenhengen mellom en eller flere uavhengige variabler og en avhengig variabel ved å *minimere avvik fra modellgjennomsnitt til observasjoner*
+- Avviket beregnes som summen av avstand i kvadrat (variansen), vi finner altså den modell som har de "minste kvadratene".
+
+:::
+
+# Fra regresjon til korrelasjon
+
+## Korrelasjonen som mål på sammenhenger mellom to konituerlige variabler
+
+```{r}
+#| fig-cap: "Tre forskjellige korrelasjoner, en negativ, en positiv og en svak."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-korr
+#| fig-height: 4
+#| fig-width: 8
+#| fig-align: "center"
+
+
+library(ggpubr)
+
+set.seed(2)
+
+p1 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, -x, 0.2)) %>%
+  ggplot(aes(x, y)) + geom_point(color = "steelblue", size = 2, alpha = 0.2) + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.y = -2)
+
+
+p2 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+    mutate(y = rnorm(1, x, 0.2)) %>%
+  ggplot(aes(x, y)) + geom_point(color = "steelblue", size = 2, alpha = 0.2) + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)))
+
+
+
+p3 <- data.frame(x = rnorm(100)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, x, 7)) %>%
+  ggplot(aes(x, y)) + geom_point(color = "steelblue", size = 2, alpha = 0.2) + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)))
+
+
+library(patchwork)
+p1 | p2 | p3
+
+
+```
+
+## Korrelasjon og antagelser
+
+```{r}
+#| fig-cap: "Avvik fra antagelser om dataene kan gi feilaktige tolkninger av en regresjonskoeffisient"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-korr-ant1
+#| fig-height: 4
+#| fig-width: 8
+#| fig-align: "center"
+
+
+set.seed(1)
+
+d1 <- data.frame(x = rnorm(25)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, -x, 0.2), 
+         incl = "include") %>%
+  ungroup()  %>%
+  add_row(x = 5, y = 5, incl = "exclude")
+
+
+  
+
+p1 <- d1 %>%  
+  ggplot(aes(x, y)) + geom_point(aes(color = incl), alpha = 0.4, size = 2) + 
+  scale_color_manual(values = c("red", "blue")) +
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank(), 
+        legend.position = "none") + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+    
+           color = "red") +
+    stat_cor(data = filter(d1, incl == "include"), 
+             method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.y = 3, 
+           color = "blue") 
+
+
+set.seed(1)
+
+p2 <- data.frame(x = runif(100, -3, 3)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, 1*x + 10*x^2, 0.1)) %>%
+   ggplot(aes(x, y)) + geom_point(alpha = 0.4, color = "steelblue", size = 2) + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank()) + 
+  stat_cor(method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.x = 0)
+
+p1|p2
+
+```
+
+## Korrelasjoner
+
+::: {.incremental}
+- En korrelasjonsanalyse av to kontinuerlige variabler kan gjøres ved hjelp av *Pearson's korrelasjonskoeffisient*
+- I denne analysen har vi noen antagelser:
+  - Symmetrisk fordeling av dataene, ingen *"outlier"*
+  - Lineær samvariasjon mellom variablene
+- Antagelser kan bekreftes ved hjelp av en grafisk analyse
+:::
+
+# Regresjonsmodellen og andre statistiske metoder
+
+## Valg av statistiske metoder for samvariasjon {.smaller}
+
+![](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2996580/bin/IJAR-1-187-g002.jpg)
+
+<br>
+Parab S, Bhalerao S. Choosing statistical test. Int J Ayurveda Res. 2010 Jul;1(3):187-91. doi: 10.4103/0974-7788.72494. PMID: 21170214; PMCID: PMC2996580.
+
+
+
+
+
+##
+
+
+
+```{r}
+#| out-width: '100%'
+#| out-height: '100%'
+
+
+
+
+set.seed(4)
+
+
+dat <- data.frame(x = c(runif(25, 20, 40), 
+                  runif(25, 55-20, 85-20), 
+                  runif(25, 75-20, 100-20)), 
+           grp = rep(c("A", "B", "C"), each = 25)) %>%
+  
+  rowwise() %>%
+  
+  mutate(y = if_else(grp == "A", rnorm(1, 500 + (-5 * x), 45), 
+                     if_else(grp == "B", rnorm(1, 750 + -5 * x, 45),
+                     rnorm(1, 1000 + -5 * x, 45)))) %>%
+  ungroup() %>%
+  data.frame()
+
+
+
+meana <- mean(dat[dat$grp == "A",3])
+
+
+### P1 ###
+p1 <- dat %>%
+  filter(grp == "A") %>%
+  
+  ggplot(aes(x = 1, y)) + 
+  
+  scale_x_continuous(limits = c(0, 2)) +
+  annotate("segment", x = 0.8, 
+           xend = 1.2, 
+           linewidth = 2,
+           y = meana, 
+           yend = meana, 
+           color = "steelblue") + 
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             fill = "orange",
+             color = "black") + 
+  theme_void() +
+
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+dat2 <- dat %>%
+  filter(grp == "A") %>%
+  rowwise() %>%
+  mutate(y2 = rnorm(1, y + 25, 50)) %>%
+  ungroup() %>%
+  mutate(change = y2 - y, id = seq(1:25)) %>%
+  select(y, y2, change, id) %>%
+  pivot_longer(cols= y:y2) 
+
+p2a <- dat2 %>%
+  ggplot(aes(name, value, group = id)) + 
+    
+  geom_line(alpha = 0.5) +
+  
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "purple",
+             color = "black") + 
+  theme_void() 
+
+p2b <- dat2 %>%
+   ggplot(aes(x = 1, change)) + 
+  
+  scale_x_continuous(limits = c(0, 2)) +
+  annotate("segment", x = 0.5, 
+           xend = 1.5, 
+           linewidth = 2,
+           y = 0, 
+           yend = 0, 
+           color = "steelblue") + 
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+    theme_void()
+
+library(cowplot)
+p2 <- plot_grid(p2a, p2b, rel_widths = c(1, 0.4)) +
+
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+### P3 ###
+
+
+mod <- lm(y ~ x, dat)
+
+p3 <- dat %>%
+  mutate(y = y - 300) %>%
+  ggplot(aes(x, y)) +   
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") +
+  
+    annotate("segment", x = max(dat$x), 
+           xend = min(dat$x), 
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1], 
+           color = "steelblue") + 
+  
+  geom_smooth(method = "lm", se = FALSE, 
+              color = "orchid1", alpha = 0.4, linewidth = 1.5) +
+  
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+
+
+
+### P4 ####
+
+
+mod <- lm(y ~ grp, data = filter(dat, grp != "C"))
+
+p4 <-  dat %>%
+  filter(grp != "C") %>%
+  ggplot(aes(grp, y)) +   
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+  
+  annotate("segment", x = 0.8,
+           xend = 2.2,
+           linewidth = 1.5,
+           y = meana, 
+           yend = meana, 
+           color = "steelblue")   +
+  
+    annotate("segment", x = 1,
+           xend = 2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[2], 
+           color = "orchid1")  +
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+
+## P5 #####
+
+dat3 <- dat %>%
+  mutate(y = if_else(grp == "C", y - 500, y))
+
+mod <- lm(y ~ grp, data = dat3)
+
+
+p5 <-  dat3 %>%
+
+  ggplot(aes(grp, y)) +   
+  
+  geom_point(position = position_jitter(width = 0.05), 
+             size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") + 
+  
+  annotate("segment", x = 0.8,
+           xend = 3.2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1], 
+           color = "steelblue")   +
+  
+    annotate("segment", x = 1,
+           xend = 2,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[2], 
+           color = "orchid1")  +
+  
+   annotate("segment", x = 1,
+           xend = 3,
+           linewidth = 1.5,
+           y = coef(mod)[1], 
+           yend = coef(mod)[1] + coef(mod)[3], 
+           color = "orchid1")  +
+  
+  
+    theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+
+### P6 #####
+
+chdage <- lsm::chdage 
+
+## Model the relationship using logistic regression
+mod <- glm(CHD ~ AGE, data = chdage, family = binomial())
+# Predict probabilities
+predicted_probs <- predict(mod, newdata = data.frame(AGE = seq(from = 20, to = 70, by = 1)), 
+                           type = "response")
+
+
+
+p6 <- chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point(size = 3,
+             shape = 21, 
+             alpha = 0.5,
+             fill = "orange",
+             color = "black") +  
+  
+  geom_line(data = data.frame(AGE = seq(from = 20, to = 70, by = 1), 
+                              CHD = predicted_probs), 
+            color = "orchid1", linewidth = 1.4) +
+  
+  theme_void() + 
+  theme(plot.background = element_rect(color = "darkgreen", linewidth = 1.5))
+  
+
+
+
+
+
+plot_grid(p1, p2, p3, 
+          p4, p5, p6, ncol = 3) + 
+  
+  annotate("text", 
+           x = c(0.01, 0.34, 0.67, 0.01, 0.34, 0.67), 
+           y = c(0.98, 0.98, 0.98, 0.48, 0.48, 0.48), 
+           vjust = 1,
+           hjust = 0,
+           label = c("One-sample\nt-test", 
+                     "Paired-samples\nt-test", 
+                     "Correlation", 
+                     "Independent samples\nt-test", 
+                     "One-way ANOVA", 
+                     "Chi-quare test"))
+  
+
+
+
+
+
+
+
+
+
+
+```
+
+## Parametriske og ikke-parametriske metoder for samvariasjon {.smaller}
+
+::: {.incremental}
+
+- En parametrisk metode har noen antagelser om fordeling av data, f.eks. antar vi at feilleddet i en regresjonsmodell følger en normalfordeling med gjennomsnitt 0. 
+- En *ikke*-parametrisk metode gjennomføres på data hvor avstand mellom datapunkter er erstattet av rangering...
+- opprinnelig fordeling av data erstattes og modellen gir oss gjennomsnitt av rangerte data
+
+:::
+
+
+## 
+
+```{r}
+#| fig-cap: "Avvik fra antagelser om dataene kan gi feilaktige tolkninger av samvariasjon"
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-korr-ant
+#| fig-height: 4
+#| fig-width: 5
+#| fig-align: "center"
+
+
+set.seed(1)
+
+d1 <- data.frame(x = rnorm(25)) %>%
+  rowwise() %>%
+  mutate(y = rnorm(1, -x, 0.2), 
+         incl = "include") %>%
+  ungroup()  %>%
+  add_row(x = 5, y = 5, incl = "exclude")
+
+
+  
+
+p1 <- d1 %>%  
+  ggplot(aes(x, y)) + 
+  geom_point( alpha = 0.4, size = 3) + 
+  theme_classic() + 
+  theme(axis.text = element_blank(), 
+        axis.ticks = element_blank(), 
+        legend.position = "none") + 
+  stat_cor(method = "spearman", 
+           aes(label = after_stat(r.label)), 
+    
+           color = "red") +
+    stat_cor(data = d1, 
+             method = "pearson", 
+           aes(label = after_stat(r.label)), 
+           label.y = 4, 
+           color = "blue") +
+  
+  labs(title = "<span style = 'color:red;'>Spearman's</span> og <span style = 'color:blue;'>Pearson's</span> korrelasjonskoeffisient") + 
+  theme(plot.title = element_markdown())
+  
+
+p1 
+```
+
+# Generaliserte lineære modeller
+
+## Regresjonsmodellen er fleksibel!
+
+::: {.incremental}
+
+- En enkel, lineær regresjonsmodell analyserer en kontinuerlig avhengig variabel
+- For å analysere andre typer av utfall kreves en forandring av regresjonsmodellen
+- En modell som gir mulighet å analysere andre typer av variabler kalles for en *generalisert regresjonsmodell* 
+
+
+
+:::
+
+## Alder og hjertesymdom
+
+```{r}
+#| fig-cap: "Bruk av lineær regresjon for å beskrive binære data."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd1
+
+
+
+chdage <- lsm::chdage 
+
+
+chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point(alpha = 0.3, size = 3) + 
+  theme_classic() + 
+  
+  scale_y_continuous(breaks = c(0, 1)) +
+  
+  geom_smooth(method = "lm", se = FALSE, 
+              lty = 2, color = "orchid4") +
+  
+  
+  labs(x = "Alder", 
+       y = "Hjertesykdom")
+
+
+```
+
+## Alder og hjertesykdom, alderskategorier
+
+
+```{r}
+#| fig-cap: "Bruk av alderskategorier for å beskrive forekomst av hjertesykdom. Hver punkt representerer prosentandeler av aldersgruppen med hjertesykdom."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd2
+
+
+
+chdage %>%
+  
+  mutate(agecat = cut(AGE, breaks = c(19, 29, 39, 49, 59, 69), 
+                      labels = c("19-29", 
+                                 "29-39",
+                                 "39-49",
+                                 "49-59",
+                                 "59-69"))) %>%
+  
+  summarise(.by = agecat, 
+            chd = 100 * (sum(CHD)/n())) %>%
+  
+  ggplot(aes(agecat, chd, group = 1)) + 
+  
+  geom_line() +
+  geom_point(shape = 21, color = "white", size = 5, fill = "white") +
+  geom_point(shape = 21, color = "steelblue", stroke = 1.5) + 
+  scale_y_continuous(limits = c(0, 100)) +
+
+  
+  theme_classic() + 
+  
+  labs(x = "Alder", 
+       y = "Forekomst hjertesykdom (%)")
+
+```
+
+
+
+## Alder og hjertesykdom, analysert med en logistisk regresjonsmodell
+
+
+```{r}
+#| fig-cap: "Bruk av en logistisk regresjonsmodell for å beskrive forekomst av hjertesykdom. Kurven representere modellen og hver punkt representerer proporsjoner med hjertesykdom per aldersgruppe."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-chd3
+
+
+
+## Model the relationship using logistic regression
+mod <- glm(CHD ~ AGE, data = chdage, family = binomial())
+# Predict probabilities
+predicted_probs <- predict(mod, newdata = data.frame(AGE = seq(from = 20, to = 70, by = 1)), 
+                           type = "response")
+
+## Calculate age-cat probabilities
+age_cat <- chdage %>%
+  
+  mutate(agecat = cut(AGE, breaks = c(19, 29, 39, 49, 59, 69), 
+                      labels = c("19-29", 
+                                 "29-39",
+                                 "39-49",
+                                 "49-59",
+                                 "59-69"))) %>%
+  
+
+  summarise(.by = agecat, 
+            CHD = (sum(CHD)/n())) %>%
+  separate(agecat, into = c("lwr", "upr"), convert = TRUE) %>%
+  rowwise() %>%
+  mutate(AGE = mean(c(lwr, upr)))
+
+
+
+
+
+chdage %>%
+  ggplot(aes(AGE, CHD)) + 
+  geom_point() + 
+  theme_classic() + 
+  
+  
+  geom_line(data = data.frame(AGE = seq(from = 20, to = 70, by = 1), 
+                              CHD = predicted_probs), 
+            color = "orchid4", linewidth = 1.4) +
+  
+  geom_point(data = age_cat, shape = 21, color = "steelblue", size = 2, stroke = 1.5) +
+  
+  
+  labs(x = "Alder", 
+       y = "Sannsynlighet for hjertesykdom")
+
+
+
+```
+
+
+## Odds, oddsratio og risiko
+
+```{r}
+#| fig-cap: "Et enkelt data sett med en binær variabel kan sammenstilles i figurform og som et forhold mellom antall positive utfall (y=1) og det totale antallet observasjoner. Hvis vi lager en enkel logistisk regresjonsmodell over dataene finner vi at log-odds (0.4055) tilsvarer en odds på 1.5 og en sannsynlighet for utfallet på 0.6 (risiko)."
+#| label: fig-logisticreg
+#| message: false
+#| echo: false
+#| warning: false
+
+
+
+
+library(tidyverse); library(cowplot); library(latex2exp)
+set.seed(1)
+
+y <- rbinom(10, 1, 0.5)
+
+
+
+px <- data.frame(x = c(0, 1), 
+                 y = c(0, 1))  %>%
+  ggplot(aes(x, y)) + theme_void()
+
+
+
+
+
+p1 <- data.frame(y) %>%
+  summarise(.by = y, 
+            n = n()) %>%
+  ggplot(aes(as.factor(y), n)) + geom_bar(stat = "identity", fill = "steelblue") + 
+  theme_classic() + labs(x = "Utfall", 
+                         y = "Antall")
+
+
+
+
+
+
+ggdraw(px) + draw_plot(p1, .45, .45, .2, .5) + 
+  
+  annotate("label", x = 0.2, y = 0.7, 
+           label = "Data: y\n1\n0\n1\n1\n1\n0\n0\n1\n1\n0") +
+  
+  
+  annotate("curve", 
+           x = c(0.25, 0.65, 0.65), 
+           y = c(0.75, 0.75, 0.75), 
+           xend = c(0.42, 0.75, 0.75),
+           yend = c(0.75, 0.75, 0.65),
+           curvature = c(-0.1),
+           
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  
+    annotate("label", x = 0.8, y = 0.75, 
+           label = TeX(r'(0.6 = \frac{6}{10})'), 
+           color = "darkorange", 
+           parse = TRUE) +
+  
+    annotate("label", x = 0.8, y = 0.62, 
+           label = TeX(r'(1.5 = \frac{6}{4})'), 
+           color = "darkgreen", 
+           parse = TRUE) +
+  
+  
+  
+  
+  annotate("curve", 
+           x = c(0.25, 0.38, 0.38), 
+           y = c(0.55, 0.28, 0.28), 
+           xend = c(0.32, 0.42, 0.55),
+           yend = c(0.35, 0.24, 0.28),
+           curvature = c(-0.2),
+  
+         arrow = arrow(type = "closed", length = unit(0.02, "npc"))) +
+  
+  annotate("label", x = 0.3, y = 0.3, 
+           label = "Log-odds p(y=1):\n logit(p(y)) = 0.4055", 
+           color = "orchid4") +
+  
+  annotate("label", x = 0.48, y = 0.18, 
+           label = "Odds p(y=1):\nexp(0.4055) = 1.50", 
+           color = "darkgreen") +
+  
+   annotate("label", x = 0.75, y = 0.25, 
+           label = TeX(r"($p(y=1)=\frac{1}{1+exp(-0.4055)}=0.6$)"), 
+           color = "darkorange",
+           parse = TRUE) 
+
+
+```
+
+## Generaliserte lineære
 
