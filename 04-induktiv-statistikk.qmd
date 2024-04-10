@@ -13,23 +13,24 @@ En *parameter* er en kvantitativ egenskap hos en *populasjon*. En *populasjon* e
 
 
 ### Utvalg og generalisering
-For å trekke korrekte slutninger om en populasjon kreves at utvalget et representativt for populasjonen. Når utvalget representerer den populasjon man ønsker å undersøke kan man gjøre den generalisering som det innebærer å trekke konklusjoner om populasjonen basert på utvalget. Ideelt sett trekkes et utvalg fra populasjonen helt tilfeldig. Dette gir en garanti mot at utvalget ikke skiller seg fra populasjonen i noen viktige karakteristikker. I forskningen er dette i praktiken veldig vanskelig.
+For å trekke korrekte slutninger om en populasjon kreves at utvalget er representativt for populasjonen. Når utvalget representerer den populasjon man ønsker å undersøke kan man gjøre den generalisering som det innebærer å trekke konklusjoner om populasjonen basert på utvalget. Ideelt sett trekkes et utvalg fra populasjonen helt tilfeldig. Dette gir en garanti mot at utvalget ikke skiller seg fra populasjonen i noen viktige karakteristikker. I forskningen er dette i praksis veldig vanskelig.
 
-Tenkt deg at du ønsker å studere effekten av trening i den voksne norske befolkningen, vi ønsker å generalisere resultater fra studien til hele befolkningen, menn, kvinner, unge, gamle, friske og individer som sliter med noen helseplager. Vi går ut i lokalavisen å sier at vi gjennomfører en studie som bruker høyintensiv trening for å forbedre fysisk prestasjonsevne. Interesserte kan melde seg til studien ved å ringe eller sende en e-post. Denne rekrutteringsprosessen vil introdusere en karakteristikk i utvalget som ikke kan sies representere populasjonen, dette da individer som ønsker å gjennomføre høyintensiv trening melder seg til studien.
+Tenkt deg at du ønsker å studere effekten av trening i den voksne norske befolkningen, vi ønsker å generalisere resultater fra studien til hele befolkningen, menn, kvinner, unge, gamle, friske og individer som sliter med noen helseplager. Vi går ut i lokalavisen å sier at vi gjennomfører en studie som bruker høyintensiv trening for å forbedre fysisk prestasjonsevne. Interesserte kan melde seg til studien ved å ringe eller sende en e-post. Denne rekrutteringen vil introdusere en karakteristikk i utvalget som ikke kan sies representere populasjonen, dette da individer som ønsker å gjennomføre høyintensiv trening melder seg til studien.
 
 Hvis vi prøver å gjøre noe åt dette kan vi sende ut et påmeldingsskjema til la oss si 1000 privatadresser i Lillehammer. Vi vil fortsatt sitte igjen med et utvalg som ikke representerer populasjonen, men vi har nå mulighet å undersøke de som ikke melder seg på. Vi kan spørre de som ikke er interesserte i å delta hvorfor det er slik, dette kan si noe om hva utvalget representerer og hvor langt vi kan generalisere resultater fra studien. 
 
-I praktiken er ulike former av Bekvemmelighetsutvalg trolig den vanligeste formen for utvalg i mye av forskningen. Med Bekvemmelighetsutvalg mener vi et utvalg som vi har tilgang til. En vel undersøkt populasjon innen fysiologisk idrettsforskning er mannlige studenter ved idrettsutdanninger.
+I praksis er ulike former av bekvemmelighetsutvalg trolig den vanligste formen for utvalg i mye av forskningen. Med bekvemmelighetsutvalg mener vi et utvalg som vi har tilgang til. En vel undersøkt populasjon innen fysiologisk idrettsforskning er mannlige studenter ved idrettsutdanninger.
 
 
 
 ## Utvalg og estimering
-Når vi har et utvalg så kan vi måle noe og dermed estimere den *sanne verdien*[^1] i populasjonen. Da vi ønsker å si noe om *den sanne verdien* sier dette også noe om at vi kan være mer eller mindre sikre på et estimat, og vi kan ha feil. Vi må ha verktøy som tar hensyn til begge disse konseptene som er tett sammenkoblet nemlig, presisjon og feilrate. Vi kan starte med å konstatere at all estimering gjøres med usikkerhet, men hvordan kan vi si noe om usikkerheten. Vi vil gjennomføre et tankeeksperiment.
+Når vi har et utvalg så kan vi måle noe og dermed estimere den *sanne verdien*[^1] i populasjonen. Da vi ønsker å si noe om *den sanne verdien* sier dette også noe om at vi kan være mer eller mindre sikre på et estimat, og vi kan ha feil. Vi må ha verktøy som tar hensyn til begge disse konseptene som er tett sammenkoblet nemlig, presisjon og feilrate. Vi kan starte med å konstatere at all estimering gjøres med usikkerhet, men hvordan kan vi si noe om usikkerheten. Vi vil nå gjennomføre et tankeeksperiment.
+
 
 [^1]: I frekventisme ser vi på populasjonsparameteren som en (teoretisk) gitt verdi som ikke forandres.
 
 
-I frekventisme er det mulig å tenke seg at vi i teorien kan trekke flere uavhengige utvalg fra en populasjon. La oss gjøre dette, vi trekker flere utvalg med størrelse 10 (10 observasjoner). Fra hvert utvalg kan vi beregne gjennomsnitt og standardavvik. Vi legger sammen gjennomsnittene fra de mange utvalgene i en ny fordeling, en fordeling av gjennomsnitt fra utvalg. Det viser seg at en fordeling av gjennomsnitt har det samme gjennomsnittet som populasjonen og at spredningen (standardavviket) i denne fordelingen bestemmes av størrelsen på utvalgene. Standardfeilen er spredningen i en fordeling av gjennomsnitt fra flere utvalg. Standardfeilen (SE, standard error på engelsk) beregnes som
+I frekventisme er det mulig å tenke seg at vi i teorien kan trekke flere uavhengige utvalg fra en populasjon. La oss gjøre dette, vi trekker flere utvalg med størrelse 10 (10 observasjoner). Fra hvert utvalg kan vi beregne gjennomsnitt og standardavvik. Vi legger sammen gjennomsnittene fra de mange utvalgene i en ny fordeling, en fordeling av gjennomsnitt basert på utvalg fra en populasjon. Det viser seg at en fordeling av gjennomsnitt har det samme gjennomsnittet som populasjonen og at spredningen (standardavviket) i denne fordelingen bestemmes av størrelsen på utvalgene. Standardfeilen er spredningen i en fordeling av gjennomsnitt fra flere utvalg. Standardfeilen (SE, standard error på engelsk) beregnes som
 
 $$SE = \frac{\sigma}{\sqrt{n}}$$
 hvor $\sigma$ er standardavviket i populasjonen og $n$ er størrelsen på utvalget. Problemet her er at vi ikke kjenner $\sigma$, isteden vil vi bruke det estimerte standardavviket fra et utvalg for å gjennomføre beregning. 
@@ -37,19 +38,272 @@ hvor $\sigma$ er standardavviket i populasjonen og $n$ er størrelsen på utvalg
 $$SE = \frac{s}{\sqrt{n}}$$
 Det viser seg at når vi trekker flere utvalg så vil vi i det lange løp, i gjennomsnitt, få standardfeil i utvalgene som tilsvarer standardavviket i utvalgsfordelingen. Dette er et fantastisk resultat, og grunnen til at vi kan si noe om populasjonen basert på et utvalg.
 
-Som vi kan se i beregningen av standardfeilen så er den avhengig av utvalgsstørrelsen. Når utvalgsstørrelsen ($n$) er større blir standardfeilen mindre. Det betyr at fordelingen av gjennomsnitt fra utvalgene vil være tettere samlet kring den *sanne verdien*, populasjonsgjennomsnittet, når utvalgsstørrelsen er større.
+### Estimere et gjennomsnitt, et eksempel
 
-En annen observasjon som kan gjøres av utvalgsfordelingen er at den vil ha en lignende form uansett underliggende populasjonsfordeling. Fordelingen vil ligne på det som kalles normalfordeling. Normalfordelingen bestemmes av et gjennomsnitt og et standardavvik. Dette betyr at vi i mange tilfeller kan bruke estimerte gjennomsnitt og standardavvik for å lage en modell av utvalgsfordelingen. For enda bedre presisjon i estimeringen av en utvalgsfordeling når utvalgsstørrelsen er liten brukes en $t$-fordeling. Denne fordelingen tar også hensyn til utvalgsstørrelsen. Da utvalgsfordelingen har kjente egenskaper (normalfordelingen og $t$-fordelingen) så kan vi bruke denne for å si noe om hvordan vi ser for oss at en teoretisk fordeling av flere gjennomsnitt ser ut. Dette er grunnen for konfidensintervaller.
+I Norge 2022 ble 52026 fødsler registrert i [Medisinsk fødselsregister](https://statistikkbank.fhi.no/mfr/). Gjennomsnittet for fødselsvekt var 3485 gram og standardavviket var 587 gram. Vi kan si at vi dermed kjenner til disse egenskapene i populasjonen, men hvor godt hadde vi klart å estimere disse verdiene hvis vi hadde trukket et utvalg på 10 barn fra populasjonen. For å besvare det spørsmålet kan vi lage et eksperiment hvor vi trekker 1000 utvalg fra populasjonen og beregner gjennomsnitt i hvert utvalg. Den resulterende utvalgfordelingen vil gi et bilde av hvor godt vi kan estimere populasjonen basert på et utvalg. Som vi ser i @fig-birtwtutvalg, i panelet med utvalgsfordeling kan et gjennomsnitt forventes være så lite som mindre enn 3000 og så stort som større enn 4000 g. Hvis utvalgsstørrelsen istedenfor 10 hadde vært 100, ville vi sett at utvalgsfordelingen var mer samlet rundt gjennomsnittet. 
 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
-#| label: fig-normalfordeling
-#| fig-cap: "En normalfordeling med gjennomsnitt 0 og standardavvik 1. Fordelingen er symmetrisk og har en klokkeform."
+#| fig-width: 8
+#| label: fig-birtwtutvalg
+#| fig-height: 8
+#| fig-cap: "Vi trekker utvalg (n = 10) fra en populasjon av fødselsvekter. For hvert utvalg beregner vi gjennomsnitt og legger hvert gjennomsnitt til en ny fordeling, utvalgsfordelingen. I figuren ser vi tre eksempel på utvalg og de totalt tusen utvalgen som i dette fallet skaper utvalgsfordelingen. Utvalgsfordelingen tar en form som kan beskrives som en symmetrisk fordeling. Hvis vi fordelingen fra populasjonen med en utvalgsfordeling med forskjellige utvalgsstørrelser ser vi at populasjonen er har størst spredning og en utvalgsfordeling med flere observasjoner er mer samlet kring gjennomsnittet."
 
 
-library(tidyverse)
+library(tidyverse); library(ggtext); library(cowplot)
+
+
+px <- data.frame(x = c(0,1), y = c(0,1)) %>%
+  
+
+  
+  ggplot(aes(x, y)) + 
+  
+    scale_x_continuous(limits = c(0, 1), breaks = NULL) +
+  
+  scale_y_continuous(limits = c(0, 1), breaks = NULL) +
+  theme_void()
+
+
+p1 <- ggplot(data = data.frame(x = c(3485 - (4*587), 3485 + (4*587))), aes(x)) +
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 3485, sd = 587)) + 
+  ylab("") +
+  scale_y_continuous(breaks = NULL) + 
+    labs(x = "F&#248;dselsvekt (gram)", 
+         title = "Populasjonen") +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_markdown()) 
+
+
+set.seed(1)
+## data sets
+d1 <- data.frame(x = rnorm(10, 3485, 587))
+d2 <- data.frame(x = rnorm(10, 3485, 587))
+d3 <- data.frame(x = rnorm(10, 3485, 587))
+
+
+
+samp_plot_fun <- function(d = d1) {
+  
+  d %>%
+  ggplot(aes(x)) + 
+  geom_dotplot(fill = "lightblue") +
+  
+  annotate("text", x = mean(d$x), y = 0.6, 
+           label = "Gjennomsnitt", 
+           vjust = 0, 
+           hjust = 0.5, size = 4) +  
+  
+  annotate("segment", x = mean(d$x), xend = mean(d$x), 
+  y = 0.55, yend = 0.2, size = 0.5, 
+  arrow = arrow(type = "closed", length = unit(0.1, "inches"))) +  
+      
+  
+  ylab("") +
+  labs(x = "F&#248;dselsvekt (gram)") +
+    scale_x_continuous(limits = c(3485 - (4*587), 3485 + (4*587)), breaks = c(1000, 3500, 6000)) +
+    scale_y_continuous(breaks = NULL, limits = c(0, 0.7)) +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        plot.background = element_rect(fill = NULL))
+  
+  
+}
+
+
+p2 <- samp_plot_fun(d1)
+p3 <- samp_plot_fun(d2)
+p4 <- samp_plot_fun(d3)
+
+
+## Sample distribution plot
+
+
+dsamp1 <- bind_rows(d1  %>% summarise(x = mean(x))%>% mutate(samp = "s1"), 
+          d2  %>% summarise(x = mean(x))%>% mutate(samp = "s2"), 
+          d3  %>% summarise(x = mean(x))%>% mutate(samp = "s3"))
+
+
+p5 <- data.frame(x = rnorm(1000, 3485, 587/sqrt(10)), 
+           samp = "all") %>%
+  ggplot(aes(x, fill = factor(samp))) +
+
+  
+  geom_dotplot(binwidth = 25,
+               dotsize = 2.4,
+              stackratio = 1) +
+  
+  geom_dotplot(data = dsamp1, aes(x = x,fill = samp), 
+               binwidth = 25, 
+               stackratio = 1, 
+               dotsize = 5.5) +
+  
+
+    scale_fill_manual(values = c("lightblue", "steelblue", "orchid", "green")) +
+  
+  ylab("") +
+    scale_x_continuous(limits = c(3485 - (4*587), 3485 + (4*587))) +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        plot.background = element_rect(fill = NULL), 
+        legend.position = "none") + 
+  labs(title = "Utvalgsfordeling")
+
+
+## Combine population and sample plots
+
+p6 <- ggplot(data = data.frame(x = c(3485 - (4*587), 3485 + (4*587))), aes(x)) +
+  # Population
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 3485, sd = 587)) + 
+  # Sampling distribution n = 10
+    stat_function(fun = dnorm, n = 101, 
+                  color = "steelblue",
+                args = list(mean = 3485, sd = 587/sqrt(10))) + 
+  # Sampling distribution n = 100
+      stat_function(fun = dnorm, n = 101, 
+                  color = "orchid",
+                args = list(mean = 3485, sd = 587/sqrt(100))) + 
+  
+  
+  ylab("") +
+  scale_y_continuous(breaks = NULL) + 
+    labs(x = "F&#248;dselsvekt (gram)", 
+         title = "Populasjonen og utvalgsfordelinger") +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_markdown()) +
+  annotate("text", 
+           x = 1000, 
+           hjust = 0,
+           size = 4,
+           y = c(0.001,0.0015, 0.002),
+           color = c("black", "steelblue", "orchid"),
+           label = c("Populasjon",
+                     "Utvalg, n = 10", 
+                     "Utvalg, n = 100")) 
+
+
+
+px + 
+  draw_plot(p1, x = 0.01, y = 0.6, width = 0.35, height = 0.4) +
+  draw_plot(p2, x = 0.05, y = 0.41, width = 0.2, height = 0.2) +
+  draw_plot(p3, x = 0.05, y = 0.21, width = 0.2, height = 0.2) +
+  draw_plot(p4, x = 0.05, y = 0.01, width = 0.2, height = 0.2) +
+  
+  
+  annotate("text", 
+           x = 0.01, 
+           hjust = 1,
+           y = 0.61, 
+           label = "n = 10") +
+  
+  annotate(
+    'curve',
+    x = c(0.03,0.03, 0.03), 
+    y = c(0.62,0.62, 0.62),
+    yend = c(0.51,0.31, 0.11),
+    xend = c(0.06,0.06, 0.06),
+    linewidth = 0.8,
+    curvature = 0.3,
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  )  +
+  
+    annotate(
+    'curve',
+    x = c(0.25,0.25, 0.25), 
+    y = c(0.51,0.31, 0.11),
+    yend = c(0.31,0.30, 0.29),
+    xend = c(0.35,0.35, 0.35),
+    linewidth = 0.8,
+    curvature = 0.1,
+    color = c("steelblue", "orchid", "green"),
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  ) +
+  
+  annotate("richtext", 
+           x = 0.35, 
+           hjust = 1,
+           fill = NA, label.color = NA, # remove background and outline
+           label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           y = 0.12, 
+           label = "&times;1000") +
+  
+  
+  draw_plot(p5, x = 0.36, y = 0.05, width = 0.4, height = 0.45) +
+  
+  draw_plot(p6, x = 0.58, y = 0.5, width = 0.45, height = 0.55) +
+  
+  annotate(
+    'curve',
+    x = c(0.81), 
+    y = c(0.31),
+    yend = c(0.5),
+    xend = c(0.85),
+    linewidth = 0.8,
+    curvature = 0.1,
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  ) 
+
+
+
+```
+
+Hva er da poenget med dette? I den frekventistiske statistikken tenker vi oss at vi gjør dette eksperimentet hver gang vi skal estimere en populasjonsparameter. Usikkerheten i estimatet representeres av spredningen i utvalgsfordelingen. Men i praksis gjør vi jo ikke dette eksperimentet, isteden estimerer vi en populasjonsparameter som gjennomsnittet en gang og bruker spredningen i utvalget for å også estimerer spredningen i utvalgsfordelingen.
+
+
+## Estimering av spredningen i utvalgsfordelingen
+
+Som vi kan se over i beregningen av standardfeilen så er den avhengig av utvalgsstørrelsen. Når utvalgsstørrelsen ($n$) er større blir standardfeilen mindre. Det betyr at fordelingen av gjennomsnitt fra utvalgene vil være tettere samlet kring den *sanne verdien*, populasjonsgjennomsnittet, når utvalgsstørrelsen er større. Vi så dette i @fig-birtwtutvalg.
+
+En annen observasjon som kan gjøres av utvalgsfordelingen er at den vil ha en lignende form uansett underliggende populasjonsfordeling. Fordelingen vil ligne på det som kalles normalfordeling. Normalfordelingen bestemmes av et gjennomsnitt og et standardavvik. Dette betyr at vi i mange tilfeller kan bruke estimerte gjennomsnitt og standardavvik for å lage en modell av utvalgsfordelingen. 
+
+::: {.column-margin}
+
+For enda bedre presisjon i estimeringen av en utvalgsfordeling når utvalgsstørrelsen er liten brukes en $t$-fordeling. Denne fordelingen tar også hensyn til utvalgsstørrelsen. Da utvalgsfordelingen har kjente egenskaper (normalfordelingen og $t$-fordelingen) så kan vi bruke denne for å si noe om hvordan vi ser for oss at en teoretisk fordeling av flere gjennomsnitt ser ut.
+
+:::
+
+Men hvor sikre kan vi være på estimatet av spredningen i en utvalgsfordeling? Spredningen i utvalgsfordelingen er altså spredningen av for eksempel gjennomsnitt hvis vi hadde trukket flere utvalg fra den samme populasjonen og beregnet gjennomsnitt for hvert av dem. Vi estimerer denne spredningen ved å beregne standardfeilen (SE). Hvis vi bruker standardavviket i hvert utvalg som et estimat for standardavviket i populasjonen, så kan vi også beregne standardavviket i utvalgsfordelingen. Dette gjør vi, som vi allerede har sett ved å dele standardavviket i populasjonen på kvadratroten av utvalgsstørrelsen. Hvis vi så hadde gjort dette som et eksperimentet hvor vi beregner standardfeilen mange ganger, så ville vi kunne se at vi i gjennomsnitt, i de fleste tilfeller være veldig nærme den faktiske variasjonen (se @fig-utvalgse).
+
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| fig-height: 4.5
+#| fig-width: 4
+#| label: fig-utvalgse
+#| fig-cap: "Fordeling av estimat av standardfeil fra en populasjon med gjennomsnitt 3485 og standardavvik 587 og utvalg med størrelse 10. Den röde streken indikerer den teoretiske standardfeilen bergnet fra populasjonen."
+
+
+dat <- vector()
+
+set.seed(12)
+
+for(i in 1:1000) {
+  
+  dat[i] <-  sd(rnorm(10, 3485, 587)) / sqrt(10) 
+  
+  
+  
+}
+
+
+data.frame(x = dat) %>%
+  ggplot(aes(x)) + geom_dotplot(dotsize = 1, 
+                                binwidth = 5, 
+                                fill = "lightblue") + 
+  geom_vline(xintercept = 587/sqrt(10), color = "red") +
+  theme_classic() + labs(x = "Standardfeil") + 
+  theme(axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.text.y = element_blank())
 
 
 
@@ -58,14 +312,276 @@ library(tidyverse)
 
 ```
 
+## Målet og problemet med statistisk inferens
 
+Så hva er problemet? Vi kan altså estimerer verdier i populasjonen ved hjelp av utvalg, og er vi usikre så kan vi alltid lage et eksperiment hvor vi trekker flere utvalg? I praksis har vi bare et begrenset utvalg, vi har veldig sjelden flere enn et utvalg og aldri 1000. Vi må altså stole på at estimatene vi skaper ved hjelp av et utvalg gir en god representasjon av populasjonen. Men hvordan kan vi vite når vi faktisk har rett?
 
-### Konfidensintervaller
-Et konfidensintervall tar utgangspunkt i den estimerte utvalgsfordelingen. Vi lager et intervall som fanger in en gitt prosent av alle mulige gjennomsnitt fra en teoretisk samling av utvalg. Av tradisjon brukes et ofte et 95% intervall. Et 95% intervall gir oss et intervall av gjennomsnittsverdier som inneholder 95% av alle utvalg ved en repeterte utvalgsprosess. Dette sier også noe om definisjonen av konfidensintervallet. Ved repeterte utvalg inneholder konfidensintervallene populasjonsgjennomsnittet i 95% av tilfellene. Dessverre vet vi ikke om et spesifikt intervall gjør det eller ikke. Her finnes det fare for at definisjonen i [@thrane_2020, sid. 92] gir en feilaktig bilde av konfidensintervallet. Det er altså ikke slik at et konfidensintervall i seg har en sikkerhet. Et enkelt intervall inneholder populasjonsgjennomsnittet, eller ikke. Prosenttallet som vi setter på intervallet sier noe om prosessen med repeterte utvalg. Det sier noe om hvor ofte vi tar feil ved repeterte utvalg fra den samme populasjonen.
+## Konfidensintervaller
+Et konfidensintervall tar utgangspunkt i den estimerte utvalgsfordelingen. Basert på utvalgsfordelingen lager vi et intervall som fanger inn en gitt prosent av alle mulige gjennomsnitt fra en teoretisk samling av utvalg. Av tradisjon brukes et ofte et 95% intervall. Et 95% intervall gir oss et intervall av gjennomsnittsverdier som inneholder 95% av alle utvalg ved en (teoretisk) repeterte utvalgsprosess. Dette sier også noe om definisjonen av konfidensintervallet. Ved repeterte utvalg inneholder konfidensintervallene populasjonsparameteren (for eksempel gjennomsnittet) i 95% av tilfellene. Dessverre vet vi ikke om et spesifikt intervall gjør det eller ikke. 
 
-Hvis vi forandrer frekvensen med hvilken vi kan a feil fra 5% (95% konfidensintervall) til 10% (90% konfidensintervall) vil intervallet bli mindre. Altså ved en større risk at enkelte konfidensintervall ikke inneholder populasjonsgjennomsnittet får vi et intervall som bedre beskriver populasjonsgjennomsnittet (hvis vi har rett konfidensintervall). Vi kan gå andre veien også, et 99% konfidensintervall er et intervall som holder flere teoretiske gjennomsnitt som mulige populasjonsgjennomsnitt, dette intervallet kommer fra en samling intervaller hvor bare 1 av 10 ikke finner det sanne gjennomsnittet. Igjen, vi vet ikke hvis vi har et intervall som er rett eller galt.
+::: {.column-margin}
+Man kan argumentere for at definisjonen i [@thrane_2020, sid. 92] gir en feilaktig bilde av konfidensintervallet. Det er altså ikke slik at et konfidensintervall i seg har en sikkerhet. Et enkelt intervall inneholder populasjonsparameteren, eller så inneholder det ikke parameteren. Prosenttallet som vi setter på intervallet sier noe om prosessen med repeterte utvalg. Det sier noe om hvor ofte vi tar feil ved repeterte utvalg fra den samme populasjonen.
+:::
+
+Hvis vi forandrer frekvensen med hvilken vi kan ha feil fra 5% (95% konfidensintervall) til 10% (90% konfidensintervall) vil intervallet bli mindre. Altså ved en større risk at enkelte konfidensintervall ikke inneholder populasjonsparameteren får vi et intervall som bedre beskriver populasjonsparameteren (hvis vi har rett konfidensintervall). Vi kan gå andre veien også, et 99% konfidensintervall er et intervall som holder flere teoretiske verdier som mulige populasjonsparameter, dette intervallet kommer fra en samling intervaller hvor bare 1 av 100 ikke finner den sanne verdien Igjen, vi vet ikke hvis vi har et intervall som er rett eller galt.
 
 Utvalgsstørrelsen vil påvirke bredden på intervallene, men ved repeterte utvalg vil vi til tross av dette ha feil i en gitt andel av fallene.
+
+### Beregne et konfidensintervall
+
+For å beregne et konfidensintervall trenger vi et gjennomsnitt med tilhørende standardfeil og en funksjon som beskriver en sannsynlighetsfordeling. Vi har allerede snakket om normalfordelingen, dette er et eksempel på en sannsynlighetsfordeling. Normalfordelingen er en symmetrisk fordeling som beskrives av to parametere, gjennomsnitt og standardavvik. Vi er interessert i å bruke normalfordelingen for å skape et intervall som inkluderer inn, la oss si, 95% av alle mulige verdier gitt at vi har et gjennomsnitt og en spredning (standardfeil). 
+
+$$\bar{x} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
+I formelen over er $\bar{x}$ gjennomsnittet, $s$ standardavviket, $n$ antall observasjoner og $z_{\alpha/2}$ er kvantilen til en normalfordeling. For et 95% konfidensintervall er $z_{\alpha/2} = 1.96$. $\alpha$ er den parameter som bestemmer sannsynligheten for å gjøre feilen at ikke fange populasjonsparameteren ved repeterte utvalg. For et 95% konfidensintervall er $\alpha = 0.05$ og $\alpha/2 = 0.025$.
+
+```{r}
+#| echo: false
+#| message: FALSE
+#| warning: FALSE
+
+set.seed(1)
+sample <- rnorm(10,3485,587) 
+
+```
+
+
+Vi trekker et utvalg med størrelse 10 fra populasjonen av registrerte fødselvekter i Norge 2022. Tallene er:
+
+> `r paste(round(sample,0), sep = ", ")`
+
+Gjennomsnittet er `r round(mean(sample),0)` og standardavviket er `r round(sd(sample),0)`. Vi kan bruke disse verdiene til å beregne konfidensintervallet.
+
+$$3563 \pm 1.96 \times \frac{485}{\sqrt{10}}$$
+hvilket gir et intervall fra `r round(round(mean(sample),0) -  1.96 * (round(sd(sample),0)/sqrt(10)),0)`  til `r round(round(mean(sample),0) +  1.96 * (round(sd(sample),0)/sqrt(10)),0)` gram.
+
+I tekst kan vi sammenfatte våre beregninger som:
+
+> Gjennomsnittet av fødselvektene i Norge 2022 er estimert til `r round(mean(sample),0)` gram med et 95% konfidensintervall på [`r round(round(mean(sample),0) -  1.96 * (round(sd(sample),0)/sqrt(10)),0)`, `r round(round(mean(sample),0) +  1.96 * (round(sd(sample),0)/sqrt(10)),0)`] gram.
+
+### *t*-fordelingen
+
+Når vi bruker små utvalg er det bedre å bruke en *t*-fordelning når vi lager konfidensintervaller. En *t*-fordeling er en familie av fordelinger som likt normalfordelingen er symmetriske med tyngdepunkt ved sentrum. Formen på fordelingen bestemmes av antallet frihetsgrader, noe som i sin tur bestemmes av antallet observasjoner. Når antall frihetsgrader er lavt vil fordelingen være bredere og ha mer masse lengre ut fra sentrum. Når antallet frihetsgrader øker vil fordelingen nærme seg en normalfordeling (se @fig-konfidensintervall).
+
+Det at vi fanger inn mer av fordelingen lengre ut fra sentrum gjør at vi kan være mer sikre på at vi unngår å lure oss selve hva gjelder populasjonsparameteren. Hvis vi definerer feilraten som antallet 95% konfidensintervaller som ikke fanger inn populasjonsparameteren, vil vi ved bruk av en *t*-fordeling ha en feilrate som ikke overstiger 5% ved repeterte forsøk, 95% av konfidensintervallene vil faktisk fange populasjonsparameteren. Normalfordelingen og små utvalg vil derimot gi oss 95% konfidensintervall som ikke holder hva de lover, en lavere andel enn 95% vil inneholde populasjonsparameteren. I @fig-konfidensintervall C har viser vi resultatet av 50 simulerte utvalg fra fødselsvekt-dataene. Over hvert panel i figuren angis feilraten fra 2000 simuleringer. Når vi har små utvalg (n = 10) vil feilraten være større når vi bruker normalfordelingen som grunn for konfidensintervallene.
+
+```{r}
+#| echo: false
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 6
+#| fig-height: 8
+#| label: fig-konfidensintervall
+#| fig-cap: !expr 'paste("(A) En normalfordeling skiller seg fra en t-fordeling ved at formen ikke kan påvirkes. t-fordelingen har en ekstra parameter frihetsgrader (degrees of freedom, df) som bestemmer formen på kurven, når df nermer seg 0 faller mer av massen i fordelingen lengre ut fra sentrum. Når df > 30 ligner t-fordelingen på en normalfordeling. Vi betsemmer antallet frihetsgrader basert på antall observasjoner i dataene. (B) Et konfidensintervall basert på en t-fordeling (df=9) for observert data, et 95% konfidenintervall strekker seg &pm; ",round(qt(0.975, df=9),2)," standardfeil ut fra gjennomsnittet. (C) Et konfidensintervall for en t-fordeling er bredere enn for en normalfordeling og når antallet frihetsgrader (antallet observasjoner) er litet vil dette hjelpe oss å opprettholde feilraten, antallet konfidensintervall som ikke inneholder den faktiske populasjonsparameteren.")'
+
+
+
+# plot a normal distribution using ggplot2
+
+p1 <- data.frame(x = c(-5, 5)) %>%
+  ggplot(aes(x)) + 
+  stat_function(fun = dnorm, args = list()) +
+  stat_function(fun = dt, args = list(
+                                      df = 30), 
+                color = "orchid") +
+    stat_function(fun = dt, args = list(
+                                      df = 10), 
+                color = "blue") +
+    stat_function(fun = dt, args = list(
+                                      df = 2), 
+                color = "orange") +
+  theme_classic() + 
+  
+  annotate("text", 
+           x = -4.9, 
+           y = c(0.35,
+                 0.3,
+                 0.25,
+                 0.20),
+           size = 4,
+           hjust = 0,
+           label = c("Normal", 
+                     "t, df = 30", 
+                     "t, df = 10",
+                     "t, df = 2"), 
+                     color = c("black", "orchid", 
+                               "blue", "orange")) +
+  
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.x = element_blank()) +
+  labs(title = "Normal og t-fordelning",
+       subtitle = " ",
+       x = "Value") 
+
+
+## Shade are under a t distribution
+
+# Return dt(x) for 0 < x < 2, and NA for all other x
+
+# example data
+
+samp <- rnorm(10)
+
+samp <- data.frame(samp = (samp - mean(samp))/sd(samp))
+
+
+dt_limit <- function(x) {
+    y <- dt(x, df = 10)
+    y[x < -2.228139  |  x > 2.228139] <- NA
+    return(y)
+}
+
+# ggplot() with dummy data
+p2 <- ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
+  stat_function(fun = dt_limit, geom = "area", fill = "blue", alpha = 0.2) +
+  stat_function(fun = dt, 
+                args = list(df = 10), color = "blue") + 
+  theme_classic() +
+    theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(),
+              axis.title.x = element_blank()) +
+  labs(title = "t-fordelning",
+  subtitle= "df = 10, 95% av area under kurven",
+       x = "Value") +
+  
+  geom_point(data = samp, aes(x = samp, y = 0), 
+             size = 2, 
+             shape = 20,
+             color = "steelblue") +
+
+  annotate("segment", 
+           x = -2.228139, xend = 2.228139, y = 0.03, yend = 0.03, 
+           color = "black") +
+    annotate("point", 
+           x = 0, y = 0.03, shape = 21,size = 4, fill = "steelblue") 
+
+
+
+
+## Calculate confidence intervals using t and z distributions
+## and compare them
+set.seed(101)
+N <- 2000
+
+results10 <- data.frame(z_lwr = numeric(N), 
+                      z_upr = numeric(N),
+                      t_lwr = numeric(N),
+                      t_upr = numeric(N), 
+                      mean = numeric(N))
+
+results50 <- data.frame(z_lwr = numeric(N), 
+                      z_upr = numeric(N),
+                      t_lwr = numeric(N),
+                      t_upr = numeric(N), 
+                      mean = numeric(N))
+
+
+for(i in 1:N) {
+  
+
+  sample <- rnorm(10,3485,587) 
+  mean <- mean(sample)
+  sd <- sd(sample)
+  n <- length(sample)
+  z <- qnorm(0.975)
+  t <- qt(0.975, df = n-1)
+  
+  results10[i,1] <- mean - z * sd/sqrt(n)
+  results10[i,2] <- mean + z * sd/sqrt(n)
+  results10[i,3] <- mean - t * sd/sqrt(n)
+  results10[i,4] <- mean + t * sd/sqrt(n)
+  results10[i,5] <- mean 
+  results10$n <- n
+  
+  sample <- rnorm(50,3485,587) 
+  mean <- mean(sample)
+  sd <- sd(sample)
+  n <- length(sample)
+  z <- qnorm(0.975)
+  t <- qt(0.975, df = n-1)
+  
+  results50[i,1] <- mean - z * sd/sqrt(n)
+  results50[i,2] <- mean + z * sd/sqrt(n)
+  results50[i,3] <- mean - t * sd/sqrt(n)
+  results50[i,4] <- mean + t * sd/sqrt(n)
+  results50[i,5] <- mean 
+  results50$n <- n 
+  
+  }
+
+  
+errorrates <- bind_rows(results10, results50) %>%
+  mutate(z_includes = ifelse(3485 > z_lwr & 3485 < z_upr, 1, 0),
+         t_includes = ifelse(3485 > t_lwr & 3485 < t_upr, 1, 0)) %>%
+  reframe(.by = n, 
+            z_includes = round(100 * (1 - sum(z_includes)/N),1),
+            t_includes = round(100 * (1 - sum(t_includes)/N),1)) 
+
+
+p3 <- bind_rows(results10, results50) %>%
+  group_by(n) %>%
+  slice_sample(n = 50) %>%
+  mutate(int = row_number()) %>%
+  pivot_longer(cols = c(z_lwr, z_upr, t_lwr, t_upr), 
+               names_to = "interval", 
+               values_to = "val") %>%
+  separate(interval, into = c("type", "side"), sep = "_") %>%
+  pivot_wider(names_from = side, values_from = val) %>%
+  ungroup() %>%
+  mutate(includes = ifelse(3485 > lwr & 3485 < upr, "in", "out"),
+        error_rate = if_else(type == "z" & n == 10, errorrates[1,2],
+                             if_else(type == "z" & n == 50,errorrates[2,2],
+                                     if_else(type == "t" & n == 10, errorrates[1,3],
+                                             errorrates[2,3]))),
+         type = if_else(type == "z", "Normal", "T"),
+
+         n = paste("n =", n, ", feilrate = ", error_rate, "%") ) %>%
+        
+  
+  
+  ggplot(aes(x = int, y = mean, 
+             color = type, alpha = includes)) +
+  
+    geom_hline(yintercept = 3485, linetype = 2) +
+  
+  geom_errorbar(aes(ymin = lwr, ymax = upr), 
+                position = position_dodge(width = 0.5), 
+                width = 0) +
+  
+  scale_alpha_manual(values = c(0.2,1), ## exclude from legend
+                     guide = "none") +
+  scale_color_manual(values = c("orchid", "steelblue")) +
+  
+  geom_point(position = position_dodge(width = 0.5)) + 
+  facet_wrap(~ n, ncol = 1) +
+  theme_classic() + 
+  theme(strip.background = element_rect(color = "white"), 
+        legend.position = "bottom") + 
+  labs(x = "Utvalg", 
+       y = "Gjennomsnitt (gram) 95% konfidensintervall", 
+       color = "Sannsynlighetsfordeling")
+  
+  
+plot_grid(NULL, 
+          plot_grid(p1, p2, ncol = 2, rel_widths = c(1,1)), 
+          p3, nrow = 3, rel_heights = c(0.05,0.4,1)) +
+  # add labels
+  draw_plot_label(label = c("A", "B", "C"), 
+                  x = c(0.01, 0.48, 0.01),
+                  y = c(1, 1, 0.7)) 
+
+```
+
+I din mer avanserte statistikkbok finner du kanskje følgende formel for et konfidensintervall for gjennomsnittet basert på t-fordelingen:
+
+$$\bar{x} \pm t_{\text{df}=10,\alpha/2} \times \frac{s}{\sqrt{n}}$$
+$t_{\text{df}=10,\alpha/2}$ er faktoren som angir hvor mange standardfeil vi må bevege oss fra gjennomsnittet for å finne konfidensintervallets grenser, gitt at vi bestemmer oss for $\alpha$. For et 95% konfidensintervall med antall frihetsgrader satt til 10 er faktoren 2.228.
+
+Konfidensintervaller er altså en måte å uttrykke usikkerhet på, men det er viktig å huske hva de beskriver. Et 95% konfidensintervall sier at ved repeterte utvalg/eksperimenter vil 95% av konfidensintervallene, som det observerte intervallet kommer fra, fange inn den parameter vi ønsker å estimere fra populasjonen (populasjonsparameteren). Men vi vet ikke om vårt intervall faktisk gjør det, vi kjenner bare til sannsynligheten for at vi gjør det i det lange løp.
 
 ## Hypotesetesting og p-verdier
 I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?
