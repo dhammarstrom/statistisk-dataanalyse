@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - Kausalsammenheng</title>
+<title>Statistisk dataanalyse med Jamovi - 7&nbsp; Kausalsammenhenger læringsressurser</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -30,8 +49,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./03-kausalsammenheng.html" rel="next">
-<link href="./02-jamovi.html" rel="prev">
+<link href="./04-a-intro.html" rel="next">
+<link href="./03-jamovi.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -65,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -74,7 +93,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li><li class="breadcrumb-item"><a href="./03-kausal-ressurs.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Kausalsammenhenger læringsressurser</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -153,7 +172,7 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link active">
+            <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kausalsammenheng</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -174,7 +193,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./03-kausal-ressurs.html" class="sidebar-item-text sidebar-link">
+  <a href="./03-kausal-ressurs.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Kausalsammenhenger læringsressurser</span></span></a>
   </div>
 </li>
@@ -241,11 +260,11 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Kausalsammenheng</h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Kausalsammenhenger læringsressurser</span></h1>
 </div>
 
 
@@ -260,10 +279,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<p>Med statistiske verktøy kan vi estimere sammenhenger mellom variabler. For eksempel kan en regresjonsanalyse brukes for å si noe om forskjellen mellom to grupper, vi kan se på dette som en mulig sammenheng mellom gruppe og en avhengig variabel. På en lignende måte kan en inndeling i flere grupper ha en sammenheng med en avhengig variabel, noe som kan måles ved hjelp av en ANOVA (også en regresjonsmodell!). Ved bruk av en regresjonsmodell kan vi måle sammenhengen mellom en eller flere uavhengige variabler og en avhengig variabel. Statistikken er full av modeller og metoder som måler sammenhenger.</p>
-<p>Men hvordan kan vi tolke sammenhenger? I vitenskaphistorien finnes flere eksempler på hvordan man argumenterer for at vi ikke kan si noe om årsak og virkning basert på en statistisk sammenheng. «Correlation does not imply causation» er en vanlig frase som brukes for å avfeie sammenhenger som betydningsløse. Vi kan finne støtte for en slik forståelse, hver morgen (i hvert fall på en hverdag, og i hvert fall om høsten) når vekkerklokken din ringer står du opp og lager en kopp kaffe. Når du setter deg ned for å drikke kaffen stiger solen over horisonten. Men, det at du drikker kaffen får ikke solen til å gå opp. Her finnes ingen årsak-virkning-sammenheng.</p>
+<p><a href="present/xx-sleep.qmd">Her</a> finner du forelesningsnotater for en analyse av studien <span class="citation" data-cites="bjornsdottir2024">Bjornsdottir et al. (<a href="references.html#ref-bjornsdottir2024" role="doc-biblioref">2024</a>)</span></p>
 
 
+<div class="no-row-height column-margin column-container"><div id="ref-bjornsdottir2024" class="csl-entry" role="listitem">
+Bjornsdottir, Erla, Elin Helga Thorarinsdottir, Eva Lindberg, Bryndis Benediktsdottir, Karl Franklin, Debbie Jarvis, Pascal Demoly, et al. 2024. <span>“Association Between Physical Activity over a 10-Year Period and Current Insomnia Symptoms, Sleep Duration and Daytime Sleepiness: A <span>European</span> Population-Based Study.”</span> <em>BMJ Open</em> 14 (3): e067197. <a href="https://doi.org/10.1136/bmjopen-2022-067197">https://doi.org/10.1136/bmjopen-2022-067197</a>.
+</div></div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -501,13 +522,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-jamovi.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistiske metoder for samvariasjon i Jamovi</span></span>
+      <a href="./03-jamovi.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-kausalsammenheng.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./04-a-intro.html" class="pagination-link">
+        <span class="nav-page-text">Induktiv statistikk</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
