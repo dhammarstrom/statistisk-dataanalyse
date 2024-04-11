@@ -19,6 +19,7 @@ book:
       chapters: 
         - 03-kausalsammenheng.qmd
         - 03-jamovi.qmd
+        - 03-kausal-ressurs.qmd
     - part: 04-a-intro.qmd
       chapters:
         - 04-induktiv-statistikk.qmd
