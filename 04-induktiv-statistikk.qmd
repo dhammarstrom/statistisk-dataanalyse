@@ -1,3 +1,8 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Statistisk inferens {#sec-statistiskinferens}
 
 Vi mennesker er gode på å trekke slutninger om hvordan verden fungerer basert på et begrenset antall observasjoner. Denne evne til å lage mentale modeller av verden kan sies være et særtrekk i mennesket som gjort det mulig å skape avanserte sivilisasjoner. En mental modell, eller forståelse av hvordan verden henger sammen gir grunnlag for å samhandle med den, og forandre den. Noen ganger går det dessverre galt, vår mentale modell representerer ikke verden og utfall blir ikke hva vi forventer.
@@ -317,22 +322,22 @@ data.frame(x = dat) %>%
 Så hva er problemet? Vi kan altså estimerer verdier i populasjonen ved hjelp av utvalg, og er vi usikre så kan vi alltid lage et eksperiment hvor vi trekker flere utvalg? I praksis har vi bare et begrenset utvalg, vi har veldig sjelden flere enn et utvalg og aldri 1000. Vi må altså stole på at estimatene vi skaper ved hjelp av et utvalg gir en god representasjon av populasjonen. Men hvordan kan vi vite når vi faktisk har rett?
 
 ## Konfidensintervaller
-Et konfidensintervall tar utgangspunkt i den estimerte utvalgsfordelingen. Basert på utvalgsfordelingen lager vi et intervall som fanger inn en gitt prosent av alle mulige gjennomsnitt fra en teoretisk samling av utvalg. Av tradisjon brukes et ofte et 95% intervall. Et 95% intervall gir oss et intervall av gjennomsnittsverdier som inneholder 95% av alle utvalg ved en (teoretisk) repeterte utvalgsprosess. Dette sier også noe om definisjonen av konfidensintervallet. Ved repeterte utvalg inneholder konfidensintervallene populasjonsparameteren (for eksempel gjennomsnittet) i 95% av tilfellene. Dessverre vet vi ikke om et spesifikt intervall gjør det eller ikke. 
+Et konfidensintervall tar utgangspunkt i den estimerte utvalgsfordelingen. Basert på utvalgsfordelingen lager vi et intervall som fanger inn en gitt prosent av alle mulige gjennomsnitt fra en teoretisk samling av utvalg. Av tradisjon brukes ofte et 95% intervall. Et 95% intervall gir oss et intervall av gjennomsnittsverdier som inneholder 95% av alle utvalg ved en (teoretisk) repeterte utvalgsprosess. Dette sier også noe om definisjonen av konfidensintervallet. Ved repeterte utvalg inneholder konfidensintervallene populasjonsparameteren (for eksempel gjennomsnittet) i 95% av tilfellene. Dessverre vet vi ikke om et spesifikt intervall gjør det eller ikke. 
 
 ::: {.column-margin}
 Man kan argumentere for at definisjonen i [@thrane_2020, sid. 92] gir en feilaktig bilde av konfidensintervallet. Det er altså ikke slik at et konfidensintervall i seg har en sikkerhet. Et enkelt intervall inneholder populasjonsparameteren, eller så inneholder det ikke parameteren. Prosenttallet som vi setter på intervallet sier noe om prosessen med repeterte utvalg. Det sier noe om hvor ofte vi tar feil ved repeterte utvalg fra den samme populasjonen.
 :::
 
-Hvis vi forandrer frekvensen med hvilken vi kan ha feil fra 5% (95% konfidensintervall) til 10% (90% konfidensintervall) vil intervallet bli mindre. Altså ved en større risk at enkelte konfidensintervall ikke inneholder populasjonsparameteren får vi et intervall som bedre beskriver populasjonsparameteren (hvis vi har rett konfidensintervall). Vi kan gå andre veien også, et 99% konfidensintervall er et intervall som holder flere teoretiske verdier som mulige populasjonsparameter, dette intervallet kommer fra en samling intervaller hvor bare 1 av 100 ikke finner den sanne verdien Igjen, vi vet ikke hvis vi har et intervall som er rett eller galt.
+Hvis vi forandrer frekvensen med hvilken vi kan ha feil fra 5% (95% konfidensintervall) til 10% (90% konfidensintervall) vil intervallet bli mindre. Altså med en større risk at enkelte konfidensintervall ikke inneholder populasjonsparameteren får vi et intervall som bedre beskriver populasjonsparameteren (hvis vi har rett konfidensintervall). Vi kan gå andre veien også, et 99% konfidensintervall er et intervall som holder flere teoretiske verdier som mulige for populasjonsparameteren, dette intervallet kommer fra en samling intervaller hvor bare 1 av 100 ikke finner den sanne verdien. Igjen, vi vet ikke hvis vi har et intervall som er rett eller galt.
 
-Utvalgsstørrelsen vil påvirke bredden på intervallene, men ved repeterte utvalg vil vi til tross av dette ha feil i en gitt andel av fallene.
+Utvalgsstørrelsen vil påvirke bredden på intervallene, men ved repeterte utvalg vil vi til tross av dette ha feil i en gitt andel av tilfellene.
 
 ### Beregne et konfidensintervall
 
-For å beregne et konfidensintervall trenger vi et gjennomsnitt med tilhørende standardfeil og en funksjon som beskriver en sannsynlighetsfordeling. Vi har allerede snakket om normalfordelingen, dette er et eksempel på en sannsynlighetsfordeling. Normalfordelingen er en symmetrisk fordeling som beskrives av to parametere, gjennomsnitt og standardavvik. Vi er interessert i å bruke normalfordelingen for å skape et intervall som inkluderer inn, la oss si, 95% av alle mulige verdier gitt at vi har et gjennomsnitt og en spredning (standardfeil). 
+For å beregne et konfidensintervall trenger vi et gjennomsnitt med tilhørende standardfeil og en funksjon som beskriver en sannsynlighetsfordeling. Vi har allerede snakket om normalfordelingen, dette er et eksempel på en sannsynlighetsfordeling. Normalfordelingen er en symmetrisk fordeling som beskrives av to parametere, gjennomsnitt og standardavvik. Vi er interessert i å bruke normalfordelingen for å skape et intervall som inkluderer, la oss si, 95% av alle mulige verdier, gitt at vi har et gjennomsnitt og en spredning (standardfeilen). 
 
 $$\bar{x} \pm z_{\alpha/2} \times \frac{s}{\sqrt{n}}$$
-I formelen over er $\bar{x}$ gjennomsnittet, $s$ standardavviket, $n$ antall observasjoner og $z_{\alpha/2}$ er kvantilen til en normalfordeling. For et 95% konfidensintervall er $z_{\alpha/2} = 1.96$. $\alpha$ er den parameter som bestemmer sannsynligheten for å gjøre feilen at ikke fange populasjonsparameteren ved repeterte utvalg. For et 95% konfidensintervall er $\alpha = 0.05$ og $\alpha/2 = 0.025$.
+I formelen over er $\bar{x}$ gjennomsnittet, $s$ standardavviket, $n$ antall observasjoner og $z_{\alpha/2}$ er kvantilen vi ønsker til en normalfordeling og den tilsvarende faktoren vi trenger for å fange denne kvantilen. For et 95% konfidensintervall er $z_{\alpha/2} = 1.96$. $\alpha$ er den parameter som bestemmer sannsynligheten for å gjøre feilen at ikke fange populasjonsparameteren ved repeterte utvalg. For et 95% konfidensintervall er $\alpha = 0.05$ og $\alpha/2 = 0.025$. $\alpha/2 = 0.025$ betyr i sin tur at vi lar 2.5% av sannsynlighetsmassen i endene av fordelingen (halene) representere tilfellene hvor vi aksepterer å ha feil. 
 
 ```{r}
 #| echo: false
@@ -347,7 +352,21 @@ sample <- rnorm(10,3485,587)
 
 Vi trekker et utvalg med størrelse 10 fra populasjonen av registrerte fødselvekter i Norge 2022. Tallene er:
 
-> `r paste(round(sample,0), sep = ", ")`
+```{r}
+#| echo: false
+#| message: FALSE
+#| warning: FALSE
+
+
+library(gt)
+
+data.frame(Vekt = round(sample, 0)) %>%
+  gt() %>%
+  tab_header(title = md("F&#248;dselsvekter i Norge 2022") )
+```
+
+
+
 
 Gjennomsnittet er `r round(mean(sample),0)` og standardavviket er `r round(sd(sample),0)`. Vi kan bruke disse verdiene til å beregne konfidensintervallet.
 
@@ -360,7 +379,7 @@ I tekst kan vi sammenfatte våre beregninger som:
 
 ### *t*-fordelingen
 
-Når vi bruker små utvalg er det bedre å bruke en *t*-fordelning når vi lager konfidensintervaller. En *t*-fordeling er en familie av fordelinger som likt normalfordelingen er symmetriske med tyngdepunkt ved sentrum. Formen på fordelingen bestemmes av antallet frihetsgrader, noe som i sin tur bestemmes av antallet observasjoner. Når antall frihetsgrader er lavt vil fordelingen være bredere og ha mer masse lengre ut fra sentrum. Når antallet frihetsgrader øker vil fordelingen nærme seg en normalfordeling (se @fig-konfidensintervall).
+Når vi bruker små utvalg er det bedre å bruke en *t*-fordelning når vi lager konfidensintervaller. En *t*-fordeling er en familie av fordelinger som likt normalfordelingen er symmetriske med tyngdepunkt ved sentrum. Formen på fordelingen bestemmes av antallet frihetsgrader, noe som i sin tur bestemmes av antallet observasjoner. Når antall frihetsgrader er lavt vil fordelingen være bredere og ha mer masse lengre ut fra sentrum. Når antallet frihetsgrader øker vil fordelingen nærme seg en normalfordeling (se @fig-konfidensintervall). Når vi beregner et konfidensintervall for et gjennomsnitt bruker vi $n-1$ frihetsgrader. I eksemplet med 10 observasjoner vil vi bruke en *t*-fordeling med 9 frihetsgrader.
 
 Det at vi fanger inn mer av fordelingen lengre ut fra sentrum gjør at vi kan være mer sikre på at vi unngår å lure oss selve hva gjelder populasjonsparameteren. Hvis vi definerer feilraten som antallet 95% konfidensintervaller som ikke fanger inn populasjonsparameteren, vil vi ved bruk av en *t*-fordeling ha en feilrate som ikke overstiger 5% ved repeterte forsøk, 95% av konfidensintervallene vil faktisk fange populasjonsparameteren. Normalfordelingen og små utvalg vil derimot gi oss 95% konfidensintervall som ikke holder hva de lover, en lavere andel enn 95% vil inneholde populasjonsparameteren. I @fig-konfidensintervall C har viser vi resultatet av 50 simulerte utvalg fra fødselsvekt-dataene. Over hvert panel i figuren angis feilraten fra 2000 simuleringer. Når vi har små utvalg (n = 10) vil feilraten være større når vi bruker normalfordelingen som grunn for konfidensintervallene.
 
@@ -371,7 +390,7 @@ Det at vi fanger inn mer av fordelingen lengre ut fra sentrum gjør at vi kan v�
 #| fig-width: 6
 #| fig-height: 8
 #| label: fig-konfidensintervall
-#| fig-cap: !expr 'paste("(A) En normalfordeling skiller seg fra en t-fordeling ved at formen ikke kan påvirkes. t-fordelingen har en ekstra parameter frihetsgrader (degrees of freedom, df) som bestemmer formen på kurven, når df nermer seg 0 faller mer av massen i fordelingen lengre ut fra sentrum. Når df > 30 ligner t-fordelingen på en normalfordeling. Vi betsemmer antallet frihetsgrader basert på antall observasjoner i dataene. (B) Et konfidensintervall basert på en t-fordeling (df=9) for observert data, et 95% konfidenintervall strekker seg &pm; ",round(qt(0.975, df=9),2)," standardfeil ut fra gjennomsnittet. (C) Et konfidensintervall for en t-fordeling er bredere enn for en normalfordeling og når antallet frihetsgrader (antallet observasjoner) er litet vil dette hjelpe oss å opprettholde feilraten, antallet konfidensintervall som ikke inneholder den faktiske populasjonsparameteren.")'
+#| fig-cap: !expr 'paste("(A) En normalfordeling skiller seg fra en t-fordeling ved at formen ikke kan påvirkes. t-fordelingen har en ekstra parameter frihetsgrader (degrees of freedom, df) som bestemmer formen på kurven, når df nermer seg 0 faller mer av massen i fordelingen lengre ut fra sentrum. Når df > 30 ligner t-fordelingen på en normalfordeling. Vi betsemmer antallet frihetsgrader basert på antall observasjoner i dataene. (B) Et konfidensintervall basert på en t-fordeling (df=9) for observert data, et 95% konfidenintervall strekker seg &pm; ",round(qt(0.975, df=9),2)," standardfeil ut fra gjennomsnittet. (C) Et konfidensintervall for en t-fordeling er bredere enn for en normalfordeling og når antallet frihetsgrader (antallet observasjoner) er litet vil dette hjelpe oss å opprettholde feilraten, antallet konfidensintervall som ikke inneholder den faktiske populasjonsparameteren. Et antall intervall i figuren finner ikke populasjonsparameteren, feilraten er angitt over hvert panel og intervaller er markert i figuren")'
 
 
 
@@ -384,7 +403,7 @@ p1 <- data.frame(x = c(-5, 5)) %>%
                                       df = 30), 
                 color = "orchid") +
     stat_function(fun = dt, args = list(
-                                      df = 10), 
+                                      df = 9), 
                 color = "blue") +
     stat_function(fun = dt, args = list(
                                       df = 2), 
@@ -401,7 +420,7 @@ p1 <- data.frame(x = c(-5, 5)) %>%
            hjust = 0,
            label = c("Normal", 
                      "t, df = 30", 
-                     "t, df = 10",
+                     "t, df = 9",
                      "t, df = 2"), 
                      color = c("black", "orchid", 
                                "blue", "orange")) +
@@ -429,7 +448,7 @@ samp <- data.frame(samp = (samp - mean(samp))/sd(samp))
 
 dt_limit <- function(x) {
     y <- dt(x, df = 10)
-    y[x < -2.228139  |  x > 2.228139] <- NA
+    y[x < -qt(0.975, df = 9)  |  x > qt(0.975, df = 9)] <- NA
     return(y)
 }
 
@@ -437,7 +456,7 @@ dt_limit <- function(x) {
 p2 <- ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
   stat_function(fun = dt_limit, geom = "area", fill = "blue", alpha = 0.2) +
   stat_function(fun = dt, 
-                args = list(df = 10), color = "blue") + 
+                args = list(df = 9), color = "blue") + 
   theme_classic() +
     theme(axis.title.y = element_blank(),
         axis.text.y = element_blank(),
@@ -454,7 +473,7 @@ p2 <- ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
              color = "steelblue") +
 
   annotate("segment", 
-           x = -2.228139, xend = 2.228139, y = 0.03, yend = 0.03, 
+           x = -qt(0.975, df = 9), xend = qt(0.975, df = 9), y = 0.03, yend = 0.03, 
            color = "black") +
     annotate("point", 
            x = 0, y = 0.03, shape = 21,size = 4, fill = "steelblue") 
@@ -578,21 +597,118 @@ plot_grid(NULL,
 
 I din mer avanserte statistikkbok finner du kanskje følgende formel for et konfidensintervall for gjennomsnittet basert på t-fordelingen:
 
-$$\bar{x} \pm t_{\text{df}=10,\alpha/2} \times \frac{s}{\sqrt{n}}$$
-$t_{\text{df}=10,\alpha/2}$ er faktoren som angir hvor mange standardfeil vi må bevege oss fra gjennomsnittet for å finne konfidensintervallets grenser, gitt at vi bestemmer oss for $\alpha$. For et 95% konfidensintervall med antall frihetsgrader satt til 10 er faktoren 2.228.
+$$\bar{x} \pm t_{\text{df}=9,\alpha/2} \times \frac{s}{\sqrt{n}}$$
+$t_{\text{df}=9,\alpha/2}$ er faktoren som angir hvor mange standardfeil vi må bevege oss fra gjennomsnittet for å finne konfidensintervallets grenser, gitt at vi bestemmer oss for $\alpha$. For et 95% konfidensintervall med antall frihetsgrader satt til 10 er faktoren `r round(qt(0.975, df=9), 3)`.
 
 Konfidensintervaller er altså en måte å uttrykke usikkerhet på, men det er viktig å huske hva de beskriver. Et 95% konfidensintervall sier at ved repeterte utvalg/eksperimenter vil 95% av konfidensintervallene, som det observerte intervallet kommer fra, fange inn den parameter vi ønsker å estimere fra populasjonen (populasjonsparameteren). Men vi vet ikke om vårt intervall faktisk gjør det, vi kjenner bare til sannsynligheten for at vi gjør det i det lange løp.
 
 ## Hypotesetesting og p-verdier
 I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?
 
-Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket.
+Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne (n=50) som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket (@fig-hypotesedata).
 
-Fra studien er det mulig å formulere to hypoteser, en nullhypotese sier at det ikke er noen forskjell mellom gruppene. Den alternative hypotesen sier derimot at det er en forskjell i blodtrykk mellom gruppene etter intervensjonsperioden. Filosofiske argumenter gir at det er vanskelig å bevise en hypotese men enklere å motbevise. I statistikken bruker vi vanligvis nullhypotesen, og vi *tester mot  den*. Vi setter opp testet sånn at om testresultatet er tilstrekkelig ekstremt gitt at nullhypotesen er sann så avkrefter vi den, eller finner den mindre trolig enn den alternative hypotesen.
+Fra studien er det mulig å formulere to hypoteser, en nullhypotese ($\text{H}_0$) sier at det ikke er noen forskjell mellom gruppene. Den alternative hypotesen ($\text{H}_0$) sier derimot at det er en forskjell i blodtrykk mellom gruppene etter intervensjonsperioden. Filosofiske argumenter gir at det er vanskelig å bevise en hypotese men enklere å motbevise den. I statistikken prøver vi derfor vanligvis å motbevise (falsifisere) nullhypotesen, og vi sier at vi *tester mot den*. Vi setter opp testet sånn at om testresultatet er tilstrekkelig ekstremt gitt at nullhypotesen er sann så avkrefter vi den, eller finner den mindre trolig enn en alternative hypotese.
 
-Vi samler inn data og ser en XX forskjell mellom gruppene i systolisk blodtrykk etter intervensjonen. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling under nullhypotesen. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere og plasserer de i to grupper. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis tilfeldigheter og ikke intervensjonen bestemmer gruppene. Denne teknikken kalles for permutasjonstest.
 
-Det viser seg at bare XX% av gjennomsnittene er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen. Hvis vi setter grensen på XX% kan vi si at vi i det lange løp (flere repeterte studier med den samme statistiske tilnærmingen) vil forkaste nullhypotesen, til tross for at den er sann i XX% av tilfellene. Å gjøre denne feilen kalles for et Type-1 feil.
+
+$$\text{H}_0: \mu_1 = \mu_2$$
+
+$$\text{H}_A: \mu_1 \neq \mu_2$$
+
+```{r}
+#| echo: false
+#| message: FALSE
+#| warning: FALSE
+#| fig-width: 6
+#| fig-height: 4
+#| label: fig-hypotesedata
+
+
+### Create data sets of blood pressure 
+
+set.seed(1)
+A <- rnorm(25, 129, 15)
+B <- rnorm(25, 124, 15)
+
+
+
+data.frame(A, B) %>%
+  pivot_longer(cols = c(A, B), 
+               names_to = "Gruppe", 
+               values_to = "Blodtrykk") %>%
+  ggplot(aes(x = Gruppe,y = Blodtrykk, fill = Gruppe)) + 
+  geom_point(shape = 21, position = position_jitter(width = 0.1)) +
+
+  theme_classic() + 
+  
+    theme(legend.position = "none") +
+  labs(x = "Gruppe", y = "Systolisk blodtrykk (mmHg)") 
+
+
+```
+
+Datane vi samlet inn forteller at forskjellen mellom gruppene i systolisk blodtrykk etter intervensjonen er `r round(mean(A) - mean(B), 1)` mmHg. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling under nullhypotesen. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere fra utvalget og plasserer de i to grupper. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis tilfeldigheter og ikke intervensjonen bestemmer verdiene som vi har observert. Denne teknikken kalles for permutasjonstest og resultatet finner vi i @fig-permutasjonstest.
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 6
+#| fig-height: 4
+#| label: fig-permutasjonstest
+
+
+N <- 10000
+
+
+diffs <- vector()
+for(i in 1:N) {
+  
+ dat <-  data.frame(val = c(A, B)) %>%
+    mutate(group = sample(rep(c("a", "b"), each = 25), 50, replace = FALSE)) 
+  
+  m <- lm(val ~ group, data = dat)
+  diffs[i] <- coef(m)[2]
+  
+}
+
+
+## Number of more extreme values
+
+oneside <- sum(diffs > mean(A) - mean(B), na.rm = TRUE) / N
+
+twoside <- sum(abs(diffs) > abs(mean(A) - mean(B)), na.rm = TRUE) / N
+
+
+
+data.frame(diffs) %>%
+  ggplot(aes(x = diffs)) + 
+  
+  geom_histogram(fill = "lightblue", 
+                 color = "gray23") + 
+  
+  geom_vline(xintercept = mean(A) - mean(B), color = "red") + 
+  annotate("text", x = mean(A) - mean(B) - 1, y = 250, label = "Observert forskjell", color = "red", 
+           angle =90) +
+  
+  
+  theme_classic() + 
+  labs(x = "Forskjell i gjennomsnitt", y = "Antall permutasjoner")
+
+
+
+
+```
+
+
+
+
+Det viser seg at bare `r oneside`% av gjennomsnittene er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen? Hvis vi setter grensen på 5% kan vi si at vi i det lange løp (flere repeterte studier med den samme statistiske tilnærmingen) vil forkaste nullhypotesen, til tross for at den er sann i 5% av tilfellene. Å gjøre denne feilen kalles for et Type-1 feil. 
+
+`r twoside` 
+
 
 ## Type 2 feil, statistisk styrke og utvalgsstørrelser
 Så langt vet vi at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feil-rate i det lange løp (over flere lignende, uavhengige studier). I tillegg til type 1 feil kan vi også gjøre en annen feil ved å ikke forkaste nullhypotesen til tross for at en alternativ hypotese er sann. Denne feilen kalles for type-2 feil og den krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.
