@@ -905,7 +905,7 @@ $$d = \frac{H_a}{SD} = \frac{10}{20} = 0.5$$.
 
 En standardisert effektstørrelse er en måte å beskrive en effekt i termer av variasjonen. Hvor stor er effekten i forhold til den gjennomsnittlige variasjonen i populasjonen? Neste steg blir å bestemme hvilken statistisk styrke og hvor stor risiko for type 1 feil vi ønsker i testen. Her kan vi bruke en argumentasjon som går ut på at en type 1 feil er alvorligere enn type 2 feil. La oss si 4 ganger alvorligere, hvis vi ikke ønsker å gjøre en type 1 feil i mer enn 5% av repeterte studier kan vi leve med risikoen å gjøre en type 2 feil som er $5\% \times 4 = 20\%$.
 
-Vi har nu mulighet for å beregne antallet deltakere som kreves for å oppnå en statistisk styke på 80%. Til denne beregning bruker vi følgende tall:
+Vi har nu mulighet for å beregne antallet deltakere som kreves for å oppnå en statistisk styrke på 80%. Til denne beregning bruker vi følgende tall:
 
 | | |
 |--- | ---|
@@ -914,47 +914,45 @@ Vi har nu mulighet for å beregne antallet deltakere som kreves for å oppnå en
 |Risiko for type 2 feil ($\beta$)| 20%|
 |Statistisk styrke ($1-\beta$)| 0.8|
 
-Ditt statistikkprogram (for eksempel Jamovi) kan beregne antallet deltakere som kreves for å oppnå en gitt statistisk styrke
-
+Ditt statistikkprogram (for eksempel Jamovi) kan beregne antallet deltakere som kreves for å oppnå en gitt statistisk styrke, resultatet fra en slik analyse kan beskrives i en figur hvor to hypoteser er representert som utvalgsfordelinger. Disse utvalgsfordelingene tilsvarer de to hypotesene gitt de parametre vi gir til programmet (se tabellen over). Den alternative hypotesen er sentrert over 0.5 og spredningen tilpasses vårt ønske om feilraten for type 1 og 2-feil. Ettersom spredningen i en utvalgsfordeling er proporsjonal til antallet observasjoner (deltakere i studien) vil dette resultatet kreve et gitt antall deltakere til vårt eksperiment.
 
 ```{r}
 #| echo: false
 #| message: false
 #| warning: false
 #| cache: true
-#| fig-width: 6
-#| fig-height: 3
+#| fig-width: 7
+#| fig-height: 5
 #| label: fig-power
-#| fig-cap: " (Figuren er inspirert av " 
+#| fig-cap: "Resultatet av en analyse av statistisk styrke (power analysis) for en test forskjell mellom to gjennomsnitt. Med en effektsstørrelse på 0.5 gir 64 deltakere i hver gruppe en statistisk styrke på 80%. Den statistiske styrken er area under kurven i den alternative hypotesen som ikke overlapper med den regionen under nullhypotesen hvor vi ikke forkaster nullhypotesen(!). Vi får en type 2 feil når vi ikke forkaster nullhypotesen selv om den er falsk (og den alternative hypotesen er sann, grønn kurve)." 
 
 
+# A figure showing the power analysis of a two-sample t-test
+# The x-axis shows the standardized effects size (d) 
+# To plot the sampling distributions of each hypothesis the 
+# standard error of the two sample t-test is calculated
 
-## Calculate the standard error for the sampling distribution
-
+# calculate power and the standard error for the sampling distribution
 library(pwr)
-
 pwrtest <- pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8, type = "two.sample")
 
-
+# Number of participants in each group
 n <- round(pwrtest$n)
+# The standard error of the sampling distribution
 sigma_se <- sqrt(((n-1) * 1^2 + (n-1) * 1^2)/ ((n + n -2)) * ((1/n) + (1/n))) 
 
-
-
-
-
-dt2_limit_lower <- function(x) {
-    y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
-    y[x < -qt(0.99999, df = n-2) * sigma_se  |  x > -qt(0.975, df = n-2) * sigma_se] <- NA
+# Function for shading the lower critical region of the null hypothesis
+dt2_critical <- function(x, region = "lwr", n, se) {
+  # Define the sampling distribution of the null hypothesis  
+  y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
+    if(region == "lwr") {
+        y[x < -qt(0.99999, df = n-2) * se  |  x > -qt(0.975, df = n-2) * se] <- NA
+    } 
+    if(region == "upr") {
+        y[x > qt(0.99999, df = n-2) * se  |  x < qt(0.975, df = n-2) * se] <- NA
+    } 
     return(y)
 }
-
-dt2_limit_upper <- function(x) {
-    y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
-    y[x < qt(0.975, df = n-2) * sigma_se  |  x > qt(0.999, df = n-2) * sigma_se] <- NA
-    return(y)
-}
-
 
 
 dt2_limit_lower_ha <- function(x) {
@@ -977,19 +975,22 @@ data.frame(x = c(-1, 1)) %>%
 
   
   stat_function(geom = "area", 
-                alpha = 0.2,
-                color = "orchid", linewidth = 0.5,
-                fun = dt2_limit_lower) +
+                alpha = 0.5,
+                color = "orchid", linewidth = 0,
+                fill = "orchid",
+                fun = dt2_critical, 
+                n = 1000,
+                args = list(region = "lwr", se = sigma_se, n = n)) +
   
-    
-  stat_function(geom = "area",    
-                alpha = 0.2,
-                 n = 500,
-                color = "orchid", linewidth = 0.5,
-                fun = dt2_limit_upper) +
-
+  stat_function(geom = "area", 
+                alpha = 0.5,
+                n = 1000,
+                color = "orchid", linewidth = 0,
+                fill = "orchid",
+                fun = dt2_critical, 
+                args = list(region = "upr", se = sigma_se, n = n)) +
   
-    stat_function(fun = dt2, geom= "area", args = list(mu = 0, nu = sigma_se, df = n-2, ncp = 0), 
+  stat_function(fun = dt2, geom= "area", args = list(mu = 0, nu = sigma_se, df = n-2, ncp = 0), 
                   fill = "orchid", alpha = 0.2,
                   n = 1000,
                   
@@ -1002,67 +1003,210 @@ data.frame(x = c(-1, 1)) %>%
                 geom = "area",
                 fill = "lightgreen",
                 alpha = 0.2,
-                
+                n = 1000,
                 args = list(mu = 0.5, nu =sigma_se, df = n-2, ncp = 0), 
                 color = "lightgreen", linewidth = 0) +
   scale_x_continuous(limits = c(-1, 1.2), 
                     breaks = seq(from = -1, to = 1, by = 0.5)) +
 
-    stat_function( geom = "area",
+    stat_function(geom = "area",
                 fill = "darkgreen",
                 alpha = 0.2,
                  n = 1000,
                 fun = dt2_limit_lower_ha) +
   
   
-  theme_classic()
+  theme_classic() +
+
+  
+  labs(x = "Standardisert effektst&#248;rrelse (d)") +
+  
+    theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_markdown(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        plot.title = element_text(size = 14),
+        legend.position = "none") +
+  
+ # geom_vline(xintercept = qt(0.975, df = n-2) * sigma_se, linetype = "dashed", color = "black") +
+## Add text to the plot  
+  annotate("text", 
+           x = -0.5, 
+           y = 1.5, 
+           label = "Utvalgsfordeling \nunder nullhypotese", 
+           size = 5, 
+           color = "orchid") +
+  
+  annotate("curve",
+           x = -0.5,
+           y = 1.35,
+           xend = -0.35,
+           yend = 1.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.2) +
+  
+  annotate("text", 
+           x = 0.95, 
+           y = 1.7, 
+           label = "Utvalgsfordeling under\nalternativ hypotese", 
+           size = 5, 
+           color = "darkgreen") +
+  
+  annotate("curve",
+           x = 0.85,
+           y = 1.55,
+           xend = 0.75,
+           yend = 1.5,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = -0.2) +
+
+  annotate("text", 
+           x = 0.95, 
+           y = 1.05, 
+           label = "Statistisk\nstyrke",
+ 
+           size = 5, 
+           color = "darkgreen") +
+  
+  annotate("curve",
+           x = 0.9,
+           y = 0.9,
+           xend = 0.8,
+           yend = 0.75,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = -0.2) +
+
+  annotate("text", 
+           x = 0.25, 
+           y = 1.95, 
+           label = "Type 2 feil",
+ 
+           size = 5, 
+           color = "darkgreen") +
+
+  annotate("curve",
+           x = 0.25,
+           y = 1.9,
+           xend = 0.3,
+           yend = 1.3,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = 0.1) +
+  
+    annotate("text", 
+           x = -0.6, 
+           y = 0.85, 
+           label = "Type 1 feil",
+ 
+           size = 5, 
+           color = "orchid") +
+
+  annotate("curve",
+           x = -0.6,
+           y = 0.8,
+           xend = -0.5,
+           yend = 0.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.1) +
+    annotate("curve",
+           x = -0.6,
+           y = 0.8,
+           xend = 0.4,
+           yend = 0.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.1) 
+  
   
   
 
-qt()
+
+
+```
+
+En analyse av statistisk styrke gjøres som en del i planleggingen av en studie og er en måte å argumentere for hvor mange observasjoner (deltakere) som trengs for å kunne forkaste en nullhypotese, gitt en alternativ hypotese. Når vi leser en studie som har gjennomført en statistisk styrkeanalyse kan vi et første steg se hva forskerne forventet seg av sin studie, hvor stor eller liten er effekten de forventer seg i den alternative hypotesen? 
+
+Noen ganger vil du kanskje vare uenig i forskernes forventninger, de tror at effekten er mye større enn hva vi egentlig kan forvente. Resultatet av en slik overestimering av effekten er at få deltakere blir rekruttert til studien og at studien med stor sannsynlighet ikke vil oppdage en mindre effekt.
+
+I mange studier finner vi ikke en analyse av statistisk styrke eller begrunnelse for hvor mange deltakere som kreves. Her kan vi som lesere bruke en statistisk styrkeanalyse for å vurdere om studien har tilstrekkelig mange deltakere for å oppdage en effekt som vi er interesserte i. Her er det viktig å huske på at vi ikke bruker resultatet fra studien som vi leser for å gjøre en styrkeanalysen. Denne ene studien er bare en observasjon i utvalgsfordelingen under null- eller den alternative hypotesen. Isteden må vi bruke informasjonen fra tidligere studier eller vår egen kunnskap om feltet for å gjøre en styrkeanalyse, altså avgjøre hva som er en trolig effekt. Dette er ikke helt intuitivt og noe som forskere også sliter med!
+
+::: {.column-margin}
+Lakens [-@lakens2022] gir en grundig gjennomgang av forskjellige måter å gi begrunnelse for en studies utvalgsstørrelse i et frekventistisk perspektiv. Utgangspunktet er at forskjellige måter å begrunne utvalgsstørrelsen på gir leseren mulighet å vurdere informasjonsverdien i studien.
+:::
+
+
+
+
+
+### Mer om effektstørrelser
+Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en *sammenheng mellom gruppe og den avhengige variabelen*. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ til en utgangsverdi (eks. $10/135 = 0.74 = 7.4\%$) eller som en forskjell standardisert til standardavviket i målevariabelen ($10/20 = 0.5$). Den standardiserte effektstørrelsen kalles også for Cohen's $d$ etter en kjent statistiker og psykolog.
+
+En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskriving av Cohen[@cohen2013]) beskriver man en effektstørrelse som liten hvis $d = 0.2$, medium ved $d=0.5$ og stor ved $d=0.8$. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen's $d$ (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient $r= 0.243$. Dette gjør at standardiserte effektstørrelser blir brukt i metaanalyser hvor flere studier settes sammen for å undersøke et gitt fenomen.
+
+I sammenligning av to gjennomsnitt har effektstørrelsen en sammenheng med p-verdien som er avhengig av utvalgsstørrelse. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. 
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 7
+#| fig-height: 5
+#| label: fig-effect-pval
+#| fig-cap: ""
 
 
 library(pwr)
 
-pwrtest <- pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8, type = "two.sample")
+df <- data.frame(n10 = rep(NA, 10), n20 = rep(NA, 10), n40 = rep(NA, 10), n80 = rep(NA, 10)) 
+
+for(i in 1:10) {
+  
+  df[i,1] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 10, type = "two.sample")$power
+  df[i,2] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 20, type = "two.sample")$power
+  df[i,3] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 40, type = "two.sample")$power
+  df[i,4] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 80, type = "two.sample")$power
+  
+
+}
 
 
+df %>%
+  mutate(es = 1:10/10) %>%
+  pivot_longer(cols = n10:n80) %>%
+  mutate(name = as.numeric(gsub("n", "", name))) %>%
+  
+  ggplot(aes(x = es, y = value, color = factor(name))) +
+  
+  geom_line(linewidth = 1.2) + 
+  
+  labs(color = "Utvalgsst&#248;rrelse", 
+       x = "Effektst&#248;rrelse", 
+       y = "Statistisk styrke")  +
+  
+  theme_classic() +
+  
+  scale_color_manual(values = c("orchid", "darkgreen", "steelblue", "purple")) +
+  
+  theme(axis.title.x = element_markdown(), 
+        legend.title = element_markdown(), 
+        legend.position = "bottom")
+  
 
-# Parameters for the Null and Alternative Hypotheses
-mu0 <- 0       # Mean of the null hypothesis
-sigma <- 1     # Population standard deviation of measurements
-n <- 63        # Sample size for both groups
+  
 
-# Calculate the standard errors for the sampling distributions
-sigma_se <- sigma / sqrt(n)
-
-# Effect size is calculated relative to population standard deviation
-effect_size <- 0.5  
-mu1 <- mu0 + effect_size * sigma  # Mean of the alternative hypothesis based on effect size
-
-alpha <- 0.05  # Significance level
-
-# Critical value for a one-sided test
-z_crit <- qnorm(1 - alpha) * sigma_se + mu0  # Adjust critical value for the null hypothesis SE
-
-# Data generation for the curves
-x <- seq(mu0 - 3 * sigma_se, mu1 + 3 * sigma_se, length.out = 1000)
-h0 <- dnorm(x, mean = mu0, sd = sigma_se)
-h1 <- dnorm(x, mean = mu1, sd = sigma_se)
-
-# Data frame for ggplot
-df <- data.frame(x, h0, h1)
-
-# Plot
-ggplot(df, aes(x)) +
-  geom_line(aes(y = h0), col = "blue") +
-  geom_line(aes(y = h1), col = "red") +
-  geom_area(aes(y = h1), fill = "red", alpha = 0.2, xlim = c(z_crit, max(x))) +
-  geom_area(aes(y = h0), fill = "blue", alpha = 0.2, xlim = c(min(x), z_crit)) +
-  geom_vline(xintercept = z_crit, linetype = "dashed", color = "black") +
-  labs(title = "Power Analysis with Effect Size 0.5 (Sampling Distributions)",
-       y = "Density", x = "Measurement Units") +
-  theme_minimal()
 
 
 
@@ -1071,14 +1215,7 @@ ggplot(df, aes(x)) +
 
 
 
-Vi ønsker å gjøre en sammenligning mellom to uavhengige grupper og vi tillater at nullhypotesen kan forkastes i to retninger da trening i teorien kan gi lavere og høyere blodtrykk. Dette spesifiserer den statistiske testen som skal brukes (tosidig t-test med uavhengige grupper). Med denne informasjonen kan vi bruke Jamovi for å beregne utvalgsstørrelse.
 
-### Mer om effektstørrelser
-Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en *sammenheng mellom gruppe og den avhengige variabelen*. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ till en utgangsverdi (eks. $10/135 = 0.74 = 7.4\%$) eller som en forskjell standardisert till standardavviket i målevariabelen ($10/20 = 0.5$). Den standardiserte effektstørrelsen kalles også for Cohen's $d$ etter en kjent statistiker og psykolog.
-
-En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskrivning av Cohen[@cohenStatisticalPowerAnalysis2013]) beskriver man en effektstørrelse som liten hvis $d = 0.2$, medium ved $d=0.5$ og stor ved $d=0.8$. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen's $d$ (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient $r= 0.243$. Dette gjør at standardiserte effektstørrelser blir brukt i meta-analyser hvor flere studier settes sammen for å undersøke et gitt fenomen.
-
-I sammenligning av to gjennomsnitt har effektstørrelsen en sammenheng med p-verdien som er avhengig av utvalgsstørrelse. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. 
 
 ## Statistiske tester, studiedesign og utvalg
 I flere eksempler har vi brukt data fra observasjonsstudier. I disse studiene samler vi inn data fra et utvalg og undersøker sammenhenger mellom variabler. Fra disse studiene er det typisk vanskelig å trekke konklusjoner om hva som ligger bak en observert effekt. Resultater fra observasjonsstudier kan brukes til å bedre forstå kausale sammenhenger, men dette krever en teoretisk modell og at vi måler andre variabler som kan tenkes influere sammenhenger mellom to variabler som vi er interesserte i. Til sammen kan disse brukes for å fastslå årsakssammenhenger. 
