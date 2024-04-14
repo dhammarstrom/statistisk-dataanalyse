@@ -1294,6 +1294,47 @@ P-verdiene oppfører seg akkurat som forventet, de er hav man kaller for "unifor
 
 
 
+## P-verdier og overraskelsefaktoren
+
+La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er `r 0.5^10` [@cole2021]. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne
+
+$$-\operatorname{log}_2(0.0009765625) = 10$$
+Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som $s$ [@cole2021]. 
+
+::: {.column-margin}
+s-verdien har fått sitt navn efter "surprisal" (som i surprise) eller "Shannon information" (som i Claude Shannon) (se @cole2021 og [Information Content](https://en.wikipedia.org/wiki/Information_content) på Wikipedia).
+:::
+
+For å beregne overraskelseindeksen, eller s-verdien fra en p-verdi tar vi altså 
+
+$$-\operatorname{log}_2(p) = s$$
+I en studie fant vi nylig at varmetrening 
+
+
+
+
+```{r}
+
+
+0.5^10
+
+-log2(0.5^10)
+
+
+plot(seq(0, 1, 0.00001), -log2(seq(0, 1, 0.00001)), type = "l", xlab = "P-verdi", ylab = "Overraskelsefaktor")
+
+
+
+
+```
+
+
+
+```
+
+
+
+
 
 
 
