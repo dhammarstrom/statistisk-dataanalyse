@@ -1146,15 +1146,12 @@ Lakens [-@lakens2022] gir en grundig gjennomgang av forskjellige måter å gi be
 :::
 
 
-
-
-
 ### Mer om effektstørrelser
-Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en *sammenheng mellom gruppe og den avhengige variabelen*. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ til en utgangsverdi (eks. $10/135 = 0.74 = 7.4\%$) eller som en forskjell standardisert til standardavviket i målevariabelen ($10/20 = 0.5$). Den standardiserte effektstørrelsen kalles også for Cohen's $d$ etter en kjent statistiker og psykolog.
+Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en *sammenheng mellom gruppe og den avhengige variabelen*. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ til en utgangsverdi (eks. $10/135 = 0.074 = 7.4\%$) eller som en forskjell standardisert til standardavviket i målevariabelen ($10/20 = 0.5$). Denne standardiserte effektstørrelsen kalles også for Cohen's $d$ etter en kjent statistiker og psykolog.
 
-En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskriving av Cohen[@cohen2013]) beskriver man en effektstørrelse som liten hvis $d = 0.2$, medium ved $d=0.5$ og stor ved $d=0.8$. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen's $d$ (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient $r= 0.243$. Dette gjør at standardiserte effektstørrelser blir brukt i metaanalyser hvor flere studier settes sammen for å undersøke et gitt fenomen.
+En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskriving av Cohen[@cohen2013]) beskriver man en effektstørrelse som liten hvis $d = 0.2$, medium ved $d=0.5$ og stor ved $d=0.8$, men beskrivelser av effektstørrelser bør gjøres spesifikt til den konteskt hvor de brukes. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen's $d$ (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient $r= 0.243$. Dette gjør at standardiserte effektstørrelser blir brukt i metaanalyser hvor flere studier settes sammen for å undersøke et gitt fenomen.
 
-I sammenligning av to gjennomsnitt har effektstørrelsen en sammenheng med p-verdien som er avhengig av utvalgsstørrelse. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. 
+En standardisert effektstørrelsen har en direkte sammenheng med den observerte p-verdien og utvalgsstørrelsen. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. På samme måte synker p-verdien vid en gitt effektstørrelse når utvalgsstørrelsen blir større. Dette følger av resonnementet over, en effekt, beskrevet som en ratio til variasjonen i populasjonen får en lavere p-verdi når standardfeilen og dermed spredningen i utvalgsfordelingen blir mindre. Spredningen i utvalgsfordelingen blir mindre når utvalgsstørrelsen øker. I to eksperimenter kan vi få den samme effektstørrelsen, men avhengig av utvalgsstørrelsen vil p-verdien være forskjellig. P-verdien beskytter oss fra å tolke den observerte effekten som en sann effekt i populasjonen. Basert på den grense vi setter for statistisk signifikant i forkant av studien vet vi at denne prosedyren vil gi oss en bestemt feilrate over repeterte eksperimenter.
 
 
 ```{r}
@@ -1162,39 +1159,78 @@ I sammenligning av to gjennomsnitt har effektstørrelsen en sammenheng med p-ver
 #| message: false
 #| warning: false
 #| cache: true
-#| fig-width: 7
-#| fig-height: 5
+#| fig-width: 6
+#| fig-height: 4
 #| label: fig-effect-pval
-#| fig-cap: ""
+#| fig-cap: "Vi kan forvente høyere statistisk styrke og dermed lavere p-verdier for en gitt effektstørrelse når utvalgsstørrelsen er større."
 
 
 library(pwr)
 
-df <- data.frame(n10 = rep(NA, 10), n20 = rep(NA, 10), n40 = rep(NA, 10), n80 = rep(NA, 10)) 
+N <- 100
 
-for(i in 1:10) {
+df <- data.frame(n10 = rep(NA, N), n20 = rep(NA, N), n40 = rep(NA, N), n80 = rep(NA, N)) 
+df2 <- data.frame(n10 = rep(NA, N), n20 = rep(NA, N), n40 = rep(NA, N), n80 = rep(NA, N))
+
+
+# The standard error of the sampling distribution
+
+pfun <- function(n, d) {
+  sdp <- sqrt(((n - 1) * 1^2 + (n - 1) * 1^2) / (n + n - 2))
+  md <- d * sdp
+  tstat <- md / (sdp * sqrt(1/n + 1/n))
+  df <- n + n - 2
   
-  df[i,1] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 10, type = "two.sample")$power
-  df[i,2] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 20, type = "two.sample")$power
-  df[i,3] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 40, type = "two.sample")$power
-  df[i,4] <- pwr.t.test(d = i/10, sig.level = 0.05, n = 80, type = "two.sample")$power
+  2*pt(-abs(tstat), df)
+  
+}
+
+
+
+
+
+for(i in 1:N) {
+  
+  df[i,1] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 10, type = "two.sample")$power
+  df[i,2] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 20, type = "two.sample")$power
+  df[i,3] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 40, type = "two.sample")$power
+  df[i,4] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 80, type = "two.sample")$power
+  
+  
+  ## Calculate p-values
+  df2[i,1] <- pfun(10, i/N)
+  df2[i,2] <- pfun(20, i/N)
+  df2[i,3] <- pfun(40, i/N)
+  df2[i,4] <- pfun(80, i/N)
   
 
 }
 
 
-df %>%
-  mutate(es = 1:10/10) %>%
+
+
+
+p1 <- df %>%
+  mutate(es = 1:N/N) %>%
   pivot_longer(cols = n10:n80) %>%
-  mutate(name = as.numeric(gsub("n", "", name))) %>%
+  mutate(name = as.numeric(gsub("n", "", name)), 
+         type = 'Statistisk styrke') %>%
   
-  ggplot(aes(x = es, y = value, color = factor(name))) +
+  bind_rows(df2 %>%
+  mutate(es = 1:N/N) %>%
+  pivot_longer(cols = n10:n80) %>%
+  mutate(name = as.numeric(gsub("n", "", name)), 
+         type = "p-verdi")) %>%
   
-  geom_line(linewidth = 1.2) + 
   
+  ggplot(aes(x = es, y = value, fill = factor(name))) +
+  
+      geom_line(aes(color = factor(name)), linewidth = 1.5) +
+
   labs(color = "Utvalgsst&#248;rrelse", 
        x = "Effektst&#248;rrelse", 
-       y = "Statistisk styrke")  +
+       y = " ")  +
+  facet_wrap(~type, scales = "free_y") +
   
   theme_classic() +
   
@@ -1202,29 +1238,59 @@ df %>%
   
   theme(axis.title.x = element_markdown(), 
         legend.title = element_markdown(), 
-        legend.position = "bottom")
+        legend.position = "bottom", 
+        strip.background = element_rect(fill = "white", color = "white"), 
+        strip.text = element_text(size = 14, hjust = 0))
   
+p1
 
+
+
+```
+
+## P-verdier når nullhypotesen er riktig
+
+Vi har konstatert at vi setter grenser for de feilratene vi aksepterer for å forkaste nyllhypotesen til tross for at den er riktig (type 1 feil; $\alpha$) og for å ikke forkaste nullhypotesen til tross for at den er feil (type 2 feil; $\beta$). Disse grensene er noe vi bestemmer i forkant av en datainnsamling, dette er begrensninger vi setter på vår prosedyre. Når vi så faktisk samler inn data og analyserer den så observerer vi en p-verdi. Men hvordan ser p-verdier ut når nullhypotesen er riktig?
+
+Vi lager et eksperiment hvor vi vet at nullhypotesen er sann. En populasjon, *A* har en gjennomsnitt på 100 og standardavvik på 10, populasjonen *B* har også en gjennomsnitt på 100 og en standardavvik på 10. Vi trekker så utvalg fra disse populasjonen og sammnligner dem med et statistisk test som tester mot nullhypotesen: det er ingen forskjell mellom populasjonene. Resultatet av hvert test er en p-verdi og vi ser på fordelingen av alle 10000 p-verdier i figuren under @fig-pval-null.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 6
+#| fig-height: 3
+#| label: fig-pval-null
+#| fig-cap: "."
+
+set.seed(1)
+N <- 10000
+
+pvals <- vector()
+for(i in 1:N) {
+   pvals[i] <- t.test(rnorm(10, 100, 10), rnorm(10, 100, 10))$p.value
+ 
+}
+
+data.frame(pvals) %>%
+  ggplot(aes(pvals)) + 
+  geom_histogram(binwidth = 0.05, boundary = 0, closed = "left", 
+                 fill = "steelblue", color = "gray21") + 
+  scale_x_continuous(breaks = c(0, 0.05, 0.2, 0.4, 0.6, 0.8, 0.95, 1))+
   
+  labs(x = "P-verdi", y = "Antall observerte p-verdier") +
+  
+  theme_classic()
 
 
 
 
 ```
 
+P-verdiene oppfører seg akkurat som forventet, de er hav man kaller for "uniformt" fordelt, hvilket dette fallet innebærer at vi finner omtrent like mange p-verdier mellom 0 og 0.05 som mellom for eksempel 0.95 og 1. I eksperiment hvor nullhypotesen er sann vil vi altså forkaste nullhypotesen i 5% av studiene, hvis vi bestemmer oss for å sette grensen (signifikansnivået, $\alpha$) til 0.05.
 
-
-
-
-
-## Statistiske tester, studiedesign og utvalg
-I flere eksempler har vi brukt data fra observasjonsstudier. I disse studiene samler vi inn data fra et utvalg og undersøker sammenhenger mellom variabler. Fra disse studiene er det typisk vanskelig å trekke konklusjoner om hva som ligger bak en observert effekt. Resultater fra observasjonsstudier kan brukes til å bedre forstå kausale sammenhenger, men dette krever en teoretisk modell og at vi måler andre variabler som kan tenkes influere sammenhenger mellom to variabler som vi er interesserte i. Til sammen kan disse brukes for å fastslå årsakssammenhenger. 
-
-I et eksperiment trenger vi ikke å lage de samme teoretiske og statistiske modellene for å forstå sammenhenger, eller for eksempel, forskjeller mellom to grupper. Det som kreves er at faktorer som kan influere resultatene, kjente og ukjente, blir tilfeldig fordelt mellom de eksperimentelle gruppene/behandlingene. På den måten kan vi si at effekten av intervensjonen er den effekt som skiller gruppene åt og ikke noen annen faktor som blir introdusert i eksperimentet. Da en tilfeldig prosess ligger til grunn for inndeling av deltakere i forskjellige grupper er også resultatene til større grad generaliserbare til nye individer fra den samme populasjonen. I et eksperiment ønsker vi derfor å kontrollere mulige faktorer ved å tilfeldig allokere forsøkspersoner til eksperimentelle grupper, også kalt randomisering.
-
-Det finnes flere ulike varianter av randomisering som kan tilpasses forskjellige studiedesigner. Målet er å gi for eksempel deltakere like stor sannsynlighet for å deles inn i forskjellige grupper. Til tross for at vi bruker randomisering kan tilfeldigheter ha stor betydelse for resultatene i eksperimentelle studier. Dette særlig i små studier hvor tilfeldig variasjon i utvalget kan påvirke resultatene. Vi kan forstå dette ved å tenke på en studie hvor seks deltakere randomiseres til to grupper. I populasjonen finnes en faktor som har stor betydelse for resultatene i studien hos en av seks personer. I vår studie trekker vi et utvalg som direkte avspeiler populasjonen, en deltaker er bærer av den betydningsfulle faktoren. Til tross for randomisering så finnes ingen annen måte å fordele individet som har denne faktoren, og de som ikke har den på en ubalansert måte. En gruppe vil få denne faktoren. Hvis vi rekrutterer et større utvalg vil randomiseringen balansere faktoren mellom gruppene.
-
-Effekten av små studier kan ha stor betydelse for hvordan vi toker resultater fra studier.  Det viser seg at om vi simulerer studier med få antall deltakere fra populasjoner med kjente effektstørrelser vil små studier (gruppestørrelser 5-25 individer) som regel gi oss flere estimat på effekter som er utrolige. Her finnes en fare i å tolke en stor effektstørrelse som betydningsfull når p-verdien gir beskjed om at vi bør være skeptiske. P-verdien (og t-verdien) tar høyde for en liten utvalgsstørrelse. Når vi har få deltakere i en studie vil halene på en t-fordeling inneholde mer masse. Ved en lignende effektstørrelse vil vi derfor beregne en mer konservativ (skeptisk) p-verdi. Når vi ikke har en effekt i populasjonen og simulerer studier fra disse beskytter p-verdien fra å forkaste nullhypotesen, vi vil bare ha feil i 5% av repeterte studier når vi setter dette som grensen for testene. Med få deltakere vil vi ikke finne effekten som finnes i populasjonen. Dette betyr at p-verdien ikke er avhengig av antall forsøkspersoner i en studie, med den statistiske styrken er det.
+## P-verdier, konfidensintervaller og hypotesetesting.
 
 
 
