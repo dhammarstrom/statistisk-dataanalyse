@@ -1,0 +1,226 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Statistisk inferens: Quiz"
+format:
+  revealjs:
+    theme: dark
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+
+
+
+
+## Spørsmål 1: Tolke et resultat
+
+En studie undersøker hvordan muskelmasse forandres med trening hos eldre menn og kvinner som trener et styrkeprogram. Resultatene fra studien viser at muskelmasse øker med 6.31%, (95% KI: [2.81, 9.81], p = 0.0005, t = 3.57, df = 114).
+
+Hva stemmer?
+
+::: {.fragment}
+
+> Gjennomsnittlig forskjell i utvalget er 6.31%, populasjonsgjennomsnittet kan finnes innad konfidensintervallet [2.81, 9.81]. P-verdien indikerer at det observerte resultatet er svært usannsynlig hvis nullhypotesen er sann.
+
+:::
+
+## Spørsmål 2: Tolke en p-verdi
+
+Du beregner en p-verdi på 0.051. Når du planla din studie ønsket du å begrense risikoen for type 1 feil til 5%. 
+
+Hva stemmer?
+
+::: {.fragment}
+> Resultatet er ikke statistisk signifikant, vi har ikke bevis for å forkaste nullhypotesen.
+:::
+
+
+
+## Spørsmål 3: Hva er nullhypotesen?
+
+Thrane (2020, kap. 4) har gjennomført et eksperiment hvor en gruppe studenter tilfeldig blir gitt informasjon, et anker, som gir en hint om andel afrikanske land som er medlem i FN. I eksperimentet ønsker vi å si noe om et anker har betydelse for hvordan man besvarer etterfølgende spørsmål. Vi sammenligner gruppene som blir gitt anker 65% og 10%.
+
+Hva er nullhypotesen i denne sammenhengen?
+
+::: {.fragment}
+
+> Nullhypotesen sier at det ikke er en gjennomsnittlig forskjell mellom gruppene i besvarelse.
+
+:::
+
+
+## Spørsmål 4: "Statistic"? 
+
+Thrane (2020, kap. 4) har gjennomført et eksperiment hvor en gruppe studenter tilfeldig blir gitt informasjon, et anker, som gir en hint om andel afrikanske land som er medlem i FN. I eksperimentet ønsker vi å si noe om et anker har betydelse for hvordan man besvarer etterfølgende spørsmål. Vi sammenligner gruppene som blir gitt anker 65% og 10%.
+
+Åpne datasettet FN_eks_1_2_3.csv i jamovi. Bruk en uavhengig students t-test med anker som gruppevariable og FN_prosent som avhengig variabel. Angi "statistic" med to desimaler:
+
+::: {.fragment}
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse); library(gt)
+
+read_csv2("data/FN_eks_1_2_3.csv") %>%
+  select(Anker = anker, FN_prosent) %>%
+  group_by(Anker) %>%
+  summarise(Gjennomsnitt = mean(FN_prosent), SD = sd(FN_prosent), n = n()) %>%
+  gt() %>%
+  fmt_number(columns = vars(Gjennomsnitt, SD), decimals = 1)
+  
+```
+
+
+:::
+
+## Spørsmål 4: "Statistic"?
+
+Hva er "statistic"? 
+
+$$t = \frac{Estimat}{SE}$$
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+dat <- read_csv2("data/FN_eks_1_2_3.csv") %>%
+  select(Anker = anker, FN_prosent)
+
+
+tt <- t.test(FN_prosent ~ Anker, data = dat, paired = FALSE, var.equal = TRUE)
+
+m <- lm(FN_prosent ~ as.factor(Anker), data = dat)
+
+tab <- coef(summary(m)) %>%
+  data.frame() %>%
+  mutate(Koeffisient = c('Skj&#230;ringspunkt', "Anker 65%")) %>%
+  select(Koeffisient, Estimat = Estimate, SE = Std..Error, t = t.value, p = Pr...t..) 
+
+rownames(tab) <- NULL
+
+
+tab %>%
+  gt() %>%
+  fmt_number(columns = c(Estimat, SE, t), decimals = 2) %>%
+  fmt_number(columns = c(p), decimals = 6) %>%
+  fmt_markdown(columns = c(Koeffisient))
+
+```
+
+
+
+## Spørsmål 5: Statistic fra regresjonsmodell
+
+![](04-img/fn-reg-resultat.png)
+
+## Spørsmål 6: Konfidensintervall
+
+
+Hva er den nedre grensen for et 95% konfidensintervallet som du kan beregne ved hjelp av Students t-test på FN-dataene fra Thrane (2020)? Angi med to desimaler.
+
+
+![](04-img/fn-konf-ttest.png)
+
+## Spørsmål 7: Konfidensintervall
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+
+# Borrowing a solution from https://stackoverflow.com/questions/46848998/superimposing-asymmetric-t-distribution-using-ggplot2
+# Define a Student t distribution with shape (nu) and location (mu)
+
+dt2 <- function(x, mu, nu, df, ncp) {
+  dt((x-mu)/nu,df,ncp)/nu
+}
+
+
+
+m <- lm(FN_prosent ~ as.factor(Anker), data = dat)
+se <- coef(summary(m))[2,2]
+m <- coef(summary(m))[2,1]
+
+df <- nrow(dat)-2
+
+data.frame(x = c(-5, 40)) %>%
+  ggplot(aes(x = x)) + 
+  
+
+  
+  stat_function(geom = "area", 
+                fun = dt2, args = list(mu = m, nu = se, df = df , ncp = 0), 
+                color = "orchid", linewidth = 1, 
+                alpha = 0.2,
+                fill = "orchid") +
+  
+  annotate("segment",
+           x = m - 1.96*se,
+           xend = m + 1.96*se,
+           y = 0.005, yend = 0.005,
+           color = "black") +
+           
+  
+  annotate("point", x = m, y = 0.005, color = "black", 
+           fill = "steelblue", size = 4, shape = 21) + 
+  
+  annotate("text", label = "95% konfidensintervall",
+           x = m , y = 0.009, color = "black", size = 4) +
+  
+  geom_vline(xintercept = 0, lty = 2) + 
+  
+  theme_classic() + 
+  theme(axis.text.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.title.y = element_blank()) + 
+  labs(x = "Forskjell i gjennomsnitt")
+  
+
+```
+
+
+
+## Spørsmål 7: Konfidensintervall
+
+> Vi finner ikke nullhypotesen (0) i det observerte 95% intervallet, hvis vi setter grensen for statistisk signifikans til 5% (alfa = 0.05) tilsvarer dette et signifikant resultat.
+
+## Spørsmål 8: Planlegg en studie
+
+Du ønsker å undersøke effekten av to forskjellige treningsprogrammer på maksimalt oksygenopptak (VO2maks) hos eliteutøvere. En differens etter en intervensjon på 200 ml/min er relevant for å si noe om prestasjonspotesiale til deltakerne. Du forventer en spredning i forandring i VO2maks på 250 ml/min, noe som gir en effektsstørrelse på 0.8. Du ønsker en statistisk styrke på 95% og feilrate for type 1 feil til 5%. Hvor mange deltakere trenger du i studiet ditt (per gruppe)?   
+
+
+## Spørsmål 8: Planlegg en studie
+
+![](04-img/vo2maks-power.png)
+
+## Spørsmål 9: Gjennomfør en analyse
+
+Vi har nå samlet inn dataene! Åpne filen `ronnestad-2021-vo2max.xlsx` i jamovi. Gjennomfør en t-test (Independent samples students t-test) mellom gruppene (LI og SI) på en ny variabel som beregnes som forskjell mellom pre og post (post - pre). Angi p-verdien med tre desimaler.
+
+
+> p = 0.019
+
+## Spørsmål 10: Typisk utvalgsstørrelse
+
+Utvalgsstørrelsen i ronnestad-2021-vo2max.xlsx er liten. Hvilken statistisk styrke kan du forvente for lignende studier (effektstørrelse: 0.8, risiko for type 1 feil: 5%, antall deltakere per gruppe: 8)?
+
+> 0.32!
+
+
+
+
+
