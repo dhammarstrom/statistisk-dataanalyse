@@ -1262,7 +1262,7 @@ Vi lager et eksperiment hvor vi vet at nullhypotesen er sann. En populasjon, *A*
 #| fig-width: 6
 #| fig-height: 3
 #| label: fig-pval-null
-#| fig-cap: "."
+#| fig-cap: "Fordeling av p-verdier etter 10000 sammenligninger av utvalg fra den samme populasjonen, noe som betyr at nullhypotesen er riktig."
 
 set.seed(1)
 N <- 10000
@@ -1291,46 +1291,228 @@ data.frame(pvals) %>%
 P-verdiene oppfører seg akkurat som forventet, de er hav man kaller for "uniformt" fordelt, hvilket dette fallet innebærer at vi finner omtrent like mange p-verdier mellom 0 og 0.05 som mellom for eksempel 0.95 og 1. I eksperiment hvor nullhypotesen er sann vil vi altså forkaste nullhypotesen i 5% av studiene, hvis vi bestemmer oss for å sette grensen (signifikansnivået, $\alpha$) til 0.05.
 
 ## P-verdier, konfidensintervaller og hypotesetesting.
+P-verdier og konfidensintervaller konstrueres ved hjelp av den samme statistiske mekanismen, nemlig standardfeilen. Dette betyr at de to vil gi omtrent den samme informasjonen når vi bestemt oss for en feilrate for type 1 feil, $\alpha$. La oss si at vi bruker 5% som grense for å forkaste nullhypotesen. Når vi så trekker et utvalg så vil vi observere en p-verdi og et konfidensintervall for forskjellen mellom gjennomsnitt. Når det observerte konfidensintervallet (95%) ikke overlapper 0 vil dette tilsvare en p-verdi som er mindre enn 0.05 @fig-pval-confint.  
 
 
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 6
+#| fig-height: 4
+#| label: fig-pval-confint
+#| fig-cap: "Den observerte p-verdien er arean under kurven i nullhypotesen for verdier som er mer ekstreme enn den observerte verdien (i begge retninger fra null). Nullhypotesen konstrueres ved hjelp av *spredningen* i dataene. Konfidensintervallet er 95% av arean under kurven i utvalgsfordelingen som konstrueres med gjennomsnitt og spredning fra den observerte dataen. Når et 95% konfidensintervall ikke overlapper nullhypotesen vil p-verdien være mindre enn 0.05. I figuren er nullhypotesen representert med en lilla kurve og konfidensintervallet med en grønn kurve." 
+
+
+# A figure showing the power analysis of a two-sample t-test
+# The x-axis shows the standardized effects size (d) 
+# To plot the sampling distributions of each hypothesis the 
+# standard error of the two sample t-test is calculated
+
+# calculate power and the standard error for the sampling distribution
+library(pwr)
+pwrtest <- pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8, type = "two.sample")
+
+# Number of participants in each group
+n <- round(pwrtest$n)
+# The standard error of the sampling distribution
+
+sigma <- 0.4
+
+sigma_se <- sqrt(((n-1) * sigma^2 + (n-1) * sigma^2)/ ((n + n -2)) * ((1/n) + (1/n))) 
+
+
+# Function for shading the lower critical region of the null hypothesis
+dt2_critical <- function(x, region = "lwr", n, se) {
+  # Define the sampling distribution of the null hypothesis  
+  y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
+    if(region == "lwr") {
+        y[x < -qt(0.99999, df = n-2) * se  |  x > -qt(0.975, df = n-2) * se] <- NA
+    } 
+    if(region == "upr") {
+        y[x > qt(0.99999, df = n-2) * se  |  x < qt(1-pt(0.15/sigma_se, df = n-2, lower.tail = FALSE), df = n-2) * se] <- NA
+    } 
+    return(y)
+}
+
+
+
+
+data.frame(x = c(-0.4, 0.5)) %>%
+  ggplot(aes(x = x)) + 
+  
+
+
+  
+  
+  geom_vline(xintercept = 0, lty = 2, color = "black") +
+  
+  
+  
+  stat_function(fun = dt2, geom= "area", args = list(mu = 0, nu = sigma_se, df = n-2, ncp = 0), 
+                  fill = "orchid", alpha = 0.2,
+                  n = 1000,
+                  
+                color = "orchid", linewidth = 0) +
+    
+  stat_function(fun = dt2_critical, geom= "area", args = list(region = "upr",
+                                                              se = sigma_se, n = n),
+                                                              
+                  fill = "purple", alpha = 0.4,
+                  n = 1000,
+                  
+                color = "purple", linewidth = 0) +
+  
+  
+
+  
+  stat_function(fun = dt2,
+                geom = "area",
+                fill = "lightgreen",
+                alpha = 0.2,
+                n = 1000,
+                args = list(mu = 0.15, nu =sigma_se, df = n-2, ncp = 0), 
+                color = "lightgreen", linewidth = 0) +
+  
+  annotate("segment", 
+           x = 0.15 - sigma_se * qt(0.975, df = n-2),
+           xend = 0.15 + sigma_se * qt(0.975, df = n-2),
+           y = 1, yend = 1) +
+  
+  
+  
+  
+  annotate("point", x = 0.15, y = 1, color = "black", size = 3, shape = 21,
+           fill = "steelblue") + 
+  
+  
+  theme_classic() +
+
+  ## display p-value
+  annotate("text", x = 0.35, y = 2.5, 
+           color = "purple",
+           label = paste("p = ", round(2*pt(0.15/sigma_se, df = n-2, lower.tail = FALSE),3)), size = 4) +
+  
+  annotate("curve", 
+           x = 0.35, y = 2.3, 
+           xend = 0.17, yend = 0.4, 
+           curvature = -0.4,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")), 
+           color = "purple") +
+  
+  annotate("text", 
+           x = 0.15, y = 1.5, 
+           label = "95% Konfidensintervall", 
+           size = 4, 
+           color = "black") +
+  
+  
+  
+  labs(x = "Effektst&#248;rrelse") +
+  
+    theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_markdown(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        plot.title = element_text(size = 14),
+        legend.position = "none") 
+
+
+
+
+```
+
+Igjen, husk at det er de observerte dataene som blir brukt for å lage de observerte p-verdier og konfidensintervaller. Vi vet fortsatt ikke hvis disse resultatene er blant de som faktisk representerer populasjonen, vi vet bare at vi i det lange løp ikke gjør feil i flere enn 5% av tilfellene når vi forkaster nullhypotesen!
 
 ## P-verdier og overraskelsefaktoren
 
-La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er `r 0.5^10` [@cole2021]. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne
+La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er `r format(0.5^10, scientific = FALSE)` [@cole2021]. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne
 
 $$-\operatorname{log}_2(0.0009765625) = 10$$
-Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som $s$ [@cole2021]. 
+Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som $s$-verdien [@cole2021]. 
 
 ::: {.column-margin}
 s-verdien har fått sitt navn efter "surprisal" (som i surprise) eller "Shannon information" (som i Claude Shannon) (se @cole2021 og [Information Content](https://en.wikipedia.org/wiki/Information_content) på Wikipedia).
 :::
 
-For å beregne overraskelseindeksen, eller s-verdien fra en p-verdi tar vi altså 
+For å beregne overraskelseindeksen, eller $s$-verdien fra en p-verdi tar vi altså 
 
 $$-\operatorname{log}_2(p) = s$$
-I en studie fant vi nylig at varmetrening 
+
+I en studie fant vi nylig at varmetrening ga en 30 gram økning i Hb-masse hos veltrente langrennsløpere [@ronnestad2022], p-verdien for denne observasjonen var 0.009, noe som gir et overaskelseindeks på `r round(-log2(0.009),1)`. Vi kan dermed si at dette resultatet litt mindre overraskende enn å få 7 kron i en serien med 7 myntkaster. Samtidig ga intervensjonen ingen markert effekt på prestasjon (p=0.367, s=`r round(-log2(0.367),1)`), denne observasjonen var mindre overraskende enn å få 2 kron i en serie med 2 myntkaster. 
+
+```{r}  
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 5
+#| fig-height: 3
+#| label: fig-pval-sval
+#| fig-cap: "Forhold mellom p-verdier og overraskelseindeksen (s-verdien). En <span style='color:green'>p-verdi på 0.05</span> gir en overraskelseindeks på 4.32, mens en <span style='color:orchid'>p-verdi på 0.01</span> gir en overraskelseindeks på 6.64."
 
 
 
+data.frame(pval = seq(from = 0, to = 1, by = 0.00001), 
+           sval = -log2(seq(from = 0, to = 1, by = 0.00001))) %>%
+  ggplot(aes(x = pval, y = sval)) + 
+  
+  scale_x_continuous(breaks = c(0.01, 0.05, 0.2, 0.5, 0.8, 0.95, 1), 
+                     labels = c(0.01, 0.05, 0.2, 0.5, 0.8, 0.95, ""), 
+                     limits = c(-0.011,1), 
+                     expand = c(0,0), 
+                     guide = guide_axis(n.dodge=2)) +
+  
+  scale_y_continuous(breaks = c(0, 1, -log2(0.05), -log2(0.01), 8, 10, 12, 14),
+                     labels =  c(0, 1, round(-log2(0.05),2), round(-log2(0.01),2), 8, 10, 12, 14), 
+                     limits = c(0, 15), 
+                     expand = c(0, 0)) +
+  
+    labs(x = "p-verdi", 
+       y = "s-verdi") +
+   
+  geom_line(color = "steelblue", linewidth = 1.2) + 
+  
+  annotate("segment", 
+           x = c(0.01, 0.05, 0.01, 0.05),
+           xend = c(0.01, 0.05, -0.01, -0.01), 
+           y = c(0,0, -log2(0.01), -log2(0.05)), 
+           yend = c(-log2(0.01), -log2(0.05), -log2(0.01), -log2(0.05)), 
+           color = c("orchid", "green", "orchid", "green"), 
+           linewidth = 1.5) +
+  
+  
+  
 
-```{r}
-
-
-0.5^10
-
--log2(0.5^10)
-
-
-plot(seq(0, 1, 0.00001), -log2(seq(0, 1, 0.00001)), type = "l", xlab = "P-verdi", ylab = "Overraskelsefaktor")
-
-
-
+  
+  theme_classic()
 
 ```
 
+Denne måten å tenke på p-verdier kan hjelpe å sette resultater fra en hypotesetest i perspektiv, s-verdien gir oss en intuitiv tolking av hvor overraskede resultatet hvis nullhypotesen er riktig. Vi kan stille os spørsmålet om en grense for et statistisk signifikant resultat på 5% er tilstrekkelig "overraskende". Her mener flere at grensen istedenfor bør settes til 0.5% [@benjamin2017], noe som de mener ville gjort vitenskapen mindre utsatt for feilaktige resultater av typen "falske positive".
+
+Tolkingen av p-verdien som en overraskelseindeks kan sies være en tolking av p-verdier som et mål på bevis mot nullhypotesen. Det finnes samtidig en debatt hvor tilhenger av en klassisk frekventistisk tolking av p-verdier advarer mot bruk av p-verdier som et mål på statistisk evidens for hypoteser [@lakens2022a]. Her understrekes isteden bruken av feilratene $\alpha$ og $\beta$ for å forsikre at vi ikke gjør feil i det lange løp.
+
+## Veien videre
+
+Vi har nå sett på hvordan mye av statistisk inferens dreier seg om å bestemme hvorvidt data er overensstemmende med en nullhypotese eller ikke. P-verdier (og konfidensintervaller) beskytter oss fra å trekke feilaktige konklusjoner om data som vi ikke har observert (populasjonen) basert på data som vi observerer (utvalget) i flere tilfeller en hva vi spesifiserer (feilrater). Vi har sett på disse grunnleggende ideene når vi studerer et gjennomsnitt og sammenligner to gjennomsnitt med hverandre men konseptene er de samme når vi bruker andre statistiske metoder for samvariasjon. Vi bruker det samme rammeverket også for analyse av koeffisienter i en regresjonsmodell eller for å sammenligne andeler i en krysstabell. Valget av metode for å analysere dataene avhenger bland annet av hvordan vi samlet inn dataene og hvilken type variabler dataene er. Vi vil se mer på dette i når vi arbeider med Jamovi.
+
+Den frekvenstistiske statistikken er en tilnærming til statistisk inferens, en annen tilnærming er Bayesiansk statistikk. Den Bayesianske tilnærmingen bygger på en annen måte å forstå sannsynlighet på. Til tross for at den Bayesianske statistikken har flere fordeler i forhold til den frekventistiske statistikken er den mindre brukt, derfor fokuserer vi på den frekventistiske tilnærmingen i denne modulen. Ønsker du å lese mer om Bayesiansk statistikk rekommanderer vi [kapittel 16 i Learnings statistics with Jamovi](https://davidfoxcroft.github.io/lsj-book/16-Bayesian-statistics.html) (@navarro_learning_2018).
 
 
-```
+
+
+
+
+
 
 
 

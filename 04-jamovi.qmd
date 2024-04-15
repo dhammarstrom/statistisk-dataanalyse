@@ -1,0 +1,9 @@
+# Statistisk inferens i Jamovi
+
+## T-tester og regresjonsmodeller
+
+## Krysstabulering og logistisk regresjon
+
+## ANOVA og ANCOVA
+
+
