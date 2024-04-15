@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.361">
+<meta name="generator" content="quarto-1.3.450">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -219,7 +219,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04-jamovi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">04-jamovi.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistisk inferens i Jamovi</span></span></a>
   </div>
 </li>
       </ul>
@@ -288,6 +288,8 @@ div.csl-indent {
   </ul></li>
   <li><a href="#p-verdier-når-nullhypotesen-er-riktig" id="toc-p-verdier-når-nullhypotesen-er-riktig" class="nav-link" data-scroll-target="#p-verdier-når-nullhypotesen-er-riktig"><span class="header-section-number">8.8</span> P-verdier når nullhypotesen er riktig</a></li>
   <li><a href="#p-verdier-konfidensintervaller-og-hypotesetesting." id="toc-p-verdier-konfidensintervaller-og-hypotesetesting." class="nav-link" data-scroll-target="#p-verdier-konfidensintervaller-og-hypotesetesting."><span class="header-section-number">8.9</span> P-verdier, konfidensintervaller og hypotesetesting.</a></li>
+  <li><a href="#p-verdier-og-overraskelsefaktoren" id="toc-p-verdier-og-overraskelsefaktoren" class="nav-link" data-scroll-target="#p-verdier-og-overraskelsefaktoren"><span class="header-section-number">8.10</span> P-verdier og overraskelsefaktoren</a></li>
+  <li><a href="#veien-videre" id="toc-veien-videre" class="nav-link" data-scroll-target="#veien-videre"><span class="header-section-number">8.11</span> Veien videre</a></li>
   </ul>
 </nav>
     </div>
@@ -904,7 +906,7 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 </div>
 </div>
 <p>Datane vi samlet inn forteller at forskjellen mellom gruppene i systolisk blodtrykk etter intervensjonen er 6.6 mmHg. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere fra utvalget og plasserer de i to grupper, la oss si, <em>“a”</em> og <em>“b”</em>. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Denne fordelingen ligner hva vi kunne forvente oss vi tok flere utvalg fra en populasjon hvor nullhypotesen faktisk var sann. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis effekten av tilfeldigheter er større enn intervensjonen. Denne teknikken kalles for permutasjonstest og resultatet finner vi i <a href="#fig-permutasjonstest">Figur&nbsp;<span>8.5</span></a>.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest_43fcb11aeaa1fe2bac4796f8559a8da3">
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest_e409b6130bb0afcd102ad947914b8cf8">
 <div class="cell-output-display">
 <div id="fig-permutasjonstest" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -915,7 +917,7 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 </div>
 </div>
 <p>Det viser seg at bare 0.0112% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen? La oss si at vi ønsker å sammenligne resultatene fra intervensjonen med alle ekstreme resultater i permuteringstesten, dette betyr at vi også vil ta med de mer ekstreme negative forskjellene i beregningen. Det viser seg at 0.0235% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det observerte gjennomsnittet når vi inkluderer gjennomsnitt som er større enn 6.6 mmHg og mindre enn -6.6 mmHg (<a href="#fig-permutasjonstest2">Figur&nbsp;<span>8.6</span></a>).</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest2_9c96cf58c3de332c4e8a60a42e692919">
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest2_c82918341902edb2ae29deeed36c20ec">
 <div class="cell-output-display">
 <div id="fig-permutasjonstest2" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -935,9 +937,7 @@ Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the. 05 Le
 <h3 data-number="8.6.1" class="anchored" data-anchor-id="parametrisk-og-ikke-parametrisk-statistikk"><span class="header-section-number">8.6.1</span> Parametrisk og ikke-parametrisk statistikk</h3>
 <div class="page-columns page-full"><p>I eksemplet over brukte vi en permutasjonstest for å bestemme om den forskjell vi observerte mellom gruppene var ekstrem nok til å forkaste hypotesen at det ikke er en forskjell mellom behandlingen i populasjonen. Denne testen er en så kalt ikke-parametrisk test, den bruker ikke en teoretisk fordeling for å beregne testresultatet (p-verdien). Hvis vi er villige til å anta at dataene er normalfordelt og at variasjonen er lik i begge grupper<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> så kan vi bruke en test for å sammenligne to gjennomsnitt som bruker en sannsynlighetsfordeling for å lage en modell over utvalgsfordelingen. Denne testen kalles for en <em>t</em>-test.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Antagelser for parametrisk test av gjennomsnitt i to uavhengige grupper, også kalt en <em>t</em>-test, er at dataene er normalfordelt, noe som vil gi normalfordeling i en utvalgsfordeling. Da utvalgsfordelingen er helt hypotetisk utvidder man denne antaglsen til å inkluderer dataene som man observerer. En annen antagelse er at dataene er uavhengige, dette betyr at det ikke finnes noen slektskap i dataene, for eksempel ikke flere datapunkter fra det samme individet. Til sist antar vi at variasjonen er lik i begge gruppene, stengt tatt at dette er fallet i populasjonen. Det finnes måter å “teste” disse antagelsene på (se <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html">11.4.3 i <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<span>2018</span>)</span></a>, men disse testene er ikke gode for å oppdage avvikelser fra antagleser i små utvalg. Dette betyr at antaglser er noe vi i stor grad må akseptere uten å kunne teste dem.</p></li></div></div>
 <p><em>t</em>-testen bruker t-fordelingen for å lage en modell over utvalgsfordelingen, noe som vises i <a href="#fig-permutasjonstest3">Figur&nbsp;<span>8.7</span></a>. Vi ser at t-fordelingen i stort sett gir det samme resultatet som metoden som bruker permuteringer, men her bruker vi bare det ene utvalget og estimerer utvalgsfordelingn. Akkurat som for beregningen av konfidensintervallet over bruker vi en standardfeil for å bestemme vidden på utvalgsfordelingen, men vi setter sentrum til 0, altså vår nullhypotese. Standardfeilen for en <em>t</em>-test av to gjennomsnitt beregnes fra variasjonen i dataene og antallet observasjoner (se <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span> for detaljer, <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test">Avsnitt 11.3</a>).</p>
-<div class="no-row-height column-margin column-container"><div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
-Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
-</div></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest3_7b5e264c22bcc15c4ffb0aa999965d39">
+<div class="no-row-height column-margin column-container"></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest3_4d2df2bf7adacac71e97bf0d107b3807">
 <div class="cell-output-display">
 <div id="fig-permutasjonstest3" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1007,7 +1007,7 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
 </tbody>
 </table>
 <p>Ditt statistikkprogram (for eksempel Jamovi) kan beregne antallet deltakere som kreves for å oppnå en gitt statistisk styrke, resultatet fra en slik analyse kan beskrives i en figur hvor to hypoteser er representert som utvalgsfordelinger. Disse utvalgsfordelingene tilsvarer de to hypotesene gitt de parametre vi gir til programmet (se tabellen over). Den alternative hypotesen er sentrert over 0.5 og spredningen tilpasses vårt ønske om feilraten for type 1 og 2-feil. Ettersom spredningen i en utvalgsfordeling er proporsjonal til antallet observasjoner (deltakere i studien) vil dette resultatet kreve et gitt antall deltakere til vårt eksperiment.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-power_17c881910b89960bc2d5da9c32ed3461">
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-power_16266dfc1255efd2f3e102f8de5616a8">
 <div class="cell-output-display">
 <div id="fig-power" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1022,9 +1022,9 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
 <p>I mange studier finner vi ikke en analyse av statistisk styrke eller begrunnelse for hvor mange deltakere som kreves. Her kan vi som lesere bruke en statistisk styrkeanalyse for å vurdere om studien har tilstrekkelig mange deltakere for å oppdage en effekt som vi er interesserte i. Her er det viktig å huske på at vi ikke bruker resultatet fra studien som vi leser for å gjøre en styrkeanalysen. Denne ene studien er bare en observasjon i utvalgsfordelingen under null- eller den alternative hypotesen. Isteden må vi bruke informasjonen fra tidligere studier eller vår egen kunnskap om feltet for å gjøre en styrkeanalyse, altså avgjøre hva som er en trolig effekt. Dette er ikke helt intuitivt og noe som forskere også sliter med!</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>Lakens <span class="citation" data-cites="lakens2022">(<a href="references.html#ref-lakens2022" role="doc-biblioref">2022</a>)</span> gir en grundig gjennomgang av forskjellige måter å gi begrunnelse for en studies utvalgsstørrelse i et frekventistisk perspektiv. Utgangspunktet er at forskjellige måter å begrunne utvalgsstørrelsen på gir leseren mulighet å vurdere informasjonsverdien i studien.</p>
+<p>Lakens <span class="citation" data-cites="lakens2022">(<a href="references.html#ref-lakens2022" role="doc-biblioref">2022a</a>)</span> gir en grundig gjennomgang av forskjellige måter å gi begrunnelse for en studies utvalgsstørrelse i et frekventistisk perspektiv. Utgangspunktet er at forskjellige måter å begrunne utvalgsstørrelsen på gir leseren mulighet å vurdere informasjonsverdien i studien.</p>
 <div id="ref-lakens2022" class="csl-entry" role="listitem">
-Lakens, Daniël. 2022. <span>“Sample <span>Size Justification</span>.”</span> <em>Collabra: Psychology</em> 8 (1): 33267. <a href="https://doi.org/10.1525/collabra.33267">https://doi.org/10.1525/collabra.33267</a>.
+Lakens, Daniël. 2022a. <span>“Sample <span>Size Justification</span>.”</span> <em>Collabra: Psychology</em> 8 (1): 33267. <a href="https://doi.org/10.1525/collabra.33267">https://doi.org/10.1525/collabra.33267</a>.
 </div></div></div><section id="mer-om-effektstørrelser" class="level3 page-columns page-full" data-number="8.7.1">
 <h3 data-number="8.7.1" class="anchored" data-anchor-id="mer-om-effektstørrelser"><span class="header-section-number">8.7.1</span> Mer om effektstørrelser</h3>
 <p>Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan måle disse. I de fall vi ønsker å sammenligne to grupper undersøker vi om det finnes en <em>sammenheng mellom gruppe og den avhengige variabelen</em>. Det kan være enklere å si det sånn at vi ønsker å undersøke forskjellen mellom gruppene. En effekt i denne sammenhengen kan beskrives på flere måter, som en absolutt forskjell (eks. 10 mmHg), som en forskjell relativ til en utgangsverdi (eks. <span class="math inline">\(10/135 = 0.074 = 7.4\%\)</span>) eller som en forskjell standardisert til standardavviket i målevariabelen (<span class="math inline">\(10/20 = 0.5\)</span>). Denne standardiserte effektstørrelsen kalles også for Cohen’s <span class="math inline">\(d\)</span> etter en kjent statistiker og psykolog.</p>
@@ -1032,7 +1032,7 @@ Lakens, Daniël. 2022. <span>“Sample <span>Size Justification</span>.”</span
 <div class="no-row-height column-margin column-container"><div id="ref-cohen2013" class="csl-entry" role="listitem">
 Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Behavioral Sciences</span></em>. 0th ed. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.
 </div></div><p>En standardisert effektstørrelsen har en direkte sammenheng med den observerte p-verdien og utvalgsstørrelsen. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. På samme måte synker p-verdien vid en gitt effektstørrelse når utvalgsstørrelsen blir større. Dette følger av resonnementet over, en effekt, beskrevet som en ratio til variasjonen i populasjonen får en lavere p-verdi når standardfeilen og dermed spredningen i utvalgsfordelingen blir mindre. Spredningen i utvalgsfordelingen blir mindre når utvalgsstørrelsen øker. I to eksperimenter kan vi få den samme effektstørrelsen, men avhengig av utvalgsstørrelsen vil p-verdien være forskjellig. P-verdien beskytter oss fra å tolke den observerte effekten som en sann effekt i populasjonen. Basert på den grense vi setter for statistisk signifikant i forkant av studien vet vi at denne prosedyren vil gi oss en bestemt feilrate over repeterte eksperimenter.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-effect-pval_d4bac2d31d641e94293ebb15b9bd3a63">
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-effect-pval_7d224998a0aede5a36c435c33a587d50">
 <div class="cell-output-display">
 <div id="fig-effect-pval" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
@@ -1048,12 +1048,12 @@ Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Be
 <h2 data-number="8.8" class="anchored" data-anchor-id="p-verdier-når-nullhypotesen-er-riktig"><span class="header-section-number">8.8</span> P-verdier når nullhypotesen er riktig</h2>
 <p>Vi har konstatert at vi setter grenser for de feilratene vi aksepterer for å forkaste nyllhypotesen til tross for at den er riktig (type 1 feil; <span class="math inline">\(\alpha\)</span>) og for å ikke forkaste nullhypotesen til tross for at den er feil (type 2 feil; <span class="math inline">\(\beta\)</span>). Disse grensene er noe vi bestemmer i forkant av en datainnsamling, dette er begrensninger vi setter på vår prosedyre. Når vi så faktisk samler inn data og analyserer den så observerer vi en p-verdi. Men hvordan ser p-verdier ut når nullhypotesen er riktig?</p>
 <p>Vi lager et eksperiment hvor vi vet at nullhypotesen er sann. En populasjon, <em>A</em> har en gjennomsnitt på 100 og standardavvik på 10, populasjonen <em>B</em> har også en gjennomsnitt på 100 og en standardavvik på 10. Vi trekker så utvalg fra disse populasjonen og sammnligner dem med et statistisk test som tester mot nullhypotesen: det er ingen forskjell mellom populasjonene. Resultatet av hvert test er en p-verdi og vi ser på fordelingen av alle 10000 p-verdier i figuren under <a href="#fig-pval-null">Figur&nbsp;<span>8.10</span></a>.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-null_5a55b6a345d2759ccbee61c2551cc6b7">
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-null_f319e85ba3a1a895555081aae6155152">
 <div class="cell-output-display">
 <div id="fig-pval-null" class="quarto-figure quarto-figure-center anchored">
 <figure class="figure">
 <p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-null-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.10. .</figcaption>
+<figcaption class="figure-caption">Figur&nbsp;8.10. Fordeling av p-verdier etter 10000 sammenligninger av utvalg fra den samme populasjonen, noe som betyr at nullhypotesen er riktig.</figcaption>
 </figure>
 </div>
 </div>
@@ -1062,9 +1062,59 @@ Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Be
 </section>
 <section id="p-verdier-konfidensintervaller-og-hypotesetesting." class="level2" data-number="8.9">
 <h2 data-number="8.9" class="anchored" data-anchor-id="p-verdier-konfidensintervaller-og-hypotesetesting."><span class="header-section-number">8.9</span> P-verdier, konfidensintervaller og hypotesetesting.</h2>
+<p>P-verdier og konfidensintervaller konstrueres ved hjelp av den samme statistiske mekanismen, nemlig standardfeilen. Dette betyr at de to vil gi omtrent den samme informasjonen når vi bestemt oss for en feilrate for type 1 feil, <span class="math inline">\(\alpha\)</span>. La oss si at vi bruker 5% som grense for å forkaste nullhypotesen. Når vi så trekker et utvalg så vil vi observere en p-verdi og et konfidensintervall for forskjellen mellom gjennomsnitt. Når det observerte konfidensintervallet (95%) ikke overlapper 0 vil dette tilsvare en p-verdi som er mindre enn 0.05 <a href="#fig-pval-confint">Figur&nbsp;<span>8.11</span></a>.</p>
+<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-confint_d2789cd2857c89587c1bf5b0a6d5dcbd">
+<div class="cell-output-display">
+<div id="fig-pval-confint" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-confint-1.png" class="img-fluid figure-img" width="576"></p>
+<figcaption class="figure-caption">Figur&nbsp;8.11. Den observerte p-verdien er arean under kurven i nullhypotesen for verdier som er mer ekstreme enn den observerte verdien (i begge retninger fra null). Nullhypotesen konstrueres ved hjelp av <em>spredningen</em> i dataene. Konfidensintervallet er 95% av arean under kurven i utvalgsfordelingen som konstrueres med gjennomsnitt og spredning fra den observerte dataen. Når et 95% konfidensintervall ikke overlapper nullhypotesen vil p-verdien være mindre enn 0.05. I figuren er nullhypotesen representert med en lilla kurve og konfidensintervallet med en grønn kurve.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Igjen, husk at det er de observerte dataene som blir brukt for å lage de observerte p-verdier og konfidensintervaller. Vi vet fortsatt ikke hvis disse resultatene er blant de som faktisk representerer populasjonen, vi vet bare at vi i det lange løp ikke gjør feil i flere enn 5% av tilfellene når vi forkaster nullhypotesen!</p>
+</section>
+<section id="p-verdier-og-overraskelsefaktoren" class="level2 page-columns page-full" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="p-verdier-og-overraskelsefaktoren"><span class="header-section-number">8.10</span> P-verdier og overraskelsefaktoren</h2>
+<p>La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er 0.0009765625 <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole, Edwards, and Greenland 2021</a>)</span>. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne</p>
+<div class="no-row-height column-margin column-container"></div><p><span class="math display">\[-\operatorname{log}_2(0.0009765625) = 10\]</span> Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som <span class="math inline">\(s\)</span>-verdien <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole, Edwards, and Greenland 2021</a>)</span>.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>s-verdien har fått sitt navn efter “surprisal” (som i surprise) eller “Shannon information” (som i Claude Shannon) (se <span class="citation" data-cites="cole2021">Cole, Edwards, and Greenland (<a href="references.html#ref-cole2021" role="doc-biblioref">2021</a>)</span> og <a href="https://en.wikipedia.org/wiki/Information_content">Information Content</a> på Wikipedia).</p>
+<div id="ref-cole2021" class="csl-entry" role="listitem">
+Cole, Stephen R, Jessie K Edwards, and Sander Greenland. 2021. <span>“Surprise!”</span> <em>American Journal of Epidemiology</em> 190 (2): 191–93. <a href="https://doi.org/10.1093/aje/kwaa136">https://doi.org/10.1093/aje/kwaa136</a>.
+</div></div></div><p>For å beregne overraskelseindeksen, eller <span class="math inline">\(s\)</span>-verdien fra en p-verdi tar vi altså</p>
+<p><span class="math display">\[-\operatorname{log}_2(p) = s\]</span></p>
+<p>I en studie fant vi nylig at varmetrening ga en 30 gram økning i Hb-masse hos veltrente langrennsløpere <span class="citation" data-cites="ronnestad2022">(<a href="references.html#ref-ronnestad2022" role="doc-biblioref">Rønnestad et al. 2022</a>)</span>, p-verdien for denne observasjonen var 0.009, noe som gir et overaskelseindeks på 6.8. Vi kan dermed si at dette resultatet litt mindre overraskende enn å få 7 kron i en serien med 7 myntkaster. Samtidig ga intervensjonen ingen markert effekt på prestasjon (p=0.367, s=1.4), denne observasjonen var mindre overraskende enn å få 2 kron i en serie med 2 myntkaster.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-ronnestad2022" class="csl-entry" role="listitem">
+Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, Håvard Hamarsland, Knut Sindre Mølmen, Håvard Nygaard, Stian Ellefsen, Daniel Hammarström, and Carsten Lundby. 2022. <span>“Heat Suit Training Increases Hemoglobin Mass in Elite Cross‐country Skiers.”</span> <em>Scandinavian Journal of Medicine &amp; Science in Sports</em>, March, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
+</div></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-sval_d5686a36faa9361f7ebae6083f5352b8">
+<div class="cell-output-display">
+<div id="fig-pval-sval" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-sval-1.png" class="img-fluid figure-img" width="480"></p>
+<figcaption class="figure-caption">Figur&nbsp;8.12. Forhold mellom p-verdier og overraskelseindeksen (s-verdien). En <span style="color:green">p-verdi på 0.05</span> gir en overraskelseindeks på 4.32, mens en <span style="color:orchid">p-verdi på 0.01</span> gir en overraskelseindeks på 6.64.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Denne måten å tenke på p-verdier kan hjelpe å sette resultater fra en hypotesetest i perspektiv, s-verdien gir oss en intuitiv tolking av hvor overraskede resultatet hvis nullhypotesen er riktig. Vi kan stille os spørsmålet om en grense for et statistisk signifikant resultat på 5% er tilstrekkelig “overraskende”. Her mener flere at grensen istedenfor bør settes til 0.5% <span class="citation" data-cites="benjamin2017">(<a href="references.html#ref-benjamin2017" role="doc-biblioref">Benjamin et al. 2017</a>)</span>, noe som de mener ville gjort vitenskapen mindre utsatt for feilaktige resultater av typen “falske positive”.</p>
+<div class="no-row-height column-margin column-container"><div id="ref-benjamin2017" class="csl-entry" role="listitem">
+Benjamin, Daniel J., James O. Berger, Magnus Johannesson, Brian A. Nosek, E.-J. Wagenmakers, Richard Berk, Kenneth A. Bollen, et al. 2017. <span>“Redefine Statistical Significance.”</span> <em>Nature Human Behaviour</em> 2 (1): 6–10. <a href="https://doi.org/10.1038/s41562-017-0189-z">https://doi.org/10.1038/s41562-017-0189-z</a>.
+</div><div id="ref-lakens2022a" class="csl-entry" role="listitem">
+———. 2022b. <span>“Why <span>P</span> Values Are Not Measures of Evidence.”</span> <em>Trends in Ecology &amp; Evolution</em> 37 (4): 289–90. <a href="https://doi.org/10.1016/j.tree.2021.12.006">https://doi.org/10.1016/j.tree.2021.12.006</a>.
+</div></div><p>Tolkingen av p-verdien som en overraskelseindeks kan sies være en tolking av p-verdier som et mål på bevis mot nullhypotesen. Det finnes samtidig en debatt hvor tilhenger av en klassisk frekventistisk tolking av p-verdier advarer mot bruk av p-verdier som et mål på statistisk evidens for hypoteser <span class="citation" data-cites="lakens2022a">(<a href="references.html#ref-lakens2022a" role="doc-biblioref">Lakens 2022b</a>)</span>. Her understrekes isteden bruken av feilratene <span class="math inline">\(\alpha\)</span> og <span class="math inline">\(\beta\)</span> for å forsikre at vi ikke gjør feil i det lange løp.</p>
+</section>
+<section id="veien-videre" class="level2 page-columns page-full" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="veien-videre"><span class="header-section-number">8.11</span> Veien videre</h2>
+<p>Vi har nå sett på hvordan mye av statistisk inferens dreier seg om å bestemme hvorvidt data er overensstemmende med en nullhypotese eller ikke. P-verdier (og konfidensintervaller) beskytter oss fra å trekke feilaktige konklusjoner om data som vi ikke har observert (populasjonen) basert på data som vi observerer (utvalget) i flere tilfeller en hva vi spesifiserer (feilrater). Vi har sett på disse grunnleggende ideene når vi studerer et gjennomsnitt og sammenligner to gjennomsnitt med hverandre men konseptene er de samme når vi bruker andre statistiske metoder for samvariasjon. Vi bruker det samme rammeverket også for analyse av koeffisienter i en regresjonsmodell eller for å sammenligne andeler i en krysstabell. Valget av metode for å analysere dataene avhenger bland annet av hvordan vi samlet inn dataene og hvilken type variabler dataene er. Vi vil se mer på dette i når vi arbeider med Jamovi.</p>
+<p>Den frekvenstistiske statistikken er en tilnærming til statistisk inferens, en annen tilnærming er Bayesiansk statistikk. Den Bayesianske tilnærmingen bygger på en annen måte å forstå sannsynlighet på. Til tross for at den Bayesianske statistikken har flere fordeler i forhold til den frekventistiske statistikken er den mindre brukt, derfor fokuserer vi på den frekventistiske tilnærmingen i denne modulen. Ønsker du å lese mer om Bayesiansk statistikk rekommanderer vi <a href="https://davidfoxcroft.github.io/lsj-book/16-Bayesian-statistics.html">kapittel 16 i Learnings statistics with Jamovi</a> (<span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span>).</p>
 
 
-
+<div class="no-row-height column-margin column-container"><div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
+Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
+</div></div>
 </section>
 
 
@@ -1310,7 +1360,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./04-jamovi.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">04-jamovi.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistisk inferens i Jamovi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
