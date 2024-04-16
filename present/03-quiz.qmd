@@ -27,10 +27,10 @@ editor_options:
 *Hvilken modell gir den kausale effekten av X på Y gitt figuren?*
 
 
-A: $Y = \beta_0 + \beta_1 X$ <br>
-B: $Y = \beta_0 + \beta_1 X + \beta_2 Z$<br>
-C: $Y = \beta_0 + \beta_2 Z$<br>
-D: $X = \beta_0 + \beta_1 Y$<br>
+- $Y = \beta_0 + \beta_1 X$ <br>
+- $Y = \beta_0 + \beta_1 X + \beta_2 Z$<br>
+- $Y = \beta_0 + \beta_2 Z$<br>
+- $X = \beta_0 + \beta_1 Y$<br>
 
 ::: 
 
@@ -91,10 +91,10 @@ ggsave("dagfig1.pdf", dagfig, width = 10, height = 5)
 *Hvilken modell gir den kausale effekten av X på Y gitt figuren?*
 
 
-A: $Y = \beta_0 + \beta_1 X + \beta_2 Z + \beta_3 M$<br>
-B: $Y = \beta_0 + \beta_1 X + \beta_2 M + \beta_3 G$<br>
-C: $Y = \beta_0 + \beta_2 Z$<br>
-D: $Y = \beta_0 + \beta_1 X$<br>
+- $Y = \beta_0 + \beta_1 X + \beta_2 Z + \beta_3 M$<br>
+- $Y = \beta_0 + \beta_1 X + \beta_2 M + \beta_3 G$<br>
+- $Y = \beta_0 + \beta_1 X + \beta_2 Z$<br>
+- $Y = \beta_0 + \beta_1 X$<br>
 
 :::
 
@@ -358,26 +358,60 @@ m3 <- lm(Y ~ X + N, data = dat)
 
 
 
+```
 
+## Spørsmål 4: Hva er effekten av X på Y gitt figuren og dataen?
+
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+
+
+::: {.incremental}
+- `Y = X:` `r round(coef(m1)["XI"], 2)`
+- `Y = X + M:` `r round(coef(m2)["XI"], 2)`
+- `Y = X + N:` `r round(coef(m3)["XI"], 2)`
+:::
+
+:::
+
+::: {.column width="50%"}
+
+```{r}
+#| echo: false
+
+
+dagfig
 ```
 
 
+:::
+
+::::
 
 ## Spørsmål 5: Estimer en sammenheng mellom X og Y
 
 *Beregn sammenhengen mellom X og Y når `zcat == "high"`.* Angi svaret som gjennomsnittlig økning i Y for hver enhet økning i X, med to desimaler. Bruk et filter i Jamovi for å beregne svaret.
 
+
+
+
+
 ## Spørsmål 6: Estimer en sammenheng mellom X og Y
 
 *Beregn sammenhengen mellom X og Y i hele datasettet.* Angi svaret som gjennomsnittlig økning i Y for hver enhet økning i X, med to desimaler.
 
-## Spørsmål 7: Forklare en sammenheng.
+## Spørsmål 7: Forklare en sammenheng. {.smaller}
 
 *I datasettet med variablene x, y, z og zcat har du nå konstatert at det er en sammenheng mellom x og y når vi ser på dataene i en av kategoriene i zcat. Hvilken av følgende forklaringer er mest sannsynlig? Se også figuren under.*
 
 - z (og dermed zcat) er en collider, når vi velger en kategori i zcat, åpner vi en ikke-kausal vei mellom x og y som ikke er tilstede i hele datasettet. 
 - z (og dermed zcat) er en konfunder, når vi velger en kategori i zcat, åpner vi en ikke-kausal vei mellom x og y som ikke er tilstede i hele datasettet. 
 - z (og dermed zcat) er en mediator, når vi velger en kategori i zcat analyserer vi effekten mellom x og y som ger gjennom z.
+
+## Spørsmål 7: Forklare en sammenheng. {.smaller}
 
 
 ```{r}
@@ -456,14 +490,11 @@ write.csv(dat, "xyzdata3.csv", row.names = FALSE)
 m1 <- lm(y ~ x, data = dat[dat$zcat == "high", ])
 m2 <- lm(y ~ x, data = dat)
 
-round(coef(m2)[2], 2)
-summary(m2)
-
 ```
 
 
 
-## Spørsmål 8: Forklare en sammenheng.
+## Spørsmål 8: Forklare en sammenheng. {.smaller}
 
 Du leser en studie hvor det er funnet en sammenheng mellom fysisk aktivitet og hjertesykdom, forfatterne finner ferre tilfeller av hjertesykdom hos deltakere i studien som har en høyere nivå av fysisk aktivitet. Forskerne konkluderer med at fysisk aktivitet forhindrer hjertesykdom. Hvilken av følgende forklaringer er mest sannsynlig? Studien er en tverrsnittstudie i et brett utvalg av befolkningen.
 
