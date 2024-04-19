@@ -1,0 +1,72 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Statistisk inferens"
+format:
+  revealjs:
+    theme: solarized
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+## Statistisk inferens
+
+::: {.incremental}
+
+- Hva er statistisk inferens?
+- Hva er forskjellen på deskriptiv statistikk og statistisk inferens?
+- Hva er en *p*-verdi?
+- Hva er et konfidensintervall?
+
+
+:::
+
+
+## Varmetrening
+
+
+::: {.r-stack}
+
+::: {.fragment}
+
+![](04-img/ronnestad1.png)
+
+:::
+
+::: {.fragment}
+![](04-img/ronnestad2.png)
+
+:::
+
+::: {.fragment}
+![](04-img/ronnestad3.png)
+
+:::
+
+
+::: {.fragment}
+![](04-img/ronnestad5.png)
+:::
+
+:::
+
+## Statistisk inferens
+
+::: {.incremental}
+
+- Hva er statistisk inferens?
+- Hva er forskjellen på deskriptiv statistikk og statistisk inferens?
+- Hva er en *p*-verdi?
+- Hva er et konfidensintervall?
+
+
+:::
+
+
+

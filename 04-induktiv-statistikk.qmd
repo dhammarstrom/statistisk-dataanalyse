@@ -17,6 +17,14 @@ En *parameter* er en kvantitativ egenskap hos en *populasjon*. En *populasjon* e
 :::
 
 
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Intro til statistisk inferens](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5a86dc40-64fd-43c5-bf9f-b155008ad7f6){target="_blank"}.
+
+:::
+
+
+
 ### Utvalg og generalisering
 For å trekke korrekte slutninger om en populasjon kreves at utvalget er representativt for populasjonen. Når utvalget representerer den populasjon man ønsker å undersøke kan man gjøre den generalisering som det innebærer å trekke konklusjoner om populasjonen basert på utvalget. Ideelt sett trekkes et utvalg fra populasjonen helt tilfeldig. Dette gir en garanti mot at utvalget ikke skiller seg fra populasjonen i noen viktige karakteristikker. I forskningen er dette i praksis veldig vanskelig.
 
@@ -603,6 +611,14 @@ $t_{\text{df}=9,\alpha/2}$ er faktoren som angir hvor mange standardfeil vi må 
 Konfidensintervaller er altså en måte å uttrykke usikkerhet på, men det er viktig å huske hva de beskriver. Et 95% konfidensintervall sier at ved repeterte utvalg/eksperimenter vil 95% av konfidensintervallene, som det observerte intervallet kommer fra, fange inn den parameter vi ønsker å estimere fra populasjonen (populasjonsparameteren). Men vi vet ikke om vårt intervall faktisk gjør det, vi kjenner bare til sannsynligheten for at vi gjør det i det lange løp.
 
 ## Hypotesetesting og p-verdier
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [P-verdier og hypotesetesting](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cfefd71c-06eb-4756-a98b-b1560079ad8c){target="_blank"}.
+
+:::
+
+
 I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?
 
 Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne (n=50) som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket (@fig-hypotesedata).
@@ -887,6 +903,16 @@ Basert på *t*-fordelingen kan vi beregne en kritisk verdi, verdien på forskjel
 Vi har nå illustrert at vi kan tenke på en p-verdi som en andel av repeterte utvalg under nullhypotesen. Vi setter en grense for hvor mange repeterte utvalg vi aksepterer å gjøre en type 1 feil, det å forkaste nullhypotesen til tross for at den er sann. Når vi beregner *p*-verdien beregner vi en proporsjon, andelen av repeterte utvalg som gir oss et resultat som er mer ekstremt enn det vi observerte.
 
 ## Type 2 feil, statistisk styrke og utvalgsstørrelser
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Statistisk styrke](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bbb99af4-6a2e-4db3-81f4-b1560081f65f){target="_blank"}.
+
+:::
+
+
+
+
 Så langt har vi konstatert at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feilrate i det lange løp (over flere lignende, uavhengige studier). I tillegg til en type 1 feil kan vi også gjøre en annen feil. Ved å *ikke* forkaste nullhypotesen til tross for at ikke er riktig gjør vi en type 2 feil. Denne feilen krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.
 
 
@@ -1152,6 +1178,13 @@ Tidligere har vi snakket om sammenhenger mellom variabler og hvordan vi kan mål
 En standardisert effektstørrelse kan sammenlignes mellom studier og målevariabler. Vanligvis (etter beskriving av Cohen[@cohen2013]) beskriver man en effektstørrelse som liten hvis $d = 0.2$, medium ved $d=0.5$ og stor ved $d=0.8$, men beskrivelser av effektstørrelser bør gjøres spesifikt til den konteskt hvor de brukes. En standardisert effektstørrelse kan også konverteres til forskjellige skaler. En medium Cohen's $d$ (0.5) kan for eksempel transformeres til en korrelasjonskoeffisient $r= 0.243$. Dette gjør at standardiserte effektstørrelser blir brukt i metaanalyser hvor flere studier settes sammen for å undersøke et gitt fenomen.
 
 En standardisert effektstørrelsen har en direkte sammenheng med den observerte p-verdien og utvalgsstørrelsen. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. På samme måte synker p-verdien vid en gitt effektstørrelse når utvalgsstørrelsen blir større. Dette følger av resonnementet over, en effekt, beskrevet som en ratio til variasjonen i populasjonen får en lavere p-verdi når standardfeilen og dermed spredningen i utvalgsfordelingen blir mindre. Spredningen i utvalgsfordelingen blir mindre når utvalgsstørrelsen øker. I to eksperimenter kan vi få den samme effektstørrelsen, men avhengig av utvalgsstørrelsen vil p-verdien være forskjellig. P-verdien beskytter oss fra å tolke den observerte effekten som en sann effekt i populasjonen. Basert på den grense vi setter for statistisk signifikant i forkant av studien vet vi at denne prosedyren vil gi oss en bestemt feilrate over repeterte eksperimenter.
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Mer om p-verdier](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ce4f66d2-08e7-4b16-a16d-b1560085ef63){target="_blank"}.
+
+:::
+
 
 
 ```{r}

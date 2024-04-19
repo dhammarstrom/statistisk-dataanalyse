@@ -4,7 +4,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-# Statistisk samvariasjon i dataanalyse
+# Statistisk samvariasjon i dataanalyse {#sec-stat-samv}
 
 Det å måle statistisk samvariasjon er sentralt i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
 

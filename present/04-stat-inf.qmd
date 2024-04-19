@@ -1,0 +1,1499 @@
+---
+title: "Arbeidsfysiologisk metode og Statistikk"
+subtitle: "Statistisk inferens"
+format:
+  revealjs:
+    theme: solarized
+    embed-resources: true
+standalone: true
+execute: 
+  echo: false
+  warning: false
+  message: false
+bibliography: present-references.bib
+editor_options: 
+  chunk_output_type: console
+---
+
+## Målet med statistisk inferens
+
+
+::: {.r-stack}
+
+```{r}
+
+
+library(tidyverse); library(cowplot); library(ggtext)
+
+
+cloud <- "04-img/cloud.png"
+
+
+p <- data.frame(x = c(0,1), 
+           y = c(0,1)) %>%
+  
+  ggplot(aes(x,y)) + theme_void() +
+  
+  
+  scale_x_continuous(limits = c(0,1)) +
+  scale_y_continuous(limits = c(0,1)) +
+  
+  draw_image(cloud, x = 0, y = 0.6, width = 0.4, height = 0.3) 
+  
+
+
+p  
+  
+
+```
+
+::: {.fragment}
+```{r}
+p2 <- p + annotate("text", 
+             label = "Populasjon", 
+             color = "steelblue",
+             x = 0.2, y = 0.73, 
+             size = 5)
+p2
+
+```
+
+:::
+
+::: {.fragment}
+```{r}
+
+p3 <- p2 + annotate("text", 
+              x = 0.4, 
+              y = c(0.8, 0.75),
+              hjust = 0,
+              color = "steelblue", 
+              fontface = "bold",
+              size = 5,
+              label = c("sigma: Spredning", "mu: Gjennomsnitt"), 
+              parse = TRUE) + 
+  annotate("curve", 
+           x = c(0.25, 0.25), 
+           y = c(0.82, 0.82), 
+           xend = c(0.38, 0.38), 
+           yend = c(0.8, 0.75),
+           curvature = -0.2,
+           arrow = arrow(length = unit(0.1, "inches"), type = "closed"))
+  
+  
+p3
+
+```
+:::
+
+::: {.fragment}
+```{r}
+
+set.seed(1)
+dat <- data.frame(x = rnorm(25))
+
+in1 <- dat %>%
+  ggplot(aes(x)) + geom_dotplot(binwidth = 0.1, 
+                             
+                                dotsize = 2, 
+                                fill = "steelblue") + theme_classic() + 
+  theme(axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.text.y = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank()) + 
+  labs(x = "Observerte verdier")
+
+
+
+
+
+p4 <- p3 +
+    draw_plot(in1, x = 0.65, y = 0.4, width = 0.3, height = 0.3) +
+  annotate("curve", 
+          x = 0.3, 
+          y = 0.7, 
+          xend = 0.665, 
+          yend = 0.55, 
+          color = "steelblue",
+          curvature = 0.1, 
+          arrow = arrow(length = unit(0.1, "inches"), type = "closed")) +
+  annotate("text", 
+           label = "Utvalg", 
+           x = 0.7,
+           y = 0.6, 
+           color = "darkgreen", 
+           size = 5) 
+  
+
+p4 
+
+
+
+```
+
+
+:::
+
+::: {.fragment}
+
+```{r}
+
+p5 <- p4 + annotate("text", 
+              x = 0.5, 
+              y = c(0.2, 0.25),
+              hjust = 0,
+              color = "darkgreen", 
+              fontface = "bold",
+              size = 5,
+              label = c("s: Spredning", "bar(x): Gjennomsnitt"), 
+              parse = TRUE) + 
+  annotate("curve", 
+           x = c(0.8, 0.8), 
+           y = c(0.4, 0.4), 
+           xend = c(0.7, 0.7), 
+           yend = c(0.21, 0.26),
+           color = "darkgreen",
+           curvature = -0.2,
+           arrow = arrow(length = unit(0.1, "inches"), type = "closed"))
+p5
+```
+
+:::
+
+::: {.fragment}
+
+```{r}
+
+in2 <- data.frame(x = c(-3.2, 3.2)) %>%
+  ggplot(aes(x)) +
+  stat_function(fun = dnorm, 
+                args = list(mean = 0, sd = 1), 
+                geom = "area", 
+                fill = "orchid", 
+                alpha = 0.5) +
+  theme_classic() + 
+  scale_y_continuous(limits = c(0, 0.4), expand = c(0,0)) +
+  theme(axis.line.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.ticks.y = element_blank(), 
+        axis.text.y = element_blank(), 
+        axis.text.x = element_blank(), 
+        axis.ticks.x = element_blank()) + 
+  labs(x = "Trolige verdier")
+  
+  
+
+
+p6 <- p5 + draw_plot(in2, x = 0.1, y = 0.1, width = 0.25, height = 0.3) +
+  annotate("curve", 
+          x = 0.48, 
+          y = c(0.2, 0.25), 
+          xend = 0.32, 
+          yend = 0.22, 
+          color = "darkgreen",
+          curvature = 0.1, 
+          arrow = arrow(length = unit(0.1, "inches"), type = "closed")) +
+  annotate("text", 
+           label = "Modell", 
+           x = 0.12,
+           y = 0.38, 
+           color = "orchid", 
+           size = 5) 
+  
+
+p6
+
+
+```
+:::
+
+
+::: {.fragment}
+
+
+```{r}
+p6 + annotate("curve", 
+              color = "orchid",
+              x = 0.3,
+              y = 0.35,
+              xend = 0.45,
+              yend = 0.7,
+              linewidth = 1,
+              lty = 1,
+              alpha = 0.5,
+              arrow = arrow(length = unit(0.3, "inches"), type = "closed"),
+              curvature = 0.2)
+```
+
+
+:::
+
+
+
+:::
+
+
+## Målet med statistisk inferens
+
+::: {.incremental}
+
+- Vi ønsker å si noe om data vi ikke har observert (<span style="color:steelblue">en populasjon</span>) basert på data som vi observerer (<span style="color:darkgreen">et utvalg</span>).
+- Populasjon (i statistikken) er alle mulige observasjoner eller verdier som vi (i teorien) kan måle/observere.
+- Et utvalg en liten del av populasjonen som vi valgt eller har mulighet til å studere
+
+:::
+
+## Populasjon, utvalg og inferens
+
+::: {.incremental}
+
+- Vi velger utvalg basert på hvilken populasjon vi ønsker å generalisere til
+- Utvalg som ikke er trukket gjennom en tilfeldig prosess kan påvirke muligheter til generalisering og hvilke konklusjoner som er mulige å trekke
+- Innen idrettsforskning er ulike bekvemmelighetsutvalg trolig vanligere enn tilfeldige utvalg
+- Hvis og hvordan utvalgsprosessen kan ha påvirket muligheter til generalisering må evalueres i hvert studie. 
+
+:::
+
+## Utvalg og estimering {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.incremental}
+- Vi kan *estimere* egenskaper hos populasjonen basert på utvalget
+- Estimering med et utvalg er en usikker prosess og vi ønsker å vite hvor stor usikkerheten er
+- Vi kan velge å se på usikkerhet som en prosess med repeterte utvalg
+:::
+
+
+:::
+
+
+::: {.column width="50%"}
+
+![](04-img/newborn.png)
+
+:::
+
+
+
+
+
+
+::::
+
+
+
+
+
+## Utvalg og estimering
+
+
+```{r}
+
+
+px <- data.frame(x = c(0,1), y = c(0,1)) %>%
+  
+
+  
+  ggplot(aes(x, y)) + 
+  
+    scale_x_continuous(limits = c(0, 1), breaks = NULL) +
+  
+  scale_y_continuous(limits = c(0, 1), breaks = NULL) +
+  theme_void()
+
+
+p1 <- ggplot(data = data.frame(x = c(3485 - (4*587), 3485 + (4*587))), aes(x)) +
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 3485, sd = 587)) + 
+  ylab("") +
+  scale_y_continuous(breaks = NULL) + 
+    labs(x = "F&#248;dselsvekt (gram)", 
+         title = "Populasjonen") +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_markdown()) 
+
+
+set.seed(1)
+## data sets
+d1 <- data.frame(x = rnorm(10, 3485, 587))
+d2 <- data.frame(x = rnorm(10, 3485, 587))
+d3 <- data.frame(x = rnorm(10, 3485, 587))
+
+
+
+samp_plot_fun <- function(d = d1) {
+  
+  d %>%
+  ggplot(aes(x)) + 
+  geom_dotplot(fill = "lightblue") +
+  
+  annotate("text", x = mean(d$x), y = 0.6, 
+           label = "Gjennomsnitt", 
+           vjust = 0, 
+           hjust = 0.5, size = 3) +  
+  
+  annotate("segment", x = mean(d$x), xend = mean(d$x), 
+  y = 0.55, yend = 0.2, linewidth = 0.5, 
+  arrow = arrow(type = "closed", length = unit(0.1, "inches"))) +  
+      
+  
+  ylab("") +
+  labs(x = "F&#248;dselsvekt (gram)") +
+    scale_x_continuous(limits = c(3485 - (4*587), 3485 + (4*587)), breaks = c(1000, 3500, 6000)) +
+    scale_y_continuous(breaks = NULL, limits = c(0, 0.7)) +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        plot.background = element_rect(fill = NULL))
+  
+  
+}
+
+
+p2 <- samp_plot_fun(d1)
+p3 <- samp_plot_fun(d2)
+p4 <- samp_plot_fun(d3)
+
+
+## Sample distribution plot
+
+
+dsamp1 <- bind_rows(d1  %>% summarise(x = mean(x))%>% mutate(samp = "s1"), 
+          d2  %>% summarise(x = mean(x))%>% mutate(samp = "s2"), 
+          d3  %>% summarise(x = mean(x))%>% mutate(samp = "s3"))
+
+
+p5 <- data.frame(x = rnorm(1000, 3485, 587/sqrt(10)), 
+           samp = "all") %>%
+  ggplot(aes(x, fill = factor(samp))) +
+
+  
+  geom_dotplot(binwidth = 25,
+               dotsize = 2.4,
+              stackratio = 1) +
+  
+  geom_dotplot(data = dsamp1, aes(x = x,fill = samp), 
+               binwidth = 25, 
+               stackratio = 1, 
+               dotsize = 5.5) +
+  
+
+    scale_fill_manual(values = c("lightblue", "steelblue", "orchid", "green")) +
+  
+  ylab("") +
+    scale_x_continuous(limits = c(3485 - (4*587), 3485 + (4*587))) +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_blank(), 
+        plot.background = element_rect(fill = NULL), 
+        legend.position = "none") + 
+  labs(title = "Utvalgsfordeling")
+
+
+## Combine population and sample plots
+
+p6 <- ggplot(data = data.frame(x = c(3485 - (4*587), 3485 + (4*587))), aes(x)) +
+  # Population
+  stat_function(fun = dnorm, n = 101, 
+                args = list(mean = 3485, sd = 587)) + 
+  # Sampling distribution n = 10
+    stat_function(fun = dnorm, n = 101, 
+                  color = "steelblue",
+                args = list(mean = 3485, sd = 587/sqrt(10))) + 
+  # Sampling distribution n = 100
+      stat_function(fun = dnorm, n = 101, 
+                  color = "orchid",
+                args = list(mean = 3485, sd = 587/sqrt(100))) + 
+  
+  
+  ylab("") +
+  scale_y_continuous(breaks = NULL) + 
+    labs(x = "F&#248;dselsvekt (gram)", 
+         title = "Populasjonen og utvalgsfordelinger") +
+  theme(panel.grid = element_blank(), axis.text.y = element_blank(), axis.ticks.y = element_blank(), 
+        axis.title.x = element_markdown()) +
+  annotate("text", 
+           x = 1000, 
+           hjust = 0,
+           size = 4,
+           y = c(0.001,0.0015, 0.002),
+           color = c("black", "steelblue", "orchid"),
+           label = c("Populasjon",
+                     "Utvalg, n = 10", 
+                     "Utvalg, n = 100")) 
+
+
+
+px + 
+  draw_plot(p1, x = 0.01, y = 0.6, width = 0.35, height = 0.4) +
+  draw_plot(p2, x = 0.05, y = 0.41, width = 0.2, height = 0.2) +
+  draw_plot(p3, x = 0.05, y = 0.21, width = 0.2, height = 0.2) +
+  draw_plot(p4, x = 0.05, y = 0.01, width = 0.2, height = 0.2) +
+  
+  
+  annotate("text", 
+           x = 0.01, 
+           hjust = 1,
+           y = 0.61, 
+           label = "n = 10") +
+  
+  annotate(
+    'curve',
+    x = c(0.03,0.03, 0.03), 
+    y = c(0.62,0.62, 0.62),
+    yend = c(0.51,0.31, 0.11),
+    xend = c(0.06,0.06, 0.06),
+    linewidth = 0.8,
+    curvature = 0.3,
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  )  +
+  
+    annotate(
+    'curve',
+    x = c(0.25,0.25, 0.25), 
+    y = c(0.51,0.31, 0.11),
+    yend = c(0.31,0.30, 0.29),
+    xend = c(0.35,0.35, 0.35),
+    linewidth = 0.8,
+    curvature = 0.1,
+    color = c("steelblue", "orchid", "green"),
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  ) +
+  
+  annotate("richtext", 
+           x = 0.35, 
+           hjust = 1,
+           fill = NA, label.color = NA, # remove background and outline
+           label.padding = grid::unit(rep(0, 4), "pt"), # remove padding
+           y = 0.12, 
+           label = "&times;1000") +
+  
+  
+  draw_plot(p5, x = 0.36, y = 0.05, width = 0.35, height = 0.65) +
+  
+  draw_plot(p6, x = 0.68, y = 0.5, width = 0.35, height = 0.55) +
+  
+  annotate(
+    'curve',
+    x = c(0.71), 
+    y = c(0.31),
+    yend = c(0.5),
+    xend = c(0.85),
+    linewidth = 0.8,
+    curvature = 0.1,
+    arrow = arrow(length = unit(0.25, 'cm'), type = "closed")
+  ) 
+
+
+
+
+
+
+```
+
+
+## Estimering av et gjennomsnitt
+
+```{r}
+
+
+
+# plot a normal distribution using ggplot2
+
+p1 <- data.frame(x = c(-5, 5)) %>%
+  ggplot(aes(x)) + 
+  stat_function(fun = dnorm, args = list()) +
+  stat_function(fun = dt, args = list(
+                                      df = 30), 
+                color = "orchid") +
+    stat_function(fun = dt, args = list(
+                                      df = 9), 
+                color = "blue") +
+    stat_function(fun = dt, args = list(
+                                      df = 2), 
+                color = "orange") +
+  theme_classic(base_size = 18) + 
+  
+  annotate("text", 
+           x = -4.9, 
+           y = c(0.35,
+                 0.3,
+                 0.25,
+                 0.20),
+           size = 6,
+           hjust = 0,
+           label = c("Normal", 
+                     "t, df = 30", 
+                     "t, df = 9",
+                     "t, df = 2"), 
+                     color = c("black", "orchid", 
+                               "blue", "orange")) +
+  
+  theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.title.x = element_blank()) +
+  labs(title = "Normal og t-fordelning",
+       subtitle = " ",
+       x = "Value") 
+
+
+## Shade are under a t distribution
+
+# Return dt(x) for 0 < x < 2, and NA for all other x
+
+# example data
+
+samp <- rnorm(10)
+
+samp <- data.frame(samp = (samp - mean(samp))/sd(samp))
+
+
+dt_limit <- function(x) {
+    y <- dt(x, df = 10)
+    y[x < -qt(0.975, df = 9)  |  x > qt(0.975, df = 9)] <- NA
+    return(y)
+}
+
+# ggplot() with dummy data
+p2 <- ggplot(data.frame(x = c(-5, 5)), aes(x = x)) +
+  stat_function(fun = dt_limit, geom = "area", fill = "blue", alpha = 0.2) +
+  stat_function(fun = dt, 
+                args = list(df = 9), color = "blue") + 
+  theme_classic() +
+    theme(axis.title.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.line.y = element_blank(),
+              axis.title.x = element_blank()) +
+  labs(title = "t-fordelning",
+  subtitle= "df = 10, 95% av area under kurven",
+       x = "Value") +
+  
+  geom_point(data = samp, aes(x = samp, y = 0), 
+             size = 2, 
+             shape = 20,
+             color = "steelblue") +
+
+  annotate("segment", 
+           x = -qt(0.975, df = 9), xend = qt(0.975, df = 9), y = 0.03, yend = 0.03, 
+           color = "black") +
+    annotate("point", 
+           x = 0, y = 0.03, shape = 21,size = 4, fill = "steelblue") 
+
+
+
+
+## Calculate confidence intervals using t and z distributions
+## and compare them
+set.seed(101)
+N <- 2000
+
+results10 <- data.frame(z_lwr = numeric(N), 
+                      z_upr = numeric(N),
+                      t_lwr = numeric(N),
+                      t_upr = numeric(N), 
+                      mean = numeric(N))
+
+results50 <- data.frame(z_lwr = numeric(N), 
+                      z_upr = numeric(N),
+                      t_lwr = numeric(N),
+                      t_upr = numeric(N), 
+                      mean = numeric(N))
+
+
+for(i in 1:N) {
+  
+
+  sample <- rnorm(10,3485,587) 
+  mean <- mean(sample)
+  sd <- sd(sample)
+  n <- length(sample)
+  z <- qnorm(0.975)
+  t <- qt(0.975, df = n-1)
+  
+  results10[i,1] <- mean - z * sd/sqrt(n)
+  results10[i,2] <- mean + z * sd/sqrt(n)
+  results10[i,3] <- mean - t * sd/sqrt(n)
+  results10[i,4] <- mean + t * sd/sqrt(n)
+  results10[i,5] <- mean 
+  results10$n <- n
+  
+  sample <- rnorm(50,3485,587) 
+  mean <- mean(sample)
+  sd <- sd(sample)
+  n <- length(sample)
+  z <- qnorm(0.975)
+  t <- qt(0.975, df = n-1)
+  
+  results50[i,1] <- mean - z * sd/sqrt(n)
+  results50[i,2] <- mean + z * sd/sqrt(n)
+  results50[i,3] <- mean - t * sd/sqrt(n)
+  results50[i,4] <- mean + t * sd/sqrt(n)
+  results50[i,5] <- mean 
+  results50$n <- n 
+  
+  }
+
+  
+errorrates <- bind_rows(results10, results50) %>%
+  mutate(z_includes = ifelse(3485 > z_lwr & 3485 < z_upr, 1, 0),
+         t_includes = ifelse(3485 > t_lwr & 3485 < t_upr, 1, 0)) %>%
+  reframe(.by = n, 
+            z_includes = round(100 * (1 - sum(z_includes)/N),1),
+            t_includes = round(100 * (1 - sum(t_includes)/N),1)) 
+
+
+p3 <- bind_rows(results10, results50) %>%
+  group_by(n) %>%
+  slice_sample(n = 50) %>%
+  mutate(int = row_number()) %>%
+  pivot_longer(cols = c(z_lwr, z_upr, t_lwr, t_upr), 
+               names_to = "interval", 
+               values_to = "val") %>%
+  separate(interval, into = c("type", "side"), sep = "_") %>%
+  pivot_wider(names_from = side, values_from = val) %>%
+  ungroup() %>%
+  mutate(includes = ifelse(3485 > lwr & 3485 < upr, "in", "out"),
+        error_rate = if_else(type == "z" & n == 10, errorrates[1,2],
+                             if_else(type == "z" & n == 50,errorrates[2,2],
+                                     if_else(type == "t" & n == 10, errorrates[1,3],
+                                             errorrates[2,3]))),
+         type = if_else(type == "z", "Normal", "T"),
+
+         n = paste("n =", n, ", feilrate = ", error_rate, "%") ) %>%
+        
+  
+  
+  ggplot(aes(x = int, y = mean, 
+             color = type, alpha = includes)) +
+  
+    geom_hline(yintercept = 3485, linetype = 2) +
+  
+  geom_errorbar(aes(ymin = lwr, ymax = upr), 
+                position = position_dodge(width = 0.5), 
+                width = 0) +
+  
+  scale_alpha_manual(values = c(0.2,1), ## exclude from legend
+                     guide = "none") +
+  scale_color_manual(values = c("orchid", "steelblue")) +
+  
+  geom_point(position = position_dodge(width = 0.5)) + 
+  facet_wrap(~ n, ncol = 1) +
+  theme_classic() + 
+  theme(strip.background = element_rect(color = "white"), 
+        legend.position = "bottom") + 
+  labs(x = "Utvalg", 
+       y = "Gjennomsnitt (gram) 95% konfidensintervall", 
+       color = "Sannsynlighetsfordeling")
+  
+  
+p2
+
+```
+
+
+## Estimering av et gjennomsnitt {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+::: {.incremental}
+
+- Ved hjelp av modell for utvalgsfordelingen kan vi si noe om hvor stor variasjon vi forventer i blant repeterte gjennomsnitt
+- Modellen vi bruker kan tilpasses for å gi en bedre beskrivelse av utvalgsfordelingen, når vi er interesserte kontinuerlig data bruker vi typisk en *t*-fordelingen eller normalfordeling
+:::
+
+
+:::
+
+::: {.column width="50%"}
+
+::: {.fragment}
+```{r}
+p1
+```
+:::
+
+:::
+
+
+
+::::
+
+
+## Konfidensintervaller
+
+```{r}
+p3
+```
+
+
+# Hypotesetesting
+
+
+## Hypotesetesting {.smaller}
+
+::: {.incremental}
+
+- En annen metode for å trekke konklusjoner om en populasjon er hypotesetesting
+- Vi stiller opp en hypotese og bruker data for trekke konklusjoner om populasjonen
+
+:::
+
+## Hypotesetesting {.smaller}
+
+:::: {.columns}
+
+::: {.column width="40%"}
+
+::: {.incremental}
+
+
+- Data gir oss en indikasjon på hva vi kan forvente å observere i populasjonen
+- Vi stiller opp en nullhypotese, $H_0$, som er en påstand om populasjonen
+- Men hvor ekstrem er observasjonen (dataene) hvis nullhypotesen er sann?
+
+:::
+
+:::
+
+
+::: {.column width="60%"}
+
+::: {.r-stack}
+
+
+```{r}
+
+set.seed(1)
+A <- rnorm(25, 139, 12)
+B <- rnorm(25, 134, 12)
+
+
+
+p1 <- data.frame(A, B) %>%
+  pivot_longer(cols = c(A, B), 
+               names_to = "Gruppe", 
+               values_to = "Blodtrykk") %>%
+  ggplot(aes(x = Gruppe,y = Blodtrykk, fill = Gruppe)) + 
+  geom_point(shape = 21, position = position_jitter(width = 0.05), size = 3) +
+
+  theme_classic(base_size = 18) + 
+  
+    theme(legend.position = "none") +
+  labs(x = "Gruppe", y = "Systolisk blodtrykk (mmHg)") 
+
+set.seed(1)
+p1
+
+```
+
+
+::: {.fragment}
+
+
+```{r}
+set.seed(1)
+p1 + annotate(geom = "text", 
+              x = 2, y = 155, size = 6,
+              label = paste0("Gjennomsnittlig forskjell: ", 
+                             round(mean(A) - mean(B), 2), " mmHg"))
+
+```
+:::
+
+
+
+
+
+
+
+
+::: {.fragment}
+
+```{r}
+#| cache: true
+
+
+N <- 10000
+
+
+diffs <- vector()
+for(i in 1:N) {
+  
+ dat <-  data.frame(val = c(A, B)) %>%
+    mutate(group = sample(rep(c("a", "b"), each = 25), 50, replace = FALSE)) 
+  
+  m <- lm(val ~ group, data = dat)
+  diffs[i] <- coef(m)[2]
+  
+}
+
+
+## Number of more extreme values
+
+oneside <- sum(diffs > mean(A) - mean(B), na.rm = TRUE) / N
+
+twoside <- sum(abs(diffs) > abs(mean(A) - mean(B)), na.rm = TRUE) / N
+
+
+
+perm <- data.frame(diffs) %>%
+  ggplot(aes(x = diffs)) + 
+  
+  geom_histogram(fill = "lightblue", 
+                 color = "gray23") + 
+  
+
+  
+  
+  theme_classic(base_size = 18) + 
+  labs(x = "Forskjell i gjennomsnitt", y = "Antall permutasjoner")
+
+perm
+
+```
+
+
+:::
+
+::: {.fragment}
+```{r}
+
+perm + 
+    geom_vline(xintercept = mean(A) - mean(B), color = "red") +
+  annotate("text", x = mean(A) - mean(B) - 0.9, y = 500, label = "Observert forskjell", color = "red", 
+           angle =90, size = 6)
+
+```
+
+
+
+:::
+
+
+
+:::
+
+
+:::
+
+::::
+
+
+## En *p*-verdi
+
+::: {.incremental}
+
+- Vi har nå beregnet en *p*-verdi, sannsynligheten for å få et resultat som det vi observerer, eller et enda mer ekstremt når nullhypotesen er riktig.
+- Sannsynlighet kan vi tolke som antall utvalg av alle utvalg i fordelingen, dette betyr at vi definerer sannsynlighet som en relativ frekvens.
+- Dette er ikke den eneste måten å definere sannsynlighet på, men den er helt sentral i frekventistisk statistikk
+
+:::
+
+
+## Utvalgsfordelinger
+
+```{r}
+
+
+# Borrowing a solution from https://stackoverflow.com/questions/46848998/superimposing-asymmetric-t-distribution-using-ggplot2
+# Define a Student t distribution with shape (nu) and location (mu)
+
+dt2 <- function(x, mu, nu, df, ncp) {
+  dt((x-mu)/nu,df,ncp)/nu
+}
+
+test_stat <- t.test(A, B, var.equal = TRUE)
+
+
+dt2_limit_lower <- function(x) {
+    y <- dt2(x, mu = 0, nu = test_stat$stderr, df = test_stat$parameter, ncp = 0)
+    y[x < -qt(0.999, df = test_stat$parameter) * test_stat$stderr  |  x > -qt(0.975, df = test_stat$parameter) * test_stat$stderr] <- NA
+    return(y)
+}
+
+dt2_limit_upper <- function(x) {
+    y <- dt2(x, mu = 0, nu = test_stat$stderr, df = test_stat$parameter, ncp = 0)
+    y[x < qt(0.975, df = test_stat$parameter) * test_stat$stderr  |  x > qt(0.999, df = test_stat$parameter) * test_stat$stderr] <- NA
+    return(y)
+}
+
+
+
+data.frame(diffs) %>%
+  ggplot(aes(x = diffs)) + 
+  
+  geom_histogram(fill = "steelblue",
+                 alpha = 0.3,
+                 aes(y = after_stat(density)),
+                 color = "gray23") + 
+  
+  stat_function(fun = dt2, args = list(mu = 0, nu = test_stat$stderr, df = 48, ncp = 0), 
+                color = "purple", linewidth = 1.5) +
+  
+  stat_function(fun = dt2_limit_lower, geom = "area", fill = "orchid", alpha = 0.8) +
+  stat_function(fun = dt2_limit_upper, geom = "area", fill = "orchid", alpha = 0.8) +
+  
+    annotate("curve", 
+           curvature = 0.1,
+           x = -8,
+           xend = -7, 
+           y = 0.05, yend = 0.018, arrow = arrow(type = "closed", length = unit(0.2, "cm")), 
+           color = "orchid") +
+  annotate("text", label = "2.5% av arealet\nunder kurven", 
+           x = -8, y = 0.07, color = "orchid", size = 6) +
+  
+  
+      annotate("curve", 
+           curvature = -0.1,
+           x = 8,
+           xend = 7, 
+           y = 0.05, yend = 0.018, arrow = arrow(type = "closed", length = unit(0.2, "cm")), 
+           color = "orchid") +
+  annotate("text", label = "2.5% av arealet\nunder kurven", 
+           x = 9.5, y = 0.065, color = "orchid", size = 6) +
+  
+        annotate("curve", 
+           curvature = -0.1,
+           x = -4,
+           xend = -3, 
+           y = 0.12, yend = 0.11, arrow = arrow(type = "closed", length = unit(0.2, "cm")), 
+           color = "purple") +
+  annotate("text", label = "Utvalgsfordeling\nav gjennomsnitt\n(t-fordeling)",
+           x = -6, y = 0.13, color = "purple", size = 6) +
+  
+  
+          annotate("curve", 
+           curvature = 0.1,
+           x = 3.5,
+           xend = 2.5, 
+           y = 0.12, yend = 0.11, arrow = arrow(type = "closed", length = unit(0.2, "cm")), 
+           color = "steelblue") +
+  annotate("text", label = "Utvalgsfordeling\nav gjennomsnitt\n(permuteringer)",
+           x = 6, y = 0.13, color = "steelblue", size = 6) +
+  
+  
+  
+  annotate("segment", 
+           x = mean(A) - mean(B),
+           xend = mean(A) - mean(B), 
+           y = 0.075, yend = 0.018, arrow = arrow(type = "closed", length = unit(0.2, "cm")), 
+           color = "red") +
+  annotate("text", label = "Observert\nresultat", 
+           x = mean(A) - mean(B) - 0.5, y = 0.09, color = "red", size = 6) +
+  
+  theme_classic(base_size = 18) +
+  labs(x = "Forskjell i gjennomsnitt") + 
+    theme(axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(), 
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank()) 
+
+
+
+
+```
+
+
+# Statistisk styrke
+
+
+## Statistisk styrke        
+
+|Nullhypotesen er... |Sann |Falsk|
+| --- | --- |---|
+|**Forkasted** |<span style="color:red">Type-1 feil</span>|Riktig avgjørelse|
+|**Ikke forkasted**|Riktig avgjørelse|<span style="color:red">Type-2 feil</span>|
+
+
+## Statistisk styrke 
+
+::: {.incremental}
+- Vi kan beregne statistisk styrke, sannsynligheten for å forkaste nullhypotesen når den er falsk, ved å spesifisere en alternativ hypotese
+- Denne hypotesen sier noe om hvilken effekt vi ønsker å oppdage hvis den faktisk er sann
+:::
+
+::: {.fragment}
+
+$$d = \frac{H_a}{SD} = \frac{10}{20} = 0.5$$. 
+
+:::
+
+
+## Statistisk styrke
+
+| | |
+|--- | ---|
+|Effektstørrelse | 0.5|
+|Risiko for type 1 feil ($\alpha$)| 5%|
+|Risiko for type 2 feil ($\beta$)| 20%|
+|Statistisk styrke ($1-\beta$)| 0.8|
+
+## Statistisk styrke
+
+```{r}
+
+# A figure showing the power analysis of a two-sample t-test
+# The x-axis shows the standardized effects size (d) 
+# To plot the sampling distributions of each hypothesis the 
+# standard error of the two sample t-test is calculated
+
+# calculate power and the standard error for the sampling distribution
+library(pwr)
+pwrtest <- pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8, type = "two.sample")
+
+# Number of participants in each group
+n <- round(pwrtest$n)
+# The standard error of the sampling distribution
+sigma_se <- sqrt(((n-1) * 1^2 + (n-1) * 1^2)/ ((n + n -2)) * ((1/n) + (1/n))) 
+
+# Function for shading the lower critical region of the null hypothesis
+dt2_critical <- function(x, region = "lwr", n, se) {
+  # Define the sampling distribution of the null hypothesis  
+  y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
+    if(region == "lwr") {
+        y[x < -qt(0.99999, df = n-2) * se  |  x > -qt(0.975, df = n-2) * se] <- NA
+    } 
+    if(region == "upr") {
+        y[x > qt(0.99999, df = n-2) * se  |  x < qt(0.975, df = n-2) * se] <- NA
+    } 
+    return(y)
+}
+
+
+dt2_limit_lower_ha <- function(x) {
+    y <- dt2(x, mu = 0.5, nu = sigma_se, df = n-2, ncp = 0)
+    y[x < 0.5 - qt(0.99999, df = n-2) * sigma_se  |  x > 0.5 - qt(0.8, df = n-2) * sigma_se] <- NA
+    return(y)
+}
+
+
+
+
+
+
+
+
+
+data.frame(x = c(-1, 1)) %>%
+  ggplot(aes(x = x)) + 
+  
+
+  
+  stat_function(geom = "area", 
+                alpha = 0.5,
+                color = "orchid", linewidth = 0,
+                fill = "orchid",
+                fun = dt2_critical, 
+                n = 1000,
+                args = list(region = "lwr", se = sigma_se, n = n)) +
+  
+  stat_function(geom = "area", 
+                alpha = 0.5,
+                n = 1000,
+                color = "orchid", linewidth = 0,
+                fill = "orchid",
+                fun = dt2_critical, 
+                args = list(region = "upr", se = sigma_se, n = n)) +
+  
+  stat_function(fun = dt2, geom= "area", args = list(mu = 0, nu = sigma_se, df = n-2, ncp = 0), 
+                  fill = "orchid", alpha = 0.2,
+                  n = 1000,
+                  
+                color = "orchid", linewidth = 0) +
+  
+  
+  
+  
+  stat_function(fun = dt2,
+                geom = "area",
+                fill = "lightgreen",
+                alpha = 0.2,
+                n = 1000,
+                args = list(mu = 0.5, nu =sigma_se, df = n-2, ncp = 0), 
+                color = "lightgreen", linewidth = 0) +
+  scale_x_continuous(limits = c(-1, 1.2), 
+                    breaks = seq(from = -1, to = 1, by = 0.5)) +
+
+    stat_function(geom = "area",
+                fill = "darkgreen",
+                alpha = 0.2,
+                 n = 1000,
+                fun = dt2_limit_lower_ha) +
+  
+  
+  theme_classic() +
+
+  
+  labs(x = "Standardisert effektst&#248;rrelse (d)") +
+  
+    theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_markdown(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        plot.title = element_text(size = 14),
+        legend.position = "none") +
+  
+ # geom_vline(xintercept = qt(0.975, df = n-2) * sigma_se, linetype = "dashed", color = "black") +
+## Add text to the plot  
+  annotate("text", 
+           x = -0.5, 
+           y = 1.5, 
+           label = "Utvalgsfordeling \nunder nullhypotese", 
+           size = 5, 
+           color = "orchid") +
+  
+  annotate("curve",
+           x = -0.5,
+           y = 1.35,
+           xend = -0.35,
+           yend = 1.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.2) +
+  
+  annotate("text", 
+           x = 0.95, 
+           y = 1.7, 
+           label = "Utvalgsfordeling under\nalternativ hypotese", 
+           size = 5, 
+           color = "darkgreen") +
+  
+  annotate("curve",
+           x = 0.85,
+           y = 1.55,
+           xend = 0.75,
+           yend = 1.5,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = -0.2) +
+
+  annotate("text", 
+           x = 0.95, 
+           y = 1.05, 
+           label = "Statistisk\nstyrke",
+ 
+           size = 5, 
+           color = "darkgreen") +
+  
+  annotate("curve",
+           x = 0.9,
+           y = 0.9,
+           xend = 0.8,
+           yend = 0.75,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = -0.2) +
+
+  annotate("text", 
+           x = 0.25, 
+           y = 1.95, 
+           label = "Type 2 feil",
+ 
+           size = 5, 
+           color = "darkgreen") +
+
+  annotate("curve",
+           x = 0.25,
+           y = 1.9,
+           xend = 0.3,
+           yend = 1.3,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "darkgreen", 
+           curvature = 0.1) +
+  
+    annotate("text", 
+           x = -0.6, 
+           y = 0.85, 
+           label = "Type 1 feil",
+ 
+           size = 5, 
+           color = "orchid") +
+
+  annotate("curve",
+           x = -0.6,
+           y = 0.8,
+           xend = -0.5,
+           yend = 0.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.1) +
+    annotate("curve",
+           x = -0.6,
+           y = 0.8,
+           xend = 0.4,
+           yend = 0.1,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")),
+           color = "orchid", 
+           curvature = 0.1) 
+  
+  
+  
+
+```
+
+
+## Styrke, effektstørrelser og p-verdier
+
+```{r}
+
+library(pwr)
+
+N <- 100
+
+df <- data.frame(n10 = rep(NA, N), n20 = rep(NA, N), n40 = rep(NA, N), n80 = rep(NA, N)) 
+df2 <- data.frame(n10 = rep(NA, N), n20 = rep(NA, N), n40 = rep(NA, N), n80 = rep(NA, N))
+
+
+# The standard error of the sampling distribution
+
+pfun <- function(n, d) {
+  sdp <- sqrt(((n - 1) * 1^2 + (n - 1) * 1^2) / (n + n - 2))
+  md <- d * sdp
+  tstat <- md / (sdp * sqrt(1/n + 1/n))
+  df <- n + n - 2
+  
+  2*pt(-abs(tstat), df)
+  
+}
+
+
+
+
+
+for(i in 1:N) {
+  
+  df[i,1] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 10, type = "two.sample")$power
+  df[i,2] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 20, type = "two.sample")$power
+  df[i,3] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 40, type = "two.sample")$power
+  df[i,4] <- pwr.t.test(d = i/N, sig.level = 0.05, n = 80, type = "two.sample")$power
+  
+  
+  ## Calculate p-values
+  df2[i,1] <- pfun(10, i/N)
+  df2[i,2] <- pfun(20, i/N)
+  df2[i,3] <- pfun(40, i/N)
+  df2[i,4] <- pfun(80, i/N)
+  
+
+}
+
+
+
+
+
+p1 <- df %>%
+  mutate(es = 1:N/N) %>%
+  pivot_longer(cols = n10:n80) %>%
+  mutate(name = as.numeric(gsub("n", "", name)), 
+         type = 'Statistisk styrke') %>%
+  
+  bind_rows(df2 %>%
+  mutate(es = 1:N/N) %>%
+  pivot_longer(cols = n10:n80) %>%
+  mutate(name = as.numeric(gsub("n", "", name)), 
+         type = "p-verdi")) %>%
+  
+  
+  ggplot(aes(x = es, y = value, fill = factor(name))) +
+  
+      geom_line(aes(color = factor(name)), linewidth = 1.5) +
+
+  labs(color = "Utvalgsst&#248;rrelse", 
+       x = "Effektst&#248;rrelse", 
+       y = " ")  +
+  facet_wrap(~type, scales = "free_y") +
+  
+  theme_classic(base_size = 18) +
+  
+  scale_color_manual(values = c("orchid", "darkgreen", "steelblue", "purple")) +
+  
+  theme(axis.title.x = element_markdown(), 
+        legend.title = element_markdown(), 
+        legend.position = "bottom", 
+        strip.background = element_rect(fill = "white", color = "white"), 
+        strip.text = element_text(size = 14, hjust = 0))
+  
+p1
+
+
+
+```
+
+# Mer om p-verdier
+
+## Når nullhypotesen er riktig
+
+```{r}
+set.seed(1)
+N <- 10000
+
+pvals <- vector()
+for(i in 1:N) {
+   pvals[i] <- t.test(rnorm(10, 100, 10), rnorm(10, 100, 10))$p.value
+ 
+}
+
+data.frame(pvals) %>%
+  ggplot(aes(pvals)) + 
+  geom_histogram(binwidth = 0.05, boundary = 0, closed = "left", 
+                 fill = "steelblue", color = "gray21") + 
+  scale_x_continuous(breaks = c(0, 0.05, 0.2, 0.4, 0.6, 0.8, 0.95, 1))+
+  
+  labs(x = "P-verdi", y = "Antall observerte p-verdier") +
+  
+  theme_classic(base_size = 18) 
+
+
+```
+
+## P-verdier og konfidensintervaller
+
+```{r}
+
+
+
+# A figure showing the power analysis of a two-sample t-test
+# The x-axis shows the standardized effects size (d) 
+# To plot the sampling distributions of each hypothesis the 
+# standard error of the two sample t-test is calculated
+
+# calculate power and the standard error for the sampling distribution
+library(pwr)
+pwrtest <- pwr.t.test(d = 0.5, sig.level = 0.05, power = 0.8, type = "two.sample")
+
+# Number of participants in each group
+n <- round(pwrtest$n)
+# The standard error of the sampling distribution
+
+sigma <- 0.4
+
+sigma_se <- sqrt(((n-1) * sigma^2 + (n-1) * sigma^2)/ ((n + n -2)) * ((1/n) + (1/n))) 
+
+
+# Function for shading the lower critical region of the null hypothesis
+dt2_critical <- function(x, region = "lwr", n, se) {
+  # Define the sampling distribution of the null hypothesis  
+  y <- dt2(x, mu = 0, nu = sigma_se, df = n-2, ncp = 0)
+    if(region == "lwr") {
+        y[x < -qt(0.99999, df = n-2) * se  |  x > -qt(0.975, df = n-2) * se] <- NA
+    } 
+    if(region == "upr") {
+        y[x > qt(0.99999, df = n-2) * se  |  x < qt(1-pt(0.15/sigma_se, df = n-2, lower.tail = FALSE), df = n-2) * se] <- NA
+    } 
+    return(y)
+}
+
+
+
+
+data.frame(x = c(-0.4, 0.5)) %>%
+  ggplot(aes(x = x)) + 
+  
+
+
+  
+  
+  geom_vline(xintercept = 0, lty = 2, color = "black") +
+  
+  
+  
+  stat_function(fun = dt2, geom= "area", args = list(mu = 0, nu = sigma_se, df = n-2, ncp = 0), 
+                  fill = "orchid", alpha = 0.2,
+                  n = 1000,
+                  
+                color = "orchid", linewidth = 0) +
+    
+  stat_function(fun = dt2_critical, geom= "area", args = list(region = "upr",
+                                                              se = sigma_se, n = n),
+                                                              
+                  fill = "purple", alpha = 0.4,
+                  n = 1000,
+                  
+                color = "purple", linewidth = 0) +
+  
+  
+
+  
+  stat_function(fun = dt2,
+                geom = "area",
+                fill = "lightgreen",
+                alpha = 0.2,
+                n = 1000,
+                args = list(mu = 0.15, nu =sigma_se, df = n-2, ncp = 0), 
+                color = "lightgreen", linewidth = 0) +
+  
+  annotate("segment", 
+           x = 0.15 - sigma_se * qt(0.975, df = n-2),
+           xend = 0.15 + sigma_se * qt(0.975, df = n-2),
+           y = 1, yend = 1) +
+  
+  
+  
+  
+  annotate("point", x = 0.15, y = 1, color = "black", size = 3, shape = 21,
+           fill = "steelblue") + 
+  
+  
+  theme_classic(base_size = 18) +
+
+  ## display p-value
+  annotate("text", x = 0.35, y = 2.5, 
+           color = "purple",
+           label = paste("p = ", round(2*pt(0.15/sigma_se, df = n-2, lower.tail = FALSE),3)), size = 5) +
+  
+  annotate("curve", 
+           x = 0.35, y = 2.3, 
+           xend = 0.17, yend = 0.4, 
+           curvature = -0.4,
+           arrow = arrow(type = "closed", length = unit(0.1, "inches")), 
+           color = "purple") +
+  
+  annotate("text", 
+           x = 0.15, y = 1.5, 
+           label = "95% Konfidensintervall", 
+           size = 5, 
+           color = "black") +
+  
+  
+  
+  labs(x = "Effektst&#248;rrelse") +
+  
+    theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 10),
+        axis.title.y = element_blank(),
+        axis.line.y = element_blank(),
+        axis.text.y = element_blank(),
+        axis.ticks.y = element_blank(),
+        axis.ticks.x = element_blank(),
+        axis.title.x = element_markdown(size = 12),
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.border = element_blank(),
+        plot.title = element_text(size = 14),
+        legend.position = "none") 
+
+
+
+
+
+```
+
+
+
+
+

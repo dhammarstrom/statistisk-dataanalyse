@@ -1,9 +1,299 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Statistisk inferens i Jamovi
 
-## T-tester og regresjonsmodeller
+Vi kan bruke Jamovi for å teste statistiske hypoteser. Hypotesene testes typisk i noen av de modellene for samvariasjon som vi allerede har sett på [Kapittel @sec-stat-samv].  
 
-## Krysstabulering og logistisk regresjon
 
-## ANOVA og ANCOVA
+
+## T-tester
+
+### One-sample t-test
+
+I en *one-sample t-test* er nullhypotesen at dine observerte data kommer fra en populasjon som har et spesifisert gjennomsnitt. Gjennomsnittet for nullhypotesen som du spesifiserer vil fungere som en referanseverdi for testen. I Jamovi setter vi inn referanseverdien under *Hypothesis* og *Test Value*.
+
+Vi kan bruke en *one-sample t-test* i forskjellige studiedesigner. For eksempel kan vi ha informasjon om hva et gjennomsnitt er i en populasjon, og vi tester mot nullhypotesen at våre data kommer fra denne populasjonen. I et annet scenario kan vi bestemme oss for at referanseverdien er 0 og vi skaper datasettet ved å beregne differensen mellom to forhold i den samme gruppen. Et eksempel på dette kan vi se i @fig-ttests hvor de samme individene har gjennomført testing under to forskjellige forhold. Du finner et eksempel på et slik [datasett her](data/ttest_data_paret.csv). Vi tester nullhypotesen at differansen mellom forandringskår i hvert forhold er 0. Med forandringskår mener vi forskjellen mellom de to testpunktene (`pre` og `post` i dataene) under hvert forhold (`A` og `B` i dataene).
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+library(tidyverse)
+
+## Create data set for example
+
+set.seed(123)
+pre1 <- rnorm(20, mean = 82, sd = 10)
+pre2 <- rnorm(20, pre1, sd = 1)
+post1 <- rnorm(20, mean = pre1, sd = 1)
+post2 <- rnorm(20, pre2 + 1, sd = 1)
+
+
+dat <- data.frame(A_pre =  pre1, 
+                  A_post = post1,
+                  B_pre = pre2,
+                  B_post = post2) 
+
+
+write.csv2(dat, "data/ttest_data_paret.csv", row.names = FALSE)
+
+set.seed(123)
+dat <- data.frame(grp = rep(c("A", "B"), each = 20)) %>%
+  mutate(pre = rnorm(40, mean = 80, sd = 10),
+         post = case_when(grp == "A" ~ pre + rnorm(20, 1, 1),
+                          grp == "B" ~ pre + rnorm(20, 2, 1))) 
+
+write.csv2(dat, "data/ttest_data_uparet.csv", row.names = FALSE)
+
+
+```
+
+### Paret t-test
+
+Med data som er samlet inn som beskrevet over kan vi også bruke en *Paired Samples T-Test*. Isteden for å beregne forskjell mellom to forhold gir vi Jamovi tallene fra hvert forhold. I [datasettet](data/ttest_data_paret.csv) må vi fortsatt regne ut en forandringskår i hvert forhold (`pre` og `post` i dataene). Her tester vi den samme nullhypotesen som beskrevet over. Nullhypotesen sier det ikke er en forskjell mellom forandringskårene i de to forholdene (@fig-ttests).
+
+### Uavhengig t-test
+
+I en *Independent Samples T-Test* har vi to grupper som sammenlignes. Her er antagelsen at dataene inneholder uavhengige observasjoner, en deltaker kan ikke være i begge forholdene. Vi kan fortsatt teste en nullhypotese som dreier seg om forandringskårer, på den måten kan vi bruke en t-test for å testet "repeterte data". I datasettet som du finner [her](data/ttest_data_uparet.csv) finner vi en gruppevariabel. Vi kan teste mot nullhypotesen at forandringskårene er like i de to gruppene.
+
+## One vs. two-tailed tests
+
+I Jamovi velger vi mellom en *one-tailed* og en *two-tailed* test. I en *two-tailed* t-test plasserer vi den kritiske regionen, der hvor vi forkaster nullhypotesen, sånn at 2.5% den teoretiske utvalgsfordelingen finnes utenfor den i hver hale av fordelingen (hvis feilraten for type I feil settes til 5%, se @fig-ttests, "Two-tailed" t-test). Til sammen har vi den samme feilraten (5%) som en "one-tailed" t-test men vi lar testen ta høyde for at forskjellen kan være både negativ og positiv. En *one-tailed* test innebærer en "rettningshypotese", vi tenker oss at forskjellen enten kan være positiv eller negativ. Vi plasserer derfor 5% av den teoretiske utvalgsfordelingen i en hale av fordelingen, i den retting vi forventer effekten (se @fig-ttests, "One-tailed" t-test).
+
+Hvis vi har en situasjon hvor forventer en positiv effekt, for eksempel vet vi at styrketrening vil gi økt muskelstyrke, så vil det å bruke en *one-tailed* test være mindre konservativt sammenlignet med en to-tailed test. T-verdien som beregnes i testen må bli tilstrekkelig stor til å nå den kritiske regionen i den ovre halen av fordelingen, i en one-tailed test er denne regionen 5%, i en two tailed test er den bare 2.5% (igjenn, gitt at vi setter risiko for type 1 feil til 5%).
+
+I Jamovi er denne mekanismen implementert under *Hypothesis*, noe som indikerer den alternative hypotesen. Under Paired-samples t-test indikeres en two-tailed tests som $\text{Measure 1}\neq\text{Measure 2}$, mens en one-tailed test indikeres som $\text{Measure 1}>\text{Measure 2}$ eller $\text{Measure 1}<\text{Measure 2}$.
+
+## Flere valgmuligheter
+
+I en Jamovi gir t-test-menyen oss flere valgmuligheter. Under *Additional statistics* kan vi legge til gjennomsnittlig differens med konfidensintervall (mellom forhold, grupper eller fra referanseverdien). Vi kan også beregne effektstørrelsen som Cohen's *d*.
+
+Under *Assumption check* kan vi teste for normalfordeling av residualene, en beregning som gjøres fra en regresjonsmodell tilsvarende T-testen. Denne testen henger sammen med valgmuligheten *Q-Q plot* som gir en grafisk fremstilling av hvor nærme residualene faller normalfordelingen. Vi kan også, når vi gjennomfører en *Independent samples T-Test* teste for lik varians mellom gruppene (data varierer like mye fra gjennomsnitt i gruppene), noe som er en forutsetning for den "vanlige" T-testen. Disse "testene" er en type hypotesetest hvor nullhypotesen er at residualene er normalfordelt eller at variansen er like. Når p-verdien i disse testene er lav indikerer dette brudd på antagelsen. 
+
+Når vi ikke kan si at vi tror på antaglesen om lik varians mellom gruppene kan vi bruke en *Welch's* som er en modifisert versjon av T-testen som tar høyde for ulik varians. I Jamovi kan vi velge *Welch's* under *Tests* for å bruke denne testen. Welch's T-test er faktisk den foretrukkne testen til tross for at dette ikke er standard i Jamovi. Når vi har lik variasjon i gruppene gir en "vanlig" (Student's) T-Test de samme resultatene som Welch's T-test.
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+#| cache: true
+#| fig-width: 8
+#| fig-height: 6
+#| label: fig-ttests
+#| fig-cap: "Vi kan tenke oss flere muligheter for å bruke t-tester. En One-sample t-test og paired-sample t-test kan brukes for å teste den samme nullhypotesen i den samme dataene når vi forenkler datasettet. En independent samples t-test brukes for to-gruppe-design problemer, også her kan det være nødvendig å forenkle dataene. To-hale og en-hale tester gir os muligheten å spesifisere forskjellige alternative hypoteser." 
+
+library(tidyverse); library(ggtext)
+## Study designs 
+
+
+p0 <- data.frame(x = c(0,1), 
+                 y = c(0,1)) %>%
+  ggplot(aes(x, y)) + theme_void() +
+  
+  scale_y_continuous(limits = c(0.4, 1)) +
+  scale_x_continuous(limits = c(0, 1)) +
+  # 
+  #
+  #
+  annotate("segment", 
+           x = c(0.1, 0.1),
+           y = c(0.6, 0.6), 
+           xend = c(0.3, 0.1),
+           yend = c(0.6, 0.8)) +
+  annotate("segment",
+           x = c(0.12, 0.12),
+           y = c(0.62, 0.62),
+           xend = c(0.28, 0.28),
+           yend = c(0.78, 0.72), 
+           color = c("orchid", "darkgreen"), 
+           linewidth = c(1.2, 1.2)) +
+  
+  
+  annotate("text",
+           x = c(0.12,0.28, 0.08), 
+           y = c(0.58,0.58, 0.70), 
+           angle = c(0, 0, 90),
+           label = c("t1", "t2", "Utfall"), 
+           size = 4) +
+  
+  annotate("richtext",
+           x = c(0.35), 
+           y = c(0.85), 
+           label = "**Repetert design** (samme deltakere)<br>
+           <span style='color:orchid'>(t2<sub>i</sub> - t1<sub>i</sub>)</span> - <span style='color:darkgreen'>(t2<sub>i</sub> - t1<sub>i</sub>)</span><span style='color:blue'> = *testdata<sub>i</sub>*</span><br>
+           One-sample *t*-test, nullhypotese: *testdata* = 0<br>Paired-sample *t*-test, nullhypotese: <span style='color:orchid'>(t2<sub>i</sub> - t1<sub>i</sub>)</span> - <span style='color:darkgreen'>(t2<sub>i</sub> - t1<sub>i</sub>)</span> = 0",
+           hjust = 0,
+           size = 4) +
+  
+    annotate("richtext",
+           x = c(0.35), 
+           y = c(0.55), 
+           label = "**To-gruppe-design** (deltakere i to grupper)<br><span style='color:orchid'>t2<sub>i,g1</sub> - t1<sub>i,g1</sub> = *testdata<sub>i,g1</sub>*</span><br>
+           <span style='color:darkgreen'>t2<sub>i,g2</sub> - t1<sub>i,g2</sub> = *testdata<sub>i,g2</sub>*</span><br>
+           Two-sample *t*-test, nullhypotese: *testdata<sub>i,g1</sub>* = *testdata<sub>i,g2</sub>*",
+           hjust = 0,
+           size = 4) 
+  
+
+
+
+
+
+
+
+
+dt2 <- function(x, mu, nu, df, ncp) {
+  dt((x-mu)/nu,df,ncp)/nu
+}
+
+
+
+
+dt2_limit_lower <- function(x, mu, nu, df, ncp, auc = 0.025) {
+    y <- dt2(x, mu = mu, nu = nu, df = df, ncp = ncp)
+    y[x < -qt(0.999, df = df) * nu  |  x > -qt(1-auc, df = df) * nu] <- NA
+    return(y)
+}
+
+dt2_limit_upper <- function(x, mu, nu, df, ncp, auc = 0.025) {
+    y <- dt2(x, mu = mu, nu = nu, df = df, ncp = ncp)
+    y[x < qt(1-auc, df = df) * nu  |  x > qt(0.999, df = df) * nu] <- NA
+    return(y)
+}
+
+
+
+
+p1 <- data.frame(x = c(-3.5, 3.5)) %>%
+  ggplot(aes(x = x)) + 
+  
+  stat_function(fun = dt2, args = list(mu = 0, nu = 1, df = 20, ncp = 0), 
+                geom = "area", 
+                fill = "skyblue",
+                alpha = 0.5) + 
+  
+    stat_function(fun = dt2_limit_upper, args = list(mu = 0, nu = 1, df = 20, ncp = 0), 
+                geom = "area", 
+                fill = "skyblue",
+                alpha = 1) + 
+  
+      stat_function(fun = dt2_limit_lower, args = list(mu = 0, nu = 1, df = 20, ncp = 0), 
+                geom = "area", 
+                fill = "skyblue",
+                alpha = 1) + 
+  
+  
+  
+  theme_classic() + 
+  
+  theme(axis.text.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.ticks.y = element_blank()) + 
+  labs(title = "'Two-tailed' t-test", 
+       x = "t-verdi")
+
+p2 <- data.frame(x = c(-3.5, 3.5)) %>%
+  ggplot(aes(x = x)) + 
+  
+  stat_function(fun = dt2, args = list(mu = 0, nu = 1, df = 20, ncp = 0), 
+                geom = "area", 
+                fill = "orange",
+                alpha = 0.5) + 
+  
+    stat_function(fun = dt2_limit_upper, args = list(mu = 0, nu = 1, df = 20, ncp = 0, auc = 0.05), 
+                geom = "area", 
+                fill = "orange",
+                alpha = 1) + 
+  
+  
+  theme_classic() + 
+  
+  theme(axis.text.y = element_blank(), 
+        axis.title.y = element_blank(), 
+        axis.line.y = element_blank(), 
+        axis.ticks.y = element_blank()) + 
+  labs(title = "'One-tailed' t-test", 
+       x = "t-verdi")
+
+
+library(cowplot)
+
+
+plot_grid(p0, 
+          plot_grid(NULL, p1, p2, NULL, ncol = 4, rel_widths = c(0.1, 1, 1, 0.1)),
+          rel_heights = c(1, 0.8), ncol = 1)
+
+
+
+
+
+```
+
+
+::: {.callout-caution collapse="true"}
+## Oppgave: T-tester i Jamovi
+
+
+A: Bruk [datasettet for paret](data/ttest_data_paret.csv) data for å beregne en *One-sample t-test*
+
+B: Bruk [datasettet for paret](data/ttest_data_paret.csv) data for å beregne en *Two-sample t-test*
+
+C: Bruk [datasettet for uparet](data/ttest_data_uparet.csv) for å beregne en *Independent samples T-test*
+
+::: {.callout-tip collapse="true"}
+## Svar: T-tester i Jamovi
+
+#### Oppgave A
+En One sample t-test krever en rekke med tall og en referanseverdi. I datasettet har vi tall fra to tester (`pre` og `post`) per forhold (`A` og `B`) innhentet for 20 deltakere. Vi må forenkle datasettet til en kolonne med tall fra disse 20 deltakerne. Vi beregner
+
+$$\text{A} = \text{A}_{\text{post}} - \text{B}_{\text{pre}}$$
+$$\text{B} = \text{B}_{\text{post}} - \text{B}_{\text{pre}}$$
+$$\text{Diff} = \text{A} - \text{B}$$
+Nullhypotesen som gis av studiedesignet er at forskjellen mellom A og B er 0. Vi kan teste dette i Jamovi ved å bruke $\text{Diff}$ som variabel i en *One-sample t-test*. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi.
+
+![](img/04-jamovi/onesample.gif)
+
+#### Oppgave A
+
+I en paret t-test (*Paired Samples T-Test*) kan vi teste den samme nullhypotesen som i en *One sample T-Test*. Men isteden for å beregne differensen mellom to forhold gir vi variablene $A$ og $B$ til Jamovi. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi. Legg merke til at resultater fra begge analyse er de samme!
+
+![](img/04-jamovi/pairedsample.gif)
+
+### Oppgave C
+
+Vi bruker samme strategi som i tidligere datasett og forenkler problemet. Vi beregner forandringsskår mellom tidspunkter (`pre` og `post`) for hver deltaker i hver gruppe. Vi kan så teste nullhypotesen at forandringsskårene er like i de to gruppene. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi.
+
+![](img/04-jamovi/independentsample.gif)
+
+
+
+
+:::
+
+:::
+
+
+## Statistisk styrke
+
+I Jamovi kan vi beregne statistisk styrke for alle type av T-tester. For å gjøre det trenger vi en ekstra modul som vi finner under *Modules* i menyen. Trykk på *Modules* og installer **jpower**. Når modulen er installert vil du finne den blant dine andre analysemoduler under *Analyses*.
+
+La oss si at vi ønsker å planlegge en studie hvor den minste effektstørrelsen som er av interesse er 0.3. Designet er lagd sånn at vi sammenligner to uavhengige grupper. Vi ønsker også at studien skal ha en statistisk styrke på 0.8 og en signifikansnivå på 0.05. Dette betyr at vid repeterte studier så ønsker vi å finne effekten, hvis den finnes, i minst 80% av studiene. Samtidig ønsker vi å holde risikoen for å gjøre en type 1 feil til 5%. Hvor mange deltakere trenger vi, i hver gruppe for å oppnå dette? Vi kan bruke Jamovi for å beregne dette. 
+
+Vi velger en lempelig statistisk test, legger inn de parameterer som vi spesifisert, og voila! Vi får svaret. 
+
+![](img/04-jamovi/power.gif)
+
+I eksemplet ser vi at 176 deltakere i hver gruppe er nødvendig for å oppnå en statistisk styrke på 0.8 gitt en effektstørrelse på 0.3 og type-1 feilrate på 5%.
+
+
+
+
 
 
