@@ -62,6 +62,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -242,9 +244,15 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Innhold</h2>
    
   <ul>
-  <li><a href="#t-tester-og-regresjonsmodeller" id="toc-t-tester-og-regresjonsmodeller" class="nav-link active" data-scroll-target="#t-tester-og-regresjonsmodeller"><span class="header-section-number">9.1</span> T-tester og regresjonsmodeller</a></li>
-  <li><a href="#krysstabulering-og-logistisk-regresjon" id="toc-krysstabulering-og-logistisk-regresjon" class="nav-link" data-scroll-target="#krysstabulering-og-logistisk-regresjon"><span class="header-section-number">9.2</span> Krysstabulering og logistisk regresjon</a></li>
-  <li><a href="#anova-og-ancova" id="toc-anova-og-ancova" class="nav-link" data-scroll-target="#anova-og-ancova"><span class="header-section-number">9.3</span> ANOVA og ANCOVA</a></li>
+  <li><a href="#t-tester" id="toc-t-tester" class="nav-link active" data-scroll-target="#t-tester"><span class="header-section-number">9.1</span> T-tester</a>
+  <ul class="collapse">
+  <li><a href="#one-sample-t-test" id="toc-one-sample-t-test" class="nav-link" data-scroll-target="#one-sample-t-test"><span class="header-section-number">9.1.1</span> One-sample t-test</a></li>
+  <li><a href="#paret-t-test" id="toc-paret-t-test" class="nav-link" data-scroll-target="#paret-t-test"><span class="header-section-number">9.1.2</span> Paret t-test</a></li>
+  <li><a href="#uavhengig-t-test" id="toc-uavhengig-t-test" class="nav-link" data-scroll-target="#uavhengig-t-test"><span class="header-section-number">9.1.3</span> Uavhengig t-test</a></li>
+  </ul></li>
+  <li><a href="#one-vs.-two-tailed-tests" id="toc-one-vs.-two-tailed-tests" class="nav-link" data-scroll-target="#one-vs.-two-tailed-tests"><span class="header-section-number">9.2</span> One vs.&nbsp;two-tailed tests</a></li>
+  <li><a href="#flere-valgmuligheter" id="toc-flere-valgmuligheter" class="nav-link" data-scroll-target="#flere-valgmuligheter"><span class="header-section-number">9.3</span> Flere valgmuligheter</a></li>
+  <li><a href="#statistisk-styrke" id="toc-statistisk-styrke" class="nav-link" data-scroll-target="#statistisk-styrke"><span class="header-section-number">9.4</span> Statistisk styrke</a></li>
   </ul>
 </nav>
     </div>
@@ -268,14 +276,101 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="t-tester-og-regresjonsmodeller" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="t-tester-og-regresjonsmodeller"><span class="header-section-number">9.1</span> T-tester og regresjonsmodeller</h2>
+<p>Vi kan bruke Jamovi for å teste statistiske hypoteser. Hypotesene testes typisk i noen av de modellene for samvariasjon som vi allerede har sett på <a href="02-statistisk-samvariasjon.html">Kapittel&nbsp;<span>3</span></a>.</p>
+<section id="t-tester" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="t-tester"><span class="header-section-number">9.1</span> T-tester</h2>
+<section id="one-sample-t-test" class="level3" data-number="9.1.1">
+<h3 data-number="9.1.1" class="anchored" data-anchor-id="one-sample-t-test"><span class="header-section-number">9.1.1</span> One-sample t-test</h3>
+<p>I en <em>one-sample t-test</em> er nullhypotesen at dine observerte data kommer fra en populasjon som har et spesifisert gjennomsnitt. Gjennomsnittet for nullhypotesen som du spesifiserer vil fungere som en referanseverdi for testen. I Jamovi setter vi inn referanseverdien under <em>Hypothesis</em> og <em>Test Value</em>.</p>
+<p>Vi kan bruke en <em>one-sample t-test</em> i forskjellige studiedesigner. For eksempel kan vi ha informasjon om hva et gjennomsnitt er i en populasjon, og vi tester mot nullhypotesen at våre data kommer fra denne populasjonen. I et annet scenario kan vi bestemme oss for at referanseverdien er 0 og vi skaper datasettet ved å beregne differensen mellom to forhold i den samme gruppen. Et eksempel på dette kan vi se i <a href="#fig-ttests">Figur&nbsp;<span>9.1</span></a> hvor de samme individene har gjennomført testing under to forskjellige forhold. Du finner et eksempel på et slik <a href="data/ttest_data_paret.csv">datasett her</a>. Vi tester nullhypotesen at differansen mellom forandringskår i hvert forhold er 0. Med forandringskår mener vi forskjellen mellom de to testpunktene (<code>pre</code> og <code>post</code> i dataene) under hvert forhold (<code>A</code> og <code>B</code> i dataene).</p>
 </section>
-<section id="krysstabulering-og-logistisk-regresjon" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="krysstabulering-og-logistisk-regresjon"><span class="header-section-number">9.2</span> Krysstabulering og logistisk regresjon</h2>
+<section id="paret-t-test" class="level3" data-number="9.1.2">
+<h3 data-number="9.1.2" class="anchored" data-anchor-id="paret-t-test"><span class="header-section-number">9.1.2</span> Paret t-test</h3>
+<p>Med data som er samlet inn som beskrevet over kan vi også bruke en <em>Paired Samples T-Test</em>. Isteden for å beregne forskjell mellom to forhold gir vi Jamovi tallene fra hvert forhold. I <a href="data/ttest_data_paret.csv">datasettet</a> må vi fortsatt regne ut en forandringskår i hvert forhold (<code>pre</code> og <code>post</code> i dataene). Her tester vi den samme nullhypotesen som beskrevet over. Nullhypotesen sier det ikke er en forskjell mellom forandringskårene i de to forholdene (<a href="#fig-ttests">Figur&nbsp;<span>9.1</span></a>).</p>
 </section>
-<section id="anova-og-ancova" class="level2" data-number="9.3">
-<h2 data-number="9.3" class="anchored" data-anchor-id="anova-og-ancova"><span class="header-section-number">9.3</span> ANOVA og ANCOVA</h2>
+<section id="uavhengig-t-test" class="level3" data-number="9.1.3">
+<h3 data-number="9.1.3" class="anchored" data-anchor-id="uavhengig-t-test"><span class="header-section-number">9.1.3</span> Uavhengig t-test</h3>
+<p>I en <em>Independent Samples T-Test</em> har vi to grupper som sammenlignes. Her er antagelsen at dataene inneholder uavhengige observasjoner, en deltaker kan ikke være i begge forholdene. Vi kan fortsatt teste en nullhypotese som dreier seg om forandringskårer, på den måten kan vi bruke en t-test for å testet “repeterte data”. I datasettet som du finner <a href="data/ttest_data_uparet.csv">her</a> finner vi en gruppevariabel. Vi kan teste mot nullhypotesen at forandringskårene er like i de to gruppene.</p>
+</section>
+</section>
+<section id="one-vs.-two-tailed-tests" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="one-vs.-two-tailed-tests"><span class="header-section-number">9.2</span> One vs.&nbsp;two-tailed tests</h2>
+<p>I Jamovi velger vi mellom en <em>one-tailed</em> og en <em>two-tailed</em> test. I en <em>two-tailed</em> t-test plasserer vi den kritiske regionen, der hvor vi forkaster nullhypotesen, sånn at 2.5% den teoretiske utvalgsfordelingen finnes utenfor den i hver hale av fordelingen (hvis feilraten for type I feil settes til 5%, se <a href="#fig-ttests">Figur&nbsp;<span>9.1</span></a>, “Two-tailed” t-test). Til sammen har vi den samme feilraten (5%) som en “one-tailed” t-test men vi lar testen ta høyde for at forskjellen kan være både negativ og positiv. En <em>one-tailed</em> test innebærer en “rettningshypotese”, vi tenker oss at forskjellen enten kan være positiv eller negativ. Vi plasserer derfor 5% av den teoretiske utvalgsfordelingen i en hale av fordelingen, i den retting vi forventer effekten (se <a href="#fig-ttests">Figur&nbsp;<span>9.1</span></a>, “One-tailed” t-test).</p>
+<p>Hvis vi har en situasjon hvor forventer en positiv effekt, for eksempel vet vi at styrketrening vil gi økt muskelstyrke, så vil det å bruke en <em>one-tailed</em> test være mindre konservativt sammenlignet med en to-tailed test. T-verdien som beregnes i testen må bli tilstrekkelig stor til å nå den kritiske regionen i den ovre halen av fordelingen, i en one-tailed test er denne regionen 5%, i en two tailed test er den bare 2.5% (igjenn, gitt at vi setter risiko for type 1 feil til 5%).</p>
+<p>I Jamovi er denne mekanismen implementert under <em>Hypothesis</em>, noe som indikerer den alternative hypotesen. Under Paired-samples t-test indikeres en two-tailed tests som <span class="math inline">\(\text{Measure 1}\neq\text{Measure 2}\)</span>, mens en one-tailed test indikeres som <span class="math inline">\(\text{Measure 1}&gt;\text{Measure 2}\)</span> eller <span class="math inline">\(\text{Measure 1}&lt;\text{Measure 2}\)</span>.</p>
+</section>
+<section id="flere-valgmuligheter" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="flere-valgmuligheter"><span class="header-section-number">9.3</span> Flere valgmuligheter</h2>
+<p>I en Jamovi gir t-test-menyen oss flere valgmuligheter. Under <em>Additional statistics</em> kan vi legge til gjennomsnittlig differens med konfidensintervall (mellom forhold, grupper eller fra referanseverdien). Vi kan også beregne effektstørrelsen som Cohen’s <em>d</em>.</p>
+<p>Under <em>Assumption check</em> kan vi teste for normalfordeling av residualene, en beregning som gjøres fra en regresjonsmodell tilsvarende T-testen. Denne testen henger sammen med valgmuligheten <em>Q-Q plot</em> som gir en grafisk fremstilling av hvor nærme residualene faller normalfordelingen. Vi kan også, når vi gjennomfører en <em>Independent samples T-Test</em> teste for lik varians mellom gruppene (data varierer like mye fra gjennomsnitt i gruppene), noe som er en forutsetning for den “vanlige” T-testen. Disse “testene” er en type hypotesetest hvor nullhypotesen er at residualene er normalfordelt eller at variansen er like. Når p-verdien i disse testene er lav indikerer dette brudd på antagelsen.</p>
+<p>Når vi ikke kan si at vi tror på antaglesen om lik varians mellom gruppene kan vi bruke en <em>Welch’s</em> som er en modifisert versjon av T-testen som tar høyde for ulik varians. I Jamovi kan vi velge <em>Welch’s</em> under <em>Tests</em> for å bruke denne testen. Welch’s T-test er faktisk den foretrukkne testen til tross for at dette ikke er standard i Jamovi. Når vi har lik variasjon i gruppene gir en “vanlig” (Student’s) T-Test de samme resultatene som Welch’s T-test.</p>
+<div class="cell" data-hash="04-jamovi_cache/html/fig-ttests_a790ffdbfecf218b28cdbca368584038">
+<div class="cell-output-display">
+<div id="fig-ttests" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="04-jamovi_files/figure-html/fig-ttests-1.png" class="img-fluid figure-img" width="768"></p>
+<figcaption class="figure-caption">Figur&nbsp;9.1. Vi kan tenke oss flere muligheter for å bruke t-tester. En One-sample t-test og paired-sample t-test kan brukes for å teste den samme nullhypotesen i den samme dataene når vi forenkler datasettet. En independent samples t-test brukes for to-gruppe-design problemer, også her kan det være nødvendig å forenkle dataene. To-hale og en-hale tester gir os muligheten å spesifisere forskjellige alternative hypoteser.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: T-tester i Jamovi
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>A: Bruk <a href="data/ttest_data_paret.csv">datasettet for paret</a> data for å beregne en <em>One-sample t-test</em></p>
+<p>B: Bruk <a href="data/ttest_data_paret.csv">datasettet for paret</a> data for å beregne en <em>Two-sample t-test</em></p>
+<p>C: Bruk <a href="data/ttest_data_uparet.csv">datasettet for uparet</a> for å beregne en <em>Independent samples T-test</em></p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Svar: T-tester i Jamovi
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<section id="oppgave-a" class="level4" data-number="9.3.0.1">
+<h4 data-number="9.3.0.1" class="anchored" data-anchor-id="oppgave-a"><span class="header-section-number">9.3.0.1</span> Oppgave A</h4>
+<p>En One sample t-test krever en rekke med tall og en referanseverdi. I datasettet har vi tall fra to tester (<code>pre</code> og <code>post</code>) per forhold (<code>A</code> og <code>B</code>) innhentet for 20 deltakere. Vi må forenkle datasettet til en kolonne med tall fra disse 20 deltakerne. Vi beregner</p>
+<p><span class="math display">\[\text{A} = \text{A}_{\text{post}} - \text{B}_{\text{pre}}\]</span> <span class="math display">\[\text{B} = \text{B}_{\text{post}} - \text{B}_{\text{pre}}\]</span> <span class="math display">\[\text{Diff} = \text{A} - \text{B}\]</span> Nullhypotesen som gis av studiedesignet er at forskjellen mellom A og B er 0. Vi kan teste dette i Jamovi ved å bruke <span class="math inline">\(\text{Diff}\)</span> som variabel i en <em>One-sample t-test</em>. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi.</p>
+<p><img src="img/04-jamovi/onesample.gif" class="img-fluid"></p>
+</section>
+<section id="oppgave-a-1" class="level4" data-number="9.3.0.2">
+<h4 data-number="9.3.0.2" class="anchored" data-anchor-id="oppgave-a-1"><span class="header-section-number">9.3.0.2</span> Oppgave A</h4>
+<p>I en paret t-test (<em>Paired Samples T-Test</em>) kan vi teste den samme nullhypotesen som i en <em>One sample T-Test</em>. Men isteden for å beregne differensen mellom to forhold gir vi variablene <span class="math inline">\(A\)</span> og <span class="math inline">\(B\)</span> til Jamovi. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi. Legg merke til at resultater fra begge analyse er de samme!</p>
+<p><img src="img/04-jamovi/pairedsample.gif" class="img-fluid"></p>
+</section>
+<section id="oppgave-c" class="level3" data-number="9.3.1">
+<h3 data-number="9.3.1" class="anchored" data-anchor-id="oppgave-c"><span class="header-section-number">9.3.1</span> Oppgave C</h3>
+<p>Vi bruker samme strategi som i tidligere datasett og forenkler problemet. Vi beregner forandringsskår mellom tidspunkter (<code>pre</code> og <code>post</code>) for hver deltaker i hver gruppe. Vi kan så teste nullhypotesen at forandringsskårene er like i de to gruppene. I illustrasjonen under ser vi hvordan vi kan gjøre dette i Jamovi.</p>
+<p><img src="img/04-jamovi/independentsample.gif" class="img-fluid"></p>
+</section>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="statistisk-styrke" class="level2" data-number="9.4">
+<h2 data-number="9.4" class="anchored" data-anchor-id="statistisk-styrke"><span class="header-section-number">9.4</span> Statistisk styrke</h2>
+<p>I Jamovi kan vi beregne statistisk styrke for alle type av T-tester. For å gjøre det trenger vi en ekstra modul som vi finner under <em>Modules</em> i menyen. Trykk på <em>Modules</em> og installer <strong>jpower</strong>. Når modulen er installert vil du finne den blant dine andre analysemoduler under <em>Analyses</em>.</p>
+<p>La oss si at vi ønsker å planlegge en studie hvor den minste effektstørrelsen som er av interesse er 0.3. Designet er lagd sånn at vi sammenligner to uavhengige grupper. Vi ønsker også at studien skal ha en statistisk styrke på 0.8 og en signifikansnivå på 0.05. Dette betyr at vid repeterte studier så ønsker vi å finne effekten, hvis den finnes, i minst 80% av studiene. Samtidig ønsker vi å holde risikoen for å gjøre en type 1 feil til 5%. Hvor mange deltakere trenger vi, i hver gruppe for å oppnå dette? Vi kan bruke Jamovi for å beregne dette.</p>
+<p>Vi velger en lempelig statistisk test, legger inn de parameterer som vi spesifisert, og voila! Vi får svaret.</p>
+<p><img src="img/04-jamovi/power.gif" class="img-fluid"></p>
+<p>I eksemplet ser vi at 176 deltakere i hver gruppe er nødvendig for å oppnå en statistisk styrke på 0.8 gitt en effektstørrelse på 0.3 og type-1 feilrate på 5%.</p>
 
 
 </section>
