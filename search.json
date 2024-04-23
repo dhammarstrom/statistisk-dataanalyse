@@ -371,6 +371,34 @@
     "text": "10.5 Paragrafer\nEn tekst kan deles opp i mindre stykker som kan sies være verktøy for å formidle dit budskap til leseren. En viktig bestanddel i en tekst er paragrafer. En paragraf starter med en setning som beskriver paragrafens tema, emne eller hensikt. Dette kan være et utsagn som for eksempel «laks er en fisk som er nyttig å spise». Temasetning følges av en eller flere setninger som gir støtte til påstanden eller temaet for paragrafen. En støttesetning kan være «Laksen inneholder mye nyttige fettsyrer samtidig som den er proteinrik». Til sist avsluttes paragrafen med en overgangssetning som ledere leseren videre til neste paragraf. En overgangssetning kan være «Laks kan derfor være del i et sundt kosthold som bidrar til god muskelhelse sammen med andre proteinrike livsmiddel». Den siste setningen, en overgangssetning kan konkludere noe samtidig som det ledere leseren in på neste tema (muskelhelse og proteinrike livsmiddel i dette eksemplet).\nEn tekst kan gis struktur gjennom att du starter nye paragrafer når du introduserer nye temaer. Hver paragraf kan bearbeides får å gis en viss grad av selvstendighet. Dette gir deg mulighet å flytte rundt paragrafer får å gi din tekst en logisk rekkefølge. Du kan og bruke paragrafer får å begrense din tekst. Gi deg selv en begrenset plass for å formidle noe, la oss si tre paragrafer for å skrive en introduksjon. Lag en liste over hva hver paragraf skal formidle (tema), sett opp noen punkter som er til støtte for ditt tema og lag til sist et punkt som beskriver hvordan du konkluderer paragrafen og hvordan den ledere leseren videre. Du har nå strukturert dine paragrafer, og derved også din tekst."
   },
   {
+    "objectID": "06-sammenligne-gjennomsnitt.html#studiedesignet",
+    "href": "06-sammenligne-gjennomsnitt.html#studiedesignet",
+    "title": "12  Sammenligne gjennomsnitt",
+    "section": "12.1 Studiedesignet",
+    "text": "12.1 Studiedesignet\nStudiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (“treatment”) eller en kontrollgruppe (“control”). De to gruppene blir målt i forkant av en intervensjonsperiode (baseline) og etter intervensjonsperioden (post).\n\n\n\n\n\nStudiedesignet"
+  },
+  {
+    "objectID": "06-sammenligne-gjennomsnitt.html#datasett",
+    "href": "06-sammenligne-gjennomsnitt.html#datasett",
+    "title": "12  Sammenligne gjennomsnitt",
+    "section": "12.2 Datasett",
+    "text": "12.2 Datasett\nDatasettene finner dere her\nD1\nD2\nD3\nD4\nD5\nD6"
+  },
+  {
+    "objectID": "06-sammenligne-gjennomsnitt.html#analyse",
+    "href": "06-sammenligne-gjennomsnitt.html#analyse",
+    "title": "12  Sammenligne gjennomsnitt",
+    "section": "12.3 Analyse",
+    "text": "12.3 Analyse\n\nBeregne en forandringsskår\nBeregn beskrivende statistikk for hver gruppe\nSammenligne gruppene med en t-test\nTrekk konklusjoner basert på resultatet av t-testen\nRapportert resultatet av studien i en figur på whiteboard"
+  },
+  {
+    "objectID": "06-sammenligne-gjennomsnitt.html#metaanalyse",
+    "href": "06-sammenligne-gjennomsnitt.html#metaanalyse",
+    "title": "12  Sammenligne gjennomsnitt",
+    "section": "12.4 Metaanalyse",
+    "text": "12.4 Metaanalyse\n\nLast ned MAJOR i Jamovi,\nSett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)\nHva er konklusjonen om effekten av intervensjonen basert på metaanalysen?"
+  },
+  {
     "objectID": "references.html",
     "href": "references.html",
     "title": "Referanser",
