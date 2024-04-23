@@ -1,0 +1,185 @@
+# Sammenligne gjennomsnitt
+
+Når vi gjennomfører en studie samler vi et datasett med observasjoner. Denne ene datainnsamlingen gir oss det et bilde av effekten vi ønsker å estimere. 
+
+Hensikten med øvelsen er simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.
+
+I del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi. 
+
+Øvelsen kan gjennomføres i grupper om 2-4 deltakere. 
+
+## Studiedesignet
+
+Studiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (*"treatment"*) eller en kontrollgruppe (*"control"*). De to gruppene blir målt i forkant av en intervensjonsperiode (*baseline*) og etter intervensjonsperioden (*post*).
+
+```{r}
+#| fig-cap: Studiedesignet
+#| fig-width: 6
+#| fig-height: 3
+#| echo: false
+#| warning: false
+#| message: false
+
+library(tidyverse)
+
+
+data.frame(x = c(0,1), 
+           y = c(0,1)) %>%
+  ggplot(aes(x,y)) + theme_void() +
+  
+  scale_y_continuous(limits = c(0,0.6)) +
+  scale_x_continuous(limits = c(0,1)) +
+  
+  annotate("text", x = 0.1, y = 0.5, label = "Randomisering", size = 5) +
+  annotate("text", x = 0.35, y = 0.5, label = "Baseline", size = 5) +
+  annotate("text", x = 0.85, y = 0.5, label = "Post", size = 5) +
+  
+  annotate("segment", 
+           x = c(0.05,
+                 0.05,
+                 0.3, 
+                 0.3), 
+           xend = c(0.3, 
+                    0.3, 
+                    0.8, 
+                    0.8), 
+           y = c(0.3,
+                 0.3, 
+                 0.2, 
+                 0.4), 
+           yend = c(0.2, 
+                    0.4, 
+                    0.2, 
+                    0.4)) +
+  annotate("point", 
+           shape = 21, fill = "black",
+           size = 4, x = c(0.3,0.8), y = c(0.4, 0.4)) +
+  
+  annotate("point", 
+           shape = 21, fill = "white",
+           size = 4, x = c(0.3,0.8), y = c(0.2, 0.2)) +
+  
+  annotate("text", label = "treatment", x = 0.15, y = 0.37,
+           angle = 20,
+           size = 5) +
+  annotate("text", label = "control", x = 0.15, y = 0.23,
+           angle = -20,
+           size = 5)
+  
+
+
+
+
+
+
+
+```
+
+
+
+
+
+
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+
+library(tidyverse)
+set.seed(1)
+
+#' Simulate two group data from a population
+#' n, sample size in each group
+#' beta, true difference between the groups in post treattment
+#' m, true mean in control group and baseline
+#' s, true standard deviation in control group and baseline
+#' measure_error, standard deviation of the measurement error
+
+
+two_groups <- function(n = 5, beta = 2, m = 50, s = 5, measure_error = 1){
+  dat <- data.frame(id = seq(from = 1, to = 2*n, by = 1), 
+                    group = rep(c("control", "treatment"), each = n),
+             baseline = c(rnorm(n, m, s), rnorm(n, m, s))) %>%
+    
+    mutate(post = case_when(group == "control" ~ baseline + rnorm(n, 0, measure_error),
+                            group == "treatment" ~ baseline + rnorm(n, beta, measure_error)))
+}
+
+
+
+
+set.seed(1)
+
+
+
+d1 <- two_groups(n = 5,  beta = 2, m = 50, s = 8, measure_error = 1)
+d2 <- two_groups(n = 15, beta = 2, m = 46, s = 8, measure_error = 4)
+d3 <- two_groups(n = 63, beta = 2, m = 42, s = 9, measure_error = 4)
+d4 <- two_groups(n = 7,  beta = 2, m = 46, s = 7, measure_error = 3)
+d5 <- two_groups(n = 9,  beta = 2, m = 50, s = 9, measure_error = 2)
+d6 <- two_groups(n = 12, beta = 2, m = 46, s = 5, measure_error = 1)
+
+
+write_csv2(d1, "data/sammenligne_gjennmsnitt1.csv")
+write_csv2(d2, "data/sammenligne_gjennmsnitt2.csv")
+write_csv2(d3, "data/sammenligne_gjennmsnitt3.csv")
+write_csv2(d4, "data/sammenligne_gjennmsnitt4.csv")
+write_csv2(d5, "data/sammenligne_gjennmsnitt5.csv")
+write_csv2(d6, "data/sammenligne_gjennmsnitt6.csv")
+
+
+
+## Not run
+
+comb_dat <- bind_rows(mutate(d1,ds = "d1"), 
+          mutate(d2,ds = "d2"),
+          mutate(d3,ds = "d3"),
+          mutate(d4,ds = "d4"),
+          mutate(d5,ds = "d5"),
+          mutate(d6,ds = "d6")) %>%
+  mutate(change = post - baseline) 
+
+
+
+
+
+
+```
+
+
+## Datasett
+
+Datasettene finner dere her
+
+[D1](data/sammenligne_gjennmsnitt1.csv)
+[D2](data/sammenligne_gjennmsnitt2.csv)
+[D3](data/sammenligne_gjennmsnitt3.csv)
+[D4](data/sammenligne_gjennmsnitt4.csv)
+[D5](data/sammenligne_gjennmsnitt5.csv)
+[D6](data/sammenligne_gjennmsnitt6.csv)
+
+## Analyse
+
+- Beregne en forandringsskår
+- Sammenligne gruppene med en t-test
+- Rapportert resultatet av studien i en figur på whiteboard
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+
+
+
+

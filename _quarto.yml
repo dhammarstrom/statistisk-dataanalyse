@@ -28,6 +28,9 @@ book:
       chapters: 
         - 05-formidling.qmd
         - 05-jamovi.qmd
+    - part: 06-a-intro.qmd
+      chapters:
+        - 06-sammenligne-gjennomsnitt.qmd
     - references.qmd
 
 toc-title: Innhold
