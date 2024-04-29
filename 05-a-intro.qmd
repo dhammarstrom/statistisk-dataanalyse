@@ -1,1 +1,5 @@
 # Presentere og lese statistiske analyser
+
+I denne modulen skal vi snakke om hvordan vi presterer og leser statistiske analyser. I pensum [@thrane_2020] finner dere en presentasjon av stoffet som kobler sammen det å lese og presentere. I notatene som du nå leser fokuserer vi på organiseringen av et analyseprosjekt og hvordan vi kan bruke Jamovi i en arbeidsflyt for reproduserbare analyser. 
+
+

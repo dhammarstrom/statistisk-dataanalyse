@@ -1,8 +1,13 @@
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
 # Sammenligne gjennomsnitt
 
 Når vi gjennomfører en studie samler vi et datasett med observasjoner. Denne ene datainnsamlingen gir oss det et bilde av effekten vi ønsker å estimere. 
 
-Hensikten med øvelsen er simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.
+Hensikten med øvelsen er å simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.
 
 I del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi. 
 
@@ -114,12 +119,12 @@ set.seed(1)
 
 
 
-d1 <- two_groups(n = 5,  beta = 2, m = 50, s = 8, measure_error = 1)
-d2 <- two_groups(n = 15, beta = 2, m = 46, s = 8, measure_error = 4)
-d3 <- two_groups(n = 63, beta = 2, m = 42, s = 9, measure_error = 4)
-d4 <- two_groups(n = 7,  beta = 2, m = 46, s = 7, measure_error = 3)
-d5 <- two_groups(n = 9,  beta = 2, m = 50, s = 9, measure_error = 2)
-d6 <- two_groups(n = 12, beta = 2, m = 46, s = 5, measure_error = 1)
+d1 <- two_groups(n = 5,  beta = 2, m = 50, s = 10, measure_error = 2)
+d2 <- two_groups(n = 15, beta = 2, m = 46, s = 10, measure_error = 4)
+d3 <- two_groups(n = 63, beta = 2, m = 42, s = 10, measure_error = 5)
+d4 <- two_groups(n = 7,  beta = 2, m = 46, s = 10, measure_error = 5)
+d5 <- two_groups(n = 9,  beta = 2, m = 50, s = 10, measure_error = 2)
+d6 <- two_groups(n = 12, beta = 2, m = 46, s = 10, measure_error = 1.9)
 
 
 write_csv2(d1, "data/sammenligne_gjennmsnitt1.csv")
@@ -139,9 +144,45 @@ comb_dat <- bind_rows(mutate(d1,ds = "d1"),
           mutate(d4,ds = "d4"),
           mutate(d5,ds = "d5"),
           mutate(d6,ds = "d6")) %>%
-  mutate(change = post - baseline) 
+  mutate(change = post - baseline, 
+         group = factor(group, levels = c("treatment", "control")))
 
 
+datasets <- distinct(comb_dat, ds) %>%
+  pull(ds)
+
+
+resdf <- list()
+
+for(i in 1:length(datasets)){
+  dat <- filter(comb_dat, ds == datasets[i])
+  
+  res <- t.test(dat$change ~ dat$group, paired = FALSE)
+  
+  resdf[[i]] <- data.frame(t.val = res$statistic, 
+             p.val = res$p.value, 
+             estimate = res$estimate[1] - res$estimate[2],
+             ci.lower = res$conf.int[1],
+             ci.upper = res$conf.int[2],
+             n = nrow(dat),
+             ds = datasets[i], 
+             row.names = NULL)
+  
+  
+}
+
+
+# 
+# bind_rows(resdf) %>%
+#   mutate(ds = paste(ds, ", n =", n)) %>%
+#   ggplot(aes(x = ds, y = estimate)) +
+#   geom_point() + 
+#   geom_errorbar(aes(ymin = ci.lower, ymax = ci.upper)) + 
+#   geom_hline(yintercept = 0, linetype = "dashed") + 
+#   theme_classic() + 
+#   theme(axis.text.x = element_text()) + labs(y = "Estimate of change", x = "Dataset") + 
+#   coord_flip()
+# 
 
 
 
@@ -154,17 +195,33 @@ comb_dat <- bind_rows(mutate(d1,ds = "d1"),
 Datasettene finner dere her
 
 [D1](data/sammenligne_gjennmsnitt1.csv)
+
 [D2](data/sammenligne_gjennmsnitt2.csv)
+
 [D3](data/sammenligne_gjennmsnitt3.csv)
+
 [D4](data/sammenligne_gjennmsnitt4.csv)
+
 [D5](data/sammenligne_gjennmsnitt5.csv)
+
 [D6](data/sammenligne_gjennmsnitt6.csv)
 
 ## Analyse
 
 - Beregne en forandringsskår
+- Beregn beskrivende statistikk for hver gruppe
 - Sammenligne gruppene med en t-test
+- Trekk konklusjoner basert på resultatet av t-testen
 - Rapportert resultatet av studien i en figur på whiteboard
+
+## Metaanalyse
+
+- Last ned MAJOR i Jamovi, 
+- Sett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)
+- Hva er konklusjonen om effekten av intervensjonen basert på metaanalysen?
+
+
+
 
 
 

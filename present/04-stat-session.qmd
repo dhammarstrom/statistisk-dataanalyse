@@ -75,22 +75,6 @@ editor_options:
 
 
 
-```{r}
-
-
-
-## Function for creating a two group study 
-
-
-two_group_study <- function(n, beta, sigma 
-
-
-
-
-
-
-```
-
 
 
 

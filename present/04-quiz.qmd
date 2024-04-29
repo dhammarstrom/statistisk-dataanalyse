@@ -134,6 +134,9 @@ Hva er den nedre grensen for et 95% konfidensintervallet som du kan beregne ved 
 
 ## Spørsmål 7: Konfidensintervall
 
+Hva sier konfidensintervallet om nullhypotesen fra analysen av FN-dataene i Thrane (2020)?
+
+
 ```{r}
 #| echo: false
 #| warning: false
@@ -209,18 +212,32 @@ Du ønsker å undersøke effekten av to forskjellige treningsprogrammer på maks
 
 ## Spørsmål 9: Gjennomfør en analyse
 
+
+
 Vi har nå samlet inn dataene! Åpne filen `ronnestad-2021-vo2max.xlsx` i jamovi. Gjennomfør en t-test (Independent samples students t-test) mellom gruppene (LI og SI) på en ny variabel som beregnes som forskjell mellom pre og post (post - pre). Angi p-verdien med tre desimaler.
 
 
+
+
+
+::: {.fragment}
 > p = 0.019
+
+:::
+
+
+
 
 ## Spørsmål 10: Typisk utvalgsstørrelse
 
 Utvalgsstørrelsen i ronnestad-2021-vo2max.xlsx er liten. Hvilken statistisk styrke kan du forvente for lignende studier (effektstørrelse: 0.8, risiko for type 1 feil: 5%, antall deltakere per gruppe: 8)?
 
+
+::: {.fragment}
+
 > 0.32!
 
-
+:::
 
 
 
