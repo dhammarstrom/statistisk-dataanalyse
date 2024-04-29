@@ -242,7 +242,7 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-jamovi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">05-jamovi.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></span></a>
   </div>
 </li>
       </ul>
@@ -287,14 +287,14 @@ div.csl-indent {
   <li><a href="#presentere-statistiske-analyser" id="toc-presentere-statistiske-analyser" class="nav-link" data-scroll-target="#presentere-statistiske-analyser"><span class="header-section-number">10.1</span> Presentere statistiske analyser</a></li>
   <li><a href="#beskrive-analyser-i-metode" id="toc-beskrive-analyser-i-metode" class="nav-link" data-scroll-target="#beskrive-analyser-i-metode"><span class="header-section-number">10.2</span> Beskrive analyser i metode</a></li>
   <li><a href="#lese-statistiske-analyser" id="toc-lese-statistiske-analyser" class="nav-link" data-scroll-target="#lese-statistiske-analyser"><span class="header-section-number">10.3</span> Lese statistiske analyser</a></li>
-  <li><a href="#vitenskapelige-skriving-en-strukturert-rapport" id="toc-vitenskapelige-skriving-en-strukturert-rapport" class="nav-link" data-scroll-target="#vitenskapelige-skriving-en-strukturert-rapport"><span class="header-section-number">10.4</span> Vitenskapelige skriving: En strukturert rapport</a>
+  <li><a href="#sec-rapport" id="toc-sec-rapport" class="nav-link" data-scroll-target="#sec-rapport"><span class="header-section-number">10.4</span> Vitenskapelige skriving: En strukturert rapport</a>
   <ul class="collapse">
   <li><a href="#introduksjon" id="toc-introduksjon" class="nav-link" data-scroll-target="#introduksjon"><span class="header-section-number">10.4.1</span> Introduksjon</a></li>
   <li><a href="#metode" id="toc-metode" class="nav-link" data-scroll-target="#metode"><span class="header-section-number">10.4.2</span> Metode</a></li>
   <li><a href="#resultat" id="toc-resultat" class="nav-link" data-scroll-target="#resultat"><span class="header-section-number">10.4.3</span> Resultat</a></li>
   <li><a href="#diskusjon" id="toc-diskusjon" class="nav-link" data-scroll-target="#diskusjon"><span class="header-section-number">10.4.4</span> Diskusjon</a></li>
+  <li><a href="#paragrafer" id="toc-paragrafer" class="nav-link" data-scroll-target="#paragrafer"><span class="header-section-number">10.4.5</span> Paragrafer</a></li>
   </ul></li>
-  <li><a href="#paragrafer" id="toc-paragrafer" class="nav-link" data-scroll-target="#paragrafer"><span class="header-section-number">10.5</span> Paragrafer</a></li>
   </ul>
 </nav>
     </div>
@@ -318,13 +318,14 @@ div.csl-indent {
 
 </header>
 
-<p>Vi har allerede snakket om hvordan et analyseprosjekt kan organiseres i den første modulen så utgangspunktet for diskusjonen her blir en repetisjon. Et analyseprosjekt bør være <strong>reproduserbart</strong>, dette betyr at all informasjon som kreves for å gjenskape analyseresultatene bør finnes sammen med den rapport du lager. Prosjektet du arbeider på bør også være <strong>transparent</strong> noe som gjør at det bør følge med detaljerte beskrivninger av hvorfor og hvordan man valgt å lage analysen på en gitt måte.</p>
-<p>Vi løser begge disse kravene ved å skape en struktur for dataanalysen. I notatene fra den første modulen leser vi at vi lager analysen som en isolert mappe. Denne mappen inneholder alle deler som kreves for å lese en reproduserbar og transparent analyse, rapporten er bare en del. I rapporten er det fullt mulig at du ikke har plass till å beskrive hele din analyse. Men i mappen så bør disse beskrivelser være med. I din analysemappe finner vi:</p>
+<p>Vi har allerede snakket om hvordan et analyseprosjekt kan organiseres i den første modulen så utgangspunktet for diskusjonen her blir en repetisjon. Et analyseprosjekt bør være <em>reproduserbart</em>, dette betyr at all informasjon som kreves for å gjenskape analyseresultatene bør finnes sammen med den rapport du lager. Prosjektet du arbeider på bør også være <em>transparent</em> noe som gjør at det bør følge med detaljerte dokumentasjon av hvorfor og hvordan man valgt å lage analysen på en gitt måte.</p>
+<p>Vi løser begge disse kravene ved å skape en struktur for dataanalysen. I notatene fra den første modulen leser vi at vi lager analysen som en isolert mappe. Denne mappen inneholder alle deler som kreves for å lese en reproduserbar og transparent analyse, rapporten er bare en del. I rapporten er det fullt mulig at du ikke har plass til å beskrive hele din analyse. Men i mappen så bør disse beskrivelser være med. I din analysemappe finner vi:</p>
 <ul>
-<li>Rådata: Data som er urørt etter det at man matet inn eller innhentet den i forskjellige programmer osv.</li>
-<li>Delvis bearbeidet data: Data som er organisert for data analyse</li>
-<li>Analysefiler: Filer som er kan lese til eks. Jamovi og inneholder analyser av din data</li>
-<li>Rapporter og figurer: Disse er sluttprodukter av deres arbeid, disse kan settes sammen til eks. en bachelor-oppgave.</li>
+<li><strong>Rådata</strong>: Data som er urørt etter det at man matet inn eller innhentet den i forskjellige programmer osv.</li>
+<li><strong>Delvis bearbeidet data</strong>: Data som er organisert for data analyse</li>
+<li><strong>Analysefiler</strong>: Filer som er kan lese til eks. Jamovi og inneholder analyser av din data</li>
+<li><strong>Rapporter og figurer</strong>: Disse er sluttprodukter av deres arbeid, disse kan settes sammen til for eksempel en bachelor-oppgave.</li>
+<li><strong>Readme</strong>: En fil som beskriver innholdet i mappen. Denne filen er beskrivelse av hele analyseprosjektet og bør inneholde en kort beskrivelse av bakgrunn og hensikt med prosjektet samt beskrivelser av hvordan mappen er organisert. Her kan vi beskrive hva de forskjellige filene inneholder og hva vi ønsker å oppnå med de.</li>
 </ul>
 <section id="rådata-og-bearbeidet-data" class="level3" data-number="10.0.1">
 <h3 data-number="10.0.1" class="anchored" data-anchor-id="rådata-og-bearbeidet-data"><span class="header-section-number">10.0.1</span> Rådata og bearbeidet data</h3>
@@ -333,36 +334,40 @@ div.csl-indent {
 <section id="analysefiler" class="level3" data-number="10.0.2">
 <h3 data-number="10.0.2" class="anchored" data-anchor-id="analysefiler"><span class="header-section-number">10.0.2</span> Analysefiler</h3>
 <p>I jamovi er det mulig å spare analysefiler som inneholder data og statistiske analyser. Hvis du bruker et datasett for flere analyser finnes det en risiko for at analysefilene krever mye av din PC. Det er da en god ide å bruke flere forskjellige analysefiler for bestemte underanalyser.</p>
-<p>Et eksempel på en sånn oppdeling kan være at en første analysefil inneholder deskriptiv analyse av datasettet. Vi navngir denne filen med et beskrivende navn, eksempelvis <strong>deskriptiv-data-analyse.omv</strong>. Her begrenser vi oss til å skape en tabell som beskriver variabler i datasettet som i sin tur beskriver vårt utvalg. I en den neste filen bruker vi statistisk inferens får å besvare problemstillingen i studien, for eksempel, hvilken treningsmodell er best for å utvikle styrke. Denne analysen bygger på sammenligninger, vi navngir file <strong>sammenligninger-grupper-analyse.omv</strong>. I en siste fil lager vi noen figurer og</p>
+<p>Et eksempel på en sånn oppdeling kan være at en første analysefil inneholder deskriptiv analyse av datasettet. Vi navngir denne filen med et beskrivende navn, eksempelvis <code>deskriptiv-data-analyse.omv</code>. Her begrenser vi oss til å skape en tabell som beskriver variabler i datasettet som i sin tur beskriver vårt utvalg. I en den neste filen bruker vi statistisk inferens får å besvare problemstillingen i studien, for eksempel, hvilken treningsmodell er best for å utvikle styrke. Denne analysen bygger på sammenligninger, vi navngir filen <code>sammenligninger-grupper-analyse.omv</code>. Ved å bruke forskjellige filer for forskjellige deler i analysearbeidet gjør det lettere å finne frem når du ønsker å forandre eller reprodusere en analyse. Det gjør det også letter å beskrive analysen for andre.</p>
 </section>
 <section id="rapporter-og-figurer" class="level3" data-number="10.0.3">
 <h3 data-number="10.0.3" class="anchored" data-anchor-id="rapporter-og-figurer"><span class="header-section-number">10.0.3</span> Rapporter og figurer</h3>
-<p>En rapport kan være i formen av en BA-oppgave eller en presentasjon. Når rapporten er et dokument som fremst skal leses bør den skrives deretter. Vi har tidligere snakket om dette, hvis du ønsker å lese dette igjen finner du teksten gjengitt her under.</p>
-<p>For å gi større muligheter til å forandre deler i rapporten bør figurer og tabeller holdes adskilte helt til rapporten skal settes sammen for innlevering eller publisering. Lag figurer som separate filer (se under for et forslag på arbeidsflyt). Lag tabeller i et eget dokument.</p>
+<p>En rapport i denne sammenhengen kan for eksempel være i formen av en BA-oppgave, en presentasjon eller et sammendrag. Hensikten med rapporten er å kommunisere en analyse til et publikum. Når rapporten er et dokument som fremst skal leses bør den skrives deretter. Vi har tidligere snakket om strukturen på en slik rapport, hvis du ønsker å lese dette igjen finner du teksten gjengitt her under (<a href="#sec-rapport"><span>10.4</span></a>).</p>
+<p>For å gi større muligheter til å forandre deler i rapporten så kan figurer og tabeller holdes adskilte helt til rapporten skal settes sammen for innlevering eller publisering. Lag figurer som separate filer (se under for et forslag på arbeidsflyt). Lag tabeller i et eget dokument.</p>
 <section id="et-arbeidsflyt-for-å-lage-figurer-i-jamovi" class="level4" data-number="10.0.3.1">
 <h4 data-number="10.0.3.1" class="anchored" data-anchor-id="et-arbeidsflyt-for-å-lage-figurer-i-jamovi"><span class="header-section-number">10.0.3.1</span> Et arbeidsflyt for å lage figurer i Jamovi</h4>
-<p>Jamovi har flere muligheter for å lage figurer. Men jamovi er begrenset når det kommer til å tilpasse figurer. Får å lage forandre elementer i en figur kan vi bruke f.eks. power-point og legge til tekst, forandre aksler eller farger osv. Her under følger en kort et eksempel:</p>
+<p>Jamovi har flere muligheter for å lage figurer. Men jamovi er begrenset når det kommer til å tilpasse figurer. Får å forandre elementer i en figur kan vi bruke for eksempel power-point og legge til tekst, forandre aksler eller farger osv. Her under følger en kort et eksempel:</p>
 <ol type="1">
-<li>Lag figuren i Jamovi. Her har du flere alternativer: Under “exploration” kan vi lage figurer som beskriver data basert på grupperinger og gjennomsnitt. Vi kan og laste inn nye moduler så som Flexplot og jjStatsPlot. Disse modulene har en bedre muligheter for å lage figurer. Når vi vel har laget en figur kan vi …</li>
-<li>Eksportere figurelementer. Dette kan gjøres ved å høyreklikk på figuren og velge copy i menyen som heter Image. Når du så limer inn i for eksempel power-point limer du inn en PNG-fil. Denne filen har noe lavere kvalitet. Hvis du istedenfor velger å eksportere som .SVG får du høyere kvalitet. Dra figuren (som du lagrer på din PC) inn i et nytt lysbilde i power point.</li>
-<li>Du kan nå velge å lage egne akseltekster, legge til forklarende tekst osv. Hvis du ønsker å ta vekk eller forandre deler av bildet kan du velge ved høyreklikk Grupper og Del opp gruppe. Denne operasjonen gir deg full kontroll over alle delene i grafen. Dessverre forsvinner teksten, du må legge inn den på nytt.</li>
-<li>Du har nå mulighet å lage en figur med flere paneler, noe som vil imponere sensorer!</li>
-<li>Endre størrelse. Før du er helt klar er det lurt å eksportere figuren i den størrelsen som du ønsker i rapporten. En kolonne med text i word har 16.51 cm bredde og ca 22 cm høyde. Hvis du lager en figur som holder seg innenfor disse målene blir dokumentet lettere o formattere. Under Utforming, velg Lysbildestørrelse og endre til ønsket størrelse.</li>
-<li>Eksporter figur. Fra power-point kan du eksportere figuren som flere formater. Du har mulighet å eksportere bilder som tiff-filer, disse vil ha høy kvalitet. Under Fil &gt; Eksporter, velg Endre filtype, trykk på Andre Filtyper og trykk på Lagre som. I neste meny, velg .tif under filtype.</li>
+<li>Lag figuren i Jamovi. Her har du flere alternativer: Under “exploration” kan vi lage figurer som beskriver data basert på grupperinger og gjennomsnitt. Vi kan og laste inn nye moduler så som Flexplot og jjStatsPlot. Disse modulene har bredere muligheter for å lage figurer. Når vi vel har laget en figur kan vi …</li>
+<li>Eksportere figurelementer. Dette kan gjøres ved å høyreklikk på figuren og velge copy i menyen som heter Image. Når du så limer inn i for eksempel power-point limer du inn en PNG-fil. Denne filen har noe lavere kvalitet. Hvis du istedenfor velger “export” kan du eksportere i formatet <code>.svg</code>, nå får du høyere kvalitet og mulighet for å editere figuren. Dra figuren (som du lagrer på din PC) inn i et nytt lysbilde i power point.</li>
+<li>Du kan nå velge å lage egne akseltekster, legge til forklarende tekst osv. Hvis du ønsker å ta vekk eller forandre deler av figuren kan du velge ved høyreklikk <em>Grupper</em> og <em>Del opp gruppe</em>. Denne operasjonen gir deg full kontroll over alle delene i grafen. Du har nå mulighet å lage en figur med flere paneler, noe som vil imponere sensorer!</li>
+<li>Endre størrelse. Før du er helt klar er det lurt å eksportere figuren i den størrelsen som du ønsker i rapporten. En kolonne med text i word har 16.51 cm bredde og ca 22 cm høyde. Hvis du lager en figur som holder seg innenfor disse målene blir dokumentet lettere å formatere. Under Utforming, velg Lysbildestørrelse og endre til ønsket størrelse.</li>
+<li>Eksporter figur. Fra power-point kan du eksportere figuren som flere formater. Du har mulighet å eksportere bilder som <code>.tif</code>-filer, disse vil ha høy kvalitet. Under Fil &gt; Eksporter, velg Endre filtype, trykk på Andre Filtyper og trykk på Lagre som. I neste meny, velg <code>.tif</code> under filtype.</li>
 <li>Lim inn i word ved å dra bildefilen til word-dokumentet.</li>
 </ol>
-<p>Hvis man ønsker enda mer kontroll for å redigere figurer kan en .svg-fil redigeres i <a href="https://inkscape.org/">Inkscape</a></p>
+<p>Hvis man ønsker enda mer kontroll for å redigere figurer kan en <code>.svg</code>-fil redigeres i <a href="https://inkscape.org/">Inkscape</a></p>
 </section>
 </section>
 <section id="les-meg" class="level3" data-number="10.0.4">
 <h3 data-number="10.0.4" class="anchored" data-anchor-id="les-meg"><span class="header-section-number">10.0.4</span> Les-meg!</h3>
-<p>Vi finner også en README-fil. Denne bør skrives i et format som kan leses av flest mulig, dette betyr at et word-dokument er på grensen da alle ikke har installert programvare som kan lese word. Et bedre alternativ er en .txt-fil. I README.txt kan vi beskrive prosjektet:</p>
+<p>En README-fil er en meget viktig komponent i et avansert analyseprosjekt. Denne filen bruker vi for å kommunisere med oss selve, medarbeidere og andre som ønsker å forstå hva analyseprosjektet går ut på. Denne bør skrives i et format som kan leses av flest mulig, dette betyr at et word-dokument er på grensen da alle ikke har installert programvare som kan lese for eksempel <code>.docx</code>. Et bedre alternativ er en <code>.txt</code>-fil. I <code>README.txt</code> kan vi beskrive prosjektet:</p>
 <pre><code>
 ## Tittel på prosjektet
-Her under følger et kort sammendrag av prosjektets bakgrunn, problemstilling, metode og konklusjoner. Det er ikke tanken at all informasjon finnes her men at leseren gis kontekst til hva som følger.
+Her under følger et kort sammendrag av prosjektets bakgrunn, 
+problemstilling, metode og konklusjoner. Det er ikke tanken
+at all informasjon finnes her men at leseren gis kontekst til
+hva som følger.
 
 ## Innhold i analysen
-Her under beskriver vi de filer og datasett som blir brukt i analysene. Beskrivelsene kan struktureres under de undermapper som de finnes i.
+Her under beskriver vi de filer og datasett som blir brukt i 
+analysene. Beskrivelsene kan struktureres under de undermapper 
+som de finnes i.
 
 - /data
     - datasett-01-deskriptiv-data.xlsx
@@ -380,9 +385,9 @@ Hver fil eller datasett kan beskrives i detalj under.
 
 </code></pre>
 </section>
-<section id="presentere-statistiske-analyser" class="level2" data-number="10.1">
+<section id="presentere-statistiske-analyser" class="level2 page-columns page-full" data-number="10.1">
 <h2 data-number="10.1" class="anchored" data-anchor-id="presentere-statistiske-analyser"><span class="header-section-number">10.1</span> Presentere statistiske analyser</h2>
-<p>En statistisk analyse bør presenteres til ditt publikum på en måte som gjør det klart hva din hensikt med presentasjonen er. Vi har i dette emnet forenklet snakket om presentasjoner som er deskriptive (beskrivende) og som har som hensikt å trekke slutninger om en populasjon basert på et utvalg (statistisk inferens). Vi kan legge til to kategorier her for en mer detaljert syn på statistisk inferens:</p>
+<p>En statistisk analyse bør presenteres til ditt publikum på en måte som gjør det klart hva din hensikt med presentasjonen er. Vi har i dette emnet forenklet snakket om presentasjoner som er deskriptive (beskrivende) og som har som hensikt å trekke slutninger om en populasjon basert på et utvalg (statistisk inferens). Begge kategoriene kan ha noen form av kobling til en analyse av årsakssammenhenger (kausal inferens). Vi kan legge til to kategorier her for en mer detaljert syn på statistisk inferens:</p>
 <ul>
 <li>En analyse kan bygge på hypotesetesting. En problemstilling formuleres i forkant av analysearbeidet, den statistiske analysen gir støtte eller forkaster en nullhypotese.</li>
 <li>En analyse kan være eksplorativ. Vi ønsker fortsatt å si noe om en populasjon basert på et utvalg, problemstillinger kan formuleres i forkant av analysen, men dataene er ikke nødvendigvis innsamlet med denne hensikten i tankene.</li>
@@ -390,11 +395,12 @@ Hver fil eller datasett kan beskrives i detalj under.
 <p>I begge er det meget viktig å beskrive hva som er <strong>avhengig variabel</strong>, hva er det du ønsker å beskrive eller trekke slutninger om? I tillegg til de variabler som kreves for å angripe din problemstilling finnes det muligens flere variabler som du bruker for å beskrive datasettet, utvalget eller populasjonen. Du bør gjøre det klart for ditt publikum hvordan disse henger sammen og hvorfor de presenteres.</p>
 <p>Det finnes flere guider for hvordan man presenterer statistiske resultater. En meget brukt guide er den som publiseres av American Psychological Association (APA), en forkortet versjon finner dere <a href="https://apastyle.apa.org/instructional-aids/numbers-statistics-guide.pdf">her</a>. Å følge en guide kan gi fordeler, men du bør også tenke på hva du ønsker å formidle. I eksemplet under beskriver vi forskjellen mellom grupper i utvalget og hva vi tror om forskjellen mellom grupper i populasjonen.</p>
 <blockquote class="blockquote">
-<p>SI oppviste en økning i VO<sub>2maks</sub> som var 281 ml <span class="math inline">\(\times\)</span> min<sup>-1</sup> større enn LI (95% KI: [53, 507], <em>t</em><sub>(15)</sub> = 2.64, <em>p</em> = 0.019).</p>
+<p>SI oppviste en økning i VO<sub>2maks</sub> som var 281 ml × min<sup>-1</sup> større enn LI (95% KI: [53, 507], <em>t</em><sub>(15)</sub> = 2.64, <em>p</em> = 0.019).</p>
 </blockquote>
-<p>Vi presenterer altså beskrivende statistikk hva gjelder utvalget sammen med konfidensintervaller og resultatet fra en t-test som gir en indikasjon på hva vi tror om gjennomsnittet i populasjonen ( konfidensintervall) og hvor sannsynlig det observerte resultatet eller et enda mer ekstremt resultat er hvis nullhypotesen er sann (<em>t</em> og <em>p</em>-verdier). Vi kan tenke oss å presentere ytterligere statistikker fra testen så som effekt størrelse.</p>
+<p>Vi presenterer altså beskrivende statistikk hva gjelder utvalget sammen med konfidensintervaller og resultatet fra en t-test som gir en indikasjon på hva vi tror om gjennomsnittet i populasjonen (konfidensintervall) og hvor sannsynlig det observerte resultatet eller et enda mer ekstremt resultat er hvis nullhypotesen er sann (<em>t</em> og <em>p</em>-verdier). det er mulig å presentere ytterligere statistikker fra testen så som en standardisert effektstørrelse.</p>
 <p>Hvorfor presentere <em>t</em> sammen med <em>p</em>? Vi ønsker å vise at vi er å stole på, en gitt <em>t</em>-verdi bør samsvare med en <em>p</em>-verdi. Se f.eks. <a href="http://courses.atlas.illinois.edu/spring2016/STAT/STAT200/pt.html">her for en kalkulator for <em>t</em> og <em>p</em></a>. En annen hensikt er å vise effekten i testen i standardiserte enheter, <em>t</em>-verdien beregnes som gjennomsnittlig forskjell delt på standardfeilen for forskjellen (<span class="math inline">\(t = \frac{x_1 - x_2}{SE(x_1 - x_2)}\)</span>). Vi får altså vite hvor mange standardfeil som skiller to gjennomsnitt. Vi ser også retningen på effekten (negativ eller positiv).</p>
-<p>Når vi presenterer resultater fra statistiske tester som er mer avanserte kan en tabell hjelpe. En regresjonstabell gir oss all informasjon som kreves for å presentere resultater. Legg merke til at Thrane presenterer en noe forenklet tabell. En regresjonstabell fra jamovi inneholder flere elementer som kan bidra til tolking av resultatene. En noe mer avansert modell for sammenligning av VO<sub>2maks</sub> etter en intervensjon som ble presentert som en t-test på differenser over kan være en ANCOVA modell. ANCOVA står for Analysis of Co-Variance. Her analyseres en kontinuerlig variabel som avhengig variabel sammen med en kategorisk variabel og kontinuerlig variabel som uavhengig variabel. Målet er å estimere forskjell i verdier post-intervensjon når vi kontrollerer for pre-intervensjons verdier. I tabellen under presentere resultater fra denne analysen.</p>
+<p>Når vi presenterer resultater fra statistiske analyser eller modeller som er mer avanserte kan en tabell hjelpe. En regresjonstabell gir oss all informasjon som kreves for å presentere resultater. Legg merke til at Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> presenterer en noe forenklet tabell. En regresjonstabell fra jamovi inneholder flere elementer som kan bidra til tolking av resultatene.</p>
+<div class="no-row-height column-margin column-container"></div><p>En noe mer avansert modell for sammenligning av VO<sub>2maks</sub> etter en intervensjon som ble presentert som en t-test på differenser over kan være en ANCOVA modell. ANCOVA står for Analysis of Co-Variance. Her analyseres en kontinuerlig variabel som avhengig variabel sammen med en kategorisk variabel og kontinuerlig variabel som uavhengig variabel. Målet er å estimere forskjell i verdier post-intervensjon når vi kontrollerer for pre-intervensjons verdier. I tabellen under presentere resultater fra denne analysen.</p>
 <table class="table">
 <colgroup>
 <col style="width: 37%">
@@ -466,30 +472,37 @@ Hver fil eller datasett kan beskrives i detalj under.
 </table>
 <p>I fall da vi bare ønsker å gi leseren estimatet vi er interesserte i, forskjell mellom grupper etter intervensjonen, kan vi skrive:</p>
 <blockquote class="blockquote">
-<p>Etter intervensjonen var VO<sub>2maks</sub> 275 ml <span class="math inline">\(\times\)</span> min<sup>-1</sup> høyere i SI-gruppen sammenlignet med LI når vi kontrollerer for pre-intervensjonsverdier (95% KI: [50, 500], <em>t</em><sub>(14)</sub> = 2.62, <em>p</em> = 0.02, se tabell 2 for en helhetlig regresjonstabell).</p>
+<p>Etter intervensjonen var VO<sub>2maks</sub> 275 ml × min<sup>-1</sup> høyere i SI-gruppen sammenlignet med LI når vi kontrollerer for pre-intervensjonsverdier (95% KI: [50, 500], <em>t</em><sub>(14)</sub> = 2.62, <em>p</em> = 0.02, se tabell 2 for en helhetlig regresjonstabell).</p>
 </blockquote>
-<p>Vi henviser till tabell 2 for en komplett tabell med alle estimatene.</p>
-<p>Når du har mulighet, komplettere gjerne dine analyser med en figur. I noen vitenskapelige tidsskrifter kreves det at individuelle datapunkter presenteres i figur når antallet observasjoner per gruppe er lavt. Dette er praksis som gjør rapporter mer transparente. Tenk på at figurer og tekst skal komplettere hverandre, presenter ikke de samme resultatene i en figure som i tekst. Hvis vi skaper en figur som viser forskjell mellom gruppene sammen med et konfidensintervall løfter vi vekk denne informasjonen fra teksten og henviser til figuren.</p>
+<p>Vi henviser til tabell 2 for en komplett tabell med alle estimatene.</p>
+<p>Når du har mulighet, komplettere gjerne dine analyser med en figur. I noen vitenskapelige tidsskrifter kreves det at individuelle datapunkter presenteres i figur når antallet observasjoner per gruppe er lavt. Dette er praksis som gjør rapporter mer transparente. Tenk på at figurer og tekst skal komplettere hverandre, presenter ikke de samme resultatene i en figur som du allerede har presentert i tekst. Hvis vi skaper en figur som viser forskjell mellom gruppene sammen med et konfidensintervall løfter vi vekk denne informasjonen fra teksten og henviser til figuren.</p>
 <blockquote class="blockquote">
 <p>Etter intervensjonen var VO<sub>2maks</sub> høyere i SI-gruppen sammenlignet med LI når vi kontrollerer for pre-intervensjonsverdier (se Figur 1, <em>t</em><sub>(14)</sub> = 2.62, <em>p</em> = 0.02, se Tabell 2 for en helhetlig regresjonstabell).</p>
 </blockquote>
-<p>Et resultatkapittel inneholder som regel ikke noe tolkende utsagn annet en indikasjoner på størrelse og retning på effekter, beskrivende statistikk og resultater fra hypotesetester. Tolkningen legger man som regel inn i diskusjonen. Noen ganger kan det kreves at du hjelper leseren å forstå hva du presenterer, du bør då legge inn en ekstra setning som beskriver for eksempel hva du estimerer.</p>
+<p>Et resultatkapittel inneholder som regel ikke noe toking annet en indikasjoner på størrelse og retning på effekter, beskrivende statistikk og resultater fra hypotesetester. Tolkningen legger man som regel inn i diskusjonen. Noen ganger kan det kreves at du hjelper leseren å forstå hva du presenterer, du bør da sette inn en ekstra setning som beskriver for eksempel hva du estimerer.</p>
 </section>
 <section id="beskrive-analyser-i-metode" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="beskrive-analyser-i-metode"><span class="header-section-number">10.2</span> Beskrive analyser i metode</h2>
-<p>I et metodekapittel avslutter man ofte med å beskrive de metoder som blir brukt for å analysere dataene. Her bør vi beskrive hvert test som presenteres i resultatene. Vi kan gruppere noe ved å si at “differenser mellom pre- og post-intervensjon i VO2maks og sykkelprestasjon ble sammenlignet mellom grupper ved hjelp av uavhengige t-tester”. I neste setning ønsker vi å si noe om hvordan vi presenterer dataene. “Deskriptiv data blir presentert som gjennomsnitt og standardavvik (SD). Gruppesammenligninger presenteres som gjennomsnittlig forskjell, 95% konfidensintervall sammen med <em>t</em> og <em>p</em>-verdier fra t-tester.”</p>
+<p>I et metodekapittel avslutter man ofte med å beskrive de metoder som blir brukt for å analysere dataene. Her bør vi beskrive hvert test som presenteres i resultatene. Vi kan gruppere noe ved å si at</p>
+<blockquote class="blockquote">
+<p>differenser mellom pre- og post-intervensjon i VO2maks og sykkelprestasjon ble sammenlignet mellom grupper ved hjelp av uavhengige t-tester.</p>
+</blockquote>
+<p>I neste setning ønsker vi å si noe om hvordan vi presenterer dataene.</p>
+<blockquote class="blockquote">
+<p>Deskriptiv data blir presentert som gjennomsnitt og standardavvik (SD). Gruppesammenligninger presenteres som gjennomsnittlig forskjell, 95% konfidensintervall sammen med <em>t</em> og <em>p</em>-verdier fra t-tester.”</p>
+</blockquote>
 <p>I denne delen av rapporten er det lurt å være så eksplisitt som mulig, si hva du faktisk har gjort og hvordan du faktisk presenterer dataene.</p>
-<p>Til sist kan du fint si at “alle resultater, rådata og analysefiler finnes samlet i…”. Og henvise til deres mappe som inneholder deres analysearbeid.</p>
+<p>Til sist kan du fint si at “alle resultater, rådata og analysefiler finnes samlet i…”. Og henvise til den mappe som inneholder analysearbeidet i sin helhet.</p>
 </section>
 <section id="lese-statistiske-analyser" class="level2 page-columns page-full" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="lese-statistiske-analyser"><span class="header-section-number">10.3</span> Lese statistiske analyser</h2>
 <p>Vi har nå diskutert hvordan vi kan presentere resultater fra et analyseprosjekt. Vi kan bruke de to ledestjernene for å lage analyseprosjekter når vi leser arbeider også. Vi kan prøve å besvare følgende spørsmål: er analysene presenterte på en transparent måte? Kan jeg reprodusere analysene? Hvis svarene er JA på disse to spørsmål kan vi muligens legge mer troverdighet i de resultater som presenteres.</p>
-<p>Vi har gjennom emnet diskutert hvordan vi kan lure oss selve med statistiske verktøy. Når resultatene fra en statistisk analyse tolkes og konklusjoner trekkes kreves at vi kan vedlikeholde en kritisk blikk på analysene. Vi kan prøve å besvare spørsmålet hvordan kan forfatterne lurt seg selve her? En analyse kan være både transparent og mulig å reprodusere, men konklusjonene bygger på at man tolket dataene og resultatene feil eller brukt statistiske modeller som ikke gir en riktig bilde av dataene (og verden). Det å tolke statistiske analyser fra denne synsvinkelen krever trening og en kritisk blikk. Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> gir noen tips som omhandler for eksempel assosiasjon og kausalitet, absolutte og relative effekter og generalisering til forskjellige populasjoner.</p>
+<p>Vi har gjennom emnet diskutert hvordan vi kan lure oss selve med statistiske verktøy. Når resultatene fra en statistisk analyse tolkes og konklusjoner trekkes kreves at vi kan vedlikeholde en kritisk blikk på analysene. Vi kan prøve å besvare spørsmålet hvordan kan forfatterne ha lurt seg selve her? En analyse kan være både transparent og mulig å reprodusere, men konklusjonene bygger på at man tolket dataene og resultatene feil eller brukt statistiske modeller som ikke gir en riktig bilde av dataene (og verden). Det å tolke statistiske analyser fra denne synsvinkelen krever trening og en kritisk blikk. Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> gir noen tips som omhandler for eksempel assosiasjon og kausalitet, absolutte og relative effekter og generalisering til forskjellige populasjoner.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
 Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
 </div></div></section>
-<section id="vitenskapelige-skriving-en-strukturert-rapport" class="level2" data-number="10.4">
-<h2 data-number="10.4" class="anchored" data-anchor-id="vitenskapelige-skriving-en-strukturert-rapport"><span class="header-section-number">10.4</span> Vitenskapelige skriving: En strukturert rapport</h2>
+<section id="sec-rapport" class="level2" data-number="10.4">
+<h2 data-number="10.4" class="anchored" data-anchor-id="sec-rapport"><span class="header-section-number">10.4</span> Vitenskapelige skriving: En strukturert rapport</h2>
 <p>En vitenskapelig rapport skiller seg på flere måter fra hvordan andre tekster skrives. En vitenskapelig rapport ønsker ofte å formidle kunnskap som baserer seg på data eller logikk på en måte som gir leseren den samme forståelsen av et fenomen som forfatteren av rapporten. Det finnes variasjoner av vitenskapelige tekster som for eksempel når forfatteren ønsker å formidle en mening i en vitenskapelig debatt.</p>
 <p>Forskere og andre lesere av vitenskapelige tekster (studenter, trenere, helsearbeidere, politiker osv.) har ikke alltid så mye tid, derfor har det utviklet seg måter å strukturere rapporter på som gjører det enkelt å finne hva man søker etter. Disse strukturer skiller seg mellom ulike felt (f.eks. medisin, psykologi, litteraturvitenskap, sosiologi) og mellom ulike publiseringskanaler (f.eks. mellom ulike tidsskrifter). Men man kan se et felles mønster og dette mønster kan beskrives som</p>
 <p><strong>IMR(o)D</strong></p>
@@ -519,14 +532,14 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <p>Din tolkning kan være feilaktig, men du bør velge et konsekvent spår som beskriver din forståelse av den data du presenterer. Du kan også presentere steg for å komme videre med et forskningsspørsmål.</p>
 <p>Til sist presenterer du en konklusjon som summerer opp rapporten. I noen tekster er rapporten et eget avsnitt eller kapitel men i kortere rapporter er konklusjonen en måte å avslutte diskusjonen på.</p>
 </section>
-</section>
-<section id="paragrafer" class="level2" data-number="10.5">
-<h2 data-number="10.5" class="anchored" data-anchor-id="paragrafer"><span class="header-section-number">10.5</span> Paragrafer</h2>
-<p>En tekst kan deles opp i mindre stykker som kan sies være verktøy for å formidle dit budskap til leseren. En viktig bestanddel i en tekst er paragrafer. En paragraf starter med en setning som beskriver paragrafens tema, emne eller hensikt. Dette kan være et utsagn som for eksempel «laks er en fisk som er nyttig å spise». Temasetning følges av en eller flere setninger som gir støtte til påstanden eller temaet for paragrafen. En støttesetning kan være «Laksen inneholder mye nyttige fettsyrer samtidig som den er proteinrik». Til sist avsluttes paragrafen med en overgangssetning som ledere leseren videre til neste paragraf. En overgangssetning kan være «Laks kan derfor være del i et sundt kosthold som bidrar til god muskelhelse sammen med andre proteinrike livsmiddel». Den siste setningen, en overgangssetning kan konkludere noe samtidig som det ledere leseren in på neste tema (muskelhelse og proteinrike livsmiddel i dette eksemplet).</p>
+<section id="paragrafer" class="level3" data-number="10.4.5">
+<h3 data-number="10.4.5" class="anchored" data-anchor-id="paragrafer"><span class="header-section-number">10.4.5</span> Paragrafer</h3>
+<p>En tekst kan deles opp i mindre stykker som kan sies være verktøy for å formidle dit budskap til leseren. En viktig bestanddel i en tekst er paragrafer. En paragraf starter med en setning som beskriver paragrafens tema, emne eller hensikt. Dette kan være et utsagn som for eksempel «laks er en fisk som er nyttig å spise». Temasetning følges av en eller flere setninger som gir støtte til påstanden eller temaet for paragrafen. En støttesetning kan være «Laksen inneholder mye nyttige fettsyrer samtidig som den er proteinrik». Til sist avsluttes paragrafen med en overgangsetning som ledere leseren videre til neste paragraf. En overgangsetning kan være «Laks kan derfor være del i et sundt kosthold som bidrar til god muskelhelse sammen med andre proteinrike matvarer». Den siste setningen, en overgangsetning kan konkludere noe samtidig som det ledere leseren inn på neste tema (muskelhelse og proteinrike matvarer i dette eksemplet).</p>
 <p>En tekst kan gis struktur gjennom att du starter nye paragrafer når du introduserer nye temaer. Hver paragraf kan bearbeides får å gis en viss grad av selvstendighet. Dette gir deg mulighet å flytte rundt paragrafer får å gi din tekst en logisk rekkefølge. Du kan og bruke paragrafer får å begrense din tekst. Gi deg selv en begrenset plass for å formidle noe, la oss si tre paragrafer for å skrive en introduksjon. Lag en liste over hva hver paragraf skal formidle (tema), sett opp noen punkter som er til støtte for ditt tema og lag til sist et punkt som beskriver hvordan du konkluderer paragrafen og hvordan den ledere leseren videre. Du har nå strukturert dine paragrafer, og derved også din tekst.</p>
 
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -771,7 +784,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
   <div class="nav-page nav-page-next">
       <a href="./05-jamovi.html" class="pagination-link">
-        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">05-jamovi.html</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

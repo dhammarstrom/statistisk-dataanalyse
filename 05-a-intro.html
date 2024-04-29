@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -65,7 +84,7 @@ ul.task-list li input[type="checkbox"] {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -221,7 +240,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-jamovi.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">05-jamovi.html</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></span></a>
   </div>
 </li>
       </ul>
@@ -258,7 +277,7 @@ ul.task-list li input[type="checkbox"] {
         
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -277,8 +296,12 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>I denne modulen skal vi snakke om hvordan vi presterer og leser statistiske analyser. I pensum <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span> finner dere en presentasjon av stoffet som kobler sammen det å lese og presentere. I notatene som du nå leser fokuserer vi på organiseringen av et analyseprosjekt og hvordan vi kan bruke Jamovi i en arbeidsflyt for reproduserbare analyser.</p>
 
 
+<div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
+Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
+</div></div>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
