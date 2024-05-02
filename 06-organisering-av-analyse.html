@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - Referanser</title>
+<title>Statistisk dataanalyse med Jamovi - 13&nbsp; Organisere og gjennomføre en analyse</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -49,7 +49,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-organisering-av-analyse.html" rel="prev">
+<link href="./references.html" rel="next">
+<link href="./06-sammenligne-gjennomsnitt.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -83,7 +84,7 @@ div.csl-indent {
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -92,7 +93,7 @@ div.csl-indent {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./references.html">Referanser</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-organisering-av-analyse.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -261,7 +262,7 @@ div.csl-indent {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
@@ -269,7 +270,7 @@ div.csl-indent {
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./references.html" class="sidebar-item-text sidebar-link active">
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Referanser</span></a>
   </div>
 </li>
@@ -279,14 +280,23 @@ div.csl-indent {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#bakgrunn-til-datasettet" id="toc-bakgrunn-til-datasettet" class="nav-link active" data-scroll-target="#bakgrunn-til-datasettet"><span class="header-section-number">13.1</span> Bakgrunn til datasettet</a></li>
+  <li><a href="#organisering-av-data" id="toc-organisering-av-data" class="nav-link" data-scroll-target="#organisering-av-data"><span class="header-section-number">13.2</span> Organisering av data</a></li>
+  <li><a href="#organisering-av-data-i-jamovi" id="toc-organisering-av-data-i-jamovi" class="nav-link" data-scroll-target="#organisering-av-data-i-jamovi"><span class="header-section-number">13.3</span> Organisering av data i Jamovi</a></li>
+  <li><a href="#rapportering-av-resultater" id="toc-rapportering-av-resultater" class="nav-link" data-scroll-target="#rapportering-av-resultater"><span class="header-section-number">13.4</span> Rapportering av resultater</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Referanser</h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></h1>
 </div>
 
 
@@ -301,133 +311,248 @@ div.csl-indent {
 
 </header>
 
+<p>I denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen “skaper” rapporten.</p>
+<section id="bakgrunn-til-datasettet" class="level2 page-columns page-full" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="bakgrunn-til-datasettet"><span class="header-section-number">13.1</span> Bakgrunn til datasettet</h2>
+<p>I denne workshop skal vi arbeide med et datasett fra <span class="citation" data-cites="ronnestad2021a">(<a href="references.html#ref-ronnestad2021a" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>. Hensikten med studien var å se på effekten av to forskjellige typer av økter i en “mikrosyklus” (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-ronnestad2021a" class="csl-entry" role="listitem">
+Rønnestad, Bent R., Sjur J. Øfsteng, Fabio Zambolin, Truls Raastad, and Daniel Hammarström. 2021. <span>“Superior <span>Physiological Adaptations After</span> a <span>Microcycle</span> of <span>Short Intervals Versus Long Intervals</span> in <span>Cyclists</span>.”</span> <em>International Journal of Sports Physiology and Performance</em> 16 (10): 1432–38. <a href="https://doi.org/10.1123/ijspp.2020-0647">https://doi.org/10.1123/ijspp.2020-0647</a>.
+</div></div></section>
+<section id="organisering-av-data" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="organisering-av-data"><span class="header-section-number">13.2</span> Organisering av data</h2>
+<p>Dere har fått som oppgave å analysere dataene fra prosjektet og får en excel-fil for analyse (<a href="data/ronnestad2021_data.xlsx">du finner datasettet her</a>). Du har også fått en tabell med variabelnavn og informasjon om hvordan dataene har blitt orgnisert (se tabell under).</p>
+<p>Denne informasjonen kan fungere som starten på en beskrivelse av hele analyseprosjektet. Vi vil nå starte med å opprette en <em>README</em>-fil som tar utgangspunkt i hensikten med studien og de data vi har tilgang til.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Lag en <em>README</em>-fil
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Et <em>README</em>-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en <em>README</em>-fil er <code>.txt</code>. Dette filformat kan leses av alle uansett programvarer og editering er enkel.</p>
+<p>I en tekst-fil kan vi bruke <code>#</code>-tegnet for å indikere overskrifter, hvor en <code>#</code> er overskrift nivå 1 (den største) og <code>##</code> gir neste nivå, osv.</p>
+<p>En tabell kan vi lage ved å bruke følgende syntax:</p>
+<pre><code>|Variabel |Beskrivelse|Test
+| ---     | ---       |
+|subject  | Deltakere (id) | 
+</code></pre>
+<p>Vi ønsker å ha med noen overskrifter når vi starter arbeidet, du kan f.eks. starte med:</p>
+<pre><code># Titel på prosjektet
+
+## Bakgrunn og hensikt
+Her under beskriver vi hva vi kjenner til om prosjektet og hensikten med analysene...
+
+
+## Data og variabler
+Beskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som mulig
+(Hva (enheter), når, hvordan, osv.)
+</code></pre>
+</div>
+</div>
+</div>
+<div style="font-size: 80%;">
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variabel</th>
+<th>Beskrivelse</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>subject</code></td>
+<td>Deltakere (id)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>group</code></td>
+<td>Gruppe: SI, “short intervals”; LI, “Long intervals”</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>time</code></td>
+<td>Tids-punkt for test: <code>pre</code>, i forkant av intervensjon; <code>post</code>, etter intevensjon</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>body.mass</code></td>
+<td>Vekt (kg)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>body.height</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>age</code></td>
+<td>Alder ()</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>lactate.max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="even">
+<td><code>peak.HR</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="odd">
+<td><code>RPE.max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="even">
+<td><code>VO2max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="odd">
+<td><code>RER.max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="even">
+<td><code>VE.max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="odd">
+<td><code>Wmax</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="even">
+<td><code>power.4mmol</code></td>
+<td></td>
+<td>Submaks-test (terskel)</td>
+</tr>
+<tr class="odd">
+<td><code>vo2.4mmol</code></td>
+<td></td>
+<td>Submaks-test (terskel)</td>
+</tr>
+<tr class="even">
+<td><code>MAP</code></td>
+<td></td>
+<td>Submaks-test (terskel)</td>
+</tr>
+<tr class="odd">
+<td><code>mean.power.allout</code></td>
+<td></td>
+<td>Prestasjonstest (15 min all-out)</td>
+</tr>
+<tr class="even">
+<td><code>vo2.mean.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+<tr class="odd">
+<td><code>vo2.peak.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+<tr class="even">
+<td><code>hr.mean.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+<tr class="odd">
+<td><code>hr.peak.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+<tr class="even">
+<td><code>RPE.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+<tr class="odd">
+<td><code>lactate.allout</code></td>
+<td></td>
+<td>Prestasjonstest</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="organisering-av-data-i-jamovi" class="level2 page-columns page-full" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="organisering-av-data-i-jamovi"><span class="header-section-number">13.3</span> Organisering av data i Jamovi</h2>
+<p>Når vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver “sub-analyse”, eller hvert gruppe av analyser får en egen <code>omv</code>-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for det test som vi tenker skal besvare spørsmålene i prosjektet.</p>
+<p>Men hva er spørsmålene?</p>
+<div class="callout callout-style-default callout-caution callout-titled page-columns page-full">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Lag en analyseplan
+</div>
+</div>
+<div class="callout-body-container callout-body page-columns page-full">
+<ul>
+<li><p>En enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det <span class="citation" data-cites="vickers2001 vickers2001a">(<a href="references.html#ref-vickers2001" role="doc-biblioref">A. J. Vickers 2001</a>; <a href="references.html#ref-vickers2001a" role="doc-biblioref">Andrew J. Vickers and Altman 2001</a>)</span>.</p></li>
+<li><p>Før vi kan hvordan vi skal analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.</p></li>
+<li><p>Når man bestemt <em>hva</em> og <em>hvordan</em> man ønsker å analysere bør dette føres inn i <em>README</em>-file. For eksempel:</p></li>
+</ul>
+<div class="no-row-height column-margin column-container"><div id="ref-vickers2001" class="csl-entry" role="listitem">
+Vickers, A. J. 2001. <span>“The Use of Percentage Change from Baseline as an Outcome in a Controlled Trial Is Statistically Inefficient: A Simulation Study.”</span> <em>BMC Med Res Methodol</em> 1: 6. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf</a>.
+</div><div id="ref-vickers2001a" class="csl-entry" role="listitem">
+Vickers, Andrew J., and Douglas G. Altman. 2001. <span>“Analysing Controlled Trials with Baseline and Follow up Measurements.”</span> <em>BMJ : British Medical Journal</em> 323 (7321): 1123–24. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf</a>.
+</div></div><pre><code>## Analayse
+
+Utfallsmålene XXX og YYY blir analysert som forskjell i forandringsskår mellom 
+grupper ved hjelp av en ZZZ...</code></pre>
+<ul>
+<li><p>Valget av variabler og analysestrategi gir oss utgangspunktet for å lage en Jamovi-fil. <strong>Diskuter hvordan de beslutninger som ble tatt over gir organiseringen av <code>omv</code>-filen.</strong></p></li>
+<li><p>Vi ønsker også å beskrive andre variabler for leseren av rapporten, variabler som beskriver utvalget, <strong>diskuter hvordan disse kan analyseres på best måte.</strong></p></li>
+<li><p>For hver <code>omv</code>-fil vi skaper legger vi til informasjon i <em>README</em>-filen.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="rapportering-av-resultater" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="rapportering-av-resultater"><span class="header-section-number">13.4</span> Rapportering av resultater</h2>
+<p>Resultater vil lages i Jamovi, resultatene skal senere også rapporteres i et manus (muligens en word-fil). I forkant av overføring til rapporten kan vi bruke Jamovi for å beskrive hva vi gjør og hvorfor.</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Oppgave: Gjennomfør og beskriv analyser
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<ul>
+<li>Ved hjelp av Jamovi, sett opp analysene og beskriv resultatene fra de i jamovi. Teksten (og tabelle og figurer) kan limes inn i en word-fil.</li>
+<li>Bruk f.eks. power point for å editere figurer.</li>
+<li><strong>Diskuter hvordan analysene på best måte kan presenteres</strong></li>
+</ul>
+</div>
+</div>
+</div>
 
 
 
+</section>
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-benjamin2017" class="csl-entry" role="listitem">
-Benjamin, Daniel J., James O. Berger, Magnus Johannesson, Brian A.
-Nosek, E.-J. Wagenmakers, Richard Berk, Kenneth A. Bollen, et al. 2017.
-<span>“Redefine Statistical Significance.”</span> <em>Nature Human
-Behaviour</em> 2 (1): 6–10. <a href="https://doi.org/10.1038/s41562-017-0189-z">https://doi.org/10.1038/s41562-017-0189-z</a>.
-</div>
-<div id="ref-bjornsdottir2024" class="csl-entry" role="listitem">
-Bjornsdottir, Erla, Elin Helga Thorarinsdottir, Eva Lindberg, Bryndis
-Benediktsdottir, Karl Franklin, Debbie Jarvis, Pascal Demoly, et al.
-2024. <span>“Association Between Physical Activity over a 10-Year Period
-and Current Insomnia Symptoms, Sleep Duration and Daytime Sleepiness: A
-<span>European</span> Population-Based Study.”</span> <em>BMJ Open</em>
-14 (3): e067197. <a href="https://doi.org/10.1136/bmjopen-2022-067197">https://doi.org/10.1136/bmjopen-2022-067197</a>.
-</div>
-<div id="ref-borgen_running_2018" class="csl-entry" role="listitem">
-Borgen, Nicolai T. 2018. <span>“Running Performance, VO2max, and Running
-Economy: The Widespread Issue of Endogenous Selection Bias.”</span>
-<em>Sports Medicine</em> 48 (5): 1049–58. <a href="https://doi.org/10.1007/s40279-017-0789-9">https://doi.org/10.1007/s40279-017-0789-9</a>.
-</div>
-<div id="ref-broman_data_2018" class="csl-entry" role="listitem">
-Broman, Karl W., and Kara H. Woo. 2018. <span>“Data Organization in
-Spreadsheets.”</span> <em>The American Statistician</em> 72 (1): 2–10.
-<a href="https://doi.org/10.1080/00031305.2017.1375989">https://doi.org/10.1080/00031305.2017.1375989</a>.
-</div>
-<div id="ref-cohen2013" class="csl-entry" role="listitem">
-Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the
-<span>Behavioral Sciences</span></em>. 0th ed. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.
-</div>
-<div id="ref-cole2021" class="csl-entry" role="listitem">
-Cole, Stephen R, Jessie K Edwards, and Sander Greenland. 2021.
-<span>“Surprise!”</span> <em>American Journal of Epidemiology</em> 190
-(2): 191–93. <a href="https://doi.org/10.1093/aje/kwaa136">https://doi.org/10.1093/aje/kwaa136</a>.
-</div>
-<div id="ref-cowles1982" class="csl-entry" role="listitem">
-Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the.
-05 Level of Statistical Significance.”</span> <em>American
-Psychologist</em> 37 (5): 553.
-</div>
-<div id="ref-dodge_concise_2008" class="csl-entry" role="listitem">
-Dodge, Yadolah. 2008. <em>The Concise Encyclopedia of Statistics</em>.
-1st. ed. Springer Reference. New York: Springer.
-</div>
-<div id="ref-galarraga_coffee_2016" class="csl-entry" role="listitem">
-Galarraga, Vania, and Paolo Boffetta. 2016. <span>“Coffee Drinking and
-Risk of Lung Cancer—a Meta-Analysis.”</span> <em>Cancer Epidemiology,
-Biomarkers &amp; Prevention</em> 25 (6): 951–57. <a href="https://doi.org/10.1158/1055-9965.EPI-15-0727">https://doi.org/10.1158/1055-9965.EPI-15-0727</a>.
-</div>
-<div id="ref-hosmer_2013" class="csl-entry" role="listitem">
-Hosmer, David W., Stanley Lemeshow, and Rodney X. Sturdivant. 2013.
-<em>Applied Logistic Regression</em>. Third edition /. Wiley Series in
-Probability and Statistics. Hoboken, New Jersey: Wiley.
-</div>
-<div id="ref-lakens2022" class="csl-entry" role="listitem">
-Lakens, Daniël. 2022a. <span>“Sample <span>Size
-Justification</span>.”</span> <em>Collabra: Psychology</em> 8 (1):
-33267. <a href="https://doi.org/10.1525/collabra.33267">https://doi.org/10.1525/collabra.33267</a>.
-</div>
-<div id="ref-lakens2022a" class="csl-entry" role="listitem">
-———. 2022b. <span>“Why <span>P</span> Values Are Not Measures of
-Evidence.”</span> <em>Trends in Ecology &amp; Evolution</em> 37 (4):
-289–90. <a href="https://doi.org/10.1016/j.tree.2021.12.006">https://doi.org/10.1016/j.tree.2021.12.006</a>.
-</div>
-<div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
-Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics
-with Jamovi: A Tutorial for Psychology Students and Other
-Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
-</div>
-<div id="ref-pearl_seven_2019" class="csl-entry" role="listitem">
-Pearl, Judea. 2019. <span>“The Seven Tools of Causal Inference, with
-Reflections on Machine Learning.”</span> <em>Communications of the
-<span>ACM</span></em> 62 (3): 54–60. <a href="https://doi.org/10.1145/3241036">https://doi.org/10.1145/3241036</a>.
-</div>
-<div id="ref-pearl_book_2018" class="csl-entry" role="listitem">
-Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New
-Science of Cause and Effect</em>. New York: Basic Books.
-</div>
-<div id="ref-roislien_trekantdrama_2021" class="csl-entry" role="listitem">
-Røislien, Jo, and Jan Terje Kvaløy. 2021. <span>“Trekantdrama.”</span>
-<em>Tidsskrift for Den Norske Legeforening</em>. <a href="https://doi.org/10.4045/tidsskr.21.0075">https://doi.org/10.4045/tidsskr.21.0075</a>.
-</div>
-<div id="ref-ronnestad2022" class="csl-entry" role="listitem">
-Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, Håvard Hamarsland, Knut
-Sindre Mølmen, Håvard Nygaard, Stian Ellefsen, Daniel Hammarström, and
-Carsten Lundby. 2022. <span>“Heat Suit Training Increases Hemoglobin
-Mass in Elite Cross‐country Skiers.”</span> <em>Scandinavian Journal of
-Medicine &amp; Science in Sports</em>, March, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
-</div>
-<div id="ref-ronnestad2021a" class="csl-entry" role="listitem">
-Rønnestad, Bent R., Sjur J. Øfsteng, Fabio Zambolin, Truls Raastad, and
-Daniel Hammarström. 2021. <span>“Superior <span>Physiological
-Adaptations After</span> a <span>Microcycle</span> of <span>Short
-Intervals Versus Long Intervals</span> in <span>Cyclists</span>.”</span>
-<em>International Journal of Sports Physiology and Performance</em> 16
-(10): 1432–38. <a href="https://doi.org/10.1123/ijspp.2020-0647">https://doi.org/10.1123/ijspp.2020-0647</a>.
-</div>
-<div id="ref-thoresen_2017" class="csl-entry" role="listitem">
-Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og
-Anvendelig.”</span> <em>Tidsskrift for Den Norske Legeforening</em>. <a href="https://doi.org/10.4045/tidsskr.17.0309">https://doi.org/10.4045/tidsskr.17.0309</a>.
-</div>
-<div id="ref-thrane_performance_2019" class="csl-entry" role="listitem">
-Thrane, Christer. 2019. <span>“Performance and Actual Pay in Norwegian
-Soccer.”</span> <em>Journal of Sports Economics</em> 20 (8): 1051–65. <a href="https://doi.org/10.1177/1527002519851146">https://doi.org/10.1177/1527002519851146</a>.
-</div>
-<div id="ref-thrane_2020" class="csl-entry" role="listitem">
-———. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
-</div>
-<div id="ref-vickers2001" class="csl-entry" role="listitem">
-Vickers, A. J. 2001. <span>“The Use of Percentage Change from Baseline
-as an Outcome in a Controlled Trial Is Statistically Inefficient: A
-Simulation Study.”</span> <em>BMC Med Res Methodol</em> 1: 6. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf">https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf</a>.
-</div>
-<div id="ref-vickers2001a" class="csl-entry" role="listitem">
-Vickers, Andrew J., and Douglas G. Altman. 2001. <span>“Analysing
-Controlled Trials with Baseline and Follow up Measurements.”</span>
-<em>BMJ : British Medical Journal</em> 323 (7321): 1123–24. <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf">http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/
-https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf</a>.
-</div>
-<div id="ref-wickham_tidy_2014" class="csl-entry" role="listitem">
-Wickham, Hadley. 2014. <span>“Tidy Data.”</span> <em>Journal of
-Statistical Software</em> 59 (10). <a href="https://doi.org/10.18637/jss.v059.i10">https://doi.org/10.18637/jss.v059.i10</a>.
-</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -663,11 +788,14 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-organisering-av-analyse.html" class="pagination-link">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span>
+      <a href="./06-sammenligne-gjennomsnitt.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link">
+        <span class="nav-page-text">Referanser</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
   </div>
 </nav>
 </div> <!-- /content -->
