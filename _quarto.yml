@@ -31,6 +31,7 @@ book:
     - part: 06-a-intro.qmd
       chapters:
         - 06-sammenligne-gjennomsnitt.qmd
+        - 06-organisering-av-analyse.qmd
     - references.qmd
 
 toc-title: Innhold

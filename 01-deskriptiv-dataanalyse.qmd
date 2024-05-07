@@ -32,7 +32,7 @@ Les mer om *Best practice* i bruk av spreadsheets [@broman_data_2018].
 :::
 
 
-## Dataanalyse i praksis 
+## Dataanalyse i praksis {#sec-praksis}
 
 I dette emnet så foreslår vi at dere bruker excel (eller lignende programmer) for å mate inn og lagre data, og Jamovi for å gjennomføre dataanalyse og lage enkle figurer. Denne kombinasjonen er mer enn nok for å på en god måte klare å ferdigstille et vitenskapelig arbeid hvor du forventes å presentere og tolke data fra et eksperiment eller observasjoner. Vi foreslår dette fordi kombinasjonen er fritt tilgjengelig for deg i et fremtidig arbeidsliv hvor du ikke vil ha tilgang til mer kostbare programvarer, og det finnes muligheter for å gå videre til mer avanserte programvarer (f.eks. R) med utgangspunkt i Jamovi. 
 

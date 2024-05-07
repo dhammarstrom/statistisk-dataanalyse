@@ -1,4 +1,4 @@
-# Deskriptiv dataanalyse 
+# Deskriptiv dataanalyse
 
-I denne modulen introduseres de programmer som vil bli brukt i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte. I pensum snakker man om deskriptiv dataanalyse og det typiske i data. Vi prøver å sette dette inn i en kontekst for vitenskapelig dataanalyse. I Jamovi ser vi hvordan vi kan gjennomføre en beskrivende dataanalyse av forskjellige variabeltyper.
+I denne modulen introduseres de programmer som vil bli brukt i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte. I pensum snakker man om deskriptiv dataanalyse og det typiske i data. Vi prøver å sette dette inn i en kontekst for vitenskapelig dataanalyse. I jamovi ser vi hvordan vi kan gjennomføre en beskrivende dataanalyse av forskjellige variabeltyper.
  

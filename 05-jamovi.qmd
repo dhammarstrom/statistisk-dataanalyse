@@ -1,3 +1,218 @@
-# Bruk av Jamovi i analysearbeidet
+---
+output: html_document
+editor_options: 
+  chunk_output_type: console
+---
+# Bruk av jamovi i analysearbeidet
+
+```{r}
+#| include: false
+
+library(tidyverse)
+
+```
+
+
+
+Vi kan bruke jamovi til å utføre en rekke statistiske analyser, og vi kan gjøre dette på en til nærmest reproduserbar måte. Dette innebærer at de analyser vi gjennomfører dokumenteres og kan leses og gjentas av noen som får tilgang til dine filer. Dette betyr, som vi allerede har konstatert i tidligere kapittel ([-@sec-praksis]), at det analyseprosjekt du arbeider med består av flere filer, inkludert datasett, analysefiler og rapportfiler. Disse bør dokumenteres med en README-fil som beskriver innholdet i de ulike filene sammen med hensikten med prosjektet som en helhet.
+
+I dette kapittelet skal vi se på hvordan vi kan bruke jamovi i en reproduserbar arbeidsflyt. Vi vill bruke et datasett fra @ronnestad2021a, som du finner her [ronnestad2021_data.xlsx](data/ronnestad2021_data.xlsx).
+
+## Importere og validere data og datatyper
+
+Når vi importerer data til jamovi får vi mulighet til å sjekke datatyper og gjøre endringer i datasettet sånn at analysearbeidet vil bli enklere. Som et første steg kan vi gå igjennom variablene i det importerte datasettet og sjekke at de faktisk er av den typen vi forventer. Dette kan vi gjøre ved å klikke på variabelnavnet i fanen `Variables`. Legg merke til at vi også har mulighet å beskrive variablene her. Dette er en god praksis for å gjøre det enklere for andre og deg selv å forstå datasettet. I dette steg endrer vi også nivåer på kategoriske variabler.
+
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Beskrive data i jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=085d6c04-4d84-463a-8c7c-b16900b25b05){target="_blank"}.
+
+:::
+
+
+
+![Sjekk at variabler er hva du forvnter og endre nivåer på kategorisk data.](img/05-jamovi/validate-variables.png){#fig-validate-variables}
+
+Dette er en måte å skape en oversikt over variabler, i et større prosjekt kan det være lurt å i tillegg også lage en README-fil med det samme innholdet. I en slik fil kan vi beskrive dataene enda mer detaljert. I eksemplet under legger jeg for eksempel til en kolonne som indikerer hvilken test dataene kommer fra.
+
+::: {style="font-size: 80%;"}
+
+|Variabel |Beskrivelse |Test|
+| --- | --- | --- |
+|`subject`	|Deltakere (id) |
+|`group`	|Gruppe: SI, "short intervals"; LI, "Long intervals" |
+|`time`	|Tids-punkt for test: `pre`, i forkant av intervensjon; `post`, etter intevensjon |
+|`body.mass`	|Vekt (kg) |
+|`body.height`	| |
+|`age`	|Alder () |
+|`lactate.max`	| |VO<sub>2maks</sub>-test 
+|`peak.HR`	| |VO<sub>2maks</sub>-test 
+| ... | ...| ...
+
+:::
+
+## Data, design og antagelser
+
+I dette eksemplet arbeider vi med et datasett fra [@ronnestad2021a]. Hensikten med studien var å se på effekten av to forskjellige typer av økter i en "mikrosyklus" (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile). La oss kalle dette for behandlingsvariabelen, den variabel som indikerer hvilken behandlingen eller intervensjon deltakerne har fått. I datasettet er det variabelen `group` som indikerer hvilken behandling deltakerne har fått.
+
+Det å kalle behandlingsvariabelen for gruppe kan være misvisende da vi antar at deltakerne ble tilfeldig inndelt i gruppene etter rekruttering til studien. Denne antagelsen gir oss mulighet å finne ut (eller i hvert fall estimere) hvor stor effekt behandlingen har på utfallsmålene i studien. Hvis vi å andre siden antar at gruppene finnes fra før blir det vanskeligere å si noe om årsakssammenhengen mellom behandlingen og utfallsmålene.
+
+I praksis har dette betydning for hvordan vi tolker resultater fra analysene, men analysene kan i mange tilfeller gjennomføres på samme måte uansett om vi antar at gruppene er tilfeldig inndelt eller ikke. Denne informasjonen bør i et tidlig stadium av analysearbeidet dokumenteres som en del i README-filen. Hvilke antagelser gjør vi om dataene, hvordan dataene ble innhentet og hvordan vi kan tolke resultatene. I dette eksemplet antar vi at gruppene er tilfeldig inndelt.
+
+Før vi ser på dataene bør vi også bestemme oss for den eller de variabler som vi ønsker å studere. I datasettet fra [@ronnestad2021a] finner vi for eksempel VO<sub>2maks</sub>, maksimal effekt under VO<sub>2maks</sub>-testen og gjennsomsnittseffekt under en prestasjonstest.
+
+Husk at hensikten med analysen av et utvalg ofte er å si noe om dataene som vi ikke observerer. Hvis vi tar noen grep o forkant av analysen kan vi beskytte oss fra å trekke feil konklusjoner. Vi trekker for eksempel i større grad feil konklusjoner når vi velger å rapportere de statistiske resultater som viser seg å være signifikante. Vi bør altså, før vi ser på dataene, bestemme hvilke variabler som skal analyseres.
+
+## Utføre analyser: To modeller for den samme effekten
+
+Når vi har notert oss antagelser om dataene og studiedesignet, og valgt hvilken variabel vi ønsker å analysere bør vi også velge en måte å analysere dataene på. Vi velger her i praksis en statistisk modell for å estimere det vi er interessert i. I dette eksemplet ønsker vi å estimere effekten av intervensjonen på VO<sub>2maks</sub>. To mulige modeller for denne analysen er t-test av forandringsskår og ANCOVA.
+
+I studien bel deltakere randomisert (balansert etter absolutt VO<sub>2maks</sub> [@ronnestad2021a]) til to grupper: LI og SI. I figuren [-@fig-design-lisi] ser vi en skisse over datainnhentingen, deltakere (D) gjennomførte tester i forkant (T<sub>1</sub>) og etterkant (T<sub>2</sub>) av intervensjonen. Det finnes altså to datapunkter for hver deltaker og vi er interessert i analysere forskjellen i forandring, alternativt post-intervensjonsskår mellom de to intervensjonene (gruppene).
+
+En t-test av forandringsskår gir oss en modell som også kan kalles for forskjell-i-forskjell (difference-in-difference). I denne modellen beregner vi en forandringsskår for hver deltakere og estimerer forskjellen mellom gruppene i forandringsskåren. Forandrinsgskåren kan beregnes som $T_2 - T_1$ for hver deltaker.
+
+```{r}
+#| fig-cap: "Deltakere (D<sub>i</sub>, hvor i indikerer en indeks for deltakere) i studien ble tilfeldig inndelt i to grupper: LI og SI. T<sub>1</sub> og T<sub>2</sub> indikerer tidspunkt for testene. T-test av forandringsskår eller ANCOVA kan brukes for å undersøke effekten av intervensjonen."
+#| echo: false
+#| message: false
+#| warning: false
+#| label: fig-design-lisi
+
+library(ggtext)
+  
+  
+ggplot(data = data.frame(x = c(0, 0.5, 1), y = c(0, 0.5, 1)), 
+  aes(x = x, y = y)) + theme_void() +
+  geom_segment(aes(x = c(0.1, 0.1, 0.2), 
+                    xend = c(0.15, 0.15, 0.8), 
+                  y = c(0.6, 0.6, 0.4),  yend = c(0.55, 0.65, 0.4)), 
+  arrow = arrow(type = "closed", length=unit(0.3, "cm")), linewidth = 1) +
+  
+  annotate("rect", xmin = 0.21, xmax = 0.79, ymin = c(0.45, 0.6), ymax = c(0.55, 0.7), 
+  fill = c("gray","pink"), alpha = 0.5) +
+  annotate("text", x = c(0.5,0.5), y = c(0.5,0.65), 
+  label = c("Intervensjon: LI", "Intervensjon: SI"),
+  
+  size = 8, hjust = 0.5, vjust = 0.5) +
+  
+  annotate("richtext", 
+  x = c(0.06, 0.16, 0.81, 0.16, 0.81), y = c(0.6,0.5, 0.5, 0.65, 0.65), 
+  label = c("D<sub>i</sub>", "T<sub>1</sub>", "T<sub>2</sub>", "T<sub>1</sub>", "T<sub>2</sub>"),
+  
+  size = 8, hjust = 0, vjust = 0.5,
+      fill = NA, label.color = NA, # remove background and outline
+    label.padding = grid::unit(rep(0, 5), "pt")) + # remove padding)
+  
+  scale_x_continuous(limits = c(0, 1), expand = c(0, 0)) +
+  scale_y_continuous(limits = c(0, 1), expand = c(0, 0)) +
+  
+  
+  annotate("richtext", 
+  x = 0.1, y = 0.2, 
+  hjust = 0,
+  label = "**T-test av forandringssk&aring;r**<br>(T<sub>2,SI</sub> - T<sub>1,SI</sub>) - (T<sub>2,LI</sub> - T<sub>1,LI</sub>)")+
+  
+  annotate("richtext", 
+  x = 0.4, y = 0.2, 
+  hjust = 0,
+  label = "**ANCOVA**<br>T<sub>2</sub> = &beta;<sub>0</sub> + &beta;<sub>1</sub> * T<sub>1</sub> + &beta;<sub>2</sub> * Intervensjon")
+  
+  
+
+```
+
+For å gjøre dette i Jamovi trenger vi å forandre datasettet. Datasettet er oppbygget med en variabel for tid, gruppe og en rekke utfallsmål. For å beregne en forandringsskår må vi transformere datasettet sånn at hver deltaker har en rad som inneholder både pre- og post-intervensjonsdata. Desverre har ikke jamovi funksjoner som gjør dette for oss, vi må kopiere og lime inn dataene på rett plass. Husk å sjekke at deltakerne er i samme rekkefølge i begge tidspunktene. I @fig-wide-data ser vi hvordan datasettet kan se ut etter at vi har forberedt det for en t-test av forandringsskår. Forandringsskåren er beregnet som `post - pre` for hver deltaker og `pre`/`post` variablene er data fra den originale VO<sub>2maks</sub> variabelen.
+
+![Forberede data for t-test av forandringsskår, for å forenkle analysearbeidet brukes en kopi av hele datasettet hvor bare de aktuelle variablene er kvar.](img/05-jamovi/wide-data.png){#fig-wide-data}
+  
+Når vi har forberedt dataene kan vi utføre en t-test av forandringsskår i jamovi. Vi har allerede snakket om hvordan vi gjennomfører og tolker denne testen i kapittel [-@sec-ttest].
+
+En annen måte å analysere dataene på er å bruke en ANCOVA-modell. ANCOVA er en forkortelse for Analysis of Covariance og en variasjon av en regresjonsmodell. I ANCOVA kan vi inkludere en eller flere kontinuerlige variabler som kovariater. I dette eksemplet bruker vi VO<sub>2maks</sub> ved T<sub>1</sub> som en kovariat. Dette gir oss mulighet å sammenligne intervensjonene i den avhengige variabelen (post-intervensjonsskår) når vi setter pre-intervensjonsskåren til en bestemt nivå. På denne måten "kontrollere" vi for forskjeller i utgangsnivået av VO<sub>2maks</sub> mellom gruppene.
+
+En ANCOVA kan visualiseres som to parallelle regresjonslinjer, en for hver gruppe når vi setter pre-intervensjonsverdier på x-aksel og post-intervensjonsverdier på y-aksel. I @fig-ancova ser vi en hvordan dette ser ut for VO<sub>2maks</sub> dataene. 
+
+```{r}
+#| label: fig-ancova
+#| echo: false
+#| message: false
+#| fig-width: 4
+#| fig-height: 4
+#| warning: false
+#| fig-cap: "ANCOVA-modellen kan visualiseres som to parallelle regresjonslinjer, en for hver gruppe. Her er pre-intervensjonsverdier på x-aksen og post-intervensjonsverdier på y-aksen. Den striplede linjen viser en hypotetisk sammenheng mellom pre- og post-verdier hvis post verdier økte proporsjonalt med pre-verdiene. Dette er ikke fallet og modellen tar hensyn til dette. Høye pre-verdier følges av noe lavere post-verdier og lave pre-verdier følges av noe høyere post-verdier."
+
+dat <- readxl::read_xlsx("data/ronnestad2021_data.xlsx") %>%
+  select(subject, group, time, VO2max) %>%
+  pivot_wider(names_from = time, values_from = VO2max)
+
+
+mod <- lm(post ~ group + pre, data = dat)
+
+
+dat %>%
+ggplot(aes(pre, post, fill = group)) +
+
+geom_abline(intercept = coef(mod)[1], slope = coef(mod)[3], color = "steelblue") +
+geom_abline(intercept = coef(mod)[1] + coef(mod)[2], slope = coef(mod)[3], color = "orchid") +
+
+geom_abline(intercept = 1 , slope = 1, lty = 2) +
+
+scale_x_continuous(limits = c(4200, 6500)) +
+scale_y_continuous(limits = c(4200, 6500)) +
+scale_fill_manual(values = c("steelblue", "orchid")) +
+
+geom_point(shape = 21, size = 3) +
+theme_classic() + 
+
+labs(fill = "Intervensjon", x = "Pre-intervensjon VO<sub>2maks</sub>", y = "Post-intervensjon  VO<sub>2maks</sub>") +
+
+theme(legend.position = c(0.15, 0.8), 
+axis.title.y = element_markdown(), 
+axis.title.x = element_markdown()) 
+
+
+
+
+```
+
+
+Dataene som vi brukte til t-testen kan også brukes for ANCOVA-analysen. I en ANCOVA med post-verdier som avhengig variabel stille vi spørsmålet: "hvor stor er forskjellen mellom intervensjonenen i post-verdier når vi sammenligner grupper med de samme pre-verdiene?"
+
+Modellen vi bruker kan skrives som 
+
+$$\text{post}_i = \beta_0 + \beta_1\times \text{pre}_i + \beta_2\times \text{gruppe}_i$$
+De parametere som blir estimert i modell gir oss: $\beta_0$, forventet post-verdi når pre-verdien er 0 og deltakeren er i referanse-gruppen (LI), $\beta_1$ er endring i post-verdi for hver enhet økning i pre-verdi og $\beta_2$ er forskjellen i post-verdi mellom gruppene når pre-verdien er 0. Det er $\beta_2$ som vi er interessert i, denne parameteren gir oss en estimering av effekten av intervensjonen.
+
+I jamovi kan vi bruke modulen for regresjonsanalyse for å utføre en ANCOVA-analyse. Vi legger pre-verdien inn som en kovariat og gruppe som en faktorvariabel (@fig-jamovi-ancova-reg).
+
+
+![ANCOVA-analyse i jamovi.](img/05-jamovi/ancova-reg.png){#fig-jamovi-ancova-reg}
+
+Det finnes i tillegg et alternativ for ANCOVA i ANOVA-modulen i jamovi. I denne model gjennomføres en annen type test av differensen, men resultatene er like.
+
+## Noter og dokumenter
+
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Annotere analyser i jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5b05fb10-278d-4d8d-8d6b-b16900b3a357){target="_blank"}.
+
+:::
+
+
+
+Vi har allerede snakket om viktigheten av å dokumentere dataene og analysene, dette er noe vi gjør i forkant og under analysearbeidet. I jamovi har vi mulighet å legge til notater i analysene. Dette kan være en god måte å innlede arbeidet med rapporten. I forkant av analysene kan vi skrive noe om hva vi ønsker å analysere. Under hvert analyse har vi mulighet å skrive om hva analysene faktisk sier og lage en første utkast på den tekst som skal inn i rapporten.
+
+Et eksempel på en annotert analyse ser vi i @fig-jamovi-annotated. Her har vi lagt til en forklaring av hva analysen sier og hva vi kan konkludere med. Vi legger til notater ved å klikke på felter i resultatfanen og skrive inn tekst. Teksten kan editeres og formateres ved hjelp av verktøy i *Edit*-fanen. 
+
+![Notater i resultatfanen jamovi.](img/05-jamovi/jamovi-annotated.png){#fig-jamovi-annotated}
+
+::: {.column-margin}
+
+ &#x1F4F9; Forelesning: [Hvordan eksportere og editere figurer fra jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=51c294af-91ec-49e8-a31f-b16900b60362){target="_blank"}.
+
+:::
+
+
+
 
 

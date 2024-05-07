@@ -9,7 +9,7 @@ Vi kan bruke Jamovi for å teste statistiske hypoteser. Hypotesene testes typisk
 
 
 
-## T-tester
+## T-tester {#sec-ttest}
 
 ### One-sample t-test
 

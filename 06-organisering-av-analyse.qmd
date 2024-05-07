@@ -1,0 +1,141 @@
+# Organisere og gjennomføre en analyse
+
+I denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen "skaper" rapporten. 
+
+## Bakgrunn til datasettet 
+
+I denne workshop skal vi arbeide med et datasett fra [@ronnestad2021a]. Hensikten med studien var å se på effekten av to forskjellige typer av økter i en "mikrosyklus" (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile).  
+
+## Organisering av data
+
+Dere har fått som oppgave å analysere dataene fra prosjektet og får en excel-fil for analyse ([du finner datasettet her](data/ronnestad2021_data.xlsx)). Du har også fått en tabell med variabelnavn og informasjon om hvordan dataene har blitt orgnisert (se tabell under).
+
+Denne informasjonen kan fungere som starten på en beskrivelse av hele analyseprosjektet. Vi vil nå starte med å opprette en *README*-fil som tar utgangspunkt i hensikten med studien og de data vi har tilgang til.
+
+::: {.callout-caution collapse="true"}
+## Oppgave: Lag en *README*-fil
+
+Et *README*-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en *README*-fil er `.txt`. Dette filformat kan leses av alle uansett programvarer og editering er enkel. 
+
+I en tekst-fil kan vi bruke `#`-tegnet for å indikere overskrifter, hvor en `#` er overskrift nivå 1 (den største) og `##` gir neste nivå, osv.
+
+En tabell kan vi lage ved å bruke følgende syntax:
+
+```
+|Variabel |Beskrivelse|Test
+| ---     | ---       |
+|subject  | Deltakere (id) | 
+
+```
+
+Vi ønsker å ha med noen overskrifter når vi starter arbeidet, du kan f.eks. starte med:
+
+```
+# Titel på prosjektet
+
+## Bakgrunn og hensikt
+Her under beskriver vi hva vi kjenner til om prosjektet og hensikten med analysene...
+
+
+## Data og variabler
+Beskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som mulig
+(Hva (enheter), når, hvordan, osv.)
+
+```
+
+
+:::
+
+
+
+::: {style="font-size: 80%;"}
+
+|Variabel |Beskrivelse |Test|
+| --- | --- | --- |
+|`subject`	|Deltakere (id) |
+|`group`	|Gruppe: SI, "short intervals"; LI, "Long intervals" |
+|`time`	|Tids-punkt for test: `pre`, i forkant av intervensjon; `post`, etter intevensjon |
+|`body.mass`	|Vekt (kg) |
+|`body.height`	| |
+|`age`	|Alder () |
+|`lactate.max`	| |VO<sub>2maks</sub>-test 
+|`peak.HR`	| |VO<sub>2maks</sub>-test 
+|`RPE.max`	| |VO<sub>2maks</sub>-test 
+|`VO2max`	| |VO<sub>2maks</sub>-test 
+|`RER.max`	| |VO<sub>2maks</sub>-test 
+|`VE.max`	| |VO<sub>2maks</sub>-test 
+|`Wmax`	| |VO<sub>2maks</sub>-test 
+|`power.4mmol`	| |Submaks-test (terskel)
+|`vo2.4mmol`	| |Submaks-test (terskel)
+|`MAP` 	| |Submaks-test (terskel)
+|`mean.power.allout`	| |Prestasjonstest (15 min all-out)
+|`vo2.mean.allout`	| |Prestasjonstest
+|`vo2.peak.allout`	| |Prestasjonstest
+|`hr.mean.allout`	| |Prestasjonstest
+|`hr.peak.allout`	| |Prestasjonstest
+|`RPE.allout`	| |Prestasjonstest
+|`lactate.allout`| |Prestasjonstest
+
+:::
+
+
+## Organisering av data i Jamovi
+
+Når vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver "sub-analyse", eller hvert gruppe av analyser får en egen `omv`-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for det test som vi tenker skal besvare spørsmålene i prosjektet. 
+
+Men hva er spørsmålene? 
+
+::: {.callout-caution}
+## Oppgave: Lag en analyseplan
+
+- En enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det [@vickers2001;@vickers2001a].
+
+- Før vi kan hvordan vi skal analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.
+
+- Når man bestemt *hva* og *hvordan* man ønsker å analysere bør dette føres inn i *README*-file. For eksempel:
+
+```
+## Analayse
+
+Utfallsmålene XXX og YYY blir analysert som forskjell i forandringsskår mellom 
+grupper ved hjelp av en ZZZ...
+```
+
+- Valget av variabler og analysestrategi gir oss utgangspunktet for å lage en Jamovi-fil. **Diskuter hvordan de beslutninger som ble tatt over gir organiseringen av `omv`-filen.**
+
+- Vi ønsker også å beskrive andre variabler for leseren av rapporten, variabler som beskriver utvalget, **diskuter hvordan disse kan analyseres på best måte.**
+
+- For hver `omv`-fil vi skaper legger vi til informasjon i *README*-filen.
+
+
+:::
+
+
+## Rapportering av resultater
+
+Resultater vil lages i Jamovi, resultatene skal senere også rapporteres i et manus (muligens en word-fil). I forkant av overføring til rapporten kan vi bruke Jamovi for å beskrive hva vi gjør og hvorfor.
+
+
+::: {.callout-caution collapse="false"}
+## Oppgave: Gjennomfør og beskriv analyser
+
+- Ved hjelp av Jamovi, sett opp analysene og beskriv resultatene fra de i jamovi. Teksten (og tabelle og figurer) kan limes inn i en word-fil.
+- Bruk f.eks. power point for å editere figurer.
+- **Diskuter hvordan analysene på best måte kan presenteres**
+
+:::
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
