@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 11&nbsp; Bruk av Jamovi i analysearbeidet</title>
+<title>Statistisk dataanalyse med Jamovi - 11&nbsp; Bruk av jamovi i analysearbeidet</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,7 +20,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -62,10 +81,12 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
-<body class="nav-sidebar floating">
+<body class="nav-sidebar floating slimcontent">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -74,7 +95,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-a-intro.html">Presentere og lese statistiske analyser</a></li><li class="breadcrumb-item"><a href="./05-jamovi.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05-a-intro.html">Presentere og lese statistiske analyser</a></li><li class="breadcrumb-item"><a href="./05-jamovi.html"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av jamovi i analysearbeidet</span></a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -221,7 +242,7 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./05-jamovi.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av jamovi i analysearbeidet</span></span></a>
   </div>
 </li>
       </ul>
@@ -261,14 +282,23 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#importere-og-validere-data-og-datatyper" id="toc-importere-og-validere-data-og-datatyper" class="nav-link active" data-scroll-target="#importere-og-validere-data-og-datatyper"><span class="header-section-number">11.1</span> Importere og validere data og datatyper</a></li>
+  <li><a href="#data-design-og-antagelser" id="toc-data-design-og-antagelser" class="nav-link" data-scroll-target="#data-design-og-antagelser"><span class="header-section-number">11.2</span> Data, design og antagelser</a></li>
+  <li><a href="#utføre-analyser-to-modeller-for-den-samme-effekten" id="toc-utføre-analyser-to-modeller-for-den-samme-effekten" class="nav-link" data-scroll-target="#utføre-analyser-to-modeller-for-den-samme-effekten"><span class="header-section-number">11.3</span> Utføre analyser: To modeller for den samme effekten</a></li>
+  <li><a href="#noter-og-dokumenter" id="toc-noter-og-dokumenter" class="nav-link" data-scroll-target="#noter-og-dokumenter"><span class="header-section-number">11.4</span> Noter og dokumenter</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
+<main class="content page-columns page-full" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av Jamovi i analysearbeidet</span></h1>
+<h1 class="title"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Bruk av jamovi i analysearbeidet</span></h1>
 </div>
 
 
@@ -283,8 +313,162 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
+<p>Vi kan bruke jamovi til å utføre en rekke statistiske analyser, og vi kan gjøre dette på en til nærmest reproduserbar måte. Dette innebærer at de analyser vi gjennomfører dokumenteres og kan leses og gjentas av noen som får tilgang til dine filer. Dette betyr, som vi allerede har konstatert i tidligere kapittel (<a href="01-deskriptiv-dataanalyse.html#sec-praksis"><span>1.1</span></a>), at det analyseprosjekt du arbeider med består av flere filer, inkludert datasett, analysefiler og rapportfiler. Disse bør dokumenteres med en README-fil som beskriver innholdet i de ulike filene sammen med hensikten med prosjektet som en helhet.</p>
+<p>I dette kapittelet skal vi se på hvordan vi kan bruke jamovi i en reproduserbar arbeidsflyt. Vi vill bruke et datasett fra <span class="citation" data-cites="ronnestad2021a">Rønnestad et al. (<a href="references.html#ref-ronnestad2021a" role="doc-biblioref">2021</a>)</span>, som du finner her <a href="data/ronnestad2021_data.xlsx">ronnestad2021_data.xlsx</a>.</p>
+<div class="no-row-height column-margin column-container"></div><section id="importere-og-validere-data-og-datatyper" class="level2 page-columns page-full" data-number="11.1">
+<h2 data-number="11.1" class="anchored" data-anchor-id="importere-og-validere-data-og-datatyper"><span class="header-section-number">11.1</span> Importere og validere data og datatyper</h2>
+<p>Når vi importerer data til jamovi får vi mulighet til å sjekke datatyper og gjøre endringer i datasettet sånn at analysearbeidet vil bli enklere. Som et første steg kan vi gå igjennom variablene i det importerte datasettet og sjekke at de faktisk er av den typen vi forventer. Dette kan vi gjøre ved å klikke på variabelnavnet i fanen <code>Variables</code>. Legg merke til at vi også har mulighet å beskrive variablene her. Dette er en god praksis for å gjøre det enklere for andre og deg selv å forstå datasettet. I dette steg endrer vi også nivåer på kategoriske variabler.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=085d6c04-4d84-463a-8c7c-b16900b25b05" target="_blank">Beskrive data i jamovi</a>.</p>
+</div></div><div id="fig-validate-variables" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/05-jamovi/validate-variables.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.1. Sjekk at variabler er hva du forvnter og endre nivåer på kategorisk data.</figcaption>
+</figure>
+</div>
+<p>Dette er en måte å skape en oversikt over variabler, i et større prosjekt kan det være lurt å i tillegg også lage en README-fil med det samme innholdet. I en slik fil kan vi beskrive dataene enda mer detaljert. I eksemplet under legger jeg for eksempel til en kolonne som indikerer hvilken test dataene kommer fra.</p>
+<div style="font-size: 80%;">
+<table class="table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Variabel</th>
+<th>Beskrivelse</th>
+<th>Test</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><code>subject</code></td>
+<td>Deltakere (id)</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>group</code></td>
+<td>Gruppe: SI, “short intervals”; LI, “Long intervals”</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>time</code></td>
+<td>Tids-punkt for test: <code>pre</code>, i forkant av intervensjon; <code>post</code>, etter intevensjon</td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>body.mass</code></td>
+<td>Vekt (kg)</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>body.height</code></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td><code>age</code></td>
+<td>Alder ()</td>
+<td></td>
+</tr>
+<tr class="odd">
+<td><code>lactate.max</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="even">
+<td><code>peak.HR</code></td>
+<td></td>
+<td>VO<sub>2maks</sub>-test</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="data-design-og-antagelser" class="level2 page-columns page-full" data-number="11.2">
+<h2 data-number="11.2" class="anchored" data-anchor-id="data-design-og-antagelser"><span class="header-section-number">11.2</span> Data, design og antagelser</h2>
+<p>I dette eksemplet arbeider vi med et datasett fra <span class="citation" data-cites="ronnestad2021a">(<a href="references.html#ref-ronnestad2021a" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>. Hensikten med studien var å se på effekten av to forskjellige typer av økter i en “mikrosyklus” (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile). La oss kalle dette for behandlingsvariabelen, den variabel som indikerer hvilken behandlingen eller intervensjon deltakerne har fått. I datasettet er det variabelen <code>group</code> som indikerer hvilken behandling deltakerne har fått.</p>
+<div class="no-row-height column-margin column-container"></div><p>Det å kalle behandlingsvariabelen for gruppe kan være misvisende da vi antar at deltakerne ble tilfeldig inndelt i gruppene etter rekruttering til studien. Denne antagelsen gir oss mulighet å finne ut (eller i hvert fall estimere) hvor stor effekt behandlingen har på utfallsmålene i studien. Hvis vi å andre siden antar at gruppene finnes fra før blir det vanskeligere å si noe om årsakssammenhengen mellom behandlingen og utfallsmålene.</p>
+<p>I praksis har dette betydning for hvordan vi tolker resultater fra analysene, men analysene kan i mange tilfeller gjennomføres på samme måte uansett om vi antar at gruppene er tilfeldig inndelt eller ikke. Denne informasjonen bør i et tidlig stadium av analysearbeidet dokumenteres som en del i README-filen. Hvilke antagelser gjør vi om dataene, hvordan dataene ble innhentet og hvordan vi kan tolke resultatene. I dette eksemplet antar vi at gruppene er tilfeldig inndelt.</p>
+<p>Før vi ser på dataene bør vi også bestemme oss for den eller de variabler som vi ønsker å studere. I datasettet fra <span class="citation" data-cites="ronnestad2021a">(<a href="references.html#ref-ronnestad2021a" role="doc-biblioref">Rønnestad et al. 2021</a>)</span> finner vi for eksempel VO<sub>2maks</sub>, maksimal effekt under VO<sub>2maks</sub>-testen og gjennsomsnittseffekt under en prestasjonstest.</p>
+<div class="no-row-height column-margin column-container"></div><p>Husk at hensikten med analysen av et utvalg ofte er å si noe om dataene som vi ikke observerer. Hvis vi tar noen grep o forkant av analysen kan vi beskytte oss fra å trekke feil konklusjoner. Vi trekker for eksempel i større grad feil konklusjoner når vi velger å rapportere de statistiske resultater som viser seg å være signifikante. Vi bør altså, før vi ser på dataene, bestemme hvilke variabler som skal analyseres.</p>
+</section>
+<section id="utføre-analyser-to-modeller-for-den-samme-effekten" class="level2 page-columns page-full" data-number="11.3">
+<h2 data-number="11.3" class="anchored" data-anchor-id="utføre-analyser-to-modeller-for-den-samme-effekten"><span class="header-section-number">11.3</span> Utføre analyser: To modeller for den samme effekten</h2>
+<p>Når vi har notert oss antagelser om dataene og studiedesignet, og valgt hvilken variabel vi ønsker å analysere bør vi også velge en måte å analysere dataene på. Vi velger her i praksis en statistisk modell for å estimere det vi er interessert i. I dette eksemplet ønsker vi å estimere effekten av intervensjonen på VO<sub>2maks</sub>. To mulige modeller for denne analysen er t-test av forandringsskår og ANCOVA.</p>
+<p>I studien bel deltakere randomisert (balansert etter absolutt VO<sub>2maks</sub> <span class="citation" data-cites="ronnestad2021a">(<a href="references.html#ref-ronnestad2021a" role="doc-biblioref">Rønnestad et al. 2021</a>)</span>) til to grupper: LI og SI. I figuren <a href="#fig-design-lisi"><span>11.2</span></a> ser vi en skisse over datainnhentingen, deltakere (D) gjennomførte tester i forkant (T<sub>1</sub>) og etterkant (T<sub>2</sub>) av intervensjonen. Det finnes altså to datapunkter for hver deltaker og vi er interessert i analysere forskjellen i forandring, alternativt post-intervensjonsskår mellom de to intervensjonene (gruppene).</p>
+<div class="no-row-height column-margin column-container"><div id="ref-ronnestad2021a" class="csl-entry" role="listitem">
+Rønnestad, Bent R., Sjur J. Øfsteng, Fabio Zambolin, Truls Raastad, and Daniel Hammarström. 2021. <span>“Superior <span>Physiological Adaptations After</span> a <span>Microcycle</span> of <span>Short Intervals Versus Long Intervals</span> in <span>Cyclists</span>.”</span> <em>International Journal of Sports Physiology and Performance</em> 16 (10): 1432–38. <a href="https://doi.org/10.1123/ijspp.2020-0647">https://doi.org/10.1123/ijspp.2020-0647</a>.
+</div></div><p>En t-test av forandringsskår gir oss en modell som også kan kalles for forskjell-i-forskjell (difference-in-difference). I denne modellen beregner vi en forandringsskår for hver deltakere og estimerer forskjellen mellom gruppene i forandringsskåren. Forandrinsgskåren kan beregnes som <span class="math inline">\(T_2 - T_1\)</span> for hver deltaker.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-design-lisi" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-jamovi_files/figure-html/fig-design-lisi-1.png" class="img-fluid figure-img" width="672"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.2. Deltakere (D<sub>i</sub>, hvor i indikerer en indeks for deltakere) i studien ble tilfeldig inndelt i to grupper: LI og SI. T<sub>1</sub> og T<sub>2</sub> indikerer tidspunkt for testene. T-test av forandringsskår eller ANCOVA kan brukes for å undersøke effekten av intervensjonen.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>For å gjøre dette i Jamovi trenger vi å forandre datasettet. Datasettet er oppbygget med en variabel for tid, gruppe og en rekke utfallsmål. For å beregne en forandringsskår må vi transformere datasettet sånn at hver deltaker har en rad som inneholder både pre- og post-intervensjonsdata. Desverre har ikke jamovi funksjoner som gjør dette for oss, vi må kopiere og lime inn dataene på rett plass. Husk å sjekke at deltakerne er i samme rekkefølge i begge tidspunktene. I <a href="#fig-wide-data">Figur&nbsp;<span>11.3</span></a> ser vi hvordan datasettet kan se ut etter at vi har forberedt det for en t-test av forandringsskår. Forandringsskåren er beregnet som <code>post - pre</code> for hver deltaker og <code>pre</code>/<code>post</code> variablene er data fra den originale VO<sub>2maks</sub> variabelen.</p>
+<div id="fig-wide-data" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/05-jamovi/wide-data.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.3. Forberede data for t-test av forandringsskår, for å forenkle analysearbeidet brukes en kopi av hele datasettet hvor bare de aktuelle variablene er kvar.</figcaption>
+</figure>
+</div>
+<p>Når vi har forberedt dataene kan vi utføre en t-test av forandringsskår i jamovi. Vi har allerede snakket om hvordan vi gjennomfører og tolker denne testen i kapittel <a href="04-jamovi.html#sec-ttest"><span>9.1</span></a>.</p>
+<p>En annen måte å analysere dataene på er å bruke en ANCOVA-modell. ANCOVA er en forkortelse for Analysis of Covariance og en variasjon av en regresjonsmodell. I ANCOVA kan vi inkludere en eller flere kontinuerlige variabler som kovariater. I dette eksemplet bruker vi VO<sub>2maks</sub> ved T<sub>1</sub> som en kovariat. Dette gir oss mulighet å sammenligne intervensjonene i den avhengige variabelen (post-intervensjonsskår) når vi setter pre-intervensjonsskåren til en bestemt nivå. På denne måten “kontrollere” vi for forskjeller i utgangsnivået av VO<sub>2maks</sub> mellom gruppene.</p>
+<p>En ANCOVA kan visualiseres som to parallelle regresjonslinjer, en for hver gruppe når vi setter pre-intervensjonsverdier på x-aksel og post-intervensjonsverdier på y-aksel. I <a href="#fig-ancova">Figur&nbsp;<span>11.4</span></a> ser vi en hvordan dette ser ut for VO<sub>2maks</sub> dataene.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-ancova" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="05-jamovi_files/figure-html/fig-ancova-1.png" class="img-fluid figure-img" width="384"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.4. ANCOVA-modellen kan visualiseres som to parallelle regresjonslinjer, en for hver gruppe. Her er pre-intervensjonsverdier på x-aksen og post-intervensjonsverdier på y-aksen. Den striplede linjen viser en hypotetisk sammenheng mellom pre- og post-verdier hvis post verdier økte proporsjonalt med pre-verdiene. Dette er ikke fallet og modellen tar hensyn til dette. Høye pre-verdier følges av noe lavere post-verdier og lave pre-verdier følges av noe høyere post-verdier.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>Dataene som vi brukte til t-testen kan også brukes for ANCOVA-analysen. I en ANCOVA med post-verdier som avhengig variabel stille vi spørsmålet: “hvor stor er forskjellen mellom intervensjonenen i post-verdier når vi sammenligner grupper med de samme pre-verdiene?”</p>
+<p>Modellen vi bruker kan skrives som</p>
+<p><span class="math display">\[\text{post}_i = \beta_0 + \beta_1\times \text{pre}_i + \beta_2\times \text{gruppe}_i\]</span> De parametere som blir estimert i modell gir oss: <span class="math inline">\(\beta_0\)</span>, forventet post-verdi når pre-verdien er 0 og deltakeren er i referanse-gruppen (LI), <span class="math inline">\(\beta_1\)</span> er endring i post-verdi for hver enhet økning i pre-verdi og <span class="math inline">\(\beta_2\)</span> er forskjellen i post-verdi mellom gruppene når pre-verdien er 0. Det er <span class="math inline">\(\beta_2\)</span> som vi er interessert i, denne parameteren gir oss en estimering av effekten av intervensjonen.</p>
+<p>I jamovi kan vi bruke modulen for regresjonsanalyse for å utføre en ANCOVA-analyse. Vi legger pre-verdien inn som en kovariat og gruppe som en faktorvariabel (<a href="#fig-jamovi-ancova-reg">Figur&nbsp;<span>11.5</span></a>).</p>
+<div id="fig-jamovi-ancova-reg" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/05-jamovi/ancova-reg.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.5. ANCOVA-analyse i jamovi.</figcaption>
+</figure>
+</div>
+<p>Det finnes i tillegg et alternativ for ANCOVA i ANOVA-modulen i jamovi. I denne model gjennomføres en annen type test av differensen, men resultatene er like.</p>
+</section>
+<section id="noter-og-dokumenter" class="level2 page-columns page-full" data-number="11.4">
+<h2 data-number="11.4" class="anchored" data-anchor-id="noter-og-dokumenter"><span class="header-section-number">11.4</span> Noter og dokumenter</h2>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5b05fb10-278d-4d8d-8d6b-b16900b3a357" target="_blank">Annotere analyser i jamovi</a>.</p>
+</div></div><p>Vi har allerede snakket om viktigheten av å dokumentere dataene og analysene, dette er noe vi gjør i forkant og under analysearbeidet. I jamovi har vi mulighet å legge til notater i analysene. Dette kan være en god måte å innlede arbeidet med rapporten. I forkant av analysene kan vi skrive noe om hva vi ønsker å analysere. Under hvert analyse har vi mulighet å skrive om hva analysene faktisk sier og lage en første utkast på den tekst som skal inn i rapporten.</p>
+<p>Et eksempel på en annotert analyse ser vi i <a href="#fig-jamovi-annotated">Figur&nbsp;<span>11.6</span></a>. Her har vi lagt til en forklaring av hva analysen sier og hva vi kan konkludere med. Vi legger til notater ved å klikke på felter i resultatfanen og skrive inn tekst. Teksten kan editeres og formateres ved hjelp av verktøy i <em>Edit</em>-fanen.</p>
+<div id="fig-jamovi-annotated" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="img/05-jamovi/jamovi-annotated.png" class="img-fluid figure-img"></p>
+<figcaption class="figure-caption">Figur&nbsp;11.6. Notater i resultatfanen jamovi.</figcaption>
+</figure>
+</div>
 
 
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=51c294af-91ec-49e8-a31f-b16900b60362" target="_blank">Hvordan eksportere og editere figurer fra jamovi</a>.</p>
+</div></div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
