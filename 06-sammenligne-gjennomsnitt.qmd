@@ -157,7 +157,7 @@ resdf <- list()
 for(i in 1:length(datasets)){
   dat <- filter(comb_dat, ds == datasets[i])
   
-  res <- t.test(dat$change ~ dat$group, paired = FALSE)
+  res <- t.test(dat$change ~ dat$group)
   
   resdf[[i]] <- data.frame(t.val = res$statistic, 
              p.val = res$p.value, 
@@ -238,5 +238,5 @@ Datasettene finner dere her
 ```{r}
 
 
-
+```
 

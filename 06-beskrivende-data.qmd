@@ -1,0 +1,167 @@
+
+# Beskrive data og beskrive med data
+
+## Introduksjon
+
+
+
+
+
+### Hvor mange pølser trenger vi?
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+
+# 2500 tilskuere, 1700 sitteplasser
+
+# 22 hjemmekamper, 10 lag i serien
+
+
+hotdogs <- function(opponent = "Storhamar", season = "pre", year = 2022) {
+  
+
+opponents <- c("Storhamar", "Frisk Asker Hockey", "Oilers", "Valerenga", "Sparta Sarpsborg",
+     "Arctic Eagles Narvik", "Lorenskog IK", "Stjernen", "Comet Halden")
+
+if(opponent == opponents[1]) b1 <- sample(400:800, 1)
+if(opponent == opponents[2]) b1 <- sample(25:200, 1)
+if(opponent == opponents[3]) b1 <- sample(100:250, 1)
+if(opponent == opponents[4]) b1 <- sample(100:250, 1)
+if(opponent == opponents[5]) b1 <- sample(30:200, 1)
+if(opponent == opponents[6]) b1 <- sample(10:150, 1)
+if(opponent == opponents[7]) b1 <- sample(30:500, 1)
+if(opponent == opponents[8]) b1 <- sample(10:35, 1)
+if(opponent == opponents[9]) b1 <- sample(10:25, 1)
+
+if(season == "pre") b2 <- sample(10:40, 1)
+if(season == "mid") b2 <- sample(50:250, 1)
+if(season == "end") b2 <- sample(250:500, 1)
+
+if(year == 2022) intercept <- sample(350:370, 1) 
+if(year == 2023) intercept <- sample(370:470, 1) 
+if(year == 2024) intercept <- sample(470:570, 1) 
+
+# Function for generating number of spectators
+# A function of the opponen and season
+n <- intercept + b1 + b2 + sample.int(200, 1)
+  
+
+# New set of predictors for the hotdog buy
+if(opponent == opponents[1]) b1 <- rnorm(1, 0.8, 0.1)
+if(opponent == opponents[2]) b1 <- rnorm(1, 0.6, 0.1)
+if(opponent == opponents[3]) b1 <- rnorm(1, 0.5, 0.1)
+if(opponent == opponents[4]) b1 <- rnorm(1, 0.4, 0.1)
+if(opponent == opponents[5]) b1 <- rnorm(1, 0.3, 0.1)
+if(opponent == opponents[6]) b1 <- rnorm(1, 0.2, 0.1)
+if(opponent == opponents[7]) b1 <- rnorm(1, 0.1, 0.1)
+if(opponent == opponents[8]) b1 <- rnorm(1, 0.2, 0.1)
+if(opponent == opponents[9]) b1 <- rnorm(1, 0.1, 0.1)
+
+if(season == "pre") b2 <- rnorm(1, 0.1, 0.1)
+if(season == "mid") b2 <- rnorm(1, 0.2, 0.1)
+if(season == "end") b2 <- rnorm(1, 0.4, 0.1)
+
+
+# New set of predictors for the cofee buy
+if(opponent == opponents[1]) b3 <- rnorm(1, 0, 0.1)
+if(opponent == opponents[2]) b3 <- rnorm(1, 0.02, 0.1)
+if(opponent == opponents[3]) b3 <- rnorm(1, 0.03, 0.2)
+if(opponent == opponents[4]) b3 <- rnorm(1, 0.05, 0.3)
+if(opponent == opponents[5]) b3 <- rnorm(1, 0.06, 0.4)
+if(opponent == opponents[6]) b3 <- rnorm(1, 0.08, 0.3)
+if(opponent == opponents[7]) b3 <- rnorm(1, 0.1, 0.4)
+if(opponent == opponents[8]) b3 <- rnorm(1, 0.2, 0.3)
+if(opponent == opponents[9]) b3 <- rnorm(1, 0.21, 0.4)
+
+if(season == "pre") b4 <- rnorm(1, 0.4, 0.1)
+if(season == "mid") b4 <- rnorm(1, 0.2, 0.1)
+if(season == "end") b4 <- rnorm(1, 0.1, 0.1)
+
+
+  b0 <- 0
+
+  # linear predictors for hotdogs and coffee
+  lin_hotdogs <- b0 + b1 + b2
+  lin_coffee <- b0 + b3 + b4
+  
+  a_hotdogs <- exp(lin_hotdogs)
+  a_coffee <- exp(lin_coffee)
+  b <- exp(0.5)
+  
+  p_hotdogs <- rbeta(1, a_hotdogs, b)
+  p_coffee <- rbeta(1, a_coffee, b)
+  
+  hotdogs <- rbinom(1, size = n, prob = p_hotdogs)
+  coffee <- rbinom(1, size = n, prob = p_coffee)
+  
+  data.frame(motstand = opponent, sesong = season, publikum = n, antall_polser = hotdogs, antall_kaffe = coffee)
+  
+  
+  
+}
+
+opponents <- c("Storhamar", "Frisk Asker Hockey", "Oilers", "Valerenga", "Sparta Sarpsborg",
+     "Arctic Eagles Narvik", "Lorenskog IK", "Stjernen", "Comet Halden")
+
+# Random set of opponents
+opp <- sample(opponents, 22, replace = TRUE)
+sesong <- c(rep("pre", 6), rep("mid", 7), rep("end", 9))
+years <- c(2022, 2023, 2024)
+total_results <- list()
+
+for(j in 1:3) {
+
+results <- list()
+for(i in 1:22) {
+  
+  results[[i]] <- hotdogs(opponent = opp[i], season = sesong[i], year = years[j])
+  
+  
+}
+
+total_results[[j]] <- bind_rows(results)
+
+}
+
+statistikk <- bind_rows(total_results)
+
+
+### Create a data frame of number of hotdogs and coffee
+
+antall_polser <- data.frame(year = rep(c(2022, 2023, 2024), each = 22), 
+                            polser_kjop = rep(c(1000, 1100, 1200), each = 22), 
+                            kaffe_kjop = rep(c(800, 800, 800), each = 22))
+
+
+
+
+polsestatistikk <- cbind(statistikk, antall_polser) |> 
+  select(ar = year, everything())
+
+  
+write.csv(polsestatistikk, "data/polsestatistikk.csv")
+
+
+
+
+
+
+```
+
+Lillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på å planlegge innkjøp av pølser og kaffe til hjemmekamper for å tjene mer penger til klubben. Økonomidirektøren har identifisert de lokale pølsene og kaffe som to store muligheter til å tjene mer penger. Man ønsker nå å vite hvordan man bedre kan planlegge innkjøp av pølser og kaffe for å maksimere vinsten. Pølsene kjøpes fra en lokal slakter og er ferskvare, hvis pølsene ikke blir solgt i løpet av kampen må de destrueres. Destruksjon av pølser innebærer derfor tap tilsvarende innkjøpsprisen, som er 11.28 NOK. For hver pølse som blir solgt tjener klubben 38.72 NOK (salgspris 40 NOK). Kaffe er ikke ferskvare, men holder bare en sesong. Etter avsluttet år må kaffe destrueres. Lillehammer kjøper kaffe for 2 NOK per kopp og tjener 28 NOK per kopp (salgspris 30 NOK).
+
+[Her finner du et datasett](data/polsestatistikk.csv) med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_pølser), antall solgte kaffe (antall_kaffe),  antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).
+
+Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag. 
+
+Bruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise på de økonomiske konsekvensene av disse forslagene. 
+
+
+
+
+

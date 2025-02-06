@@ -1,0 +1,28 @@
+# Forelesninger og henvisninger til pensum
+
+
+
+
+
+### Modul: Beskrivende statistikk
+
+|Tema |Slides |Video|
+|---|---|---|
+|Introduksjon fra emnet (h-2024)|[slides](present/01-intro.html)|[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=c0d0562a-d28f-4043-8c29-b11e00ce1cdb)|
+|Data i excel||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5c6702d0-b056-4c53-99c6-b11e00cedc5f)|
+|Dataanalyse i praksis||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=849041eb-2f47-42a5-897b-b11e00cf30b8)|
+|Beskrivende statistikk||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2abb1a7-d4c0-4f57-a8c8-b11e00cf6efb)|
+|Introduksjon til jamovi||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0c395866-d215-450e-b817-b11e00cff874)|
+|Gjennomgang av quiz||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=6712a2ca-63cf-42b4-a1ae-b12200e056ea)|
+
+*Litteratur:*
+
+@thrane_2020 (kap 1-2). Forslag på fordypning: @medbo2018 (kap 1-2), @navarro_learning_2018 (kap 1-6), 
+
+
+
+
+### Modul: Statistisk samvariasjon
+
+
+

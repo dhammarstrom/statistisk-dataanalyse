@@ -30,6 +30,8 @@ book:
         - 05-jamovi.qmd
     - part: 06-a-intro.qmd
       chapters:
+        - 06-forelesninger.qmd
+        - 06-beskrivende-data.qmd
         - 06-sammenligne-gjennomsnitt.qmd
         - 06-organisering-av-analyse.qmd
     - references.qmd
