@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 5&nbsp; Fra sammenheng til kausalitet</title>
+<title>5&nbsp; Fra sammenheng til kausalitet – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,14 +82,42 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,13 +127,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li><li class="breadcrumb-item"><a href="./03-kausalsammenheng.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li><li class="breadcrumb-item"><a href="./03-kausalsammenheng.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -107,7 +142,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistisk dataanalyse med Jamovi</a> 
@@ -130,7 +165,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deskriptiv dataanalyse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -153,7 +188,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./02-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistisk samvariasjon</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -176,7 +211,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kausalsammenheng</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,7 +240,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Induktiv statistikk</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -228,7 +263,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./05-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentere og lese statistiske analyser</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,22 +285,28 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./06-a-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Øvelser og prosjekter</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Forelesninger, Øvelser og prosjekter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06-forelesninger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Forelesninger og henvisninger til pensum</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +320,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -303,7 +344,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03-a-intro.html">Kausalsammenheng</a></li><li class="breadcrumb-item"><a href="./03-kausalsammenheng.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Fra sammenheng til kausalitet</span></h1>
 </div>
@@ -318,10 +359,12 @@ div.csl-indent {
   </div>
   
 
+
 </header>
 
-<div class="page-columns page-full"><p>Samtidig som vi vet at noen sammenhenger er spuriøse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> vet vi også at noen ting påvirker andre ting, det finnes kausalitet<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I et forsøk undersøker vi hvordan en ny medisin påvirker blodtrykket. En gruppe forsøkdeltakere blir tilfeldig inndelt i to grupper. Deltakere i den ene gruppen får den nye medisinen og deltakere i den andre gruppen får placebo. Inndeling av deltakere i gruppene er skjult for deltakere og forskere. I etterkant av intervensjonen måler vi blodtrykk og kan konstatere at deltakere som fått medisinen har lavere blodtrykk sammenlignet med placebo-gruppen. Forsøket inneholder noen komponenter som gjør at vi kan si at det finnes en kausal sammenheng mellom det å ta medisinen og det å få lavere blodtrykk. Hvis vi hadde muligheten å forandre på en variabel for deretter å måle utfallet i en annen variabel, under kontrollerte forhold så kan vi si at det finnes (eller ikke) en kausal sammenheng. Det å forandre en variabel (f.eks. konsentrasjonen av et medikament i blodet) kan kalles for å gjøre en intervensjon.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Spuriøs sammenheng er en sammenheng mellom to variabler som ikke har en kausal sammenheng.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Kausalitet er en sammenheng mellom to variabler hvor en variabel påvirker en annen.</p></li></div></div>
-<p>I mange sammenhenger har vi ikke mulighet å forandre variabler ved å lage intervensjoner. Det kan for eksempel finnes etiske eller praktiske årsaker til dette. Men vi har fortsatt mulighet til å undersøke kausale sammenhenger. Som i eksemplet med medisin for lavere blodtrykk over så krever det noen antagelser. I et forsøk hvor vi intervenerer kan antagelser inkludere at forsøkdeltakere blir tilfeldig tildelt en gruppe og at forskere ikke vet hvilken pasient eller forsøkdeltakere som får den aktive behandlingen eller medisinen. Hvis disse antakelsene er sanne så kan vi med stor sikkerhet si at medisinen påvirket blodtrykket. I en forskningstudie hvor vi ikke har mulighet å intervenere har vi fortsatt mulighet å «kontrollere» for variabler som kan påvirke sammenhengen mellom to variabler som vi er interessert i. Vi kan identifisere variabler som vi bør kontrollere for ved hjelp av grafiske modeller. Disse modellene kan også gi innsikt i når vi ikke kan si at en sammenheng er årsaksbestemt.</p>
+
+<p>Samtidig som vi vet at noen sammenhenger er spuriøse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> vet vi også at noen ting påvirker andre ting, det finnes kausalitet<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I et forsøk undersøker vi hvordan en ny medisin påvirker blodtrykket. En gruppe forsøkdeltakere blir tilfeldig inndelt i to grupper. Deltakere i den ene gruppen får den nye medisinen og deltakere i den andre gruppen får placebo. Inndeling av deltakere i gruppene er skjult for deltakere og forskere. I etterkant av intervensjonen måler vi blodtrykk og kan konstatere at deltakere som fått medisinen har lavere blodtrykk sammenlignet med placebo-gruppen. Forsøket inneholder noen komponenter som gjør at vi kan si at det finnes en kausal sammenheng mellom det å ta medisinen og det å få lavere blodtrykk. Hvis vi hadde muligheten å forandre på en variabel for deretter å måle utfallet i en annen variabel, under kontrollerte forhold så kan vi si at det finnes (eller ikke) en kausal sammenheng. Det å forandre en variabel (f.eks. konsentrasjonen av et medikament i blodet) kan kalles for å gjøre en intervensjon.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Spuriøs sammenheng er en sammenheng mellom to variabler som ikke har en kausal sammenheng.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Kausalitet er en sammenheng mellom to variabler hvor en variabel påvirker en annen.</p></div></div><p>I mange sammenhenger har vi ikke mulighet å forandre variabler ved å lage intervensjoner. Det kan for eksempel finnes etiske eller praktiske årsaker til dette. Men vi har fortsatt mulighet til å undersøke kausale sammenhenger. Som i eksemplet med medisin for lavere blodtrykk over så krever det noen antagelser. I et forsøk hvor vi intervenerer kan antagelser inkludere at forsøkdeltakere blir tilfeldig tildelt en gruppe og at forskere ikke vet hvilken pasient eller forsøkdeltakere som får den aktive behandlingen eller medisinen. Hvis disse antakelsene er sanne så kan vi med stor sikkerhet si at medisinen påvirket blodtrykket. I en forskningstudie hvor vi ikke har mulighet å intervenere har vi fortsatt mulighet å «kontrollere» for variabler som kan påvirke sammenhengen mellom to variabler som vi er interessert i. Vi kan identifisere variabler som vi bør kontrollere for ved hjelp av grafiske modeller. Disse modellene kan også gi innsikt i når vi ikke kan si at en sammenheng er årsaksbestemt.</p>
 <p>Over har vi beskrevet to typer av studiedesign, en eksperimentell studie og en observasjonsstudie. I en eksperimentell studie gjennomfører vi en eller flere intervensjoner som forandrer variabler og vi kan derved estimere effekten av disse variablene på avhengige variabler. I en observasjonsstudie har vi ikke denne muligheten, her estimerer sammenhenger mellom variabler ved hjelp og trekker slutninger om kausalitet basert på antagelser om hvordan variabler henger sammen. I begge typer av studier kan vi si noe om kausale sammenhenger.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
@@ -337,13 +380,17 @@ div.csl-indent {
 <p>I neste steg kan vi beregne effekten av N, det nye treningsprogrammet. For å beregne denne så trekker vi ifra forandringen i K (<span class="math inline">\(\Delta_K\)</span>) fra effekten av N (<span class="math inline">\(\Delta_N\)</span>), denne beregning gir oss den gjennomsnittlige intervensjonseffekten (GIE) av å gjennomføre N, sammenlignet med et kontrollprogram (K).</p>
 <p><span class="math display">\[ \Delta_N - \Delta_K = \text{GIE}\]</span></p>
 <p>For å si at den estimerte GIE er den kausale effekten av å gjennomføre N kreves noen grep og antagelser. Når vi delte inn deltakere i studien så må vi ta grep for å gi hvert deltakere samme sannsynlighet å ende opp i hver gruppe. Vi sikkerstille dette ved å randomisere forsøket. I et randomisert forsøk bruker man vanligvis et dataprogram som tilfeldig tildeler gruppetilhørighet til hvert individ. Inndelingen av gruppene påvirkes ikke av forskerne, deltakerne eller andre faktorer som samtidig kan påvirke resultatene. Dette er en aspekt av forsøket som gjør at vi kan kalle det for et eksperiment.</p>
-<p>Et nærbeslektet design er en kvasieksperimentell studie. I en slik studie har noe ytterligere påvirket gruppeinndelingen og dermed påvirket effekten som er utfallet av studien. Et eksempel på en effekt som kan påvirke resultatene i en studie hvor en kvasieksperimentell design brukes er om inndelingen i grupper gir en overvekt av dårlig trente utøvere i den ene gruppen grunnet deltakernes preferanser. En dårlig trent individ kan forventes svare bedre på trening og hvis mange av disse er samlet i en gruppe forsvinner eller forsterkes effekten av intervensjonen. Vi kan forstå denne situasjonen enda bedre ved hjelp av en figur (<a href="#fig-eksperimentkvasi">Figur&nbsp;<span>5.1</span></a>).</p>
+<p>Et nærbeslektet design er en kvasieksperimentell studie. I en slik studie har noe ytterligere påvirket gruppeinndelingen og dermed påvirket effekten som er utfallet av studien. Et eksempel på en effekt som kan påvirke resultatene i en studie hvor en kvasieksperimentell design brukes er om inndelingen i grupper gir en overvekt av dårlig trente utøvere i den ene gruppen grunnet deltakernes preferanser. En dårlig trent individ kan forventes svare bedre på trening og hvis mange av disse er samlet i en gruppe forsvinner eller forsterkes effekten av intervensjonen. Vi kan forstå denne situasjonen enda bedre ved hjelp av en figur (<a href="#fig-eksperimentkvasi" class="quarto-xref">Figur&nbsp;<span>5.1</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-eksperimentkvasi" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-eksperimentkvasi-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.1. En ekseprimentell studie (A) gjennomfører gruppeindelning (<em>G</em>) ved hjelp av randomisering (<em>R</em>). Gruppeinndelingen er den ende effekten som påvirker forandring i prestasjon (<em>P</em>). I et kvasiekperimentellt design påvirker randomisering (<em>R</em>) og en uobservert variabel (<em>K</em>) gruppeinndelingen. <em>K</em> påvirker også forandringen i prestasjon noe som gjør at vi ikke med sikkerhet kan si noe om effekten av <em>G</em> på <em>P</em>.</figcaption>
+<div id="fig-eksperimentkvasi" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-eksperimentkvasi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-eksperimentkvasi-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-eksperimentkvasi-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.1. En ekseprimentell studie (A) gjennomfører gruppeindelning (<em>G</em>) ved hjelp av randomisering (<em>R</em>). Gruppeinndelingen er den ende effekten som påvirker forandring i prestasjon (<em>P</em>). I et kvasiekperimentellt design påvirker randomisering (<em>R</em>) og en uobservert variabel (<em>K</em>) gruppeinndelingen. <em>K</em> påvirker også forandringen i prestasjon noe som gjør at vi ikke med sikkerhet kan si noe om effekten av <em>G</em> på <em>P</em>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -356,7 +403,7 @@ div.csl-indent {
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e17be367-ed01-45a9-97a1-b14800c3de1b" target="_blank">Kausale modeller</a>.</p>
 </div></div><p>I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet <em>Directed Acyclic Graph</em> (<em>DAG</em>, “rettet asyklisk graf” på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en “effekt” mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt.</p>
-<p>Den grafiske modellen inneholder noder (nodes), disse bruker vi for å plassere inn variabler, og kanter (edges) som vi bruker for å beskrive retning på effekter, hvordan en variabel påvirker en annen. I figuren over (<a href="#fig-eksperimentkvasi">Figur&nbsp;<span>5.1</span></a>) sier vi at <em>G</em> (gruppetilhørighet) er en variabel (nod) som påvirker <em>P</em> direkte ved en kobling mellom de to.</p>
+<p>Den grafiske modellen inneholder noder (nodes), disse bruker vi for å plassere inn variabler, og kanter (edges) som vi bruker for å beskrive retning på effekter, hvordan en variabel påvirker en annen. I figuren over (<a href="#fig-eksperimentkvasi" class="quarto-xref">Figur&nbsp;<span>5.1</span></a>) sier vi at <em>G</em> (gruppetilhørighet) er en variabel (nod) som påvirker <em>P</em> direkte ved en kobling mellom de to.</p>
 <p>Denne typen av grafisk modell har noen begrensninger, den forteller for eksempel ikke om hvordan variabler påvirker hverandre. En effekt, som beskrevet i en DAG, ser lik ut når variablene er kategoriske og kontinuerlige. En DAG beskriver ikke heller styrken i en sammenheng. For eksempel er det å kjøpe en lodd <span class="math inline">\(L\)</span> kausalt sammenkoblet <a href="https://www.vg.no/nyheter/innenriks/i/bgBjae/mann-31-pantet-en-boks-og-vant-en-million-i-pantelotteriet">med å vinne en million</a> <span class="math inline">\(V\)</span> (<span class="math inline">\(L \rightarrow V\)</span>), men sammenhenger er ikke så sterk. Så vad kan vi bruke en DAG til?</p>
 <p>En DAG gir oss muligheten til å koble sammen en statistisk modell, for eksempel en regresjonsmodell, med en vitenskapelig modell. Den vitenskaplige modellen, illustrert gjennom en DAG, viser hvordan vi anser at variabler henger sammen og hvordan vi kan tolke, eller forandre den statistiske modellen for å la den beskrive kausale effekter. Den vitenskaplige modellen bygger på antagelser. Når vi beskriver en kausal effekt betyr det at vi sier at den er kausal under betingelser at de antagelser vi stiller opp er sanne. Beskrevet på denne måten er det tydelig at vi ikke kan finne kausale sammenhenger hvis vi bare analyserer dataene, vi trenger en vitenskaplig modell i tillegg <span class="citation" data-cites="pearl_seven_2019">(<a href="references.html#ref-pearl_seven_2019" role="doc-biblioref">Pearl 2019</a>)</span>.</p>
 <div class="no-row-height column-margin column-container"><div class="">
@@ -369,31 +416,39 @@ Pearl, Judea. 2019. <span>“The Seven Tools of Causal Inference, with Reflectio
 </section>
 <section id="gaffel-rør-collider-og-etterkommer" class="level2 page-columns page-full" data-number="5.3">
 <h2 data-number="5.3" class="anchored" data-anchor-id="gaffel-rør-collider-og-etterkommer"><span class="header-section-number">5.3</span> Gaffel, rør, collider og etterkommer</h2>
-<div class="page-columns page-full"><p>Når vi bygger, eller leser en DAG kan vi identifisere følgende sammenhenger mellom variabler, en gaffel, et rør, en collider og en etterkommer (<a href="#fig-dags">Figur&nbsp;<span>5.2</span></a>). I en “gaffel” påvirker en variabel to andre variabler. Denne strukturen så vi i eksemplet over hvor en tredje variabel ble introdusert i eksperimentet ved at forsøkdeltakere fikk mulighet å velge gruppe selv. Denne tredje variabelen introduserer noe som kalles for en “konfunder” effekt<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, en variabel som påvirker både en mulig kausal variabel og variabelen som den i sin tur påvirker.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Les mer i <span class="citation" data-cites="roislien_trekantdrama_2021">Røislien and Kvaløy (<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">2021</a>)</span> som gir oss norsk oversettelse av de engelske begrepene.</p><div id="ref-roislien_trekantdrama_2021" class="csl-entry" role="listitem">
+<p>Når vi bygger, eller leser en DAG kan vi identifisere følgende sammenhenger mellom variabler, en gaffel, et rør, en collider og en etterkommer (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). I en “gaffel” påvirker en variabel to andre variabler. Denne strukturen så vi i eksemplet over hvor en tredje variabel ble introdusert i eksperimentet ved at forsøkdeltakere fikk mulighet å velge gruppe selv. Denne tredje variabelen introduserer noe som kalles for en “konfunder” effekt<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, en variabel som påvirker både en mulig kausal variabel og variabelen som den i sin tur påvirker.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Les mer i <span class="citation" data-cites="roislien_trekantdrama_2021">Røislien and Kvaløy (<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">2021</a>)</span> som gir oss norsk oversettelse av de engelske begrepene.</p><div id="ref-roislien_trekantdrama_2021" class="csl-entry" role="listitem">
 Røislien, Jo, and Jan Terje Kvaløy. 2021. <span>“Trekantdrama.”</span> <em>Tidsskrift for Den Norske Legeforening</em>. <a href="https://doi.org/10.4045/tidsskr.21.0075">https://doi.org/10.4045/tidsskr.21.0075</a>.
-</div></li></div></div>
-<p>I et “rør” påvirker en variabel, x, en annen variabel, y, gjennom en tredje variabel z (<a href="#fig-dags">Figur&nbsp;<span>5.2</span></a>). Denne strukturen er en del i en struktur som beskrives i <span class="citation" data-cites="roislien_trekantdrama_2021">(<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">Røislien and Kvaløy 2021</a>)</span> som en mediatoreffekt. Som vi skal se under kan vi også identifisere røret i et eksperiment hvor effekten av en intervensjon på en variabel påvirker en annen variabel gjennom en tredje variabel.</p>
-<div class="no-row-height column-margin column-container"></div><p>En collider er en variabel som har to “foreldrer”. To variabler bidrar til å påvirke en tredje variabel. En norsk benevning av collider finnes ikke så vi låner det engelske begrepet som antyder at noe om en kollisjon. To effekter kolliderer i en tredje variabel. Under vil vi se hvordan en collider kan bidra til å skape en spuriøs sammenheng mellom to variabler som ikke er kausalt sammenkoblet.</p>
-<p>Til sist kan vi identifisere en etterkommer (<a href="#fig-dags">Figur&nbsp;<span>5.2</span></a>). En etterkommer er en variabel som påvirkes av en annen variabel. I en DAG kan vi identifisere en etterkommer ved at en variabel har en foreldervariabel. En etterkommer er et speilbilde av forelderen, og vi kan si at variabelen er en konsekvens av forelderen.</p>
+</div></div></div><p>I et “rør” påvirker en variabel, x, en annen variabel, y, gjennom en tredje variabel z (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). Denne strukturen er en del i en struktur som beskrives i <span class="citation" data-cites="roislien_trekantdrama_2021">(<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">Røislien and Kvaløy 2021</a>)</span> som en mediatoreffekt. Som vi skal se under kan vi også identifisere røret i et eksperiment hvor effekten av en intervensjon på en variabel påvirker en annen variabel gjennom en tredje variabel.</p>
+<p>En collider er en variabel som har to “foreldrer”. To variabler bidrar til å påvirke en tredje variabel. En norsk benevning av collider finnes ikke så vi låner det engelske begrepet som antyder at noe om en kollisjon. To effekter kolliderer i en tredje variabel. Under vil vi se hvordan en collider kan bidra til å skape en spuriøs sammenheng mellom to variabler som ikke er kausalt sammenkoblet.</p>
+<p>Til sist kan vi identifisere en etterkommer (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). En etterkommer er en variabel som påvirkes av en annen variabel. I en DAG kan vi identifisere en etterkommer ved at en variabel har en foreldervariabel. En etterkommer er et speilbilde av forelderen, og vi kan si at variabelen er en konsekvens av forelderen.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dags" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dags-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.2. Fire forhold mellom variabler i en DAG. I en gaffel påvirkes to uavhengige variabler av den samme variabelen. I et rør er to variabler sammenkoblet ved hjelp av en tredje variabel, all effekt går gjennom denne variabelen. I en collider kolliderer effektene fra to uavhengige variabler. En etterkommer (D) påvirkes av en variabel og er dermed et speilbilde av denne variabelen.</figcaption>
+<div id="fig-dags" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dags-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dags-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.2. Fire forhold mellom variabler i en DAG. I en gaffel påvirkes to uavhengige variabler av den samme variabelen. I et rør er to variabler sammenkoblet ved hjelp av en tredje variabel, all effekt går gjennom denne variabelen. I en collider kolliderer effektene fra to uavhengige variabler. En etterkommer (D) påvirkes av en variabel og er dermed et speilbilde av denne variabelen.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <section id="konfunderte-effekter" class="level3" data-number="5.3.1">
 <h3 data-number="5.3.1" class="anchored" data-anchor-id="konfunderte-effekter"><span class="header-section-number">5.3.1</span> Konfunderte effekter</h3>
-<p>Som vi allerede konstatert over så er en konfunder (Z) en variabel som påvirker både en mulig kausal variabel (X) og variabelen som vi tror at den i sin tur påvirker (Y, se <a href="#fig-konfunder">Figur&nbsp;<span>5.3</span></a>). Gaffelen som oppstår i en slik situasjon forsterker sammenhengen mellom X og Y. Når vi i en regresjonsmodell bare måler sammenhengen mellom X og Y så vil vi se en sterk sammenheng, men gjennom å “kontrollere” for konfunderen så vil vi se at sammenhengen mellom X og Y forsvinner, eller blir svakere. Konfunderen er en variabel som vi bør kontrollere for i en statistisk modell for å kunne si noe om en kausal sammenheng mellom X og Y.</p>
+<p>Som vi allerede konstatert over så er en konfunder (Z) en variabel som påvirker både en mulig kausal variabel (X) og variabelen som vi tror at den i sin tur påvirker (Y, se <a href="#fig-konfunder" class="quarto-xref">Figur&nbsp;<span>5.3</span></a>). Gaffelen som oppstår i en slik situasjon forsterker sammenhengen mellom X og Y. Når vi i en regresjonsmodell bare måler sammenhengen mellom X og Y så vil vi se en sterk sammenheng, men gjennom å “kontrollere” for konfunderen så vil vi se at sammenhengen mellom X og Y forsvinner, eller blir svakere. Konfunderen er en variabel som vi bør kontrollere for i en statistisk modell for å kunne si noe om en kausal sammenheng mellom X og Y.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-konfunder" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-konfunder-1.png" class="img-fluid figure-img" width="288"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.3. En konfunder (K) påvirker både en uavhengig variabel (X) og en avhengig variabel (Y).</figcaption>
+<div id="fig-konfunder" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-konfunder-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.3. En konfunder (K) påvirker både en uavhengig variabel (X) og en avhengig variabel (Y).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -410,9 +465,13 @@ Y &amp;\leftarrow N(Z,1)
 \text{Modell 2:} \qquad  Y &amp;= \beta_0 + \beta_1 X + \beta_2 Z
 \end{align}\]</span></p>
 <div class="cell">
+<div id="tbl-konfunder" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;5.1. Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon.
+</figcaption>
+<div aria-describedby="tbl-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-konfunder" class="anchored">
-
 <div id="evfpiyyuom" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#evfpiyyuom table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -852,34 +911,52 @@ Y &amp;\leftarrow N(Z,1)
 #evfpiyyuom .gt_indent_5 {
   text-indent: 25px;
 }
+
+#evfpiyyuom .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#evfpiyyuom div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;5.1.  <p>Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Modell">Modell</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Modell" class="gt_row gt_right">1</td>
-<td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub>"><div class="gt_from_md"><p>β<sub>1</sub></p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">0.53</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-    <tr><td headers="Modell" class="gt_row gt_right">2</td>
-<td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub>"><div class="gt_from_md"><p>β<sub>1</sub></p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">0.02</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Modell" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Modell</th>
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Modell">1</td>
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub></p></td>
+<td class="gt_row gt_right" headers="Estimat">0.53</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Modell">2</td>
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub></p></td>
+<td class="gt_row gt_right" headers="Estimat">0.02</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>Når vi evaluerer koeffisientene fra modellen ser vi at sammenhengen mellom <span class="math inline">\(Y\)</span> og <span class="math inline">\(X\)</span> forandres når vi inkluderer <span class="math inline">\(Z\)</span> i modellen (tbl-konfunder). I modell 1 er sammenhengen mellom variablene er sterk, vi kan lese dette som at sammenhengen tilsvarer 19 standardfeil (<span class="math inline">\(\frac{Estimat}{Standardfeil}\)</span>). Når vi introduserer Z i modell 2 ser vi at sammenhengen mellom X og Y forsvinner, her er effekten mindre enn en standardfeil (0.7).</p>
@@ -887,50 +964,66 @@ Y &amp;\leftarrow N(Z,1)
 </section>
 <section id="konfounder-et-eksempel" class="level3 page-columns page-full" data-number="5.3.2">
 <h3 data-number="5.3.2" class="anchored" data-anchor-id="konfounder-et-eksempel"><span class="header-section-number">5.3.2</span> Konfounder, et eksempel</h3>
-<p>I en observasjonstudie undersøker vi sammenhengen mellom inntak av kaffe og risiko for lungekreft. I forkant av datainnsamling ser vi på sammenhengen som enkel (<a href="#fig-kaffe">Figur&nbsp;<span>5.4</span></a>), og den kan forklares med et mystisk molekyl i kaffen som øker risikoen for kreft, og tydeligvis, særlig lungekreft. Vår observasjonstudie bekrefter sammenhengen.</p>
+<p>I en observasjonstudie undersøker vi sammenhengen mellom inntak av kaffe og risiko for lungekreft. I forkant av datainnsamling ser vi på sammenhengen som enkel (<a href="#fig-kaffe" class="quarto-xref">Figur&nbsp;<span>5.4</span></a>), og den kan forklares med et mystisk molekyl i kaffen som øker risikoen for kreft, og tydeligvis, særlig lungekreft. Vår observasjonstudie bekrefter sammenhengen.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-kaffe" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-kaffe-1.png" class="img-fluid figure-img" width="288"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.4. Den vitenskapelige modellen for sammenhengen mellom Kaffe (K) et mystisk molekyl (M) og lungekreft (L). Molekylet er ikke observert i vår studie og er derfor markert med en et sirkel.</figcaption>
+<div id="fig-kaffe" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kaffe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-kaffe-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kaffe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.4. Den vitenskapelige modellen for sammenhengen mellom Kaffe (K) et mystisk molekyl (M) og lungekreft (L). Molekylet er ikke observert i vår studie og er derfor markert med en et sirkel.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Men, sier du sikkert, kan ikke det å drikke kaffe være assosiert med andre ting som også øker risikoen for lungekreft? Det kan være at de som drikker mye kaffe også røyker mye, og det er røyking som øker risikoen for lungekreft. En oppdatert modell for sammenhengen mellom kaffe og lungekreft inkluderer røyking som en konfunder (<a href="#fig-kaffe-konfunder">Figur&nbsp;<span>5.5</span></a>). I denne modellen ser vi at røyking påvirker både inntak av kaffe og risiko for lungekreft. Når vi kontrollerer for røyking i en statistisk modell så vil vi se at sammenhengen mellom kaffe og lungekreft forsvinner. Det er akkurat hva man gjorde i en meta-analyse som ble publisert i 2016 <span class="citation" data-cites="galarraga_coffee_2016">(<a href="references.html#ref-galarraga_coffee_2016" role="doc-biblioref">Galarraga and Boffetta 2016</a>)</span>. Når man kontrollerte for røyking så forsvant sammenhengen mellom kaffeinntak og lungekreft.</p>
+<p>Men, sier du sikkert, kan ikke det å drikke kaffe være assosiert med andre ting som også øker risikoen for lungekreft? Det kan være at de som drikker mye kaffe også røyker mye, og det er røyking som øker risikoen for lungekreft. En oppdatert modell for sammenhengen mellom kaffe og lungekreft inkluderer røyking som en konfunder (<a href="#fig-kaffe-konfunder" class="quarto-xref">Figur&nbsp;<span>5.5</span></a>). I denne modellen ser vi at røyking påvirker både inntak av kaffe og risiko for lungekreft. Når vi kontrollerer for røyking i en statistisk modell så vil vi se at sammenhengen mellom kaffe og lungekreft forsvinner. Det er akkurat hva man gjorde i en meta-analyse som ble publisert i 2016 <span class="citation" data-cites="galarraga_coffee_2016">(<a href="references.html#ref-galarraga_coffee_2016" role="doc-biblioref">Galarraga and Boffetta 2016</a>)</span>. Når man kontrollerte for røyking så forsvant sammenhengen mellom kaffeinntak og lungekreft.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-galarraga_coffee_2016" class="csl-entry" role="listitem">
 Galarraga, Vania, and Paolo Boffetta. 2016. <span>“Coffee Drinking and Risk of Lung Cancer—a Meta-Analysis.”</span> <em>Cancer Epidemiology, Biomarkers &amp; Prevention</em> 25 (6): 951–57. <a href="https://doi.org/10.1158/1055-9965.EPI-15-0727">https://doi.org/10.1158/1055-9965.EPI-15-0727</a>.
 </div></div><div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-kaffe-konfunder" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-kaffe-konfunder-1.png" class="img-fluid figure-img" width="288"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.5. En oppdatert vitenskapelige modell for sammenhengen mellom Kaffe (K) og lungekreft (L). Røyking (R) er en konfunder som påvirker både inntak av kaffe og risiko for lungekreft.</figcaption>
+<div id="fig-kaffe-konfunder" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kaffe-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-kaffe-konfunder-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="288">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kaffe-konfunder-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.5. En oppdatert vitenskapelige modell for sammenhengen mellom Kaffe (K) og lungekreft (L). Røyking (R) er en konfunder som påvirker både inntak av kaffe og risiko for lungekreft.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Det å kontrollere for en potensiell konfunder er en viktig del i en statistisk analyse. I en regresjonsmodell som beskriver en observasjonstudie kan vi kontrollere for en konfunder ved å inkludere den i modellen. I en eksperimentell studie kan vi kontrollere for en konfunder ved å randomisere forsøket.</p>
-<div id="fig-kaffestudie" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/03-kausal/smoking-coffee.webp" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.6. I dataene fra vår teoretiske studie er kaffeinntak og røyking assosierte aktiviteter.</figcaption>
+<div id="fig-kaffestudie" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kaffestudie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/03-kausal/smoking-coffee.webp" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kaffestudie-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.6. I dataene fra vår teoretiske studie er kaffeinntak og røyking assosierte aktiviteter.
+</figcaption>
 </figure>
 </div>
 </section>
 <section id="rør-og-mediatoreffekter" class="level3" data-number="5.3.3">
 <h3 data-number="5.3.3" class="anchored" data-anchor-id="rør-og-mediatoreffekter"><span class="header-section-number">5.3.3</span> Rør og mediatoreffekter</h3>
 <p>Effekten av en spesifikk intervensjon gir ikke alltid en direkte effekt på en avhengig variabel som vi er interesserte av. Isteden kan effekten av intervensjonen påvirke en annen variabel som i sin tur påvirker den avhengige variabelen. Dette kalles for en mediatoreffekt, noe som opptrer i et “rør” i en DAG. I eksemplet med en konfunder såg vi hvordan det å kontrollere for effekten av konfunderen ga oss den sanne kausale effekten mellom to variabler. Når vi har å gjøre med mediatoreffekter kan vi derimot lage trøbbel hvis vi prøver å kontrollere for en slik variabel.</p>
-<p>La oss si at <span class="math inline">\(X\)</span> er en intervensjon som vi tror påvirker <span class="math inline">\(Y\)</span> gjennom en tredje variabel <span class="math inline">\(Z\)</span>. Vi kan simulere data som gir oss forholdet <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span> ved å si at <span class="math inline">\(X\)</span> er en normalfordelt variabel med gjennomsnitt 0 og et standardavvik på 1 (<span class="math inline">\(X \sim N(0,1)\)</span>). Verdiene på <span class="math inline">\(Z_i\)</span> oppstår gjennom at vi trekker de fra en fordeling med gjennomsnitt <span class="math inline">\(X_i\)</span> og en standardavvik på 1, og på den samme måten oppstår verdiene på <span class="math inline">\(Y_i\)</span> ved at vi trekker de fra en fordeling med gjennomsnitt <span class="math inline">\(Z_i\)</span> og standardavvik 1. I en regresjonsmodell kan vi begynne med og undersøke effekten av av <span class="math inline">\(X\)</span> på <span class="math inline">\(Y\)</span>. I denne modellen (Modell 1) ser vi den totale effekten av intervensjonen på <span class="math inline">\(Y\)</span> i tillegg til noe støy. Når vi prøver å legge til <span class="math inline">\(Z\)</span> i en regresjonsmodell forsvinner effekten av <span class="math inline">\(X\)</span> (Modell 2; <a href="#fig-ror-posttreatment">Figur&nbsp;<span>5.7</span></a>).</p>
+<p>La oss si at <span class="math inline">\(X\)</span> er en intervensjon som vi tror påvirker <span class="math inline">\(Y\)</span> gjennom en tredje variabel <span class="math inline">\(Z\)</span>. Vi kan simulere data som gir oss forholdet <span class="math inline">\(X \rightarrow Z \rightarrow Y\)</span> ved å si at <span class="math inline">\(X\)</span> er en normalfordelt variabel med gjennomsnitt 0 og et standardavvik på 1 (<span class="math inline">\(X \sim N(0,1)\)</span>). Verdiene på <span class="math inline">\(Z_i\)</span> oppstår gjennom at vi trekker de fra en fordeling med gjennomsnitt <span class="math inline">\(X_i\)</span> og en standardavvik på 1, og på den samme måten oppstår verdiene på <span class="math inline">\(Y_i\)</span> ved at vi trekker de fra en fordeling med gjennomsnitt <span class="math inline">\(Z_i\)</span> og standardavvik 1. I en regresjonsmodell kan vi begynne med og undersøke effekten av av <span class="math inline">\(X\)</span> på <span class="math inline">\(Y\)</span>. I denne modellen (Modell 1) ser vi den totale effekten av intervensjonen på <span class="math inline">\(Y\)</span> i tillegg til noe støy. Når vi prøver å legge til <span class="math inline">\(Z\)</span> i en regresjonsmodell forsvinner effekten av <span class="math inline">\(X\)</span> (Modell 2; <a href="#fig-ror-posttreatment" class="quarto-xref">Figur&nbsp;<span>5.7</span></a>).</p>
 <p><span class="math display">\[\begin{align}
 \text{Modell 1:} \qquad Y &amp;= \beta_0 + \beta_1 X  \\
 \text{Modell 2:} \qquad  Y &amp;= \beta_0 + \beta_1 X + \beta_2 Z
 \end{align}\]</span></p>
 <div class="cell">
+<div id="tbl-ror" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ror-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;5.2. Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon og kontroll av en tredjevariabel som sammenbinder X og Y i et rør.
+</figcaption>
+<div aria-describedby="tbl-ror-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-ror" class="anchored">
-
 <div id="evfpiyyuom" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#evfpiyyuom table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1370,48 +1463,70 @@ Galarraga, Vania, and Paolo Boffetta. 2016. <span>“Coffee Drinking and Risk of
 #evfpiyyuom .gt_indent_5 {
   text-indent: 25px;
 }
+
+#evfpiyyuom .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#evfpiyyuom div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;5.2.  <p>Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon og
-kontroll av en tredjevariabel som sammenbinder X og Y i et rør.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Modell">Modell</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Modell" class="gt_row gt_right">1</td>
-<td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub>"><div class="gt_from_md"><p>β<sub>1</sub></p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">1.06</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.05</td></tr>
-    <tr><td headers="Modell" class="gt_row gt_right">2</td>
-<td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub>"><div class="gt_from_md"><p>β<sub>1</sub></p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">0.03</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.04</td></tr>
-    <tr><td headers="Modell" class="gt_row gt_right">2</td>
-<td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>2</sub>"><div class="gt_from_md"><p>β<sub>2</sub></p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">1.02</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Modell" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Modell</th>
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Modell">1</td>
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub></p></td>
+<td class="gt_row gt_right" headers="Estimat">1.06</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.05</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Modell">2</td>
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub></p></td>
+<td class="gt_row gt_right" headers="Estimat">0.03</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.04</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Modell">2</td>
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub></p></td>
+<td class="gt_row gt_right" headers="Estimat">1.02</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-ror-posttreatment" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-ror-posttreatment-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.7. Effekten av intervensjonen (X) påvirker en tredje variabel (Z) som i sin tur påvirker den avhengige variabelen (Y). Ved å kontrollere for Z i en regresjonsmodell forsvinner effekten av X på Y.</figcaption>
+<div id="fig-ror-posttreatment" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-ror-posttreatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-ror-posttreatment-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-ror-posttreatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.7. Effekten av intervensjonen (X) påvirker en tredje variabel (Z) som i sin tur påvirker den avhengige variabelen (Y). Ved å kontrollere for Z i en regresjonsmodell forsvinner effekten av X på Y.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1420,10 +1535,14 @@ kontroll av en tredjevariabel som sammenbinder X og Y i et rør.</p> </caption>
 <p>En post-treatment bias kan også tilsynelatende forsterke effekter. La oss si at vi gjennomfører en intervensjon i en randomisert forsøk. En av to grupper får et nytt treningsprogram og den andre gruppen gjennomfører kontrolltrening. Vi er intressert i å studere effekten av treningsprogrammet på VO<sub>2maks</sub>. Treningsprogrammet er hardt! Noe som leder til at deltakere i studien ikke evner til å gjennomføre alle øktene. I gjennomsnitt gjennomfører kontrollgruppen 89% av øktene, men i gjennomsnitt gjennomfører deltakere i intervensjongruppen bare 72% av øktene. Når vi gjennomfører analysen ønsker vi å estimere effekten hos de som gjennomført minst 85% av øktene. Vi estimerer effekten av intervensjonen til å gi 9.3 ml<sup>-1<sup> kg<sup>-1</sup> min<sup>-1</sup> høyere VO<sub>2maks</sub> som svar på intervensjonen, sammenlignet med kontrollgruppen.</sup></sup></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-posttreatment" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-posttreatment-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.8. Effekten av intervensjonen (T) påvirker en tredje variabel (gjennomføring, G) som i sin tur påvirker den avhengige variabelen (VO2). Ved å bare analysere de forsøksdeltakere som har gjennomført mer enn 85% av øktene introduserer vi <em>post-treatment bias</em>, vi estimerer ikke hele effekten av treningsprogrammet på VO<sub>2maks</sub>.</figcaption>
+<div id="fig-posttreatment" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-posttreatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-posttreatment-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-posttreatment-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.8. Effekten av intervensjonen (T) påvirker en tredje variabel (gjennomføring, G) som i sin tur påvirker den avhengige variabelen (VO2). Ved å bare analysere de forsøksdeltakere som har gjennomført mer enn 85% av øktene introduserer vi <em>post-treatment bias</em>, vi estimerer ikke hele effekten av treningsprogrammet på VO<sub>2maks</sub>.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1436,19 +1555,27 @@ kontroll av en tredjevariabel som sammenbinder X og Y i et rør.</p> </caption>
 <p>Som vi ser i figuren under så er <span class="math inline">\(X\)</span> assosiert med <span class="math inline">\(Z\)</span> og <span class="math inline">\(Y\)</span> er assosiert med <span class="math inline">\(Z\)</span>. Når vi ser på sammenhengen mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span> så ser vi at den er ikke-eksisterende. Hva skjer hvis vi analyserer sammenhengen mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span> og kontrollerer for <span class="math inline">\(Z\)</span>?</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-collider" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-collider-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.9. Parvise sammenhenger mellom tre variabler. X og Y er uavhengige variabler, Z er en collider som påvirkes av både X og Y.</figcaption>
+<div id="fig-collider" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-collider-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.9. Parvise sammenhenger mellom tre variabler. X og Y er uavhengige variabler, Z er en collider som påvirkes av både X og Y.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>I en enkel regresjonsmodell hvor <span class="math inline">\(Y = \beta_0 + \beta_1 \times X + \beta_2 \times Z\)</span> ser vi at sammenhengen mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span> er tilsynelatende sterk.</p>
 <div class="cell">
+<div id="tbl-collider" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;5.3. Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon sammen med en collider (z).
+</figcaption>
+<div aria-describedby="tbl-collider-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-collider" class="anchored">
-
 <div id="bsdockhrqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#bsdockhrqw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1888,53 +2015,77 @@ kontroll av en tredjevariabel som sammenbinder X og Y i et rør.</p> </caption>
 #bsdockhrqw .gt_indent_5 {
   text-indent: 25px;
 }
+
+#bsdockhrqw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bsdockhrqw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;5.3.  <p>Sammenhengen mellom Y og X estimert ved bruk av lineær regresjon
-sammen med en collider (z).</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub> (x)"><div class="gt_from_md"><p>β<sub>1</sub> (x)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">−0.46</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>2</sub> (z)"><div class="gt_from_md"><p>β<sub>2</sub> (z)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">0.48</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.02</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub> (x)</p></td>
+<td class="gt_row gt_right" headers="Estimat">−0.46</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub> (z)</p></td>
+<td class="gt_row gt_right" headers="Estimat">0.48</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.02</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>Det å “kontrollere” for en collider introduserer altså sammenhenger som ikke er kausale i en analyse. Vi minner oss igjen på hva en kausal sammenheng er; hvis vi har mulighet å forandre <span class="math inline">\(X\)</span> så vil <span class="math inline">\(Y\)</span> endre seg, hvis det finnes en kausal sammenheng mellom de to. I vårt eksempel så er det ingen kausal sammenheng mellom <span class="math inline">\(X\)</span> og <span class="math inline">\(Y\)</span>, sammenhengen som vi måler ved hjelp av regresjonsmodellen er helt spuriøs.</p>
-<p>Det finnes situasjoner når data påvirkes av en collider som en konsekvens av hvordan vi samler inn data. I en studie hvor vi ser på sammenhengen mellom VO<sub>2maks</sub> og utnyttelsegrad (laktatterskel som en % av VO<sub>2maks</sub>) i en gruppe av elitesyklister så kan vi se at det er en negativ sammenheng mellom variablene (<a href="#fig-elitespur">Figur&nbsp;<span>5.10</span></a>) sammenheng mellom de to variablene. Hvis vi tolker denne sammenhengen som kausal så kan vi kanskje si at syklister som har høyere VO<sub>2maks</sub> forverrer sin laktatterskel. Men det er ikke tilfelle, det er en collider som påvirker begge variablene. Syklister som har høyere VO<sub>2maks</sub> og eller høyere laktatterskel blir selektert til å være med i vårt datasett. Vi har interessert oss for å studerer elitesykklister og har introdusert noe som kalles for seleksjonsbias i vår analyse.</p>
+<p>Det finnes situasjoner når data påvirkes av en collider som en konsekvens av hvordan vi samler inn data. I en studie hvor vi ser på sammenhengen mellom VO<sub>2maks</sub> og utnyttelsegrad (laktatterskel som en % av VO<sub>2maks</sub>) i en gruppe av elitesyklister så kan vi se at det er en negativ sammenheng mellom variablene (<a href="#fig-elitespur" class="quarto-xref">Figur&nbsp;<span>5.10</span></a>) sammenheng mellom de to variablene. Hvis vi tolker denne sammenhengen som kausal så kan vi kanskje si at syklister som har høyere VO<sub>2maks</sub> forverrer sin laktatterskel. Men det er ikke tilfelle, det er en collider som påvirker begge variablene. Syklister som har høyere VO<sub>2maks</sub> og eller høyere laktatterskel blir selektert til å være med i vårt datasett. Vi har interessert oss for å studerer elitesykklister og har introdusert noe som kalles for seleksjonsbias i vår analyse.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-elitespur" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-elitespur-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.10. Sammenhengen mellom VO<sub>2maks</sub> og laktatterskel i en gruppe av elitesyklister. De som har høyere VO<sub>2maks</sub> har lavere laktatterskel.</figcaption>
+<div id="fig-elitespur" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-elitespur-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-elitespur-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-elitespur-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.10. Sammenhengen mellom VO<sub>2maks</sub> og laktatterskel i en gruppe av elitesyklister. De som har høyere VO<sub>2maks</sub> har lavere laktatterskel.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Hvis vi er interessert i den kausale sammenhengen mellom VO<sub>2maks</sub> og laktatterskel så må vi samle inn data på en annen måte. Når vi bare studerer elitesyklister er det det samme som å “kontrollere” for en collider i en regresjonsanalyse, collideren i dette tilfelle er prestasjon. De som presterer best er de som maksimerer summen av underliggende faktorer til prestasjon. Hvis se ser på den totale sammenheng mellom variablene som vi studerte over ser vi ingen sammenheng mellom variablene (<a href="#fig-spur-total">Figur&nbsp;<span>5.11</span></a>). Iblant elitesyklister er sammenhengen mellom variablene en spuriøs sammenheng.</p>
+<p>Hvis vi er interessert i den kausale sammenhengen mellom VO<sub>2maks</sub> og laktatterskel så må vi samle inn data på en annen måte. Når vi bare studerer elitesyklister er det det samme som å “kontrollere” for en collider i en regresjonsanalyse, collideren i dette tilfelle er prestasjon. De som presterer best er de som maksimerer summen av underliggende faktorer til prestasjon. Hvis se ser på den totale sammenheng mellom variablene som vi studerte over ser vi ingen sammenheng mellom variablene (<a href="#fig-spur-total" class="quarto-xref">Figur&nbsp;<span>5.11</span></a>). Iblant elitesyklister er sammenhengen mellom variablene en spuriøs sammenheng.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-spur-total" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-spur-total-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.11. Sammenhengen mellom VO<sub>2maks</sub> og laktatterskel i en populasjon sykklister, elitesyklister er de som maksimerer summen av prestasjonsbestemmende variabler.</figcaption>
+<div id="fig-spur-total" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-spur-total-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-spur-total-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-spur-total-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.11. Sammenhengen mellom VO<sub>2maks</sub> og laktatterskel i en populasjon sykklister, elitesyklister er de som maksimerer summen av prestasjonsbestemmende variabler.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1945,13 +2096,17 @@ Borgen, Nicolai T. 2018. <span>“Running Performance, VO2max, and Running Econo
 </div></div></section>
 <section id="etterkommer" class="level3" data-number="5.3.5">
 <h3 data-number="5.3.5" class="anchored" data-anchor-id="etterkommer"><span class="header-section-number">5.3.5</span> Etterkommer</h3>
-<p>En etterkommer er en variabel som påvirkes av en eller flere foreldre. Når vi er interessert i å studere kausale effekter så må vi behandle en etterkommer på samme måte som vi behandler en konfunder, collider eller mediatorvariabel. I eksemplene i <a href="#fig-dags-des">Figur&nbsp;<span>5.12</span></a> ser vi hvordan en etterkommer kan representere en ikke-observert variabel (Z). D har i disse eksemplene den samme funksjonen som Z.</p>
+<p>En etterkommer er en variabel som påvirkes av en eller flere foreldre. Når vi er interessert i å studere kausale effekter så må vi behandle en etterkommer på samme måte som vi behandler en konfunder, collider eller mediatorvariabel. I eksemplene i <a href="#fig-dags-des" class="quarto-xref">Figur&nbsp;<span>5.12</span></a> ser vi hvordan en etterkommer kan representere en ikke-observert variabel (Z). D har i disse eksemplene den samme funksjonen som Z.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dags-des" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dags-des-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.12. En etterkommer (D) er en speilbilde av sin forelder og må derfor behandles på samme måte som forelderen når vi er interessert i kausale effekter.</figcaption>
+<div id="fig-dags-des" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dags-des-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dags-des-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dags-des-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.12. En etterkommer (D) er en speilbilde av sin forelder og må derfor behandles på samme måte som forelderen når vi er interessert i kausale effekter.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1961,13 +2116,17 @@ Borgen, Nicolai T. 2018. <span>“Running Performance, VO2max, and Running Econo
 <section id="kausal-analyse-et-eksempel" class="level2 page-columns page-full" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="kausal-analyse-et-eksempel"><span class="header-section-number">5.4</span> Kausal analyse, et eksempel</h2>
 <p>I dataene som vi finner i <code>fotball_1_2_3.csv</code> så har vi muligheten å undersøke effektene av spillerprestasjon på årsinntekt. Dataene har blitt presentert i <span class="citation" data-cites="thrane_performance_2019">Thrane (<a href="references.html#ref-thrane_performance_2019" role="doc-biblioref">2019</a>)</span> hvor man undersøkte hvorvidt effekten av forskjellige uavhengige variabler, som spillerprestasjon og landslagsspill forklarer en spillers markedsverdi og årsinntekt. De norske dataene er unike i den forstand at man faktisk har data på årsinntekt.</p>
-<div class="no-row-height column-margin column-container"></div><p>Vi skal nå resonnere kring en kausal analyse av dataene. Vi er interesserte i variabelen <code>årsinntekt</code> som en avhengig variabel og spillerprestasjon, landslagsspill, nasjonalitet og klubbens prestasjon som uavhengige variabler. Vi starter med en enkel DAG for å illustrerer våre antagelser (<a href="#fig-dag-fotball1">Figur&nbsp;<span>5.13</span></a>). I en enkel modell tenker vi oss at spillerprestasjon (P) er variabel som påvirker inntekt. I dataene er inntekt innhentet i 2015, og spillerprestasjon er målt i 2014 <span class="citation" data-cites="thrane_performance_2019">(<a href="references.html#ref-thrane_performance_2019" role="doc-biblioref">Thrane 2019</a>)</span>. På denne måten kan vi se på variablene som tidsmessig ordnet, noe som understreker antagelsen om den kausale retningen mellom variablene, prestasjon påvirker inntekt. Prestasjonsvariabelen er ikke direkte observert da dataene ikke inneholder en variabel som samlet måler prestasjon, dette markerer vi ved å sette en ring rundt variabelen i figuren.</p>
+<div class="no-row-height column-margin column-container"></div><p>Vi skal nå resonnere kring en kausal analyse av dataene. Vi er interesserte i variabelen <code>årsinntekt</code> som en avhengig variabel og spillerprestasjon, landslagsspill, nasjonalitet og klubbens prestasjon som uavhengige variabler. Vi starter med en enkel DAG for å illustrerer våre antagelser (<a href="#fig-dag-fotball1" class="quarto-xref">Figur&nbsp;<span>5.13</span></a>). I en enkel modell tenker vi oss at spillerprestasjon (P) er variabel som påvirker inntekt. I dataene er inntekt innhentet i 2015, og spillerprestasjon er målt i 2014 <span class="citation" data-cites="thrane_performance_2019">(<a href="references.html#ref-thrane_performance_2019" role="doc-biblioref">Thrane 2019</a>)</span>. På denne måten kan vi se på variablene som tidsmessig ordnet, noe som understreker antagelsen om den kausale retningen mellom variablene, prestasjon påvirker inntekt. Prestasjonsvariabelen er ikke direkte observert da dataene ikke inneholder en variabel som samlet måler prestasjon, dette markerer vi ved å sette en ring rundt variabelen i figuren.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dag-fotball1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball1-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.13. Prestasjon påvirker årsinntekt.</figcaption>
+<div id="fig-dag-fotball1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dag-fotball1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball1-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-fotball1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.13. Prestasjon påvirker årsinntekt.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1975,10 +2134,14 @@ Borgen, Nicolai T. 2018. <span>“Running Performance, VO2max, and Running Econo
 <p>I dataene finner vi flere variabler som er etterkommere av en ikke observert prestasjonvariabel som spilletide, antall mål, antall assist og landslagsspill. Vi kan tenke oss at disse variablene er en speilbilde av prestasjonvariabelen. Vi prøver å sette inn en av to av disse variablene i modellen.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dag-fotball2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball2-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.14. Prestasjon påvirker årsinntekt gjennom antall mål (AM) og spilletid (SpT).</figcaption>
+<div id="fig-dag-fotball2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dag-fotball2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball2-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-fotball2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.14. Prestasjon påvirker årsinntekt gjennom antall mål (AM) og spilletid (SpT).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1989,10 +2152,14 @@ Thrane, Christer. 2019. <span>“Performance and Actual Pay in Norwegian Soccer.
 </div></div><p>En mulighet er å bruke spillerbørs som en variabel som samler effekten av prestasjonsvariabler i en variabel. Spillerbørsen er en subjektiv rating av spillernes prestasjon gjennomført an journalister og eksperter <span class="citation" data-cites="thrane_performance_2019">(<a href="references.html#ref-thrane_performance_2019" role="doc-biblioref">Thrane 2019</a>)</span>. Vi kan tenke oss at spillerbørs er en variabel som er en etterkommer av prestasjonvariabelen og vi kan bruke den som en “proxy” for spillerprestasjon.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dag-fotball3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball3-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.15. Prestasjon påvirker årsinntekt, spillebørs (SB) er en etterkommer av prestasjon.</figcaption>
+<div id="fig-dag-fotball3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dag-fotball3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball3-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-fotball3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.15. Prestasjon påvirker årsinntekt, spillebørs (SB) er en etterkommer av prestasjon.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2000,15 +2167,19 @@ Thrane, Christer. 2019. <span>“Performance and Actual Pay in Norwegian Soccer.
 <p>Bedre spillere blir sannsynligvis rekruttert til klubber med evne å betale høyere lønn. Men vi kan tenke oss at rekruttering til klubben skjer på tidligere meritter (historisk prestasjon HP). Hvilken klubb (K) man spiller på kan påvirke prestasjonen, det å spille med bedre medspillere kan bidra til at prestasjonen går opp, og dermed også spillerbørsrating. Klubber har også ulik evne til å betale lønn, dette gjør klubben til en konfunder i analysen. En annen konfunder kan vare alder, eldre spillere har høyere lønn enn yngre spillere, alder og erfarenhet påvirker også prestasjon, til en viss nivå. Når alder blir høyere så vil prestasjonen gå ned. Vår DAG trenger ikke å ta hensyn til en ikke-lineær sammenheng mellom alder og prestasjon, vi kan tenke oss at alder er en konfunder som påvirker prestasjon og inntekt.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-dag-fotball4" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball4-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;5.16. Prestasjon påvirker årsinntekt, spillebørs (SB) er en etterkommer av prestasjon og alder (A) og klubb (K) er konfuderer. En spillers klubb påvirkes av historisk prestasjon.</figcaption>
+<div id="fig-dag-fotball4" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-dag-fotball4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="03-kausalsammenheng_files/figure-html/fig-dag-fotball4-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-dag-fotball4-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;5.16. Prestasjon påvirker årsinntekt, spillebørs (SB) er en etterkommer av prestasjon og alder (A) og klubb (K) er konfuderer. En spillers klubb påvirkes av historisk prestasjon.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Hvis våre antagelser kan sammenfattes som i <a href="#fig-dag-fotball4">Figur&nbsp;<span>5.16</span></a> så kan vi bruke en regresjonsmodell for å estimere effekten av spillerprestasjon på årsinntekt ved å se på effekten av spillerbørs på inntekt når vi samtidig inkluderer klubb og alder i modellen. Men som vi har sett frem til nå, dette er ikke en lett oppgave, vi har flere effekter som kan påvirke estimatet, noen av dem er ikke observerte. Hvordan vil du for eksempel plassere inn nasjonalitet og landslagsspill i modellen? Spillerbørs er kanskje ikke heller en variabel som utelukkende måler prestasjon, kanskje påvirkes eksperters subjektive rating av historisk prestasjon og forventninger?</p>
+<p>Hvis våre antagelser kan sammenfattes som i <a href="#fig-dag-fotball4" class="quarto-xref">Figur&nbsp;<span>5.16</span></a> så kan vi bruke en regresjonsmodell for å estimere effekten av spillerprestasjon på årsinntekt ved å se på effekten av spillerbørs på inntekt når vi samtidig inkluderer klubb og alder i modellen. Men som vi har sett frem til nå, dette er ikke en lett oppgave, vi har flere effekter som kan påvirke estimatet, noen av dem er ikke observerte. Hvordan vil du for eksempel plassere inn nasjonalitet og landslagsspill i modellen? Spillerbørs er kanskje ikke heller en variabel som utelukkende måler prestasjon, kanskje påvirkes eksperters subjektive rating av historisk prestasjon og forventninger?</p>
 <p>Dette eksemplet viser på at en kausal analyse er mulig men krever at vi tenker nøye igjennom hvilke variabler som bør inngå i analysen og hvordan de påvirker modellen, som konfunder, collider eller mediator og etterkommere. Kausale sammenhenger oppdages ikke i dataene alene.</p>
 
 
@@ -2052,18 +2223,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -2095,11 +2255,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -2109,8 +2306,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -2122,7 +2328,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -2166,6 +2494,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -2191,6 +2520,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -2252,17 +2607,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./03-a-intro.html" class="pagination-link">
+      <a href="./03-a-intro.html" class="pagination-link" aria-label="Kausalsammenheng">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Kausalsammenheng</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./03-jamovi.html" class="pagination-link">
+      <a href="./03-jamovi.html" class="pagination-link" aria-label="Kausal analyse i Jamovi">
         <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Kausal analyse i Jamovi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

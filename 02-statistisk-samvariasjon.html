@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 3&nbsp; Statistisk samvariasjon i dataanalyse</title>
+<title>3&nbsp; Statistisk samvariasjon i dataanalyse – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,14 +82,42 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,13 +127,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-a-intro.html">Statistisk samvariasjon</a></li><li class="breadcrumb-item"><a href="./02-statistisk-samvariasjon.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-a-intro.html">Statistisk samvariasjon</a></li><li class="breadcrumb-item"><a href="./02-statistisk-samvariasjon.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -107,7 +142,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistisk dataanalyse med Jamovi</a> 
@@ -130,7 +165,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deskriptiv dataanalyse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -153,7 +188,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./02-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistisk samvariasjon</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -176,7 +211,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kausalsammenheng</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,7 +240,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Induktiv statistikk</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -228,7 +263,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./05-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentere og lese statistiske analyser</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,22 +285,28 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./06-a-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Øvelser og prosjekter</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Forelesninger, Øvelser og prosjekter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06-forelesninger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Forelesninger og henvisninger til pensum</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +320,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -304,7 +345,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02-a-intro.html">Statistisk samvariasjon</a></li><li class="breadcrumb-item"><a href="./02-statistisk-samvariasjon.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-stat-samv" class="quarto-section-identifier"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Statistisk samvariasjon i dataanalyse</span></span></h1>
 </div>
@@ -319,7 +360,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>Det å måle statistisk samvariasjon er sentralt i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:</p>
 <ul>
@@ -330,31 +373,39 @@ div.csl-indent {
 <p>Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, så som regresjonsanalyse, analyse av varians og krysstabulering.</p>
 <section id="regresjon" class="level2 page-columns page-full" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="regresjon"><span class="header-section-number">3.1</span> Regresjon</h2>
-<p>Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også bli utvidet til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se <a href="#fig-simpsons">Figur&nbsp;<span>3.1</span></a>). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.</p>
+<p>Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også bli utvidet til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se <a href="#fig-simpsons" class="quarto-xref">Figur&nbsp;<span>3.1</span></a>). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.</p>
 <p>I dette “systemet”, og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.</p>
 <p>Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner <a href="data/simpsons.csv">her</a> finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som <strong>uavhengig variabel</strong> og vekt som <strong>avhengig variabel</strong>. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.</p>
-<p>Den visuelle sammenfatningen av dataene finner du under i <a href="#fig-simpsons">Figur&nbsp;<span>3.1</span></a>, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?</p>
+<p>Den visuelle sammenfatningen av dataene finner du under i <a href="#fig-simpsons" class="quarto-xref">Figur&nbsp;<span>3.1</span></a>, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=39488111-10f8-4b0a-8b8a-b1310079acab" target="_blank">Intro til samvariasjon og regresjon</a>.</p>
 </div></div><div class="cell">
 <div class="cell-output-display">
-<div id="fig-simpsons" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-simpsons-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.1. Sammenhengen mellom høyde (uavhengig variable) og vekt (avhengig variabler) blandt en gruppe bekjente i Springfield</figcaption>
+<div id="fig-simpsons" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simpsons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-simpsons-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpsons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.1. Sammenhengen mellom høyde (uavhengig variable) og vekt (avhengig variabler) blandt en gruppe bekjente i Springfield
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>En regresjonslinje kan beskrives med formelen <span class="math inline">\(y=m + k\times x\)</span>. Vi kjenner denne formelen fra matematikken og vi kan lese den som at <span class="math inline">\(y\)</span> er lik skjæringspunktet (<span class="math inline">\(m\)</span>) pluss <span class="math inline">\(k\)</span> (stigningstall) enheter per hver enhets endring i <span class="math inline">\(x\)</span>. I statistikken bruker man ofte andre symboler for å beskrive skjæringspunkt og stigningstall. Den samme ekvasjonen kan se ut slik i statistikkboken: <span class="math inline">\(y=\beta_0 + \beta_1 \times x\)</span>. Hvor <span class="math inline">\(\beta_0\)</span> skjæringspunktet og <span class="math inline">\(\beta_1\)</span> er stigningstallet. Disse er <em>koeffisienter</em> som estimeres fra dataene. Når vi setter <span class="math inline">\(x=0\)</span> faller <span class="math inline">\(\beta_1\)</span> ut fra ekvasjonen og vi står igjen med <span class="math inline">\(y=\beta_0\)</span>, skjæringspunktet. For hver enhet forandring i <span class="math inline">\(x\)</span> forandres <span class="math inline">\(y\)</span> med <span class="math inline">\(\beta_1\)</span>.</p>
-<p>For å bestemme hvilke verdier på <span class="math inline">\(\beta_0\)</span> og <span class="math inline">\(\beta_1\)</span> som best beskriver dataene kan vi starte med å plassere noen alternativer i vår figur. I <a href="#fig-simpsons2">Figur&nbsp;<span>3.2</span></a> finner vi fire mulige modeller (streker) som beskriver dataene. Den modell som beskriver dataene best er den som minimerer avstand fra modellen til de observerte verdiene (<a href="#fig-simpsons2">Figur&nbsp;<span>3.2</span></a> B). Avstanden fra observerte verdier til modellen estimeres ved å beregne den vertikale avstanden mellom modellens prediksjoner og de observerte verdiene (<a href="#fig-simpsons2">Figur&nbsp;<span>3.2</span></a> C).</p>
+<p>For å bestemme hvilke verdier på <span class="math inline">\(\beta_0\)</span> og <span class="math inline">\(\beta_1\)</span> som best beskriver dataene kan vi starte med å plassere noen alternativer i vår figur. I <a href="#fig-simpsons2" class="quarto-xref">Figur&nbsp;<span>3.2</span></a> finner vi fire mulige modeller (streker) som beskriver dataene. Den modell som beskriver dataene best er den som minimerer avstand fra modellen til de observerte verdiene (<a href="#fig-simpsons2" class="quarto-xref">Figur&nbsp;<span>3.2</span></a> B). Avstanden fra observerte verdier til modellen estimeres ved å beregne den vertikale avstanden mellom modellens prediksjoner og de observerte verdiene (<a href="#fig-simpsons2" class="quarto-xref">Figur&nbsp;<span>3.2</span></a> C).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-simpsons2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-simpsons2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.2. Fire mulige modeller for å beskrive sammenhengen mellom variablene høyde og vekt (A). Absolutte avstand mellom observerte og estimerte verdier for vekt hvor farge i hvert stolpediagram representerer individer i datasettet og farge over diagrammene representerer modellene (B). Avstanden for en modell visualisert som streker fra observerte verdier til den estimerte modellen (C).</figcaption>
+<div id="fig-simpsons2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-simpsons2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-simpsons2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-simpsons2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.2. Fire mulige modeller for å beskrive sammenhengen mellom variablene høyde og vekt (A). Absolutte avstand mellom observerte og estimerte verdier for vekt hvor farge i hvert stolpediagram representerer individer i datasettet og farge over diagrammene representerer modellene (B). Avstanden for en modell visualisert som streker fra observerte verdier til den estimerte modellen (C).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -373,24 +424,32 @@ div.csl-indent {
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=56396ccf-80b2-4217-a086-b131007f8df8" target="_blank">Fra regresjon til korrelasjon</a>.</p>
 </div></div><p>I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på 0.73 kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles.</p>
 <p>Sammenhengen mellom to kontinuerlige variabler kan beskrives som en korrelasjonskoeffisient. Denne korrelasjonskoeffisienten beskriver sammenhengen mellom to variabler som et tall mellom -1 og +1 hvor estimat som nærmer seg -1 eller +1 indikerer en sterk korrelasjon og estimat som nærmer seg 0 indikerer en svak eller ingen korrelasjon (eller sammenheng).</p>
-<p>Den kanskje vanligste måten å beskrive en korrelasjon på er ved hjelp av Pearson’s korrelasjonskoeffisient. Denne gis vanligvis symbolet <em>R</em> og noen eksempler finnes å se i <a href="#fig-korr">Figur&nbsp;<span>3.3</span></a>.</p>
+<p>Den kanskje vanligste måten å beskrive en korrelasjon på er ved hjelp av Pearson’s korrelasjonskoeffisient. Denne gis vanligvis symbolet <em>R</em> og noen eksempler finnes å se i <a href="#fig-korr" class="quarto-xref">Figur&nbsp;<span>3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-korr" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-korr-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.3. Tre forskjellige korrelasjoner, en negativ, en positiv og en svak.</figcaption>
+<div id="fig-korr" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-korr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-korr-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-korr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.3. Tre forskjellige korrelasjoner, en negativ, en positiv og en svak.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Korrelasjonskoeffisienten påvirkes ikke av rekkefølgen som vi gir variablene til dataprogrammet noe som er viktig for å tolke en regresjonsanalyse på en korrekt måte. Korrelasjonsanalysen og regresjonsanalysen påvirkes begge av ekstreme verdier og ikke linjere forhold mellom variabler, noe som kan gi oss feil inntrykk av dataene hvis vi bare tolker korrelasjonskoeffisienten (eller regresjonsmodellen). Når vi gjennomfører en korrelasjonsanalyse antar vi at dataene kan beskrives med en rett linje og at ingen sterkt influerende datapunkter finnes i datasettet. I figuren under (<a href="#fig-korr-ant">Figur&nbsp;<span>3.4</span></a>) ser vi eksempel på når disse antagelsene ikke stemmer. Et enkelt datapunkt bidrar til å gi et bilde av en svak sammenheng mellom x og y, og i det andre eksemplet fanger en antatt rett sammenheng ikke opp en sterk, ikke-lineær samvariasjon mellom x og y.</p>
+<p>Korrelasjonskoeffisienten påvirkes ikke av rekkefølgen som vi gir variablene til dataprogrammet noe som er viktig for å tolke en regresjonsanalyse på en korrekt måte. Korrelasjonsanalysen og regresjonsanalysen påvirkes begge av ekstreme verdier og ikke linjere forhold mellom variabler, noe som kan gi oss feil inntrykk av dataene hvis vi bare tolker korrelasjonskoeffisienten (eller regresjonsmodellen). Når vi gjennomfører en korrelasjonsanalyse antar vi at dataene kan beskrives med en rett linje og at ingen sterkt influerende datapunkter finnes i datasettet. I figuren under (<a href="#fig-korr-ant" class="quarto-xref">Figur&nbsp;<span>3.4</span></a>) ser vi eksempel på når disse antagelsene ikke stemmer. Et enkelt datapunkt bidrar til å gi et bilde av en svak sammenheng mellom x og y, og i det andre eksemplet fanger en antatt rett sammenheng ikke opp en sterk, ikke-lineær samvariasjon mellom x og y.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-korr-ant" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-korr-ant-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.4. Avvik fra antagelser om dataene kan gi feilaktige tolkninger av en regresjonskoeffisient</figcaption>
+<div id="fig-korr-ant" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-korr-ant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-korr-ant-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-korr-ant-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.4. Avvik fra antagelser om dataene kan gi feilaktige tolkninger av en regresjonskoeffisient
+</figcaption>
 </figure>
 </div>
 </div>
@@ -401,11 +460,15 @@ div.csl-indent {
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=99060c90-3a49-46a0-b24e-b1310081df16" target="_blank">Regresjonsmodellen og alternative statistiske metoder</a>.</p>
-</div></div><p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
+</div></div><p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons" class="quarto-xref">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
 <div class="cell">
+<div id="tbl-simpsons" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-simpsons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.1. Et dataset med to inkluderte indikatorvariabler.
+</figcaption>
+<div aria-describedby="tbl-simpsons-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-simpsons" class="anchored">
-
 <div id="yiioyffdcc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#yiioyffdcc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -845,60 +908,92 @@ div.csl-indent {
 #yiioyffdcc .gt_indent_5 {
   text-indent: 25px;
 }
+
+#yiioyffdcc .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#yiioyffdcc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.1.  <p>Et dataset med to inkluderte indikatorvariabler.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Høyde">Høyde</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Vekt">Vekt</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Navn">Navn</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Barn">Barn</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Voksen">Voksen</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="height" class="gt_row gt_right">121.92</td>
-<td headers="weight" class="gt_row gt_right">38.56</td>
-<td headers="name" class="gt_row gt_left">Bart Simpson</td>
-<td headers="child" class="gt_row gt_right">1</td>
-<td headers="adult" class="gt_row gt_right">0</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">160.02</td>
-<td headers="weight" class="gt_row gt_right">53.98</td>
-<td headers="name" class="gt_row gt_left">Lisa Simpson</td>
-<td headers="child" class="gt_row gt_right">1</td>
-<td headers="adult" class="gt_row gt_right">0</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">180.34</td>
-<td headers="weight" class="gt_row gt_right">108.40</td>
-<td headers="name" class="gt_row gt_left">Homer Simpson</td>
-<td headers="child" class="gt_row gt_right">0</td>
-<td headers="adult" class="gt_row gt_right">1</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">172.72</td>
-<td headers="weight" class="gt_row gt_right">63.05</td>
-<td headers="name" class="gt_row gt_left">Marge Simpson</td>
-<td headers="child" class="gt_row gt_right">0</td>
-<td headers="adult" class="gt_row gt_right">1</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">73.66</td>
-<td headers="weight" class="gt_row gt_right">9.07</td>
-<td headers="name" class="gt_row gt_left">Maggie Simpson</td>
-<td headers="child" class="gt_row gt_right">1</td>
-<td headers="adult" class="gt_row gt_right">0</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">124.46</td>
-<td headers="weight" class="gt_row gt_right">29.94</td>
-<td headers="name" class="gt_row gt_left">Milhouse Van Houten</td>
-<td headers="child" class="gt_row gt_right">1</td>
-<td headers="adult" class="gt_row gt_right">0</td></tr>
-    <tr><td headers="height" class="gt_row gt_right">175.26</td>
-<td headers="weight" class="gt_row gt_right">68.95</td>
-<td headers="name" class="gt_row gt_left">Ned Flander</td>
-<td headers="child" class="gt_row gt_right">0</td>
-<td headers="adult" class="gt_row gt_right">1</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="<div data-qmd-base64=&quot;SCYjMjQ4O3lkZQ==&quot;><div class='gt_from_md'><p>Høyde</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><p>Høyde</p></th>
+<th id="Vekt" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vekt</th>
+<th id="Navn" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Navn</th>
+<th id="Barn" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Barn</th>
+<th id="Voksen" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Voksen</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="height">121.92</td>
+<td class="gt_row gt_right" headers="weight">38.56</td>
+<td class="gt_row gt_left" headers="name">Bart Simpson</td>
+<td class="gt_row gt_right" headers="child">1</td>
+<td class="gt_row gt_right" headers="adult">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="height">160.02</td>
+<td class="gt_row gt_right" headers="weight">53.98</td>
+<td class="gt_row gt_left" headers="name">Lisa Simpson</td>
+<td class="gt_row gt_right" headers="child">1</td>
+<td class="gt_row gt_right" headers="adult">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="height">180.34</td>
+<td class="gt_row gt_right" headers="weight">108.40</td>
+<td class="gt_row gt_left" headers="name">Homer Simpson</td>
+<td class="gt_row gt_right" headers="child">0</td>
+<td class="gt_row gt_right" headers="adult">1</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="height">172.72</td>
+<td class="gt_row gt_right" headers="weight">63.05</td>
+<td class="gt_row gt_left" headers="name">Marge Simpson</td>
+<td class="gt_row gt_right" headers="child">0</td>
+<td class="gt_row gt_right" headers="adult">1</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="height">73.66</td>
+<td class="gt_row gt_right" headers="weight">9.07</td>
+<td class="gt_row gt_left" headers="name">Maggie Simpson</td>
+<td class="gt_row gt_right" headers="child">1</td>
+<td class="gt_row gt_right" headers="adult">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="height">124.46</td>
+<td class="gt_row gt_right" headers="weight">29.94</td>
+<td class="gt_row gt_left" headers="name">Milhouse Van Houten</td>
+<td class="gt_row gt_right" headers="child">1</td>
+<td class="gt_row gt_right" headers="adult">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="height">175.26</td>
+<td class="gt_row gt_right" headers="weight">68.95</td>
+<td class="gt_row gt_left" headers="name">Ned Flander</td>
+<td class="gt_row gt_right" headers="child">0</td>
+<td class="gt_row gt_right" headers="adult">1</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <p>Da tilpassingen av modellen vil bli gjort ved at regresjonslinjen beskriver gjennomsnittet for hvert tall på <span class="math inline">\(x\)</span> vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når <span class="math inline">\(x=0\)</span>, altså for alderskategorien barn, når vi bruker indikatorvariabelen <code>Voksen</code>. Stigningstallet vil beskrive hvor mye <span class="math inline">\(y\)</span> (vekt) øker når vi går fra 0 til 1 på <span class="math inline">\(x\)</span>-variabelen. Bruker vi indikatorvariabelen <code>Barn</code> vil vi estimere gjennomsnittet hos voksne (når <span class="math inline">\(x=0\)</span>) og forskjellen mellom vokse og barn som stigningstallet i modellen.</p>
@@ -911,31 +1006,43 @@ div.csl-indent {
 <p>Nå vi setter noen av de uavhengige variablene til noe annet enn 0 så gir vi koeffisientene betydelse for resultatet (<span class="math inline">\(y\)</span>). I teorien kan vi ha veldig mange uavhengige variabler, men i praksis er dette noe som er vanskelig å motivere av statistisk og vitenskapelig hensyn (noe vi ikke går dypere inn på i dette emnet).</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-trening-data" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-trening-data-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.5. Visuell beskrivelse av variablene kjønn, alder og timer trening fra datasettet <code>student_trening_1_2_3.csv</code></figcaption>
+<div id="fig-trening-data" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trening-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-trening-data-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trening-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.5. Visuell beskrivelse av variablene kjønn, alder og timer trening fra datasettet <code>student_trening_1_2_3.csv</code>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>I datasettet <a href="data/student_trening_1_2_3.csv"><code>student_trening_1_2_3.csv</code></a> finner vi variablene alder, kjønn og treningstimer (<a href="#fig-trening-data">Figur&nbsp;<span>3.5</span></a>). Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som</p>
+<p>I datasettet <a href="data/student_trening_1_2_3.csv"><code>student_trening_1_2_3.csv</code></a> finner vi variablene alder, kjønn og treningstimer (<a href="#fig-trening-data" class="quarto-xref">Figur&nbsp;<span>3.5</span></a>). Vi ønsker å finne sammenhengen mellom variablene kjønn og alder (uavhengige variabler) og treningstimer (avhengig variabel). Modellen kan skrives som</p>
 <p><span class="math display">\[\text{treningstimer} = \beta_0 + \beta_1\times\text{kjønn} + \beta_2\times\text{alder}\]</span></p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="fig-trening-plot" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-trening-plot-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.6. Forhold mellom variablene kjønn, alder og timer trening fra datasettet <code>student_trening_1_2_3.csv</code></figcaption>
+<div id="fig-trening-plot" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-trening-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-trening-plot-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-trening-plot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.6. Forhold mellom variablene kjønn, alder og timer trening fra datasettet <code>student_trening_1_2_3.csv</code>
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>En figur som beskriver samvariasjonen mellom variablene finner du i <a href="#fig-trening-plot">Figur&nbsp;<span>3.6</span></a>. Variablene alder og timer trening er av typen <code>integer</code> (heltall), jeg har derfor lagt til “jitter” som gjør det letter å se hvor vi finner flere observasjoner.</p>
+<p>En figur som beskriver samvariasjonen mellom variablene finner du i <a href="#fig-trening-plot" class="quarto-xref">Figur&nbsp;<span>3.6</span></a>. Variablene alder og timer trening er av typen <code>integer</code> (heltall), jeg har derfor lagt til “jitter” som gjør det letter å se hvor vi finner flere observasjoner.</p>
 <div class="cell">
+<div id="tbl-trening1" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-trening1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (kjønn og alder).
+</figcaption>
+<div aria-describedby="tbl-trening1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-trening1" class="anchored">
-
 <div id="jhanlpljbz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#jhanlpljbz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1375,45 +1482,66 @@ div.csl-indent {
 #jhanlpljbz .gt_indent_5 {
   text-indent: 25px;
 }
-</style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.2.  <p>Resultat fra en regresjonsmodell med to uavhengige variabler (kjønn
-og alder).</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>0</sub> (Skjæringspunkt)"><div class="gt_from_md"><p>β<sub>0</sub> (Skjæringspunkt)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">6.02</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.76</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)"><div class="gt_from_md"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">1.51</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.25</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>2</sub> (Alder)"><div class="gt_from_md"><p>β<sub>2</sub> (Alder)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">−0.07</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-  </tbody>
-  
-  
-</table>
-</div>
-</div>
-</div>
-</div>
-<p>Når vi estimerer modellen får vi tall på <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> og <span class="math inline">\(\beta_2\)</span>. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder (<span class="math inline">\(\beta_1\)</span>) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 (<span class="math inline">\(\beta_2\)</span>) hos menn og kvinner (se <a href="#tbl-trening1">Tabell&nbsp;<span>3.2</span></a>). Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i eksemplene over med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi “kontrollerer” for kjønn når vi ser på effekten av alder, eller at vi “kontrollerer” for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn når vi holder variabelen alder likt mellom menn og kvinner. For menn og kvinner med samme alder er forskjellen i treningstimer <span class="math inline">\(\beta_1\)</span>.</p>
-<p>Legg merke til at modellen inneholder en dummy-variabel for kjønn, vi trenger vanligvis ikke å lage denne, dette gjør statistikkprogrammet for oss. Dummy-variabelen tar verdien 0 når kjønn er kvinne og 1 når kjønn er mann.</p>
-<p>Estimatet fra modellen over sier at menn trener 1.51 timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med -0.07 timer per år. Hvis vi gjør denne analyses med en regresjonsmodell som ikke inneholde alder så ser vi at effekten av kjønn synker (<a href="#tbl-trening2">Tabell&nbsp;<span>3.3</span></a>). Gjør vi analysen uten variabelen kjønn påvirkes estimatet for sammenhengen mellom alder og treningstid (<a href="#tbl-trening3">Tabell&nbsp;<span>3.4</span></a>). Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å “kontrollere” for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning. I den multipple regresjonsmodellen sier vi at effekten av alder er betinget effekten av kjønn (og omvendt).</p>
-<div class="cell">
-<div class="cell-output-display">
-<div id="tbl-trening2" class="anchored">
 
+#jhanlpljbz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#jhanlpljbz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_right" headers="Estimat">6.02</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.76</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p></td>
+<td class="gt_row gt_right" headers="Estimat">1.51</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.25</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub> (Alder)</p></td>
+<td class="gt_row gt_right" headers="Estimat">−0.07</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>Når vi estimerer modellen får vi tall på <span class="math inline">\(\beta_0\)</span>, <span class="math inline">\(\beta_1\)</span> og <span class="math inline">\(\beta_2\)</span>. Disse estimatene forteller oss om den gjennomsnittlige forskjellen mellom kjønn i treningstimer ved en gitt alder (<span class="math inline">\(\beta_1\)</span>) og forskjellen i treningstimer når vi sammenligner for eksempel noen med alder 20 og noen med alder 21 (<span class="math inline">\(\beta_2\)</span>) hos menn og kvinner (se <a href="#tbl-trening1" class="quarto-xref">Tabell&nbsp;<span>3.2</span></a>). Vi kan si dette da dataprogrammet estimerer koeffisientene ved å minimere feilene (avstand fra predikerte til observerte verdier), akkurat som i eksemplene over med en avhengig variabel, men med forskjellen at vi her minimerer feilene i to dimensjoner (kjønn og alder). Noen sier at vi “kontrollerer” for kjønn når vi ser på effekten av alder, eller at vi “kontrollerer” for alder når vi ser på effekten av kjønn på treningstimer. Vi kan tenke oss at modellen gir et estimat av forskjellen mellom kjønn når vi holder variabelen alder likt mellom menn og kvinner. For menn og kvinner med samme alder er forskjellen i treningstimer <span class="math inline">\(\beta_1\)</span>.</p>
+<p>Legg merke til at modellen inneholder en dummy-variabel for kjønn, vi trenger vanligvis ikke å lage denne, dette gjør statistikkprogrammet for oss. Dummy-variabelen tar verdien 0 når kjønn er kvinne og 1 når kjønn er mann.</p>
+<p>Estimatet fra modellen over sier at menn trener 1.51 timer mer enn kvinner. Om vi sammenligner gjennomsnittlig treningstid mellom to etterpåfølgende år så finner vi at treningstiden synker med -0.07 timer per år. Hvis vi gjør denne analyses med en regresjonsmodell som ikke inneholde alder så ser vi at effekten av kjønn synker (<a href="#tbl-trening2" class="quarto-xref">Tabell&nbsp;<span>3.3</span></a>). Gjør vi analysen uten variabelen kjønn påvirkes estimatet for sammenhengen mellom alder og treningstid (<a href="#tbl-trening3" class="quarto-xref">Tabell&nbsp;<span>3.4</span></a>). Den justering som gjøres er en effekt av at alder ikke er fordelt likt mellom menn og kvinner. Når vi sammenligner menn og kvinner uten å “kontrollere” for alder sammenligner vi to grupper med forskjellige aldersprofiler. Da alder også viser sammenheng med treningstimer løper vi risken å til dels ikke lage en rettvis sammenligning. I den multipple regresjonsmodellen sier vi at effekten av alder er betinget effekten av kjønn (og omvendt).</p>
+<div class="cell">
+<div id="tbl-trening2" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-trening2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (kjønn).
+</figcaption>
+<div aria-describedby="tbl-trening2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output-display">
 <div id="noqorahuxj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#noqorahuxj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -1853,38 +1981,58 @@ og alder).</p> </caption>
 #noqorahuxj .gt_indent_5 {
   text-indent: 25px;
 }
+
+#noqorahuxj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#noqorahuxj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.3.  <p>Resultat fra en regresjonsmodell med en uavhengige variabler
-(kjønn).</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>0</sub> (Skjæringspunkt)"><div class="gt_from_md"><p>β<sub>0</sub> (Skjæringspunkt)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">4.35</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.15</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)"><div class="gt_from_md"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">1.45</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.25</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_right" headers="Estimat">4.35</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.15</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p></td>
+<td class="gt_row gt_right" headers="Estimat">1.45</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.25</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 <div class="cell">
+<div id="tbl-trening3" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-trening3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (alder).
+</figcaption>
+<div aria-describedby="tbl-trening3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-trening3" class="anchored">
-
 <div id="ofiowenekk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ofiowenekk table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2324,53 +2472,73 @@ og alder).</p> </caption>
 #ofiowenekk .gt_indent_5 {
   text-indent: 25px;
 }
+
+#ofiowenekk .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ofiowenekk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.4.  <p>Resultat fra en regresjonsmodell med en uavhengige variabler
-(alder).</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>0</sub> (Skjæringspunkt)"><div class="gt_from_md"><p>β<sub>0</sub> (Skjæringspunkt)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">6.09</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.78</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="β<sub>2</sub> (Alder)"><div class="gt_from_md"><p>β<sub>2</sub> (Alder)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">−0.05</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.03</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_right" headers="Estimat">6.09</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.78</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub> (Alder)</p></td>
+<td class="gt_row gt_right" headers="Estimat">−0.05</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.03</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 </section>
 <section id="antagelser-og-diagnostikk" class="level2 page-columns page-full" data-number="3.5">
 <h2 data-number="3.5" class="anchored" data-anchor-id="antagelser-og-diagnostikk"><span class="header-section-number">3.5</span> Antagelser og diagnostikk</h2>
-<div class="page-columns page-full"><p>Hver regresjonsmodell<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> resulterer i et feilledd. Vi har tidligere konstatert at at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene. For at en modell skal anses representere de data den prøver å beskrive så må noen antagelser om modellen og dataene være oppfylt. Vi antar at feilleddet er symmetrisk fordelt og ligner en normalfordeling<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Vi antar også at variasjonen eller spredningen på feilledet er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Vi antar også at, som tidligere blitt nevnt, at samvariasjon mellom variabler kan beskrives som lineært. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel.</p></li><li id="fn2"><p><sup>2</sup>&nbsp;Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling, Se også avsnitt om antagelser i <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span> <a href="https://davidfoxcroft.github.io/lsj-book/12-Correlation-and-linear-regression.html#assumptions-of-regression">her</a>.</p><div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
+<p>Hver regresjonsmodell<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> resulterer i et feilledd. Vi har tidligere konstatert at at den linje som best beskriver dataene er den linje som minimerer feilen fra modell til data. Feilene i modellen, også kalt residualene, kan brukes for å bedre forstå om modellen er en tilstrekkelig god representasjon av dataene. For at en modell skal anses representere de data den prøver å beskrive så må noen antagelser om modellen og dataene være oppfylt. Vi antar at feilleddet er symmetrisk fordelt og ligner en normalfordeling<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. Vi antar også at variasjonen eller spredningen på feilledet er lik over hele datamaterialet, dette kalles homoskedastisitet (lik spredning). Vi antar også at, som tidligere blitt nevnt, at samvariasjon mellom variabler kan beskrives som lineært. Hvis vi har indikasjoner på at forholdet ikke er lineært så er ikke heller den rette linjen en god modell. Til dels kan vi bruke feilleddet for å se dette. Til sist så tenker vi oss at alle observasjoner, og dermed også feilleddet er uavhengige fra hverandre. Det siste betyr at vi ikke på en enkel måte kan bruke flere datapunkter fra de samme individene i en ordinær regresjonsmodell da datapunktene er beslektet.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Her snakker vi om regresjonsmodeller med en kontinuerlig avhengig variabel.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Les mer om normalfordeling her: https://no.wikipedia.org/wiki/Normalfordeling, Se også avsnitt om antagelser i <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span> <a href="https://davidfoxcroft.github.io/lsj-book/12-Correlation-and-linear-regression.html#assumptions-of-regression">her</a>.</p><div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
 Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
-</div></li></div></div>
-
-<div class="no-row-height column-margin column-container"><div class="">
+</div></div><div class="">
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-normal" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-normal-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.7. En normalfordeling</figcaption>
+<div id="fig-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-normal-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.7. En normalfordeling
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-</div></div></section>
+</div></div>
+</section>
 <section id="variansanalyse" class="level2 page-columns page-full" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="variansanalyse"><span class="header-section-number">3.6</span> Variansanalyse</h2>
 <p>Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> tar opp variansanalyse som et verktøy for samvariasjon når den uavhengige variabelen er kategorisk og den avhengige variabelen er numerisk kontinuerlig. I praksis stiller vi spørsmål om en avhengig variabel variere sammen med en kategorisk, dette undersøkes ved å se på gjennomsnitt i hver gruppe og differenser mellom de. Teknisk sett så er variansanalyse en type regresjonsmodell (regresjonsmodellen er fleksibel) hvor vi undersøker hvordan dataene varierer (varians) mellom og innad kategorier/grupper, derav navnet variansanalys (Analysis of Variance, ANOVA på engelsk).</p>
@@ -2378,16 +2546,20 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
 <section id="sec-kryss" class="level2 page-columns page-full" data-number="3.7">
 <h2 data-number="3.7" class="anchored" data-anchor-id="sec-kryss"><span class="header-section-number">3.7</span> Krysstabulering</h2>
 <p>I ANOVA og ordinær regresjonsanalyse kan vi ikke ha en kategorisk avhengig variabel (da kreves mer avanserte modeller, se under). Nå vi ønsker å se på sammenhengen mellom to kategoriske variabler kan vi isteden bruke krysstabulering. Likt ANOVA og regresjonsmodellen kan krysstabuleringen knyttes mot statistiske test, vi vil snakke mer om disse senere i emnet.</p>
-<p>En krysstabulering innebærer at vi deler opp dataene på to kategorier, vi kan reprodusere tabell 3.5 fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> hvor vi undersøker samvariasjon mellom kjønn og medlemskap i et idrettslag. I <a href="#fig-kryss">Figur&nbsp;<span>3.8</span></a> er størrelsen på feltene i proporsjon til antallet observasjoner i hver kombinasjon av kategoriene kjønn og medlemskap i idrettslag. Prosenttall i hvert felt indikerer prosentfordeling innad kjønn mellom kategoriene medlem/ikke medlem.</p>
+<p>En krysstabulering innebærer at vi deler opp dataene på to kategorier, vi kan reprodusere tabell 3.5 fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> hvor vi undersøker samvariasjon mellom kjønn og medlemskap i et idrettslag. I <a href="#fig-kryss" class="quarto-xref">Figur&nbsp;<span>3.8</span></a> er størrelsen på feltene i proporsjon til antallet observasjoner i hver kombinasjon av kategoriene kjønn og medlemskap i idrettslag. Prosenttall i hvert felt indikerer prosentfordeling innad kjønn mellom kategoriene medlem/ikke medlem.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
 Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
 </div></div><p>Krysstabuleringen er en effektiv teknikk for å få overblikk over mulig samvariasjon mellom to kategorier. Når vi har en kategorisk variabel som avhengig variabel og flere uavhengige variabler som vi ønsker å bruke som kontrollvariabler kreves det mer avanserte metoder. Vi må vende tilbake til regresjonsmodellen.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-kryss" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-kryss-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.8. Grafisk fremstilling av en krysstabulering, samvariasjon mellom kjønn og idrettslag.</figcaption>
+<div id="fig-kryss" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-kryss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-kryss-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-kryss-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.8. Grafisk fremstilling av en krysstabulering, samvariasjon mellom kjønn og idrettslag.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2396,50 +2568,66 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <section id="generaliserte-lineære-modeller" class="level2 page-columns page-full" data-number="3.8">
 <h2 data-number="3.8" class="anchored" data-anchor-id="generaliserte-lineære-modeller"><span class="header-section-number">3.8</span> Generaliserte lineære modeller</h2>
 <p>I regresjonsmodellene som ble presentert i tidligere avsnitt antok vi for eksempel at feilleddet var symmetrisk fordelt kring 0. Dette er en gyldig antagelse når vi prøver å forklare en kontinuerlig avhengig variabel som alder eller treningstid. Når den avhengige variabelen kan ta enten verdien 0 eller 1 kan vi ikke si att antakelsen om et normalfordelt feilledd stemmer. En binær variabel (0/1) kan for eksempel beskrive hvis en person har en sykdom eller er død, hvis et fotball-lag vinner en kamp eller noen bruker narkotiske stoffer, osv. Når vi ønsker å forstå disse variablene ved hjelp av en regresjonsmodell må vi forandre modellen for å unngå å bli lurt av dataene.</p>
-<div class="page-columns page-full"><p>Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forekomst av hjertesykdom<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Når vi skal prøve oss på å beskrive sammenhengen mellom disse to variablene kan vi starte med å gjøre en figur hvor alder settes på x-aksel og sykdomsstatus (forekomst av hjertesykdom = 1, ikke hjertesykdom = 0) settes på y-aksel. For å estimere sammenhengen legger vi også inn en regresjonslinje (<a href="#fig-chd1">Figur&nbsp;<span>3.9</span></a>). Modellen som representeres av regresjonslinjen er ikke en god nok beskrivelse av dataene da den mener at færre en null individer under 25 har hjertesykdom. Vi kan gjøre bedre.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Eksemplet kommer fra <span class="citation" data-cites="hosmer_2013">Hosmer, Lemeshow, and Sturdivant (<a href="references.html#ref-hosmer_2013" role="doc-biblioref">2013</a>)</span>.</p><div id="ref-hosmer_2013" class="csl-entry" role="listitem">
+<p>Alder kan tenkes være en variabel som påvirker (direkte eller indirekte) forekomst av hjertesykdom<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>. Når vi skal prøve oss på å beskrive sammenhengen mellom disse to variablene kan vi starte med å gjøre en figur hvor alder settes på x-aksel og sykdomsstatus (forekomst av hjertesykdom = 1, ikke hjertesykdom = 0) settes på y-aksel. For å estimere sammenhengen legger vi også inn en regresjonslinje (<a href="#fig-chd1" class="quarto-xref">Figur&nbsp;<span>3.9</span></a>). Modellen som representeres av regresjonslinjen er ikke en god nok beskrivelse av dataene da den mener at færre en null individer under 25 har hjertesykdom. Vi kan gjøre bedre.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Eksemplet kommer fra <span class="citation" data-cites="hosmer_2013">Hosmer, Lemeshow, and Sturdivant (<a href="references.html#ref-hosmer_2013" role="doc-biblioref">2013</a>)</span>.</p><div id="ref-hosmer_2013" class="csl-entry" role="listitem">
 Hosmer, David W., Stanley Lemeshow, and Rodney X. Sturdivant. 2013. <em>Applied Logistic Regression</em>. Third edition /. Wiley Series in Probability and Statistics. Hoboken, New Jersey: Wiley.
-</div></li></div></div>
-<div class="cell">
+</div></div></div><div class="cell">
 <div class="cell-output-display">
-<div id="fig-chd1" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-chd1-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.9. Bruk av lineær regresjon for å beskrive binære data.</figcaption>
+<div id="fig-chd1" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chd1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-chd1-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chd1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.9. Bruk av lineær regresjon for å beskrive binære data.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Som et neste forsøk å beskrive dataene kan vi beregne andelen med hjertesykdom i hver av noen aldersgrupper. Aldersgruppene som går fra 19-29, 29-39 osv. brukes for å regne ut andelen med hjertesykdom per aldersgruppe. Andelen med hjertesykdom øker med økende alder, men forholdet er ikke en rett linje. Når prosentandelen nærmer seg 0 eller 1 flater kurven ut (<a href="#fig-chd2">Figur&nbsp;<span>3.10</span></a>). Vi kan gjøre det enda bedre.</p>
+<p>Som et neste forsøk å beskrive dataene kan vi beregne andelen med hjertesykdom i hver av noen aldersgrupper. Aldersgruppene som går fra 19-29, 29-39 osv. brukes for å regne ut andelen med hjertesykdom per aldersgruppe. Andelen med hjertesykdom øker med økende alder, men forholdet er ikke en rett linje. Når prosentandelen nærmer seg 0 eller 1 flater kurven ut (<a href="#fig-chd2" class="quarto-xref">Figur&nbsp;<span>3.10</span></a>). Vi kan gjøre det enda bedre.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-chd2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-chd2-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.10. Bruk av alderskategorier for å beskrive forekomst av hjertesykdom. Hver punkt representerer prosentandeler av aldersgruppen med hjertesykdom.</figcaption>
+<div id="fig-chd2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chd2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-chd2-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chd2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.10. Bruk av alderskategorier for å beskrive forekomst av hjertesykdom. Hver punkt representerer prosentandeler av aldersgruppen med hjertesykdom.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Den vanligste modellen for å beskrive sammenhenger mellom uavhengige variabler og en binær avhengig variabel er den logistiske regresjonsmodellen <span class="citation" data-cites="hosmer_2013">(<a href="references.html#ref-hosmer_2013" role="doc-biblioref">Hosmer, Lemeshow, and Sturdivant 2013</a>)</span>. Denne modellen er en av flere modeller i kategorien <em>Generaliserte lineære modeller</em>. Disse modellene kombinerer regresjonsmodellens bruk av uavhengige variabler for å beskrive en avhengig variabel med en «linkfunksjon» som transformere dataene til en skala hvor den avhengige variabelen kan beskrives som (en lineær) kombinasjon av uavhengige variabler. Linkfunksjonen for en logistisk regresjonsmodell er logit-linken (se under for detaljer). Denne funksjonen gjør at vi kan lage en modell som forteller oss om oddsen for, i vårt eksempel, hjertesykdom.</p>
 <div class="no-row-height column-margin column-container"></div><p>I motsetning til den vanlige regresjonsmodellen lager vi ikke en modell over gjennomsnittet men isteden oddsen for et utfall hvor et observert utfall (for eksempel forekomst av sykdom) vanligvis er kodet som 1 i dataene. Oddsen for utfallet er forholdet mellom å se utfallet (1) og ikke se utfallet (0). I resultatene fra en slik modell gis oddsen på log-skalaen, noe som benevnes som log-odds. Når vi transformerer disse til den naturlige skalaen får vi utfallet som oddsen for et utfall. Videre kan oddsen transformeres til en sannsynlighet, sannsynligheten for å se utfallet.</p>
-<p>Alt dette betyr at resultatene fra en logistisk regresjonsmodell ikke alltid er lette å tolke da de gis på log-odds skalen. Vi kan bruke den den eksponentielle funksjonen av et estimate gitt på log-odds skala for å få odds. Log-odds kan også transforeres til sannsynligheten for et utfall. I figuren under illustreres hvordan sannsynligheten for et utfall (beregnet antall y = 1 delt på antall observasjoner) er lik den logistiske transformasjonen av log-odds (<a href="#fig-logisticreg">Figur&nbsp;<span>3.11</span></a>).</p>
+<p>Alt dette betyr at resultatene fra en logistisk regresjonsmodell ikke alltid er lette å tolke da de gis på log-odds skalen. Vi kan bruke den den eksponentielle funksjonen av et estimate gitt på log-odds skala for å få odds. Log-odds kan også transforeres til sannsynligheten for et utfall. I figuren under illustreres hvordan sannsynligheten for et utfall (beregnet antall y = 1 delt på antall observasjoner) er lik den logistiske transformasjonen av log-odds (<a href="#fig-logisticreg" class="quarto-xref">Figur&nbsp;<span>3.11</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-logisticreg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-logisticreg-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.11. Et enkelt data sett med en binær variabel kan sammenstilles i figurform og som et forhold mellom antall positive utfall (y=1) og det totale antallet observasjoner. Hvis vi lager en enkel logistisk regresjonsmodell over dataene finner vi at log-odds (0.4055) tilsvarer en odds på 1.5 og en sannsynlighet for utfallet på 0.6.</figcaption>
+<div id="fig-logisticreg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-logisticreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-logisticreg-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-logisticreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.11. Et enkelt data sett med en binær variabel kan sammenstilles i figurform og som et forhold mellom antall positive utfall (y=1) og det totale antallet observasjoner. Hvis vi lager en enkel logistisk regresjonsmodell over dataene finner vi at log-odds (0.4055) tilsvarer en odds på 1.5 og en sannsynlighet for utfallet på 0.6.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>I figuren under (<a href="#fig-chd3">Figur&nbsp;<span>3.12</span></a>) har estimatene fra en logistisk regresjonsmodell blitt transformert fra log-odds skalaen til den estimerte sannsynligheten for forekomst av hjertesykdom som en funksjon av alder. Modellen gir lignende estimater for samvariasjonen mellom alder og sykdom som beregning av andel med sykdom per aldersgruppe. Hvorfor alt dette styret med en logistisk regresjonsmodell? Regresjonsmodellen kan inkludere flere uavhengige variabler, noe som gjør at vi kan beskrive samvariasjon mellom alder og sykdom samtidig som vi tar med i beregningen at individer kan forskjellige verdier på andre variabler så som kjønn, sosioøkonomisk status og andre sykdommer.</p>
+<p>I figuren under (<a href="#fig-chd3" class="quarto-xref">Figur&nbsp;<span>3.12</span></a>) har estimatene fra en logistisk regresjonsmodell blitt transformert fra log-odds skalaen til den estimerte sannsynligheten for forekomst av hjertesykdom som en funksjon av alder. Modellen gir lignende estimater for samvariasjonen mellom alder og sykdom som beregning av andel med sykdom per aldersgruppe. Hvorfor alt dette styret med en logistisk regresjonsmodell? Regresjonsmodellen kan inkludere flere uavhengige variabler, noe som gjør at vi kan beskrive samvariasjon mellom alder og sykdom samtidig som vi tar med i beregningen at individer kan forskjellige verdier på andre variabler så som kjønn, sosioøkonomisk status og andre sykdommer.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-chd3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="02-statistisk-samvariasjon_files/figure-html/fig-chd3-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;3.12. Bruk av en logistisk regresjonsmodell for å beskrive forekomst av hjertesykdom. Kurven representere modellen og hver punkt representerer proporsjoner aldersgruppene fra <a href="#fig-chd2">Figur&nbsp;<span>3.10</span></a> med hjertesykdom.</figcaption>
+<div id="fig-chd3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-chd3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="02-statistisk-samvariasjon_files/figure-html/fig-chd3-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-chd3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;3.12. Bruk av en logistisk regresjonsmodell for å beskrive forekomst av hjertesykdom. Kurven representere modellen og hver punkt representerer proporsjoner aldersgruppene fra <a href="#fig-chd2" class="quarto-xref">Figur&nbsp;<span>3.10</span></a> med hjertesykdom.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -2472,7 +2660,7 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 </div></div></section>
 <section id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn" class="level3" data-number="3.8.2">
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn"><span class="header-section-number">3.8.2</span> Et eksempel: Analyse av samvariasjon mellom medlemskap i idrettslag og kjønn</h3>
-<p>I eksemplet med krysstabulering (<a href="#sec-kryss"><span>Section&nbsp;3.7</span></a>) undersøkte vi hvor stor andel av menn og kvinner i datasettet som rapporterte at de var medlemmer i et idrettslag. Forskjellen i prosentpoeng var 20.7. Vi kan også beregne dette som et odds-forhold. Tallene finner vi i <a href="#tbl-trening">Tabell&nbsp;<span>3.5</span></a> hvor vi bruker antallet observasjoner fra hvert kategori når vi først beregner odds for medlemskap som</p>
+<p>I eksemplet med krysstabulering (<a href="#sec-kryss" class="quarto-xref"><span>Section 3.7</span></a>) undersøkte vi hvor stor andel av menn og kvinner i datasettet som rapporterte at de var medlemmer i et idrettslag. Forskjellen i prosentpoeng var 20.7. Vi kan også beregne dette som et odds-forhold. Tallene finner vi i <a href="#tbl-trening" class="quarto-xref">Tabell&nbsp;<span>3.5</span></a> hvor vi bruker antallet observasjoner fra hvert kategori når vi først beregner odds for medlemskap som</p>
 <p><span class="math display">\[\operatorname{odds} = \frac{\text{Medlem}}{\text{Ikke medlem}}\]</span>.</p>
 <p>Hos kvinner får vi</p>
 <p><span class="math display">\[\operatorname{odds}_{\text{medlem, kvinner}} = \frac{60}{356} = 0.168\]</span></p>
@@ -2480,9 +2668,13 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 <p><span class="math display">\[\operatorname{odds}_{\text{medlem, menn}} = \frac{80}{148} = 0.540\]</span>.</p>
 <p>Odds-forholdet mellom disse blir <span class="math inline">\(\frac{0.540}{0.168}=3.21\)</span>, noe som vi kan lese som at menn har 3.21 ganger høyere sannsynlighet for å være medlem i et idrettslag sammenlignet med kvinner.</p>
 <div class="cell">
+<div id="tbl-trening" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-trening-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.5. Krysstabulering av andel medlem i idrettslag per kjønn fra <a href="data/student_trening_1_2_3.csv"><code>data/student_trening_1_2_3.csv</code></a>.
+</figcaption>
+<div aria-describedby="tbl-trening-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-trening" class="anchored">
-
 <div id="sauujvnjgi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#sauujvnjgi table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -2922,45 +3114,71 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 #sauujvnjgi .gt_indent_5 {
   text-indent: 25px;
 }
+
+#sauujvnjgi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#sauujvnjgi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.5.  <p>Krysstabulering av andel medlem i idrettslag per kjønn fra <a href="data/student_trening_1_2_3.csv"><code>data/student_trening_1_2_3.csv</code></a>.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Kjønn">Kjønn</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Ikke medlem">Ikke medlem</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Medlem">Medlem</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Ikke medlem (%)">Ikke medlem (%)</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Medlem (%)">Medlem (%)</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="sex" class="gt_row gt_left">kvinne</td>
-<td headers="Ikke medlem" class="gt_row gt_right">356</td>
-<td headers="Medlem" class="gt_row gt_right">60</td>
-<td headers="Ikke medlem (%)" class="gt_row gt_right">85.6%</td>
-<td headers="Medlem (%)" class="gt_row gt_right">14.4%</td></tr>
-    <tr><td headers="sex" class="gt_row gt_left">mann</td>
-<td headers="Ikke medlem" class="gt_row gt_right">148</td>
-<td headers="Medlem" class="gt_row gt_right">80</td>
-<td headers="Ikke medlem (%)" class="gt_row gt_right">64.9%</td>
-<td headers="Medlem (%)" class="gt_row gt_right">35.1%</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="<div data-qmd-base64=&quot;S2omIzI0ODtubg==&quot;><div class='gt_from_md'><p>Kjønn</p>
+</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p>Kjønn</p></th>
+<th id="Ikke medlem" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem</th>
+<th id="Medlem" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Medlem</th>
+<th id="Ikke medlem (%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem (%)</th>
+<th id="Medlem (%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Medlem (%)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="sex">kvinne</td>
+<td class="gt_row gt_right" headers="Ikke medlem">356</td>
+<td class="gt_row gt_right" headers="Medlem">60</td>
+<td class="gt_row gt_right" headers="Ikke medlem (%)">85.6%</td>
+<td class="gt_row gt_right" headers="Medlem (%)">14.4%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="sex">mann</td>
+<td class="gt_row gt_right" headers="Ikke medlem">148</td>
+<td class="gt_row gt_right" headers="Medlem">80</td>
+<td class="gt_row gt_right" headers="Ikke medlem (%)">64.9%</td>
+<td class="gt_row gt_right" headers="Medlem (%)">35.1%</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
+</figure>
 </div>
-<p>Den samme analysen kan vi gjøre ved hjelp av en logistisk regresjonsmodell. Her lar vi modellen beregne effekten av kjønn på medlemskap i idrettslag og vi får følgende estimater (<a href="#tbl-treningreg">Tabell&nbsp;<span>3.6</span></a>). Husk at disse er på log-odds skalaen når vi beregner odds per kjønn. Hos kvinner finner vi log-oddsen for medlemskap i <code>(Intercept)</code> (skjæringspunktet) og for mennene legger vi sammen skjærinsgpunktet og stigningstallet og får en log-odds på -0.615. Disse estimatene tilsvarer estimatene vi beregnet for hånd over når vi bruker eksponential-funksjonen:</p>
+</div>
+<p>Den samme analysen kan vi gjøre ved hjelp av en logistisk regresjonsmodell. Her lar vi modellen beregne effekten av kjønn på medlemskap i idrettslag og vi får følgende estimater (<a href="#tbl-treningreg" class="quarto-xref">Tabell&nbsp;<span>3.6</span></a>). Husk at disse er på log-odds skalaen når vi beregner odds per kjønn. Hos kvinner finner vi log-oddsen for medlemskap i <code>(Intercept)</code> (skjæringspunktet) og for mennene legger vi sammen skjærinsgpunktet og stigningstallet og får en log-odds på -0.615. Disse estimatene tilsvarer estimatene vi beregnet for hånd over når vi bruker eksponential-funksjonen:</p>
 <p><span class="math display">\[\operatorname{odds}_{\text{medlem, kvinner}} = e^{-1.781} = 0.168\]</span> <span class="math display">\[\operatorname{odds}_{\text{medlem, menn}} = e^{-0.615} = 0.540\]</span></p>
 <p>Differensen mellom menn og kvinner i log-odds tilsvarer stigningstallet. Stigningstallet er log-odds-ratioen, når vi bruker eksponential-funksjonen får vi odds-forholdet (eller odds-ratioen (OR)):</p>
 <p><span class="math display">\[OR = e^{1.165} = 3.2\]</span> Konklusjonen blir den samme, menn har 3.2 ganger større sannsynlighet for være medlem i ett idrettslag sammenlignet med kvinner.</p>
 <div class="cell">
+<div id="tbl-treningreg" class="cell quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-treningreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av kjønn på medlemskap i idrettslag ved bruk av dataene <a href="data/student_trening_1_2_3.csv"><code>data/student_trening_1_2_3.csv</code></a>.
+</figcaption>
+<div aria-describedby="tbl-treningreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="tbl-treningreg" class="anchored">
-
 <div id="bjyloatcfj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#bjyloatcfj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -3400,32 +3618,48 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 #bjyloatcfj .gt_indent_5 {
   text-indent: 25px;
 }
+
+#bjyloatcfj .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bjyloatcfj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Tabell&nbsp;3.6.  <p>Resultatet fra en logistisk regresjonsanalyse på effekten av kjønn på
-medlemskap i idrettslag ved bruk av dataene <a href="data/student_trening_1_2_3.csv"><code>data/student_trening_1_2_3.csv</code></a>.</p> </caption>
-  <thead>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Koeffisient">Koeffisient</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Estimat">Estimat</th>
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Standardfeil">Standardfeil</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="(Intercept)"><div class="gt_from_md"><p>(Intercept)</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">−1.781</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.140</td></tr>
-    <tr><td headers="Koeffisient" class="gt_row gt_left"><div data-qmd="Kjønn = mann"><div class="gt_from_md"><p>Kjønn = mann</p>
-</div></div></td>
-<td headers="Estimat" class="gt_row gt_right">1.165</td>
-<td headers="Standardfeil" class="gt_row gt_right">0.197</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="gt_col_headings header">
+<th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
+<th id="Estimat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimat</th>
+<th id="Standardfeil" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Standardfeil</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Koeffisient"><p>(Intercept)</p></td>
+<td class="gt_row gt_right" headers="Estimat">−1.781</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.140</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Koeffisient"><p>Kjønn = mann</p></td>
+<td class="gt_row gt_right" headers="Estimat">1.165</td>
+<td class="gt_row gt_right" headers="Standardfeil">0.197</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
+</div>
+</figure>
 </div>
 </div>
 
@@ -3471,18 +3705,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -3514,11 +3737,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -3528,8 +3788,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -3541,7 +3810,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -3585,6 +3976,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -3610,6 +4002,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -3671,17 +4089,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./02-a-intro.html" class="pagination-link">
+      <a href="./02-a-intro.html" class="pagination-link" aria-label="Statistisk samvariasjon">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Statistisk samvariasjon</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-jamovi.html" class="pagination-link">
+      <a href="./02-jamovi.html" class="pagination-link" aria-label="Statistiske metoder for samvariasjon i Jamovi">
         <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Statistiske metoder for samvariasjon i Jamovi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

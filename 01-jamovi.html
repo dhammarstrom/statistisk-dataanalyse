@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 2&nbsp; Deskriptiv dataanalyse i Jamovi</title>
+<title>2&nbsp; Deskriptiv dataanalyse i Jamovi – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,14 +82,42 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,13 +127,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li><li class="breadcrumb-item"><a href="./01-jamovi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li><li class="breadcrumb-item"><a href="./01-jamovi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -107,7 +142,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistisk dataanalyse med Jamovi</a> 
@@ -130,7 +165,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deskriptiv dataanalyse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -153,7 +188,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./02-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistisk samvariasjon</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -176,7 +211,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kausalsammenheng</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,7 +240,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Induktiv statistikk</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -228,7 +263,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./05-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentere og lese statistiske analyser</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,22 +285,28 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./06-a-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Øvelser og prosjekter</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Forelesninger, Øvelser og prosjekter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06-forelesninger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Forelesninger og henvisninger til pensum</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +320,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -295,7 +336,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li><li class="breadcrumb-item"><a href="./01-jamovi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></h1>
 </div>
@@ -310,7 +351,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <section id="bli-kjent-med-jamovi" class="level2 page-columns page-full" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="bli-kjent-med-jamovi"><span class="header-section-number">2.1</span> Bli kjent med Jamovi</h2>
@@ -320,24 +363,32 @@ div.csl-indent {
 </div><div id="ref-thrane_2020" class="csl-entry" role="listitem">
 Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
 </div></div><p>I eksemplene under vil vi bruke et data sett fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> som du finner <a href="data/fotball_1_2_3.csv" target="_blank">her</a>. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. <code>deskriptiv-dataanalyse</code> og lagre filen i en undermappe som heter <code>data</code>. I denne mappestrukturen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.</p>
-<p>Når du har installert Jamovi og starter det for første gang vil du se følgende (<a href="#fig-firstopen">Figur&nbsp;<span>2.1</span></a>):</p>
+<p>Når du har installert Jamovi og starter det for første gang vil du se følgende (<a href="#fig-firstopen" class="quarto-xref">Figur&nbsp;<span>2.1</span></a>):</p>
 <p><span style="color:blue;"><strong>Spreadsheet</strong></span>: Her kan du editere data, eller se et datasett som du har importert.</p>
 <p><span style="color:pink;"><strong>Analysis output</strong></span>: Her vil resultater fra statistiske analyser vises. Det er også mulig å gjøre notater her koblet til hver analyse.</p>
 <p><span style="color:darkgreen;"><strong>Modules</strong></span>: Her finnes muligheter å installere flere analysemoduler.</p>
 <p><span style="color:lightgreen;"><strong>Menu</strong></span>: Menyen inneholder snarveier til filhåndtering, variabler, data, analyser og editering av analysefanen (Analysis output).</p>
 <p><span style="color:orange;"><strong>Analysis ribbon</strong></span>: De moduler for statistiske analyser som du allerede har installert finner du her.</p>
 <p><span style="color:red;"><strong>Settings</strong></span>: Under innstillinger kan du forandre for eksempel fargetema på figurer og antall desimaler som skal vises i outputs.</p>
-<div id="fig-firstopen" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/01-jamovi/first-open.png" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figur&nbsp;2.1. Åpne Jamovi for første gang</figcaption>
+<div id="fig-firstopen" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-firstopen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/01-jamovi/first-open.png" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-firstopen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;2.1. Åpne Jamovi for første gang
+</figcaption>
 </figure>
 </div>
-<p>For å importere data i Jamovi som er lagret i en <code>csv</code>-fil bruker vi <code>Open</code> i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk <code>Browse</code> for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (<a href="#fig-openfile">Figur&nbsp;<span>2.2</span></a>). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram!</p>
-<div id="fig-openfile" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/01-jamovi/open-file.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figur&nbsp;2.2. Åpne et datasett i Jamovi</figcaption>
+<p>For å importere data i Jamovi som er lagret i en <code>csv</code>-fil bruker vi <code>Open</code> i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk <code>Browse</code> for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (<a href="#fig-openfile" class="quarto-xref">Figur&nbsp;<span>2.2</span></a>). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram!</p>
+<div id="fig-openfile" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-openfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/01-jamovi/open-file.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-openfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;2.2. Åpne et datasett i Jamovi
+</figcaption>
 </figure>
 </div>
 <p>Datasettet kan beskrives ytterligere i Jamovi under fanen <code>Variables</code>. Hvert variable er her listet med navn og du kan legge til en beskrivelse (<code>Description</code>) av hvert variabel. Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen.</p>
@@ -349,23 +400,31 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Les mer i <a href="https://www.jamovi.org/user-manual.html#getting-started">Jamovi User Guide</a></p>
 </div></div><p>Datavariablene kodes videre som <code>Nominal</code>, <code>Ordinal</code>, <code>Continuous</code> eller <code>ID</code>. En variable på nominalnivå er en variabel som kan være en av flere mulige kategorier. Kategoriene er ikke rangerte, som for eksempel kjønn hvor en observasjon kan være mann eller kvinne. En variabel på målenivå ordinal er også kategorisk, men verdiene er rangerte. For eksempel er kategorien “høy temperatur” større enn “lav temperatur”. En variabel som beskrives som <code>Continuous</code> i Jamovi kan beskrives som enten intervallnivå eller forholdstallsnivå. Jamovi ønsker å vite at en variabel finnes på en skala som er kontinuerlig men skiller ikke på om variablene har et bestemt forhold mellom verdiene (forholdstallsnivå) eller hvis de bare kan beskrives med faste avstander (intervallnivå). Variabeltypen <code>ID</code> er lagd for å indikere grupperinger i dataene. Vi er vanligvis intressert i å analysere denne variabelen, men ønsker å gruppere datasett og analyser basert på den.</p>
-<p>Variabler som er kodet feil kan endres til den typen som du finner er mer korrekte. Dette gjøres under fanen <code>Data</code> og <code>Setup</code> i menyen. Når du importerer filen <code>fotball_1_2_3.csv</code> er alder kodet som <code>Nominal</code>. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se <a href="#fig-changevariable">Figur&nbsp;<span>2.3</span></a>).</p>
-<div id="fig-changevariable" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/01-jamovi/change-variable.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figur&nbsp;2.3. Forandre variabeltype fra nominal til kontinuerlig</figcaption>
+<p>Variabler som er kodet feil kan endres til den typen som du finner er mer korrekte. Dette gjøres under fanen <code>Data</code> og <code>Setup</code> i menyen. Når du importerer filen <code>fotball_1_2_3.csv</code> er alder kodet som <code>Nominal</code>. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se <a href="#fig-changevariable" class="quarto-xref">Figur&nbsp;<span>2.3</span></a>).</p>
+<div id="fig-changevariable" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-changevariable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/01-jamovi/change-variable.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-changevariable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;2.3. Forandre variabeltype fra nominal til kontinuerlig
+</figcaption>
 </figure>
 </div>
 <p>I tillegg til “rådata” kan et Jamovi-spreadsheet inneholde <code>computed</code>, <code>transformed</code> og <code>recoded</code> variabler. En beregnet (<code>computed</code>) variabel beregnes fra andre variabler og legges til datasettet ved bruk av <code>Add</code> funksjonen under <code>Variables</code> eller <code>Data</code> fanen. For eksempel kan vi være interesserte i å beregne spilletid per kamp. Denne ny variabelen kan beregnes som <span class="math inline">\(\frac{\text{Spilte min}}{\text{Antall kamper}}\)</span>, noe som i kode kan oversettes til <code>=spilte_min/kamper_tot</code> hvor <code>spilte_min</code> og <code>kamper_tot</code> er variabler i datasettet. Formelen som beregner spilletid per kamp settes inn ved å markere den nye variabelen og gå inn under <code>Data</code> og <code>Setup</code> hvor vi kan bruke formelfeltet. Her kan vi og velge fra en rekke funksjoner (under <span class="math inline">\(f_x\)</span>) som kan brukes for å lage beregnede variabler.</p>
-<div class="page-columns page-full"><p>Transformerte og re-kodet variabler ligner på beregnede variabler da de bruker “rådata” fra spreadsheet for å lage en ny variabel. For detaljer om transformerte og re-kodet variabler se her<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;Les om transformerte og re-kodet variabler i <a href="https://blog.jamovi.org/2018/10/23/transforming-variables.html">denne blog-posten</a>.</p></li></div></div>
-</section>
+<p>Transformerte og re-kodet variabler ligner på beregnede variabler da de bruker “rådata” fra spreadsheet for å lage en ny variabel. For detaljer om transformerte og re-kodet variabler se her<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Les om transformerte og re-kodet variabler i <a href="https://blog.jamovi.org/2018/10/23/transforming-variables.html">denne blog-posten</a>.</p></div></div></section>
 <section id="eksplorativ-eller-beskrivende-analyse" class="level2 page-columns page-full" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="eksplorativ-eller-beskrivende-analyse"><span class="header-section-number">2.3</span> Eksplorativ eller beskrivende analyse</h2>
-<p>Nå vi modulfanen velger <code>Exploration</code> åpnes en meny hvor vi kan velge <code>Descriptives</code>, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under <code>Variables</code>. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under <code>Statistics</code> velger vi hvilke statistikker vi ønsker å beregne og under <code>Plots</code> finnes muligheter å velge fra en rekke forskjellige typer av figurer (<a href="#fig-deskriptiv">Figur&nbsp;<span>2.4</span></a>).</p>
-<div id="fig-deskriptiv" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="img/01-jamovi/descriptives.gif" class="img-fluid figure-img"></p>
-<figcaption class="figure-caption">Figur&nbsp;2.4. Modulen for beskrivende statistikk</figcaption>
+<p>Nå vi modulfanen velger <code>Exploration</code> åpnes en meny hvor vi kan velge <code>Descriptives</code>, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under <code>Variables</code>. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under <code>Statistics</code> velger vi hvilke statistikker vi ønsker å beregne og under <code>Plots</code> finnes muligheter å velge fra en rekke forskjellige typer av figurer (<a href="#fig-deskriptiv" class="quarto-xref">Figur&nbsp;<span>2.4</span></a>).</p>
+<div id="fig-deskriptiv" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-deskriptiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="img/01-jamovi/descriptives.gif" class="img-fluid figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deskriptiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;2.4. Modulen for beskrivende statistikk
+</figcaption>
 </figure>
 </div>
 <p>Under <code>Statistics</code> finner vi flere valgmuligheter for å beskrive data. Sentraltendens (det typiske i dataene) kan beskrives ved hjelp av gjennomsnitt <code>Mean</code>, median (<code>Median</code>) og modus (<code>Mode</code>). I tillegg finner vi en funksjon for å beregne summen (<code>Sum</code>) for en variabel. Variasjonen (<code>Dispersion</code>) i dataene kan beskrives ved hjelp av standardavvik (<code>Std. deviation</code>), varians (<code>Variace</code>), variasjonsvidde (<code>Range</code>), minimum og maksimum (<code>Minimum</code>, <code>Maximum</code>) samt interkvartilavstand (<code>IQR</code>).</p>
@@ -422,18 +481,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -465,11 +513,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -479,8 +564,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -492,7 +586,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -536,6 +752,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -561,6 +778,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -622,17 +865,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-deskriptiv-dataanalyse.html" class="pagination-link">
+      <a href="./01-deskriptiv-dataanalyse.html" class="pagination-link" aria-label="Datahåndtering og Data i regnearkprogrammer">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datahåndtering og Data i regnearkprogrammer</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-a-intro.html" class="pagination-link">
+      <a href="./02-a-intro.html" class="pagination-link" aria-label="Statistisk samvariasjon">
         <span class="nav-page-text">Statistisk samvariasjon</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 

@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.450">
+<meta name="generator" content="quarto-1.6.39">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Statistisk dataanalyse med Jamovi - 8&nbsp; Statistisk inferens</title>
+<title>8&nbsp; Statistisk inferens – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -24,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -56,17 +57,23 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
   "collapse-after": 3,
   "panel-placement": "start",
   "type": "textbox",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -75,14 +82,42 @@ div.csl-indent {
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
 }</script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -92,13 +127,13 @@ div.csl-indent {
   <header id="quarto-header" class="headroom fixed-top">
   <nav class="quarto-secondary-nav">
     <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-a-intro.html">Induktiv statistikk</a></li><li class="breadcrumb-item"><a href="./04-induktiv-statistikk.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></a></li></ol></nav>
-      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-      </a>
-      <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-a-intro.html">Induktiv statistikk</a></li><li class="breadcrumb-item"><a href="./04-induktiv-statistikk.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
         <i class="bi bi-search"></i>
       </button>
     </div>
@@ -107,7 +142,7 @@ div.csl-indent {
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Statistisk dataanalyse med Jamovi</a> 
@@ -130,7 +165,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deskriptiv dataanalyse</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -153,7 +188,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./02-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Statistisk samvariasjon</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -176,7 +211,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./03-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Kausalsammenheng</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -205,7 +240,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./04-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Induktiv statistikk</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -228,7 +263,7 @@ div.csl-indent {
       <div class="sidebar-item-container"> 
             <a href="./05-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Presentere og lese statistiske analyser</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
@@ -250,22 +285,28 @@ div.csl-indent {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./06-a-intro.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Øvelser og prosjekter</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" aria-expanded="true" aria-label="Toggle section">
+ <span class="menu-text">Forelesninger, Øvelser og prosjekter</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06-forelesninger.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Forelesninger og henvisninger til pensum</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -279,7 +320,7 @@ div.csl-indent {
     </ul>
     </div>
 </nav>
-<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
@@ -319,7 +360,7 @@ div.csl-indent {
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./04-a-intro.html">Induktiv statistikk</a></li><li class="breadcrumb-item"><a href="./04-induktiv-statistikk.html"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span id="sec-statistiskinferens" class="quarto-section-identifier"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Statistisk inferens</span></span></h1>
 </div>
@@ -334,7 +375,9 @@ div.csl-indent {
   </div>
   
 
+
 </header>
+
 
 <p>Vi mennesker er gode på å trekke slutninger om hvordan verden fungerer basert på et begrenset antall observasjoner. Denne evne til å lage mentale modeller av verden kan sies være et særtrekk i mennesket som gjort det mulig å skape avanserte sivilisasjoner. En mental modell, eller forståelse av hvordan verden henger sammen gir grunnlag for å samhandle med den, og forandre den. Noen ganger går det dessverre galt, vår mentale modell representerer ikke verden og utfall blir ikke hva vi forventer.</p>
 <p>Innen vitenskapen prøver vi å systematisere prosessen som leder frem til ny kunnskap. Flere forskjellige filosofier blir brukt for å unngå å trekke falske slutninger om verden basert på data. Den filosofiske og statistiske skole som trolig blir mest brukt innen vitenskapen i dag kalles for frekventisme. Denne modulen vil introdusere statistisk inferens med fokus på frekventisme. Statistisk inferens er det å trekke konklusjoner om en populasjon basert på et utvalg. Vi ønsker å si noe om noe vi ikke observerer, basert på et begrenset datautvalg.</p>
@@ -359,19 +402,23 @@ Dodge, Yadolah. 2008. <em>The Concise Encyclopedia of Statistics</em>. 1st. ed. 
 </section>
 <section id="utvalg-og-estimering" class="level2 page-columns page-full" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="utvalg-og-estimering"><span class="header-section-number">8.2</span> Utvalg og estimering</h2>
-<div class="page-columns page-full"><p>Når vi har et utvalg så kan vi måle noe og dermed estimere den <em>sanne verdien</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> i populasjonen. Da vi ønsker å si noe om <em>den sanne verdien</em> sier dette også noe om at vi kan være mer eller mindre sikre på et estimat, og vi kan ha feil. Vi må ha verktøy som tar hensyn til begge disse konseptene som er tett sammenkoblet nemlig, presisjon og feilrate. Vi kan starte med å konstatere at all estimering gjøres med usikkerhet, men hvordan kan vi si noe om usikkerheten. Vi vil nå gjennomføre et tankeeksperiment.</p><div class="no-row-height column-margin column-container"><li id="fn1"><p><sup>1</sup>&nbsp;I frekventisme ser vi på populasjonsparameteren som en (teoretisk) gitt verdi som ikke forandres.</p></li></div></div>
-<p>I frekventisme er det mulig å tenke seg at vi i teorien kan trekke flere uavhengige utvalg fra en populasjon. La oss gjøre dette, vi trekker flere utvalg med størrelse 10 (10 observasjoner). Fra hvert utvalg kan vi beregne gjennomsnitt og standardavvik. Vi legger sammen gjennomsnittene fra de mange utvalgene i en ny fordeling, en fordeling av gjennomsnitt basert på utvalg fra en populasjon. Det viser seg at en fordeling av gjennomsnitt har det samme gjennomsnittet som populasjonen og at spredningen (standardavviket) i denne fordelingen bestemmes av størrelsen på utvalgene. Standardfeilen er spredningen i en fordeling av gjennomsnitt fra flere utvalg. Standardfeilen (SE, standard error på engelsk) beregnes som</p>
+<p>Når vi har et utvalg så kan vi måle noe og dermed estimere den <em>sanne verdien</em><a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> i populasjonen. Da vi ønsker å si noe om <em>den sanne verdien</em> sier dette også noe om at vi kan være mer eller mindre sikre på et estimat, og vi kan ha feil. Vi må ha verktøy som tar hensyn til begge disse konseptene som er tett sammenkoblet nemlig, presisjon og feilrate. Vi kan starte med å konstatere at all estimering gjøres med usikkerhet, men hvordan kan vi si noe om usikkerheten. Vi vil nå gjennomføre et tankeeksperiment.</p>
+<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;I frekventisme ser vi på populasjonsparameteren som en (teoretisk) gitt verdi som ikke forandres.</p></div></div><p>I frekventisme er det mulig å tenke seg at vi i teorien kan trekke flere uavhengige utvalg fra en populasjon. La oss gjøre dette, vi trekker flere utvalg med størrelse 10 (10 observasjoner). Fra hvert utvalg kan vi beregne gjennomsnitt og standardavvik. Vi legger sammen gjennomsnittene fra de mange utvalgene i en ny fordeling, en fordeling av gjennomsnitt basert på utvalg fra en populasjon. Det viser seg at en fordeling av gjennomsnitt har det samme gjennomsnittet som populasjonen og at spredningen (standardavviket) i denne fordelingen bestemmes av størrelsen på utvalgene. Standardfeilen er spredningen i en fordeling av gjennomsnitt fra flere utvalg. Standardfeilen (SE, standard error på engelsk) beregnes som</p>
 <p><span class="math display">\[SE = \frac{\sigma}{\sqrt{n}}\]</span> hvor <span class="math inline">\(\sigma\)</span> er standardavviket i populasjonen og <span class="math inline">\(n\)</span> er størrelsen på utvalget. Problemet her er at vi ikke kjenner <span class="math inline">\(\sigma\)</span>, isteden vil vi bruke det estimerte standardavviket fra et utvalg for å gjennomføre beregning.</p>
 <p><span class="math display">\[SE = \frac{s}{\sqrt{n}}\]</span> Det viser seg at når vi trekker flere utvalg så vil vi i det lange løp, i gjennomsnitt, få standardfeil i utvalgene som tilsvarer standardavviket i utvalgsfordelingen. Dette er et fantastisk resultat, og grunnen til at vi kan si noe om populasjonen basert på et utvalg.</p>
 <section id="estimere-et-gjennomsnitt-et-eksempel" class="level3" data-number="8.2.1">
 <h3 data-number="8.2.1" class="anchored" data-anchor-id="estimere-et-gjennomsnitt-et-eksempel"><span class="header-section-number">8.2.1</span> Estimere et gjennomsnitt, et eksempel</h3>
-<p>I Norge 2022 ble 52026 fødsler registrert i <a href="https://statistikkbank.fhi.no/mfr/">Medisinsk fødselsregister</a>. Gjennomsnittet for fødselsvekt var 3485 gram og standardavviket var 587 gram. Vi kan si at vi dermed kjenner til disse egenskapene i populasjonen, men hvor godt hadde vi klart å estimere disse verdiene hvis vi hadde trukket et utvalg på 10 barn fra populasjonen. For å besvare det spørsmålet kan vi lage et eksperiment hvor vi trekker 1000 utvalg fra populasjonen og beregner gjennomsnitt i hvert utvalg. Den resulterende utvalgfordelingen vil gi et bilde av hvor godt vi kan estimere populasjonen basert på et utvalg. Som vi ser i <a href="#fig-birtwtutvalg">Figur&nbsp;<span>8.1</span></a>, i panelet med utvalgsfordeling kan et gjennomsnitt forventes være så lite som mindre enn 3000 og så stort som større enn 4000 g. Hvis utvalgsstørrelsen istedenfor 10 hadde vært 100, ville vi sett at utvalgsfordelingen var mer samlet rundt gjennomsnittet.</p>
+<p>I Norge 2022 ble 52026 fødsler registrert i <a href="https://statistikkbank.fhi.no/mfr/">Medisinsk fødselsregister</a>. Gjennomsnittet for fødselsvekt var 3485 gram og standardavviket var 587 gram. Vi kan si at vi dermed kjenner til disse egenskapene i populasjonen, men hvor godt hadde vi klart å estimere disse verdiene hvis vi hadde trukket et utvalg på 10 barn fra populasjonen. For å besvare det spørsmålet kan vi lage et eksperiment hvor vi trekker 1000 utvalg fra populasjonen og beregner gjennomsnitt i hvert utvalg. Den resulterende utvalgfordelingen vil gi et bilde av hvor godt vi kan estimere populasjonen basert på et utvalg. Som vi ser i <a href="#fig-birtwtutvalg" class="quarto-xref">Figur&nbsp;<span>8.1</span></a>, i panelet med utvalgsfordeling kan et gjennomsnitt forventes være så lite som mindre enn 3000 og så stort som større enn 4000 g. Hvis utvalgsstørrelsen istedenfor 10 hadde vært 100, ville vi sett at utvalgsfordelingen var mer samlet rundt gjennomsnittet.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-birtwtutvalg" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-birtwtutvalg-1.png" class="img-fluid figure-img" width="768"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.1. Vi trekker utvalg (n = 10) fra en populasjon av fødselsvekter. For hvert utvalg beregner vi gjennomsnitt og legger hvert gjennomsnitt til en ny fordeling, utvalgsfordelingen. I figuren ser vi tre eksempel på utvalg og de totalt tusen utvalgen som i dette fallet skaper utvalgsfordelingen. Utvalgsfordelingen tar en form som kan beskrives som en symmetrisk fordeling. Hvis vi fordelingen fra populasjonen med en utvalgsfordeling med forskjellige utvalgsstørrelser ser vi at populasjonen er har størst spredning og en utvalgsfordeling med flere observasjoner er mer samlet kring gjennomsnittet.</figcaption>
+<div id="fig-birtwtutvalg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-birtwtutvalg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-birtwtutvalg-1.png" class="img-fluid figure-img" width="768">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-birtwtutvalg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.1. Vi trekker utvalg (n = 10) fra en populasjon av fødselsvekter. For hvert utvalg beregner vi gjennomsnitt og legger hvert gjennomsnitt til en ny fordeling, utvalgsfordelingen. I figuren ser vi tre eksempel på utvalg og de totalt tusen utvalgen som i dette fallet skaper utvalgsfordelingen. Utvalgsfordelingen tar en form som kan beskrives som en symmetrisk fordeling. Hvis vi fordelingen fra populasjonen med en utvalgsfordeling med forskjellige utvalgsstørrelser ser vi at populasjonen er har størst spredning og en utvalgsfordeling med flere observasjoner er mer samlet kring gjennomsnittet.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -381,18 +428,22 @@ Dodge, Yadolah. 2008. <em>The Concise Encyclopedia of Statistics</em>. 1st. ed. 
 </section>
 <section id="estimering-av-spredningen-i-utvalgsfordelingen" class="level2 page-columns page-full" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="estimering-av-spredningen-i-utvalgsfordelingen"><span class="header-section-number">8.3</span> Estimering av spredningen i utvalgsfordelingen</h2>
-<p>Som vi kan se over i beregningen av standardfeilen så er den avhengig av utvalgsstørrelsen. Når utvalgsstørrelsen (<span class="math inline">\(n\)</span>) er større blir standardfeilen mindre. Det betyr at fordelingen av gjennomsnitt fra utvalgene vil være tettere samlet kring den <em>sanne verdien</em>, populasjonsgjennomsnittet, når utvalgsstørrelsen er større. Vi så dette i <a href="#fig-birtwtutvalg">Figur&nbsp;<span>8.1</span></a>.</p>
+<p>Som vi kan se over i beregningen av standardfeilen så er den avhengig av utvalgsstørrelsen. Når utvalgsstørrelsen (<span class="math inline">\(n\)</span>) er større blir standardfeilen mindre. Det betyr at fordelingen av gjennomsnitt fra utvalgene vil være tettere samlet kring den <em>sanne verdien</em>, populasjonsgjennomsnittet, når utvalgsstørrelsen er større. Vi så dette i <a href="#fig-birtwtutvalg" class="quarto-xref">Figur&nbsp;<span>8.1</span></a>.</p>
 <p>En annen observasjon som kan gjøres av utvalgsfordelingen er at den vil ha en lignende form uansett underliggende populasjonsfordeling. Fordelingen vil ligne på det som kalles normalfordeling. Normalfordelingen bestemmes av et gjennomsnitt og et standardavvik. Dette betyr at vi i mange tilfeller kan bruke estimerte gjennomsnitt og standardavvik for å lage en modell av utvalgsfordelingen.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>For enda bedre presisjon i estimeringen av en utvalgsfordeling når utvalgsstørrelsen er liten brukes en <span class="math inline">\(t\)</span>-fordeling. Denne fordelingen tar også hensyn til utvalgsstørrelsen. Da utvalgsfordelingen har kjente egenskaper (normalfordelingen og <span class="math inline">\(t\)</span>-fordelingen) så kan vi bruke denne for å si noe om hvordan vi ser for oss at en teoretisk fordeling av flere gjennomsnitt ser ut.</p>
-</div></div><p>Men hvor sikre kan vi være på estimatet av spredningen i en utvalgsfordeling? Spredningen i utvalgsfordelingen er altså spredningen av for eksempel gjennomsnitt hvis vi hadde trukket flere utvalg fra den samme populasjonen og beregnet gjennomsnitt for hvert av dem. Vi estimerer denne spredningen ved å beregne standardfeilen (SE). Hvis vi bruker standardavviket i hvert utvalg som et estimat for standardavviket i populasjonen, så kan vi også beregne standardavviket i utvalgsfordelingen. Dette gjør vi, som vi allerede har sett ved å dele standardavviket i populasjonen på kvadratroten av utvalgsstørrelsen. Hvis vi så hadde gjort dette som et eksperimentet hvor vi beregner standardfeilen mange ganger, så ville vi kunne se at vi i gjennomsnitt, i de fleste tilfeller være veldig nærme den faktiske variasjonen (se <a href="#fig-utvalgse">Figur&nbsp;<span>8.2</span></a>).</p>
+</div></div><p>Men hvor sikre kan vi være på estimatet av spredningen i en utvalgsfordeling? Spredningen i utvalgsfordelingen er altså spredningen av for eksempel gjennomsnitt hvis vi hadde trukket flere utvalg fra den samme populasjonen og beregnet gjennomsnitt for hvert av dem. Vi estimerer denne spredningen ved å beregne standardfeilen (SE). Hvis vi bruker standardavviket i hvert utvalg som et estimat for standardavviket i populasjonen, så kan vi også beregne standardavviket i utvalgsfordelingen. Dette gjør vi, som vi allerede har sett ved å dele standardavviket i populasjonen på kvadratroten av utvalgsstørrelsen. Hvis vi så hadde gjort dette som et eksperimentet hvor vi beregner standardfeilen mange ganger, så ville vi kunne se at vi i gjennomsnitt, i de fleste tilfeller være veldig nærme den faktiske variasjonen (se <a href="#fig-utvalgse" class="quarto-xref">Figur&nbsp;<span>8.2</span></a>).</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-utvalgse" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-utvalgse-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.2. Fordeling av estimat av standardfeil fra en populasjon med gjennomsnitt 3485 og standardavvik 587 og utvalg med størrelse 10. Den röde streken indikerer den teoretiske standardfeilen bergnet fra populasjonen.</figcaption>
+<div id="fig-utvalgse" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-utvalgse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-utvalgse-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-utvalgse-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.2. Fordeling av estimat av standardfeil fra en populasjon med gjennomsnitt 3485 og standardavvik 587 og utvalg med størrelse 10. Den röde streken indikerer den teoretiske standardfeilen bergnet fra populasjonen.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -419,7 +470,6 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <p>Vi trekker et utvalg med størrelse 10 fra populasjonen av registrerte fødselvekter i Norge 2022. Tallene er:</p>
 <div class="cell">
 <div class="cell-output-display">
-
 <div id="ioueiyneeb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>#ioueiyneeb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
@@ -859,32 +909,63 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 #ioueiyneeb .gt_indent_5 {
   text-indent: 25px;
 }
+
+#ioueiyneeb .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ioueiyneeb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
 </style>
-<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-  <thead>
-    <tr class="gt_heading">
-      <td colspan="1" class="gt_heading gt_title gt_font_normal gt_bottom_border" style="">Fødselsvekter i Norge 2022</td>
-    </tr>
-    
-    <tr class="gt_col_headings">
-      <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" scope="col" id="Vekt">Vekt</th>
-    </tr>
-  </thead>
-  <tbody class="gt_table_body">
-    <tr><td headers="Vekt" class="gt_row gt_right">3117</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3593</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">2994</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">4421</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3678</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3003</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3771</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3918</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3823</td></tr>
-    <tr><td headers="Vekt" class="gt_row gt_right">3306</td></tr>
-  </tbody>
-  
-  
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 100%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th class="gt_heading gt_title gt_font_normal gt_bottom_border"><p>Fødselsvekter i Norge 2022</p></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Vekt" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vekt</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_right" headers="Vekt">3117</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Vekt">3593</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Vekt">2994</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Vekt">4421</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Vekt">3678</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Vekt">3003</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Vekt">3771</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Vekt">3918</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_right" headers="Vekt">3823</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_right" headers="Vekt">3306</td>
+</tr>
+</tbody>
 </table>
+
 </div>
 </div>
 </div>
@@ -897,14 +978,18 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 </section>
 <section id="t-fordelingen" class="level3" data-number="8.5.2">
 <h3 data-number="8.5.2" class="anchored" data-anchor-id="t-fordelingen"><span class="header-section-number">8.5.2</span> <em>t</em>-fordelingen</h3>
-<p>Når vi bruker små utvalg er det bedre å bruke en <em>t</em>-fordelning når vi lager konfidensintervaller. En <em>t</em>-fordeling er en familie av fordelinger som likt normalfordelingen er symmetriske med tyngdepunkt ved sentrum. Formen på fordelingen bestemmes av antallet frihetsgrader, noe som i sin tur bestemmes av antallet observasjoner. Når antall frihetsgrader er lavt vil fordelingen være bredere og ha mer masse lengre ut fra sentrum. Når antallet frihetsgrader øker vil fordelingen nærme seg en normalfordeling (se <a href="#fig-konfidensintervall">Figur&nbsp;<span>8.3</span></a>). Når vi beregner et konfidensintervall for et gjennomsnitt bruker vi <span class="math inline">\(n-1\)</span> frihetsgrader. I eksemplet med 10 observasjoner vil vi bruke en <em>t</em>-fordeling med 9 frihetsgrader.</p>
-<p>Det at vi fanger inn mer av fordelingen lengre ut fra sentrum gjør at vi kan være mer sikre på at vi unngår å lure oss selve hva gjelder populasjonsparameteren. Hvis vi definerer feilraten som antallet 95% konfidensintervaller som ikke fanger inn populasjonsparameteren, vil vi ved bruk av en <em>t</em>-fordeling ha en feilrate som ikke overstiger 5% ved repeterte forsøk, 95% av konfidensintervallene vil faktisk fange populasjonsparameteren. Normalfordelingen og små utvalg vil derimot gi oss 95% konfidensintervall som ikke holder hva de lover, en lavere andel enn 95% vil inneholde populasjonsparameteren. I <a href="#fig-konfidensintervall">Figur&nbsp;<span>8.3</span></a> C har viser vi resultatet av 50 simulerte utvalg fra fødselsvekt-dataene. Over hvert panel i figuren angis feilraten fra 2000 simuleringer. Når vi har små utvalg (n = 10) vil feilraten være større når vi bruker normalfordelingen som grunn for konfidensintervallene.</p>
+<p>Når vi bruker små utvalg er det bedre å bruke en <em>t</em>-fordelning når vi lager konfidensintervaller. En <em>t</em>-fordeling er en familie av fordelinger som likt normalfordelingen er symmetriske med tyngdepunkt ved sentrum. Formen på fordelingen bestemmes av antallet frihetsgrader, noe som i sin tur bestemmes av antallet observasjoner. Når antall frihetsgrader er lavt vil fordelingen være bredere og ha mer masse lengre ut fra sentrum. Når antallet frihetsgrader øker vil fordelingen nærme seg en normalfordeling (se <a href="#fig-konfidensintervall" class="quarto-xref">Figur&nbsp;<span>8.3</span></a>). Når vi beregner et konfidensintervall for et gjennomsnitt bruker vi <span class="math inline">\(n-1\)</span> frihetsgrader. I eksemplet med 10 observasjoner vil vi bruke en <em>t</em>-fordeling med 9 frihetsgrader.</p>
+<p>Det at vi fanger inn mer av fordelingen lengre ut fra sentrum gjør at vi kan være mer sikre på at vi unngår å lure oss selve hva gjelder populasjonsparameteren. Hvis vi definerer feilraten som antallet 95% konfidensintervaller som ikke fanger inn populasjonsparameteren, vil vi ved bruk av en <em>t</em>-fordeling ha en feilrate som ikke overstiger 5% ved repeterte forsøk, 95% av konfidensintervallene vil faktisk fange populasjonsparameteren. Normalfordelingen og små utvalg vil derimot gi oss 95% konfidensintervall som ikke holder hva de lover, en lavere andel enn 95% vil inneholde populasjonsparameteren. I <a href="#fig-konfidensintervall" class="quarto-xref">Figur&nbsp;<span>8.3</span></a> C har viser vi resultatet av 50 simulerte utvalg fra fødselsvekt-dataene. Over hvert panel i figuren angis feilraten fra 2000 simuleringer. Når vi har små utvalg (n = 10) vil feilraten være større når vi bruker normalfordelingen som grunn for konfidensintervallene.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-konfidensintervall" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-konfidensintervall-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.3. (A) En normalfordeling skiller seg fra en t-fordeling ved at formen ikke kan påvirkes. t-fordelingen har en ekstra parameter frihetsgrader (degrees of freedom, df) som bestemmer formen på kurven, når df nermer seg 0 faller mer av massen i fordelingen lengre ut fra sentrum. Når df &gt; 30 ligner t-fordelingen på en normalfordeling. Vi betsemmer antallet frihetsgrader basert på antall observasjoner i dataene. (B) Et konfidensintervall basert på en t-fordeling (df=9) for observert data, et 95% konfidenintervall strekker seg ± 2.26 standardfeil ut fra gjennomsnittet. (C) Et konfidensintervall for en t-fordeling er bredere enn for en normalfordeling og når antallet frihetsgrader (antallet observasjoner) er litet vil dette hjelpe oss å opprettholde feilraten, antallet konfidensintervall som ikke inneholder den faktiske populasjonsparameteren. Et antall intervall i figuren finner ikke populasjonsparameteren, feilraten er angitt over hvert panel og intervaller er markert i figuren</figcaption>
+<div id="fig-konfidensintervall" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-konfidensintervall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-konfidensintervall-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-konfidensintervall-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.3. (A) En normalfordeling skiller seg fra en t-fordeling ved at formen ikke kan påvirkes. t-fordelingen har en ekstra parameter frihetsgrader (degrees of freedom, df) som bestemmer formen på kurven, når df nermer seg 0 faller mer av massen i fordelingen lengre ut fra sentrum. Når df &gt; 30 ligner t-fordelingen på en normalfordeling. Vi betsemmer antallet frihetsgrader basert på antall observasjoner i dataene. (B) Et konfidensintervall basert på en t-fordeling (df=9) for observert data, et 95% konfidenintervall strekker seg ± 2.26 standardfeil ut fra gjennomsnittet. (C) Et konfidensintervall for en t-fordeling er bredere enn for en normalfordeling og når antallet frihetsgrader (antallet observasjoner) er litet vil dette hjelpe oss å opprettholde feilraten, antallet konfidensintervall som ikke inneholder den faktiske populasjonsparameteren. Et antall intervall i figuren finner ikke populasjonsparameteren, feilraten er angitt over hvert panel og intervaller er markert i figuren
+</figcaption>
 </figure>
 </div>
 </div>
@@ -920,58 +1005,74 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cfefd71c-06eb-4756-a98b-b1560079ad8c" target="_blank">P-verdier og hypotesetesting</a>.</p>
 </div></div><p>I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?</p>
-<p>Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne (n=50) som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket (<a href="#fig-hypotesedata">Figur&nbsp;<span>8.4</span></a>).</p>
+<p>Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne (n=50) som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket (<a href="#fig-hypotesedata" class="quarto-xref">Figur&nbsp;<span>8.4</span></a>).</p>
 <p>Fra studien er det mulig å formulere to hypoteser, en nullhypotese (<span class="math inline">\(\text{H}_0\)</span>) sier at det ikke er noen forskjell mellom behandlingene. Den alternative hypotesen (<span class="math inline">\(\text{H}_0\)</span>) sier derimot at det er en forskjell i blodtrykk mellom behandlingene. Hypotesene omhandler populasjonen, vi ønsker altså å si noe om hvordan behandlingen virker, ikke bare i utvalget, men også i populasjonen som deltakerne kommer fra. Filosofiske argumenter gir at det er vanskelig å bevise en hypotese men enklere å motbevise den. I statistikken prøver vi derfor vanligvis å motbevise (falsifisere) nullhypotesen, og vi sier at vi <em>tester mot den</em>. Vi setter opp testet sånn at om testresultatet er tilstrekkelig ekstremt gitt at nullhypotesen er sann så avkrefter vi den, eller finner den mindre trolig enn en alternative hypotese.</p>
 <p><span class="math display">\[\text{H}_0: \mu_1 = \mu_2\]</span></p>
 <p><span class="math display">\[\text{H}_A: \mu_1 \neq \mu_2\]</span></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-hypotesedata" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-hypotesedata-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.4. Data fra en hypotetisk studie hvor deltakere blir randomisert til to grupper. Gruppe A får ingen intervensjon, gruppe B får oppfølging fra en personlig trener. Systolisk blodtrykk er målt etter intervensjonen.</figcaption>
+<div id="fig-hypotesedata" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hypotesedata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-hypotesedata-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hypotesedata-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.4. Data fra en hypotetisk studie hvor deltakere blir randomisert til to grupper. Gruppe A får ingen intervensjon, gruppe B får oppfølging fra en personlig trener. Systolisk blodtrykk er målt etter intervensjonen.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Datane vi samlet inn forteller at forskjellen mellom gruppene i systolisk blodtrykk etter intervensjonen er 6.6 mmHg. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere fra utvalget og plasserer de i to grupper, la oss si, <em>“a”</em> og <em>“b”</em>. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Denne fordelingen ligner hva vi kunne forvente oss vi tok flere utvalg fra en populasjon hvor nullhypotesen faktisk var sann. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis effekten av tilfeldigheter er større enn intervensjonen. Denne teknikken kalles for permutasjonstest og resultatet finner vi i <a href="#fig-permutasjonstest">Figur&nbsp;<span>8.5</span></a>.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest_e409b6130bb0afcd102ad947914b8cf8">
+<p>Datane vi samlet inn forteller at forskjellen mellom gruppene i systolisk blodtrykk etter intervensjonen er 6.6 mmHg. Hvis nullhypotesen er sann, hvor usannsynlig er det observerte resultatet? For å etterligne en nullhypotese skaper vi en kunstig utvalgsfordeling. Denne fordelingen lager vi gjennom å gi gruppetilhørighet til våre observasjoner helt tilfeldig, 10 000 ganger. Vi trekker altså tilfeldig deltakere fra utvalget og plasserer de i to grupper, la oss si, <em>“a”</em> og <em>“b”</em>. Hver gang beregner vi et gjennomsnitt mellom gruppene som nå er en blanding av individer fra de faktiske intervensjonsgruppene. Denne fordelingen ligner hva vi kunne forvente oss vi tok flere utvalg fra en populasjon hvor nullhypotesen faktisk var sann. Gjennomsnittene samler vi opp og så beregner vi hvor mange gjennomsnitt som er så ekstreme eller enda mer ekstreme sammenlignet med det observerte gjennomsnittet fra intervensjonen. Vi sammenligner altså resultatet fra intervensjonen med gjennomsnitt som er mulige hvis effekten av tilfeldigheter er større enn intervensjonen. Denne teknikken kalles for permutasjonstest og resultatet finner vi i <a href="#fig-permutasjonstest" class="quarto-xref">Figur&nbsp;<span>8.5</span></a>.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-permutasjonstest" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.5. En permutasjonstest for å sammenligne to grupper. Det observerte gjennomsnittet fra intervensjonen er markert med en rød linje. Histogrammet viser fordelingen av gjennomsnitt fra 10 000 permutasjoner hvor observert data blir tilfeldig inndelt i to grupper og en differens beregnes.</figcaption>
+<div id="fig-permutasjonstest" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-permutasjonstest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-permutasjonstest-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.5. En permutasjonstest for å sammenligne to grupper. Det observerte gjennomsnittet fra intervensjonen er markert med en rød linje. Histogrammet viser fordelingen av gjennomsnitt fra 10 000 permutasjoner hvor observert data blir tilfeldig inndelt i to grupper og en differens beregnes.
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Det viser seg at bare 0.0112% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen? La oss si at vi ønsker å sammenligne resultatene fra intervensjonen med alle ekstreme resultater i permuteringstesten, dette betyr at vi også vil ta med de mer ekstreme negative forskjellene i beregningen. Det viser seg at 0.0235% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det observerte gjennomsnittet når vi inkluderer gjennomsnitt som er større enn 6.6 mmHg og mindre enn -6.6 mmHg (<a href="#fig-permutasjonstest2">Figur&nbsp;<span>8.6</span></a>).</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest2_c82918341902edb2ae29deeed36c20ec">
+<p>Det viser seg at bare 0.0112% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det gjennomsnitt vi fikk fra intervensjonen. Er dette nok for å forkaste nullhypotesen? La oss si at vi ønsker å sammenligne resultatene fra intervensjonen med alle ekstreme resultater i permuteringstesten, dette betyr at vi også vil ta med de mer ekstreme negative forskjellene i beregningen. Det viser seg at 0.0235% av gjennomsnittene i den permuterte fordelingen er mer ekstreme enn det observerte gjennomsnittet når vi inkluderer gjennomsnitt som er større enn 6.6 mmHg og mindre enn -6.6 mmHg (<a href="#fig-permutasjonstest2" class="quarto-xref">Figur&nbsp;<span>8.6</span></a>).</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-permutasjonstest2" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest2-1.png" class="img-fluid figure-img" width="384"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.6. En tosidig permutasjonstest for å sammenligne to grupper. En tosidig test sammenligner det observerte gjennomsnittet med alle ekstreme gjennomsnitt i permutasjonsfordelingen. Vi besvarer spørsmålet, hvor mange teoretiske studier gir oss så ekstreme resultater som det observerte, gitt at nullhypotesen er sann?</figcaption>
+<div id="fig-permutasjonstest2" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-permutasjonstest2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest2-1.png" class="img-fluid figure-img" width="384">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-permutasjonstest2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.6. En tosidig permutasjonstest for å sammenligne to grupper. En tosidig test sammenligner det observerte gjennomsnittet med alle ekstreme gjennomsnitt i permutasjonsfordelingen. Vi besvarer spørsmålet, hvor mange teoretiske studier gir oss så ekstreme resultater som det observerte, gitt at nullhypotesen er sann?
+</figcaption>
 </figure>
 </div>
 </div>
 </div>
 <p>Vi har nå beregnet to <em>p</em>-verdier. Den første varianten er p-verdien som tilsvarer en ensidig test, vi sammenligner det observerte gjennomsnittet med gjennomsnittene i permutasjonsfordelingen som er større enn det observerte gjennomsnittet. Den andre varianten er en tosidig test, vi sammenligner det observerte gjennomsnittet med alle ekstreme gjennomsnitt i permutasjonsfordelingen.</p>
-<div class="page-columns page-full"><p>Så hva bruker vi <em>p</em>-verdien til? I frekvensitisks statistikk setter vi vanligvis en grense for hva som er <em>statistisk signifikant</em>. Vi sier at en forskjell er signifikant hvis den er mer ekstrem enn vår grense. Denne grensen settes ofte til 5%.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> La oss si at nullhyotesen faktisk er sann, det finnes ingen forskjell mellom behandlingene i populasjonen. I denne situasjonen vil vi fortsatt ha mulighet å observere ekstreme forskjeller i et utvalg. Når vi setter grensen for et signifikant resultat til 5% aksepterer vi at vå prosedyre tar feil i 5% av tilfellene. Vi vet ikke om resultatet vi har observert er et slik resultat, men vi kan være sikre på at i det lange løp så vil vi bare ta fel 1 gang av 20.</p><div class="no-row-height column-margin column-container"><li id="fn2"><p><sup>2</sup>&nbsp;Hvorfor 5%? Det korte svaret på dette spørsmålet er, tradisjon. Vanligvis sies det at statistikeren <a href="https://no.wikipedia.org/wiki/Ronald_Fisher">Ronald Fisher</a> etablerte 5% som grense for statistisk signifikant, men dette var trolig ikke nytt på 1920-tallet <span class="citation" data-cites="cowles1982">(<a href="references.html#ref-cowles1982" role="doc-biblioref">Cowles and Davis 1982</a>)</span>.</p><div id="ref-cowles1982" class="csl-entry" role="listitem">
+<p>Så hva bruker vi <em>p</em>-verdien til? I frekvensitisks statistikk setter vi vanligvis en grense for hva som er <em>statistisk signifikant</em>. Vi sier at en forskjell er signifikant hvis den er mer ekstrem enn vår grense. Denne grensen settes ofte til 5%.<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a> La oss si at nullhyotesen faktisk er sann, det finnes ingen forskjell mellom behandlingene i populasjonen. I denne situasjonen vil vi fortsatt ha mulighet å observere ekstreme forskjeller i et utvalg. Når vi setter grensen for et signifikant resultat til 5% aksepterer vi at vå prosedyre tar feil i 5% av tilfellene. Vi vet ikke om resultatet vi har observert er et slik resultat, men vi kan være sikre på at i det lange løp så vil vi bare ta fel 1 gang av 20.</p>
+<div class="no-row-height column-margin column-container"><div id="fn2"><p><sup>2</sup>&nbsp;Hvorfor 5%? Det korte svaret på dette spørsmålet er, tradisjon. Vanligvis sies det at statistikeren <a href="https://no.wikipedia.org/wiki/Ronald_Fisher">Ronald Fisher</a> etablerte 5% som grense for statistisk signifikant, men dette var trolig ikke nytt på 1920-tallet <span class="citation" data-cites="cowles1982">(<a href="references.html#ref-cowles1982" role="doc-biblioref">Cowles and Davis 1982</a>)</span>.</p><div id="ref-cowles1982" class="csl-entry" role="listitem">
 Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the. 05 Level of Statistical Significance.”</span> <em>American Psychologist</em> 37 (5): 553.
-</div></li></div></div>
-<p>Hvis vi bruker en signifikansnivå på 5% i vårt eksempel hvor p-verdien den tosidige testen er 0.0235% så vil vi alstå si at resultatet er signifikant. Vi konkluderer med at resultatet er så pass ekstremt at det tilhører de 5% mest ekstreme resultatene som hadde blitt observert hvis nullhypotesen er sann. Vi finner altså at vi har svak støtte for nullhypotesen og vi forkaster den til fordel for den alternative hypotesen.</p>
+</div></div></div><p>Hvis vi bruker en signifikansnivå på 5% i vårt eksempel hvor p-verdien den tosidige testen er 0.0235% så vil vi alstå si at resultatet er signifikant. Vi konkluderer med at resultatet er så pass ekstremt at det tilhører de 5% mest ekstreme resultatene som hadde blitt observert hvis nullhypotesen er sann. Vi finner altså at vi har svak støtte for nullhypotesen og vi forkaster den til fordel for den alternative hypotesen.</p>
 <p>Det at forkaste nullhypotesen, hvis den faktisk er sann, kalles for å gjøre en type 1 feil. Ved hjelp av signifikansnivået spesifiserer vi hvor ofte vi aksepterer å gjøre en type 1 feil. Når vi setter grensen til 5% vil vi gjøre feil i 1 studie av 20. Hvis vi setter grensen til 10% vil vi gjøre feil i 1 av 10 studier, og hvis vi setter grensen til 1% (p = 0.01), vil vi si at nullhypotesen er falsk til tross for at den er sann i 1 av 100 studier. Det å sette en grense for p-verdien handler altså om å kontrollere feilraten i det lange løp.</p>
 <section id="parametrisk-og-ikke-parametrisk-statistikk" class="level3 page-columns page-full" data-number="8.6.1">
 <h3 data-number="8.6.1" class="anchored" data-anchor-id="parametrisk-og-ikke-parametrisk-statistikk"><span class="header-section-number">8.6.1</span> Parametrisk og ikke-parametrisk statistikk</h3>
-<div class="page-columns page-full"><p>I eksemplet over brukte vi en permutasjonstest for å bestemme om den forskjell vi observerte mellom gruppene var ekstrem nok til å forkaste hypotesen at det ikke er en forskjell mellom behandlingen i populasjonen. Denne testen er en så kalt ikke-parametrisk test, den bruker ikke en teoretisk fordeling for å beregne testresultatet (p-verdien). Hvis vi er villige til å anta at dataene er normalfordelt og at variasjonen er lik i begge grupper<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> så kan vi bruke en test for å sammenligne to gjennomsnitt som bruker en sannsynlighetsfordeling for å lage en modell over utvalgsfordelingen. Denne testen kalles for en <em>t</em>-test.</p><div class="no-row-height column-margin column-container"><li id="fn3"><p><sup>3</sup>&nbsp;Antagelser for parametrisk test av gjennomsnitt i to uavhengige grupper, også kalt en <em>t</em>-test, er at dataene er normalfordelt, noe som vil gi normalfordeling i en utvalgsfordeling. Da utvalgsfordelingen er helt hypotetisk utvidder man denne antaglsen til å inkluderer dataene som man observerer. En annen antagelse er at dataene er uavhengige, dette betyr at det ikke finnes noen slektskap i dataene, for eksempel ikke flere datapunkter fra det samme individet. Til sist antar vi at variasjonen er lik i begge gruppene, stengt tatt at dette er fallet i populasjonen. Det finnes måter å “teste” disse antagelsene på (se <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html">11.4.3 i <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<span>2018</span>)</span></a>, men disse testene er ikke gode for å oppdage avvikelser fra antagleser i små utvalg. Dette betyr at antaglser er noe vi i stor grad må akseptere uten å kunne teste dem.</p></li></div></div>
-<p><em>t</em>-testen bruker t-fordelingen for å lage en modell over utvalgsfordelingen, noe som vises i <a href="#fig-permutasjonstest3">Figur&nbsp;<span>8.7</span></a>. Vi ser at t-fordelingen i stort sett gir det samme resultatet som metoden som bruker permuteringer, men her bruker vi bare det ene utvalget og estimerer utvalgsfordelingn. Akkurat som for beregningen av konfidensintervallet over bruker vi en standardfeil for å bestemme vidden på utvalgsfordelingen, men vi setter sentrum til 0, altså vår nullhypotese. Standardfeilen for en <em>t</em>-test av to gjennomsnitt beregnes fra variasjonen i dataene og antallet observasjoner (se <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span> for detaljer, <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test">Avsnitt 11.3</a>).</p>
-<div class="no-row-height column-margin column-container"></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-permutasjonstest3_4d2df2bf7adacac71e97bf0d107b3807">
+<p>I eksemplet over brukte vi en permutasjonstest for å bestemme om den forskjell vi observerte mellom gruppene var ekstrem nok til å forkaste hypotesen at det ikke er en forskjell mellom behandlingen i populasjonen. Denne testen er en så kalt ikke-parametrisk test, den bruker ikke en teoretisk fordeling for å beregne testresultatet (p-verdien). Hvis vi er villige til å anta at dataene er normalfordelt og at variasjonen er lik i begge grupper<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a> så kan vi bruke en test for å sammenligne to gjennomsnitt som bruker en sannsynlighetsfordeling for å lage en modell over utvalgsfordelingen. Denne testen kalles for en <em>t</em>-test.</p>
+<div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Antagelser for parametrisk test av gjennomsnitt i to uavhengige grupper, også kalt en <em>t</em>-test, er at dataene er normalfordelt, noe som vil gi normalfordeling i en utvalgsfordeling. Da utvalgsfordelingen er helt hypotetisk utvidder man denne antaglsen til å inkluderer dataene som man observerer. En annen antagelse er at dataene er uavhengige, dette betyr at det ikke finnes noen slektskap i dataene, for eksempel ikke flere datapunkter fra det samme individet. Til sist antar vi at variasjonen er lik i begge gruppene, stengt tatt at dette er fallet i populasjonen. Det finnes måter å “teste” disse antagelsene på (se <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html">11.4.3 i <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<span>2018</span>)</span></a>, men disse testene er ikke gode for å oppdage avvikelser fra antagleser i små utvalg. Dette betyr at antaglser er noe vi i stor grad må akseptere uten å kunne teste dem.</p></div></div><p><em>t</em>-testen bruker t-fordelingen for å lage en modell over utvalgsfordelingen, noe som vises i <a href="#fig-permutasjonstest3" class="quarto-xref">Figur&nbsp;<span>8.7</span></a>. Vi ser at t-fordelingen i stort sett gir det samme resultatet som metoden som bruker permuteringer, men her bruker vi bare det ene utvalget og estimerer utvalgsfordelingn. Akkurat som for beregningen av konfidensintervallet over bruker vi en standardfeil for å bestemme vidden på utvalgsfordelingen, men vi setter sentrum til 0, altså vår nullhypotese. Standardfeilen for en <em>t</em>-test av to gjennomsnitt beregnes fra variasjonen i dataene og antallet observasjoner (se <span class="citation" data-cites="navarro_learning_2018">Navarro and Foxcroft (<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">2018</a>)</span> for detaljer, <a href="https://davidfoxcroft.github.io/lsj-book/11-Comparing-two-means.html#sec-the-independent-samples-t-test-student-test">Avsnitt 11.3</a>).</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-permutasjonstest3" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest3-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.7. Resultater fra permuteringstesten sammenlignet med en t-test. Histogrammet viser utvalgsfordelingen av gjennomsnitt fra 10000 permuteringer og den lila kurven viser utvalgsfordelingen av gjennomsnitt basert på en t-fordeling. De skyggelagte områdene under t-fordelingen viser hvor p-verdien er mindre enn 0.05, hvert område fanger 2.5% av area under kurven.</figcaption>
+<div id="fig-permutasjonstest3" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-permutasjonstest3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-permutasjonstest3-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-permutasjonstest3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.7. Resultater fra permuteringstesten sammenlignet med en t-test. Histogrammet viser utvalgsfordelingen av gjennomsnitt fra 10000 permuteringer og den lila kurven viser utvalgsfordelingen av gjennomsnitt basert på en t-fordeling. De skyggelagte områdene under t-fordelingen viser hvor p-verdien er mindre enn 0.05, hvert område fanger 2.5% av area under kurven.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -986,7 +1087,7 @@ Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the. 05 Le
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bbb99af4-6a2e-4db3-81f4-b1560081f65f" target="_blank">Statistisk styrke</a>.</p>
 </div></div><p>Så langt har vi konstatert at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feilrate i det lange løp (over flere lignende, uavhengige studier). I tillegg til en type 1 feil kan vi også gjøre en annen feil. Ved å <em>ikke</em> forkaste nullhypotesen til tross for at ikke er riktig gjør vi en type 2 feil. Denne feilen krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.</p>
-<table class="table">
+<table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
 <col style="width: 33%">
@@ -1018,7 +1119,7 @@ Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the. 05 Le
 <p><span class="math display">\[d = \frac{H_a}{SD} = \frac{10}{20} = 0.5\]</span>.</p>
 <p>En standardisert effektstørrelse er en måte å beskrive en effekt i termer av variasjonen. Hvor stor er effekten i forhold til den gjennomsnittlige variasjonen i populasjonen? Neste steg blir å bestemme hvilken statistisk styrke og hvor stor risiko for type 1 feil vi ønsker i testen. Her kan vi bruke en argumentasjon som går ut på at en type 1 feil er alvorligere enn type 2 feil. La oss si 4 ganger alvorligere, hvis vi ikke ønsker å gjøre en type 1 feil i mer enn 5% av repeterte studier kan vi leve med risikoen å gjøre en type 2 feil som er <span class="math inline">\(5\% \times 4 = 20\%\)</span>.</p>
 <p>Vi har nu mulighet for å beregne antallet deltakere som kreves for å oppnå en statistisk styrke på 80%. Til denne beregning bruker vi følgende tall:</p>
-<table class="table">
+<table class="caption-top table">
 <tbody>
 <tr class="odd">
 <td>Effektstørrelse</td>
@@ -1039,12 +1140,16 @@ Cowles, Michael, and Caroline Davis. 1982. <span>“On the Origins of the. 05 Le
 </tbody>
 </table>
 <p>Ditt statistikkprogram (for eksempel Jamovi) kan beregne antallet deltakere som kreves for å oppnå en gitt statistisk styrke, resultatet fra en slik analyse kan beskrives i en figur hvor to hypoteser er representert som utvalgsfordelinger. Disse utvalgsfordelingene tilsvarer de to hypotesene gitt de parametre vi gir til programmet (se tabellen over). Den alternative hypotesen er sentrert over 0.5 og spredningen tilpasses vårt ønske om feilraten for type 1 og 2-feil. Ettersom spredningen i en utvalgsfordeling er proporsjonal til antallet observasjoner (deltakere i studien) vil dette resultatet kreve et gitt antall deltakere til vårt eksperiment.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-power_16266dfc1255efd2f3e102f8de5616a8">
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-power" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-power-1.png" class="img-fluid figure-img" width="672"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.8. Resultatet av en analyse av statistisk styrke (power analysis) for en test forskjell mellom to gjennomsnitt. Med en effektsstørrelse på 0.5 gir 64 deltakere i hver gruppe en statistisk styrke på 80%. Den statistiske styrken er area under kurven i den alternative hypotesen som ikke overlapper med den regionen under nullhypotesen hvor vi ikke forkaster nullhypotesen(!). Vi får en type 2 feil når vi ikke forkaster nullhypotesen selv om den er falsk (og den alternative hypotesen er sann, grønn kurve).</figcaption>
+<div id="fig-power" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-power-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-power-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-power-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.8. Resultatet av en analyse av statistisk styrke (power analysis) for en test forskjell mellom to gjennomsnitt. Med en effektsstørrelse på 0.5 gir 64 deltakere i hver gruppe en statistisk styrke på 80%. Den statistiske styrken er area under kurven i den alternative hypotesen som ikke overlapper med den regionen under nullhypotesen hvor vi ikke forkaster nullhypotesen(!). Vi får en type 2 feil når vi ikke forkaster nullhypotesen selv om den er falsk (og den alternative hypotesen er sann, grønn kurve).
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1067,12 +1172,16 @@ Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Be
 
 <div class="no-row-height column-margin column-container"><div class="">
 <p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ce4f66d2-08e7-4b16-a16d-b1560085ef63" target="_blank">Mer om p-verdier</a>.</p>
-</div></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-effect-pval_7d224998a0aede5a36c435c33a587d50">
+</div></div><div class="cell">
 <div class="cell-output-display">
-<div id="fig-effect-pval" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-effect-pval-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.9. Vi kan forvente høyere statistisk styrke og dermed lavere p-verdier for en gitt effektstørrelse når utvalgsstørrelsen er større.</figcaption>
+<div id="fig-effect-pval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-effect-pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-effect-pval-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-effect-pval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.9. Vi kan forvente høyere statistisk styrke og dermed lavere p-verdier for en gitt effektstørrelse når utvalgsstørrelsen er større.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1082,13 +1191,17 @@ Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Be
 <section id="p-verdier-når-nullhypotesen-er-riktig" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="p-verdier-når-nullhypotesen-er-riktig"><span class="header-section-number">8.8</span> P-verdier når nullhypotesen er riktig</h2>
 <p>Vi har konstatert at vi setter grenser for de feilratene vi aksepterer for å forkaste nyllhypotesen til tross for at den er riktig (type 1 feil; <span class="math inline">\(\alpha\)</span>) og for å ikke forkaste nullhypotesen til tross for at den er feil (type 2 feil; <span class="math inline">\(\beta\)</span>). Disse grensene er noe vi bestemmer i forkant av en datainnsamling, dette er begrensninger vi setter på vår prosedyre. Når vi så faktisk samler inn data og analyserer den så observerer vi en p-verdi. Men hvordan ser p-verdier ut når nullhypotesen er riktig?</p>
-<p>Vi lager et eksperiment hvor vi vet at nullhypotesen er sann. En populasjon, <em>A</em> har en gjennomsnitt på 100 og standardavvik på 10, populasjonen <em>B</em> har også en gjennomsnitt på 100 og en standardavvik på 10. Vi trekker så utvalg fra disse populasjonen og sammnligner dem med et statistisk test som tester mot nullhypotesen: det er ingen forskjell mellom populasjonene. Resultatet av hvert test er en p-verdi og vi ser på fordelingen av alle 10000 p-verdier i figuren under <a href="#fig-pval-null">Figur&nbsp;<span>8.10</span></a>.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-null_f319e85ba3a1a895555081aae6155152">
+<p>Vi lager et eksperiment hvor vi vet at nullhypotesen er sann. En populasjon, <em>A</em> har en gjennomsnitt på 100 og standardavvik på 10, populasjonen <em>B</em> har også en gjennomsnitt på 100 og en standardavvik på 10. Vi trekker så utvalg fra disse populasjonen og sammnligner dem med et statistisk test som tester mot nullhypotesen: det er ingen forskjell mellom populasjonene. Resultatet av hvert test er en p-verdi og vi ser på fordelingen av alle 10000 p-verdier i figuren under <a href="#fig-pval-null" class="quarto-xref">Figur&nbsp;<span>8.10</span></a>.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-pval-null" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-null-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.10. Fordeling av p-verdier etter 10000 sammenligninger av utvalg fra den samme populasjonen, noe som betyr at nullhypotesen er riktig.</figcaption>
+<div id="fig-pval-null" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pval-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-pval-null-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pval-null-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.10. Fordeling av p-verdier etter 10000 sammenligninger av utvalg fra den samme populasjonen, noe som betyr at nullhypotesen er riktig.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1097,13 +1210,17 @@ Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Be
 </section>
 <section id="p-verdier-konfidensintervaller-og-hypotesetesting." class="level2" data-number="8.9">
 <h2 data-number="8.9" class="anchored" data-anchor-id="p-verdier-konfidensintervaller-og-hypotesetesting."><span class="header-section-number">8.9</span> P-verdier, konfidensintervaller og hypotesetesting.</h2>
-<p>P-verdier og konfidensintervaller konstrueres ved hjelp av den samme statistiske mekanismen, nemlig standardfeilen. Dette betyr at de to vil gi omtrent den samme informasjonen når vi bestemt oss for en feilrate for type 1 feil, <span class="math inline">\(\alpha\)</span>. La oss si at vi bruker 5% som grense for å forkaste nullhypotesen. Når vi så trekker et utvalg så vil vi observere en p-verdi og et konfidensintervall for forskjellen mellom gjennomsnitt. Når det observerte konfidensintervallet (95%) ikke overlapper 0 vil dette tilsvare en p-verdi som er mindre enn 0.05 <a href="#fig-pval-confint">Figur&nbsp;<span>8.11</span></a>.</p>
-<div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-confint_d2789cd2857c89587c1bf5b0a6d5dcbd">
+<p>P-verdier og konfidensintervaller konstrueres ved hjelp av den samme statistiske mekanismen, nemlig standardfeilen. Dette betyr at de to vil gi omtrent den samme informasjonen når vi bestemt oss for en feilrate for type 1 feil, <span class="math inline">\(\alpha\)</span>. La oss si at vi bruker 5% som grense for å forkaste nullhypotesen. Når vi så trekker et utvalg så vil vi observere en p-verdi og et konfidensintervall for forskjellen mellom gjennomsnitt. Når det observerte konfidensintervallet (95%) ikke overlapper 0 vil dette tilsvare en p-verdi som er mindre enn 0.05 <a href="#fig-pval-confint" class="quarto-xref">Figur&nbsp;<span>8.11</span></a>.</p>
+<div class="cell">
 <div class="cell-output-display">
-<div id="fig-pval-confint" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-confint-1.png" class="img-fluid figure-img" width="576"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.11. Den observerte p-verdien er arean under kurven i nullhypotesen for verdier som er mer ekstreme enn den observerte verdien (i begge retninger fra null). Nullhypotesen konstrueres ved hjelp av <em>spredningen</em> i dataene. Konfidensintervallet er 95% av arean under kurven i utvalgsfordelingen som konstrueres med gjennomsnitt og spredning fra den observerte dataen. Når et 95% konfidensintervall ikke overlapper nullhypotesen vil p-verdien være mindre enn 0.05. I figuren er nullhypotesen representert med en lilla kurve og konfidensintervallet med en grønn kurve.</figcaption>
+<div id="fig-pval-confint" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pval-confint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-pval-confint-1.png" class="img-fluid figure-img" width="576">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pval-confint-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.11. Den observerte p-verdien er arean under kurven i nullhypotesen for verdier som er mer ekstreme enn den observerte verdien (i begge retninger fra null). Nullhypotesen konstrueres ved hjelp av <em>spredningen</em> i dataene. Konfidensintervallet er 95% av arean under kurven i utvalgsfordelingen som konstrueres med gjennomsnitt og spredning fra den observerte dataen. Når et 95% konfidensintervall ikke overlapper nullhypotesen vil p-verdien være mindre enn 0.05. I figuren er nullhypotesen representert med en lilla kurve og konfidensintervallet med en grønn kurve.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1124,12 +1241,16 @@ Cole, Stephen R, Jessie K Edwards, and Sander Greenland. 2021. <span>“Surprise
 <p>I en studie fant vi nylig at varmetrening ga en 30 gram økning i Hb-masse hos veltrente langrennsløpere <span class="citation" data-cites="ronnestad2022">(<a href="references.html#ref-ronnestad2022" role="doc-biblioref">Rønnestad et al. 2022</a>)</span>, p-verdien for denne observasjonen var 0.009, noe som gir et overaskelseindeks på 6.8. Vi kan dermed si at dette resultatet litt mindre overraskende enn å få 7 kron i en serien med 7 myntkaster. Samtidig ga intervensjonen ingen markert effekt på prestasjon (p=0.367, s=1.4), denne observasjonen var mindre overraskende enn å få 2 kron i en serie med 2 myntkaster.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-ronnestad2022" class="csl-entry" role="listitem">
 Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, Håvard Hamarsland, Knut Sindre Mølmen, Håvard Nygaard, Stian Ellefsen, Daniel Hammarström, and Carsten Lundby. 2022. <span>“Heat Suit Training Increases Hemoglobin Mass in Elite Cross‐country Skiers.”</span> <em>Scandinavian Journal of Medicine &amp; Science in Sports</em>, March, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
-</div></div><div class="cell" data-hash="04-induktiv-statistikk_cache/html/fig-pval-sval_d5686a36faa9361f7ebae6083f5352b8">
+</div></div><div class="cell">
 <div class="cell-output-display">
-<div id="fig-pval-sval" class="quarto-figure quarto-figure-center anchored">
-<figure class="figure">
-<p><img src="04-induktiv-statistikk_files/figure-html/fig-pval-sval-1.png" class="img-fluid figure-img" width="480"></p>
-<figcaption class="figure-caption">Figur&nbsp;8.12. Forhold mellom p-verdier og overraskelseindeksen (s-verdien). En <span style="color:green">p-verdi på 0.05</span> gir en overraskelseindeks på 4.32, mens en <span style="color:orchid">p-verdi på 0.01</span> gir en overraskelseindeks på 6.64.</figcaption>
+<div id="fig-pval-sval" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-pval-sval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="04-induktiv-statistikk_files/figure-html/fig-pval-sval-1.png" class="img-fluid figure-img" width="480">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-pval-sval-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figur&nbsp;8.12. Forhold mellom p-verdier og overraskelseindeksen (s-verdien). En <span style="color:green">p-verdi på 0.05</span> gir en overraskelseindeks på 4.32, mens en <span style="color:orchid">p-verdi på 0.01</span> gir en overraskelseindeks på 6.64.
+</figcaption>
 </figure>
 </div>
 </div>
@@ -1189,18 +1310,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
-  const clipboard = new window.ClipboardJS('.code-copy-button', {
-    text: function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-    }
-  });
-  clipboard.on('success', function(e) {
+  const onCopySuccess = function(e) {
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -1232,11 +1342,48 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
   });
-  function tippyHover(el, contentFn) {
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1246,8 +1393,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1259,7 +1415,129 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1303,6 +1581,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1328,6 +1607,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1389,17 +1694,18 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./04-a-intro.html" class="pagination-link">
+      <a href="./04-a-intro.html" class="pagination-link" aria-label="Induktiv statistikk">
         <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Induktiv statistikk</span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./04-jamovi.html" class="pagination-link">
+      <a href="./04-jamovi.html" class="pagination-link" aria-label="Statistisk inferens i Jamovi">
         <span class="nav-page-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Statistisk inferens i Jamovi</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
 </div> <!-- /content -->
+
 
 
 
