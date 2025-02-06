@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Sammenligne gjennomsnitt – Statistisk dataanalyse med Jamovi</title>
+<title>14&nbsp; Sammenligne gjennomsnitt – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -31,7 +31,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
 <link href="./06-organisering-av-analyse.html" rel="next">
-<link href="./06-forelesninger.html" rel="prev">
+<link href="./06-beskrivende-data.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-sammenligne-gjennomsnitt.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-sammenligne-gjennomsnitt.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -250,14 +250,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -278,19 +284,19 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">Innhold</h2>
    
   <ul>
-  <li><a href="#studiedesignet" id="toc-studiedesignet" class="nav-link active" data-scroll-target="#studiedesignet"><span class="header-section-number">13.1</span> Studiedesignet</a></li>
-  <li><a href="#datasett" id="toc-datasett" class="nav-link" data-scroll-target="#datasett"><span class="header-section-number">13.2</span> Datasett</a></li>
-  <li><a href="#analyse" id="toc-analyse" class="nav-link" data-scroll-target="#analyse"><span class="header-section-number">13.3</span> Analyse</a></li>
-  <li><a href="#metaanalyse" id="toc-metaanalyse" class="nav-link" data-scroll-target="#metaanalyse"><span class="header-section-number">13.4</span> Metaanalyse</a></li>
+  <li><a href="#studiedesignet" id="toc-studiedesignet" class="nav-link active" data-scroll-target="#studiedesignet"><span class="header-section-number">14.1</span> Studiedesignet</a></li>
+  <li><a href="#datasett" id="toc-datasett" class="nav-link" data-scroll-target="#datasett"><span class="header-section-number">14.2</span> Datasett</a></li>
+  <li><a href="#analyse" id="toc-analyse" class="nav-link" data-scroll-target="#analyse"><span class="header-section-number">14.3</span> Analyse</a></li>
+  <li><a href="#metaanalyse" id="toc-metaanalyse" class="nav-link" data-scroll-target="#metaanalyse"><span class="header-section-number">14.4</span> Metaanalyse</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-sammenligne-gjennomsnitt.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-sammenligne-gjennomsnitt.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></h1>
+<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></h1>
 </div>
 
 
@@ -311,8 +317,8 @@ ul.task-list li input[type="checkbox"] {
 <p>Hensikten med øvelsen er å simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.</p>
 <p>I del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi.</p>
 <p>Øvelsen kan gjennomføres i grupper om 2-4 deltakere.</p>
-<section id="studiedesignet" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="studiedesignet"><span class="header-section-number">13.1</span> Studiedesignet</h2>
+<section id="studiedesignet" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="studiedesignet"><span class="header-section-number">14.1</span> Studiedesignet</h2>
 <p>Studiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (<em>“treatment”</em>) eller en kontrollgruppe (<em>“control”</em>). De to gruppene blir målt i forkant av en intervensjonsperiode (<em>baseline</em>) og etter intervensjonsperioden (<em>post</em>).</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -325,8 +331,8 @@ ul.task-list li input[type="checkbox"] {
 </div>
 </div>
 </section>
-<section id="datasett" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="datasett"><span class="header-section-number">13.2</span> Datasett</h2>
+<section id="datasett" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="datasett"><span class="header-section-number">14.2</span> Datasett</h2>
 <p>Datasettene finner dere her</p>
 <p><a href="data/sammenligne_gjennmsnitt1.csv">D1</a></p>
 <p><a href="data/sammenligne_gjennmsnitt2.csv">D2</a></p>
@@ -335,8 +341,8 @@ ul.task-list li input[type="checkbox"] {
 <p><a href="data/sammenligne_gjennmsnitt5.csv">D5</a></p>
 <p><a href="data/sammenligne_gjennmsnitt6.csv">D6</a></p>
 </section>
-<section id="analyse" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="analyse"><span class="header-section-number">13.3</span> Analyse</h2>
+<section id="analyse" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="analyse"><span class="header-section-number">14.3</span> Analyse</h2>
 <ul>
 <li>Beregne en forandringsskår</li>
 <li>Beregn beskrivende statistikk for hver gruppe</li>
@@ -345,8 +351,8 @@ ul.task-list li input[type="checkbox"] {
 <li>Rapportert resultatet av studien i en figur på whiteboard</li>
 </ul>
 </section>
-<section id="metaanalyse" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="metaanalyse"><span class="header-section-number">13.4</span> Metaanalyse</h2>
+<section id="metaanalyse" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="metaanalyse"><span class="header-section-number">14.4</span> Metaanalyse</h2>
 <ul>
 <li>Last ned MAJOR i Jamovi,</li>
 <li>Sett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)</li>
@@ -776,13 +782,13 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./06-forelesninger.html" class="pagination-link" aria-label="Forelesninger og henvisninger til pensum">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Forelesninger og henvisninger til pensum</span></span>
+      <a href="./06-beskrivende-data.html" class="pagination-link" aria-label="Beskrive data og beskrive med data">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./06-organisering-av-analyse.html" class="pagination-link" aria-label="Organisere og gjennomføre en analyse">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
