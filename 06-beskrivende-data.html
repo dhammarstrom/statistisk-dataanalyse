@@ -315,11 +315,109 @@ ul.task-list li input[type="checkbox"] {
 
 <section id="introduksjon" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="introduksjon"><span class="header-section-number">13.1</span> Introduksjon</h2>
+<p>I denne workshopen som omhandler beskrivende statistikk ønsker vi å fokusere på følgende læringsmål:</p>
+<ul>
+<li>Identifisere hvordan data kan sammenstilles for å besvare problemstillinger</li>
+<li>Bruk av teknikker for å beskrive data, f.eks. figurer og tabeller med sentralmål og spredning</li>
+<li>Bruk av Jamovi for å sammenstille og filtrere data samt lage nye variabler.</li>
+</ul>
+<p>Når dere identifiserer og konkretiserer problemstillinger fra problembeskrivelsen under kan dere lage en plan for dataanalyse i Jamovi som inneholder:</p>
+<ul>
+<li>Sammenstille data over flere kategorier</li>
+<li>Lage figurer og tabeller</li>
+<li>Lage nye variabler basert på formler</li>
+<li>Filtrere data</li>
+</ul>
+<p>Presentasjonen bør inneholde tanker kring hvorfor dere har fremstilt data på valgt måte i presentasjon til klubbledelse.</p>
 <section id="hvor-mange-pølser-trenger-vi" class="level3" data-number="13.1.1">
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="hvor-mange-pølser-trenger-vi"><span class="header-section-number">13.1.1</span> Hvor mange pølser trenger vi?</h3>
 <p>Lillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på å planlegge innkjøp av pølser og kaffe til hjemmekamper for å tjene mer penger til klubben. Økonomidirektøren har identifisert de lokale pølsene og kaffe som to store muligheter til å tjene mer penger. Man ønsker nå å vite hvordan man bedre kan planlegge innkjøp av pølser og kaffe for å maksimere vinsten. Pølsene kjøpes fra en lokal slakter og er ferskvare, hvis pølsene ikke blir solgt i løpet av kampen må de destrueres. Destruksjon av pølser innebærer derfor tap tilsvarende innkjøpsprisen, som er 11.28 NOK. For hver pølse som blir solgt tjener klubben 38.72 NOK (salgspris 40 NOK). Kaffe er ikke ferskvare, men holder bare en sesong. Etter avsluttet år må kaffe destrueres. Lillehammer kjøper kaffe for 2 NOK per kopp og tjener 28 NOK per kopp (salgspris 30 NOK).</p>
 <p><a href="data/polsestatistikk.csv">Her finner du et datasett</a> med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_pølser), antall solgte kaffe (antall_kaffe), antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).</p>
 <p>Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag.</p>
+<p>I løsningen som dere presenterer til klubbledelsen kan dere bruke følgende case for å beskrive hvor mange pølser og hvor mye kaffe som bør kjøpes inn.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Motstand</th>
+<th>Sesong</th>
+<th>Publikum</th>
+<th>Antall pølser som forventes selges</th>
+<th>Antall kaffe som forventes selges</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Storhamar</td>
+<td>pre</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Stjernen</td>
+<td>pre</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td>Vålerenga</td>
+<td>pre</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Storhamar</td>
+<td>mid</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td>Stjernen</td>
+<td>mid</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Vålerenga</td>
+<td>mid</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td>Storhamar</td>
+<td>end</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="even">
+<td>Stjernen</td>
+<td>end</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+<tr class="odd">
+<td>Vålerenga</td>
+<td>end</td>
+<td>?</td>
+<td>?</td>
+<td>?</td>
+</tr>
+</tbody>
+</table>
 <p>Bruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise på de økonomiske konsekvensene av disse forslagene.</p>
 
 
