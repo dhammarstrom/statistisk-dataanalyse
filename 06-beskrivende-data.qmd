@@ -3,8 +3,20 @@
 
 ## Introduksjon
 
+I denne workshopen som omhandler beskrivende statistikk ønsker vi å fokusere på følgende læringsmål:
 
+-	Identifisere hvordan data kan sammenstilles for å besvare problemstillinger
+-	Bruk av teknikker for å beskrive data, f.eks. figurer og tabeller med sentralmål og spredning
+-	Bruk av Jamovi for å sammenstille og filtrere data samt lage nye variabler.
 
+Når dere identifiserer og konkretiserer problemstillinger fra problembeskrivelsen under kan dere lage en plan for dataanalyse i Jamovi som inneholder:
+
+-	Sammenstille data over flere kategorier
+-	Lage figurer og tabeller
+-	Lage nye variabler basert på formler
+-	Filtrere data
+
+Presentasjonen bør inneholde tanker kring hvorfor dere har fremstilt data på valgt måte i presentasjon til klubbledelse. 
 
 
 ### Hvor mange pølser trenger vi?
@@ -105,19 +117,19 @@ if(season == "end") b4 <- rnorm(1, 0.1, 0.1)
   
 }
 
-opponents <- c("Storhamar", "Frisk Asker Hockey", "Oilers", "Valerenga", "Sparta Sarpsborg",
-     "Arctic Eagles Narvik", "Lorenskog IK", "Stjernen", "Comet Halden")
+opponents <- rep(c("Storhamar", "Frisk Asker Hockey", "Oilers", "Valerenga", "Sparta Sarpsborg",
+     "Arctic Eagles Narvik", "Lorenskog IK", "Stjernen", "Comet Halden"),3)
 
 # Random set of opponents
-opp <- sample(opponents, 22, replace = TRUE)
-sesong <- c(rep("pre", 6), rep("mid", 7), rep("end", 9))
+opp <- sample(opponents, 27, replace = FALSE)
+sesong <- c(rep("pre", 7), rep("mid", 10), rep("end", 10))
 years <- c(2022, 2023, 2024)
 total_results <- list()
 
 for(j in 1:3) {
 
 results <- list()
-for(i in 1:22) {
+for(i in 1:27) {
   
   results[[i]] <- hotdogs(opponent = opp[i], season = sesong[i], year = years[j])
   
@@ -133,9 +145,9 @@ statistikk <- bind_rows(total_results)
 
 ### Create a data frame of number of hotdogs and coffee
 
-antall_polser <- data.frame(year = rep(c(2022, 2023, 2024), each = 22), 
-                            polser_kjop = rep(c(1000, 1100, 1200), each = 22), 
-                            kaffe_kjop = rep(c(800, 800, 800), each = 22))
+antall_polser <- data.frame(year = rep(c(2022, 2023, 2024), each = 27), 
+                            polser_kjop = rep(c(1000, 1100, 1200), each = 27), 
+                            kaffe_kjop = rep(c(800, 800, 800), each = 27))
 
 
 
@@ -144,7 +156,7 @@ polsestatistikk <- cbind(statistikk, antall_polser) |>
   select(ar = year, everything())
 
   
-write.csv(polsestatistikk, "data/polsestatistikk.csv")
+write.csv2(polsestatistikk, "data/polsestatistikk.csv")
 
 
 
@@ -157,7 +169,23 @@ Lillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på �
 
 [Her finner du et datasett](data/polsestatistikk.csv) med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_pølser), antall solgte kaffe (antall_kaffe),  antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).
 
-Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag. 
+Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag.
+
+I løsningen som dere presenterer til klubbledelsen kan dere bruke følgende case for å beskrive hvor mange pølser og hvor mye kaffe som bør kjøpes inn.
+
+|Motstand |Sesong|Publikum |Antall pølser som forventes selges |Antall kaffe som forventes selges|
+|---|---|---|---|---|
+|Storhamar|pre|?|?|?|
+|Stjernen |pre|?|?|?|
+|Vålerenga|pre|?|?|?|
+|Storhamar|mid|?|?|?|
+|Stjernen |mid|?|?|?|
+|Vålerenga|mid|?|?|?|
+|Storhamar|end|?|?|?|
+|Stjernen |end|?|?|?|
+|Vålerenga|end|?|?|?|
+
+
 
 Bruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise på de økonomiske konsekvensene av disse forslagene. 
 

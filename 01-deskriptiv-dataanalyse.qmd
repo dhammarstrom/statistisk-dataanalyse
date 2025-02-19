@@ -9,11 +9,7 @@ editor_options:
 
 Excel er et av flere programmer som du kan bruke for lagre data, lage figurer, gjennomføre analyse og beregninger ved hjelp av data. Det finnes flere alternative til excel, de fleste har lignende funksjonalitet hvor data i form av tall eller tekst kan mates inn i celler. Celler kan ha funksjoner som beregner eksempelvis tall basert på andre celler. Excel er per i dag, hva vi vet, det program med flest celler! Over 17 milliarder celler. I tillegg har excel over 400 funksjoner som kan brukes for å beregne eller manipulere data.  Alt dette gjør excel til en versting når det gjelder å skape trøbbel! 
 
-::: {.column-margin}
 
- [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5c6702d0-b056-4c53-99c6-b11e00cedc5f) finner du en kort forelesning om data i excel.
-
-:::
 
 Et kjent problem i bruk av excel er konvertering av tekst til datoer. Dette problemet er av betydelse bland annet når man studerer gener hvor noen navn på gener ligner på datoer (eks. SEPT1). Å bruke et excel-dokument for datalagring, bearbeiding av data og beregninger kan gi uoversiktlige konsekvenser da små tastefeil kan gi store konsekvenser, noe som oljefondet og oljedirektoratet har fått erfare ([se her](https://www.tu.no/artikler/oljemyndighetenes-excel-feil-ble-ikke-oppdaget-stortinget-apnet-barentshavet-sorost-med-regnefeil-pa-over-100-milliarder/405367), [og her]( https://www.ft.com/content/db864323-5b68-402b-8aa5-5c53a309acf1)). 
 
@@ -36,9 +32,6 @@ Les mer om *Best practice* i bruk av spreadsheets [@broman_data_2018].
 
 I dette emnet så foreslår vi at dere bruker excel (eller lignende programmer) for å mate inn og lagre data, og Jamovi for å gjennomføre dataanalyse og lage enkle figurer. Denne kombinasjonen er mer enn nok for å på en god måte klare å ferdigstille et vitenskapelig arbeid hvor du forventes å presentere og tolke data fra et eksperiment eller observasjoner. Vi foreslår dette fordi kombinasjonen er fritt tilgjengelig for deg i et fremtidig arbeidsliv hvor du ikke vil ha tilgang til mer kostbare programvarer, og det finnes muligheter for å gå videre til mer avanserte programvarer (f.eks. R) med utgangspunkt i Jamovi. 
 
-::: {.column-margin}
- [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=849041eb-2f47-42a5-897b-b11e00cf30b8) finner du en forelesning om Dataanalyse i praksis.
-:::
 
 
 En dataanalyse i praksis er ikke begrenset til hvilke programvarer du bruker. Det å lære å være systematisk og strukturert kommer å spare deg og dine medarbeidere mye hodebry og tid. En systematisk og organisert dataanalyse er også reproduserbar. Når vi snakker om reproduserbar dataanalyse i denne sammenhengen mener vi at du kan gi din data og analysene til en tredje person som i sin tur kan spore de valg du gjort i dataanalysen. 
@@ -65,9 +58,6 @@ Til sist bør vi vurdere hvordan vi navngir prosjekter. Da disse bør være isol
 
 ## Beskrive data 
 
-::: {.column-margin}
- [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f2abb1a7-d4c0-4f57-a8c8-b11e00cf6efb) finner du en forelesning om beskrivende statistikk.
-:::
 
 
 Vi kan begynne med å sette beskrivende statistikk i konteksten av målet med mye av de statistiske analysene i vitenskapelig arbeid. Her ønsker vi ofte å si noe om en "populasjon", dette gjør vi basert på et "utvalg" som blir brukt for å skape noen form av "modell" av populasjonen. Målet med statistikken er å si noe om noe som vi ikke observerer basert på noe som vi observerer! Vi vill komme tilbake til detaljene i dette senere i denne boken. 
@@ -180,9 +170,6 @@ Forskjellige statistikker (for eksempel gjennomsnitt, standardavvik osv.) kan gi
 
 ## Introduksjon til Jamovi 
 
-::: {.column-margin}
- [Her](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=0c395866-d215-450e-b817-b11e00cff874) finner du en forelesning om Jamovi.
-:::
 
 
 [Jamovi](www.jamovi.org) er et statistikkprogram som muliggjør enklere til svært avanserte statistiske analyser. Jamovi inneholder trolig alt du trenger for å levere en bachelor-oppgave. Jamovi er gratis, skrevet med åpen kildekode og brukere av programmet kan lage egne **moduler** som gir programmet flere analysemuligheter. Jamovi er skrevet ved hjelp av programmeringsspråket [R](https://www.r-project.org/), om du ønsker å lage mer avanserte analyser eller figurer så har du mulighet å ta analysene du allerede gjort i Jamovi til R. 
