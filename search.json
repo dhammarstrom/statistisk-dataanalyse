@@ -766,7 +766,7 @@
     "href": "06-samvariasjon.html",
     "title": "14  Statistisk samvariasjon",
     "section": "",
-    "text": "14.1 Introduksjon\nI denne workshopen som omhandler statistisk samvariasjon ønsker vi å fokusere på følgende læringsmål:\nNår dere identifiserer og konkretiserer problemstillinger fra beskrivelsen under kan dere lage en plan for dataanalyse i Jamovi som inneholder:",
+    "text": "14.1 Introduksjon\nI denne workshopen som omhandler statistisk samvariasjon ønsker vi å fokusere på følgende læringsmål:\nBruk Jamovi for å lage en analyseplan basert på problemstillinger. Beskriv hvorfor dere velger forskjellige analyser for å løse problemstillingene. Legg til analyser og tolke disse med egene ord.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
@@ -777,7 +777,7 @@
     "href": "06-samvariasjon.html#introduksjon",
     "title": "14  Statistisk samvariasjon",
     "section": "",
-    "text": "Identifisere hvordan vi kan beskrive samvariasjon mellom to variabler\nBruk av teknikker for å beskrive data ved hjelp av mål på samvariasjon, figurer, tabeller og estimater\nBruk av Jamovi for å beregne mål på samvariasjon\n\n\n\n14.1.1 Noen tips for bruk av Jamovi\n\nBruk og instilling av punktum og komma (. & ,) på din datamaskin kan påvirke hvordan du bør importere data til Jamovi.\nLag figurer! Under Modules i Jamovi finner du moduler som kan brukes for å lage visualiseringer. For eksempel, JJStatsPlot, flexplot eller scatr kan brukes for å lage figurer. Disse figurene kan forandres i Inkscape, Power Point eller lignende program som kan redigere .SVG-filer.\nBruk Computed Variables under Data-fanen for å gjøre beregninger basert på data.",
+    "text": "Identifisere hvordan vi kan beskrive samvariasjon mellom to variabler\nBruk av teknikker for å beskrive data ved hjelp av mål på samvariasjon, figurer, tabeller og estimater\nBruk av Jamovi for å beregne mål på samvariasjon\n\n\n\n14.1.1 Noen tips for bruk av Jamovi\n\nBruk og instilling av punktum og komma (. & ,) på din datamaskin kan påvirke hvordan du bør importere data til Jamovi.\nLag figurer! Under Modules i Jamovi finner du moduler som kan brukes for å lage visualiseringer. For eksempel, JJStatsPlot, flexplot eller scatr kan brukes for å lage figurer. Disse figurene kan forandres i Inkscape, Power Point eller lignende program som kan redigere .SVG-filer.\nBruk Computed Variables under Data-fanen for å gjøre beregninger basert på data.\nBruk Analysis output fanen for å lage notater kring analysene dere lager.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
       "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
