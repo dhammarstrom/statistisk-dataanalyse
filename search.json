@@ -20,6 +20,16 @@
     ]
   },
   {
+    "objectID": "index.html#læringsressurser",
+    "href": "index.html#læringsressurser",
+    "title": "Statistisk dataanalyse med Jamovi",
+    "section": "Læringsressurser",
+    "text": "Læringsressurser\nI disse forelesningsnotatene og videforelesninger introduserer vi Jamovi. Det finnes flere gode ressurser for introduksjon til Jamovi, datalab.cc har en serie videoer som beskriver programvaren, du finner videoene her https://datalab.cc/jamovi/.\nI Learning Statistics with Jamovi (Navarro and Foxcroft 2018) brukes programvaren aktivt. Les gjerne denne tekten ved siden av forelesningsnotatene.\n\n\n\nNavarro, Danielle J, and David R Foxcroft. 2018. Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners. Danielle J. Navarro; David R. Foxcroft. https://doi.org/10.24384/HGC3-7P15.",
+    "crumbs": [
+      "Forord"
+    ]
+  },
+  {
     "objectID": "01-a-intro.html",
     "href": "01-a-intro.html",
     "title": "Deskriptiv dataanalyse",
