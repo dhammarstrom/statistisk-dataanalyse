@@ -731,177 +731,210 @@
   {
     "objectID": "06-beskrivende-data.html",
     "href": "06-beskrivende-data.html",
-    "title": "13  Beskrive data og beskrive med data",
+    "title": "13  Workshop: Beskrive data og beskrive med data",
     "section": "",
     "text": "13.1 Introduksjon\nI denne workshopen som omhandler beskrivende statistikk ønsker vi å fokusere på følgende læringsmål:\nNår dere identifiserer og konkretiserer problemstillinger fra problembeskrivelsen under kan dere lage en plan for dataanalyse i Jamovi som inneholder:\nPresentasjonen bør inneholde tanker kring hvorfor dere har fremstilt data på valgt måte i presentasjon til klubbledelse.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Beskrive data og beskrive med data</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Workshop: Beskrive data og beskrive med data</span>"
     ]
   },
   {
     "objectID": "06-beskrivende-data.html#introduksjon",
     "href": "06-beskrivende-data.html#introduksjon",
-    "title": "13  Beskrive data og beskrive med data",
+    "title": "13  Workshop: Beskrive data og beskrive med data",
     "section": "",
     "text": "Identifisere hvordan data kan sammenstilles for å besvare problemstillinger\nBruk av teknikker for å beskrive data, f.eks. figurer og tabeller med sentralmål og spredning\nBruk av Jamovi for å sammenstille og filtrere data samt lage nye variabler.\n\n\n\nSammenstille data over flere kategorier\nLage figurer og tabeller\nLage nye variabler basert på formler\nFiltrere data\n\n\n\n13.1.1 Hvor mange pølser trenger vi?\nLillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på å planlegge innkjøp av pølser og kaffe til hjemmekamper for å tjene mer penger til klubben. Økonomidirektøren har identifisert de lokale pølsene og kaffe som to store muligheter til å tjene mer penger. Man ønsker nå å vite hvordan man bedre kan planlegge innkjøp av pølser og kaffe for å maksimere vinsten. Pølsene kjøpes fra en lokal slakter og er ferskvare, hvis pølsene ikke blir solgt i løpet av kampen må de destrueres. Destruksjon av pølser innebærer derfor tap tilsvarende innkjøpsprisen, som er 11.28 NOK. For hver pølse som blir solgt tjener klubben 38.72 NOK (salgspris 40 NOK). Kaffe er ikke ferskvare, men holder bare en sesong. Etter avsluttet år må kaffe destrueres. Lillehammer kjøper kaffe for 2 NOK per kopp og tjener 28 NOK per kopp (salgspris 30 NOK).\nHer finner du et datasett med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_pølser), antall solgte kaffe (antall_kaffe), antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).\nKlubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag.\nI løsningen som dere presenterer til klubbledelsen kan dere bruke følgende case for å beskrive hvor mange pølser og hvor mye kaffe som bør kjøpes inn.\n\n\n\n\n\n\n\n\n\n\nMotstand\nSesong\nPublikum\nAntall pølser som forventes selges\nAntall kaffe som forventes selges\n\n\n\n\nStorhamar\npre\n?\n?\n?\n\n\nStjernen\npre\n?\n?\n?\n\n\nVålerenga\npre\n?\n?\n?\n\n\nStorhamar\nmid\n?\n?\n?\n\n\nStjernen\nmid\n?\n?\n?\n\n\nVålerenga\nmid\n?\n?\n?\n\n\nStorhamar\nend\n?\n?\n?\n\n\nStjernen\nend\n?\n?\n?\n\n\nVålerenga\nend\n?\n?\n?\n\n\n\nBruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise på de økonomiske konsekvensene av disse forslagene.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Beskrive data og beskrive med data</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Workshop: Beskrive data og beskrive med data</span>"
     ]
   },
   {
     "objectID": "06-samvariasjon.html",
     "href": "06-samvariasjon.html",
-    "title": "14  Statistisk samvariasjon",
+    "title": "14  Workshop: Statistisk samvariasjon",
     "section": "",
     "text": "14.1 Introduksjon\nI denne workshopen som omhandler statistisk samvariasjon ønsker vi å fokusere på følgende læringsmål:\nBruk Jamovi for å lage en analyseplan basert på problemstillinger. Beskriv hvorfor dere velger forskjellige analyser for å løse problemstillingene. Legg til analyser og tolke disse med egene ord.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Workshop: Statistisk samvariasjon</span>"
     ]
   },
   {
     "objectID": "06-samvariasjon.html#introduksjon",
     "href": "06-samvariasjon.html#introduksjon",
-    "title": "14  Statistisk samvariasjon",
+    "title": "14  Workshop: Statistisk samvariasjon",
     "section": "",
     "text": "Identifisere hvordan vi kan beskrive samvariasjon mellom to variabler\nBruk av teknikker for å beskrive data ved hjelp av mål på samvariasjon, figurer, tabeller og estimater\nBruk av Jamovi for å beregne mål på samvariasjon\n\n\n\n14.1.1 Noen tips for bruk av Jamovi\n\nBruk og instilling av punktum og komma (. & ,) på din datamaskin kan påvirke hvordan du bør importere data til Jamovi.\nLag figurer! Under Modules i Jamovi finner du moduler som kan brukes for å lage visualiseringer. For eksempel, JJStatsPlot, flexplot eller scatr kan brukes for å lage figurer. Disse figurene kan forandres i Inkscape, Power Point eller lignende program som kan redigere .SVG-filer.\nBruk Computed Variables under Data-fanen for å gjøre beregninger basert på data.\nBruk Analysis output fanen for å lage notater kring analysene dere lager.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Workshop: Statistisk samvariasjon</span>"
     ]
   },
   {
     "objectID": "06-samvariasjon.html#problem-1",
     "href": "06-samvariasjon.html#problem-1",
-    "title": "14  Statistisk samvariasjon",
+    "title": "14  Workshop: Statistisk samvariasjon",
     "section": "14.2 Problem 1",
     "text": "14.2 Problem 1\nDere har fått i oppdrag å gjennomføre styrketester på fotballspillere i Sauhaugen IL. Treneren ønsker å vite 1RM i knebøy hos alle spillere for å sammenligne resultatene med de verste konkurrentene, Saudalen IK.\nVi ønsker å gjennomføre testene med så stor presisjon som mulig og velger derfor 85% av det forventede 1RM som startbelastning i alle testene. Problemet er at vi ikke vet hva vi kan forvente i 1RM! I et tidligere testbatteri testet man maksimal styrke i en hånddynamometer, er det mulig å estimere 1RM, og dermed 85% av 1RM ved hjelp av denne testen?\nDere finner dataene fra den tidligere testen her. Bruk dataene og Jamovi for å beskrive samvariasjon mellom variablene hand (resultater fra hånddynamometer) og rm (resultater fra 1RM-tester). Her finner dere data fra forberedende tester blant spillerne Sauhaugen IL. Hvordan kan dere bruke denne dataen for å bestemme en startbelastning i 1RM-testen?\nDe verste konkurrentene til Sauhaugen IL, Saudalen IK, gjennomfører også tester. Dere finner testresultatene fra 1RM tester i Saudalen IK her. Data fra testene i Sauhaugen IL finner dere her. Hva er forskjellen mellom lagene i 1RM? Bruk en regresjonsligning for å beskrive den avhengige variabelen (1RM) og den uavhengige variabelen (lag, Saudalen IK/Sauhaugen IL).",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Workshop: Statistisk samvariasjon</span>"
     ]
   },
   {
     "objectID": "06-samvariasjon.html#problem-2",
     "href": "06-samvariasjon.html#problem-2",
-    "title": "14  Statistisk samvariasjon",
+    "title": "14  Workshop: Statistisk samvariasjon",
     "section": "14.3 Problem 2",
     "text": "14.3 Problem 2\nI datasettet som dere finner her finnes fire par med variabler (x1 og y1, x2 og y2, osv.). Beskriv dataene (hver variable for seg) og sammenhengen mellom variablene x og y for hvert av parene ved hjelp av en regresjonsligning, korrelasjonskoeffisientene (Spearman og Pearson).\nLag så figurer som beskriver sammenhengen mellom de to variablene i hvert datasett. Forklar regresjonsligningen for hvert av parene og forskjellen mellom de to korrelasjonskoeffisientene.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Workshop: Statistisk samvariasjon</span>"
     ]
   },
   {
     "objectID": "06-samvariasjon.html#problem-3",
     "href": "06-samvariasjon.html#problem-3",
-    "title": "14  Statistisk samvariasjon",
+    "title": "14  Workshop: Statistisk samvariasjon",
     "section": "14.4 Problem 3",
     "text": "14.4 Problem 3\nI datasettet studieresultater finner dere resultater fra en undersøkelse om deltakelse i studieaktiviteter og utfall på en eksamen i statistikk. Se Tabell 14.1 for en oversikt over variabler i datasettet. Bruk datasettet for å beskrive sammenhengen mellom:\n\neksamen og timer_per_uke\neksamen og kjonn\ntimer_per_ukeog kjonn\neksamen og forelesning\neksamen og arbeidskrav\n\nHvilken metode er best å bruke for å beskrive de forskjellige sammenhengene?\nSett opp en modell for å beskrive effekten av kjønn og studietid per uke på eksamensresultater. Vi kan forstå denne modellen som “hva lærer vi om sammenhengen mellom studietid og eksamensresultater når vi allerede vet noe om kjønn”. Diskuter hvordan dette er en god beskrivelse av modellen.\n\n\n\nTabell 14.1. Datasettet studieresultater\n\n\n\n\n\n\n\n\n\n\nVariabel\nEnhet\nForklaring\n\n\n\n\neksamen\n0/1\n1, Bestått eksamen; 0, Ikke bestått eksamen\n\n\nkjonn\n0/1\n1, mann; 0, kvinne\n\n\ntimer_per_uke\ntimer\nGjennomsnitt antall timer lagt på studier per uke\n\n\nforelesning\n0/1\n0, Deltatt på &lt; 50% av forelesninger; 1, deltatt på &gt; 50% av forelesninger\n\n\narbeidskrav\n0/1\n1, gjennomført studiespørsmål/arbeidskrav; 0, ikke gjennomført studiespørsmål/arbeidskrav",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Statistisk samvariasjon</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Workshop: Statistisk samvariasjon</span>"
+    ]
+  },
+  {
+    "objectID": "06-kausalsammenheng.html",
+    "href": "06-kausalsammenheng.html",
+    "title": "15  Workshop: Kausalitet",
+    "section": "",
+    "text": "15.1 På kjærestetur\nI tre oppgaver skal vi diskutere kausalitet, eller kausalsammenhenger. Workshop bygger videre på temaet kausalsammenheng og dere blir bedt om å tegne opp DAGs (directed acyclic graphs) for å beskrive sammenhenger. Bruk enkle midler for å lage disse, penn og papir, eller kanskje Power-point. Det finnes flere gode argumenter som kan være med å forklare de forskjellige problemene under, de kan være en god ide å bruke tid på å identifisere flere forskjellige løsninger før man velger den man tror mest på!\nDu befinner deg i Roma for en weekend med kjæresten. Dere ønsker å spise godt og oppleve skikkelig italiensk mat med god service. På den første kvelden finner dere en tilsynelatende flott restaurant i de mest trafikkerte strøkene i bydelen Trastevere. Det er en masse mennesker som også ønsker å spise der og etter litt venting får dere et bord. Etter enda lenger venting får dere maten, den er hemsk. I tillegg er kelneren sint og paret på nabobordet krangler høyt på polsk hele middagen. Den andre kvelden har dere tatt feil buss og ender opp et strøk som bærer preg av sosial urettvise, uten salg av suvenirer eller gelato. Dere er sultne. I panikk ser dere en skilt som savner noen bokstaver, «Restu an », når dere kommer nærmere oppdager dere at en trapp leder ned til lokalet som ligger i kjelleretasjen. Menyen er på italiensk og ser ikke ut til å ha blitt oppdatert den siste tiden. Til maten er det bare mulig å bestille husets vin. Men, maten og opplevelsen viser seg være fantastisk. Etter besøket takker dere kokken og kelneren for kvelden og finner på noe magisk vis tilbake til hotellet. Ingen av dere kan beskrive veien tilbake til den samme plassen dagen etter. Var det bare en drøm?\nForklar dette fenomenet, hvorfor fant dere ikke noen gode restauranter på de mer kjente plassene? Bruk en DAG (directed acyclic graph) for å beskrive hvordan restauranter overlever i byer.",
+    "crumbs": [
+      "Forelesninger, Øvelser og prosjekter",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Workshop: Kausalitet</span>"
+    ]
+  },
+  {
+    "objectID": "06-kausalsammenheng.html#fysisk-aktivitet-og-dødelighet",
+    "href": "06-kausalsammenheng.html#fysisk-aktivitet-og-dødelighet",
+    "title": "15  Workshop: Kausalitet",
+    "section": "15.2 Fysisk aktivitet og dødelighet",
+    "text": "15.2 Fysisk aktivitet og dødelighet\nI observasjonsstudier er det ikke uvanlig å se en assosiasjon mellom fysisk aktivitet og dødelighet. De som er mer aktive (flere timer) tenderer å leve lengere (livslengde). Betyr dette at fysisk aktivitet er noe bra? Hvilke konfunderende faktorer kan muligens bidra til at dette forholdet er sterkere enn hva det faktisk er? Bruk en DAG (directed acyclic graph) for å beskrive hvordan dere tenker.\nNår vi ønsker å virkelig forstå hvordan fysisk aktivitet påvirker livslengde kanskje en eksperimentell studie er veien å gå. I en slik studie randomiseres deltakere til å få anbefalinger om økt fysisk aktivitet og sammenlignes med en gruppe som får anbefalinger om å holde den nivå på fysisk aktivitet som rekommanderes i nasjonale retningslinjer. Nå man analyserer resultatene fra en slik studie viser det seg ikke sjelden at begge grupper viser til lignende variasjon i livslengde. Betyr dette at økt fysisk aktivitet ikke er godt nok. Diskuter svakhetene i en slik studie, bruk gjerne en DAG for å vise til hvilke variabler som dere tror spiller inn på resultatene.",
+    "crumbs": [
+      "Forelesninger, Øvelser og prosjekter",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Workshop: Kausalitet</span>"
+    ]
+  },
+  {
+    "objectID": "06-kausalsammenheng.html#statistisk-kontroll",
+    "href": "06-kausalsammenheng.html#statistisk-kontroll",
+    "title": "15  Workshop: Kausalitet",
+    "section": "15.3 Statistisk kontroll",
+    "text": "15.3 Statistisk kontroll\nEn stor gruppe studenter studerer for eksamen i Statistikk. Dere har fått i oppgave å analysere hvor godt innsats (timer studier per uke, studietid) samsvarer med resultater på eksamen (variabel test). Studentene er inndelt i to grupper. De to gruppene har deltatt på to forskjellige studieopplegg. Det ene opplegget inneholdt et nytt revolusjonerende konsept for læring og det sammenlignedes med tradisjonelle studier (gruppe: 1, revolusjonerende opplegg; gruppe: 0, tradisjonelle studier). Dere finner dataene her.\nHva er sammenhengen mellom studietid og resultat på eksamen når resultatene analyseres ved hjelp av modellen\n\\[\\text{Test} = \\beta_0 + \\beta_1 \\times \\text{studietid}\\]\nHva er sammenhengen mellom variablene når vi «kontrollerer» for studieopplegget? Den statistiske modellen blir:\n\\[\\text{Test} = \\beta_0 + \\beta_1 \\times \\text{studietid} + \\beta_2 \\times \\text{gruppe}\\]\nDiskuter hvordan vi best analyserer resultatene fra eksperimentet. Hvordan bør vi argumentere kring spørsmålet om å inkludere gruppe i analysen? Bruk Jamovi for å analysere dataene og bruk en DAG for å beskrive analysen.",
+    "crumbs": [
+      "Forelesninger, Øvelser og prosjekter",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Workshop: Kausalitet</span>"
     ]
   },
   {
     "objectID": "06-sammenligne-gjennomsnitt.html",
     "href": "06-sammenligne-gjennomsnitt.html",
-    "title": "15  Sammenligne gjennomsnitt",
+    "title": "16  Workshop: Sammenligne gjennomsnitt",
     "section": "",
-    "text": "15.1 Studiedesignet\nNår vi gjennomfører en studie samler vi et datasett med observasjoner. Denne ene datainnsamlingen gir oss det et bilde av effekten vi ønsker å estimere.\nHensikten med øvelsen er å simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.\nI del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi.\nØvelsen kan gjennomføres i grupper om 2-4 deltakere.\nStudiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (“treatment”) eller en kontrollgruppe (“control”). De to gruppene blir målt i forkant av en intervensjonsperiode (baseline) og etter intervensjonsperioden (post).\nStudiedesignet",
+    "text": "16.1 Studiedesignet\nNår vi gjennomfører en studie samler vi et datasett med observasjoner. Denne ene datainnsamlingen gir oss det et bilde av effekten vi ønsker å estimere.\nHensikten med øvelsen er å simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.\nI del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi.\nØvelsen kan gjennomføres i grupper om 2-4 deltakere.\nStudiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (“treatment”) eller en kontrollgruppe (“control”). De to gruppene blir målt i forkant av en intervensjonsperiode (baseline) og etter intervensjonsperioden (post).\nStudiedesignet",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Sammenligne gjennomsnitt</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Workshop: Sammenligne gjennomsnitt</span>"
     ]
   },
   {
     "objectID": "06-sammenligne-gjennomsnitt.html#datasett",
     "href": "06-sammenligne-gjennomsnitt.html#datasett",
-    "title": "15  Sammenligne gjennomsnitt",
-    "section": "15.2 Datasett",
-    "text": "15.2 Datasett\nDatasettene finner dere her\nD1\nD2\nD3\nD4\nD5\nD6",
+    "title": "16  Workshop: Sammenligne gjennomsnitt",
+    "section": "16.2 Datasett",
+    "text": "16.2 Datasett\nDatasettene finner dere her\nD1\nD2\nD3\nD4\nD5\nD6",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Sammenligne gjennomsnitt</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Workshop: Sammenligne gjennomsnitt</span>"
     ]
   },
   {
     "objectID": "06-sammenligne-gjennomsnitt.html#analyse",
     "href": "06-sammenligne-gjennomsnitt.html#analyse",
-    "title": "15  Sammenligne gjennomsnitt",
-    "section": "15.3 Analyse",
-    "text": "15.3 Analyse\n\nBeregne en forandringsskår\nBeregn beskrivende statistikk for hver gruppe\nSammenligne gruppene med en t-test\nTrekk konklusjoner basert på resultatet av t-testen\nRapportert resultatet av studien i en figur på whiteboard",
+    "title": "16  Workshop: Sammenligne gjennomsnitt",
+    "section": "16.3 Analyse",
+    "text": "16.3 Analyse\n\nBeregne en forandringsskår\nBeregn beskrivende statistikk for hver gruppe\nSammenligne gruppene med en t-test\nTrekk konklusjoner basert på resultatet av t-testen\nRapportert resultatet av studien i en figur på whiteboard",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Sammenligne gjennomsnitt</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Workshop: Sammenligne gjennomsnitt</span>"
     ]
   },
   {
     "objectID": "06-sammenligne-gjennomsnitt.html#metaanalyse",
     "href": "06-sammenligne-gjennomsnitt.html#metaanalyse",
-    "title": "15  Sammenligne gjennomsnitt",
-    "section": "15.4 Metaanalyse",
-    "text": "15.4 Metaanalyse\n\nLast ned MAJOR i Jamovi,\nSett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)\nHva er konklusjonen om effekten av intervensjonen basert på metaanalysen?",
+    "title": "16  Workshop: Sammenligne gjennomsnitt",
+    "section": "16.4 Metaanalyse",
+    "text": "16.4 Metaanalyse\n\nLast ned MAJOR i Jamovi,\nSett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)\nHva er konklusjonen om effekten av intervensjonen basert på metaanalysen?",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Sammenligne gjennomsnitt</span>"
+      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Workshop: Sammenligne gjennomsnitt</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html",
     "href": "06-organisering-av-analyse.html",
-    "title": "16  Organisere og gjennomføre en analyse",
+    "title": "17  Organisere og gjennomføre en analyse",
     "section": "",
-    "text": "16.1 Bakgrunn til datasettet\nI denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen “skaper” rapporten.\nI denne workshop skal vi arbeide med et datasett fra (Rønnestad et al. 2021). Hensikten med studien var å se på effekten av to forskjellige typer av økter i en “mikrosyklus” (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile).",
+    "text": "17.1 Bakgrunn til datasettet\nI denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen “skaper” rapporten.\nI denne workshop skal vi arbeide med et datasett fra (Rønnestad et al. 2021). Hensikten med studien var å se på effekten av to forskjellige typer av økter i en “mikrosyklus” (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile).",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#bakgrunn-til-datasettet",
     "href": "06-organisering-av-analyse.html#bakgrunn-til-datasettet",
-    "title": "16  Organisere og gjennomføre en analyse",
+    "title": "17  Organisere og gjennomføre en analyse",
     "section": "",
     "text": "Rønnestad, Bent R., Sjur J. Øfsteng, Fabio Zambolin, Truls Raastad, and Daniel Hammarström. 2021. “Superior Physiological Adaptations After a Microcycle of Short Intervals Versus Long Intervals in Cyclists.” International Journal of Sports Physiology and Performance 16 (10): 1432–38. https://doi.org/10.1123/ijspp.2020-0647.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#organisering-av-data",
     "href": "06-organisering-av-analyse.html#organisering-av-data",
-    "title": "16  Organisere og gjennomføre en analyse",
-    "section": "16.2 Organisering av data",
-    "text": "16.2 Organisering av data\nDere har fått som oppgave å analysere dataene fra prosjektet og får en excel-fil for analyse (du finner datasettet her). Du har også fått en tabell med variabelnavn og informasjon om hvordan dataene har blitt orgnisert (se tabell under).\nDenne informasjonen kan fungere som starten på en beskrivelse av hele analyseprosjektet. Vi vil nå starte med å opprette en README-fil som tar utgangspunkt i hensikten med studien og de data vi har tilgang til.\n\n\n\n\n\n\nOppgave: Lag en README-fil\n\n\n\n\n\nEt README-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en README-fil er .txt. Dette filformat kan leses av alle uansett programvarer og editering er enkel.\nI en tekst-fil kan vi bruke #-tegnet for å indikere overskrifter, hvor en # er overskrift nivå 1 (den største) og ## gir neste nivå, osv.\nEn tabell kan vi lage ved å bruke følgende syntax:\n|Variabel |Beskrivelse|Test\n| ---     | ---       |\n|subject  | Deltakere (id) | \n\nVi ønsker å ha med noen overskrifter når vi starter arbeidet, du kan f.eks. starte med:\n# Titel på prosjektet\n\n## Bakgrunn og hensikt\nHer under beskriver vi hva vi kjenner til om prosjektet og hensikten med analysene...\n\n\n## Data og variabler\nBeskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som mulig\n(Hva (enheter), når, hvordan, osv.)\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariabel\nBeskrivelse\nTest\n\n\n\n\nsubject\nDeltakere (id)\n\n\n\ngroup\nGruppe: SI, “short intervals”; LI, “Long intervals”\n\n\n\ntime\nTids-punkt for test: pre, i forkant av intervensjon; post, etter intevensjon\n\n\n\nbody.mass\nVekt (kg)\n\n\n\nbody.height\n\n\n\n\nage\nAlder ()\n\n\n\nlactate.max\n\nVO2maks-test\n\n\npeak.HR\n\nVO2maks-test\n\n\nRPE.max\n\nVO2maks-test\n\n\nVO2max\n\nVO2maks-test\n\n\nRER.max\n\nVO2maks-test\n\n\nVE.max\n\nVO2maks-test\n\n\nWmax\n\nVO2maks-test\n\n\npower.4mmol\n\nSubmaks-test (terskel)\n\n\nvo2.4mmol\n\nSubmaks-test (terskel)\n\n\nMAP\n\nSubmaks-test (terskel)\n\n\nmean.power.allout\n\nPrestasjonstest (15 min all-out)\n\n\nvo2.mean.allout\n\nPrestasjonstest\n\n\nvo2.peak.allout\n\nPrestasjonstest\n\n\nhr.mean.allout\n\nPrestasjonstest\n\n\nhr.peak.allout\n\nPrestasjonstest\n\n\nRPE.allout\n\nPrestasjonstest\n\n\nlactate.allout\n\nPrestasjonstest",
+    "title": "17  Organisere og gjennomføre en analyse",
+    "section": "17.2 Organisering av data",
+    "text": "17.2 Organisering av data\nDere har fått som oppgave å analysere dataene fra prosjektet og får en excel-fil for analyse (du finner datasettet her). Du har også fått en tabell med variabelnavn og informasjon om hvordan dataene har blitt orgnisert (se tabell under).\nDenne informasjonen kan fungere som starten på en beskrivelse av hele analyseprosjektet. Vi vil nå starte med å opprette en README-fil som tar utgangspunkt i hensikten med studien og de data vi har tilgang til.\n\n\n\n\n\n\nOppgave: Lag en README-fil\n\n\n\n\n\nEt README-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en README-fil er .txt. Dette filformat kan leses av alle uansett programvarer og editering er enkel.\nI en tekst-fil kan vi bruke #-tegnet for å indikere overskrifter, hvor en # er overskrift nivå 1 (den største) og ## gir neste nivå, osv.\nEn tabell kan vi lage ved å bruke følgende syntax:\n|Variabel |Beskrivelse|Test\n| ---     | ---       |\n|subject  | Deltakere (id) | \n\nVi ønsker å ha med noen overskrifter når vi starter arbeidet, du kan f.eks. starte med:\n# Titel på prosjektet\n\n## Bakgrunn og hensikt\nHer under beskriver vi hva vi kjenner til om prosjektet og hensikten med analysene...\n\n\n## Data og variabler\nBeskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som mulig\n(Hva (enheter), når, hvordan, osv.)\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariabel\nBeskrivelse\nTest\n\n\n\n\nsubject\nDeltakere (id)\n\n\n\ngroup\nGruppe: SI, “short intervals”; LI, “Long intervals”\n\n\n\ntime\nTids-punkt for test: pre, i forkant av intervensjon; post, etter intevensjon\n\n\n\nbody.mass\nVekt (kg)\n\n\n\nbody.height\n\n\n\n\nage\nAlder ()\n\n\n\nlactate.max\n\nVO2maks-test\n\n\npeak.HR\n\nVO2maks-test\n\n\nRPE.max\n\nVO2maks-test\n\n\nVO2max\n\nVO2maks-test\n\n\nRER.max\n\nVO2maks-test\n\n\nVE.max\n\nVO2maks-test\n\n\nWmax\n\nVO2maks-test\n\n\npower.4mmol\n\nSubmaks-test (terskel)\n\n\nvo2.4mmol\n\nSubmaks-test (terskel)\n\n\nMAP\n\nSubmaks-test (terskel)\n\n\nmean.power.allout\n\nPrestasjonstest (15 min all-out)\n\n\nvo2.mean.allout\n\nPrestasjonstest\n\n\nvo2.peak.allout\n\nPrestasjonstest\n\n\nhr.mean.allout\n\nPrestasjonstest\n\n\nhr.peak.allout\n\nPrestasjonstest\n\n\nRPE.allout\n\nPrestasjonstest\n\n\nlactate.allout\n\nPrestasjonstest",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#organisering-av-data-i-jamovi",
     "href": "06-organisering-av-analyse.html#organisering-av-data-i-jamovi",
-    "title": "16  Organisere og gjennomføre en analyse",
-    "section": "16.3 Organisering av data i Jamovi",
-    "text": "16.3 Organisering av data i Jamovi\nNår vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver “sub-analyse”, eller hvert gruppe av analyser får en egen omv-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for det test som vi tenker skal besvare spørsmålene i prosjektet.\nMen hva er spørsmålene?\n\n\n\n\n\n\nOppgave: Lag en analyseplan\n\n\n\n\nEn enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det (A. J. Vickers 2001; Andrew J. Vickers and Altman 2001).\nFør vi kan hvordan vi skal analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.\nNår man bestemt hva og hvordan man ønsker å analysere bør dette føres inn i README-file. For eksempel:\n\n## Analayse\n\nUtfallsmålene XXX og YYY blir analysert som forskjell i forandringsskår mellom \ngrupper ved hjelp av en ZZZ...\n\nValget av variabler og analysestrategi gir oss utgangspunktet for å lage en Jamovi-fil. Diskuter hvordan de beslutninger som ble tatt over gir organiseringen av omv-filen.\nVi ønsker også å beskrive andre variabler for leseren av rapporten, variabler som beskriver utvalget, diskuter hvordan disse kan analyseres på best måte.\nFor hver omv-fil vi skaper legger vi til informasjon i README-filen.\n\n\n\n\nVickers, Andrew J., and Douglas G. Altman. 2001. “Analysing Controlled Trials with Baseline and Follow up Measurements.” BMJ : British Medical Journal 323 (7321): 1123–24. http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf.\n\nVickers, A. J. 2001. “The Use of Percentage Change from Baseline as an Outcome in a Controlled Trial Is Statistically Inefficient: A Simulation Study.” BMC Med Res Methodol 1: 6. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf.",
+    "title": "17  Organisere og gjennomføre en analyse",
+    "section": "17.3 Organisering av data i Jamovi",
+    "text": "17.3 Organisering av data i Jamovi\nNår vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver “sub-analyse”, eller hvert gruppe av analyser får en egen omv-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for det test som vi tenker skal besvare spørsmålene i prosjektet.\nMen hva er spørsmålene?\n\n\n\n\n\n\nOppgave: Lag en analyseplan\n\n\n\n\nEn enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det (A. J. Vickers 2001; Andrew J. Vickers and Altman 2001).\nFør vi kan hvordan vi skal analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.\nNår man bestemt hva og hvordan man ønsker å analysere bør dette føres inn i README-file. For eksempel:\n\n## Analayse\n\nUtfallsmålene XXX og YYY blir analysert som forskjell i forandringsskår mellom \ngrupper ved hjelp av en ZZZ...\n\nValget av variabler og analysestrategi gir oss utgangspunktet for å lage en Jamovi-fil. Diskuter hvordan de beslutninger som ble tatt over gir organiseringen av omv-filen.\nVi ønsker også å beskrive andre variabler for leseren av rapporten, variabler som beskriver utvalget, diskuter hvordan disse kan analyseres på best måte.\nFor hver omv-fil vi skaper legger vi til informasjon i README-filen.\n\n\n\n\nVickers, Andrew J., and Douglas G. Altman. 2001. “Analysing Controlled Trials with Baseline and Follow up Measurements.” BMJ : British Medical Journal 323 (7321): 1123–24. http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf.\n\nVickers, A. J. 2001. “The Use of Percentage Change from Baseline as an Outcome in a Controlled Trial Is Statistically Inefficient: A Simulation Study.” BMC Med Res Methodol 1: 6. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#rapportering-av-resultater",
     "href": "06-organisering-av-analyse.html#rapportering-av-resultater",
-    "title": "16  Organisere og gjennomføre en analyse",
-    "section": "16.4 Rapportering av resultater",
-    "text": "16.4 Rapportering av resultater\nResultater vil lages i Jamovi, resultatene skal senere også rapporteres i et manus (muligens en word-fil). I forkant av overføring til rapporten kan vi bruke Jamovi for å beskrive hva vi gjør og hvorfor.\n\n\n\n\n\n\nOppgave: Gjennomfør og beskriv analyser\n\n\n\n\n\n\nVed hjelp av Jamovi, sett opp analysene og beskriv resultatene fra de i jamovi. Teksten (og tabelle og figurer) kan limes inn i en word-fil.\nBruk f.eks. power point for å editere figurer.\nDiskuter hvordan analysene på best måte kan presenteres",
+    "title": "17  Organisere og gjennomføre en analyse",
+    "section": "17.4 Rapportering av resultater",
+    "text": "17.4 Rapportering av resultater\nResultater vil lages i Jamovi, resultatene skal senere også rapporteres i et manus (muligens en word-fil). I forkant av overføring til rapporten kan vi bruke Jamovi for å beskrive hva vi gjør og hvorfor.\n\n\n\n\n\n\nOppgave: Gjennomfør og beskriv analyser\n\n\n\n\n\n\nVed hjelp av Jamovi, sett opp analysene og beskriv resultatene fra de i jamovi. Teksten (og tabelle og figurer) kan limes inn i en word-fil.\nBruk f.eks. power point for å editere figurer.\nDiskuter hvordan analysene på best måte kan presenteres",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>16</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
