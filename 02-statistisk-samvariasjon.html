@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.6.39">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -52,15 +52,16 @@ div.csl-indent {
 <meta name="quarto:offset" content="./">
 <link href="./02-jamovi.html" rel="next">
 <link href="./02-a-intro.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-8da5b4427184b79ecddefad3d342027e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -121,7 +122,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent">
+<body class="nav-sidebar floating slimcontent quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -300,31 +301,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -389,13 +378,16 @@ window.Quarto = {
 <li>større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge.</li>
 </ul>
 <p>Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, så som regresjonsanalyse, analyse av varians og krysstabulering.</p>
-<section id="regresjon" class="level2" data-number="3.1">
+<section id="regresjon" class="level2 page-columns page-full" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="regresjon"><span class="header-section-number">3.1</span> Regresjon</h2>
 <p>Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvis starter vi med å beskrive regresjonsmodellen som en teknikk for å måle samvariasjonen mellom to variabler, en uavhengig og en avhengig variabel. Regresjonsmodellen kan også bli utvidet til å måle sammenhengen mellom flere uavhengige variabler og en avhengig variabel. I den enkleste formen kan vi faktisk bruke modellen for å studere en variabel. I en regresjonsmodell med to variabler, en avhengig og en uavhengig lager vi en modell som gir oss en matematisk formel for hvordan en variabel påvirker en annen. I denne enkle formen snakker vi om at den uavhengige variabelen påvirker den avhengige variabelen. Disse kan visualiseres i en to-dimensjonal figur (se <a href="#fig-simpsons" class="quarto-xref">Figur&nbsp;<span>3.1</span></a>). På x-aksel setter vi den uavhengige variabelen og på y-aksel setter vi den avhengige variabelen.</p>
 <p>I dette “systemet”, og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.</p>
 <p>Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner <a href="data/simpsons.csv">her</a> finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som <strong>uavhengig variabel</strong> og vekt som <strong>avhengig variabel</strong>. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene.</p>
 <p>Den visuelle sammenfatningen av dataene finner du under i <a href="#fig-simpsons" class="quarto-xref">Figur&nbsp;<span>3.1</span></a>, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?</p>
-<div class="cell">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=39488111-10f8-4b0a-8b8a-b1310079acab" target="_blank">Intro til samvariasjon og regresjon</a>.</p>
+</div></div><div class="cell">
 <div class="cell-output-display">
 <div id="fig-simpsons" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -425,13 +417,19 @@ Figur&nbsp;3.2. Fire mulige modeller for å beskrive sammenhengen mellom variabl
 </div>
 </div>
 </div>
-<p>En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med “feilverdier” til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f20b1473-0003-4aec-8ac5-b131007d7227" target="_blank">Tilpassning av en regresjonsmodell</a>.</p>
+</div></div><p>En regresjonsmodell estimeres ved å minimere avstanden fra hver observasjon til dess respektive predikerte verdi. Teknisk sett så minimerer vi summen av avstanden i kvadrat. I figuren over har vi illustrerer dette gjennom å plotte alle modellene med “feilverdier” til hver observasjon. Når vi legger disse sammen blir det tydelig at den blå modellen ikke er særlig god. Den minimerer avstand til Homer Simpson bekostning av store feil til de andre observasjonene.</p>
 <p>Et dataprogram som for eksempel Jamovi gjennomfører beregninger for oss og gir oss modellen hvor feilene er minimerte. Resultatene fra en tilpassing av en regresjonsmodell kan leses i en tabell hvor estimatene av skjæringspunkt og stigningstall vises. I eksemplet med kroppshøyde og vekt ser vi at stigningstallet er 0.73 kg. For hver cm økning i kroppshøyde øker vekt med 0.73 kg. Skjæringspunktet sier at vekten er -51 kg når kroppshøyde er 0. Dette er ikke en korrekt representasjon av virkeligheten så som vi kjenner den. Dette sier mer om hvordan vi sier at variablene varierer sammen enn om forholdet mellom kroppshøyde og vekt.</p>
 <p>En regresjonsmodell fungerer best der hvor vi faktisk har data. En enkel regresjonsmodell begrenses også til rette linjer. Dette gjør at resultatene fra en slik analyse bør behandles med skepsis når vi kan gjøre antagelser om en ikke rett sammenheng og når modellen brukes for å predikere utenfor variasjonsvidden til dataene som bruktes til å lage modellen.</p>
 </section>
-<section id="fra-regresjon-til-korrelasjon" class="level2" data-number="3.2">
+<section id="fra-regresjon-til-korrelasjon" class="level2 page-columns page-full" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="fra-regresjon-til-korrelasjon"><span class="header-section-number">3.2</span> Fra regresjon til korrelasjon</h2>
-<p>I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på 0.73 kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=56396ccf-80b2-4217-a086-b131007f8df8" target="_blank">Fra regresjon til korrelasjon</a>.</p>
+</div></div><p>I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på 0.73 kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles.</p>
 <p>Sammenhengen mellom to kontinuerlige variabler kan beskrives som en korrelasjonskoeffisient. Denne korrelasjonskoeffisienten beskriver sammenhengen mellom to variabler som et tall mellom -1 og +1 hvor estimat som nærmer seg -1 eller +1 indikerer en sterk korrelasjon og estimat som nærmer seg 0 indikerer en svak eller ingen korrelasjon (eller sammenheng).</p>
 <p>Den kanskje vanligste måten å beskrive en korrelasjon på er ved hjelp av Pearson’s korrelasjonskoeffisient. Denne gis vanligvis symbolet <em>R</em> og noen eksempler finnes å se i <a href="#fig-korr" class="quarto-xref">Figur&nbsp;<span>3.3</span></a>.</p>
 <div class="cell" data-layout-align="center">
@@ -464,9 +462,12 @@ Figur&nbsp;3.4. Avvik fra antagelser om dataene kan gi feilaktige tolkninger av 
 </div>
 </div>
 </section>
-<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2" data-number="3.3">
+<section id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel" class="level2 page-columns page-full" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="regresjon-med-en-nominal-eller-ordinal-uavhengig-variabel"><span class="header-section-number">3.3</span> Regresjon med en nominal eller ordinal uavhengig variabel</h2>
-<p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons" class="quarto-xref">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=99060c90-3a49-46a0-b24e-b1310081df16" target="_blank">Regresjonsmodellen og alternative statistiske metoder</a>.</p>
+</div></div><p>Vi kan enkelt omformulere regresjonsmodellen gjennom å bruke en nominal eller ordinal variabel som uavhengig variabel. La oss si at vi ønsker å estimere sammenheng mellom alderskategoriene <em>barn</em>/<em>voksen</em> og vekt. I tabellen under (<a href="#tbl-simpsons" class="quarto-xref">Tabell&nbsp;<span>3.1</span></a>) har vi identifisert voksne og barn, og vi uttrykker dette som to forskjellige <em>indikatorvariabler</em>, også kallet <em>dummyvariabler</em>. En <em>dummyvariabel</em> kan ta to verdier, 0 og 1, og her kan vi forstå den ene som, voksen ja = 1/nei = 0, og den andre som, barn ja = 1/nei = 0. Vi trenger ikke begge variablene, men kodingen avgjør hvordan i tolker resultatene fra en regresjonsmodell.</p>
 <div class="cell">
 <div id="tbl-simpsons" class="cell quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-tbl figure">
@@ -926,21 +927,13 @@ Tabell&nbsp;3.1. Et dataset med to inkluderte indikatorvariabler.
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
-<th id="<div data-qmd-base64=&quot;SCYjMjQ4O3lkZQ==&quot;><div class='gt_from_md'><p>Høyde</p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col"><p>Høyde</p></th>
-<th id="Vekt" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vekt</th>
-<th id="Navn" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Navn</th>
-<th id="Barn" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Barn</th>
-<th id="Voksen" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Voksen</th>
+<th id="height" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Høyde</th>
+<th id="weight" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vekt</th>
+<th id="name" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Navn</th>
+<th id="child" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Barn</th>
+<th id="adult" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Voksen</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -1049,23 +1042,23 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
 </figcaption>
 <div aria-describedby="tbl-trening1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="jhanlpljbz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#jhanlpljbz table {
+<div id="uvyxelonoq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uvyxelonoq table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#jhanlpljbz thead, #jhanlpljbz tbody, #jhanlpljbz tfoot, #jhanlpljbz tr, #jhanlpljbz td, #jhanlpljbz th {
+#uvyxelonoq thead, #uvyxelonoq tbody, #uvyxelonoq tfoot, #uvyxelonoq tr, #uvyxelonoq td, #uvyxelonoq th {
   border-style: none;
 }
 
-#jhanlpljbz p {
+#uvyxelonoq p {
   margin: 0;
   padding: 0;
 }
 
-#jhanlpljbz .gt_table {
+#uvyxelonoq .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1091,12 +1084,12 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-left-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_caption {
+#uvyxelonoq .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#jhanlpljbz .gt_title {
+#uvyxelonoq .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1108,7 +1101,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-bottom-width: 0;
 }
 
-#jhanlpljbz .gt_subtitle {
+#uvyxelonoq .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1120,7 +1113,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-top-width: 0;
 }
 
-#jhanlpljbz .gt_heading {
+#uvyxelonoq .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1132,13 +1125,13 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_bottom_border {
+#uvyxelonoq .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_col_headings {
+#uvyxelonoq .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1153,7 +1146,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_col_heading {
+#uvyxelonoq .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1173,7 +1166,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   overflow-x: hidden;
 }
 
-#jhanlpljbz .gt_column_spanner_outer {
+#uvyxelonoq .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1185,15 +1178,15 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 4px;
 }
 
-#jhanlpljbz .gt_column_spanner_outer:first-child {
+#uvyxelonoq .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#jhanlpljbz .gt_column_spanner_outer:last-child {
+#uvyxelonoq .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#jhanlpljbz .gt_column_spanner {
+#uvyxelonoq .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1205,11 +1198,11 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   width: 100%;
 }
 
-#jhanlpljbz .gt_spanner_row {
+#uvyxelonoq .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#jhanlpljbz .gt_group_heading {
+#uvyxelonoq .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1235,7 +1228,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   text-align: left;
 }
 
-#jhanlpljbz .gt_empty_group_heading {
+#uvyxelonoq .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1250,15 +1243,15 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   vertical-align: middle;
 }
 
-#jhanlpljbz .gt_from_md > :first-child {
+#uvyxelonoq .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#jhanlpljbz .gt_from_md > :last-child {
+#uvyxelonoq .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#jhanlpljbz .gt_row {
+#uvyxelonoq .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1277,7 +1270,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   overflow-x: hidden;
 }
 
-#jhanlpljbz .gt_stub {
+#uvyxelonoq .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1290,7 +1283,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 5px;
 }
 
-#jhanlpljbz .gt_stub_row_group {
+#uvyxelonoq .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1304,15 +1297,15 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   vertical-align: top;
 }
 
-#jhanlpljbz .gt_row_group_first td {
+#uvyxelonoq .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#jhanlpljbz .gt_row_group_first th {
+#uvyxelonoq .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#jhanlpljbz .gt_summary_row {
+#uvyxelonoq .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1322,16 +1315,16 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 5px;
 }
 
-#jhanlpljbz .gt_first_summary_row {
+#uvyxelonoq .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_first_summary_row.thick {
+#uvyxelonoq .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#jhanlpljbz .gt_last_summary_row {
+#uvyxelonoq .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1341,7 +1334,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_grand_summary_row {
+#uvyxelonoq .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1351,7 +1344,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 5px;
 }
 
-#jhanlpljbz .gt_first_grand_summary_row {
+#uvyxelonoq .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1361,7 +1354,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-top-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_last_grand_summary_row_top {
+#uvyxelonoq .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1371,11 +1364,11 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_striped {
+#uvyxelonoq .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#jhanlpljbz .gt_table_body {
+#uvyxelonoq .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1384,7 +1377,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_footnotes {
+#uvyxelonoq .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1398,7 +1391,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_footnote {
+#uvyxelonoq .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1407,7 +1400,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 5px;
 }
 
-#jhanlpljbz .gt_sourcenotes {
+#uvyxelonoq .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1421,7 +1414,7 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#jhanlpljbz .gt_sourcenote {
+#uvyxelonoq .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1429,82 +1422,77 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
   padding-right: 5px;
 }
 
-#jhanlpljbz .gt_left {
+#uvyxelonoq .gt_left {
   text-align: left;
 }
 
-#jhanlpljbz .gt_center {
+#uvyxelonoq .gt_center {
   text-align: center;
 }
 
-#jhanlpljbz .gt_right {
+#uvyxelonoq .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#jhanlpljbz .gt_font_normal {
+#uvyxelonoq .gt_font_normal {
   font-weight: normal;
 }
 
-#jhanlpljbz .gt_font_bold {
+#uvyxelonoq .gt_font_bold {
   font-weight: bold;
 }
 
-#jhanlpljbz .gt_font_italic {
+#uvyxelonoq .gt_font_italic {
   font-style: italic;
 }
 
-#jhanlpljbz .gt_super {
+#uvyxelonoq .gt_super {
   font-size: 65%;
 }
 
-#jhanlpljbz .gt_footnote_marks {
+#uvyxelonoq .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#jhanlpljbz .gt_asterisk {
+#uvyxelonoq .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#jhanlpljbz .gt_indent_1 {
+#uvyxelonoq .gt_indent_1 {
   text-indent: 5px;
 }
 
-#jhanlpljbz .gt_indent_2 {
+#uvyxelonoq .gt_indent_2 {
   text-indent: 10px;
 }
 
-#jhanlpljbz .gt_indent_3 {
+#uvyxelonoq .gt_indent_3 {
   text-indent: 15px;
 }
 
-#jhanlpljbz .gt_indent_4 {
+#uvyxelonoq .gt_indent_4 {
   text-indent: 20px;
 }
 
-#jhanlpljbz .gt_indent_5 {
+#uvyxelonoq .gt_indent_5 {
   text-indent: 25px;
 }
 
-#jhanlpljbz .katex-display {
+#uvyxelonoq .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#jhanlpljbz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#uvyxelonoq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
 <th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
@@ -1514,17 +1502,17 @@ Tabell&nbsp;3.2. Resultat fra en regresjonsmodell med to uavhengige variabler (k
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>0</sub> (Skjæringspunkt)</td>
 <td class="gt_row gt_right" headers="Estimat">6.02</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.76</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</td>
 <td class="gt_row gt_right" headers="Estimat">1.51</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.25</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub> (Alder)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>2</sub> (Alder)</td>
 <td class="gt_row gt_right" headers="Estimat">−0.07</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.03</td>
 </tr>
@@ -1548,23 +1536,23 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
 </figcaption>
 <div aria-describedby="tbl-trening2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="noqorahuxj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#noqorahuxj table {
+<div id="aszwdpqygf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aszwdpqygf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#noqorahuxj thead, #noqorahuxj tbody, #noqorahuxj tfoot, #noqorahuxj tr, #noqorahuxj td, #noqorahuxj th {
+#aszwdpqygf thead, #aszwdpqygf tbody, #aszwdpqygf tfoot, #aszwdpqygf tr, #aszwdpqygf td, #aszwdpqygf th {
   border-style: none;
 }
 
-#noqorahuxj p {
+#aszwdpqygf p {
   margin: 0;
   padding: 0;
 }
 
-#noqorahuxj .gt_table {
+#aszwdpqygf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1590,12 +1578,12 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-left-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_caption {
+#aszwdpqygf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#noqorahuxj .gt_title {
+#aszwdpqygf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1607,7 +1595,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-bottom-width: 0;
 }
 
-#noqorahuxj .gt_subtitle {
+#aszwdpqygf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1619,7 +1607,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-top-width: 0;
 }
 
-#noqorahuxj .gt_heading {
+#aszwdpqygf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1631,13 +1619,13 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_bottom_border {
+#aszwdpqygf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_col_headings {
+#aszwdpqygf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1652,7 +1640,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_col_heading {
+#aszwdpqygf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1672,7 +1660,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   overflow-x: hidden;
 }
 
-#noqorahuxj .gt_column_spanner_outer {
+#aszwdpqygf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1684,15 +1672,15 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 4px;
 }
 
-#noqorahuxj .gt_column_spanner_outer:first-child {
+#aszwdpqygf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#noqorahuxj .gt_column_spanner_outer:last-child {
+#aszwdpqygf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#noqorahuxj .gt_column_spanner {
+#aszwdpqygf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1704,11 +1692,11 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   width: 100%;
 }
 
-#noqorahuxj .gt_spanner_row {
+#aszwdpqygf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#noqorahuxj .gt_group_heading {
+#aszwdpqygf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1734,7 +1722,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   text-align: left;
 }
 
-#noqorahuxj .gt_empty_group_heading {
+#aszwdpqygf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1749,15 +1737,15 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   vertical-align: middle;
 }
 
-#noqorahuxj .gt_from_md > :first-child {
+#aszwdpqygf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#noqorahuxj .gt_from_md > :last-child {
+#aszwdpqygf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#noqorahuxj .gt_row {
+#aszwdpqygf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1776,7 +1764,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   overflow-x: hidden;
 }
 
-#noqorahuxj .gt_stub {
+#aszwdpqygf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1789,7 +1777,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 5px;
 }
 
-#noqorahuxj .gt_stub_row_group {
+#aszwdpqygf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1803,15 +1791,15 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   vertical-align: top;
 }
 
-#noqorahuxj .gt_row_group_first td {
+#aszwdpqygf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#noqorahuxj .gt_row_group_first th {
+#aszwdpqygf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#noqorahuxj .gt_summary_row {
+#aszwdpqygf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1821,16 +1809,16 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 5px;
 }
 
-#noqorahuxj .gt_first_summary_row {
+#aszwdpqygf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_first_summary_row.thick {
+#aszwdpqygf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#noqorahuxj .gt_last_summary_row {
+#aszwdpqygf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1840,7 +1828,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_grand_summary_row {
+#aszwdpqygf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1850,7 +1838,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 5px;
 }
 
-#noqorahuxj .gt_first_grand_summary_row {
+#aszwdpqygf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1860,7 +1848,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-top-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_last_grand_summary_row_top {
+#aszwdpqygf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1870,11 +1858,11 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_striped {
+#aszwdpqygf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#noqorahuxj .gt_table_body {
+#aszwdpqygf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1883,7 +1871,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-bottom-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_footnotes {
+#aszwdpqygf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1897,7 +1885,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_footnote {
+#aszwdpqygf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1906,7 +1894,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 5px;
 }
 
-#noqorahuxj .gt_sourcenotes {
+#aszwdpqygf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1920,7 +1908,7 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   border-right-color: #D3D3D3;
 }
 
-#noqorahuxj .gt_sourcenote {
+#aszwdpqygf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1928,82 +1916,77 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
   padding-right: 5px;
 }
 
-#noqorahuxj .gt_left {
+#aszwdpqygf .gt_left {
   text-align: left;
 }
 
-#noqorahuxj .gt_center {
+#aszwdpqygf .gt_center {
   text-align: center;
 }
 
-#noqorahuxj .gt_right {
+#aszwdpqygf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#noqorahuxj .gt_font_normal {
+#aszwdpqygf .gt_font_normal {
   font-weight: normal;
 }
 
-#noqorahuxj .gt_font_bold {
+#aszwdpqygf .gt_font_bold {
   font-weight: bold;
 }
 
-#noqorahuxj .gt_font_italic {
+#aszwdpqygf .gt_font_italic {
   font-style: italic;
 }
 
-#noqorahuxj .gt_super {
+#aszwdpqygf .gt_super {
   font-size: 65%;
 }
 
-#noqorahuxj .gt_footnote_marks {
+#aszwdpqygf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#noqorahuxj .gt_asterisk {
+#aszwdpqygf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#noqorahuxj .gt_indent_1 {
+#aszwdpqygf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#noqorahuxj .gt_indent_2 {
+#aszwdpqygf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#noqorahuxj .gt_indent_3 {
+#aszwdpqygf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#noqorahuxj .gt_indent_4 {
+#aszwdpqygf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#noqorahuxj .gt_indent_5 {
+#aszwdpqygf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#noqorahuxj .katex-display {
+#aszwdpqygf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#noqorahuxj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aszwdpqygf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
 <th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
@@ -2013,12 +1996,12 @@ Tabell&nbsp;3.3. Resultat fra en regresjonsmodell med en uavhengige variabler (k
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>0</sub> (Skjæringspunkt)</td>
 <td class="gt_row gt_right" headers="Estimat">4.35</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.15</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>1</sub> (Kjønn, kvinne = 0, mann = 1)</td>
 <td class="gt_row gt_right" headers="Estimat">1.45</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.25</td>
 </tr>
@@ -2039,23 +2022,23 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
 </figcaption>
 <div aria-describedby="tbl-trening3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="ofiowenekk" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ofiowenekk table {
+<div id="mwrezzphbd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mwrezzphbd table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ofiowenekk thead, #ofiowenekk tbody, #ofiowenekk tfoot, #ofiowenekk tr, #ofiowenekk td, #ofiowenekk th {
+#mwrezzphbd thead, #mwrezzphbd tbody, #mwrezzphbd tfoot, #mwrezzphbd tr, #mwrezzphbd td, #mwrezzphbd th {
   border-style: none;
 }
 
-#ofiowenekk p {
+#mwrezzphbd p {
   margin: 0;
   padding: 0;
 }
 
-#ofiowenekk .gt_table {
+#mwrezzphbd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2081,12 +2064,12 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-left-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_caption {
+#mwrezzphbd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ofiowenekk .gt_title {
+#mwrezzphbd .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2098,7 +2081,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-bottom-width: 0;
 }
 
-#ofiowenekk .gt_subtitle {
+#mwrezzphbd .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2110,7 +2093,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-top-width: 0;
 }
 
-#ofiowenekk .gt_heading {
+#mwrezzphbd .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2122,13 +2105,13 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-right-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_bottom_border {
+#mwrezzphbd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_col_headings {
+#mwrezzphbd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2143,7 +2126,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-right-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_col_heading {
+#mwrezzphbd .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2163,7 +2146,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   overflow-x: hidden;
 }
 
-#ofiowenekk .gt_column_spanner_outer {
+#mwrezzphbd .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2175,15 +2158,15 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 4px;
 }
 
-#ofiowenekk .gt_column_spanner_outer:first-child {
+#mwrezzphbd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ofiowenekk .gt_column_spanner_outer:last-child {
+#mwrezzphbd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ofiowenekk .gt_column_spanner {
+#mwrezzphbd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2195,11 +2178,11 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   width: 100%;
 }
 
-#ofiowenekk .gt_spanner_row {
+#mwrezzphbd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ofiowenekk .gt_group_heading {
+#mwrezzphbd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2225,7 +2208,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   text-align: left;
 }
 
-#ofiowenekk .gt_empty_group_heading {
+#mwrezzphbd .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2240,15 +2223,15 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   vertical-align: middle;
 }
 
-#ofiowenekk .gt_from_md > :first-child {
+#mwrezzphbd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ofiowenekk .gt_from_md > :last-child {
+#mwrezzphbd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ofiowenekk .gt_row {
+#mwrezzphbd .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2267,7 +2250,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   overflow-x: hidden;
 }
 
-#ofiowenekk .gt_stub {
+#mwrezzphbd .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2280,7 +2263,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 5px;
 }
 
-#ofiowenekk .gt_stub_row_group {
+#mwrezzphbd .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2294,15 +2277,15 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   vertical-align: top;
 }
 
-#ofiowenekk .gt_row_group_first td {
+#mwrezzphbd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ofiowenekk .gt_row_group_first th {
+#mwrezzphbd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ofiowenekk .gt_summary_row {
+#mwrezzphbd .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2312,16 +2295,16 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 5px;
 }
 
-#ofiowenekk .gt_first_summary_row {
+#mwrezzphbd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_first_summary_row.thick {
+#mwrezzphbd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ofiowenekk .gt_last_summary_row {
+#mwrezzphbd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2331,7 +2314,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-bottom-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_grand_summary_row {
+#mwrezzphbd .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2341,7 +2324,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 5px;
 }
 
-#ofiowenekk .gt_first_grand_summary_row {
+#mwrezzphbd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2351,7 +2334,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-top-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_last_grand_summary_row_top {
+#mwrezzphbd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2361,11 +2344,11 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-bottom-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_striped {
+#mwrezzphbd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ofiowenekk .gt_table_body {
+#mwrezzphbd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2374,7 +2357,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-bottom-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_footnotes {
+#mwrezzphbd .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2388,7 +2371,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-right-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_footnote {
+#mwrezzphbd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2397,7 +2380,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 5px;
 }
 
-#ofiowenekk .gt_sourcenotes {
+#mwrezzphbd .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2411,7 +2394,7 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   border-right-color: #D3D3D3;
 }
 
-#ofiowenekk .gt_sourcenote {
+#mwrezzphbd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2419,82 +2402,77 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
   padding-right: 5px;
 }
 
-#ofiowenekk .gt_left {
+#mwrezzphbd .gt_left {
   text-align: left;
 }
 
-#ofiowenekk .gt_center {
+#mwrezzphbd .gt_center {
   text-align: center;
 }
 
-#ofiowenekk .gt_right {
+#mwrezzphbd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ofiowenekk .gt_font_normal {
+#mwrezzphbd .gt_font_normal {
   font-weight: normal;
 }
 
-#ofiowenekk .gt_font_bold {
+#mwrezzphbd .gt_font_bold {
   font-weight: bold;
 }
 
-#ofiowenekk .gt_font_italic {
+#mwrezzphbd .gt_font_italic {
   font-style: italic;
 }
 
-#ofiowenekk .gt_super {
+#mwrezzphbd .gt_super {
   font-size: 65%;
 }
 
-#ofiowenekk .gt_footnote_marks {
+#mwrezzphbd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ofiowenekk .gt_asterisk {
+#mwrezzphbd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ofiowenekk .gt_indent_1 {
+#mwrezzphbd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ofiowenekk .gt_indent_2 {
+#mwrezzphbd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ofiowenekk .gt_indent_3 {
+#mwrezzphbd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ofiowenekk .gt_indent_4 {
+#mwrezzphbd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ofiowenekk .gt_indent_5 {
+#mwrezzphbd .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ofiowenekk .katex-display {
+#mwrezzphbd .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ofiowenekk div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mwrezzphbd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
 <th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
@@ -2504,12 +2482,12 @@ Tabell&nbsp;3.4. Resultat fra en regresjonsmodell med en uavhengige variabler (a
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>0</sub> (Skjæringspunkt)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>0</sub> (Skjæringspunkt)</td>
 <td class="gt_row gt_right" headers="Estimat">6.09</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.78</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Koeffisient"><p>β<sub>2</sub> (Alder)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">β<sub>2</sub> (Alder)</td>
 <td class="gt_row gt_right" headers="Estimat">−0.05</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.03</td>
 </tr>
@@ -2660,7 +2638,10 @@ Thoresen, Magne. 2017. <span>“Logistisk Regresjon – Anvendt Og Anvendelig.�
 <p><span class="math display">\[p=\frac{e^{\beta_0 + \beta_1 x}}{1 + e^{\beta_0 + \beta_1 x}}\]</span> I vår modell for hjertesykdom er <span class="math inline">\(\beta_0 = -5.309\)</span> og <span class="math inline">\(\beta_1 = 0.11\)</span>, noe som gir <span class="math inline">\(-5.309 + 0.11 \times 50 = 0.236\)</span>. Dette gir et odds for hjertesykdom for femtiåringer på</p>
 <p><span class="math display">\[p = \frac{e^{0.236}}{1+e^{0.236}} = 0.56\]</span></p>
 <p>Hvor <span class="math inline">\(e \sim 2.718\)</span>, noe som også kan benevnes som “eksponential-funksjonen av 0.236” eller skrives som “exp(0.236)”.</p>
-</section>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bd2549d5-0ddd-49f4-a1b0-b137007ec457" target="_blank">Kort forelesning om logistisk regresjon</a>.</p>
+</div></div></section>
 <section id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn" class="level3" data-number="3.8.2">
 <h3 data-number="3.8.2" class="anchored" data-anchor-id="et-eksempel-analyse-av-samvariasjon-mellom-medlemskap-i-idrettslag-og-kjønn"><span class="header-section-number">3.8.2</span> Et eksempel: Analyse av samvariasjon mellom medlemskap i idrettslag og kjønn</h3>
 <p>I eksemplet med krysstabulering (<a href="#sec-kryss" class="quarto-xref"><span>Section 3.7</span></a>) undersøkte vi hvor stor andel av menn og kvinner i datasettet som rapporterte at de var medlemmer i et idrettslag. Forskjellen i prosentpoeng var 20.7. Vi kan også beregne dette som et odds-forhold. Tallene finner vi i <a href="#tbl-trening" class="quarto-xref">Tabell&nbsp;<span>3.5</span></a> hvor vi bruker antallet observasjoner fra hvert kategori når vi først beregner odds for medlemskap som</p>
@@ -3129,21 +3110,13 @@ Tabell&nbsp;3.5. Krysstabulering av andel medlem i idrettslag per kjønn fra <a 
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-<col style="width: 20%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
-<th id="<div data-qmd-base64=&quot;S2omIzI0ODtubg==&quot;><div class='gt_from_md'><p>Kjønn</p>
-</div></div>" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><p>Kjønn</p></th>
-<th id="Ikke medlem" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem</th>
+<th id="sex" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Kjønn</th>
+<th id="Ikke-medlem" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem</th>
 <th id="Medlem" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Medlem</th>
-<th id="Ikke medlem (%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem (%)</th>
-<th id="Medlem (%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Medlem (%)</th>
+<th id="Ikke-medlem-(%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Ikke medlem (%)</th>
+<th id="Medlem-(%)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Medlem (%)</th>
 </tr>
 </thead>
 <tbody class="gt_table_body">
@@ -3182,23 +3155,23 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
 </figcaption>
 <div aria-describedby="tbl-treningreg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 <div class="cell-output-display">
-<div id="bjyloatcfj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#bjyloatcfj table {
+<div id="tcfjjfottz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tcfjjfottz table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#bjyloatcfj thead, #bjyloatcfj tbody, #bjyloatcfj tfoot, #bjyloatcfj tr, #bjyloatcfj td, #bjyloatcfj th {
+#tcfjjfottz thead, #tcfjjfottz tbody, #tcfjjfottz tfoot, #tcfjjfottz tr, #tcfjjfottz td, #tcfjjfottz th {
   border-style: none;
 }
 
-#bjyloatcfj p {
+#tcfjjfottz p {
   margin: 0;
   padding: 0;
 }
 
-#bjyloatcfj .gt_table {
+#tcfjjfottz .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -3224,12 +3197,12 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-left-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_caption {
+#tcfjjfottz .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#bjyloatcfj .gt_title {
+#tcfjjfottz .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -3241,7 +3214,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-bottom-width: 0;
 }
 
-#bjyloatcfj .gt_subtitle {
+#tcfjjfottz .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -3253,7 +3226,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-top-width: 0;
 }
 
-#bjyloatcfj .gt_heading {
+#tcfjjfottz .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -3265,13 +3238,13 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-right-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_bottom_border {
+#tcfjjfottz .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_col_headings {
+#tcfjjfottz .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3286,7 +3259,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-right-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_col_heading {
+#tcfjjfottz .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3306,7 +3279,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   overflow-x: hidden;
 }
 
-#bjyloatcfj .gt_column_spanner_outer {
+#tcfjjfottz .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3318,15 +3291,15 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 4px;
 }
 
-#bjyloatcfj .gt_column_spanner_outer:first-child {
+#tcfjjfottz .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#bjyloatcfj .gt_column_spanner_outer:last-child {
+#tcfjjfottz .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#bjyloatcfj .gt_column_spanner {
+#tcfjjfottz .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -3338,11 +3311,11 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   width: 100%;
 }
 
-#bjyloatcfj .gt_spanner_row {
+#tcfjjfottz .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#bjyloatcfj .gt_group_heading {
+#tcfjjfottz .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3368,7 +3341,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   text-align: left;
 }
 
-#bjyloatcfj .gt_empty_group_heading {
+#tcfjjfottz .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -3383,15 +3356,15 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   vertical-align: middle;
 }
 
-#bjyloatcfj .gt_from_md > :first-child {
+#tcfjjfottz .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#bjyloatcfj .gt_from_md > :last-child {
+#tcfjjfottz .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#bjyloatcfj .gt_row {
+#tcfjjfottz .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3410,7 +3383,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   overflow-x: hidden;
 }
 
-#bjyloatcfj .gt_stub {
+#tcfjjfottz .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3423,7 +3396,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 5px;
 }
 
-#bjyloatcfj .gt_stub_row_group {
+#tcfjjfottz .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -3437,15 +3410,15 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   vertical-align: top;
 }
 
-#bjyloatcfj .gt_row_group_first td {
+#tcfjjfottz .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#bjyloatcfj .gt_row_group_first th {
+#tcfjjfottz .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#bjyloatcfj .gt_summary_row {
+#tcfjjfottz .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3455,16 +3428,16 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 5px;
 }
 
-#bjyloatcfj .gt_first_summary_row {
+#tcfjjfottz .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_first_summary_row.thick {
+#tcfjjfottz .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#bjyloatcfj .gt_last_summary_row {
+#tcfjjfottz .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3474,7 +3447,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-bottom-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_grand_summary_row {
+#tcfjjfottz .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -3484,7 +3457,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 5px;
 }
 
-#bjyloatcfj .gt_first_grand_summary_row {
+#tcfjjfottz .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3494,7 +3467,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-top-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_last_grand_summary_row_top {
+#tcfjjfottz .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -3504,11 +3477,11 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-bottom-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_striped {
+#tcfjjfottz .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#bjyloatcfj .gt_table_body {
+#tcfjjfottz .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -3517,7 +3490,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-bottom-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_footnotes {
+#tcfjjfottz .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3531,7 +3504,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-right-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_footnote {
+#tcfjjfottz .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -3540,7 +3513,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 5px;
 }
 
-#bjyloatcfj .gt_sourcenotes {
+#tcfjjfottz .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -3554,7 +3527,7 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   border-right-color: #D3D3D3;
 }
 
-#bjyloatcfj .gt_sourcenote {
+#tcfjjfottz .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -3562,82 +3535,77 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
   padding-right: 5px;
 }
 
-#bjyloatcfj .gt_left {
+#tcfjjfottz .gt_left {
   text-align: left;
 }
 
-#bjyloatcfj .gt_center {
+#tcfjjfottz .gt_center {
   text-align: center;
 }
 
-#bjyloatcfj .gt_right {
+#tcfjjfottz .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#bjyloatcfj .gt_font_normal {
+#tcfjjfottz .gt_font_normal {
   font-weight: normal;
 }
 
-#bjyloatcfj .gt_font_bold {
+#tcfjjfottz .gt_font_bold {
   font-weight: bold;
 }
 
-#bjyloatcfj .gt_font_italic {
+#tcfjjfottz .gt_font_italic {
   font-style: italic;
 }
 
-#bjyloatcfj .gt_super {
+#tcfjjfottz .gt_super {
   font-size: 65%;
 }
 
-#bjyloatcfj .gt_footnote_marks {
+#tcfjjfottz .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#bjyloatcfj .gt_asterisk {
+#tcfjjfottz .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#bjyloatcfj .gt_indent_1 {
+#tcfjjfottz .gt_indent_1 {
   text-indent: 5px;
 }
 
-#bjyloatcfj .gt_indent_2 {
+#tcfjjfottz .gt_indent_2 {
   text-indent: 10px;
 }
 
-#bjyloatcfj .gt_indent_3 {
+#tcfjjfottz .gt_indent_3 {
   text-indent: 15px;
 }
 
-#bjyloatcfj .gt_indent_4 {
+#tcfjjfottz .gt_indent_4 {
   text-indent: 20px;
 }
 
-#bjyloatcfj .gt_indent_5 {
+#tcfjjfottz .gt_indent_5 {
   text-indent: 25px;
 }
 
-#bjyloatcfj .katex-display {
+#tcfjjfottz .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#bjyloatcfj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tcfjjfottz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
 
 <table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
 <thead>
 <tr class="gt_col_headings header">
 <th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
@@ -3647,12 +3615,12 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" headers="Koeffisient"><p>(Intercept)</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">(Intercept)</td>
 <td class="gt_row gt_right" headers="Estimat">−1.781</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.140</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" headers="Koeffisient"><p>Kjønn = mann</p></td>
+<td class="gt_row gt_left" headers="Koeffisient">Kjønn = mann</td>
 <td class="gt_row gt_right" headers="Estimat">1.165</td>
 <td class="gt_row gt_right" headers="Standardfeil">0.197</td>
 </tr>
@@ -3674,236 +3642,242 @@ Tabell&nbsp;3.6. Resultatet fra en logistisk regresjonsanalyse på effekten av k
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
-      }
-    }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
-      }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
-        }
-      }
-      return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
-    });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-    }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
-        }
-      }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
     };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-  const xrefs = window.document.querySelectorAll('a.quarto-xref');
-  const processXRef = (id, note) => {
-    // Strip column container classes
-    const stripColumnClz = (el) => {
-      el.classList.remove("page-full", "page-columns");
-      if (el.children) {
-        for (const child of el.children) {
-          stripColumnClz(child);
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
         }
       }
+      return false;
     }
-    stripColumnClz(note)
-    if (id === null || id.startsWith('sec-')) {
-      // Special case sections, only their first couple elements
-      const container = document.createElement("div");
-      if (note.children && note.children.length > 2) {
-        container.appendChild(note.children[0].cloneNode(true));
-        for (let i = 1; i < note.children.length; i++) {
-          const child = note.children[i];
-          if (child.tagName === "P" && child.innerText === "") {
-            continue;
-          } else {
-            container.appendChild(child.cloneNode(true));
-            break;
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
           }
         }
-        if (window.Quarto?.typesetMath) {
-          window.Quarto.typesetMath(container);
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
-        return container.innerHTML
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
       } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
         if (window.Quarto?.typesetMath) {
           window.Quarto.typesetMath(note);
         }
-        return note.innerHTML;
-      }
-    } else {
-      // Remove any anchor links if they are present
-      const anchorLink = note.querySelector('a.anchorjs-link');
-      if (anchorLink) {
-        anchorLink.remove();
-      }
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(note);
-      }
-      if (note.classList.contains("callout")) {
-        return note.outerHTML;
-      } else {
-        return note.innerHTML;
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
       }
     }
-  }
-  for (var i=0; i<xrefs.length; i++) {
-    const xref = xrefs[i];
-    tippyHover(xref, undefined, function(instance) {
-      instance.disable();
-      let url = xref.getAttribute('href');
-      let hash = undefined; 
-      if (url.startsWith('#')) {
-        hash = url;
-      } else {
-        try { hash = new URL(url).hash; } catch {}
-      }
-      if (hash) {
-        const id = hash.replace(/^#\/?/, "");
-        const note = window.document.getElementById(id);
-        if (note !== null) {
-          try {
-            const html = processXRef(id, note.cloneNode(true));
-            instance.setContent(html);
-          } finally {
-            instance.enable();
-            instance.show();
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
           }
         } else {
-          // See if we can fetch this
-          fetch(url.split('#')[0])
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
           .then(res => res.text())
           .then(html => {
             const parser = new DOMParser();
             const htmlDoc = parser.parseFromString(html, "text/html");
-            const note = htmlDoc.getElementById(id);
+            const note = htmlDoc.querySelector('main.content');
             if (note !== null) {
-              const html = processXRef(id, note);
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
               instance.setContent(html);
             } 
           }).finally(() => {
@@ -3911,185 +3885,161 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             instance.show();
           });
         }
-      } else {
-        // See if we can fetch a full url (with no hash to target)
-        // This is a special case and we should probably do some content thinning / targeting
-        fetch(url)
-        .then(res => res.text())
-        .then(html => {
-          const parser = new DOMParser();
-          const htmlDoc = parser.parseFromString(html, "text/html");
-          const note = htmlDoc.querySelector('main.content');
-          if (note !== null) {
-            // This should only happen for chapter cross references
-            // (since there is no id in the URL)
-            // remove the first header
-            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
-              note.children[0].remove();
-            }
-            const html = processXRef(null, note);
-            instance.setContent(html);
-          } 
-        }).finally(() => {
-          instance.enable();
-          instance.show();
-        });
-      }
-    }, function(instance) {
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
-      };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
-      }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
-      }
-    } else {
-      return undefined;
-    }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+      }, function(instance) {
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./02-a-intro.html" class="pagination-link" aria-label="Statistisk samvariasjon">
