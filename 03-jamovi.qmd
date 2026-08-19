@@ -5,25 +5,7 @@ editor_options:
 ---
 # Kausal analyse i Jamovi
 
-::: {.column-margin}
 
- &#x1F4F9; Forelesning: [Simulert kausal inferens 1 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=18a3b20a-d605-4c6a-b48c-b14d006fd9eb){target="_blank"}.
-
-:::
-
-
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Simulert kausal inferens 2 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4dddaa39-14e4-4cff-92ec-b14d007324e8){target="_blank"}.
-
-:::
-
-
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Simulert kausal inferens 3 ](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1bacb913-4506-4e9b-84c0-b14d007ea336){target="_blank"}.
-
-:::
 
 ```{r}
 #| echo: false

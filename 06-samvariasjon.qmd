@@ -1,0 +1,196 @@
+# Workshop: Statistisk samvariasjon
+
+## Introduksjon
+
+I denne workshopen som omhandler statistisk samvariasjon ønsker vi å fokusere på følgende læringsmål:
+
+-	Identifisere hvordan vi kan beskrive samvariasjon mellom to variabler 
+-	Bruk av teknikker for å beskrive data ved hjelp av mål på samvariasjon, figurer, tabeller og estimater
+-	Bruk av Jamovi for å beregne mål på samvariasjon
+
+Bruk Jamovi for å lage en analyseplan basert på problemstillinger. Beskriv hvorfor dere velger forskjellige analyser for å løse problemstillingene. Legg til analyser og tolke disse med egene ord.
+
+### Noen tips for bruk av Jamovi
+
+- Bruk og instilling av punktum og komma (`.` & `,`) på din datamaskin kan påvirke hvordan du bør importere data til Jamovi.
+- Lag figurer! Under `Modules` i Jamovi finner du moduler som kan brukes for å lage visualiseringer. For eksempel, `JJStatsPlot`, `flexplot` eller `scatr` kan brukes for å lage figurer. Disse figurene kan forandres i [Inkscape](https://inkscape.org/), Power Point eller lignende program som kan redigere `.SVG`-filer.
+- Bruk `Computed Variables` under `Data`-fanen for å gjøre beregninger basert på data.
+- Bruk `Analysis output` fanen for å lage notater kring analysene dere lager.
+
+
+## Problem 1
+
+Dere har fått i oppdrag å gjennomføre styrketester på fotballspillere i Sauhaugen IL. Treneren ønsker å vite 1RM i knebøy hos alle spillere for å sammenligne resultatene med de verste konkurrentene, Saudalen IK. 
+
+Vi ønsker å gjennomføre testene med så stor presisjon som mulig og velger derfor 85% av det forventede 1RM som startbelastning i alle testene. Problemet er at vi ikke vet hva vi kan forvente i 1RM! I et tidligere testbatteri testet man maksimal styrke i en hånddynamometer, er det mulig å estimere 1RM, og dermed 85% av 1RM ved hjelp av denne testen?
+
+
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse); library(readr)
+set.seed(10)
+
+# Calculate the handdynamo vs. 1RM in old data set
+pretest <- rnorm(25, 12.5, 2.5)
+rm  <- round((10 + pretest * 8.79 + rnorm(25, 0, 15)) / 5) * 5
+
+
+
+
+
+
+# Combine data and save as CSV
+df <- data.frame(hand = pretest, rm = rm)
+write_csv2(df, "data/hand_1rm.csv")
+
+
+# Create new Hand data. 
+pretest_new <- rnorm(25, 12.5, 4)
+
+write_csv2(data.frame(hand = pretest_new), "data/hand.csv")
+
+rm  <- round((10 + pretest_new * 8.79 + rnorm(25, 0, 20)) / 5) * 5
+
+write_csv2(data.frame(hand = pretest_new, rm = rm), "data/sauhaugen.csv")
+
+
+# Saudalen IK strength tests
+
+pretest <- rnorm(25, 15, 2.5)
+rm  <- round((10 + pretest * 8.79 + rnorm(25, 0, 15)) / 5) * 5
+
+write_csv2(data.frame(rm = rm), "data/saudalen.csv")
+
+
+```
+
+Dere finner dataene fra den tidligere testen [her](data/hand_1rm.csv). Bruk dataene og Jamovi for å beskrive samvariasjon mellom variablene `hand` (resultater fra hånddynamometer) og `rm` (resultater fra 1RM-tester). [Her](data/hand.csv) finner dere data fra forberedende tester blant spillerne Sauhaugen IL. Hvordan kan dere bruke denne dataen for å bestemme en startbelastning i 1RM-testen?
+
+De verste konkurrentene til Sauhaugen IL, Saudalen IK, gjennomfører også tester. Dere finner testresultatene fra 1RM tester i  Saudalen IK [her](data/saudalen.csv). Data fra testene i Sauhaugen IL finner dere [her](data/sauhaugen.csv). Hva er forskjellen mellom lagene i 1RM? Bruk en regresjonsligning for å beskrive den avhengige variabelen (1RM) og den uavhengige variabelen (lag, Saudalen IK/Sauhaugen IL).
+
+## Problem 2
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+anscombe_df <- anscombe
+
+write_csv2(anscombe_df, "data/quartet.csv")
+
+
+
+```
+
+
+
+I datasettet som dere finner [her](data/quartet.csv) finnes fire par med variabler (`x1` og `y1`, `x2` og `y2`, osv.). Beskriv dataene (hver variable for seg) og sammenhengen mellom variablene `x` og `y` for hvert av parene ved hjelp av en regresjonsligning, korrelasjonskoeffisientene (Spearman og Pearson).
+
+Lag så figurer som beskriver sammenhengen mellom de to variablene i hvert datasett. Forklar regresjonsligningen for hvert av parene og forskjellen mellom de to korrelasjonskoeffisientene.
+
+
+## Problem 3
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+
+
+set.seed(10)
+n <- 104
+
+male <- rep(c(0, 1), each = n/2)
+study_per_week <- round(abs(ifelse(male == 0, rnorm(n/2, 24, 10), rnorm(n/2, 18.5, 12))),1)
+attend_lectures <- rbinom(n, 1, 0.6)
+study_questions <- rbinom(n, 1, 0.4)
+
+
+beta0 <- -4.32    # Intercept
+beta1 <- 0.15     # Coefficient for x1
+beta2 <- 0.2      # Coefficient for x2
+beta3 <- 0.3      # Coefficient for x3
+beta4 <- 0.6
+
+
+
+linear_pred <- beta0 + beta1 * male + beta2 * study_per_week + beta3 * attend_lectures + beta4 * study_questions
+
+
+probs <- plogis(linear_pred)
+
+# pass exam #
+outcome <- rbinom(n, 1, probs)
+
+
+## Create data set ##
+studieresultater <- data.frame(eksamen = outcome, 
+           kjonn = male, 
+           timer_per_uke = study_per_week, 
+           forelesning = attend_lectures, 
+           arbeidskrav = study_questions)
+
+
+
+write_csv2(studieresultater, "data/studieresultater.csv")
+
+
+```
+
+
+I datasettet [studieresultater](data/studieresultater.csv) finner dere resultater fra en undersøkelse om deltakelse i studieaktiviteter og utfall på en eksamen i statistikk. Se @tbl-studieresultater for en oversikt over variabler i datasettet. Bruk datasettet for å beskrive sammenhengen mellom:
+
+1. `eksamen` og `timer_per_uke`
+2. `eksamen` og `kjonn`
+3. `timer_per_uke`og `kjonn`
+4. `eksamen` og `forelesning`
+5. `eksamen` og `arbeidskrav`
+
+Hvilken metode er best å bruke for å beskrive de forskjellige sammenhengene?
+
+Sett opp en modell for å beskrive effekten av kjønn og studietid per uke på eksamensresultater. Vi kan forstå denne modellen som "hva lærer vi om sammenhengen mellom studietid og eksamensresultater når vi allerede vet noe om kjønn". Diskuter hvordan dette er en god beskrivelse av modellen. 
+
+
+
+
+|Variabel |Enhet |Forklaring|
+|---|---|---|
+|`eksamen`|0/1|1, Bestått eksamen; 0, Ikke bestått eksamen|
+|`kjonn`|0/1|1, mann; 0, kvinne|
+|`timer_per_uke`|timer|Gjennomsnitt antall timer lagt på studier per uke|
+|`forelesning`|0/1|0, Deltatt på < 50% av forelesninger; 1, deltatt på > 50% av forelesninger|
+|`arbeidskrav`|0/1|1, gjennomført studiespørsmål/arbeidskrav; 0, ikke gjennomført studiespørsmål/arbeidskrav|
+
+: Datasettet `studieresultater` {#tbl-studieresultater}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

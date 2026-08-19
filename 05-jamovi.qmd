@@ -23,13 +23,6 @@ I dette kapittelet skal vi se på hvordan vi kan bruke jamovi i en reproduserbar
 Når vi importerer data til jamovi får vi mulighet til å sjekke datatyper og gjøre endringer i datasettet sånn at analysearbeidet vil bli enklere. Som et første steg kan vi gå igjennom variablene i det importerte datasettet og sjekke at de faktisk er av den typen vi forventer. Dette kan vi gjøre ved å klikke på variabelnavnet i fanen `Variables`. Legg merke til at vi også har mulighet å beskrive variablene her. Dette er en god praksis for å gjøre det enklere for andre og deg selv å forstå datasettet. I dette steg endrer vi også nivåer på kategoriske variabler.
 
 
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Beskrive data i jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=085d6c04-4d84-463a-8c7c-b16900b25b05){target="_blank"}.
-
-:::
-
-
 
 ![Sjekk at variabler er hva du forvnter og endre nivåer på kategorisk data.](img/05-jamovi/validate-variables.png){#fig-validate-variables}
 
@@ -192,25 +185,12 @@ Det finnes i tillegg et alternativ for ANCOVA i ANOVA-modulen i jamovi. I denne 
 ## Noter og dokumenter
 
 
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Annotere analyser i jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5b05fb10-278d-4d8d-8d6b-b16900b3a357){target="_blank"}.
-
-:::
-
-
-
 Vi har allerede snakket om viktigheten av å dokumentere dataene og analysene, dette er noe vi gjør i forkant og under analysearbeidet. I jamovi har vi mulighet å legge til notater i analysene. Dette kan være en god måte å innlede arbeidet med rapporten. I forkant av analysene kan vi skrive noe om hva vi ønsker å analysere. Under hvert analyse har vi mulighet å skrive om hva analysene faktisk sier og lage en første utkast på den tekst som skal inn i rapporten.
 
 Et eksempel på en annotert analyse ser vi i @fig-jamovi-annotated. Her har vi lagt til en forklaring av hva analysen sier og hva vi kan konkludere med. Vi legger til notater ved å klikke på felter i resultatfanen og skrive inn tekst. Teksten kan editeres og formateres ved hjelp av verktøy i *Edit*-fanen. 
 
 ![Notater i resultatfanen jamovi.](img/05-jamovi/jamovi-annotated.png){#fig-jamovi-annotated}
 
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Hvordan eksportere og editere figurer fra jamovi](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=51c294af-91ec-49e8-a31f-b16900b60362){target="_blank"}.
-
-:::
 
 
 

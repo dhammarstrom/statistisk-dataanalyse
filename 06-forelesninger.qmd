@@ -17,12 +17,72 @@
 
 *Litteratur:*
 
-@thrane_2020 (kap 1-2). Forslag på fordypning: @medbo2018 (kap 1-2), @navarro_learning_2018 (kap 1-6), 
+@thrane_2020 (kap. 1-2). Forslag på fordypning: @medbo2018 (kap 1-2), @navarro_learning_2018 (kap 1-6).
 
 
 
 
 ### Modul: Statistisk samvariasjon
+
+|Tema |Slides |Video|
+|---|---|---|
+|Intro til samvariasjon og regresjon||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=39488111-10f8-4b0a-8b8a-b1310079acab){target="_blank"}|
+|Tilpassning av en regresjonsmodell||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=f20b1473-0003-4aec-8ac5-b131007d7227){target="_blank"}|
+|Fra regresjon til korrelasjon||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=56396ccf-80b2-4217-a086-b131007f8df8){target="_blank"}|
+|Regresjonsmodellen og alternative statistiske metoder||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=99060c90-3a49-46a0-b24e-b1310081df16){target="_blank"}|
+|Kort forelesning om logistisk regresjon||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bd2549d5-0ddd-49f4-a1b0-b137007ec457){target="_blank"}|
+|Gjennomgang av quiz ||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=8233d8a5-10b0-4279-b4a0-b14600b0f2e3){target="_blank"}|
+
+
+*Litteratur:*
+
+@thrane_2020 (kap. 3). Forslag på fordypning: @medbo2018 (kap. 6-9), @navarro_learning_2018 (kap. 10-15).
+
+
+### Modul: Kausalsammenheng
+
+
+|Tema |Slides |Video|
+|---|---|---|
+|Intro til kausal inferens||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=26f2e4ef-c766-450f-af3a-b14800bf9fe0){target="_blank"}|
+|Spuriøse sammenhenger||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=84330ac4-df0a-480d-bd46-b14800c2703d){target="_blank"}|
+|Kausale modeller||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e17be367-ed01-45a9-97a1-b14800c3de1b){target="_blank"}|
+|Simulert kausal inferens del 1||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=18a3b20a-d605-4c6a-b48c-b14d006fd9eb){target="_blank"}|
+|Simulert kausal inferens del 2||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4dddaa39-14e4-4cff-92ec-b14d007324e8){target="_blank"}|
+|Simulert kausal inferens del 3||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1bacb913-4506-4e9b-84c0-b14d007ea336){target="_blank"}|
+|Gjennomgang av quiz||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=3661538a-7c9f-4b28-8c6a-b15400840780){target="_blank"}|
+
+
+
+
+@thrane_2020 (kap. 4). Forslag på fordypning: @roislien_trekantdrama_2021, @stensrud2015.
+
+
+### Modul: Statistisk inferens
+
+|Tema |Slides |Video|
+|---|---|---|
+|Intro til statistisk inferens||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5a86dc40-64fd-43c5-bf9f-b155008ad7f6){target="_blank"}|
+|P-verdier og hypotesetesting||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cfefd71c-06eb-4756-a98b-b1560079ad8c){target="_blank"}|
+|Statistisk styrke||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bbb99af4-6a2e-4db3-81f4-b1560081f65f){target="_blank"}|
+|Mer om p-verdier||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ce4f66d2-08e7-4b16-a16d-b1560085ef63){target="_blank"}|
+|Gjennomgang av quiz||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ff28fecd-17a1-4cba-a8da-b161007b9661){target="_blank"}|
+
+
+@thrane_2020 (kap. 5). Forslag på fordypning:  @medbo2018 (kap. 6-9), @navarro_learning_2018 (kap. 10-15).
+
+
+### Modul: Presentere og lese statistikk
+
+|Tema |Slides |Video|
+|---|---|---|
+|Beskrive data i jamovi||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=085d6c04-4d84-463a-8c7c-b16900b25b05){target="_blank"}|
+|Annotere analyser i jamovi||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5b05fb10-278d-4d8d-8d6b-b16900b3a357){target="_blank"}|
+|Hvordan eksportere og editere figurer fra jamovi||[Video](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=51c294af-91ec-49e8-a31f-b16900b60362){target="_blank"}|
+
+
+@thrane_2020 (kap. 6). Forslag på fordypning:  @medbo2018 (kap. 12, sid. 191-).
+
 
 
 

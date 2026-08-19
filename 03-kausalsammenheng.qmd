@@ -20,22 +20,11 @@ I mange sammenhenger har vi ikke mulighet å forandre variabler ved å lage inte
 
 Over har vi beskrevet to typer av studiedesign, en eksperimentell studie og en observasjonsstudie. I en eksperimentell studie gjennomfører vi en eller flere intervensjoner som forandrer variabler og vi kan derved estimere effekten av disse variablene på avhengige variabler. I en observasjonsstudie har vi ikke denne muligheten, her estimerer sammenhenger mellom variabler ved hjelp og trekker slutninger om kausalitet basert på antagelser om hvordan variabler henger sammen. I begge typer av studier kan vi si noe om kausale sammenhenger.
 
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Intro til kausal inferens](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=26f2e4ef-c766-450f-af3a-b14800bf9fe0){target="_blank"}.
-
-:::
-
 
 ## Eksperiment og kvasieksperiment 
 
 Et eksperiment kan brukes til å sammenligne intervensjoner. Vi sammenligner intervensjonene i en definert gruppe. Denne gruppen, eller populasjonen, kan som et eksempel være idrettsutøvere, og intervensjonene kan være to forskjellige treningsprogrammer hvor et program er et nytt program (N) og det andre er hva man vanligvis bruker, en slags kontrollprogram (K). Vi ønsker med vårt eksperiment å si noe om effekten av N på en bestemt variabel i gruppen idrettsutøvere. Vi rekrutterer en gruppe idrettsutøvere og deler inn dem i to undergrupper, N og K. 
 
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Spuriøse sammenhenger](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=84330ac4-df0a-480d-bd46-b14800c2703d){target="_blank"}.
-
-:::
 
 
 For å gjøre sammenligningen bestemmer vi et utfall (avhengig variabel), i eksemplet passer det fint å måle løpehastighet i en 3000-m test. Vi lar utøverne løpe testen i forkant av studien, ved tid 1 ($t_1$), og etter studien, ved tid 2 ($t_2$). Vi kan nå beregne en forandringskår ($\delta$). Hvor mye forandret seg hvert enkelt individ fra $t_1$ til $t_2$? 
@@ -123,12 +112,6 @@ plot_grid(experiment, quasi, labels = c("A", "B"))
 Det randomiserte forsøket (A i figuren over) inneholder ikke noen mulige variabler som kan påvirke gruppeinndeling annet enn den tilfeldige tildelingen av gruppetilhørighet (randomisering, *R*). I det kvasieksperimentelle designet (B i figuren over) påvirker den uobserverte variabelen *K* gruppetilhørighet, da deltakere får mulighet å velge gruppe selve. Variabelen *K* påvirker også forandring i prestasjon (*P*) ved at deltakere velger gruppe basert på noen karakteristikk, som for eksempel hvor trent de er.
 
 ## Grafiske modeller for kausal analyse
-
-::: {.column-margin}
-
- &#x1F4F9; Forelesning: [Kausale modeller](https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e17be367-ed01-45a9-97a1-b14800c3de1b){target="_blank"}.
-
-:::
 
 I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet *Directed Acyclic Graph* (*DAG*, "rettet asyklisk graf" på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en "effekt" mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt. 
 
@@ -796,8 +779,7 @@ df %>%
   geom_smooth(method = "lm", se = FALSE, color = "steelblue", 
               alpha = 0.4) +
   theme_classic() + 
-  labs(title = "Sammenhengen mellom VO<sub>2maks</sub> og laktatterskel i en gruppe av elitesyklister",
-       x = "VO<sub>2maks</sub> (ml<sup>-1</sup> kg<sup>-1</sup> min<sup>-1</sup>)",
+  labs(x = "VO<sub>2maks</sub> (ml<sup>-1</sup> kg<sup>-1</sup> min<sup>-1</sup>)",
        y = "Laktatterskel (% av VO<sub>2maks</sub>)") + 
   theme(axis.title.y = element_markdown(), 
         axis.title.x = element_markdown(), 
