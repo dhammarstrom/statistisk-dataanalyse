@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Deskriptiv dataanalyse i Jamovi – Statistisk dataanalyse med Jamovi</title>
+<title>15&nbsp; Workshop: Kausalitet – Statistisk dataanalyse med Jamovi</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,26 +23,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,8 +33,8 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./02-a-intro.html" rel="next">
-<link href="./01-deskriptiv-dataanalyse.html" rel="prev">
+<link href="./06-sammenligne-gjennomsnitt.html" rel="next">
+<link href="./06-samvariasjon.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -124,7 +105,7 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating slimcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -133,7 +114,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li><li class="breadcrumb-item"><a href="./01-jamovi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-kausalsammenheng.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -181,7 +162,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01-jamovi.html" class="sidebar-item-text sidebar-link active">
+  <a href="./01-jamovi.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></span></a>
   </div>
 </li>
@@ -314,7 +295,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
   </div>
 </li>
@@ -348,18 +329,18 @@ window.Quarto = {
     <h2 id="toc-title">Innhold</h2>
    
   <ul>
-  <li><a href="#bli-kjent-med-jamovi" id="toc-bli-kjent-med-jamovi" class="nav-link active" data-scroll-target="#bli-kjent-med-jamovi"><span class="header-section-number">2.1</span> Bli kjent med Jamovi</a></li>
-  <li><a href="#datavariabler" id="toc-datavariabler" class="nav-link" data-scroll-target="#datavariabler"><span class="header-section-number">2.2</span> Datavariabler</a></li>
-  <li><a href="#eksplorativ-eller-beskrivende-analyse" id="toc-eksplorativ-eller-beskrivende-analyse" class="nav-link" data-scroll-target="#eksplorativ-eller-beskrivende-analyse"><span class="header-section-number">2.3</span> Eksplorativ eller beskrivende analyse</a></li>
+  <li><a href="#på-kjærestetur" id="toc-på-kjærestetur" class="nav-link active" data-scroll-target="#på-kjærestetur"><span class="header-section-number">15.1</span> På kjærestetur</a></li>
+  <li><a href="#fysisk-aktivitet-og-dødelighet" id="toc-fysisk-aktivitet-og-dødelighet" class="nav-link" data-scroll-target="#fysisk-aktivitet-og-dødelighet"><span class="header-section-number">15.2</span> Fysisk aktivitet og dødelighet</a></li>
+  <li><a href="#statistisk-kontroll" id="toc-statistisk-kontroll" class="nav-link" data-scroll-target="#statistisk-kontroll"><span class="header-section-number">15.3</span> Statistisk kontroll</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content page-columns page-full" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li><li class="breadcrumb-item"><a href="./01-jamovi.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-kausalsammenheng.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Deskriptiv dataanalyse i Jamovi</span></h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></h1>
 </div>
 
 
@@ -376,95 +357,28 @@ window.Quarto = {
 </header>
 
 
-<section id="bli-kjent-med-jamovi" class="level2 page-columns page-full" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="bli-kjent-med-jamovi"><span class="header-section-number">2.1</span> Bli kjent med Jamovi</h2>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p><a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=84fcb34c-01a1-4c7b-b1c6-b12200e5e9f1">Her</a> finner du en video hvor Jamovi blir presentert.</p>
-</div><div id="ref-thrane_2020" class="csl-entry" role="listitem">
-Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
-</div></div><p>I eksemplene under vil vi bruke et data sett fra <span class="citation" data-cites="thrane_2020">Thrane (<a href="references.html#ref-thrane_2020" role="doc-biblioref">2020</a>)</span> som du finner <a href="data/fotball_1_2_3.csv" target="_blank">her</a>. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. <code>deskriptiv-dataanalyse</code> og lagre filen i en undermappe som heter <code>data</code>. I denne mappestrukturen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.</p>
-<p>Når du har installert Jamovi og starter det for første gang vil du se følgende (<a href="#fig-firstopen" class="quarto-xref">Figur&nbsp;<span>2.1</span></a>):</p>
-<p><span style="color:blue;"><strong>Spreadsheet</strong></span>: Her kan du editere data, eller se et datasett som du har importert.</p>
-<p><span style="color:pink;"><strong>Analysis output</strong></span>: Her vil resultater fra statistiske analyser vises. Det er også mulig å gjøre notater her koblet til hver analyse.</p>
-<p><span style="color:darkgreen;"><strong>Modules</strong></span>: Her finnes muligheter å installere flere analysemoduler.</p>
-<p><span style="color:lightgreen;"><strong>Menu</strong></span>: Menyen inneholder snarveier til filhåndtering, variabler, data, analyser og editering av analysefanen (Analysis output).</p>
-<p><span style="color:orange;"><strong>Analysis ribbon</strong></span>: De moduler for statistiske analyser som du allerede har installert finner du her.</p>
-<p><span style="color:red;"><strong>Settings</strong></span>: Under innstillinger kan du forandre for eksempel fargetema på figurer og antall desimaler som skal vises i outputs.</p>
-<div id="fig-firstopen" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-firstopen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/01-jamovi/first-open.png" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-firstopen-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;2.1. Åpne Jamovi for første gang
-</figcaption>
-</figure>
-</div>
-<p>For å importere data i Jamovi som er lagret i en <code>csv</code>-fil bruker vi <code>Open</code> i hovedmenyen. Last ned og lagre datasettet som beskrevet over og åpne det direkte i Jamovi. Bruk <code>Browse</code> for å finne frem til filen du ønsker å åpne. Hvis du allerede har brukt filen tidligere i Jamovi finner du den under recent (<a href="#fig-openfile" class="quarto-xref">Figur&nbsp;<span>2.2</span></a>). Du vil nå se datasettet representert i Jamovi i form av kolonner og rader. Legg merke til at data er strukturert som variabler i kolonner og observasjoner i rader. Navn på variabler inneholder ikke noen spesialtegn eller mellomrom, noe som kan være vanskelig for Jamovi å bearbeide. Datasettet som Thrane gir oss, er velstrukturert for videre behandling i et statistikkprogram!</p>
-<div id="fig-openfile" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-openfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/01-jamovi/open-file.gif" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-openfile-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;2.2. Åpne et datasett i Jamovi
-</figcaption>
-</figure>
-</div>
-<p>Datasettet kan beskrives ytterligere i Jamovi under fanen <code>Variables</code>. Hvert variable er her listet med navn og du kan legge til en beskrivelse (<code>Description</code>) av hvert variabel. Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen.</p>
+<p>I tre oppgaver skal vi diskutere kausalitet, eller kausalsammenhenger. Workshop bygger videre på temaet kausalsammenheng og dere blir bedt om å tegne opp DAGs (directed acyclic graphs) for å beskrive sammenhenger. Bruk enkle midler for å lage disse, penn og papir, eller kanskje Power-point. Det finnes flere gode argumenter som kan være med å forklare de forskjellige problemene under, de kan være en god ide å bruke tid på å identifisere flere forskjellige løsninger før man velger den man tror mest på!</p>
+<section id="på-kjærestetur" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="på-kjærestetur"><span class="header-section-number">15.1</span> På kjærestetur</h2>
+<p>Du befinner deg i Roma for en weekend med kjæresten. Dere ønsker å spise godt og oppleve skikkelig italiensk mat med god service. På den første kvelden finner dere en tilsynelatende flott restaurant i de mest trafikkerte strøkene i bydelen Trastevere. Det er en masse mennesker som også ønsker å spise der og etter litt venting får dere et bord. Etter enda lenger venting får dere maten, den er hemsk. I tillegg er kelneren sint og paret på nabobordet krangler høyt på polsk hele middagen. Den andre kvelden har dere tatt feil buss og ender opp et strøk som bærer preg av sosial urettvise, uten salg av suvenirer eller gelato. Dere er sultne. I panikk ser dere en skilt som savner noen bokstaver, «Restu an », når dere kommer nærmere oppdager dere at en trapp leder ned til lokalet som ligger i kjelleretasjen. Menyen er på italiensk og ser ikke ut til å ha blitt oppdatert den siste tiden. Til maten er det bare mulig å bestille husets vin. Men, maten og opplevelsen viser seg være fantastisk. Etter besøket takker dere kokken og kelneren for kvelden og finner på noe magisk vis tilbake til hotellet. Ingen av dere kan beskrive veien tilbake til den samme plassen dagen etter. Var det bare en drøm?</p>
+<p>Forklar dette fenomenet, hvorfor fant dere ikke noen gode restauranter på de mer kjente plassene? Bruk en DAG (directed acyclic graph) for å beskrive hvordan restauranter overlever i byer.</p>
 </section>
-<section id="datavariabler" class="level2 page-columns page-full" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="datavariabler"><span class="header-section-number">2.2</span> Datavariabler</h2>
-<p>Når vi importerer et datasett prøver Jamovi å identifisere variabeltyper. I Jamovi kodes variabler som <code>Integer</code> (heltall), <code>Decimal</code> (desimaltall) eller <code>Text</code> (tekst, eller kombinasjon av tekst og tall).</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Les mer i <a href="https://www.jamovi.org/user-manual.html#getting-started">Jamovi User Guide</a></p>
-</div></div><p>Datavariablene kodes videre som <code>Nominal</code>, <code>Ordinal</code>, <code>Continuous</code> eller <code>ID</code>. En variable på nominalnivå er en variabel som kan være en av flere mulige kategorier. Kategoriene er ikke rangerte, som for eksempel kjønn hvor en observasjon kan være mann eller kvinne. En variabel på målenivå ordinal er også kategorisk, men verdiene er rangerte. For eksempel er kategorien “høy temperatur” større enn “lav temperatur”. En variabel som beskrives som <code>Continuous</code> i Jamovi kan beskrives som enten intervallnivå eller forholdstallsnivå. Jamovi ønsker å vite at en variabel finnes på en skala som er kontinuerlig men skiller ikke på om variablene har et bestemt forhold mellom verdiene (forholdstallsnivå) eller hvis de bare kan beskrives med faste avstander (intervallnivå). Variabeltypen <code>ID</code> er lagd for å indikere grupperinger i dataene. Vi er vanligvis intressert i å analysere denne variabelen, men ønsker å gruppere datasett og analyser basert på den.</p>
-<p>Variabler som er kodet feil kan endres til den typen som du finner er mer korrekte. Dette gjøres under fanen <code>Data</code> og <code>Setup</code> i menyen. Når du importerer filen <code>fotball_1_2_3.csv</code> er alder kodet som <code>Nominal</code>. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se <a href="#fig-changevariable" class="quarto-xref">Figur&nbsp;<span>2.3</span></a>).</p>
-<div id="fig-changevariable" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-changevariable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/01-jamovi/change-variable.gif" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-changevariable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;2.3. Forandre variabeltype fra nominal til kontinuerlig
-</figcaption>
-</figure>
-</div>
-<p>I tillegg til “rådata” kan et Jamovi-spreadsheet inneholde <code>computed</code>, <code>transformed</code> og <code>recoded</code> variabler. En beregnet (<code>computed</code>) variabel beregnes fra andre variabler og legges til datasettet ved bruk av <code>Add</code> funksjonen under <code>Variables</code> eller <code>Data</code> fanen. For eksempel kan vi være interesserte i å beregne spilletid per kamp. Denne ny variabelen kan beregnes som <span class="math inline">\(\frac{\text{Spilte min}}{\text{Antall kamper}}\)</span>, noe som i kode kan oversettes til <code>=spilte_min/kamper_tot</code> hvor <code>spilte_min</code> og <code>kamper_tot</code> er variabler i datasettet. Formelen som beregner spilletid per kamp settes inn ved å markere den nye variabelen og gå inn under <code>Data</code> og <code>Setup</code> hvor vi kan bruke formelfeltet. Her kan vi og velge fra en rekke funksjoner (under <span class="math inline">\(f_x\)</span>) som kan brukes for å lage beregnede variabler.</p>
-<p>Transformerte og re-kodet variabler ligner på beregnede variabler da de bruker “rådata” fra spreadsheet for å lage en ny variabel. For detaljer om transformerte og re-kodet variabler se her<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a>.</p>
-<div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Les om transformerte og re-kodet variabler i <a href="https://blog.jamovi.org/2018/10/23/transforming-variables.html">denne blog-posten</a>.</p></div></div></section>
-<section id="eksplorativ-eller-beskrivende-analyse" class="level2 page-columns page-full" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="eksplorativ-eller-beskrivende-analyse"><span class="header-section-number">2.3</span> Eksplorativ eller beskrivende analyse</h2>
-<p>Nå vi modulfanen velger <code>Exploration</code> åpnes en meny hvor vi kan velge <code>Descriptives</code>, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under <code>Variables</code>. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under <code>Statistics</code> velger vi hvilke statistikker vi ønsker å beregne og under <code>Plots</code> finnes muligheter å velge fra en rekke forskjellige typer av figurer (<a href="#fig-deskriptiv" class="quarto-xref">Figur&nbsp;<span>2.4</span></a>).</p>
-<div id="fig-deskriptiv" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-deskriptiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="img/01-jamovi/descriptives.gif" class="img-fluid figure-img">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-deskriptiv-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figur&nbsp;2.4. Modulen for beskrivende statistikk
-</figcaption>
-</figure>
-</div>
-<p>Under <code>Statistics</code> finner vi flere valgmuligheter for å beskrive data. Sentraltendens (det typiske i dataene) kan beskrives ved hjelp av gjennomsnitt <code>Mean</code>, median (<code>Median</code>) og modus (<code>Mode</code>). I tillegg finner vi en funksjon for å beregne summen (<code>Sum</code>) for en variabel. Variasjonen (<code>Dispersion</code>) i dataene kan beskrives ved hjelp av standardavvik (<code>Std. deviation</code>), varians (<code>Variace</code>), variasjonsvidde (<code>Range</code>), minimum og maksimum (<code>Minimum</code>, <code>Maximum</code>) samt interkvartilavstand (<code>IQR</code>).</p>
-<p>Beregning av variasjon som også tar hensyn til utvalgsstørrelsen finner vi under <code>Mean Dispersion</code>. <code>Std. error of the mean</code> eller standardfeilen, beregnes fra standardavvik og antall observasjoner. Når vi har flere observasjoner i utvalget er vi sikrere på estimatet av gjennomsnittet i populasjonen, noe som gjør at standardfeilen blir mindre. Denne delen grenser til det å trekke slutninger om en populasjon fra et utvalg, noe vi vil fortsette med i modul 4.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>Normalitet, skweness og kurtosis er alle mål som beskriver en fordeling karakteristikk i forhold til antagelser om normalfordelte data. Noen ønsker å si noe om en variabel er normalfordelt eller ikke i forkant av analyse, det finnes noe støtte for det når vi ønsker å beskrive data ved hjelp av en sentraltendens og variasjon da en variabel som er fordelt med stor skewness vil ha et gjennomsnitt som skiller seg fra medianen. I praksis har det dog lite å si for hvordan vi analyserer en variabel. Les mer om Normality, Kurtosis og Skewness <a href="https://davidfoxcroft.github.io/lsj-book/04-Descriptive-statistics.html#skew-and-kurtosis">her</a> i <span class="citation" data-cites="navarro_learning_2018">(<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">Navarro and Foxcroft 2018</a>)</span>.</p>
-<div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
-Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
-</div></div></div><p>Under <code>Distribution</code> finner vi mål som beskriver fordelingen av en kontinuerlig variabel. Ved å sammenligne variablene årsinntekt og alder i datasettet <code>fotball_1_2_3.csv</code> ved hjelp av <code>Skewness</code> og <code>Kurtosis</code> samt <code>Density</code> under <code>Plots</code> kan vi få et bilde av hva disse betyr. <code>Skewness</code> indikerer hvorvidt “halen” på en fordeling tenderer å strekke seg i noen retning. <code>Kurtosis</code> indikerer hvor “spiss” fordelingen er.</p>
-<p>En fordeling, slik den du ser ved å velge <code>Density</code> eller <code>Histogram</code> under <code>Plots</code>, kan beskrives som normal hvis den er symmetrisk og ligner på en klokke (engelsk <em>bell-shaped</em>). Under <code>Normality</code> finnes et test for normalitet i fordelingen. Hvis <code>Shapiro-Wilk p</code> er lavt indikerer det at variabelen bryter med antagelse om at den er normalfordelt. Dette sammenfaller med at punktene vi ser i en <code>Q-Q Plots</code> ikke ligger på linjen.</p>
-<p>Til sist kan vi bruke funksjonen for <code>Outliers</code> for å få en tabell over de mest ekstreme observasjonene per variabel.</p>
-<p>Vi har allerede beskrevet noen av de figurer som er mulige å produsere under <code>Descriptives</code>-modulen. I tillegg til Histogram, density og Q-Q-plots kan vi lage Box-plots og Bar Plots. Hvis vi sammenligner en kontinuerlig variabel med en kategorisk (nominal eller ordinal) ser vi at en <code>Bar Plot</code> gir forskjellige enheter på. Under <code>Box Plots</code> finnes det flere muligheter for å vise data, inkludert individuelle data punkter.</p>
-<p>De verktøy vi har snakket om så langt gir oss gode muligheter til å raskt få en overblikk over den data vi har. Figurer hjelper ofte mye mer enn numeriske sammenstillinger for å oppdage rare observasjoner, noe som kan indikere feil i dataregistrering eller koding.</p>
-
+<section id="fysisk-aktivitet-og-dødelighet" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="fysisk-aktivitet-og-dødelighet"><span class="header-section-number">15.2</span> Fysisk aktivitet og dødelighet</h2>
+<p>I observasjonsstudier er det ikke uvanlig å se en assosiasjon mellom fysisk aktivitet og dødelighet. De som er mer aktive (flere timer) tenderer å leve lengere (livslengde). Betyr dette at fysisk aktivitet er noe bra? Hvilke konfunderende faktorer kan muligens bidra til at dette forholdet er sterkere enn hva det faktisk er? Bruk en DAG (directed acyclic graph) for å beskrive hvordan dere tenker.</p>
+<p>Når vi ønsker å virkelig forstå hvordan fysisk aktivitet påvirker livslengde kanskje en eksperimentell studie er veien å gå. I en slik studie randomiseres deltakere til å få anbefalinger om økt fysisk aktivitet og sammenlignes med en gruppe som får anbefalinger om å holde den nivå på fysisk aktivitet som rekommanderes i nasjonale retningslinjer. Nå man analyserer resultatene fra en slik studie viser det seg ikke sjelden at begge grupper viser til lignende variasjon i livslengde. Betyr dette at økt fysisk aktivitet ikke er godt nok. Diskuter svakhetene i en slik studie, bruk gjerne en DAG for å vise til hvilke variabler som dere tror spiller inn på resultatene.</p>
+</section>
+<section id="statistisk-kontroll" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="statistisk-kontroll"><span class="header-section-number">15.3</span> Statistisk kontroll</h2>
+<p>En stor gruppe studenter studerer for eksamen i Statistikk. Dere har fått i oppgave å analysere hvor godt innsats (timer studier per uke, <code>studietid</code>) samsvarer med resultater på eksamen (variabel test). Studentene er inndelt i to grupper. De to gruppene har deltatt på to forskjellige studieopplegg. Det ene opplegget inneholdt et nytt revolusjonerende konsept for læring og det sammenlignedes med tradisjonelle studier (gruppe: 1, revolusjonerende opplegg; gruppe: 0, tradisjonelle studier). Dere finner dataene <a href="data/studieeksperiment.csv">her</a>.</p>
+<p>Hva er sammenhengen mellom studietid og resultat på eksamen når resultatene analyseres ved hjelp av modellen</p>
+<p><span class="math display">\[\text{Test} = \beta_0 + \beta_1 \times \text{studietid}\]</span></p>
+<p>Hva er sammenhengen mellom variablene når vi «kontrollerer» for studieopplegget? Den statistiske modellen blir:</p>
+<p><span class="math display">\[\text{Test} = \beta_0 + \beta_1 \times \text{studietid} + \beta_2 \times \text{gruppe}\]</span></p>
+<p>Diskuter hvordan vi best analyserer resultatene fra eksperimentet. Hvordan bør vi argumentere kring spørsmålet om å inkludere gruppe i analysen? Bruk Jamovi for å analysere dataene og bruk en DAG for å beskrive analysen.</p>
 
 
 </section>
-
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -869,13 +783,13 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./01-deskriptiv-dataanalyse.html" class="pagination-link" aria-label="Datahåndtering og Data i regnearkprogrammer">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datahåndtering og Data i regnearkprogrammer</span></span>
+      <a href="./06-samvariasjon.html" class="pagination-link" aria-label="Workshop: Statistisk samvariasjon">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./02-a-intro.html" class="pagination-link" aria-label="Statistisk samvariasjon">
-        <span class="nav-page-text">Statistisk samvariasjon</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-sammenligne-gjennomsnitt.html" class="pagination-link" aria-label="Workshop: Sammenligne gjennomsnitt">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

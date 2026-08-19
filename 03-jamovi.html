@@ -2,13 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.17">
+<meta name="generator" content="quarto-1.9.27">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>6&nbsp; Kausal analyse i Jamovi – Statistisk dataanalyse med Jamovi</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -24,7 +27,6 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
-  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -58,10 +60,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -91,7 +93,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -104,7 +106,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -301,19 +303,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -364,17 +378,8 @@ window.Quarto = {
 
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=18a3b20a-d605-4c6a-b48c-b14d006fd9eb" target="_blank">Simulert kausal inferens 1</a>.</p>
-</div><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=4dddaa39-14e4-4cff-92ec-b14d007324e8" target="_blank">Simulert kausal inferens 2</a>.</p>
-</div><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=1bacb913-4506-4e9b-84c0-b14d007ea336" target="_blank">Simulert kausal inferens 3</a>.</p>
-</div><div class="">
 <p>Du finner datasettet fra simuleringene <a href="data/simdata.csv">her</a>. Last inn datasettet i Jamovi og utforsk sammenhengen mellom variablene.</p>
-</div></div>
-
-
-<section id="gjennomsnittlig-behandlingseffekt" class="level2 page-columns page-full" data-number="6.1">
+</div></div><section id="gjennomsnittlig-behandlingseffekt" class="level2 page-columns page-full" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="gjennomsnittlig-behandlingseffekt"><span class="header-section-number">6.1</span> Gjennomsnittlig behandlingseffekt</h2>
 <p>I et eksperiment ønsker vi å undersøke effekten av en behandling (B) på en avhengig variabel (Y). Vi har mulighet til å rekruttere 100 deltakere til eksperimentet, og vi tilordner deltakerne tilfeldig til en av to grupper: en behandlingsgruppe (B=1) og en kontrollgruppe (B=0). Vi måler utfallet Y for hver deltaker i forkant (<span class="math inline">\(Y_1\)</span>) og etterkant (<span class="math inline">\(Y_2\)</span>) av intervensjonen. Med forsøket ønsker vi å bestemme den gjennomsnittlige behandlingseffekten (i engelsk litteratur også kalt ATE, average treatment effect). Vi kan definere behandlingseffekten som forskjellen i gjennomsnittlig utfall mellom behandling- og kontrollgruppen.</p>
 <p>Vi kan formulerer effekten som vi ønsker å estimere som</p>
@@ -397,12 +402,12 @@ Figur&nbsp;6.1. Behandling (B) påvirker potensiellt utfallet (Y).
 </div>
 <p>Neste steg er å gjøre estimeringen. Vi kan gjøre dette ved å lage en variabel som beskriver forandring <code>y_diff = Y1 - Y0</code> og så lage en gruppesammenligning på den nye variabelen.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Oppgave: Beregne gjennomsnittlig behandlingseffekt?
+<span class="screen-reader-only">Caution</span>Oppgave: Beregne gjennomsnittlig behandlingseffekt?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -410,12 +415,12 @@ Oppgave: Beregne gjennomsnittlig behandlingseffekt?
 <div class="callout-body-container callout-body">
 <p>Du finner datasettet <a href="data/eksperiment1.csv">her</a>. Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av behandling (B)</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Svar: Beregne gjennomsnittlig behandlingseffekt?
+<span class="screen-reader-only">Tip</span>Svar: Beregne gjennomsnittlig behandlingseffekt?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -435,12 +440,12 @@ Svar: Beregne gjennomsnittlig behandlingseffekt?
 <p>I et eksperiment undersøker vi effekten av varmetrening på sykkelprestasjon. Spesifikt er vi er interesserte i å finne ut om varmetrening påvirker prestasjon på en sykkeltest hvor watt er utfallsvariabelen. Vi har rekruttert 26 deltakere til eksperimentet og tilordnet dem tilfeldig til en varmetreningsgruppe (G=1) og en kontrollgruppe (G=0). Vi har målt prestasjonen på sykkeltesten før og etter intervensjonen. Vi har også målt hemoglobinmasse (hb) og VO<sub>2maks</sub> til deltakerne før og etter intervensjonen.</p>
 <p>Datasettet <a href=""><code>sykkeltest.csv</code></a> inneholder variablene <code>group</code> (0=kontroll, 1=varmetrening), <code>time</code> (pre, post), <code>hb</code> (hemoglobinmasse), <code>VO2max</code> (maksimalt oksygenopptak) og <code>Watt</code> (sykkelprestasjon).</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Oppgave: Beregne gjennomsnittlig behandlingseffekt?
+<span class="screen-reader-only">Caution</span>Oppgave: Beregne gjennomsnittlig behandlingseffekt?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -448,12 +453,12 @@ Oppgave: Beregne gjennomsnittlig behandlingseffekt?
 <div class="callout-body-container callout-body">
 <p>Du finner datasettet <a href="data/sykkeltest.csv">her</a>. Last inn datasettet i Jamovi og beregn den gjennomsnittlige behandlingseffekten. Bruk en regresjonsmodell for å estimere effekten av varmetrening på sykkelprestasjon (Watt). Da vi har målt VO<sub>2maks</sub> og hemoglobinmasse før og etter intervensjonen kan vi inkludere disse variablene som kontrollvariabler i modellen. Men hva skjer med estimatet for varmetrening når vi inkluderer disse variablene i modellen?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Svar: Beregne gjennomsnittlig behandlingseffekt?
+<span class="screen-reader-only">Tip</span>Svar: Beregne gjennomsnittlig behandlingseffekt?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -508,12 +513,12 @@ Figur&nbsp;6.3. Et lineært og et kurvlineært forhold mellom Alder og Inntekt.
 </div>
 </div>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Oppgave: Lag en polynomisk regresjonsmodell?
+<span class="screen-reader-only">Caution</span>Oppgave: Lag en polynomisk regresjonsmodell?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -590,13 +595,14 @@ Oppgave: Lag en polynomisk regresjonsmodell?
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-        const codeEl = trigger.previousElementSibling.cloneNode(true);
-        for (const childEl of codeEl.children) {
-          if (isCodeAnnotation(childEl)) {
-            childEl.remove();
-          }
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
         }
-        return codeEl.innerText;
+      }
+      return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
