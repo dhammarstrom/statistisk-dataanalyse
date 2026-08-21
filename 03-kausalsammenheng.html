@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>5&nbsp; Fra sammenheng til kausalitet – Statistisk dataanalyse med Jamovi</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,10 +58,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +91,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -106,7 +104,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -303,31 +301,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -387,10 +373,16 @@ window.Quarto = {
 <p>Samtidig som vi vet at noen sammenhenger er spuriøse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> vet vi også at noen ting påvirker andre ting, det finnes kausalitet<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I et forsøk undersøker vi hvordan en ny medisin påvirker blodtrykket. En gruppe forsøkdeltakere blir tilfeldig inndelt i to grupper. Deltakere i den ene gruppen får den nye medisinen og deltakere i den andre gruppen får placebo. Inndeling av deltakere i gruppene er skjult for deltakere og forskere. I etterkant av intervensjonen måler vi blodtrykk og kan konstatere at deltakere som fått medisinen har lavere blodtrykk sammenlignet med placebo-gruppen. Forsøket inneholder noen komponenter som gjør at vi kan si at det finnes en kausal sammenheng mellom det å ta medisinen og det å få lavere blodtrykk. Hvis vi hadde muligheten å forandre på en variabel for deretter å måle utfallet i en annen variabel, under kontrollerte forhold så kan vi si at det finnes (eller ikke) en kausal sammenheng. Det å forandre en variabel (f.eks. konsentrasjonen av et medikament i blodet) kan kalles for å gjøre en intervensjon.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Spuriøs sammenheng er en sammenheng mellom to variabler som ikke har en kausal sammenheng.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Kausalitet er en sammenheng mellom to variabler hvor en variabel påvirker en annen.</p></div></div><p>I mange sammenhenger har vi ikke mulighet å forandre variabler ved å lage intervensjoner. Det kan for eksempel finnes etiske eller praktiske årsaker til dette. Men vi har fortsatt mulighet til å undersøke kausale sammenhenger. Som i eksemplet med medisin for lavere blodtrykk over så krever det noen antagelser. I et forsøk hvor vi intervenerer kan antagelser inkludere at forsøkdeltakere blir tilfeldig tildelt en gruppe og at forskere ikke vet hvilken pasient eller forsøkdeltakere som får den aktive behandlingen eller medisinen. Hvis disse antakelsene er sanne så kan vi med stor sikkerhet si at medisinen påvirket blodtrykket. I en forskningstudie hvor vi ikke har mulighet å intervenere har vi fortsatt mulighet å «kontrollere» for variabler som kan påvirke sammenhengen mellom to variabler som vi er interessert i. Vi kan identifisere variabler som vi bør kontrollere for ved hjelp av grafiske modeller. Disse modellene kan også gi innsikt i når vi ikke kan si at en sammenheng er årsaksbestemt.</p>
 <p>Over har vi beskrevet to typer av studiedesign, en eksperimentell studie og en observasjonsstudie. I en eksperimentell studie gjennomfører vi en eller flere intervensjoner som forandrer variabler og vi kan derved estimere effekten av disse variablene på avhengige variabler. I en observasjonsstudie har vi ikke denne muligheten, her estimerer sammenhenger mellom variabler ved hjelp og trekker slutninger om kausalitet basert på antagelser om hvordan variabler henger sammen. I begge typer av studier kan vi si noe om kausale sammenhenger.</p>
-<section id="eksperiment-og-kvasieksperiment" class="level2" data-number="5.1">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=26f2e4ef-c766-450f-af3a-b14800bf9fe0" target="_blank">Intro til kausal inferens</a>.</p>
+</div></div><section id="eksperiment-og-kvasieksperiment" class="level2 page-columns page-full" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="eksperiment-og-kvasieksperiment"><span class="header-section-number">5.1</span> Eksperiment og kvasieksperiment</h2>
 <p>Et eksperiment kan brukes til å sammenligne intervensjoner. Vi sammenligner intervensjonene i en definert gruppe. Denne gruppen, eller populasjonen, kan som et eksempel være idrettsutøvere, og intervensjonene kan være to forskjellige treningsprogrammer hvor et program er et nytt program (N) og det andre er hva man vanligvis bruker, en slags kontrollprogram (K). Vi ønsker med vårt eksperiment å si noe om effekten av N på en bestemt variabel i gruppen idrettsutøvere. Vi rekrutterer en gruppe idrettsutøvere og deler inn dem i to undergrupper, N og K.</p>
-<p>For å gjøre sammenligningen bestemmer vi et utfall (avhengig variabel), i eksemplet passer det fint å måle løpehastighet i en 3000-m test. Vi lar utøverne løpe testen i forkant av studien, ved tid 1 (<span class="math inline">\(t_1\)</span>), og etter studien, ved tid 2 (<span class="math inline">\(t_2\)</span>). Vi kan nå beregne en forandringskår (<span class="math inline">\(\delta\)</span>). Hvor mye forandret seg hvert enkelt individ fra <span class="math inline">\(t_1\)</span> til <span class="math inline">\(t_2\)</span>?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=84330ac4-df0a-480d-bd46-b14800c2703d" target="_blank">Spuriøse sammenhenger</a>.</p>
+</div></div><p>For å gjøre sammenligningen bestemmer vi et utfall (avhengig variabel), i eksemplet passer det fint å måle løpehastighet i en 3000-m test. Vi lar utøverne løpe testen i forkant av studien, ved tid 1 (<span class="math inline">\(t_1\)</span>), og etter studien, ved tid 2 (<span class="math inline">\(t_2\)</span>). Vi kan nå beregne en forandringskår (<span class="math inline">\(\delta\)</span>). Hvor mye forandret seg hvert enkelt individ fra <span class="math inline">\(t_1\)</span> til <span class="math inline">\(t_2\)</span>?</p>
 <p><span class="math display">\[\Delta = t_2 – t_1\]</span></p>
 <p>I neste steg kan vi beregne effekten av N, det nye treningsprogrammet. For å beregne denne så trekker vi ifra forandringen i K (<span class="math inline">\(\Delta_K\)</span>) fra effekten av N (<span class="math inline">\(\Delta_N\)</span>), denne beregning gir oss den gjennomsnittlige intervensjonseffekten (GIE) av å gjennomføre N, sammenlignet med et kontrollprogram (K).</p>
 <p><span class="math display">\[ \Delta_N - \Delta_K = \text{GIE}\]</span></p>
@@ -414,14 +406,17 @@ Figur&nbsp;5.1. En ekseprimentell studie (A) gjennomfører gruppeindelning (<em>
 </section>
 <section id="grafiske-modeller-for-kausal-analyse" class="level2 page-columns page-full" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="grafiske-modeller-for-kausal-analyse"><span class="header-section-number">5.2</span> Grafiske modeller for kausal analyse</h2>
-<p>I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet <em>Directed Acyclic Graph</em> (<em>DAG</em>, “rettet asyklisk graf” på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en “effekt” mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e17be367-ed01-45a9-97a1-b14800c3de1b" target="_blank">Kausale modeller</a>.</p>
+</div></div><p>I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet <em>Directed Acyclic Graph</em> (<em>DAG</em>, “rettet asyklisk graf” på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en “effekt” mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt.</p>
 <p>Den grafiske modellen inneholder noder (nodes), disse bruker vi for å plassere inn variabler, og kanter (edges) som vi bruker for å beskrive retning på effekter, hvordan en variabel påvirker en annen. I figuren over (<a href="#fig-eksperimentkvasi" class="quarto-xref">Figur&nbsp;<span>5.1</span></a>) sier vi at <em>G</em> (gruppetilhørighet) er en variabel (nod) som påvirker <em>P</em> direkte ved en kobling mellom de to.</p>
 <p>Denne typen av grafisk modell har noen begrensninger, den forteller for eksempel ikke om hvordan variabler påvirker hverandre. En effekt, som beskrevet i en DAG, ser lik ut når variablene er kategoriske og kontinuerlige. En DAG beskriver ikke heller styrken i en sammenheng. For eksempel er det å kjøpe en lodd <span class="math inline">\(L\)</span> kausalt sammenkoblet <a href="https://www.vg.no/nyheter/innenriks/i/bgBjae/mann-31-pantet-en-boks-og-vant-en-million-i-pantelotteriet">med å vinne en million</a> <span class="math inline">\(V\)</span> (<span class="math inline">\(L \rightarrow V\)</span>), men sammenhenger er ikke så sterk. Så vad kan vi bruke en DAG til?</p>
 <p>En DAG gir oss muligheten til å koble sammen en statistisk modell, for eksempel en regresjonsmodell, med en vitenskapelig modell. Den vitenskaplige modellen, illustrert gjennom en DAG, viser hvordan vi anser at variabler henger sammen og hvordan vi kan tolke, eller forandre den statistiske modellen for å la den beskrive kausale effekter. Den vitenskaplige modellen bygger på antagelser. Når vi beskriver en kausal effekt betyr det at vi sier at den er kausal under betingelser at de antagelser vi stiller opp er sanne. Beskrevet på denne måten er det tydelig at vi ikke kan finne kausale sammenhenger hvis vi bare analyserer dataene, vi trenger en vitenskaplig modell i tillegg <span class="citation" data-cites="pearl_seven_2019">(<a href="references.html#ref-pearl_seven_2019" role="doc-biblioref">Pearl 2019</a>)</span>.</p>
 <div class="no-row-height column-margin column-container"><div class="">
 <p>Pearl <span class="citation" data-cites="pearl_book_2018 pearl_seven_2019">(<a href="references.html#ref-pearl_book_2018" role="doc-biblioref">2018</a>; <a href="references.html#ref-pearl_seven_2019" role="doc-biblioref">2019</a>)</span> er en sentral bidragsyter til feltet kausal inferens.</p>
 <div id="ref-pearl_book_2018" class="csl-entry" role="listitem">
-Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. Basic Books.
+Pearl, Judea, and Dana Mackenzie. 2018. <em>The Book of Why: The New Science of Cause and Effect</em>. New York: Basic Books.
 </div><div id="ref-pearl_seven_2019" class="csl-entry" role="listitem">
 Pearl, Judea. 2019. <span>“The Seven Tools of Causal Inference, with Reflections on Machine Learning.”</span> <em>Communications of the <span>ACM</span></em> 62 (3): 54–60. <a href="https://doi.org/10.1145/3241036">https://doi.org/10.1145/3241036</a>.
 </div></div></div>
@@ -430,7 +425,7 @@ Pearl, Judea. 2019. <span>“The Seven Tools of Causal Inference, with Reflectio
 <h2 data-number="5.3" class="anchored" data-anchor-id="gaffel-rør-collider-og-etterkommer"><span class="header-section-number">5.3</span> Gaffel, rør, collider og etterkommer</h2>
 <p>Når vi bygger, eller leser en DAG kan vi identifisere følgende sammenhenger mellom variabler, en gaffel, et rør, en collider og en etterkommer (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). I en “gaffel” påvirker en variabel to andre variabler. Denne strukturen så vi i eksemplet over hvor en tredje variabel ble introdusert i eksperimentet ved at forsøkdeltakere fikk mulighet å velge gruppe selv. Denne tredje variabelen introduserer noe som kalles for en “konfunder” effekt<a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a>, en variabel som påvirker både en mulig kausal variabel og variabelen som den i sin tur påvirker.</p>
 <div class="no-row-height column-margin column-container"><div id="fn3"><p><sup>3</sup>&nbsp;Les mer i <span class="citation" data-cites="roislien_trekantdrama_2021">Røislien and Kvaløy (<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">2021</a>)</span> som gir oss norsk oversettelse av de engelske begrepene.</p><div id="ref-roislien_trekantdrama_2021" class="csl-entry" role="listitem">
-Røislien, Jo, and Jan Terje Kvaløy. 2021. <span>“Trekantdrama.”</span> <em>Tidsskrift for Den Norske Legeforening</em>, ahead of print. <a href="https://doi.org/10.4045/tidsskr.21.0075">https://doi.org/10.4045/tidsskr.21.0075</a>.
+Røislien, Jo, and Jan Terje Kvaløy. 2021. <span>“Trekantdrama.”</span> <em>Tidsskrift for Den Norske Legeforening</em>. <a href="https://doi.org/10.4045/tidsskr.21.0075">https://doi.org/10.4045/tidsskr.21.0075</a>.
 </div></div></div><p>I et “rør” påvirker en variabel, x, en annen variabel, y, gjennom en tredje variabel z (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). Denne strukturen er en del i en struktur som beskrives i <span class="citation" data-cites="roislien_trekantdrama_2021">(<a href="references.html#ref-roislien_trekantdrama_2021" role="doc-biblioref">Røislien and Kvaløy 2021</a>)</span> som en mediatoreffekt. Som vi skal se under kan vi også identifisere røret i et eksperiment hvor effekten av en intervensjon på en variabel påvirker en annen variabel gjennom en tredje variabel.</p>
 <p>En collider er en variabel som har to “foreldrer”. To variabler bidrar til å påvirke en tredje variabel. En norsk benevning av collider finnes ikke så vi låner det engelske begrepet som antyder at noe om en kollisjon. To effekter kolliderer i en tredje variabel. Under vil vi se hvordan en collider kan bidra til å skape en spuriøs sammenheng mellom to variabler som ikke er kausalt sammenkoblet.</p>
 <p>Til sist kan vi identifisere en etterkommer (<a href="#fig-dags" class="quarto-xref">Figur&nbsp;<span>5.2</span></a>). En etterkommer er en variabel som påvirkes av en annen variabel. I en DAG kan vi identifisere en etterkommer ved at en variabel har en foreldervariabel. En etterkommer er et speilbilde av forelderen, og vi kan si at variabelen er en konsekvens av forelderen.</p>
@@ -934,7 +929,7 @@ Tabell&nbsp;5.1. Sammenhengen mellom Y og X estimert ved bruk av lineær regresj
 }
 </style>
 
-<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Modell" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Modell</th>
@@ -1480,7 +1475,7 @@ Tabell&nbsp;5.2. Sammenhengen mellom Y og X estimert ved bruk av lineær regresj
 }
 </style>
 
-<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Modell" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Modell</th>
@@ -2026,7 +2021,7 @@ Tabell&nbsp;5.3. Sammenhengen mellom Y og X estimert ved bruk av lineær regresj
 }
 </style>
 
-<table class="gt_table cell caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<table class="gt_table do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_col_headings header">
 <th id="Koeffisient" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Koeffisient</th>
@@ -2234,14 +2229,13 @@ Figur&nbsp;5.16. Prestasjon påvirker årsinntekt, spillebørs (SB) er en etterk
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

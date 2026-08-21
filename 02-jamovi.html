@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>4&nbsp; Statistiske metoder for samvariasjon i Jamovi – Statistisk dataanalyse med Jamovi</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,10 +58,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +91,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -106,7 +104,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -303,31 +301,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -394,12 +380,12 @@ window.Quarto = {
 <p>Når variablene er lagt inn får vi to tabeller i resultatfeltet. <em>Model fit Measures</em> sier noe om styrken i sammenhengen mellom variablene. <em>R</em> tilsvarer korrelasjonskoeffisienten (se under) når modellen inneholder en uavhengig variabel.</p>
 <p>I tabellen <em>Model Coefficients - kolesterol</em> se vi skjæringspunkt (<em>Intercept</em>) og stigningstall <em>egg</em> under <em>Predictor</em>. Under <em>Estimate</em> ser vi de estimat som modellen lager. 3.94 er gjennomsnittlig kolesterolnivå når eggkonsumpsjon er 0, for hvert egg så stiger kolesterolet med 0.86 enheter. For hvert estimat finner vi et standardfeil (<em>SE</em>), t-verdi (<em>t</em>) og p-verdi. Disse bruker vi får å trekke konklusjoner om populasjonen dataene kommer ifra. Tallene er koblet til forskjellige mål på usikkerhet, noe vi skal snakke mer om senere.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Oppgave: Tolking av regresjonskoeffisienter
+Oppgave: Tolking av regresjonskoeffisienter
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -408,12 +394,12 @@ window.Quarto = {
 <p>A: I eksemplet over finner vi at skjæringspunktet er 3.94 enheter og stigningstallet er 0.86 enheter. Beregne det forventede kolesterolnivået for pasienter som spiser 1, 6 og 12 egg per uke.</p>
 <p>B: Lag en ny variabel i Jamovi som beregner kolesterolnivået ved hjelp av antallet rapporterte egg for hver observasjon i datasettet.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Tolking av regresjonskoeffisienter
+Svar: Tolking av regresjonskoeffisienter
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -429,12 +415,12 @@ window.Quarto = {
 </div>
 <p>I modulmenyen finner vi <em>Assumption checks</em>. Her finnes flere alternativer for å sjekke antagelser om modellen. Her foreslår vi at man først fokuserer på <em>Q-Q plot of residuals</em>. Denne figuren viser hvor godt residualene følger en normalfordeling. Hvis punktene er nærme den rette linjen så følger vi normalfordelingen og vi kan sies ha støtte for antagelsen om at residualene er normalfordelte. <em>Residual plots</em> gir oss en indikasjon på hvor spredning av feilleddet er fordelt over datamaterialet og prediksjoner fra modellen . I figuren som viser <em>Fitted vs.&nbsp;Residuals</em> ønsker vi å se at vi har like mye feil over alle predikerte tall. Muligens ser vi en tendens til mer spredning i kolesterol ved større predikerte verdier.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Oppgave: Hvordan lage en residualplot?
+Oppgave: Hvordan lage en residualplot?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -443,12 +429,12 @@ window.Quarto = {
 <p>Du beregnet tidligere en ny variabel med predikerte tall for hvert observasjon. Denne kan vi bruke for å beregne en ny variabel som vi kan kalle for <em>feilledd</em>. Feilleddet bergenes som differensen mellom predikerte og observerte verdier.</p>
 <p>Bruk variablene i en scatter-plot (<em>Analyses/Exploration/Scatterplot</em>) og sammenlign resultatet med <em>Residual plots</em> under <em>Assumptions Checks</em>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Hvordan lage en residualplot?
+Svar: Hvordan lage en residualplot?
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -469,12 +455,12 @@ window.Quarto = {
 <p>Som vi allerede notert gir regresjonsmodellen oss en måte å beskrive forholdet mellom en avhengig variabel og en (eller flere) uavhengige variabler. En forenkling av sammenhengen mellom to variabler er en korrelasjonsanalyse. I motsetning til regresjonsmodellen så gjør ikke korrelasjonen forskjell mellom avhengig og uavhengig variabel.</p>
 <p>En regresjonsanalyse kan gjøres i Jamovi i modulen <em>Regression</em> hvor vi velger <em>Correlation matrix</em>.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Oppgave: Regresjon og korrelasjon
+Oppgave: Regresjon og korrelasjon
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -482,12 +468,12 @@ window.Quarto = {
 <div class="callout-body-container callout-body">
 <p>A: Bruk <em>Correlation Matrix</em> for å beregne <em>Pearson Correlation Coefficient</em> på dataene i <a href="data/egg_kolesterol_1_2_3.csv"><code>egg_kolesterol_1_2_3.csv</code></a>. Lag også en regresjonsmodell av det samme forholdet. Hva er er korrelasjonskoeffisienten i <em>Correlation Matrix</em> resultatene respektive under <em>Model Fit Measures</em> i resultatene fra regresjonsmodellen?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Regresjon og korrelasjon
+Svar: Regresjon og korrelasjon
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -528,12 +514,12 @@ Figur&nbsp;4.2. Eksempel på hvor en ekstrem observasjon kan påvirke sammenheng
 </div>
 <p>En annen strategi er å uttrykke variablene som rangerte. De laveste tallet i hver variabel får verdien 1, neste tall får verdien 2, osv. Hvis vi lager en korrelasjon på disse transformerte variablene tar vi vekk effekten av at noen er ekstreme og derfor påvirker analysene. Denne strategien er et eksempel på en ikke-parametrisk analyse da vi ikke har noen antagelser om hvordan variablene fordeles. En ikke-parametrisk korrelasjonskoeffisient kalles ofte for Spearman’s korrelasjonskoeffisient. Denne bruker vi når ser at antagelse om normalfordelt data og lineært forhold mellom variablene holder. I oppgaven under undersøker vi hvordan denne koeffisienten beregnes.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Oppgave: Regresjon og rank
+Oppgave: Regresjon og rank
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -542,12 +528,12 @@ Figur&nbsp;4.2. Eksempel på hvor en ekstrem observasjon kan påvirke sammenheng
 <p>A: Bruk <em>Correlation Matrix</em> for og datasettet (<a href="data/korr_ekstrem.csv"><code>korr_ekstrem.csv</code></a>) for å beregn korrelasjonskoeffisienten (Pearsons) for variablene <code>x</code> og <code>y1</code>. Lag så to ny variabler ved hjelp av funksjunen <code>RANK</code> (<code>=RANK(x)</code> og <code>=RANK(Y)</code>), undersøk variablene for å forstå hva transformasjonen gjør med de. Beregn så korrelasjonen mellom <code>=RANK(x)</code> og <code>=RANK(Y)</code> ved hjelp av Pearsons korrlasjonskoeffisient og korrlasjonen mellom <code>x</code> og <code>y1</code> ved hjelp av Spearmans korrelasjonskoeffisient</p>
 <p>B: I datasettet finner vi ytterligere en variabel. Hva er forskjellen mellom Pearson og Spearmans korrelasjonskoeffisient når du bruker variablene <code>x</code> og <code>y2</code>. Lag en scatter-plot av forholdet mellom disse variablene og forklar hvorfor du får de resultat du får.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Regresjon og rank
+Svar: Regresjon og rank
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -619,12 +605,12 @@ Figur&nbsp;4.2. Eksempel på hvor en ekstrem observasjon kan påvirke sammenheng
 <p>For å transformere en variabel i Jamovi legger vi til en transformering. Gå til datafanen, marker årsinntekt og trykk på <em>transform</em>. Under <em>using transform</em> skaper vi en ny transformering (<em>Create new transform</em>), og legger inn <code>=LN(\$source)</code> i formelfeltet. I formelfeltet står $source for variabelen som skal brukes i transformeringen, <code>LN</code> er funksjonen for den naturlige logaritmen. Vi kan navngi den nye transformering til <em>“LOG”</em>. En ny variabel skapes med en bestemt <em>Source variable</em> og vår definerte transform (<em>using transform</em>).</p>
 <p>Vi bytter den tidligere variabelen med vår nye log-transformerte variabel og ser igjen på <em>Assumption checks</em>. Dette ser bedre ut, residualene er nærmere normalfordelt (<em>Q-Q Plot</em>) og spredningen i residual-figuren spreder likt over hele datamaterialet. Vi kan nå tolke resultatene.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Oppgave: Tolkning av en multippel regresjonsanalyse.
+Oppgave: Tolkning av en multippel regresjonsanalyse.
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -634,12 +620,12 @@ Figur&nbsp;4.2. Eksempel på hvor en ekstrem observasjon kan påvirke sammenheng
 <p>B: Beregn årsinntekt for en angrepsspiller med norsk opprinnelse og verdien 3 på spillerbørs.</p>
 <p>C: Beregn årsinntekt for en forsvarsspiller med utenlandsk opprinnelse og verdien 4.78 på spillerbørs.</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Tolkning av en multippel regresjonsanalyse
+Svar: Tolkning av en multippel regresjonsanalyse
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -720,12 +706,12 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <h2 data-number="4.5" class="anchored" data-anchor-id="fra-krysstabulering-til-logistisk-regresjon"><span class="header-section-number">4.5</span> Fra krysstabulering til Logistisk regresjon</h2>
 <p>En logistisk regresjonsmodell forteller oss om sammenhengen mellom en avhengig variabel og en eller flere uavhengige variabler uttrykket som en log-oddsforhold (log-odds ratio, OR). Vi kan bruke modulen <em>Regression</em> til å tilpasse en logistisk regresjonsmodell som beskriver sammenhengen mellom <code>kjønn</code> og medlemskap i <code>idrettslag</code>, her velger vi <em>2 Outcomes, Binomial</em> og setter inn variablene under <em>Dependent Variable</em> og <em>Factors</em>. Likt som under <em>Linear Regression</em> har vi mulighet å bygge opp en modell med hjelp av flere variabler, kategoriske og kontinuerlige.</p>
 <div class="callout callout-style-default callout-caution callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Caution</span>Oppgave: Logistisk regresjon
+Oppgave: Logistisk regresjon
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -735,12 +721,12 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 <p>Når du gjør sammenligninger ønsker vi å vite sannsynligheter for medlemskap i et idrettslag. Lag derfor en ny variabel ved bruk av funksjonen <code>=IF</code>. Denne funksjonen tar som argumenter en logisk test, verdien når SANN og verdi når IKKE SANN. Når vi skriver “testen” som <code>idrettslag == "ja"</code> vill det gi oss SANN når vi har en rad i datasettet hvor variabelen <code>idrettslag</code> er lik “ja”. Vi setter verdien på vår nye variabel til 1 i disse fallene og 0 når så ikke er tilfelle. Hele uttrykke blir <code>=IF(idrettslag == "ja", 1, 0)</code>. Vi har nå kontrollert at variabelen faktisk beskriver hva vi tror den beskriver.</p>
 <p>Hvordan tolker du sammenhengen mellom kjønn og medlemskap i et idrettslag?</p>
 <div class="callout callout-style-default callout-tip callout-titled">
-<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Tip</span>Svar: Logistisk regresjon
+Svar: Logistisk regresjon
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -813,14 +799,13 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

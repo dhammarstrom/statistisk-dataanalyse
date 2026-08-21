@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
 <title>8&nbsp; Statistisk inferens – Statistisk dataanalyse med Jamovi</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -27,6 +24,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -60,10 +58,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -93,7 +91,7 @@ div.csl-indent {
 }</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -106,7 +104,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+      if (mathElements[i].tagName == "SPAN") {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -303,31 +301,19 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -408,8 +394,11 @@ window.Quarto = {
 <div class="no-row-height column-margin column-container"><div class="">
 <p>En <em>parameter</em> er en kvantitativ egenskap hos en <em>populasjon</em>. En <em>populasjon</em> er i sin tur en samling av mulige verdier med et sett av gitte egenskaper. En parameter hos populasjonen kan være dess gjennomsitt (iblant kalt <span class="math inline">\(\mu\)</span>) eller standardavvik (<span class="math inline">\(\sigma\)</span>). Når vi estimerer gjennsomnitt og standardavvik i et utvalg gir vi disse kvantiteterne andra symboler, <span class="math inline">\(\bar{x}\)</span> og <span class="math inline">\(s\)</span>. Disse er estimater av populasjonsgjennomsnittet og standardavviket <span class="citation" data-cites="dodge_concise_2008">(<a href="references.html#ref-dodge_concise_2008" role="doc-biblioref">Dodge 2008</a>)</span>.</p>
 <div id="ref-dodge_concise_2008" class="csl-entry" role="listitem">
-Dodge, Yadolah. 2008. <em>The Concise Encyclopedia of Statistics</em>. 1st. ed. Springer Reference. Springer.
-</div></div></div>
+Dodge, Yadolah. 2008. <em>The Concise Encyclopedia of Statistics</em>. 1st. ed. Springer Reference. New York: Springer.
+</div></div><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5a86dc40-64fd-43c5-bf9f-b155008ad7f6" target="_blank">Intro til statistisk inferens</a>.</p>
+</div></div>
+
 <section id="utvalg-og-generalisering" class="level3" data-number="8.1.1">
 <h3 data-number="8.1.1" class="anchored" data-anchor-id="utvalg-og-generalisering"><span class="header-section-number">8.1.1</span> Utvalg og generalisering</h3>
 <p>For å trekke korrekte slutninger om en populasjon kreves at utvalget er representativt for populasjonen. Når utvalget representerer den populasjon man ønsker å undersøke kan man gjøre den generalisering som det innebærer å trekke konklusjoner om populasjonen basert på utvalget. Ideelt sett trekkes et utvalg fra populasjonen helt tilfeldig. Dette gir en garanti mot at utvalget ikke skiller seg fra populasjonen i noen viktige karakteristikker. I forskningen er dette i praksis veldig vanskelig.</p>
@@ -938,10 +927,10 @@ Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm
 }
 </style>
 
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-bootstrap="false">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
 <tr class="gt_heading header">
-<td class="gt_heading gt_title gt_font_normal gt_bottom_border">Fødselsvekter i Norge 2022</td>
+<th class="gt_heading gt_title gt_font_normal gt_bottom_border">Fødselsvekter i Norge 2022</th>
 </tr>
 <tr class="gt_col_headings even">
 <th id="Vekt" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Vekt</th>
@@ -1016,7 +1005,10 @@ Figur&nbsp;8.3. (A) En normalfordeling skiller seg fra en t-fordeling ved at for
 </section>
 <section id="hypotesetesting-og-p-verdier" class="level2 page-columns page-full" data-number="8.6">
 <h2 data-number="8.6" class="anchored" data-anchor-id="hypotesetesting-og-p-verdier"><span class="header-section-number">8.6</span> Hypotesetesting og p-verdier</h2>
-<p>I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=cfefd71c-06eb-4756-a98b-b1560079ad8c" target="_blank">P-verdier og hypotesetesting</a>.</p>
+</div></div><p>I statistikken har vi mulighet å teste hvor kompatible våre data er med en gitt hypotese. Vi kan formulere en hypotese for kontinuerlig data gjennom å velge et tall som vi tester mot. Den frekventistiske statistikken bruker nullhypoteser og rundt denne hypotesen bygger vi opp en estimert utvalgsfordeling. Vi kan nå besvare spørsmålet: Gitt att nullhypotesen er sann, hvor sannsynlig er det at vi får et resultat så ekstremt som det vi observerer, eller enda mer ekstremt?</p>
 <p>Denne definisjonen er dessverre ikke helt intuitiv, vi lager et eksempel under for å bedre forstå den. La oss si at vi gjennomfører et forsøk hvor vi studerer effekten av fysisk aktivitet på blodtrykk. De rekrutterte deltakerne (n=50) som i utgangpunkt har høyt blodtrykk fordeles tilfeldig (randomisert) til to grupper. Gruppe A får ingen retningslinjer for fysisk aktivitet, gruppe B får oppfølging fra en personlig trener. Etter en intervensjonsperiode tester vi blodtrykket (<a href="#fig-hypotesedata" class="quarto-xref">Figur&nbsp;<span>8.4</span></a>).</p>
 <p>Fra studien er det mulig å formulere to hypoteser, en nullhypotese (<span class="math inline">\(\text{H}_0\)</span>) sier at det ikke er noen forskjell mellom behandlingene. Den alternative hypotesen (<span class="math inline">\(\text{H}_0\)</span>) sier derimot at det er en forskjell i blodtrykk mellom behandlingene. Hypotesene omhandler populasjonen, vi ønsker altså å si noe om hvordan behandlingen virker, ikke bare i utvalget, men også i populasjonen som deltakerne kommer fra. Filosofiske argumenter gir at det er vanskelig å bevise en hypotese men enklere å motbevise den. I statistikken prøver vi derfor vanligvis å motbevise (falsifisere) nullhypotesen, og vi sier at vi <em>tester mot den</em>. Vi setter opp testet sånn at om testresultatet er tilstrekkelig ekstremt gitt at nullhypotesen er sann så avkrefter vi den, eller finner den mindre trolig enn en alternative hypotese.</p>
 <p><span class="math display">\[\text{H}_0: \mu_1 = \mu_2\]</span></p>
@@ -1095,7 +1087,10 @@ Figur&nbsp;8.7. Resultater fra permuteringstesten sammenlignet med en t-test. Hi
 </section>
 <section id="type-2-feil-statistisk-styrke-og-utvalgsstørrelser" class="level2 page-columns page-full" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="type-2-feil-statistisk-styrke-og-utvalgsstørrelser"><span class="header-section-number">8.7</span> Type 2 feil, statistisk styrke og utvalgsstørrelser</h2>
-<p>Så langt har vi konstatert at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feilrate i det lange løp (over flere lignende, uavhengige studier). I tillegg til en type 1 feil kan vi også gjøre en annen feil. Ved å <em>ikke</em> forkaste nullhypotesen til tross for at ikke er riktig gjør vi en type 2 feil. Denne feilen krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.</p>
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bbb99af4-6a2e-4db3-81f4-b1560081f65f" target="_blank">Statistisk styrke</a>.</p>
+</div></div><p>Så langt har vi konstatert at vi kan gjøre en type 1 feil ved å forkaste nullhypotesen til tross for at den er riktig. Den frekventisktiske statistikken er opptatt av å kontrollere denne feilen, vi ønsker statistiske tester som har en gitt feilrate i det lange løp (over flere lignende, uavhengige studier). I tillegg til en type 1 feil kan vi også gjøre en annen feil. Ved å <em>ikke</em> forkaste nullhypotesen til tross for at ikke er riktig gjør vi en type 2 feil. Denne feilen krever litt mer arbeid fra oss som skal analysere dataene. Vi kan sette opp de to typene feil i en tabell som under.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
@@ -1178,7 +1173,10 @@ Lakens, Daniël. 2022a. <span>“Sample <span>Size Justification</span>.”</spa
 <div class="no-row-height column-margin column-container"><div id="ref-cohen2013" class="csl-entry" role="listitem">
 Cohen, Jacob. 2013. <em>Statistical <span>Power Analysis</span> for the <span>Behavioral Sciences</span></em>. 0th ed. Routledge. <a href="https://doi.org/10.4324/9780203771587">https://doi.org/10.4324/9780203771587</a>.
 </div></div><p>En standardisert effektstørrelsen har en direkte sammenheng med den observerte p-verdien og utvalgsstørrelsen. Vid en gitt utvalgsstørrelse synker p-verdien når effektstørrelsen blir større. På samme måte synker p-verdien vid en gitt effektstørrelse når utvalgsstørrelsen blir større. Dette følger av resonnementet over, en effekt, beskrevet som en ratio til variasjonen i populasjonen får en lavere p-verdi når standardfeilen og dermed spredningen i utvalgsfordelingen blir mindre. Spredningen i utvalgsfordelingen blir mindre når utvalgsstørrelsen øker. I to eksperimenter kan vi få den samme effektstørrelsen, men avhengig av utvalgsstørrelsen vil p-verdien være forskjellig. P-verdien beskytter oss fra å tolke den observerte effekten som en sann effekt i populasjonen. Basert på den grense vi setter for statistisk signifikant i forkant av studien vet vi at denne prosedyren vil gi oss en bestemt feilrate over repeterte eksperimenter.</p>
-<div class="cell">
+
+<div class="no-row-height column-margin column-container"><div class="">
+<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=ce4f66d2-08e7-4b16-a16d-b1560085ef63" target="_blank">Mer om p-verdier</a>.</p>
+</div></div><div class="cell">
 <div class="cell-output-display">
 <div id="fig-effect-pval" class="quarto-float quarto-figure quarto-figure-center anchored">
 <figure class="quarto-float quarto-float-fig figure">
@@ -1235,18 +1233,18 @@ Figur&nbsp;8.11. Den observerte p-verdien er arean under kurven i nullhypotesen 
 </section>
 <section id="p-verdier-og-overraskelsefaktoren" class="level2 page-columns page-full" data-number="8.10">
 <h2 data-number="8.10" class="anchored" data-anchor-id="p-verdier-og-overraskelsefaktoren"><span class="header-section-number">8.10</span> P-verdier og overraskelsefaktoren</h2>
-<p>La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er 0.0009765625 <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole et al. 2021</a>)</span>. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne</p>
-<div class="no-row-height column-margin column-container"></div><p><span class="math display">\[-\operatorname{log}_2(0.0009765625) = 10\]</span> Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som <span class="math inline">\(s\)</span>-verdien <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole et al. 2021</a>)</span>.</p>
+<p>La oss si at vi gjennomfører et eksperiment med myntkast. Med et balansert mynt vil vi ha like stor sjanse for å få kron som mynt. Vi hadde derfor ikke vært overrasket om vi hadde fått 5 kron og 5 mynt i en serie med 10 myntkast. Men hvis vi får 10 kron i en serie med 10 myntkaster, da hadde vi muligens vært litt mer overrasket. Det viser seg at p-verdien for denne observasjonen (10 kron i en serie med 10 myntkaster) hvis nullhypotesen om en balansert mynt er riktig er 0.0009765625 <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole, Edwards, and Greenland 2021</a>)</span>. Med noe matematikk viser det seg at vi kan regne oss tilbake til antallet kron vi fikk i serien myntkaster ved å beregne</p>
+<div class="no-row-height column-margin column-container"></div><p><span class="math display">\[-\operatorname{log}_2(0.0009765625) = 10\]</span> Det å ta den negative logaritmen med basen to av p-verdien gir oss et tall som vi kan tolke som det antall myntkast i en serie hvor alle myntkaster er enten kron eller mynt. Dette tallet kalles for overraskelseindeksen og benevnes som <span class="math inline">\(s\)</span>-verdien <span class="citation" data-cites="cole2021">(<a href="references.html#ref-cole2021" role="doc-biblioref">Cole, Edwards, and Greenland 2021</a>)</span>.</p>
 
 <div class="no-row-height column-margin column-container"><div class="">
-<p>s-verdien har fått sitt navn efter “surprisal” (som i surprise) eller “Shannon information” (som i Claude Shannon) (se <span class="citation" data-cites="cole2021">Cole et al. (<a href="references.html#ref-cole2021" role="doc-biblioref">2021</a>)</span> og <a href="https://en.wikipedia.org/wiki/Information_content">Information Content</a> på Wikipedia).</p>
+<p>s-verdien har fått sitt navn efter “surprisal” (som i surprise) eller “Shannon information” (som i Claude Shannon) (se <span class="citation" data-cites="cole2021">Cole, Edwards, and Greenland (<a href="references.html#ref-cole2021" role="doc-biblioref">2021</a>)</span> og <a href="https://en.wikipedia.org/wiki/Information_content">Information Content</a> på Wikipedia).</p>
 <div id="ref-cole2021" class="csl-entry" role="listitem">
 Cole, Stephen R, Jessie K Edwards, and Sander Greenland. 2021. <span>“Surprise!”</span> <em>American Journal of Epidemiology</em> 190 (2): 191–93. <a href="https://doi.org/10.1093/aje/kwaa136">https://doi.org/10.1093/aje/kwaa136</a>.
 </div></div></div><p>For å beregne overraskelseindeksen, eller <span class="math inline">\(s\)</span>-verdien fra en p-verdi tar vi altså</p>
 <p><span class="math display">\[-\operatorname{log}_2(p) = s\]</span></p>
 <p>I en studie fant vi nylig at varmetrening ga en 30 gram økning i Hb-masse hos veltrente langrennsløpere <span class="citation" data-cites="ronnestad2022">(<a href="references.html#ref-ronnestad2022" role="doc-biblioref">Rønnestad et al. 2022</a>)</span>, p-verdien for denne observasjonen var 0.009, noe som gir et overaskelseindeks på 6.8. Vi kan dermed si at dette resultatet litt mindre overraskende enn å få 7 kron i en serien med 7 myntkaster. Samtidig ga intervensjonen ingen markert effekt på prestasjon (p=0.367, s=1.4), denne observasjonen var mindre overraskende enn å få 2 kron i en serie med 2 myntkaster.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-ronnestad2022" class="csl-entry" role="listitem">
-Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, et al. 2022. <span>“Heat Suit Training Increases Hemoglobin Mass in Elite Cross‐country Skiers.”</span> <em>Scandinavian Journal of Medicine &amp; Science in Sports</em>, March 26, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
+Rønnestad, Bent R., Ole Martin Lid, Joar Hansen, Håvard Hamarsland, Knut Sindre Mølmen, Håvard Nygaard, Stian Ellefsen, Daniel Hammarström, and Carsten Lundby. 2022. <span>“Heat Suit Training Increases Hemoglobin Mass in Elite Cross‐country Skiers.”</span> <em>Scandinavian Journal of Medicine &amp; Science in Sports</em>, March, sms.14156. <a href="https://doi.org/10.1111/sms.14156">https://doi.org/10.1111/sms.14156</a>.
 </div></div><div class="cell">
 <div class="cell-output-display">
 <div id="fig-pval-sval" class="quarto-float quarto-figure quarto-figure-center anchored">
@@ -1263,9 +1261,9 @@ Figur&nbsp;8.12. Forhold mellom p-verdier og overraskelseindeksen (s-verdien). E
 </div>
 <p>Denne måten å tenke på p-verdier kan hjelpe å sette resultater fra en hypotesetest i perspektiv, s-verdien gir oss en intuitiv tolking av hvor overraskede resultatet hvis nullhypotesen er riktig. Vi kan stille os spørsmålet om en grense for et statistisk signifikant resultat på 5% er tilstrekkelig “overraskende”. Her mener flere at grensen istedenfor bør settes til 0.5% <span class="citation" data-cites="benjamin2017">(<a href="references.html#ref-benjamin2017" role="doc-biblioref">Benjamin et al. 2017</a>)</span>, noe som de mener ville gjort vitenskapen mindre utsatt for feilaktige resultater av typen “falske positive”.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-benjamin2017" class="csl-entry" role="listitem">
-Benjamin, Daniel J., James O. Berger, Magnus Johannesson, et al. 2017. <span>“Redefine Statistical Significance.”</span> <em>Nature Human Behaviour</em> 2 (1): 6–10. <a href="https://doi.org/10.1038/s41562-017-0189-z">https://doi.org/10.1038/s41562-017-0189-z</a>.
+Benjamin, Daniel J., James O. Berger, Magnus Johannesson, Brian A. Nosek, E.-J. Wagenmakers, Richard Berk, Kenneth A. Bollen, et al. 2017. <span>“Redefine Statistical Significance.”</span> <em>Nature Human Behaviour</em> 2 (1): 6–10. <a href="https://doi.org/10.1038/s41562-017-0189-z">https://doi.org/10.1038/s41562-017-0189-z</a>.
 </div><div id="ref-lakens2022a" class="csl-entry" role="listitem">
-Lakens, Daniël. 2022b. <span>“Why <span>P</span> Values Are Not Measures of Evidence.”</span> <em>Trends in Ecology &amp; Evolution</em> 37 (4): 289–90. <a href="https://doi.org/10.1016/j.tree.2021.12.006">https://doi.org/10.1016/j.tree.2021.12.006</a>.
+———. 2022b. <span>“Why <span>P</span> Values Are Not Measures of Evidence.”</span> <em>Trends in Ecology &amp; Evolution</em> 37 (4): 289–90. <a href="https://doi.org/10.1016/j.tree.2021.12.006">https://doi.org/10.1016/j.tree.2021.12.006</a>.
 </div></div><p>Tolkingen av p-verdien som en overraskelseindeks kan sies være en tolking av p-verdier som et mål på bevis mot nullhypotesen. Det finnes samtidig en debatt hvor tilhenger av en klassisk frekventistisk tolking av p-verdier advarer mot bruk av p-verdier som et mål på statistisk evidens for hypoteser <span class="citation" data-cites="lakens2022a">(<a href="references.html#ref-lakens2022a" role="doc-biblioref">Lakens 2022b</a>)</span>. Her understrekes isteden bruken av feilratene <span class="math inline">\(\alpha\)</span> og <span class="math inline">\(\beta\)</span> for å forsikre at vi ikke gjør feil i det lange løp.</p>
 </section>
 <section id="veien-videre" class="level2 page-columns page-full" data-number="8.11">
@@ -1332,14 +1330,13 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy

@@ -2,16 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>13&nbsp; Workshop: Beskrive data og beskrive med data – Statistisk dataanalyse med Jamovi</title>
+<title>13&nbsp; Beskrive data og beskrive med data – Statistisk dataanalyse med Jamovi</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -33,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./06-samvariasjon.html" rel="next">
+<link href="./06-sammenligne-gjennomsnitt.html" rel="next">
 <link href="./06-forelesninger.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -41,10 +38,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -85,7 +82,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-beskrivende-data.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-beskrivende-data.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -255,31 +252,19 @@ ul.task-list li input[type="checkbox"] {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -310,9 +295,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-beskrivende-data.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-beskrivende-data.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></h1>
 </div>
 
 
@@ -344,12 +329,12 @@ ul.task-list li input[type="checkbox"] {
 <li>Lage nye variabler basert på formler</li>
 <li>Filtrere data</li>
 </ul>
-<p>Presentasjonen bør inneholde tanker kring hvorfor dere har fremstilt data på valgt måte i presentasjon til klubbledelse.</p>
+<p>Presentasjonen bør inneholde tanker rundt hvorfor dere har fremstilt data på valgt måte i presentasjon til klubbledelsen.</p>
 <section id="hvor-mange-pølser-trenger-vi" class="level3" data-number="13.1.1">
 <h3 data-number="13.1.1" class="anchored" data-anchor-id="hvor-mange-pølser-trenger-vi"><span class="header-section-number">13.1.1</span> Hvor mange pølser trenger vi?</h3>
-<p>Lillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på å planlegge innkjøp av pølser og kaffe til hjemmekamper for å tjene mer penger til klubben. Økonomidirektøren har identifisert de lokale pølsene og kaffe som to store muligheter til å tjene mer penger. Man ønsker nå å vite hvordan man bedre kan planlegge innkjøp av pølser og kaffe for å maksimere vinsten. Pølsene kjøpes fra en lokal slakter og er ferskvare, hvis pølsene ikke blir solgt i løpet av kampen må de destrueres. Destruksjon av pølser innebærer derfor tap tilsvarende innkjøpsprisen, som er 11.28 NOK. For hver pølse som blir solgt tjener klubben 38.72 NOK (salgspris 40 NOK). Kaffe er ikke ferskvare, men holder bare en sesong. Etter avsluttet år må kaffe destrueres. Lillehammer kjøper kaffe for 2 NOK per kopp og tjener 28 NOK per kopp (salgspris 30 NOK).</p>
-<p><a href="data/polsestatistikk.csv">Her finner du et datasett</a> med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_pølser), antall solgte kaffe (antall_kaffe), antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).</p>
-<p>Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til LIK hvordan de kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledningen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag.</p>
+<p>Lillehammer Ishockeyklubb trenger hjelp. Det viser seg at de må bli bedre på å planlegge innkjøp av pølser og kaffe til hjemmekamper for å tjene mer penger til klubben. Økonomidirektøren har identifisert de lokale pølsene og kaffe som to store muligheter til å tjene mer penger. Han ønsker nå å vite hvordan man bedre kan planlegge innkjøp av pølser og kaffe for å maksimere profitten. Pølsene kjøpes fra en lokal slakter og er ferskvare, hvis pølsene ikke blir solgt i løpet av kampen må de destrueres. Destruksjon av pølser innebærer derfor tap tilsvarende innkjøpsprisen, som er 11.28 NOK. For hver pølse som blir solgt tjener klubben 38.72 NOK (salgspris 50 NOK). Kaffe er ikke ferskvare, men holder bare en sesong. Etter avsluttet år må kaffen destrueres. Lillehammer kjøper kaffe for 2 NOK per kopp og tjener 28 NOK per kopp (salgspris 30 NOK).</p>
+<p><a href="data/polsestatistikk.csv">Her finner du et datasett</a> med historiske data over hjemmekamper i Kristins hall på Lillehammer. Hallen kan ta 2500 tilskuere og det finnes 1700 sitteplasser. I de historiske dataene finner dere år for sesongen (ar, 2022 = 21/22, 2023 = 22/23 og 2024 = 23/24), hvilket lag man møter (motstand), hvilken del av sesongen kampen ble spilt (pre, før jul; mid, Januar-Februar; end, Februar-Mars), hvor mange tilskuere som betalte inngang (publikum), antall solgte pølser (antall_polser), antall solgte kaffekopper (antall_kaffe), antall pølser man kjøpte fra slakteren (polser_kjop) og hvor mye kaffe som ble kjøpt inn til hver kamp (antall, kaffe_kjop).</p>
+<p>Klubben ønsker ikke å endre prisene på varene, men bare få en oversikt over hvordan man kan planlegge innkjøp bedre. Lag en presentasjon som gir forslag til hvordan LIK kan planlegge innkjøp av kaffe og pølser på en bedre måte. Klubbledelsen forventer at du tar hensyn til de variablene i datasettet som kan være interessante for å ta rett beslutning (f.eks. motstand, år, del av sesong). Lag også en beregning av hvor mye man kan spare ved å følge deres forslag.</p>
 <p>I løsningen som dere presenterer til klubbledelsen kan dere bruke følgende case for å beskrive hvor mange pølser og hvor mye kaffe som bør kjøpes inn.</p>
 <table class="caption-top table">
 <colgroup>
@@ -434,7 +419,7 @@ ul.task-list li input[type="checkbox"] {
 </tr>
 </tbody>
 </table>
-<p>Bruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise på de økonomiske konsekvensene av disse forslagene.</p>
+<p>Bruk Jamovi for å løse oppgaven og power-point (eller lignende, f.eks. google slides) for å lage presentasjonen. Presentasjonen bør inneholde en beskrivelse av strategien dere brukte for å behandle data. Dere bør bruke beskrivende statistikk for å argumentere for forskjellige forslag og vise de økonomiske konsekvensene av disse forslagene.</p>
 
 
 </section>
@@ -492,14 +477,13 @@ ul.task-list li input[type="checkbox"] {
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
@@ -848,8 +832,8 @@ ul.task-list li input[type="checkbox"] {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./06-samvariasjon.html" class="pagination-link" aria-label="Workshop: Statistisk samvariasjon">
-        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-sammenligne-gjennomsnitt.html" class="pagination-link" aria-label="Sammenligne gjennomsnitt">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

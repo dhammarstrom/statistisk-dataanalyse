@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.27">
+<meta name="generator" content="quarto-1.7.17">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -11,9 +11,6 @@
 
 <title>Statistisk dataanalyse med Jamovi</title>
 <style>
-/* Default styles provided by pandoc.
-** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
-*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -29,6 +26,7 @@ ul.task-list li input[type="checkbox"] {
 div.csl-bib-body { }
 div.csl-entry {
   clear: both;
+  margin-bottom: 0em;
 }
 .hanging-indent div.csl-entry {
   margin-left:2em;
@@ -61,10 +59,10 @@ div.csl-indent {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-adfb2833bc15652ec5881dc6381ea988.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-da03d714c310c60cec1d83284c92da2c.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9e3e5b9121e68b3f077afb32f2c64d95.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-6c5314280c86e53d2a1a2ca4c5fd5b4a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -275,31 +273,19 @@ div.csl-indent {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -323,7 +309,6 @@ div.csl-indent {
   <li><a href="#forord" id="toc-forord" class="nav-link active" data-scroll-target="#forord">Forord</a>
   <ul class="collapse">
   <li><a href="#hva-trenger-jeg" id="toc-hva-trenger-jeg" class="nav-link" data-scroll-target="#hva-trenger-jeg">Hva trenger jeg?</a></li>
-  <li><a href="#læringsressurser" id="toc-læringsressurser" class="nav-link" data-scroll-target="#læringsressurser">Læringsressurser</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -376,21 +361,14 @@ div.csl-indent {
 <p>Målet med denne boken er at du skal bli kjent med verktøy og metoder for statistisk dataanalyse, hvordan man gjennomfører slike, og rapporterer resultater fra dem. For å oppnå disse målene introduserer vi Jamovi, en gratis programvare for statistisk dataanalyse med tilstrekkelig kraft og fleksibilitet for analyser av forskningsdata. I tillegg vil vi snakke om andre programvarer som du vil ha nytte av når du forfatter rapporter som er baserte på data. Målet med boken er å gi en introduksjon til de verktøy du trenger for å forfatte en bachelor eller masteroppgave.</p>
 <section id="hva-trenger-jeg" class="level2 page-columns page-full">
 <h2 class="anchored" data-anchor-id="hva-trenger-jeg">Hva trenger jeg?</h2>
-<p>Denne boken bygger videre på Statistisk Dataanalyse, forfattet av Christer Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span>. Vi rekommanderer denne som en introduserende tekst samtidig som vi prøver vi å gå litt mer i dybden på noen konsepter her. For å få mer dybde i pensum rekommanderes Innføring i statistikk og dataanalyse for studenter i Idretts- og helsefag.</p>
+<p>Denne boken bygger videre på Statistisk Dataanalyse, skrevet av Christer Thrane <span class="citation" data-cites="thrane_2020">(<a href="references.html#ref-thrane_2020" role="doc-biblioref">Thrane 2020</a>)</span>. Vi anbefaler denne som en introduksjon, samtidig som vi går litt dypere inn i enkelte konsepter her. For å få mer dybde i pensum anbefales også boken Innføring i statistikk og dataanalyse for studenter i Idretts- og helsefag.</p>
 <div class="no-row-height column-margin column-container"><div id="ref-thrane_2020" class="csl-entry" role="listitem">
 Thrane, Christer. 2020. <em>Statistisk Dataanalyse På 1-2-3</em>. Cappelen Damm.
 </div></div><p>For å følge med i modulene trenger du Jamovi, som du kan installere til din Mac eller PC ved å laste ned programvaren <a href="http://www.jamovi.org">her</a>. Det er også mulig å bruke <a href="http://www.jamovi.org">Jamovi i skyen</a>.</p>
-<p>Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram så som Microsofts Word eller lignende (Google docs, Open Office, Libre Office). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer.</p>
-</section>
-<section id="læringsressurser" class="level2 page-columns page-full">
-<h2 class="anchored" data-anchor-id="læringsressurser">Læringsressurser</h2>
-<p>I disse forelesningsnotatene og videforelesninger introduserer vi Jamovi. Det finnes flere gode ressurser for introduksjon til Jamovi, datalab.cc har en serie videoer som beskriver programvaren, du finner videoene her <a href="https://datalab.cc/jamovi/">https://datalab.cc/jamovi/</a>.</p>
-<p>I Learning Statistics with Jamovi <span class="citation" data-cites="navarro_learning_2018">(<a href="references.html#ref-navarro_learning_2018" role="doc-biblioref">Navarro and Foxcroft 2018</a>)</span> brukes programvaren aktivt. Les gjerne denne tekten ved siden av forelesningsnotatene.</p>
+<p>Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram slik som Microsofts Word eller lignende (Google docs, Open Office, Libre Office). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer.</p>
 
 
-<div class="no-row-height column-margin column-container"><div id="ref-navarro_learning_2018" class="csl-entry" role="listitem">
-Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Jamovi: A Tutorial for Psychology Students and Other Beginners</em>. Danielle J. Navarro; David R. Foxcroft. <a href="https://doi.org/10.24384/HGC3-7P15">https://doi.org/10.24384/HGC3-7P15</a>.
-</div></div>
+
 </section>
 </section>
 
@@ -446,14 +424,13 @@ Navarro, Danielle J, and David R Foxcroft. 2018. <em>Learning Statistics with Ja
       e.clearSelection();
     }
     const getTextToCopy = function(trigger) {
-      const outerScaffold = trigger.parentElement.cloneNode(true);
-      const codeEl = outerScaffold.querySelector('code');
-      for (const childEl of codeEl.children) {
-        if (isCodeAnnotation(childEl)) {
-          childEl.remove();
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
         }
-      }
-      return codeEl.innerText;
+        return codeEl.innerText;
     }
     const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
       text: getTextToCopy
