@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deskriptiv dataanalyse – Statistisk dataanalyse med Jamovi</title>
+<title>15&nbsp; Workshop: Kausalitet – Statistisk dataanalyse med Jamovi</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./01-deskriptiv-dataanalyse.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./06-sammenligne-gjennomsnitt.html" rel="next">
+<link href="./06-samvariasjon.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,6 +70,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -82,7 +111,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01-a-intro.html">Deskriptiv dataanalyse</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-kausalsammenheng.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,7 +144,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link active">
+            <a href="./01-a-intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Deskriptiv dataanalyse</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
@@ -263,7 +292,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
+  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
   </div>
 </li>
@@ -292,15 +321,23 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Innhold</h2>
+   
+  <ul>
+  <li><a href="#på-kjærestetur" id="toc-på-kjærestetur" class="nav-link active" data-scroll-target="#på-kjærestetur"><span class="header-section-number">15.1</span> På kjærestetur</a></li>
+  <li><a href="#fysisk-aktivitet-og-dødelighet" id="toc-fysisk-aktivitet-og-dødelighet" class="nav-link" data-scroll-target="#fysisk-aktivitet-og-dødelighet"><span class="header-section-number">15.2</span> Fysisk aktivitet og dødelighet</a></li>
+  <li><a href="#statistisk-kontroll" id="toc-statistisk-kontroll" class="nav-link" data-scroll-target="#statistisk-kontroll"><span class="header-section-number">15.3</span> Statistisk kontroll</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06-a-intro.html">Forelesninger, Øvelser og prosjekter</a></li><li class="breadcrumb-item"><a href="./06-kausalsammenheng.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Deskriptiv dataanalyse</h1>
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></h1>
 </div>
 
 
@@ -317,9 +354,28 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>I denne modulen introduseres de programmer som vil bli brukt i emnet. Vi vil snakke om hvordan vi kan lagre data og om hvordan vi kan gjennomføre analyser på en ryddig måte. I pensum snakker man om deskriptiv dataanalyse og det typiske i data. Vi prøver å sette dette inn i en kontekst for vitenskapelig dataanalyse. I jamovi ser vi hvordan vi kan gjennomføre en beskrivende dataanalyse av forskjellige variabeltyper.</p>
+<p>I tre oppgaver skal vi diskutere kausalitet, eller kausalsammenhenger. Workshop bygger videre på temaet kausalsammenheng og dere blir bedt om å tegne opp DAGs (directed acyclic graphs) for å beskrive sammenhenger. Bruk enkle midler for å lage disse, penn og papir, eller kanskje Power-point. Det finnes flere gode argumenter som kan være med å forklare de forskjellige problemene under, de kan være en god ide å bruke tid på å identifisere flere forskjellige løsninger før man velger den man tror mest på!</p>
+<section id="på-kjærestetur" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="på-kjærestetur"><span class="header-section-number">15.1</span> På kjærestetur</h2>
+<p>Du befinner deg i Roma for en weekend med kjæresten. Dere ønsker å spise godt og oppleve skikkelig italiensk mat med god service. På den første kvelden finner dere en tilsynelatende flott restaurant i de mest trafikkerte strøkene i bydelen Trastevere. Det er en masse mennesker som også ønsker å spise der og etter litt venting får dere et bord. Etter enda lenger venting får dere maten, den er hemsk. I tillegg er kelneren sint og paret på nabobordet krangler høyt på polsk hele middagen. Den andre kvelden har dere tatt feil buss og ender opp et strøk som bærer preg av sosial urettvise, uten salg av suvenirer eller gelato. Dere er sultne. I panikk ser dere en skilt som savner noen bokstaver, «Restu an », når dere kommer nærmere oppdager dere at en trapp leder ned til lokalet som ligger i kjelleretasjen. Menyen er på italiensk og ser ikke ut til å ha blitt oppdatert den siste tiden. Til maten er det bare mulig å bestille husets vin. Men, maten og opplevelsen viser seg være fantastisk. Etter besøket takker dere kokken og kelneren for kvelden og finner på noe magisk vis tilbake til hotellet. Ingen av dere kan beskrive veien tilbake til den samme plassen dagen etter. Var det bare en drøm?</p>
+<p>Forklar dette fenomenet, hvorfor fant dere ikke noen gode restauranter på de mer kjente plassene? Bruk en DAG (directed acyclic graph) for å beskrive hvordan restauranter overlever i byer.</p>
+</section>
+<section id="fysisk-aktivitet-og-dødelighet" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="fysisk-aktivitet-og-dødelighet"><span class="header-section-number">15.2</span> Fysisk aktivitet og dødelighet</h2>
+<p>I observasjonsstudier er det ikke uvanlig å se en assosiasjon mellom fysisk aktivitet og dødelighet. De som er mer aktive (flere timer) tenderer å leve lengere (livslengde). Betyr dette at fysisk aktivitet er noe bra? Hvilke konfunderende faktorer kan muligens bidra til at dette forholdet er sterkere enn hva det faktisk er? Bruk en DAG (directed acyclic graph) for å beskrive hvordan dere tenker.</p>
+<p>Når vi ønsker å virkelig forstå hvordan fysisk aktivitet påvirker livslengde kanskje en eksperimentell studie er veien å gå. I en slik studie randomiseres deltakere til å få anbefalinger om økt fysisk aktivitet og sammenlignes med en gruppe som får anbefalinger om å holde den nivå på fysisk aktivitet som rekommanderes i nasjonale retningslinjer. Nå man analyserer resultatene fra en slik studie viser det seg ikke sjelden at begge grupper viser til lignende variasjon i livslengde. Betyr dette at økt fysisk aktivitet ikke er godt nok. Diskuter svakhetene i en slik studie, bruk gjerne en DAG for å vise til hvilke variabler som dere tror spiller inn på resultatene.</p>
+</section>
+<section id="statistisk-kontroll" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="statistisk-kontroll"><span class="header-section-number">15.3</span> Statistisk kontroll</h2>
+<p>En stor gruppe studenter studerer for eksamen i Statistikk. Dere har fått i oppgave å analysere hvor godt innsats (timer studier per uke, <code>studietid</code>) samsvarer med resultater på eksamen (variabel test). Studentene er inndelt i to grupper. De to gruppene har deltatt på to forskjellige studieopplegg. Det ene opplegget inneholdt et nytt revolusjonerende konsept for læring og det sammenlignedes med tradisjonelle studier (gruppe: 1, revolusjonerende opplegg; gruppe: 0, tradisjonelle studier). Dere finner dataene <a href="data/studieeksperiment.csv">her</a>.</p>
+<p>Hva er sammenhengen mellom studietid og resultat på eksamen når resultatene analyseres ved hjelp av modellen</p>
+<p><span class="math display">\[\text{Test} = \beta_0 + \beta_1 \times \text{studietid}\]</span></p>
+<p>Hva er sammenhengen mellom variablene når vi «kontrollerer» for studieopplegget? Den statistiske modellen blir:</p>
+<p><span class="math display">\[\text{Test} = \beta_0 + \beta_1 \times \text{studietid} + \beta_2 \times \text{gruppe}\]</span></p>
+<p>Diskuter hvordan vi best analyserer resultatene fra eksperimentet. Hvordan bør vi argumentere kring spørsmålet om å inkludere gruppe i analysen? Bruk Jamovi for å analysere dataene og bruk en DAG for å beskrive analysen.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -723,13 +779,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Forord">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Forord</span>
+      <a href="./06-samvariasjon.html" class="pagination-link" aria-label="Workshop: Statistisk samvariasjon">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./01-deskriptiv-dataanalyse.html" class="pagination-link" aria-label="Datahåndtering og Data i regnearkprogrammer">
-        <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Datahåndtering og Data i regnearkprogrammer</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./06-sammenligne-gjennomsnitt.html" class="pagination-link" aria-label="Workshop: Sammenligne gjennomsnitt">
+        <span class="nav-page-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

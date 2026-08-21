@@ -301,19 +301,31 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-beskrivende-data.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Beskrive data og beskrive med data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Workshop: Beskrive data og beskrive med data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-samvariasjon.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Workshop: Statistisk samvariasjon</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-kausalsammenheng.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Workshop: Kausalitet</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-sammenligne-gjennomsnitt.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Sammenligne gjennomsnitt</span></span></a>
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Workshop: Sammenligne gjennomsnitt</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./06-organisering-av-analyse.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Organisere og gjennomføre en analyse</span></span></a>
   </div>
 </li>
       </ul>
@@ -373,16 +385,10 @@ window.Quarto = {
 <p>Samtidig som vi vet at noen sammenhenger er spuriøse<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> vet vi også at noen ting påvirker andre ting, det finnes kausalitet<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a>. I et forsøk undersøker vi hvordan en ny medisin påvirker blodtrykket. En gruppe forsøkdeltakere blir tilfeldig inndelt i to grupper. Deltakere i den ene gruppen får den nye medisinen og deltakere i den andre gruppen får placebo. Inndeling av deltakere i gruppene er skjult for deltakere og forskere. I etterkant av intervensjonen måler vi blodtrykk og kan konstatere at deltakere som fått medisinen har lavere blodtrykk sammenlignet med placebo-gruppen. Forsøket inneholder noen komponenter som gjør at vi kan si at det finnes en kausal sammenheng mellom det å ta medisinen og det å få lavere blodtrykk. Hvis vi hadde muligheten å forandre på en variabel for deretter å måle utfallet i en annen variabel, under kontrollerte forhold så kan vi si at det finnes (eller ikke) en kausal sammenheng. Det å forandre en variabel (f.eks. konsentrasjonen av et medikament i blodet) kan kalles for å gjøre en intervensjon.</p>
 <div class="no-row-height column-margin column-container"><div id="fn1"><p><sup>1</sup>&nbsp;Spuriøs sammenheng er en sammenheng mellom to variabler som ikke har en kausal sammenheng.</p></div><div id="fn2"><p><sup>2</sup>&nbsp;Kausalitet er en sammenheng mellom to variabler hvor en variabel påvirker en annen.</p></div></div><p>I mange sammenhenger har vi ikke mulighet å forandre variabler ved å lage intervensjoner. Det kan for eksempel finnes etiske eller praktiske årsaker til dette. Men vi har fortsatt mulighet til å undersøke kausale sammenhenger. Som i eksemplet med medisin for lavere blodtrykk over så krever det noen antagelser. I et forsøk hvor vi intervenerer kan antagelser inkludere at forsøkdeltakere blir tilfeldig tildelt en gruppe og at forskere ikke vet hvilken pasient eller forsøkdeltakere som får den aktive behandlingen eller medisinen. Hvis disse antakelsene er sanne så kan vi med stor sikkerhet si at medisinen påvirket blodtrykket. I en forskningstudie hvor vi ikke har mulighet å intervenere har vi fortsatt mulighet å «kontrollere» for variabler som kan påvirke sammenhengen mellom to variabler som vi er interessert i. Vi kan identifisere variabler som vi bør kontrollere for ved hjelp av grafiske modeller. Disse modellene kan også gi innsikt i når vi ikke kan si at en sammenheng er årsaksbestemt.</p>
 <p>Over har vi beskrevet to typer av studiedesign, en eksperimentell studie og en observasjonsstudie. I en eksperimentell studie gjennomfører vi en eller flere intervensjoner som forandrer variabler og vi kan derved estimere effekten av disse variablene på avhengige variabler. I en observasjonsstudie har vi ikke denne muligheten, her estimerer sammenhenger mellom variabler ved hjelp og trekker slutninger om kausalitet basert på antagelser om hvordan variabler henger sammen. I begge typer av studier kan vi si noe om kausale sammenhenger.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=26f2e4ef-c766-450f-af3a-b14800bf9fe0" target="_blank">Intro til kausal inferens</a>.</p>
-</div></div><section id="eksperiment-og-kvasieksperiment" class="level2 page-columns page-full" data-number="5.1">
+<section id="eksperiment-og-kvasieksperiment" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id="eksperiment-og-kvasieksperiment"><span class="header-section-number">5.1</span> Eksperiment og kvasieksperiment</h2>
 <p>Et eksperiment kan brukes til å sammenligne intervensjoner. Vi sammenligner intervensjonene i en definert gruppe. Denne gruppen, eller populasjonen, kan som et eksempel være idrettsutøvere, og intervensjonene kan være to forskjellige treningsprogrammer hvor et program er et nytt program (N) og det andre er hva man vanligvis bruker, en slags kontrollprogram (K). Vi ønsker med vårt eksperiment å si noe om effekten av N på en bestemt variabel i gruppen idrettsutøvere. Vi rekrutterer en gruppe idrettsutøvere og deler inn dem i to undergrupper, N og K.</p>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=84330ac4-df0a-480d-bd46-b14800c2703d" target="_blank">Spuriøse sammenhenger</a>.</p>
-</div></div><p>For å gjøre sammenligningen bestemmer vi et utfall (avhengig variabel), i eksemplet passer det fint å måle løpehastighet i en 3000-m test. Vi lar utøverne løpe testen i forkant av studien, ved tid 1 (<span class="math inline">\(t_1\)</span>), og etter studien, ved tid 2 (<span class="math inline">\(t_2\)</span>). Vi kan nå beregne en forandringskår (<span class="math inline">\(\delta\)</span>). Hvor mye forandret seg hvert enkelt individ fra <span class="math inline">\(t_1\)</span> til <span class="math inline">\(t_2\)</span>?</p>
+<p>For å gjøre sammenligningen bestemmer vi et utfall (avhengig variabel), i eksemplet passer det fint å måle løpehastighet i en 3000-m test. Vi lar utøverne løpe testen i forkant av studien, ved tid 1 (<span class="math inline">\(t_1\)</span>), og etter studien, ved tid 2 (<span class="math inline">\(t_2\)</span>). Vi kan nå beregne en forandringskår (<span class="math inline">\(\delta\)</span>). Hvor mye forandret seg hvert enkelt individ fra <span class="math inline">\(t_1\)</span> til <span class="math inline">\(t_2\)</span>?</p>
 <p><span class="math display">\[\Delta = t_2 – t_1\]</span></p>
 <p>I neste steg kan vi beregne effekten av N, det nye treningsprogrammet. For å beregne denne så trekker vi ifra forandringen i K (<span class="math inline">\(\Delta_K\)</span>) fra effekten av N (<span class="math inline">\(\Delta_N\)</span>), denne beregning gir oss den gjennomsnittlige intervensjonseffekten (GIE) av å gjennomføre N, sammenlignet med et kontrollprogram (K).</p>
 <p><span class="math display">\[ \Delta_N - \Delta_K = \text{GIE}\]</span></p>
@@ -406,10 +412,7 @@ Figur&nbsp;5.1. En ekseprimentell studie (A) gjennomfører gruppeindelning (<em>
 </section>
 <section id="grafiske-modeller-for-kausal-analyse" class="level2 page-columns page-full" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="grafiske-modeller-for-kausal-analyse"><span class="header-section-number">5.2</span> Grafiske modeller for kausal analyse</h2>
-
-<div class="no-row-height column-margin column-container"><div class="">
-<p>📹 Forelesning: <a href="https://inn.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=e17be367-ed01-45a9-97a1-b14800c3de1b" target="_blank">Kausale modeller</a>.</p>
-</div></div><p>I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet <em>Directed Acyclic Graph</em> (<em>DAG</em>, “rettet asyklisk graf” på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en “effekt” mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt.</p>
+<p>I eksemplet over bruker vi en grafisk modell til å beskrive hvordan forskjellige variabler henger sammen. Denne typen av modell har navnet <em>Directed Acyclic Graph</em> (<em>DAG</em>, “rettet asyklisk graf” på norsk), noe som beskriver modellens egenskaper. Modellen viser retningen av en “effekt” mellom to variabler (directed), og en variabel kan ikke påvirke seg selv, modellen er ikke syklisk (acyclic). Vi kan tenke på hele grafen som forhold mellom variabler ved et bestemt tidspunkt.</p>
 <p>Den grafiske modellen inneholder noder (nodes), disse bruker vi for å plassere inn variabler, og kanter (edges) som vi bruker for å beskrive retning på effekter, hvordan en variabel påvirker en annen. I figuren over (<a href="#fig-eksperimentkvasi" class="quarto-xref">Figur&nbsp;<span>5.1</span></a>) sier vi at <em>G</em> (gruppetilhørighet) er en variabel (nod) som påvirker <em>P</em> direkte ved en kobling mellom de to.</p>
 <p>Denne typen av grafisk modell har noen begrensninger, den forteller for eksempel ikke om hvordan variabler påvirker hverandre. En effekt, som beskrevet i en DAG, ser lik ut når variablene er kategoriske og kontinuerlige. En DAG beskriver ikke heller styrken i en sammenheng. For eksempel er det å kjøpe en lodd <span class="math inline">\(L\)</span> kausalt sammenkoblet <a href="https://www.vg.no/nyheter/innenriks/i/bgBjae/mann-31-pantet-en-boks-og-vant-en-million-i-pantelotteriet">med å vinne en million</a> <span class="math inline">\(V\)</span> (<span class="math inline">\(L \rightarrow V\)</span>), men sammenhenger er ikke så sterk. Så vad kan vi bruke en DAG til?</p>
 <p>En DAG gir oss muligheten til å koble sammen en statistisk modell, for eksempel en regresjonsmodell, med en vitenskapelig modell. Den vitenskaplige modellen, illustrert gjennom en DAG, viser hvordan vi anser at variabler henger sammen og hvordan vi kan tolke, eller forandre den statistiske modellen for å la den beskrive kausale effekter. Den vitenskaplige modellen bygger på antagelser. Når vi beskriver en kausal effekt betyr det at vi sier at den er kausal under betingelser at de antagelser vi stiller opp er sanne. Beskrevet på denne måten er det tydelig at vi ikke kan finne kausale sammenhenger hvis vi bare analyserer dataene, vi trenger en vitenskaplig modell i tillegg <span class="citation" data-cites="pearl_seven_2019">(<a href="references.html#ref-pearl_seven_2019" role="doc-biblioref">Pearl 2019</a>)</span>.</p>
