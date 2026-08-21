@@ -19,7 +19,7 @@ Målet med denne boken er at du skal bli kjent med verktøy og metoder for stati
 
 ## Hva trenger jeg? 
 
-Denne boken bygger videre på Statistisk Dataanalyse, forfattet av Christer Thrane [@thrane_2020]. Vi rekommanderer denne som en introduserende tekst samtidig som vi prøver vi å gå litt mer i dybden på noen konsepter her. For å få mer dybde i pensum rekommanderes Innføring i statistikk og dataanalyse for studenter i Idretts- og helsefag. 
+Denne boken bygger videre på Statistisk Dataanalyse, skrevet av Christer Thrane [@thrane_2020]. Vi anbefaler denne som en introduksjon, samtidig som vi går litt dypere inn i enkelte konsepter her. For å få mer dybde i pensum anbefales også boken Innføring i statistikk og dataanalyse for studenter i Idretts- og helsefag. 
 
   
 
@@ -27,6 +27,6 @@ For å følge med i modulene trenger du Jamovi, som du kan installere til din Ma
 
   
 
-Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram så som Microsofts Word eller lignende (Google docs, Open Office, Libre Office). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer. 
+Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram slik som Microsofts Word eller lignende (Google docs, Open Office, Libre Office). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer. 
 
 
