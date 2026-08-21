@@ -30,3 +30,10 @@ For å følge med i modulene trenger du Jamovi, som du kan installere til din Ma
 Det finnes flere alternativer til regnearkprogrammer. Det mest kjente er Microsofts Excel, men du kan også bruke Open Office eller Google sheets. For å forfatte rapporter kan du bruke et ordbehandlingsprogram slik som Microsofts Word eller lignende (Google docs, Open Office, Libre Office). Til sist bruker vi en presentasjonsprogramvare (Microsoft PowerPoint) for å redigere figurer. 
 
 
+## Læringsressurser
+
+I disse forelesningsnotatene og videforelesninger introduserer vi Jamovi. Det finnes flere gode ressurser for introduksjon til Jamovi, datalab.cc har en serie videoer som beskriver programvaren, du finner videoene her [https://datalab.cc/jamovi/](https://datalab.cc/jamovi/).
+
+
+I Learning Statistics with Jamovi [@navarro_learning_2018] brukes programvaren aktivt. Les gjerne denne tekten ved siden av forelesningsnotatene.   
+

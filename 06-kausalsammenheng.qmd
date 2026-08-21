@@ -1,0 +1,56 @@
+# Workshop: Kausalitet
+
+I tre oppgaver skal vi diskutere kausalitet, eller kausalsammenhenger. Workshop bygger videre på temaet kausalsammenheng og dere blir bedt om å tegne opp DAGs (directed acyclic graphs) for å beskrive sammenhenger. Bruk enkle midler for å lage disse, penn og papir, eller kanskje Power-point. Det finnes flere gode argumenter som kan være med å forklare de forskjellige problemene under, de kan være en god ide å bruke tid på å identifisere flere forskjellige løsninger før man velger den man tror mest på!
+
+
+## På kjærestetur
+
+Du befinner deg i Roma for en weekend med kjæresten. Dere ønsker å spise godt og oppleve skikkelig italiensk mat med god service. På den første kvelden finner dere en tilsynelatende flott restaurant i de mest trafikkerte strøkene i bydelen Trastevere. Det er en masse mennesker som også ønsker å spise der og etter litt venting får dere et bord. Etter enda lenger venting får dere maten, den er hemsk. I tillegg er kelneren sint og paret på nabobordet krangler høyt på polsk hele middagen. Den andre kvelden har dere tatt feil buss og ender opp et strøk som bærer preg av sosial urettvise, uten salg av suvenirer eller gelato. Dere er sultne. I panikk ser dere en skilt som savner noen bokstaver, «Restu an », når dere kommer nærmere oppdager dere at en trapp leder ned til lokalet som ligger i kjelleretasjen. Menyen er på italiensk og ser ikke ut til å ha blitt oppdatert den siste tiden. Til maten er det bare mulig å bestille husets vin. Men, maten og opplevelsen viser seg være fantastisk. Etter besøket takker dere kokken og kelneren for kvelden og finner på noe magisk vis tilbake til hotellet. Ingen av dere kan beskrive veien tilbake til den samme plassen dagen etter. Var det bare en drøm?
+
+Forklar dette fenomenet, hvorfor fant dere ikke noen gode restauranter på de mer kjente plassene? Bruk en DAG (directed acyclic graph) for å beskrive hvordan restauranter overlever i byer.
+
+## Fysisk aktivitet og dødelighet
+
+I observasjonsstudier er det ikke uvanlig å se en assosiasjon mellom fysisk aktivitet og dødelighet. De som er mer aktive (flere timer) tenderer å leve lengere (livslengde). Betyr dette at fysisk aktivitet er noe bra? Hvilke konfunderende faktorer kan muligens bidra til at dette forholdet er sterkere enn hva det faktisk er? Bruk en DAG (directed acyclic graph) for å beskrive hvordan dere tenker.
+
+Når vi ønsker å virkelig forstå hvordan fysisk aktivitet påvirker livslengde kanskje en eksperimentell studie er veien å gå. I en slik studie randomiseres deltakere til å få anbefalinger om økt fysisk aktivitet og sammenlignes med en gruppe som får anbefalinger om å holde den nivå på fysisk aktivitet som rekommanderes i nasjonale retningslinjer. Nå man analyserer resultatene fra en slik studie viser det seg ikke sjelden at begge grupper viser til lignende variasjon i livslengde. Betyr dette at økt fysisk aktivitet ikke er godt nok. Diskuter svakhetene i en slik studie, bruk gjerne en DAG for å vise til hvilke variabler som dere tror spiller inn på resultatene.
+
+## Statistisk kontroll
+
+
+```{r}
+#| echo: false
+#| message: false
+#| warning: false
+
+library(tidyverse)
+set.seed(1)
+gruppe <- rep(c(0, 1), each = 100)
+studietid <- 35 + ifelse(gruppe == 1, rnorm(100, -1.5, 1.2), rnorm(100, 1.5, 1.2))  
+
+test <- studietid * 0.5 + gruppe * 4 + rnorm(200, 0, 1.2)
+
+df <- data.frame(test, studietid, gruppe)
+
+write_csv2(df, "data/studieeksperiment.csv")
+
+
+```
+
+
+En stor gruppe studenter studerer for eksamen i Statistikk. Dere har fått i oppgave å analysere hvor godt innsats (timer studier per uke, `studietid`) samsvarer med resultater på eksamen (variabel test). Studentene er inndelt i to grupper. De to gruppene har deltatt på to forskjellige studieopplegg. Det ene opplegget inneholdt et nytt revolusjonerende konsept for læring og det sammenlignedes med tradisjonelle studier (gruppe: 1, revolusjonerende opplegg; gruppe: 0, tradisjonelle studier).  Dere finner dataene [her](data/studieeksperiment.csv).
+
+Hva er sammenhengen mellom studietid og resultat på eksamen når resultatene analyseres ved hjelp av modellen
+
+$$\text{Test} = \beta_0 + \beta_1 \times \text{studietid}$$
+
+Hva er sammenhengen mellom variablene når vi «kontrollerer» for studieopplegget? Den statistiske modellen blir:
+
+$$\text{Test} = \beta_0 + \beta_1 \times \text{studietid} + \beta_2 \times \text{gruppe}$$
+
+Diskuter hvordan vi best analyserer resultatene fra eksperimentet. Hvordan bør vi argumentere kring spørsmålet om å inkludere gruppe i analysen? Bruk Jamovi for å analysere dataene og bruk en DAG for å beskrive analysen. 
+
+
+
+
+

@@ -1,55 +1,67 @@
-project:
-  type: book
-from: markdown+emoji
-book:
-  title: "Statistisk dataanalyse med Jamovi"
-  author: "Daniel Hammarström"
-  date: "2024-01-02"
-  chapters:
-    - index.qmd
-    - part: 01-a-intro.qmd
-      chapters: 
-      - 01-deskriptiv-dataanalyse.qmd
-      - 01-jamovi.qmd
-    - part: 02-a-intro.qmd
-      chapters: 
-      - 02-statistisk-samvariasjon.qmd
-      - 02-jamovi.qmd
-    - part: 03-a-intro.qmd
-      chapters: 
-        - 03-kausalsammenheng.qmd
-        - 03-jamovi.qmd
-        - 03-kausal-ressurs.qmd
-    - part: 04-a-intro.qmd
-      chapters:
-        - 04-induktiv-statistikk.qmd
-        - 04-jamovi.qmd
-    - part: 05-a-intro.qmd
-      chapters: 
-        - 05-formidling.qmd
-        - 05-jamovi.qmd
-    - part: 06-a-intro.qmd
-      chapters:
-        - 06-forelesninger.qmd
-        - 06-beskrivende-data.qmd
-        - 06-sammenligne-gjennomsnitt.qmd
-        - 06-organisering-av-analyse.qmd
-    - references.qmd
-
-toc-title: Innhold
-bibliography: references.bib
-reference-location: margin
-citation-location: margin
-crossref:
-  fig-title: Figur     # (default is "Figure")
-  fig-prefix: Figur
-  tbl-prefix: Tabell
-  tbl-title: Tabell     # (default is "Table")
-  title-delim: "."   # (default is ":")
-  sec-prefix: Avsnitt
-format:
-  html:
-    theme: cosmo
-
-
-
+# fmt: skip file
+project:
+  type: book
+from: markdown+emoji
+book:
+  title: "Statistisk dataanalyse med Jamovi"
+  author: "Daniel Hammarström"
+  date: "2024-01-02"
+  chapters:
+    - index.qmd
+    - part: 01-a-intro.qmd
+      chapters: 
+      - 01-deskriptiv-dataanalyse.qmd
+      - 01-jamovi.qmd
+    - part: 02-a-intro.qmd
+      chapters: 
+      - 02-statistisk-samvariasjon.qmd
+      - 02-jamovi.qmd
+    - part: 03-a-intro.qmd
+      chapters:
+        - 03-kausalsammenheng.qmd
+        - 03-jamovi.qmd
+        - 03-kausal-ressurs.qmd
+    - part: 04-a-intro.qmd
+      chapters:
+        - 04-induktiv-statistikk.qmd
+        - 04-jamovi.qmd
+    - part: 05-a-intro.qmd
+      chapters: 
+        - 05-formidling.qmd
+        - 05-jamovi.qmd
+    - part: 06-a-intro.qmd
+      chapters:
+        - 06-forelesninger.qmd
+        - 06-beskrivende-data.qmd
+        - 06-samvariasjon.qmd
+        - 06-kausalsammenheng.qmd
+        - 06-sammenligne-gjennomsnitt.qmd
+        - 06-organisering-av-analyse.qmd
+    - references.qmd
+
+
+toc-title: Innhold
+
+bibliography: references.bib
+
+reference-location: margin
+
+citation-location: margin
+
+crossref:
+  fig-title: Figur     # (default is "Figure")
+  fig-prefix: Figur
+  tbl-prefix: Tabell
+  tbl-title: Tabell     # (default is "Table")
+  title-delim: "."   # (default is ":")
+  sec-prefix: Avsnitt
+format:
+  html:
+    theme: cosmo
+
+
+
+
+
+
+

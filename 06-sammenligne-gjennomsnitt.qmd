@@ -3,19 +3,59 @@ output: html_document
 editor_options: 
   chunk_output_type: console
 ---
-# Sammenligne gjennomsnitt
 
-Når vi gjennomfører en studie samler vi et datasett med observasjoner. Denne ene datainnsamlingen gir oss det et bilde av effekten vi ønsker å estimere. 
+# Workshop: Sammenligne gjennomsnitt
 
-Hensikten med øvelsen er å simulere det å gjennomføre flere forskjellige datainnsamlinger. Vi ønsker å vise at det er mulig å få forskjellige estimater av effekten selv om vi gjennomfører studien på samme måte.
+Når vi gjennomfører en studie så samler vi observasjoner til et datasett. Denne ene datainnsamlingen gir oss mulighet å lage et estimat av noe som vi mener representerer noen aspekt av verden. For eksempel, vi kan være interesserte i hvordan en behandling påvirker muskelfunksjon hos en gruppe mennesker. Vi konstruerer studien sånn att behandlingen gis til en del av utvalget i studien mens den andre delen av utvalget får en lignende, men hypotetisk ikke like effektiv behandling (kontrollgruppe). De to gruppene sammenlignes og den gjennomsnittlige effekten av behandlingen når vi subtraherer forandringer i kontrollgruppen er estimatet av effekten av behandling på muskelfunksjon.
 
-I del to av øvelsen setter vi sammen resultatene fra de forskjellige datainnsamlingene i en metaanalyse. Her bruker vi modulen MAJOR i Jamovi. 
+Dessverre finner vi at det finnes flere måter å lage dette estimatet på, det er heller ikke sikkert at vi er overens om hva det er vi ønsker å estimere for å på best måte fange fenomenet vi ønsker å undersøke. Vi kan skille på tre begreper (se @fig-estimand), et estimat er den kvantitet som vi ønsker å få fra vår statistiske analyse. En estimator er måten vi beregner denne kvantiteten på og en estimand er det vi ønsker å estimere.
 
-Øvelsen kan gjennomføres i grupper om 2-4 deltakere. 
+Én enkelt studie er ofte ikke nok for å gi oss grunnlag til for eksempel å si at en gitt behandling er bedre enn kontroll. For å lage enda bedre grunnlag kan man kombinere flere studier i en analyse, en metaanalyse. Vi kan se på en metaanalyse som et forsøk at gi et samlet bilde, samlet over flere forskjellige måter å gjennomføre studier på. For eksempel kan forskjellige forskergrupper samle inn data på forskjellige måter, noe som påvirker resultatene i de enkelte studiene.
+I denne workshop skal vi først gjennomføre analyse av enkelte studier ved bruk av forskjellige «estimatoer». Deretter skal vi kombinere estimater fra de forskjellige studiene i en metaanalyse.  I den første delen av workshopen vil vi i tillegg til standardmoduler i Jamovi bruke modulen GAMLj. I del to av workshopen bruker vi også modulen MAJOR.
 
-## Studiedesignet
 
-Studiene som blir analysert i denne øvelsen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (*"treatment"*) eller en kontrollgruppe (*"control"*). De to gruppene blir målt i forkant av en intervensjonsperiode (*baseline*) og etter intervensjonsperioden (*post*).
+```{r}
+#| fig-cap: "Estimand, estimator og estimat"
+#| label: fig-estimand
+#| fig-width: 6
+#| fig-height: 3
+#| echo: false
+#| warning: false
+#| message: false
+#| column: margin
+
+library(tidyverse)
+
+
+data.frame(x = c(0,0.5), 
+           y = c(0,1)) %>%
+  ggplot(aes(x,y)) + theme_void() +
+  
+  scale_y_continuous(limits = c(0,1)) +
+  scale_x_continuous(limits = c(0,1)) +
+  
+  annotate("text", x = 0.1, y = 0.9, label = "Estimand \n  (eks. gjennomsnitlig forskjell \n  i forandring i utfall mellom to behandliner)", size = 5, hjust = 0) +
+  annotate("text", x = 0.1, y = 0.5, label = "Estimator \n  (eks. en regresjonsmodell)", size = 5, hjust = 0) +
+  annotate("text", x = 0.1, y = 0.1, label = "Estimat  \n   (eks. parameter-verdi fra modellen)", size = 5, hjust = 0) +
+  
+    annotate("segment", 
+           x = c(0.1,
+                 0.1), 
+           xend = c(0.1, 
+                    0.1), 
+           y = c(0.85,
+                 0.45), 
+           yend = c(0.6, 
+                    0.2), 
+           arrow = arrow(angle = 30, length = unit(0.1, "inches"), ends = "last", type = "closed")) 
+  
+  
+
+```
+
+## Studiedesignet og oppgave
+
+Studiene som blir analysert i denne workshopen er randomiserte kontrollerte studier. Deltakerne i studiene blir randomisert til en behandlingsgruppe (*"treatment"*) eller en kontrollgruppe (*"control"*). De to gruppene blir målt i forkant av en intervensjonsperiode (*baseline*) og etter intervensjonsperioden (*post*).
 
 ```{r}
 #| fig-cap: Studiedesignet
@@ -80,11 +120,14 @@ data.frame(x = c(0,1),
 
 ```
 
+::: {.callout-caution collapse="false"}
+## Gruppeoppgave
 
+1. Velg en måte å analysere dataene på ved hjelp av Jamovi. Formulere hva dere ønsker å studere (estimand), hvordan dere ønsker å estimere (estimator) og hva som vil representere estimatet fra analysen.
 
+2. Rapporter gjennomsnitt og standardavvik for utfalls variabel per gruppe og tidspunkt. 
 
-
-
+:::
 
 ```{r}
 #| echo: false
@@ -190,7 +233,7 @@ for(i in 1:length(datasets)){
 ```
 
 
-## Datasett
+### Datasett
 
 Datasettene finner dere her
 
@@ -206,21 +249,17 @@ Datasettene finner dere her
 
 [D6](data/sammenligne_gjennmsnitt6.csv)
 
-## Analyse
-
-- Beregne en forandringsskår
-- Beregn beskrivende statistikk for hver gruppe
-- Sammenligne gruppene med en t-test
-- Trekk konklusjoner basert på resultatet av t-testen
-- Rapportert resultatet av studien i en figur på whiteboard
 
 ## Metaanalyse
 
-- Last ned MAJOR i Jamovi, 
-- Sett inn beskrivende data i MAJOR (mean differences, standard deviations, sample sizes)
-- Hva er konklusjonen om effekten av intervensjonen basert på metaanalysen?
 
+::: {.callout-caution collapse="false"}
+## Gruppeoppgave
 
+1. Sammenstill data fra de andre studiene i en ny Jamovi-fil
+2. Gjennomfør en metaanalyse av resultatene (bruk *Effect sizes* eller *Mean differences*).
+
+:::
 
 
 
