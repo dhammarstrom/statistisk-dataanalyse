@@ -15,7 +15,7 @@ Bruk Jamovi for å lage en analyseplan basert på problemstillinger. Beskriv hvo
 - Bruk og instilling av punktum og komma (`.` & `,`) på din datamaskin kan påvirke hvordan du bør importere data til Jamovi.
 - Lag figurer! Under `Modules` i Jamovi finner du moduler som kan brukes for å lage visualiseringer. For eksempel, `JJStatsPlot`, `flexplot` eller `scatr` kan brukes for å lage figurer. Disse figurene kan forandres i [Inkscape](https://inkscape.org/), Power Point eller lignende program som kan redigere `.SVG`-filer.
 - Bruk `Computed Variables` under `Data`-fanen for å gjøre beregninger basert på data.
-- Bruk `Analysis output` fanen for å lage notater kring analysene dere lager.
+- Bruk `Analysis output` fanen for å lage notater rundt analysene dere lager.
 
 
 ## Problem 1

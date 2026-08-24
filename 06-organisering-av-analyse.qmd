@@ -15,7 +15,7 @@ Denne informasjonen kan fungere som starten på en beskrivelse av hele analysepr
 ::: {.callout-caution collapse="true"}
 ## Oppgave: Lag en *README*-fil
 
-Et *README*-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en *README*-fil er `.txt`. Dette filformat kan leses av alle uansett programvarer og editering er enkel. 
+Et *README*-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en *README*-fil er `.txt`. Dette filformat kan leses av alle uansett programvarer og endringer er enkelt. 
 
 I en tekst-fil kan vi bruke `#`-tegnet for å indikere overskrifter, hvor en `#` er overskrift nivå 1 (den største) og `##` gir neste nivå, osv.
 
@@ -81,7 +81,7 @@ Beskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som 
 
 ## Organisering av data i Jamovi
 
-Når vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver "sub-analyse", eller hvert gruppe av analyser får en egen `omv`-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for det test som vi tenker skal besvare spørsmålene i prosjektet. 
+Når vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver "sub-analyse", eller hvert gruppe av analyser får en egen `omv`-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for testen som vi tenker skal besvare spørsmålene i prosjektet. 
 
 Men hva er spørsmålene? 
 
@@ -90,9 +90,9 @@ Men hva er spørsmålene?
 
 - En enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det [@vickers2001;@vickers2001a].
 
-- Før vi kan hvordan vi skal analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.
+- Før vi kan analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.
 
-- Når man bestemt *hva* og *hvordan* man ønsker å analysere bør dette føres inn i *README*-file. For eksempel:
+- Når man har bestemt *hva* og *hvordan* man ønsker å analysere bør dette føres inn i *README*-file. For eksempel:
 
 ```
 ## Analayse
