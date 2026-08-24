@@ -884,56 +884,56 @@
   {
     "objectID": "06-organisering-av-analyse.html",
     "href": "06-organisering-av-analyse.html",
-    "title": "17  Organisere og gjennomføre en analyse",
+    "title": "17  Workshop: Organisere og gjennomføre en analyse",
     "section": "",
     "text": "17.1 Bakgrunn til datasettet\nI denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen “skaper” rapporten.\nI denne workshop skal vi arbeide med et datasett fra (Rønnestad et al. 2021). Hensikten med studien var å se på effekten av to forskjellige typer av økter i en “mikrosyklus” (1 uke trening). Deltakere gjennomførte enten fem økter med korte intervaller (30 sek arbeid, 15 sek hvile), eller fem økter med lange intervaller (5 min arbeid, 2.5 min hvile).",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Workshop: Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#bakgrunn-til-datasettet",
     "href": "06-organisering-av-analyse.html#bakgrunn-til-datasettet",
-    "title": "17  Organisere og gjennomføre en analyse",
+    "title": "17  Workshop: Organisere og gjennomføre en analyse",
     "section": "",
     "text": "Rønnestad, Bent R., Sjur J. Øfsteng, Fabio Zambolin, Truls Raastad, and Daniel Hammarström. 2021. “Superior Physiological Adaptations After a Microcycle of Short Intervals Versus Long Intervals in Cyclists.” International Journal of Sports Physiology and Performance 16 (10): 1432–38. https://doi.org/10.1123/ijspp.2020-0647.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Workshop: Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#organisering-av-data",
     "href": "06-organisering-av-analyse.html#organisering-av-data",
-    "title": "17  Organisere og gjennomføre en analyse",
+    "title": "17  Workshop: Organisere og gjennomføre en analyse",
     "section": "17.2 Organisering av data",
     "text": "17.2 Organisering av data\nDere har fått som oppgave å analysere dataene fra prosjektet og får en excel-fil for analyse (du finner datasettet her). Du har også fått en tabell med variabelnavn og informasjon om hvordan dataene har blitt orgnisert (se tabell under).\nDenne informasjonen kan fungere som starten på en beskrivelse av hele analyseprosjektet. Vi vil nå starte med å opprette en README-fil som tar utgangspunkt i hensikten med studien og de data vi har tilgang til.\n\n\n\n\n\n\nOppgave: Lag en README-fil\n\n\n\n\n\nEt README-dokument bør være et levende dokument, noe du arbeider med gjennom hele prosjektet. Når vi starter et nytt arbeid ønsker vi å beskrive hva hensikten er og muligens hvilke data vi har tilgang til. Et godt format for en README-fil er .txt. Dette filformat kan leses av alle uansett programvarer og endringer er enkelt.\nI en tekst-fil kan vi bruke #-tegnet for å indikere overskrifter, hvor en # er overskrift nivå 1 (den største) og ## gir neste nivå, osv.\nEn tabell kan vi lage ved å bruke følgende syntax:\n|Variabel |Beskrivelse|Test\n| ---     | ---       |\n|subject  | Deltakere (id) | \n\nVi ønsker å ha med noen overskrifter når vi starter arbeidet, du kan f.eks. starte med:\n# Titel på prosjektet\n\n## Bakgrunn og hensikt\nHer under beskriver vi hva vi kjenner til om prosjektet og hensikten med analysene...\n\n\n## Data og variabler\nBeskriv variabler som du vil bruke i analysen, inkluder så mye informasjon som mulig\n(Hva (enheter), når, hvordan, osv.)\n\n\n\n\n\n\n\n\n\n\n\n\n\nVariabel\nBeskrivelse\nTest\n\n\n\n\nsubject\nDeltakere (id)\n\n\n\ngroup\nGruppe: SI, “short intervals”; LI, “Long intervals”\n\n\n\ntime\nTids-punkt for test: pre, i forkant av intervensjon; post, etter intevensjon\n\n\n\nbody.mass\nVekt (kg)\n\n\n\nbody.height\n\n\n\n\nage\nAlder ()\n\n\n\nlactate.max\n\nVO2maks-test\n\n\npeak.HR\n\nVO2maks-test\n\n\nRPE.max\n\nVO2maks-test\n\n\nVO2max\n\nVO2maks-test\n\n\nRER.max\n\nVO2maks-test\n\n\nVE.max\n\nVO2maks-test\n\n\nWmax\n\nVO2maks-test\n\n\npower.4mmol\n\nSubmaks-test (terskel)\n\n\nvo2.4mmol\n\nSubmaks-test (terskel)\n\n\nMAP\n\nSubmaks-test (terskel)\n\n\nmean.power.allout\n\nPrestasjonstest (15 min all-out)\n\n\nvo2.mean.allout\n\nPrestasjonstest\n\n\nvo2.peak.allout\n\nPrestasjonstest\n\n\nhr.mean.allout\n\nPrestasjonstest\n\n\nhr.peak.allout\n\nPrestasjonstest\n\n\nRPE.allout\n\nPrestasjonstest\n\n\nlactate.allout\n\nPrestasjonstest",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Workshop: Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#organisering-av-data-i-jamovi",
     "href": "06-organisering-av-analyse.html#organisering-av-data-i-jamovi",
-    "title": "17  Organisere og gjennomføre en analyse",
+    "title": "17  Workshop: Organisere og gjennomføre en analyse",
     "section": "17.3 Organisering av data i Jamovi",
     "text": "17.3 Organisering av data i Jamovi\nNår vi bruker Jamovi kan det være lurt å re-organisere dataene sånn at hver “sub-analyse”, eller hvert gruppe av analyser får en egen omv-fil. Nå får vi også mulighet til å kontrollere variabler og sette opp data for testen som vi tenker skal besvare spørsmålene i prosjektet.\nMen hva er spørsmålene?\n\n\n\n\n\n\nOppgave: Lag en analyseplan\n\n\n\n\nEn enkel analyseplan definerer hvordan en løst formulert problemstilling skal bli besvart. En forskjell i forandring fra pre- til post-intervensjon mellom to grupper kan for eksempel bli besvart gjennom en uavhengig t-test på forandringsskår. Et alternativ som trolig har mer statistisk styrke er en ANCOVA, gitt at antagelser tillater det (A. J. Vickers 2001; Andrew J. Vickers and Altman 2001).\nFør vi kan analysere utfallet i studien bør vi bestemme hva vi skal analysere. Hva er utfallet? Dette er ikke alltid helt klart fra en løst formulert problemstilling. Diskuter hva vi ønsker å måle effekten av intervensjonen i.\nNår man har bestemt hva og hvordan man ønsker å analysere bør dette føres inn i README-file. For eksempel:\n\n## Analayse\n\nUtfallsmålene XXX og YYY blir analysert som forskjell i forandringsskår mellom \ngrupper ved hjelp av en ZZZ...\n\nValget av variabler og analysestrategi gir oss utgangspunktet for å lage en Jamovi-fil. Diskuter hvordan de beslutninger som ble tatt over gir organiseringen av omv-filen.\nVi ønsker også å beskrive andre variabler for leseren av rapporten, variabler som beskriver utvalget, diskuter hvordan disse kan analyseres på best måte.\nFor hver omv-fil vi skaper legger vi til informasjon i README-filen.\n\n\n\n\nVickers, Andrew J., and Douglas G. Altman. 2001. “Analysing Controlled Trials with Baseline and Follow up Measurements.” BMJ : British Medical Journal 323 (7321): 1123–24. http://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/ https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1121605/pdf/1123.pdf.\n\nVickers, A. J. 2001. “The Use of Percentage Change from Baseline as an Outcome in a Controlled Trial Is Statistically Inefficient: A Simulation Study.” BMC Med Res Methodol 1: 6. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC34605/pdf/1471-2288-1-6.pdf.",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Workshop: Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
     "objectID": "06-organisering-av-analyse.html#rapportering-av-resultater",
     "href": "06-organisering-av-analyse.html#rapportering-av-resultater",
-    "title": "17  Organisere og gjennomføre en analyse",
+    "title": "17  Workshop: Organisere og gjennomføre en analyse",
     "section": "17.4 Rapportering av resultater",
     "text": "17.4 Rapportering av resultater\nResultater vil lages i Jamovi, resultatene skal senere også rapporteres i et manus (muligens en word-fil). I forkant av overføring til rapporten kan vi bruke Jamovi for å beskrive hva vi gjør og hvorfor.\n\n\n\n\n\n\nOppgave: Gjennomfør og beskriv analyser\n\n\n\n\n\n\nVed hjelp av Jamovi, sett opp analysene og beskriv resultatene fra de i jamovi. Teksten (og tabelle og figurer) kan limes inn i en word-fil.\nBruk f.eks. power point for å editere figurer.\nDiskuter hvordan analysene på best måte kan presenteres",
     "crumbs": [
       "Forelesninger, Øvelser og prosjekter",
-      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Organisere og gjennomføre en analyse</span>"
+      "<span class='chapter-number'>17</span>  <span class='chapter-title'>Workshop: Organisere og gjennomføre en analyse</span>"
     ]
   },
   {
