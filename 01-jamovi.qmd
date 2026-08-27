@@ -7,7 +7,7 @@
 :::
 
 
-I eksemplene under vil vi bruke et data sett fra @thrane_2020 som du finner [her](data/fotball_1_2_3.csv){target="_blank"}. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. `deskriptiv-dataanalyse` og lagre filen i en undermappe som heter `data`. I denne mappestrukturen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.    
+I eksemplene under vil vi bruke et datasett fra @thrane_2020 som du finner [her](data/fotball_1_2_3.csv){target="_blank"}. Nå er det lurt å bruke det du lært så langt når du lagrer filene på din datamaskin. Sett opp en mappe som omhandler denne første modulen i emnet, navngi den f.eks. `deskriptiv-dataanalyse` og lagre filen i en undermappe som heter `data`. I denne mappestrukturen kan du senere lagre analysefilen fra dit statistikkprogram, eventuelle figurer og notater.    
 
 Når du har installert Jamovi og starter det for første gang vil du se følgende (@fig-firstopen):
 
@@ -31,7 +31,7 @@ For å importere data i Jamovi som er lagret i en `csv`-fil bruker vi `Open` i h
 
 ![Åpne et datasett i Jamovi](img/01-jamovi/open-file.gif){#fig-openfile}
 
-Datasettet kan beskrives ytterligere i Jamovi under fanen `Variables`. Hvert variable er her listet med navn og du kan legge til en beskrivelse (`Description`) av hvert variabel. Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandre variabeltypen.
+Datasettet kan beskrives ytterligere i Jamovi under fanen `Variables`. Hver variabel er her listet med navn og du kan legge til en beskrivelse (`Description`) av hvert variabel. Her finnes også mulighet å editere, beregne, transformere, legge til og ta vekk variabler. Det å editere variabler innebærer at vi forandrer variabeltypen.
 
 ## Datavariabler
 
@@ -43,7 +43,7 @@ Les mer i [Jamovi User Guide](https://www.jamovi.org/user-manual.html#getting-st
 
 Datavariablene kodes videre som `Nominal`, `Ordinal`, `Continuous` eller `ID`. En variable på nominalnivå er en variabel som kan være en av flere mulige kategorier. Kategoriene er ikke rangerte, som for eksempel kjønn hvor en observasjon kan være mann eller kvinne. En variabel på målenivå ordinal er også kategorisk, men verdiene er rangerte. For eksempel er kategorien "høy temperatur" større enn "lav temperatur". En variabel som beskrives som `Continuous` i Jamovi kan beskrives som enten intervallnivå eller forholdstallsnivå. Jamovi ønsker å vite at en variabel finnes på en skala som er kontinuerlig men skiller ikke på om variablene har et bestemt forhold mellom verdiene (forholdstallsnivå) eller hvis de bare kan beskrives med faste avstander (intervallnivå). Variabeltypen `ID` er lagd for å indikere grupperinger i dataene. Vi er vanligvis intressert i å analysere denne variabelen, men ønsker å gruppere datasett og analyser basert på den.
 
-Variabler som er kodet feil kan endres til den typen som du finner er mer korrekte. Dette gjøres under fanen `Data` og `Setup` i menyen. Når du importerer filen `fotball_1_2_3.csv` er alder kodet som `Nominal`. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se @fig-changevariable).
+Variabler som er kodet feil kan endres til den typen som du finner mer korrekt. Dette gjøres under fanen `Data` og `Setup` i menyen. Når du importerer filen `fotball_1_2_3.csv` er alder kodet som `Nominal`. Til tross for at variabelen ikke inneholder desimaler er koding uheldig, vi ønsker å ha variabelen alder som en kontinuerlig variabel (se @fig-changevariable).
 
 ![Forandre variabeltype fra nominal til kontinuerlig](img/01-jamovi/change-variable.gif){#fig-changevariable}
 
@@ -56,7 +56,7 @@ Transformerte og re-kodet variabler ligner på beregnede variabler da de bruker 
 
 ## Eksplorativ eller beskrivende analyse
 
-Nå vi modulfanen velger `Exploration` åpnes en meny hvor vi kan velge `Descriptives`, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under `Variables`. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under `Statistics` velger vi hvilke statistikker vi ønsker å beregne og under `Plots` finnes muligheter å velge fra en rekke forskjellige typer av figurer (@fig-deskriptiv).
+Nå vi i modulfanen velger `Exploration` åpnes en meny hvor vi kan velge `Descriptives`, modulen for deskriptiv statistikk. I modulen er det mulig å beregne en rekke summerende statistikker fra datasettet. I den øvre delen av modulen velger vi variabler fra listen som tilsvarer datasettet, disse flyttes inn under `Variables`. Hver variabel er mulig å analysere gruppert på en ordinal- eller nominalvariabel. Under `Statistics` velger vi hvilke statistikker vi ønsker å beregne og under `Plots` finnes muligheter å velge fra en rekke forskjellige typer av figurer (@fig-deskriptiv).
 
 ![Modulen for beskrivende statistikk](img/01-jamovi/descriptives.gif){#fig-deskriptiv}
 
@@ -76,7 +76,7 @@ Til sist kan vi bruke funksjonen for `Outliers` for å få en tabell over de mes
 
 Vi har allerede beskrevet noen av de figurer som er mulige å produsere under `Descriptives`-modulen. I tillegg til Histogram, density og Q-Q-plots kan vi lage Box-plots og Bar Plots. Hvis vi sammenligner en kontinuerlig variabel med en kategorisk (nominal eller ordinal) ser vi at en `Bar Plot` gir forskjellige enheter på. Under `Box Plots` finnes det flere muligheter for å vise data, inkludert individuelle data punkter.
 
-De verktøy vi har snakket om så langt gir oss gode muligheter til å raskt få en overblikk over den data vi har. Figurer hjelper ofte mye mer enn numeriske sammenstillinger for å oppdage rare observasjoner, noe som kan indikere feil i dataregistrering eller koding.
+Verktøyene vi har snakket om så langt gir oss gode muligheter til å raskt få overblikk over dataen vi har. Figurer hjelper ofte mye mer enn numeriske sammenstillinger for å oppdage rare observasjoner, noe som kan indikere feil i dataregistrering eller koding.
 
 
 
