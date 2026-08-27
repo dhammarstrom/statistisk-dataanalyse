@@ -1,4 +1,4 @@
-# Organisere og gjennomføre en analyse
+# Workshop: Organisere og gjennomføre en analyse
 
 I denne workshopen er målet å organisere og gjennomføre en analyse ved hjelp av Jamovi. En dataanalyse er ikke begrenset til rapporten som blir generert fra den, isteden inneholder et analyseprosjekt flere deler som sammen "skaper" rapporten. 
 
