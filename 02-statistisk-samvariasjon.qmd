@@ -6,13 +6,13 @@ editor_options:
 
 # Statistisk samvariasjon i dataanalyse {#sec-stat-samv}
 
-Det å måle statistisk samvariasjon er sentralt i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Det er nesten mulig å argumentere for at veldig mange forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
+Det å måle statistisk samvariasjon er sentralt i mye av den kvantitative forskningen. Som vi skal se så brukes forskjellige metoder for å undersøke samvariasjon, i flere ulike scenarioer. Nesten alle forskningsspørsmål besvares ved hjelp av noen form av analyse av samvariasjon. For eksempel når vi ønsker å vite om:
 
 - kjønn er av betydelse når man melder seg på til et turrenn
 - maksimalt oksygenforbruk kan forutsi prestasjon i sykkel eller skiller seg mellom to grupper av syklister
 - større muskelmasse og muskelstyrke er fordelaktig når man ønsker å leve lenge.
 
-Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, så som regresjonsanalyse, analyse av varians og krysstabulering.
+Alle disse spørsmålene, og lignende spørsmål besvares ved hjelp av statistiske modeller som måler noen form av samvariasjon mellom variabler. Som vi kan se i eksemplene over så kan variablene være av forskjellige typer (kontinuerlige, ordinale eller nominale). Datatypene gir noen begrensninger i hvilke verktøy vi kan bruke for å måle samvariasjon. I denne modulen skal vi snakke om teknikker som måler samvariasjon, slik som regresjonsanalyse, analyse av varians og krysstabulering.
 
 
 ## Regresjon
@@ -20,7 +20,7 @@ Regresjonsanalyse er en familie av teknikker for å måle samvariasjon, vanligvi
 
 I dette "systemet", og med benevningene avhengig og uavhengig variabel sier vi noe om hvordan vi forestiller oss at variablene varierer sammen. Vi sier noe om at den uavhengige variabelen påvirker den avhengige. Modellen kan brukes for å lage prediksjoner om hvilken verdi den avhengige variabelen tar hvis vi bestemmer at den uavhengige variabelen skal ha en gitt verdi.
 
-Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner [her](data/simpsons.csv) finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Alt annet like så kan vi tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes en logisk retning på sammenhengen mellom variablene. 
+Til tross for at vi vet at flere variabler i mange fall påvirker en avhengig variabel kan vi bruke regresjonsmodellen for å estimere sammenhengen mellom et begrenset antall variabler. I filen som du finner [her](data/simpsons.csv) finnes data på kroppshøyde og vekt hos en gruppe (mer eller mindre kjente) individer. Ved å lage en tabell kan vi få et overblikk over dataene, men en figur eller matematisk modell kan vise sammenhengen mellom høyde og vekt bedre. Vi velger å sette høyde som **uavhengig variabel** og vekt som **avhengig variabel**. Dette fordi vi kan tenke oss at hvis kroppshøyde øker så øker vekt, men øker vekt så trenger ikke høyde øke. Det finnes altså en logisk retning på sammenhengen mellom variablene. 
 
 Den visuelle sammenfatningen av dataene finner du under i  @fig-simpsons, her så kan vi allerede se en tendens i dataene. Individer som er høyere er også tyngre. En matematisk modell for denne sammenhengen kan brukes for å beskrive gjennomsnittet ved en gitt høyde, men hvor plasserer vi dette gjennomsnittet?
 
@@ -309,7 +309,7 @@ En regresjonsmodell fungerer best der hvor vi faktisk har data. En enkel regresj
 ## Fra regresjon til korrelasjon
 
 
-I eksemplet over så vi en hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på `r round(coef(mod)[2], 2)` kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles. 
+I eksemplet over så vi hvordan vi kan lage en matematisk modell for sammenhengen mellom to kontinuerlige variabler. Modellen gir oss muligheter til å predikere en avhengig variabel ved hjelp av en uavhengige variabel. Prediksjonen antyder at vi ser på sammenhengen som at den ene variablene (uavhengig) påvirker den andre (avhengig). Sammenhengen beskrives også med enheter som vi finner igjen i dataene, for eksempel så gav 1 cm forandring i høyde en estimert forskjell i vekt på `r round(coef(mod)[2], 2)` kg. Regresjonsanalysen gir oss altså mye informasjon som kan brukes til flere formål. Men modellen kan også forenkles. 
 
 Sammenhengen mellom to kontinuerlige variabler kan beskrives som en korrelasjonskoeffisient. Denne korrelasjonskoeffisienten beskriver sammenhengen mellom to variabler som et tall mellom -1 og +1 hvor estimat som nærmer seg -1 eller +1 indikerer en sterk korrelasjon og estimat som nærmer seg 0 indikerer en svak eller ingen korrelasjon (eller sammenheng).
 
@@ -466,7 +466,7 @@ simpsons %>%
 
 Da tilpassingen av modellen vil bli gjort ved at regresjonslinjen beskriver gjennomsnittet for hvert tall på $x$ vil denne modellen beskrive skjæringspunktet som er gjennomsnittet når $x=0$, altså for alderskategorien barn, når vi bruker indikatorvariabelen `Voksen`. Stigningstallet vil beskrive hvor mye $y$ (vekt) øker når vi går fra 0 til 1 på $x$-variabelen. Bruker vi indikatorvariabelen `Barn` vil vi estimere gjennomsnittet hos voksne (når $x=0$) og forskjellen mellom vokse og barn som stigningstallet i modellen.
 
-Her ser vi også en viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av $x$-variabelen sammenligne to kategorier, eller gjennomsnitt på $y$ ved to forskjellige verdier på $x$. Teknisk sett så kan vi ikke si "hvis vi øker $x$ med 1 for et individ så vil dette individet få $\beta_1$ enheter større $y$" da vi ikke har mulighet på gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er ikke heller enkle å forandre (alder, kjønn, hårfarge osv.).
+Her ser vi også et viktig poeng med sammenligninger i regresjonsanalyser. Når vi observerer data kan vi bruke regresjonsmodellen til å lage sammenligninger. Vi kan ved hjelp av $x$-variabelen sammenligne to kategorier, eller gjennomsnitt på $y$ ved to forskjellige verdier på $x$. Teknisk sett så kan vi ikke si "hvis vi øker $x$ med 1 for et individ så vil dette individet få $\beta_1$ enheter større $y$" da vi ikke har mulighet til å gjennomføre en intervensjon på dette individet. Noen uavhengige variabler er heller ikke enkle å forandre (alder, kjønn, hårfarge osv.).
 
 
 ## Flere uavhengige variabler, multippel regresjon
